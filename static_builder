@@ -1,0 +1,66 @@
+#!/bin/sh
+
+#################################################################################
+# FUNCTIONS
+#################################################################################
+
+##===============================================================================
+#
+process()
+{
+	# Initialize values
+	file=$1
+	dir=$2
+	header=$3
+	html_file="$dir/$(basename ${file%.*}).html"
+
+	# Create file
+	cat $header > $html_file
+
+	# Process markdown
+	text=$(markdown -x "fenced_code" $file)
+
+	# Replace %content% with processed markdown
+	awk -v t="$text" \
+	    -v f="$html_file"
+	    '{ gsub("%content%", t); print > f}' $html_file
+
+	# Replace %content$gt with >
+	text="$(sed -i 's/%content%gt/\&gt/g' $html_file)"
+
+	# Replace %content$lt with <
+	text="$(sed -i 's/%content%gt/\&lt/g' $html_file)"
+
+	# Replace %content$amp with &
+	text="$(sed -i 's/%content%gt/\&amp/g' $html_file)"
+}
+
+#################################################################################
+# SCRIPT
+#################################################################################
+outdir=$1
+header=$2
+
+# Create directory and clear it
+mkdir -p $outdir
+rm -rf $outdir/*.html
+
+# Get file count
+files=(*.md)
+cnt=${#files[@]}
+
+# Loop through each markdown file in the directory
+i=0
+
+for f in "${files[@]}"
+do
+	# Calculate progress
+	((i+=1))
+	progress=$(($i*100/$cnt))
+
+	# Output progress
+	echo "(${progress}%): Processing $(basename $f)"
+
+	# Process file
+	process $f $otudir $header
+done

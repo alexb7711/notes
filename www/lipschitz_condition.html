@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<head>
+	<link rel="Stylesheet" type="text/css" href="./style.css" />
+	<title>%title%</title>
+	<meta http-equiv="Content-Type" content="width=device-with, initial-scale=1.0; text/html; charset=utf-8" name="viewport"/>
+</head>
+<body>
+	<div class="nav"><h2 id="Alexander Brown" class="header">Alexander Brown - Electrical Engineer</h2>
+		<!-- <p> -->
+		    <!-- email: alex.brown7711@aggiemail.usu.edu -->
+		<!-- </p> -->
+		<a href="%root_path%index.html">Home</a> |
+		<a href="%root_path%blog.html">Blog</a> |
+		<a href="%root_path%notes.html">Notes</a> |
+		<a href="%root_path%classes.html">Classes</a> |
+		<a href="%root_path%projects.html">Projects</a> |
+		<a href="%root_path%todo.html">Todo</a> |
+		<a href="%root_path%error.html">About</a>
+	</div>
+	<div class="content">
+	    <h1 id="what-is-a-lipschitz-condition">What is a Lipschitz Condition?</h1>
+<p>This is a basic introduction to Lipschitz conditions within the context of differential equations. Lipschitz conditions are connected with “contrastive mappings”, which have important applications to the existence, uniqueness and approximation of solutions to equations - including ordinary differential equations.</p>
+<h2 id="introduction">Introduction</h2>
+<p>General first order initial value problem</p>
+<p>{{$ x’ = f(t,x),; x() = A }}$</p>
+<p>where <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20x%27%20%3D%20%5Cfrac%7Bdx%7D%7Bdt%7D" alt="x%content%#39; = rac{dx}{dt}" title="x%content%#39; = rac{dx}{dt}" /></p>
+<p>Much of the theory for IVP, its variation involves a so-called Lipschitz condition. This condition is the cornerstone for gaining information about solutions to the IVP, such as existence, uniqueness and approximation.</p>
+<pre><code>We say $f$ satisfies a Lipschitz condition on a set $D$ if there is a constant $L \geq 0$ such that</code></pre>
+<p>{{$ |f(t,u) - f(t,v)| L |u-v|,;  (t,v),(t,v)D }}$</p>
+<h2 id="when-does-a-lipschitz-condition-hold">When does a Lipschitz condition hold?</h2>
+<p>Given some <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20f" alt="f" title="f" /> and <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20D" alt="D" title="D" />, when does the Lipschitz Condition hold?</p>
+<p><strong>Example</strong> Let <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20D%20%3D%20%5Cmathbb%7BR%7D%5E2" alt="D = \mathbb{R}^2" title="D = \mathbb{R}^2" /> and lat <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20f%28t%2Cu%29%20%3A%3D%20t%5E2%20%2B%202u" alt="f(t,u) := t^2 + 2u" title="f(t,u) := t^2 + 2u" />. For each <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%28t%2Cu%29%2C%20%28t%2Cv%29%20%5Cin%20D" alt="(t,u), (t,v) \in D" title="(t,u), (t,v) \in D" /> consider</p>
+{{$
+<br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bll%7D%0A%20%20%20%20%7C%20f%28t%2Cu%29%20-%20f%28t%2Cv%29%20%7C%20%26%20%3D%20%7C%20%28t%5E2%20%2B%202u%29%20-%20%28t%5E2%20-%202v%29%20%7C%20%5C%5C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%26%20%3D%202%7Cu-v%7C%0A%5Cend%7Barray%7D" alt="egin{array}{ll}
+    | f(t,u) - f(t,v) | %content%amp; = | (t^2 + 2u) - (t^2 - 2v) | \
+                            %content%amp; = 2|u-v|
+\end{array}" title="egin{array}{ll}
+    | f(t,u) - f(t,v) | %content%amp; = | (t^2 + 2u) - (t^2 - 2v) | \
+                            %content%amp; = 2|u-v|
+\end{array}" /><br />
+<p>}}$</p>
+<pre><code>*Lemma*: Let $D$ be a rectangle</code></pre>
+<p>{{$ R:= {(t,p) : t <img src="a,b" alt="pic" />, |p-A| B} }}$</p>
+<pre><code>or the infinite strip</code></pre>
+<p>{{$ S:= {(t,p) : t <img src="a,b" alt="pic" />, |p-A| } }}$</p>
+<pre><code>If $f : D ightarrow \mathbb{R}$ and $rac{\partial f}{\partial y}$ exists, is continuous and there is some constant $K \geq 0$ such that</code></pre>
+<p>{{$ | (t,y) | K,;  (t,y) D }}$</p>
+<pre><code>then the Lipschitz Condition holds with $L=K$</code></pre>
+<h2 id="local-lipshitz">Local Lipshitz</h2>
+<pre><code>*Theorem*: Let $f:Rightarrow \mathbb{R}$ be continuous and let $(	au A) \in R$. If there is a constant $L \geq 0$ satisfying</code></pre>
+<p>{{$ |f(t,u) - f(t,v)| L |u-v|,;  (t,v),(t,v)R</p>
+<p>}}$</p>
+<pre><code>then the IVP has a unique solution $x=x(t)$ on some interval containing $	au$.
+
+*Corollary*: Let $f:Rightarrow \mathbb{R}$ be continuous and let $rac{\partial f}{\partial y}$ exists and is continuous on $R$ and there is dome constant $K \geq 0$ such that</code></pre>
+<p>{{$ | (t,y) | K,;  (t,y) D }}$</p>
+<pre><code>then the IVP has a unique solution $x=x(t)$ on some interval containing $	au$.</code></pre>
+<h1 id="references">References</h1>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=Cnc83B3C2pY.md">|YouTube Video</a></li>
+</ul>
+	</div>
+</body>
+</html>

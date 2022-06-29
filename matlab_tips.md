@@ -1,0 +1,31 @@
+# MATLAB Tips
+
+## Pivoting Function
+The original code can be found here [|#1](#Footnotes#1.md):
+
+```
+function R = pivot(M, r, c)
+	% Get matrix dimensions
+	[d, w]  = size(M);
+
+	% Initialize to appropriate size
+	R       = zeros(d, w);
+
+	% Copy row r, normalizing M(r,c) to 1
+	R(r, :) = M(r, :) / M(r, c);
+
+	% For all matrix rows
+	for k = 1:d
+		<!-- Other than the row of interest r -->
+		if (k ~=r)
+			%<!-- Set it equal to the original matrix -->
+			%<!-- minux a multiple of normalized row r, making -->
+			%<!-- R(k,c) = 0 -->
+			R(k,:) = M(k,:) - M(k,c) * R(r,:)
+		end % if
+	end         % for
+end                 % function
+```
+
+## Footnotes
+* *1* [|Pivoting Function](http://am121.seas.harvard.edu/site/wp-content/uploads/2014/08/pivotingmaplematlabmathematica.pdf.md)

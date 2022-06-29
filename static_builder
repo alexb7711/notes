@@ -6,7 +6,28 @@
 
 ##===============================================================================
 #
-process()
+# Create a fancy little progress bar
+# https://stackoverflow.com/questions/238073/how-to-add-a-progress-bar-to-a-shell-script
+function progress_bar()
+{
+    # Process data
+    let _progress=(${1}*100/${2}*100)/100
+    let _done=(${_progress}*4)/10
+    let _left=40-$_done
+
+    # Build progressbar string lengths
+    _fill=$(printf "%${_done}s")
+    _empty=$(printf "%${_left}s")
+
+    # 1.2 Build progressbar strings and print the ProgressBar line
+    # 1.2.1 Output example:
+    # 1.2.1.1 Progress : [########################################] 100%
+    printf "\rProcessing $s: [${_fill// /\#}${_empty// /-}] ${_progress}%% \r"
+}
+
+##===============================================================================
+#
+function process()
 {
 	# Initialize values
 	file=$1
@@ -14,32 +35,21 @@ process()
 	header=$3
 	html_file="$dir/$(basename ${file%.*}).html"
 
-	# Create file
-	cat $header > $html_file
-
 	# Process markdown
-	text=$(markdown -x "fenced_code" $file)
+	pandoc -o $html_file $file
+
+	# Get the text from the file
+	text=$(cat $html_file)
 
 	# Replace %content% with processed markdown
-	awk -v t="$text" \
-	    -v f="$html_file"
-	    '{ gsub("%content%", t); print > f}' $html_file
-
-	# Replace %content$gt with >
-	text="$(sed -i 's/%content%gt/\&gt/g' $html_file)"
-
-	# Replace %content$lt with <
-	text="$(sed -i 's/%content%gt/\&lt/g' $html_file)"
-
-	# Replace %content$amp with &
-	text="$(sed -i 's/%content%gt/\&amp/g' $html_file)"
+	awk -v t="$text" '{ gsub(/%content%/, t); print}' $header > $html_file
 }
 
 #################################################################################
 # SCRIPT
 #################################################################################
-outdir=$1
-header=$2
+outdir="www"
+header="./html/template.html"
 
 # Create directory and clear it
 mkdir -p $outdir
@@ -55,12 +65,12 @@ i=0
 for f in "${files[@]}"
 do
 	# Calculate progress
-	((i+=1))
+	i=$((i+1))
 	progress=$(($i*100/$cnt))
 
 	# Output progress
-	echo "(${progress}%): Processing $(basename $f)"
+	progress_bar $i $progress
 
 	# Process file
-	process $f $otudir $header
+	process $f $outdir $header
 done

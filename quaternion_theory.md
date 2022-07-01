@@ -20,113 +20,113 @@
 ## Introduction
 The quanternion can be written as [#1](#Footnotes#1.md)
 
-{{$
+$$
 \mathbb{H} = \{a + bi + cj + dk : a,b,c,d \in \mathbb{R}\}
-}}$
+$$
 
 Where $i$, $j$, and $k$ are $\sqrt{-1}$. The intereseting thing is that we can think of a quaternion as _having a scalar part and a vector part_:
 
-{{$
+$$
 (v_0, \underline{v}) = (v_0, v_1 i + v_2 j + v_3 k
-}}$
+$$
 
 Now if you think of three-dimensional space as being purely imaginary quaternions:
 
-{{$
+$$
 \mathbb{R}^3 = \{xi + yj + zk : x,y,z \in \mathbb{R}\}
-}}$
+$$
 
 Just like for complex numbers, the rotations are done using _unit quaternions_:
 
-{{$
+$$
 \begin{array}{l}
     cos\psi + i sin\psi \\
     cos\psi + j sin\psi \\
     cos\psi + k sin\psi \\
 \end{array}
-}}$
+$$
 
 Where this can be rewritten using Euler's formula as:
 
-{{$
+$$
 \begin{array}{l}
     e^{i\psi} \\
     e^{j\psi} \\
     e^{k\psi} \\
 \end{array}
-}}$
+$$
 
 Now lets generalize this idea. Take any unit imaginary quaternion $u = u_1 i + u_2 j + u_3 k$. That is, any unit vector. Then this can be represented as
 
-{{$
+$$
 cos\psi + \underline{u} sin\psi
-}}$
+$$
 
 By analogy with Euler's formula, it can be rewritten as
 
-{{$
+$$
 e^{\underline{u}\psi}
-}}$
+$$
 
 ## Theorem
 Oh no, a theorem in the introduction! Its really not that bad. 
 
     If $\underline{u}$ is a unit vector, and $\underline{v}$ is any vector, the expression
 
-{{$
+$$
 e^{\underline{u}\psi} \underline{v} e^{-\underline{u}\psi}
-}}$
+$$
 
     gives the result of rotating $\underline{v}$ about the axis in the $\underline{u}$ direction by $2\psi$ degrees.
 
 Therefore to rotate by $\psi$ degrees, we get the following equation
 
-{{$
+$$
 R_{e^{\underline{u}\psi/2}} (\underline{v}) = e^{\underline{u}\psi/2} \underline{v} e^{-\underline{u}\psi/2}
-}}$
+$$
 
 ## Attitude Quaternion
 Shuster's Convention is most typically encountered in modern aerospace applications. The attitude quaternion is based on the concept of a rotation vector where the $A$ frame is rotated about an axis $\underline{n}$ by an angle $\theta$ to acieve the $B$ frame. The quaternion is defined as [#2](#Footnotes#2.md)
 
-{{$
+$$
 q_{A}^B =
 \begin{bmatrix}
     cos(\theta/2) \\
     sin(\theta/2) \underline{n}
 \end{bmatrix}
-}}$
+$$
 
 ## Chaining Transformations
 Given two quaternions
 
-{{$
+$$
 \begin{array}{l}
     q_{A}^B = q_1 + \underline{q_1} // 
     q_{B}^c = q_2 + \underline{q_2}
 \end{array}
-}}$
+$$
 
 One can chain the the transformations together to achive $q_{A}^C$ by 
 
-{{$
+$$
 q_{A}^C = q_{B}^C \times q_{A}^B = 
 \begin{bmatrix}
     q_1 q_2 - \underline{q_1} \cdot \underline{q_2} \\
     q_1 \underline{q}_2 + q_2 \underline{q}_1 - \underline{q}_1 \times \underline{q}_2 \\
 \end{bmatrix}
-}}$
+$$
 
 ## Reverse Transformation Direction
 The [conjugate](linear_algebra.md) of a quaternion is analogous to the transpose of a tranformation matrix. It reverses the direction of the transformation.
 
-{{$
+$$
 q_{B}^A = (q_{A}^B)^* = q_1 - \underline{q_1}
-}}$
+$$
 
 ## Using Quaternions to Transform Vectors
 Quaternions can transform vectors by pre and post multiplying a "pure" quaternion containing the vector
 
-{{$
+$$
 \begin{bmatrix}
 	0 \\ \underline{v}^b
 \end{bmatrix} = 
@@ -135,14 +135,14 @@ q_{i}^b \times
 	0 \\ \underline{v}^i
 \end{bmatrix} \times
 (q_{i}^b)^*
-}}$
+$$
 
 ## Creating a Transformation Matrix from Quaternions
 The transformation matrix $T_{A}^B$ can be created from quaternion $q_{A}^B = q_1 + \underline{q}_1$ via the following equation
 
-{{$
+$$
 T_{A}^B = I_{3\times 3} - 2q_1 ![pic](\underline{q}_1) + 2 ![pic](\underline{q}_1)^2
-}}$
+$$
 
 # Footnotes
 * *1* https://math.ucr.edu/~huerta/introquaternions.pdf

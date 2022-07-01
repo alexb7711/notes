@@ -14,14 +14,14 @@ Furthermore, $W$ from the lemma above is known as a *subspace*. Any subspace of 
 ## Skew Symmetric Matrix
 A skew symmetric matrix is denoted as $A_{\times}$ or $(A\times)$. This indicates a skew symmetric matrix that is denoted as:
 
-{{$
+$$
 A_{\times} =
 \begin{bmatrix}
 	0    & -A_3 & A_2 \\
 	A_3  & 0    & -A_1 \\
 	-A_2 & A_1  & 0 \\
 \end{bmatrix}
-}}$
+$$
 
 for a $3\times 3$ matrix.
 

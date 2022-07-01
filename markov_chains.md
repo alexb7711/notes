@@ -7,9 +7,9 @@ Variables:
 
     Definition: Markov Chain: The future is independent of the past, given the present. In other words,
 
-    {{$
+    $$
     	P(X_{n+1} = j | X_n = i)\; \text{depends only on } i \text{ and } j
-    }}$
+    $$
 
 # Representing A Discrete-Time Markov Chain
 Ingredients of a discrete-time Markov chain are:
@@ -23,9 +23,9 @@ Under certain mild conditions, called ergodicity conditions, the state probabili
 ## Calculating Steady-State Probabilities
 The probability of entering node $i$ should be the same as the probability exiting node $i$, this is represented by the following equation:
 
-{{$
+$$
 	\pi_i \sum_{i \neq j} P_{ij} = \sum_{j\neq i} \pi_j P_{ji}
-}}$
+$$
 
 This also applies to subsets of the transition diagram.
 

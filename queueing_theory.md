@@ -32,9 +32,9 @@
 ### Exponential Distribution
 * Tail distribution
 
-{{$
+$$
 	P(X \geq x) = \text{exp}(-\lambda x)
-}}$
+$$
 
 * Mean, variance and squared coefficient of variation:
 	* Mean: $E(X) = 1/\lambda$
@@ -51,9 +51,9 @@
 ### Poisson Arrivals
 The successive inter-arrival times $U_i = T_{i+1} - T_i$ are independent and distributed according to the exponential law with parameter $\lambda$
 
-{{$
+$$
 	P(U_i \geq u) = \text{exp}(-\lambda u)
-}}$
+$$
 
 where $\lambda$ represents the average arrivals per unit time.
 
@@ -65,18 +65,18 @@ In general, it is assumed that
 
 The exponential distribution is an important case of service duration
 
-{{$
+$$
 	P(S_i \geq s) = \text{exp}(-\mu s)
-}}$
+$$
 
 where $\mu$ is the average number of clients served per unit time.
 
 ### Offered Load
 Average performance depends on the offered load $\rho$, defined as
 
-{{$
+$$
 	\rho = \frac{\lambda}{\mu}
-}}$
+$$
 
 The unit of $\rho$ is the Erlang, a dimensionless unit.
 
@@ -84,16 +84,16 @@ The unit of $\rho$ is the Erlang, a dimensionless unit.
 ## Motivating Examples and M/M/1 queue
 
 ### Steady-State Probabilities Computation
-{{$
+$$
 	\pi_i = \pi_0 \frac{\lambda}{\mu}^i\; i = 1,2,...
-}}$
+$$
 
 ### Stability Condition for Steady State Behavior
 The arrival rate is lower than the service rate:
 
-{{$
+$$
 	\lambda < \mu
-}}$
+$$
 
 or $\rho = \lambda/\mu < 1$ (traffic intensity or load$
 
@@ -130,16 +130,16 @@ or $\rho = \lambda/\mu < 1$ (traffic intensity or load$
 * $W$: Average wait time that a customer spends in the system
 * $L$: Average number of customers in the system
 
-{{$
+$$
 	L = \lambda W
-}}$
+$$
 
 ## $H = \lambda G$
 $L = \lambda W$ is a special case of a more general relation.
 
-{{$
+$$
 	H = \lambda G
-}}$
+$$
 
 * $G$: Average cost or work associated with a customer
 * $H$: Total average cost per time incurred by the system
@@ -148,9 +148,9 @@ $L = \lambda W$ is a special case of a more general relation.
 
 The foundation for queuing theory is based on the modeling of customers arriving at a queuing system. This is the _simple case of streams_ is represented as the probability that $k$ customers arrive in a timer interval of length $t$ is represented as
 
-{{$
+$$
   P_{k}(t) = \frac{\lambda t)^k}{k!} e^{\lambda t}
-}}$
+$$
 
 where $\lambda > 0$. Importantly, the incoming stream is assumed to compose the following properties
 
@@ -175,9 +175,9 @@ Therefore a simple stream must adhere to all these conditions. Although they don
 ## The Intensity and Parameter of a Stream
 The mean number of customers arriving in a time interval is denoted as
 
-{{$
+$$
 M\mu(t) = e^{\lambda t} \sum_{k=1}^{\infty} k \frac{(\lambda t)^k)}{k!} = \lambda t
-}}$
+$$
 
 Where $\mu(t)$ is the actual number of customers arriving during a time interval of length $t$. The mathematical expectation of the number of costomers arriving in this unit time is called the _intensity of th stream_. For a simple queue $\lambda = \mu$ for which $\lambda$ is called the _parameter of the stream_.
 

@@ -55,7 +55,7 @@ The membership function of classical sets $A$ is binary in the sense that the el
 	* {{https://www.tutorialspoint.com/fuzzy_logic/images/complement.jpg}}
 	
 ### Operations of Trapozoidal/Triangular Fuzzy Sets
-{{$
+$$
 \begin{array}{l}
 	\text{let } \tilde{A}_1 = (a_1, b_1, c_1, d_1) \\
 	\text{let } \tilde{A}_2 = (a_2, b_2, c_2, d_2) \\
@@ -63,7 +63,7 @@ The membership function of classical sets $A$ is binary in the sense that the el
 	\tilde{A}_1-\tilde{A}_2 = (a_1-d_2, b_1-c_2, c_1-b_2, d_1-a_2) \\
 	\tilde{A}_1*\tilde{A}_2 = (a_1 a_2, b_1 b_2, c_1 c_2, d_1 d_2) \\
 \end{array}
-}}$
+$$
 
 ### Fuzzy Set Properties
 Fuzzy sets have the same properties as [classical sets](set_theory.wiki.md)
@@ -76,9 +76,9 @@ A triangular fuzzy number is represented by $\tilde{a} = (a, m, b)$.
 ## Membership Functions
 Mathematically, membership functions are denoted as [#1](#Footnotes#1.md)
 
-{{$
+$$
 \widetilde{A} = \left \{ \left ( y,\mu _{\widetilde{A}} \left ( y \right ) \right ) | y\in U\right \}
-}}$
+$$
 
 ### Membership Function Properties
 * Core: The set of values $y$ such that $\mu_{\tilde{A}}(y) = 1$
@@ -94,9 +94,9 @@ This is the process of transforming crisp sets into fuzzy sets. This process is 
 
 #### Support Fuzzification (s-fuzzification) Method
 
-{{$
+$$
 \widetilde{A} = \mu _1Q\left ( x_1 \right )+\mu _2Q\left ( x_2 \right )+...+\mu _nQ\left ( x_n \right )
-}}$
+$$
 
 where $Q(x_i)$ is called the _kernel of fuzzification_. This method is implemented by keeping $\mu_i$ constant and $x_i$ is transformed into a fuzzy set $Q(x_i)$.
 
@@ -111,54 +111,54 @@ This is the process of transforming fuzzy sets into crisp sets [#1](#Footnotes#1
 #### Max-Membership Method
 This method is limited to peak output functions. Mathematically it is represented as
 
-{{$
+$$
 \mu _{\widetilde{A}}\left ( x^* \right )>\mu _{\widetilde{A}}\left ( x \right ) \: for \:all\:x \in X
-}}$
+$$
 
 where $x^*$ is the defuzzified output.
 
 #### Centroid Method
 Also known as the center of area or the center of gravity method:
 
-{{$
+$$
 x^* = \frac{\int \mu _{\widetilde{A}}\left ( x \right ).xdx}{\int \mu _{\widetilde{A}}\left ( x \right ).dx}
-}}$
+$$
 
 What this means is that given the fuzzy value to be defizzified, draw a horizontal line at the percentage of the membership as indicated by the fuzzy value, merge the areas together, and find the centroid of the geometric shape that was generated [#2](#Footnotes#2.md).
 
 #### Weighted Average Method
 Each membership function is weighted by its maximum membership value:
 
-{{$
+$$
 x^* = \frac{\sum \mu _{\widetilde{A}}\left ( \overline{x_i} \right ).\overline{x_i}}{\sum \mu _{\widetilde{A}}\left ( \overline{x_i} \right )}
-}}$
+$$
 
 #### Mean-Max Membership
 Also known as the middle of the maxima
 
-{{$
+$$
 x^* = \frac{\displaystyle \sum_{i=1}^{n}\overline{x_i}}{n}
-}}$
+$$
 
 ### Fuzzy Arithmetic
 If we have a nonnegative, triangular fuzzy number $\tilde{a} = (a_1, a_2, a_3)$ and $\tilde{b} = (b_1, b_2, b_3)$, then the sum is defined as
 
-{{$
+$$
 \tilde{a}+\tilde{b} = (a_1 + b_1, a_2 + b_2, a_3 + b_3)
-}}$
+$$
 
 and the difference is
 
-{{$
+$$
 \tilde{a}+\tilde{b} = (a_1 - b_3, a_2 - b_2, a_3 - b_1)
-}}$
+$$
 
 ## Comparing Fuzzy Numbers
 This is the same concept as [defuzzification](#Defuzzification.md), but now we will put in context of its use. It is important to be able to compare fuzzy numbers, especially for [Fuzzy Linear Programming](fuzzy_lin_prog.md) so one is able to state whether $\tilde{a} < \tilde{b}$ or $\tilde{a} > \tilde{b}$ when defining constraints. These methods are known as _ordering function. A common ordering function is simply taking the average of the fuzzy number [#1](#Footnotes#1.md), [#3](#Footnotes#3.md):
 
-{{$
+$$
 R(\tilde{a}) = \frac{a + m + b}{3}
-}}$
+$$
 
 # Footnotes
 * *1* @tutorials_fuzzy    | Fuzzy logic, 2021. [Online; accessed 21-October-2021].

@@ -10,9 +10,9 @@
 # Set Theory
 A set is an unordered collection of different elements. For example
 
-{{$
+$$
 A = \{1,2,3,4,5\}
-}}$
+$$
 
 is a set [#1](#Footnotes#1.md).
 
@@ -21,15 +21,15 @@ Sets are typically represented in two ways
 
 * Roster or Tabular Form
 
-{{$
+$$
 A = \{1,2,3,4\}
-}}$
+$$
 
 * Set Builder Notation
 
-{{$
+$$
 A = \{x:p(x)\}
-}}$
+$$
 
 where $p(x)$ is some function that describes the set [#1](#Footnotes#1.md).
 

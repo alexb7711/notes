@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<head>
+	<link rel="Stylesheet" type="text/css" href="./style.css" />
+	<title>%title%</title>
+	<meta http-equiv="Content-Type" content="width=device-with, initial-scale=1.0; text/html; charset=utf-8" name="viewport"/>
+</head>
+<body>
+	<div class="nav"><h2 id="Alexander Brown" class="header">Alexander Brown - Electrical Engineer</h2>
+		<!-- <p> -->
+		    <!-- email: alex.brown7711@aggiemail.usu.edu -->
+		<!-- </p> -->
+		<a href="%root_path%index.html">Home</a> |
+		<a href="%root_path%blog.html">Blog</a> |
+		<a href="%root_path%notes.html">Notes</a> |
+		<a href="%root_path%classes.html">Classes</a> |
+		<a href="%root_path%projects.html">Projects</a> |
+		<a href="%root_path%todo.html">Todo</a> |
+		<a href="%root_path%error.html">About</a>
+	</div>
+	<div class="content">
+	    <h1 id="vectors">Vectors</h1>
+<h2 id="vector-spaces">Vector Spaces</h2>
+<ul>
+<li>Addition: <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Bx_1%2C%20x_2%2C%20x_3%5D%20%2B%20%5By_1%2C%20y_2%2C%20y_3%5D%20%3D%20%5Bx_1%20%2B%20y_1%2C%20x_2%20%2B%20y_2%2C%20x_3%20%2B%20y_3%5D" alt="[x_1, x_2, x_3] + [y_1, y_2, y_3] = [x_1 + y_1, x_2 + y_2, x_3 + y_3]" title="[x_1, x_2, x_3] + [y_1, y_2, y_3] = [x_1 + y_1, x_2 + y_2, x_3 + y_3]" /></li>
+<li>Scalar multiplication: <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20t%5Bx_1%2C%20x_2%2C%20x_3%5D%20%3D%20%5Btx_1%2C%20tx_2%2C%20tx_3%5D" alt="t[x_1, x_2, x_3] = [tx_1, tx_2, tx_3]" title="t[x_1, x_2, x_3] = [tx_1, tx_2, tx_3]" /></li>
+</ul>
+<p>Consider that <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20z_i%20%3D%20x_i%20%2B%20y_i" alt="z_i = x_i + y_i" title="z_i = x_i + y_i" />, a vector space is then a collection of objects that can be added to each other and multiplied by numbers, subjet to certain laws of algebra.</p>
+<pre><code>Lemma: If $W$ is a nonempty subset of vector space $V$ which is closed under the operations of $V$, then $W$ is itself a vector space.</code></pre>
+<p>Furthermore, <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20W" alt="W" title="W" /> from the lemma above is known as a <em>subspace</em>. Any subspace of <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cmathbb%7BR%7D%5E%7BA%29" alt="\mathbb{R}^{A)" title="\mathbb{R}^{A)" /> is called a <em>function space</em>. In other words, a function space is a collection of real-valued functions on a common domain.</p>
+<h2 id="skew-symmetric-matrix">Skew Symmetric Matrix</h2>
+<p>A skew symmetric matrix is denoted as <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A_%7B%5Ctimes%7D" alt="A_{	imes}" title="A_{	imes}" /> or <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%28A%5Ctimes%29" alt="(A	imes)" title="(A	imes)" />. This indicates a skew symmetric matrix that is denoted as:</p>
+{{$ A_{} =
+<br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Bbmatrix%7D%0A%20%20%20%200%20%20%20%20%26%20-A_3%20%26%20A_2%20%5C%5C%0A%20%20%20%20A_3%20%20%26%200%20%20%20%20%26%20-A_1%20%5C%5C%0A%20%20%20%20-A_2%20%26%20A_1%20%20%26%200%20%5C%5C%0A%5Cend%7Bbmatrix%7D" alt="egin{bmatrix}
+    0    %content%amp; -A_3 %content%amp; A_2 \
+    A_3  %content%amp; 0    %content%amp; -A_1 \
+    -A_2 %content%amp; A_1  %content%amp; 0 \
+\end{bmatrix}" title="egin{bmatrix}
+    0    %content%amp; -A_3 %content%amp; A_2 \
+    A_3  %content%amp; 0    %content%amp; -A_1 \
+    -A_2 %content%amp; A_1  %content%amp; 0 \
+\end{bmatrix}" /><br />
+<p>}}$</p>
+<p>for a <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%203%5Ctimes%203" alt="3	imes 3" title="3	imes 3" /> matrix.</p>
+<h1 id="references">References</h1>
+<ul>
+<li><a href="https://math.stackexchange.com/questions/2248413/skew-symmetric-matrix-of-vector.md">|Skew Symmetric Matrix</a></li>
+</ul>
+	</div>
+</body>
+</html>

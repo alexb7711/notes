@@ -15,5 +15,6 @@ Below is a living list of online courses, video ideas, etc. that I would like to
 * Security system
 * Video controller clone
 * Stream deck clone
+	* [|Design Drawing](local:docs/design_drawings/stream-deck.htm.md)
 * Audio interface
 * Turtlebot clone

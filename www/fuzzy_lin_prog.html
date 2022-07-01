@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<head>
+	<link rel="Stylesheet" type="text/css" href="./style.css" />
+	<title>%title%</title>
+	<meta http-equiv="Content-Type" content="width=device-with, initial-scale=1.0; text/html; charset=utf-8" name="viewport"/>
+</head>
+<body>
+	<div class="nav"><h2 id="Alexander Brown" class="header">Alexander Brown - Electrical Engineer</h2>
+		<!-- <p> -->
+		    <!-- email: alex.brown7711@aggiemail.usu.edu -->
+		<!-- </p> -->
+		<a href="%root_path%index.html">Home</a> |
+		<a href="%root_path%blog.html">Blog</a> |
+		<a href="%root_path%notes.html">Notes</a> |
+		<a href="%root_path%classes.html">Classes</a> |
+		<a href="%root_path%projects.html">Projects</a> |
+		<a href="%root_path%todo.html">Todo</a> |
+		<a href="%root_path%error.html">About</a>
+	</div>
+	<div class="content">
+	    <h1 id="contents">Contents</h1>
+<pre><code>    - [|Fuzzy Linear Programming](#Fuzzy Linear Programming.md)
+            - [|Fuzzy Objective](#Fuzzy Linear Programming#Fuzzy Objective.md)
+            - [|Fuzzy Constraints](#Fuzzy Linear Programming#Fuzzy Constraints.md)
+            - [|Fuzzy Coefficients](#Fuzzy Linear Programming#Fuzzy Coefficients.md)
+    - [|Formulating FFLP](#Formulating FFLP.md)
+            - [|A General FLP Model](#Formulating FFLP#A General FLP Model.md)
+                    - [|Nasseri%content%#39;s Method](#Formulating FFLP#A General FLP Model#Nasseri%content%#39;s Method.md)
+                    - [|Zimmermans%content%#39;s Methods](#Formulating FFLP#A General FLP Model#Zimmermans%content%#39;s Methods.md)
+                            - [|min operator](#Formulating FFLP#A General FLP Model#Zimmermans%content%#39;s Methods#min operator.md)
+                            - [|product operator](#Formulating FFLP#A General FLP Model#Zimmermans%content%#39;s Methods#product operator.md)
+            - [|Zimmerman%content%#39;s Product Example](#Formulating FFLP#Zimmerman%content%#39;s Product Example.md)
+            - [|Fuzzy Berth Allocation Problem (BAP) Example](#Formulating FFLP#Fuzzy Berth Allocation Problem (BAP) Example.md)
+    - [|Footnotes](#Footnotes.md)</code></pre>
+<h1 id="fuzzy-linear-programming">Fuzzy Linear Programming</h1>
+<p>Fuzzy linear programming introduces the idea of uncertainty into the model’s parameters. This allows for adaptability of plans or “fuzziness” to the solution of the linear program. By doing so, this allows for a more robust model that is guaranteed to result in an efficient solution <a href="#Footnotes#1.md">|#1</a>, <a href="#Footnotes#3.md">|#3</a>. Fuzzy LP is based off <a href="fuzzy_theory.md">|fuzzy theory</a> which is the basis that allows for the uncertainty.</p>
+<p>When a Linear Program’s (LP) parameters and decision variables are to be modeled as fuzzy, then the LP is said to be a Fully Fuzzy Lineal Programming Problem (FFLP) <a href="#Footnotes#1.md">|#1</a>. In other cases when only part of the LP is fuzzy, it is known as a Fuzzy Linear Program (FLP). There are many methods to solve FLP’s and FLLP’s. Most of them convert the FFLP into a LP <a href="#Footnotes#3.md">|#3</a>.</p>
+<p>In <a href="#Footnotes#3.md">|#3</a>, Zimmerman describes 3 approaches to “single out” one specific solution from the set of efficient solutions which qualifies as “optimal”</p>
+<ul>
+<li>The utility approach</li>
+<li>Goal Programming</li>
+<li>Interactive Approaches</li>
+</ul>
+<p>The first two assumes that the decision maker can specify their “preference-function” with respect to the combination of teh individual objctive functions in advnace as either a sum of weights (utilites) or distance functions (distance from ideal solution). The third uses only local information in order to arrive at an acceptable compromise solution. We new introduce the fuzzy approach.</p>
+<h2 id="fuzzy-objective">Fuzzy Objective</h2>
+<p>The fuzzy objective function is characterized by its <a href="fuzzy_theory.md">|membership function</a>, same with its constraints. The “decision” in a fuzzy environment, much like its crips brother, can be viewed as the intersection of fuzzy constraints and fuzzy objective functions. This is implying that the relationship between constraints and the objective functions is fully symmetric (there is no longer a difference between the former and latter) <a href="#Footnotes#3.md">|#3</a>.</p>
+<h2 id="fuzzy-constraints">Fuzzy Constraints</h2>
+<p>As stated previously, fuzzy constraints tolerate violations in the accomplishment of the constraints. The constraint can be represented by</p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0Aa_i%20x%20%5Clesssim%20b_i%0A" alt="
+a_i x \lesssim b_i
+" title="
+a_i x \lesssim b_i
+" /><br /></p>
+<p>Where <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20a" alt="a" title="a" /> and <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20b" alt="b" title="b" /> modeled using a <a href="fuzzy_theory.md">|membership function</a> as described in <a href="#Footnotes#2.md">|#2</a> and <a href="#Footnotes#3.md">|#3</a>.</p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cmu_i%20%28x%29%20%3D%0A%5Cbegin%7Bcases%7D%0A%20%20%20%201%20%20%20%20%20%20%20%20%20%20%26%20%5Ctext%7Bif%20%7D%20a_i%20x%20%5Cleq%20b%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20f_i%28a_i%20x%29%20%26%20%5Ctext%7Bif%20%7D%20b_i%20%5Cleq%20a_i%20x%20%5Cleq%20b_i%20%2B%20%5Cbar%7Bb%7D_i%20%5C%5C%0A%20%20%20%200%20%20%20%20%20%20%20%20%20%20%26%20%5Ctext%7Bif%20%7D%20a_i%20x%20%5Cgeq%20b_i%20%2B%20%5Cbar%7Bb%7D_i%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%5Cend%7Bcases%7D%0A" alt="
+\mu_i (x) =
+egin{cases}
+    1          %content%amp; 	ext{if } a_i x \leq b                        \
+    f_i(a_i x) %content%amp; 	ext{if } b_i \leq a_i x \leq b_i + ar{b}_i \
+    0          %content%amp; 	ext{if } a_i x \geq b_i + ar{b}_i          \
+\end{cases}
+" title="
+\mu_i (x) =
+egin{cases}
+    1          %content%amp; 	ext{if } a_i x \leq b                        \
+    f_i(a_i x) %content%amp; 	ext{if } b_i \leq a_i x \leq b_i + ar{b}_i \
+    0          %content%amp; 	ext{if } a_i x \geq b_i + ar{b}_i          \
+\end{cases}
+" /><br /></p>
+<p>A fuzzy solution is found from the solution of the <a href="parametric_lin_prog.md">|parametric linear program</a> <a href="#Footnotes#2.md">|#2</a>:</p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%20%20%5Ctext%7Bmax%20%7D%20xc%20%20%20%20%5C%5C%0A%20%20%20%20Ax%20%5Cleq%20g%28%5Calpha%29%20%5C%5C%0A%20%20%20%20x%20%5Cgeq%200%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20%5Calpha%20%5Cin%20%280%2C1%5D%0A%5Cend%7Barray%7D%0A" alt="
+egin{array}{l}
+    	ext{max } xc    \
+    Ax \leq g(lpha) \
+    x \geq 0          \
+    lpha \in (0,1]
+\end{array}
+" title="
+egin{array}{l}
+    	ext{max } xc    \
+    Ax \leq g(lpha) \
+    x \geq 0          \
+    lpha \in (0,1]
+\end{array}
+" /><br /></p>
+<p>where <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20g%28%5Calpha%29" alt="g(lpha)" title="g(lpha)" /> is a column vector defined by the inverse functions of the <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20f_i" alt="f_i" title="f_i" />.</p>
+<p>Zimmerman proposes that given a LP:</p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%20%20cx%20%5Clesssim%20z_0%20%5C%5C%0A%20%20%20%20Ax%20%5Clesssim%20b%20%20%20%5C%5C%0A%20%20%20%20x%20%5Cgtrsim%200%0A%5Cend%7Barray%7D%0A" alt="
+egin{array}{l}
+    cx \lesssim z_0 \
+    Ax \lesssim b   \
+    x \gtrsim 0
+\end{array}
+" title="
+egin{array}{l}
+    cx \lesssim z_0 \
+    Ax \lesssim b   \
+    x \gtrsim 0
+\end{array}
+" /><br /></p>
+<p>with a linear <a href="fuzzy_theory.md">|membership function</a>, the solution can be of the form <a href="#Footnotes#3.md">|#3</a></p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%20%20f%28x%29%20%3D%201%20-%20%5Cfrac%7B%28Bx%29_i%20-%20b_i%27%7D%7B%5Cbar%7Bb%7D_i%7D%20%5C%5C%0A%20%20%20%20%5Clambda%20%5Cleq%20%5Cfrac%7Bb_i%27%7D%7B%5Cbar%7Bb%7D_i%7D%20-%20%28%5Cfrac%7BB%7D%7B%5Cbar%7Bb%7D%7D%20x%29_i%0A%5Cend%7Barray%7D%0A" alt="
+egin{array}{l}
+    f(x) = 1 - rac{(Bx)_i - b_i%content%#39;}{ar{b}_i} \
+    \lambda \leq rac{b_i%content%#39;}{ar{b}_i} - (rac{B}{ar{b}} x)_i
+\end{array}
+" title="
+egin{array}{l}
+    f(x) = 1 - rac{(Bx)_i - b_i%content%#39;}{ar{b}_i} \
+    \lambda \leq rac{b_i%content%#39;}{ar{b}_i} - (rac{B}{ar{b}} x)_i
+\end{array}
+" /><br /></p>
+<p>where <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20f%28%5Ccdot%29" alt="f(\cdot)" title="f(\cdot)" /> defines the linear membership function and <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda" alt="\lambda" title="\lambda" /> is the developed linear constraint. <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20B" alt="B" title="B" /> is the constraint matrix from <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20Ax%20%5Cleq%20b" alt="Ax \leq b" title="Ax \leq b" /> augmented with the objective equations. Similarly <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20b%27" alt="b%content%#39;" title="b%content%#39;" /> is <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20b" alt="b" title="b" /> augmented with upper bounds for the objective equations, and <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cbar%7Bb%7D" alt="ar{b}" title="ar{b}" /> are subjectively chosen constraints off addmissible violations <a href="#Footnotes#3.md">|#3</a>.</p>
+<h2 id="fuzzy-coefficients">Fuzzy Coefficients</h2>
+<p>If the decision maker does not know exactly the values of the coefficients taking part in the problem, fuzzy numbers can be used to represent this uncertainty <a href="#Footnotes#2.md">|#2</a>.</p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Csum_%7Bj%3D1%7D%5En%20%5Ctilde%7Ba%7D_%7Bij%7D%20x_j%20%5Cleq%20%5Ctilde%7Bb%7D_i%0A" alt="
+\sum_{j=1}^n 	ilde{a}_{ij} x_j \leq 	ilde{b}_i
+" title="
+\sum_{j=1}^n 	ilde{a}_{ij} x_j \leq 	ilde{b}_i
+" /><br /></p>
+<p>Given a similar model to solve as before the model for fuzzy coefficients can be defined as</p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%20%20%5Ctext%7Bmax%20%7D%20cx%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20%5B%281-1%2F2h%29%28a_i%20%2B%20%5Cbar%7Ba%7D_i%29%20%2B%201%2F2h%28a_i%20-%20%5Cunderline%7Ba%7D_i%29%5Dx%20%5Cleq%20%5C%5C%0A%20%20%20%20%281-1%2F2h%29%28b_i%20%2B%20%5Cbar%7Bb%7D_i%29%20%2B%201%2F2h%28b_i%20-%20%5Cunderline%7Bb%7D_i%29%2C%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20%5B1%2F2h%28a_i%20%2B%20%5Cbar%7Ba%7D_i%29%20%2B%20%281-1%2F2h%29%28a_i%20-%20%5Cunderline%7Ba%7D_i%29%5Dx%20%5Cleq%20%5C%5C%0A%20%20%20%201%2F2h%28b_i%20%2B%20%5Cbar%7Bb%7D_i%29%2B%281-1%2F2h%29%28b_i%20-%20%5Cunderline%7Bb%7D_i%29%2C%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20x%20%5Cgeq%200%0A%5Cend%7Barray%7D%0A" alt="
+egin{array}{l}
+    	ext{max } cx                                                 \
+    [(1-1/2h)(a_i + ar{a}_i) + 1/2h(a_i - \underline{a}_i)]x \leq \
+    (1-1/2h)(b_i + ar{b}_i) + 1/2h(b_i - \underline{b}_i),        \
+    [1/2h(a_i + ar{a}_i) + (1-1/2h)(a_i - \underline{a}_i)]x \leq \
+    1/2h(b_i + ar{b}_i)+(1-1/2h)(b_i - \underline{b}_i),          \
+    x \geq 0
+\end{array}
+" title="
+egin{array}{l}
+    	ext{max } cx                                                 \
+    [(1-1/2h)(a_i + ar{a}_i) + 1/2h(a_i - \underline{a}_i)]x \leq \
+    (1-1/2h)(b_i + ar{b}_i) + 1/2h(b_i - \underline{b}_i),        \
+    [1/2h(a_i + ar{a}_i) + (1-1/2h)(a_i - \underline{a}_i)]x \leq \
+    1/2h(b_i + ar{b}_i)+(1-1/2h)(b_i - \underline{b}_i),          \
+    x \geq 0
+\end{array}
+" /><br /></p>
+<p>where <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20h%20%5Cin%20%280%2C1%5D" alt="h \in (0,1]" title="h \in (0,1]" /> is a level or degree of optimism being specified by the decision maker a priori. <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%28a%20%2B%20%5Cbar%7Ba%7D%29" alt="(a + ar{a})" title="(a + ar{a})" /> is the upper bound and <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%28a%20-%20%5Cunderline%7Ba%7D%29" alt="(a - \underline{a})" title="(a - \underline{a})" /> is the lower bound. Furthermore it is assumed that the upper bound of <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20a" alt="a" title="a" /> is greater than <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20b" alt="b" title="b" /> and similarly lower bound of <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20a" alt="a" title="a" /> is greater than <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20b" alt="b" title="b" />.</p>
+<h1 id="formulating-fflp">Formulating FFLP</h1>
+<p>This section contains a list of different ways of formulating LP’s.</p>
+<h2 id="a-general-flp-model">A General FLP Model</h2>
+<p>Consider</p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%20%20%5Ctext%7Bmax%20%7D%20cx%20%5C%5C%0A%20%20%20%20Ax%20%5Clesssim%20b%20%20%5C%5C%0A%20%20%20%20x%20%5Cgeq%200%0A%5Cend%7Barray%7D%0A" alt="
+egin{array}{l}
+    	ext{max } cx \
+    Ax \lesssim b  \
+    x \geq 0
+\end{array}
+" title="
+egin{array}{l}
+    	ext{max } cx \
+    Ax \lesssim b  \
+    x \geq 0
+\end{array}
+" /><br /></p>
+<p>where <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20a" alt="a" title="a" /> is a matrix of fuzzy numbers and <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20b" alt="b" title="b" /> is a column vector of fuzzy numbers. We can then create an ordering via <a href="fuzzy_theory.md">|ranking functions</a> and state the “fuzziness” with the following constraint:</p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0AAx%20%3C%20b%20%2B%20%281-%5Calpha%29%0A" alt="
+Ax %content%lt; b + (1-lpha)
+" title="
+Ax %content%lt; b + (1-lpha)
+" /><br /></p>
+<p>Where if <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Calpha%3D1" alt="lpha=1" title="lpha=1" /> then the constraint is completely verified and if <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Calpha%20%3D%200" alt="lpha = 0" title="lpha = 0" /> then the variable is fully “fuzzy”.</p>
+<h3 id="nasseris-method">Nasseri’s Method</h3>
+<p>Given an FFLP:</p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20%20%20max%5C%3B%20%5Csum_%7Bj%3D1%7D%5En%20%5Ctilde%7Bc%7D_j%20%5Ctilde%7Bx%7D_j%20%5C%5C%0A" alt="
+    max\; \sum_{j=1}^n 	ilde{c}_j 	ilde{x}_j \
+" title="
+    max\; \sum_{j=1}^n 	ilde{c}_j 	ilde{x}_j \
+" /><br /> subject to <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20%20%20%5Csum_%7Bj%3D1%7D%5En%20%5Ctilde%7Ba%7D_%7Bij%7D%20%5Ctilde%7Bx%7D_j%20%5Cleq%20%5Ctilde%7Bb%7D_i%5C%3B%20%5Cforall%20i%20%3D%201%20-%20m%20%5C%5C%0A" alt="
+    \sum_{j=1}^n 	ilde{a}_{ij} 	ilde{x}_j \leq 	ilde{b}_i\; orall i = 1 - m \
+" title="
+    \sum_{j=1}^n 	ilde{a}_{ij} 	ilde{x}_j \leq 	ilde{b}_i\; orall i = 1 - m \
+" /><br /></p>
+<p>where <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ctilde%7Bc_j%7D" alt="	ilde{c_j}" title="	ilde{c_j}" />, <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ctilde%7Ba_%7Bij" alt="	ilde{a_{ij" title="	ilde{a_{ij" />$, <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ctilde%7Bb_j%7D" alt="	ilde{b_j}" title="	ilde{b_j}" /> are parameters and <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ctilde%7Bx_j%7D" alt="	ilde{x_j}" title="	ilde{x_j}" /> are non-negative fuzzy numbers <a href="#Footnotes#1.md">|#1</a>. Because these are fuzzy numbers, we can represent them as such:</p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%20%20%5Ctilde%7Bc%7D_j%20%20%20%20%3D%20%28c1_j%2C%20c2_j%2C%20c3_j%29%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20%5Ctilde%7Ba%7D_%7Bij%7D%20%3D%20%28a1_%7Bij%7D%2C%20a2_%7Bij%7D%2C%20a3_%7Bij%7D%29%20%5C%5C%0A%20%20%20%20%5Ctilde%7Bb%7D_j%20%20%20%20%3D%20%28b1_j%2C%20b2_j%2C%20b3_j%29%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20%5Ctilde%7Bx%7D_j%20%20%20%20%3D%20%28x1_j%2C%20x2_j%2C%20x3_j%29%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%5Cend%7Barray%7D%0A" alt="
+egin{array}{l}
+    	ilde{c}_j    = (c1_j, c2_j, c3_j)          \
+    	ilde{a}_{ij} = (a1_{ij}, a2_{ij}, a3_{ij}) \
+    	ilde{b}_j    = (b1_j, b2_j, b3_j)          \
+    	ilde{x}_j    = (x1_j, x2_j, x3_j)          \
+\end{array}
+" title="
+egin{array}{l}
+    	ilde{c}_j    = (c1_j, c2_j, c3_j)          \
+    	ilde{a}_{ij} = (a1_{ij}, a2_{ij}, a3_{ij}) \
+    	ilde{b}_j    = (b1_j, b2_j, b3_j)          \
+    	ilde{x}_j    = (x1_j, x2_j, x3_j)          \
+\end{array}
+" /><br /></p>
+<p>Nasseri then proposes that the FFLP can be rewritten as a LP in the following manner:</p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0Amax%5C%3B%20R%5CBig%28%5Csum_%7Bj%3D1%7D%5En%20%28c1_j%2C%20c2_j%2C%20c3_j%29%28x1_j%2C%20x2_j%2C%20x3_j%29%5CBig%29%0A" alt="
+max\; R\Big(\sum_{j=1}^n (c1_j, c2_j, c3_j)(x1_j, x2_j, x3_j)\Big)
+" title="
+max\; R\Big(\sum_{j=1}^n (c1_j, c2_j, c3_j)(x1_j, x2_j, x3_j)\Big)
+" /><br /> Subject to <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bc%7D%0A%20%20%20%20%5Csum_%7Bj%3D1%7D%5En%20a1_%7Bij%7Dx1_j%20%5Cleq%20b1_j%20%5C%5C%0A%20%20%20%20%5Csum_%7Bj%3D2%7D%5En%20a2_%7Bij%7Dx2_j%20%5Cleq%20b2_j%20%5C%5C%0A%20%20%20%20%5Csum_%7Bj%3D3%7D%5En%20a3_%7Bij%7Dx3_j%20%5Cleq%20b3_j%20%5C%5C%0A%20%20%20%20x2_j%20-%20x1_j%20%5Cgeq%200%20%5C%5C%0A%20%20%20%20x3_j%20-%20x2_j%20%5Cgeq%200%20%5C%5C%0A%5Cend%7Barray%7D%0A" alt="
+egin{array}{c}
+    \sum_{j=1}^n a1_{ij}x1_j \leq b1_j \
+    \sum_{j=2}^n a2_{ij}x2_j \leq b2_j \
+    \sum_{j=3}^n a3_{ij}x3_j \leq b3_j \
+    x2_j - x1_j \geq 0 \
+    x3_j - x2_j \geq 0 \
+\end{array}
+" title="
+egin{array}{c}
+    \sum_{j=1}^n a1_{ij}x1_j \leq b1_j \
+    \sum_{j=2}^n a2_{ij}x2_j \leq b2_j \
+    \sum_{j=3}^n a3_{ij}x3_j \leq b3_j \
+    x2_j - x1_j \geq 0 \
+    x3_j - x2_j \geq 0 \
+\end{array}
+" /><br /></p>
+<h3 id="zimmermanss-methods">Zimmermans’s Methods</h3>
+<p>Zimmerman proposes two methods in his work:</p>
+<ul>
+<li>FLP using the ‘min’ operator</li>
+<li>FLP using the dot product operator</li>
+</ul>
+<h4 id="min-operator">min operator</h4>
+<p>Given a FLP with objective function(s) <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20c%5ET%20x" alt="c^T x" title="c^T x" /> that is subject to constraints <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20Ax%20%5Cleq%20b" alt="Ax \leq b" title="Ax \leq b" />. A membership function can be written such that</p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Bcases%7D%0A%20%20%20%200%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%26%20%5Ctext%7Bfor%20%7D%20%28A%27x%29_i%20%5Cleq%20b%27_i%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20%5Cfrac%7B%28A%27x%29_i%20b%27_i%7D%7Bd_i%7D%20%26%20%5Ctext%7Bfor%20b_i%20%3C%20%28A%27x%29_i%20%5Cleq%20b%27_i%20%2B%20d_i%7D%20%5C%5C%0A%20%20%20%201%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%26%20%5Ctext%7Bfor%20%7D%20%28A%27x%29_i%20%3E%20b%27_i%20%2B%20d_i%20%0A%5Cend%7Bcases%7D%0A" alt="
+egin{cases}
+    0                        %content%amp; 	ext{for } (A%content%#39;x)_i \leq b%content%#39;_i            \
+    rac{(A%content%#39;x)_i b%content%#39;_i}{d_i} %content%amp; 	ext{for b_i %content%lt; (A%content%#39;x)_i \leq b%content%#39;_i + d_i} \
+    1                        %content%amp; 	ext{for } (A%content%#39;x)_i %content%gt; b%content%#39;_i + d_i 
+\end{cases}
+" title="
+egin{cases}
+    0                        %content%amp; 	ext{for } (A%content%#39;x)_i \leq b%content%#39;_i            \
+    rac{(A%content%#39;x)_i b%content%#39;_i}{d_i} %content%amp; 	ext{for b_i %content%lt; (A%content%#39;x)_i \leq b%content%#39;_i + d_i} \
+    1                        %content%amp; 	ext{for } (A%content%#39;x)_i %content%gt; b%content%#39;_i + d_i 
+\end{cases}
+" /><br /></p>
+<p>Where this draws a line from <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20z%28-b%27_i%29%20%3D%200" alt="z(-b%content%#39;_i) = 0" title="z(-b%content%#39;_i) = 0" /> to <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20z%28d_i%29%20%3D%201" alt="z(d_i) = 1" title="z(d_i) = 1" />. Constraints can then be made using the form</p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Clambda%20%3D%20%5Cfrac%7Bb%27_i%7D%7Bd_i%7D%20-%20%28%5Cfrac%7BA%7D%7Bd_i%7Dx%29_i%0A" alt="
+\lambda = rac{b%content%#39;_i}{d_i} - (rac{A}{d_i}x)_i
+" title="
+\lambda = rac{b%content%#39;_i}{d_i} - (rac{A}{d_i}x)_i
+" /><br /></p>
+<p>which is appended to the set of constraints.</p>
+<h4 id="product-operator">product operator</h4>
+<p>This method uses the same membership function</p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Bcases%7D%0A%20%20%20%200%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%26%20%5Ctext%7Bfor%20%7D%20%28A%27x%29_i%20%5Cleq%20b%27_i%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20%5Cfrac%7B%28A%27x%29_i%20b%27_i%7D%7Bd_i%7D%20%26%20%5Ctext%7Bfor%20b_i%20%3C%20%28A%27x%29_i%20%5Cleq%20b%27_i%20%2B%20d_i%7D%20%5C%5C%0A%20%20%20%201%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%26%20%5Ctext%7Bfor%20%7D%20%28A%27x%29_i%20%3E%20b%27_i%20%2B%20d_i%20%0A%5Cend%7Bcases%7D%0A" alt="
+egin{cases}
+    0                        %content%amp; 	ext{for } (A%content%#39;x)_i \leq b%content%#39;_i            \
+    rac{(A%content%#39;x)_i b%content%#39;_i}{d_i} %content%amp; 	ext{for b_i %content%lt; (A%content%#39;x)_i \leq b%content%#39;_i + d_i} \
+    1                        %content%amp; 	ext{for } (A%content%#39;x)_i %content%gt; b%content%#39;_i + d_i 
+\end{cases}
+" title="
+egin{cases}
+    0                        %content%amp; 	ext{for } (A%content%#39;x)_i \leq b%content%#39;_i            \
+    rac{(A%content%#39;x)_i b%content%#39;_i}{d_i} %content%amp; 	ext{for b_i %content%lt; (A%content%#39;x)_i \leq b%content%#39;_i + d_i} \
+    1                        %content%amp; 	ext{for } (A%content%#39;x)_i %content%gt; b%content%#39;_i + d_i 
+\end{cases}
+" /><br /></p>
+<p>Rather than append to the constraints and maximize or minimize <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda" alt="\lambda" title="\lambda" />, the objective function is updated with</p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Ctext%7Bmax%20%7D%20%5Cprod_%7Bi%20%3D%201%7D%5EK%20%3D%20%5Cfrac%7B%28c%5Ei%29%5ET%20x%20-%20p_i%7D%7Bd_i%7D%0A" alt="
+	ext{max } \prod_{i = 1}^K = rac{(c^i)^T x - p_i}{d_i}
+" title="
+	ext{max } \prod_{i = 1}^K = rac{(c^i)^T x - p_i}{d_i}
+" /><br /></p>
+<p>where <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20c%5Ei" alt="c^i" title="c^i" /> is the vector to be multiplied with <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20x" alt="x" title="x" />. The constraints are left the same.</p>
+<h2 id="zimmermans-product-example">Zimmerman’s Product Example</h2>
+<p>A company manufactures two products, 1 and 2 on given capacities.</p>
+<ul>
+<li>Product 1:
+<ul>
+<li>profit of 2$</li>
+<li>import cost of of 1$</li>
+</ul></li>
+<li>Product 2:
+<ul>
+<li>profit of 1$</li>
+<li>profit of 2$ (exported)</li>
+</ul></li>
+</ul>
+<p>As such, there are two goals</p>
+<ol type="a">
+<li>Profit maximization</li>
+<li>Maximum improvement of the balance of trade (maximum difference of exports minus imports)</li>
+</ol>
+<p>As an example, the membership function for <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20z_1" alt="z_1" title="z_1" /> is shown in the figure below</p>
+<p>{{local:docs/../img/z1_membership_func.png|Membership function}}</p>
+<p>and the problem is written as</p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%20%20%5Ctext%7Bmax%20%7D%20Z%28x%29%20%3D%0A%20%20%20%20%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20%20%20%20%20-1%20%26%202%20%5C%5C%0A%20%20%20%20%20%20%20%202%20%20%26%201%0A%20%20%20%20%5Cend%7Bbmatrix%7D%0A%20%20%20%20%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20%20%20%20%20x1%20%5C%5C%0A%20%20%20%20%20%20%20%20x2%0A%20%20%20%20%5Cend%7Bbmatrix%7D%20%5C%5C%0A%20%20%20%20-x_1%20%2B%203x_2%20%5Cleq%2021%20%5C%5C%0A%20%20%20%20x_1%20%2B%203x_2%20%5Cleq%2027%20%20%5C%5C%0A%20%20%20%204x_1%20%2B%203x_2%20%5Cleq%2045%20%5C%5C%0A%20%20%20%203x_1%20%2B%20x_2%20%5Cleq%2030%20%20%5C%5C%0A%20%20%20%20x1%2Cx2%20%5Cgeq%200%0A%5Cend%7Barray%7D%0A" alt="
+egin{array}{l}
+    	ext{max } Z(x) =
+    egin{bmatrix}
+        -1 %content%amp; 2 \
+        2  %content%amp; 1
+    \end{bmatrix}
+    egin{bmatrix}
+        x1 \
+        x2
+    \end{bmatrix} \
+    -x_1 + 3x_2 \leq 21 \
+    x_1 + 3x_2 \leq 27  \
+    4x_1 + 3x_2 \leq 45 \
+    3x_1 + x_2 \leq 30  \
+    x1,x2 \geq 0
+\end{array}
+" title="
+egin{array}{l}
+    	ext{max } Z(x) =
+    egin{bmatrix}
+        -1 %content%amp; 2 \
+        2  %content%amp; 1
+    \end{bmatrix}
+    egin{bmatrix}
+        x1 \
+        x2
+    \end{bmatrix} \
+    -x_1 + 3x_2 \leq 21 \
+    x_1 + 3x_2 \leq 27  \
+    4x_1 + 3x_2 \leq 45 \
+    3x_1 + x_2 \leq 30  \
+    x1,x2 \geq 0
+\end{array}
+" /><br /></p>
+<p>Using the method proposed by Zimmerman (as described in <a href="#Fuzzy%20Linear%20Programming#Fuzzy%20Constraints.md">|Fuzzy Constraints</a>), one yeilds the following formulation</p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%20%20%5Ctext%7Bmax%20%7D%20%5Clambda%20%5C%5C%0A%20%20%20%20%5Clambda%20%5Cleq%20-0.05582x_1%20%2B%200.117x_2%20%2B%200.1764%20%5C%5C%0A%20%20%20%20%5Clambda%20%5Cleq%200.1429x_1%20%2B%200.0714x_2%20-%200.5%20%20%20%20%20%5C%5C%0A%20%20%20%2021%20%5Cgeq%20-x1%20%2B%203x_2%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%2027%20%5Cgeq%20x1%20%2B%203x_2%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%2045%20%5Cgeq%205x_1%20%2B%203x_2%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%2030%20%5Cgeq%203x_1%20%2B%20x_2%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20x%20%5Cgeq%200%0A%5Cend%7Barray%7D%0A" alt="
+egin{array}{l}
+    	ext{max } \lambda \
+    \lambda \leq -0.05582x_1 + 0.117x_2 + 0.1764 \
+    \lambda \leq 0.1429x_1 + 0.0714x_2 - 0.5     \
+    21 \geq -x1 + 3x_2                           \
+    27 \geq x1 + 3x_2                            \
+    45 \geq 5x_1 + 3x_2                          \
+    30 \geq 3x_1 + x_2                           \
+    x \geq 0
+\end{array}
+" title="
+egin{array}{l}
+    	ext{max } \lambda \
+    \lambda \leq -0.05582x_1 + 0.117x_2 + 0.1764 \
+    \lambda \leq 0.1429x_1 + 0.0714x_2 - 0.5     \
+    21 \geq -x1 + 3x_2                           \
+    27 \geq x1 + 3x_2                            \
+    45 \geq 5x_1 + 3x_2                          \
+    30 \geq 3x_1 + x_2                           \
+    x \geq 0
+\end{array}
+" /><br /></p>
+<p>Where the maximum “overval satisfaction” of <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda%20%3D%200.74" alt="\lambda = 0.74" title="\lambda = 0.74" /> is achived with <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20x%20%3D%20%5B5.03%2C%207.32%5D%5ET" alt="x = [5.03, 7.32]^T" title="x = [5.03, 7.32]^T" />.</p>
+<h2 id="fuzzy-berth-allocation-problem-bap-example">Fuzzy Berth Allocation Problem (BAP) Example</h2>
+<p>In the <a href="berth_allocation_problem.wiki.md">|BAP</a>, arrivals of each vessel are highly uncertain, meaning vessels can arrive earlier or later than they were scheduled to arrive. Having to frequently review the berthing plan is not desirable from a planning of resources point of view. A FFLP for the BAP problem to minimize the total time can be expressed as</p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0Amin%5C%3B%20%5Csum_%7Bi%5Cin%20V%7D%20%28%5Ctilde%7Bm%7D_i%20-%20%5Ctilde%7Ba%7D_i%29%0A" alt="
+min\; \sum_{i\in V} (	ilde{m}_i - 	ilde{a}_i)
+" title="
+min\; \sum_{i\in V} (	ilde{m}_i - 	ilde{a}_i)
+" /><br /></p>
+<p>Such that</p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%20%20%5Ctilde%7Bm%7D_i%20%5Cgeq%20%5Ctilde%7Ba%7D_i%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20p_i%20%2B%20l_i%20%5Cleq%20L%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20p_i%20%2B%20l_i%20%5Cleq%20p_j%20%2B%20M%281-z_%7Bij%7D%5Ex%29%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20%5Ctilde%7Bm%7D_i%20%2B%20%5Ctilde%7Bh%7D_i%20%5Cleq%20H%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20%5Ctilde%7Bm%7D_i%20%2B%20%5Ctilde%7Bh%7D_i%20%5Cleq%20%5Ctilde%7Bm%7D_j%20%2B%20M%281-z_%7Bij%7D%5Ex%29%20%5C%5C%0A%20%20%20%20z_%7Bij%7D%5Ex%20%2B%20z_%7Bji%7D%5Ex%20%2B%20z_%7Bij%7D%5Ey%20%2B%20z_%7Bij%7D%5Ey%20%2B%20%5Cgeq%201%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20z_%7Bij%7D%5Ex%2C%20z_%7Bij%7D%5Ey%20%5Cin%20%5C%7B0%2C1%5C%7D%0A%5Cend%7Barray%7D%0A" alt="
+egin{array}{l}
+    	ilde{m}_i \geq 	ilde{a}_i                               \
+    p_i + l_i \leq L                                           \
+    p_i + l_i \leq p_j + M(1-z_{ij}^x)                         \
+    	ilde{m}_i + 	ilde{h}_i \leq H                           \
+    	ilde{m}_i + 	ilde{h}_i \leq 	ilde{m}_j + M(1-z_{ij}^x) \
+    z_{ij}^x + z_{ji}^x + z_{ij}^y + z_{ij}^y + \geq 1         \
+    z_{ij}^x, z_{ij}^y \in \{0,1\}
+\end{array}
+" title="
+egin{array}{l}
+    	ilde{m}_i \geq 	ilde{a}_i                               \
+    p_i + l_i \leq L                                           \
+    p_i + l_i \leq p_j + M(1-z_{ij}^x)                         \
+    	ilde{m}_i + 	ilde{h}_i \leq H                           \
+    	ilde{m}_i + 	ilde{h}_i \leq 	ilde{m}_j + M(1-z_{ij}^x) \
+    z_{ij}^x + z_{ji}^x + z_{ij}^y + z_{ij}^y + \geq 1         \
+    z_{ij}^x, z_{ij}^y \in \{0,1\}
+\end{array}
+" /><br /></p>
+<p>where the parameters are</p>
+<ul>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20L" alt="L" title="L" /> : Total length of the quay</li>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20H" alt="H" title="H" /> : Planning horizon</li>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20V" alt="V" title="V" /> : Set of incoming vessels</li>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20a_i" alt="a_i" title="a_i" /> : Arrival time at port</li>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20l_i" alt="l_i" title="l_i" /> : Vessel length</li>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20h_i" alt="h_i" title="h_i" /> Handling time of the vessel (<img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ctilde%7Bh%7D%20%3D%20%28h%2C%20h%2C%20h%29" alt="	ilde{h} = (h, h, h)" title="	ilde{h} = (h, h, h)" />
+<ul>
+<li>This value is considered a <em>singleton</em>?</li>
+</ul></li>
+</ul>
+<p>and the decision variables are</p>
+<ul>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20m_i" alt="m_i" title="m_i" /> : Berthing time of the vessel</li>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20p_i" alt="p_i" title="p_i" /> : Berthing position of the vessel</li>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20z_%7Bij%7D%5Ex" alt="z_{ij}^x" title="z_{ij}^x" /> : Indicates if vessel <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20i" alt="i" title="i" /> is to the left of vessel <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20j" alt="j" title="j" /> at berth</li>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20z_%7Bij%7D%5Ey" alt="z_{ij}^y" title="z_{ij}^y" /> : Indicates that the berthing time of vessel <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20i" alt="i" title="i" /> is before that of <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20j" alt="j" title="j" /></li>
+</ul>
+<p>Using Nasseri’s Method in <a href="#Footnotes#1.md">|#1</a> the BAP can be described as</p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0Amin%5C%3B%20%5Csum_%7Bi%5Cin%20V%7D%20%28m1_i%20-%20a3_i%2C%20m2_i%20-%20a2_i%2C%20m3_i%20-%20a1_i%29%0A" alt="
+min\; \sum_{i\in V} (m1_i - a3_i, m2_i - a2_i, m3_i - a1_i)
+" title="
+min\; \sum_{i\in V} (m1_i - a3_i, m2_i - a2_i, m3_i - a1_i)
+" /><br /></p>
+<p>Subject to</p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%20%20%7Bm%7D1_i%20%5Cgeq%20%7Ba%7D1_i%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20%7Bm%7D2_i%20%5Cgeq%20%7Ba%7D2_i%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20%7Bm%7D3_i%20%5Cgeq%20%7Ba%7D3_i%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20p_i%20%2B%20l_i%20%5Cleq%20L%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20p_i%20%2B%20l_i%20%5Cleq%20p_j%20%2B%20M%281-z_%7Bij%7D%5Ex%29%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20%7Bm%7D1_i%20%2B%20%7Bh%7D1_i%20%5Cleq%20H%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20%7Bm%7D2_i%20%2B%20%7Bh%7D2_i%20%5Cleq%20H%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20%7Bm%7D3_i%20%2B%20%7Bh%7D3_i%20%5Cleq%20H%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20%7Bm%7D1_i%20%2B%20%7Bh%7D_i%20%5Cleq%20%7Bm%7D1_j%20%2B%20M%281-z_%7Bij%7D%5Ex%29%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20%7Bm%7D2_i%20%2B%20%7Bh%7D_i%20%5Cleq%20%7Bm%7D2_j%20%2B%20M%281-z_%7Bij%7D%5Ex%29%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20%7Bm%7D3_i%20%2B%20%7Bh%7D_i%20%5Cleq%20%7Bm%7D3_j%20%2B%20M%281-z_%7Bij%7D%5Ex%29%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20z_%7Bij%7D%5Ex%20%2B%20z_%7Bji%7D%5Ex%20%2B%20z_%7Bij%7D%5Ey%20%2B%20z_%7Bij%7D%5Ey%20%2B%20%5Cgeq%201%20%5C%5C%0A%20%20%20%20z_%7Bij%7D%5Ex%2C%20z_%7Bij%7D%5Ey%20%5Cin%20%5C%7B0%2C1%5C%7D%0A%5Cend%7Barray%7D%0A" alt="
+egin{array}{l}
+    {m}1_i \geq {a}1_i                                 \
+    {m}2_i \geq {a}2_i                                 \
+    {m}3_i \geq {a}3_i                                 \
+    p_i + l_i \leq L                                   \
+    p_i + l_i \leq p_j + M(1-z_{ij}^x)                 \
+    {m}1_i + {h}1_i \leq H                             \
+    {m}2_i + {h}2_i \leq H                             \
+    {m}3_i + {h}3_i \leq H                             \
+    {m}1_i + {h}_i \leq {m}1_j + M(1-z_{ij}^x)         \
+    {m}2_i + {h}_i \leq {m}2_j + M(1-z_{ij}^x)         \
+    {m}3_i + {h}_i \leq {m}3_j + M(1-z_{ij}^x)         \
+    z_{ij}^x + z_{ji}^x + z_{ij}^y + z_{ij}^y + \geq 1 \
+    z_{ij}^x, z_{ij}^y \in \{0,1\}
+\end{array}
+" title="
+egin{array}{l}
+    {m}1_i \geq {a}1_i                                 \
+    {m}2_i \geq {a}2_i                                 \
+    {m}3_i \geq {a}3_i                                 \
+    p_i + l_i \leq L                                   \
+    p_i + l_i \leq p_j + M(1-z_{ij}^x)                 \
+    {m}1_i + {h}1_i \leq H                             \
+    {m}2_i + {h}2_i \leq H                             \
+    {m}3_i + {h}3_i \leq H                             \
+    {m}1_i + {h}_i \leq {m}1_j + M(1-z_{ij}^x)         \
+    {m}2_i + {h}_i \leq {m}2_j + M(1-z_{ij}^x)         \
+    {m}3_i + {h}_i \leq {m}3_j + M(1-z_{ij}^x)         \
+    z_{ij}^x + z_{ji}^x + z_{ij}^y + z_{ij}^y + \geq 1 \
+    z_{ij}^x, z_{ij}^y \in \{0,1\}
+\end{array}
+" /><br /></p>
+<p>An example solution in <a href="#Footnotes#1.md">|#1</a> can be shown in the following figure:</p>
+<p>{{local:docs/../img/fuzzy_berth_plan.png|Fuzzy berth plan in polygonal-shape}}</p>
+<h1 id="footnotes">Footnotes</h1>
+<ul>
+<li><em>1</em> <span class="citation" data-cites="gutierrez_2019">@gutierrez_2019</span> | Flabio Gutierrez and Edwar Lujan and Rafael Asmat and Edmundo Vergara (2019). Fully Fuzzy Linear Programming Model for the Berth Allocation Problem with Two Quays
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+Read <img src="6" alt="pic" /></li>
+<li><input type="checkbox" disabled="" />
+Read <img src="7" alt="pic" /></li>
+<li><input type="checkbox" disabled="" />
+Read <img src="8" alt="pic" /></li>
+</ul></li>
+<li><em>2</em> <span class="citation" data-cites="delgado_1989">@delgado_1989</span> | M. Delgado, J.L. Verdegay, and M.A. Vila. A general model for fuzzy linear programming. Fuzzy Sets and Systems, 29(1):21–29, 1989.</li>
+<li><em>3</em> <span class="citation" data-cites="zimmermann_1978">@zimmermann_1978</span> | multiobjective lp fuzzy | H.-J. Zimmermann (1978). Fuzzy programming and linear programming with several objective functions</li>
+</ul>
+	</div>
+</body>
+</html>

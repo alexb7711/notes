@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<head>
+	<link rel="Stylesheet" type="text/css" href="./style.css" />
+	<title>%title%</title>
+	<meta http-equiv="Content-Type" content="width=device-with, initial-scale=1.0; text/html; charset=utf-8" name="viewport"/>
+</head>
+<body>
+	<div class="nav"><h2 id="Alexander Brown" class="header">Alexander Brown - Electrical Engineer</h2>
+		<!-- <p> -->
+		    <!-- email: alex.brown7711@aggiemail.usu.edu -->
+		<!-- </p> -->
+		<a href="%root_path%index.html">Home</a> |
+		<a href="%root_path%blog.html">Blog</a> |
+		<a href="%root_path%notes.html">Notes</a> |
+		<a href="%root_path%classes.html">Classes</a> |
+		<a href="%root_path%projects.html">Projects</a> |
+		<a href="%root_path%todo.html">Todo</a> |
+		<a href="%root_path%error.html">About</a>
+	</div>
+	<div class="content">
+	    <h1 id="discrete-time-markov-chains">Discrete-Time Markov Chains</h1>
+<p>Variables: * Process: evolves over time * Random: Not perfectly predictable * Discrete-time: Possible changes at periods * State: A possible value for <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20X_n" alt="X_n" title="X_n" /></p>
+<pre><code>Definition: Markov Chain: The future is independent of the past, given the present. In other words,
+
+{{$
+    P(X_{n+1} = j | X_n = i)\; 	ext{depends only on } i 	ext{ and } j
+}}$</code></pre>
+<h1 id="representing-a-discrete-time-markov-chain">Representing A Discrete-Time Markov Chain</h1>
+<p>Ingredients of a discrete-time Markov chain are: * Current State (order them) * Transition possibilities (matrix represents <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20P_%7Bij%7D" alt="P_{ij}" title="P_{ij}" /> that represents the transition probabilities) * Rows sum up to 1</p>
+<h1 id="steady-state-distribution-of-a-discrete-time-markov-chain">Steady-State Distribution of a Discrete-Time Markov Chain</h1>
+<p>Under certain mild conditions, called ergodicity conditions, the state probabilities converge to values that do not depend on the initial state probabilities. <em>A necessary condition for this to occur is that we must be able to reach any other state with positive probability</em>.</p>
+<h2 id="calculating-steady-state-probabilities">Calculating Steady-State Probabilities</h2>
+<p>The probability of entering node <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20i" alt="i" title="i" /> should be the same as the probability exiting node <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20i" alt="i" title="i" />, this is represented by the following equation:</p>
+<p>{{$ <em>i </em>{i j} P_{ij} = _{ji} <em>j P</em>{ji} }}$</p>
+<p>This also applies to subsets of the transition diagram.</p>
+<h2 id="markov-chain-ergodicity-conditions">Markov Chain Ergodicity Conditions</h2>
+<pre><code>Necessary and sufficient condition: For a discrete Markov chain $X$, starting from any initial state or distribution, the probabilities $[\pi_1(n), \pi_2(n), ...]$ converge to a unique positive vector $\pi = [\pi_1, \pi_2,...]$ iff the chain is
+
+* irreducible
+* aperiodic
+* positive recurrent</code></pre>
+	</div>
+</body>
+</html>

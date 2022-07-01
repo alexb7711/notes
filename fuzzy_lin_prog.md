@@ -32,65 +32,65 @@ The fuzzy objective function is characterized by its [|membership function](fuzz
 ## Fuzzy Constraints
 As stated previously, fuzzy constraints tolerate violations in the accomplishment of the constraints. The constraint can be represented by
 
-{{$
+$$
 a_i x \lesssim b_i
-}}$
+$$
 
 Where $a$ and $b$ modeled using a [|membership function](fuzzy_theory.md) as described in [|#2](#Footnotes#2.md) and [|#3](#Footnotes#3.md).
 
-{{$
+$$
 \mu_i (x) =
 \begin{cases}
 	1          & \text{if } a_i x \leq b                        \\
 	f_i(a_i x) & \text{if } b_i \leq a_i x \leq b_i + \bar{b}_i \\
 	0          & \text{if } a_i x \geq b_i + \bar{b}_i          \\
 \end{cases}
-}}$
+$$
 
 A fuzzy solution is found from the solution of the [|parametric linear program](parametric_lin_prog.md) [|#2](#Footnotes#2.md):
 
-{{$
+$$
 \begin{array}{l}
 	\text{max } xc    \\
 	Ax \leq g(\alpha) \\
 	x \geq 0          \\
 	\alpha \in (0,1]
 \end{array}
-}}$
+$$
 
 where $g(\alpha)$ is a column vector defined by the inverse functions of the $f_i$.
 
 Zimmerman proposes that given a LP:
 
-{{$
+$$
 \begin{array}{l}
 	cx \lesssim z_0 \\
 	Ax \lesssim b   \\
 	x \gtrsim 0
 \end{array}
-}}$
+$$
 
 with a linear [|membership function](fuzzy_theory.md), the solution can be of the form [|#3](#Footnotes#3.md)
 
-{{$
+$$
 \begin{array}{l}
 	f(x) = 1 - \frac{(Bx)_i - b_i'}{\bar{b}_i} \\
 	\lambda \leq \frac{b_i'}{\bar{b}_i} - (\frac{B}{\bar{b}} x)_i
 \end{array}
-}}$
+$$
 
 where $f(\cdot)$ defines the linear membership function and $\lambda$ is the developed linear constraint. $B$ is the constraint matrix from $Ax \leq b$ augmented with the objective equations. Similarly $b'$ is $b$ augmented with upper bounds for the objective equations, and $\bar{b}$ are subjectively chosen constraints off addmissible violations [|#3](#Footnotes#3.md).
 
 ## Fuzzy Coefficients
 If the decision maker does not know exactly the values of the coefficients taking part in the problem, fuzzy numbers can be used to represent this uncertainty [|#2](#Footnotes#2.md).
 
-{{$
+$$
 \sum_{j=1}^n \tilde{a}_{ij} x_j \leq \tilde{b}_i
-}}$
+$$
 
 Given a similar model to solve as before the model for fuzzy coefficients can be defined as
 
-{{$
+$$
 \begin{array}{l}
 	\text{max } cx                                                 \\
 	[(1-1/2h)(a_i + \bar{a}_i) + 1/2h(a_i - \underline{a}_i)]x \leq \\
@@ -99,7 +99,7 @@ Given a similar model to solve as before the model for fuzzy coefficients can be
 	1/2h(b_i + \bar{b}_i)+(1-1/2h)(b_i - \underline{b}_i),          \\
 	x \geq 0
 \end{array}
-}}$
+$$
 
 where $h \in (0,1]$ is a level or degree of optimism being specified by the decision maker a priori. $(a + \bar{a})$ is the upper bound and $(a - \underline{a})$ is the lower bound. Furthermore it is assumed that the upper bound of $a$ is greater than $b$ and similarly lower bound of $a$ is greater than $b$.
 
@@ -109,51 +109,51 @@ This section contains a list of different ways of formulating LP's.
 ## A General FLP Model
 Consider
 
-{{$
+$$
 \begin{array}{l}
 	\text{max } cx \\
 	Ax \lesssim b  \\
 	x \geq 0
 \end{array}
-}}$
+$$
 
 where $a$ is a matrix of fuzzy numbers and $b$ is a column vector of fuzzy numbers. We can then create an ordering via [|ranking functions](fuzzy_theory.md) and state the "fuzziness" with the following constraint:
 
-{{$
+$$
 Ax < b + (1-\alpha)
-}}$
+$$
 
 Where if $\alpha=1$ then the constraint is completely verified and if $\alpha = 0$ then the variable is fully "fuzzy".
 
 ### Nasseri's Method
 Given an FFLP:
 
-{{$
+$$
 	max\; \sum_{j=1}^n \tilde{c}_j \tilde{x}_j \\
-}}$
+$$
 	subject to
-{{$
+$$
 	\sum_{j=1}^n \tilde{a}_{ij} \tilde{x}_j \leq \tilde{b}_i\; \forall i = 1 - m \\
-}}$
+$$
 
-where $\tilde{c_j}$, $\tilde{a_{ij}}$, $\tilde{b_j}$ are parameters and $\tilde{x_j}$ are non-negative fuzzy numbers [|#1](#Footnotes#1.md). Because these are fuzzy numbers, we can represent them as such:
+where $\tilde{c_j}$, $\tilde{a_{ij$$, $\tilde{b_j}$ are parameters and $\tilde{x_j}$ are non-negative fuzzy numbers [|#1](#Footnotes#1.md). Because these are fuzzy numbers, we can represent them as such:
 
-{{$
+$$
 \begin{array}{l}
 	\tilde{c}_j    = (c1_j, c2_j, c3_j)          \\
 	\tilde{a}_{ij} = (a1_{ij}, a2_{ij}, a3_{ij}) \\
 	\tilde{b}_j    = (b1_j, b2_j, b3_j)          \\
 	\tilde{x}_j    = (x1_j, x2_j, x3_j)          \\
 \end{array}
-}}$
+$$
 
 Nasseri then proposes that the FFLP can be rewritten as a LP in the following manner:
 
-{{$
+$$
 max\; R\Big(\sum_{j=1}^n (c1_j, c2_j, c3_j)(x1_j, x2_j, x3_j)\Big)
-}}$
+$$
 Subject to
-{{$
+$$
 \begin{array}{c}
 	\sum_{j=1}^n a1_{ij}x1_j \leq b1_j \\
 	\sum_{j=2}^n a2_{ij}x2_j \leq b2_j \\
@@ -161,7 +161,7 @@ Subject to
 	x2_j - x1_j \geq 0 \\
 	x3_j - x2_j \geq 0 \\
 \end{array}
-}}$
+$$
 
 ### Zimmermans's Methods
 Zimmerman proposes two methods in his work:
@@ -172,38 +172,38 @@ Zimmerman proposes two methods in his work:
 #### min operator
 Given a FLP with objective function(s) $c^T x$ that is subject to constraints $Ax \leq b$. A membership function can be written such that
 
-{{$
+$$
 \begin{cases}
 	0                        & \text{for } (A'x)_i \leq b'_i            \\
 	\frac{(A'x)_i b'_i}{d_i} & \text{for b_i < (A'x)_i \leq b'_i + d_i} \\
 	1                        & \text{for } (A'x)_i > b'_i + d_i 
 \end{cases}
-}}$
+$$
 
 Where this draws a line from $z(-b'_i) = 0$ to $z(d_i) = 1$. Constraints can then be made using the form
 
-{{$
+$$
 \lambda = \frac{b'_i}{d_i} - (\frac{A}{d_i}x)_i
-}}$
+$$
 
 which is appended to the set of constraints.
 
 #### product operator
 This method uses the same membership function
 
-{{$
+$$
 \begin{cases}
 	0                        & \text{for } (A'x)_i \leq b'_i            \\
 	\frac{(A'x)_i b'_i}{d_i} & \text{for b_i < (A'x)_i \leq b'_i + d_i} \\
 	1                        & \text{for } (A'x)_i > b'_i + d_i 
 \end{cases}
-}}$
+$$
 
 Rather than append to the constraints and maximize or minimize $\lambda$, the objective function is updated with
 
-{{$
+$$
 \text{max } \prod_{i = 1}^K = \frac{(c^i)^T x - p_i}{d_i}
-}}$
+$$
 
 where $c^i$ is the vector to be multiplied with $x$. The constraints are left the same.
 
@@ -228,7 +228,7 @@ As an example, the membership function for $z_1$ is shown in the figure below
 
 and the problem is written as
 
-{{$
+$$
 \begin{array}{l}
 	\text{max } Z(x) =
 	\begin{bmatrix}
@@ -245,11 +245,11 @@ and the problem is written as
 	3x_1 + x_2 \leq 30  \\
 	x1,x2 \geq 0
 \end{array}
-}}$
+$$
 
 Using the method proposed by Zimmerman (as described in [|Fuzzy Constraints](#Fuzzy Linear Programming#Fuzzy Constraints.md)), one yeilds the following formulation
 
-{{$
+$$
 \begin{array}{l}
 	\text{max } \lambda \\
 	\lambda \leq -0.05582x_1 + 0.117x_2 + 0.1764 \\
@@ -260,20 +260,20 @@ Using the method proposed by Zimmerman (as described in [|Fuzzy Constraints](#Fu
 	30 \geq 3x_1 + x_2                           \\
 	x \geq 0
 \end{array}
-}}$
+$$
 
 Where the maximum "overval satisfaction" of $\lambda = 0.74$ is achived with $x = [5.03, 7.32]^T$.
 
 ## Fuzzy Berth Allocation Problem (BAP) Example
 In the [|BAP](berth_allocation_problem.wiki.md), arrivals of each vessel are highly uncertain, meaning vessels can arrive earlier or later than they were scheduled to arrive. Having to frequently review the berthing plan is not desirable from a planning of resources point of view. A FFLP for the BAP problem to minimize the total time can be expressed as
 
-{{$
+$$
 min\; \sum_{i\in V} (\tilde{m}_i - \tilde{a}_i)
-}}$
+$$
 
 Such that
 
-{{$
+$$
 \begin{array}{l}
 	\tilde{m}_i \geq \tilde{a}_i                               \\
 	p_i + l_i \leq L                                           \\
@@ -283,7 +283,7 @@ Such that
 	z_{ij}^x + z_{ji}^x + z_{ij}^y + z_{ij}^y + \geq 1         \\
 	z_{ij}^x, z_{ij}^y \in \{0,1\}
 \end{array}
-}}$
+$$
 
 where the parameters are
 
@@ -304,13 +304,13 @@ and the decision variables are
 
 Using Nasseri's Method in [|#1](#Footnotes#1.md) the BAP can be described as
 
-{{$
+$$
 min\; \sum_{i\in V} (m1_i - a3_i, m2_i - a2_i, m3_i - a1_i)
-}}$
+$$
 
 Subject to
 
-{{$
+$$
 \begin{array}{l}
 	{m}1_i \geq {a}1_i                                 \\
 	{m}2_i \geq {a}2_i                                 \\
@@ -326,7 +326,7 @@ Subject to
 	z_{ij}^x + z_{ji}^x + z_{ij}^y + z_{ij}^y + \geq 1 \\
 	z_{ij}^x, z_{ij}^y \in \{0,1\}
 \end{array}
-}}$
+$$
 
 An example solution in [|#1](#Footnotes#1.md) can be shown in the following figure:
 

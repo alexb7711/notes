@@ -36,7 +36,7 @@ function process()
 	html_file="$dir/$(basename ${file%.*}).html"
 
 	# Process markdown
-	pandoc -o $html_file $file
+	pandoc --pdf-engine=xelatex --webtex --listings -o $html_file $file
 
 	# Get the text from the file
 	text=$(cat $html_file)

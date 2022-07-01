@@ -154,7 +154,7 @@ The foundation for queuing theory is based on the modeling of customers arriving
 
 where $\lambda > 0$. Importantly, the incoming stream is assumed to compose the following properties
 
-    Given any finite group of nonoverlapping time intervals, the number of customers arriving during each interval are [|theory_of_statistics](mutually independent random variables.md).
+    Given any finite group of nonoverlapping time intervals, the number of customers arriving during each interval are [theory_of_statistics](mutually independent random variables.md).
 
 *Definition*: A finite or countable sequence $\tau_n$ of random variables defined on the same probability space under the ocndition that in any fixed time interval $(a,b)$ with probability 1 a finite number of these variables falls in it is called a _stream of homogenous events_.
 
@@ -186,4 +186,4 @@ Where $\mu(t)$ is the actual number of customers arriving during a time interval
 
 # References
 * 1 @fundamentals | John F Shortle, James M Thompson, Donald Gross, and Carl M Harris. Fundamentals of Queueing Theory. John Wiley {\&} Sons, Inc., jan 2018.
-* [|Introduction To Queuing Theory](https://www.youtube.com/watch?v=rSZWig173xM.md)
+* [Introduction To Queuing Theory](https://www.youtube.com/watch?v=rSZWig173xM.md)

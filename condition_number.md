@@ -5,4 +5,4 @@ In the field of numerical analysis, the condition number of a function measures 
 A problem with a low condition number is said to be well-conditioned, while a problem with a high condition number is said to be ill-conditioned. In non-mathematical terms, an ill-conditioned problem is one where, for a small change in the inputs (the independent variables) there is a large change in the answer or dependent variable. This means that the correct solution/answer to the equation becomes hard to find. The condition number is a property of the problem. Paired with the problem are any number of algorithms that can be used to solve the problem, that is, to calculate the solution. Some algorithms have a property called backward stability. In general, a backward stable algorithm can be expected to accurately solve well-conditioned problems. Numerical analysis textbooks give formulas for the condition numbers of problems and identify known backward stable algorithms.
 
 # References
-* *1* [|Condition Number Wiki](https://en.wikipedia.org/wiki/Condition_number.md)
+* *1* [Condition Number Wiki](https://en.wikipedia.org/wiki/Condition_number.md)

@@ -23,5 +23,5 @@ The product rule (also known as the Leibniz rule or Leibniz product rule) is a f
 }}$
 
 ## Sources
-* [|Chain Rule](https://en.wikipedia.org/wiki/Chain_rule.md)
-* [|Product Rule](https://en.wikipedia.org/wiki/Product_rule.md)
+* [Chain Rule](https://en.wikipedia.org/wiki/Chain_rule.md)
+* [Product Rule](https://en.wikipedia.org/wiki/Product_rule.md)

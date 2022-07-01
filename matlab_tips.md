@@ -1,7 +1,7 @@
 # MATLAB Tips
 
 ## Pivoting Function
-The original code can be found here [|#1](#Footnotes#1.md):
+The original code can be found here [#1](#Footnotes#1.md):
 
 ```
 function R = pivot(M, r, c)
@@ -28,4 +28,4 @@ end                 % function
 ```
 
 ## Footnotes
-* *1* [|Pivoting Function](http://am121.seas.harvard.edu/site/wp-content/uploads/2014/08/pivotingmaplematlabmathematica.pdf.md)
+* *1* [Pivoting Function](http://am121.seas.harvard.edu/site/wp-content/uploads/2014/08/pivotingmaplematlabmathematica.pdf.md)

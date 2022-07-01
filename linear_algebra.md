@@ -1,7 +1,7 @@
 # Contents
-        - [|Linear Algebra](#Linear Algebra.md)
-                - [|Matrices](#Linear Algebra#Matrices.md)
-                        - [|Conjugate Matrix](#Linear Algebra#Matrices#Conjugate Matrix.md)
+        - [Linear Algebra](#Linear Algebra.md)
+                - [Matrices](#Linear Algebra#Matrices.md)
+                        - [Conjugate Matrix](#Linear Algebra#Matrices#Conjugate Matrix.md)
 
 # Linear Algebra
 

@@ -1,24 +1,24 @@
 # Contents
-        - [|Fuzzy Linear Programming](#Fuzzy Linear Programming.md)
-                - [|Fuzzy Objective](#Fuzzy Linear Programming#Fuzzy Objective.md)
-                - [|Fuzzy Constraints](#Fuzzy Linear Programming#Fuzzy Constraints.md)
-                - [|Fuzzy Coefficients](#Fuzzy Linear Programming#Fuzzy Coefficients.md)
-        - [|Formulating FFLP](#Formulating FFLP.md)
-                - [|A General FLP Model](#Formulating FFLP#A General FLP Model.md)
-                        - [|Nasseri's Method](#Formulating FFLP#A General FLP Model#Nasseri's Method.md)
-                        - [|Zimmermans's Methods](#Formulating FFLP#A General FLP Model#Zimmermans's Methods.md)
-                                - [|min operator](#Formulating FFLP#A General FLP Model#Zimmermans's Methods#min operator.md)
-                                - [|product operator](#Formulating FFLP#A General FLP Model#Zimmermans's Methods#product operator.md)
-                - [|Zimmerman's Product Example](#Formulating FFLP#Zimmerman's Product Example.md)
-                - [|Fuzzy Berth Allocation Problem (BAP) Example](#Formulating FFLP#Fuzzy Berth Allocation Problem (BAP) Example.md)
-        - [|Footnotes](#Footnotes.md)
+        - [Fuzzy Linear Programming](#Fuzzy Linear Programming.md)
+                - [Fuzzy Objective](#Fuzzy Linear Programming#Fuzzy Objective.md)
+                - [Fuzzy Constraints](#Fuzzy Linear Programming#Fuzzy Constraints.md)
+                - [Fuzzy Coefficients](#Fuzzy Linear Programming#Fuzzy Coefficients.md)
+        - [Formulating FFLP](#Formulating FFLP.md)
+                - [A General FLP Model](#Formulating FFLP#A General FLP Model.md)
+                        - [Nasseri's Method](#Formulating FFLP#A General FLP Model#Nasseri's Method.md)
+                        - [Zimmermans's Methods](#Formulating FFLP#A General FLP Model#Zimmermans's Methods.md)
+                                - [min operator](#Formulating FFLP#A General FLP Model#Zimmermans's Methods#min operator.md)
+                                - [product operator](#Formulating FFLP#A General FLP Model#Zimmermans's Methods#product operator.md)
+                - [Zimmerman's Product Example](#Formulating FFLP#Zimmerman's Product Example.md)
+                - [Fuzzy Berth Allocation Problem (BAP) Example](#Formulating FFLP#Fuzzy Berth Allocation Problem (BAP) Example.md)
+        - [Footnotes](#Footnotes.md)
 
 # Fuzzy Linear Programming
-Fuzzy linear programming introduces the idea of uncertainty into the model's parameters. This allows for adaptability of plans or "fuzziness" to the solution of the linear program. By doing so, this allows for a more robust model that is guaranteed to result in an efficient solution [|#1](#Footnotes#1.md), [|#3](#Footnotes#3.md). Fuzzy LP is based off [|fuzzy theory](fuzzy_theory.md) which is the basis that allows for the uncertainty.
+Fuzzy linear programming introduces the idea of uncertainty into the model's parameters. This allows for adaptability of plans or "fuzziness" to the solution of the linear program. By doing so, this allows for a more robust model that is guaranteed to result in an efficient solution [#1](#Footnotes#1.md), [#3](#Footnotes#3.md). Fuzzy LP is based off [fuzzy theory](fuzzy_theory.md) which is the basis that allows for the uncertainty.
 
-When a Linear Program's (LP) parameters and decision variables are to be modeled as fuzzy, then the LP is said to be a Fully Fuzzy Lineal Programming Problem (FFLP)  [|#1](#Footnotes#1.md). In other cases when only part of the LP is fuzzy, it is known as a Fuzzy Linear Program (FLP). There are many methods to solve FLP's and FLLP's. Most of them convert the FFLP into a LP [|#3](#Footnotes#3.md).
+When a Linear Program's (LP) parameters and decision variables are to be modeled as fuzzy, then the LP is said to be a Fully Fuzzy Lineal Programming Problem (FFLP)  [#1](#Footnotes#1.md). In other cases when only part of the LP is fuzzy, it is known as a Fuzzy Linear Program (FLP). There are many methods to solve FLP's and FLLP's. Most of them convert the FFLP into a LP [#3](#Footnotes#3.md).
 
-In [|#3](#Footnotes#3.md), Zimmerman describes 3 approaches to "single out" one specific solution from the set of efficient solutions which qualifies as "optimal"
+In [#3](#Footnotes#3.md), Zimmerman describes 3 approaches to "single out" one specific solution from the set of efficient solutions which qualifies as "optimal"
 
 - The utility approach
 - Goal Programming
@@ -27,7 +27,7 @@ In [|#3](#Footnotes#3.md), Zimmerman describes 3 approaches to "single out" one 
 The first two assumes that the decision maker can specify their "preference-function" with respect to the combination of teh individual objctive functions in advnace as either a sum of weights (utilites) or distance functions (distance from ideal solution). The third uses only local information in order to arrive at an acceptable compromise solution. We new introduce the fuzzy approach.
 
 ## Fuzzy Objective
-The fuzzy objective function is characterized by its [|membership function](fuzzy_theory.md), same with its constraints. The "decision" in a fuzzy environment, much like its crips brother, can be viewed as the intersection of fuzzy constraints and fuzzy objective functions. This is implying that the relationship between constraints and the objective functions is fully symmetric (there is no longer a difference between the former and latter) [|#3](#Footnotes#3.md).
+The fuzzy objective function is characterized by its [membership function](fuzzy_theory.md), same with its constraints. The "decision" in a fuzzy environment, much like its crips brother, can be viewed as the intersection of fuzzy constraints and fuzzy objective functions. This is implying that the relationship between constraints and the objective functions is fully symmetric (there is no longer a difference between the former and latter) [#3](#Footnotes#3.md).
 
 ## Fuzzy Constraints
 As stated previously, fuzzy constraints tolerate violations in the accomplishment of the constraints. The constraint can be represented by
@@ -36,7 +36,7 @@ $$
 a_i x \lesssim b_i
 $$
 
-Where $a$ and $b$ modeled using a [|membership function](fuzzy_theory.md) as described in [|#2](#Footnotes#2.md) and [|#3](#Footnotes#3.md).
+Where $a$ and $b$ modeled using a [membership function](fuzzy_theory.md) as described in [#2](#Footnotes#2.md) and [#3](#Footnotes#3.md).
 
 $$
 \mu_i (x) =
@@ -47,7 +47,7 @@ $$
 \end{cases}
 $$
 
-A fuzzy solution is found from the solution of the [|parametric linear program](parametric_lin_prog.md) [|#2](#Footnotes#2.md):
+A fuzzy solution is found from the solution of the [parametric linear program](parametric_lin_prog.md) [#2](#Footnotes#2.md):
 
 $$
 \begin{array}{l}
@@ -70,7 +70,7 @@ $$
 \end{array}
 $$
 
-with a linear [|membership function](fuzzy_theory.md), the solution can be of the form [|#3](#Footnotes#3.md)
+with a linear [membership function](fuzzy_theory.md), the solution can be of the form [#3](#Footnotes#3.md)
 
 $$
 \begin{array}{l}
@@ -79,10 +79,10 @@ $$
 \end{array}
 $$
 
-where $f(\cdot)$ defines the linear membership function and $\lambda$ is the developed linear constraint. $B$ is the constraint matrix from $Ax \leq b$ augmented with the objective equations. Similarly $b'$ is $b$ augmented with upper bounds for the objective equations, and $\bar{b}$ are subjectively chosen constraints off addmissible violations [|#3](#Footnotes#3.md).
+where $f(\cdot)$ defines the linear membership function and $\lambda$ is the developed linear constraint. $B$ is the constraint matrix from $Ax \leq b$ augmented with the objective equations. Similarly $b'$ is $b$ augmented with upper bounds for the objective equations, and $\bar{b}$ are subjectively chosen constraints off addmissible violations [#3](#Footnotes#3.md).
 
 ## Fuzzy Coefficients
-If the decision maker does not know exactly the values of the coefficients taking part in the problem, fuzzy numbers can be used to represent this uncertainty [|#2](#Footnotes#2.md).
+If the decision maker does not know exactly the values of the coefficients taking part in the problem, fuzzy numbers can be used to represent this uncertainty [#2](#Footnotes#2.md).
 
 $$
 \sum_{j=1}^n \tilde{a}_{ij} x_j \leq \tilde{b}_i
@@ -117,7 +117,7 @@ $$
 \end{array}
 $$
 
-where $a$ is a matrix of fuzzy numbers and $b$ is a column vector of fuzzy numbers. We can then create an ordering via [|ranking functions](fuzzy_theory.md) and state the "fuzziness" with the following constraint:
+where $a$ is a matrix of fuzzy numbers and $b$ is a column vector of fuzzy numbers. We can then create an ordering via [ranking functions](fuzzy_theory.md) and state the "fuzziness" with the following constraint:
 
 $$
 Ax < b + (1-\alpha)
@@ -136,7 +136,7 @@ $$
 	\sum_{j=1}^n \tilde{a}_{ij} \tilde{x}_j \leq \tilde{b}_i\; \forall i = 1 - m \\
 $$
 
-where $\tilde{c_j}$, $\tilde{a_{ij$$, $\tilde{b_j}$ are parameters and $\tilde{x_j}$ are non-negative fuzzy numbers [|#1](#Footnotes#1.md). Because these are fuzzy numbers, we can represent them as such:
+where $\tilde{c_j}$, $\tilde{a_{ij$$, $\tilde{b_j}$ are parameters and $\tilde{x_j}$ are non-negative fuzzy numbers [#1](#Footnotes#1.md). Because these are fuzzy numbers, we can represent them as such:
 
 $$
 \begin{array}{l}
@@ -247,7 +247,7 @@ $$
 \end{array}
 $$
 
-Using the method proposed by Zimmerman (as described in [|Fuzzy Constraints](#Fuzzy Linear Programming#Fuzzy Constraints.md)), one yeilds the following formulation
+Using the method proposed by Zimmerman (as described in [Fuzzy Constraints](#Fuzzy Linear Programming#Fuzzy Constraints.md)), one yeilds the following formulation
 
 $$
 \begin{array}{l}
@@ -265,7 +265,7 @@ $$
 Where the maximum "overval satisfaction" of $\lambda = 0.74$ is achived with $x = [5.03, 7.32]^T$.
 
 ## Fuzzy Berth Allocation Problem (BAP) Example
-In the [|BAP](berth_allocation_problem.wiki.md), arrivals of each vessel are highly uncertain, meaning vessels can arrive earlier or later than they were scheduled to arrive. Having to frequently review the berthing plan is not desirable from a planning of resources point of view. A FFLP for the BAP problem to minimize the total time can be expressed as
+In the [BAP](berth_allocation_problem.wiki.md), arrivals of each vessel are highly uncertain, meaning vessels can arrive earlier or later than they were scheduled to arrive. Having to frequently review the berthing plan is not desirable from a planning of resources point of view. A FFLP for the BAP problem to minimize the total time can be expressed as
 
 $$
 min\; \sum_{i\in V} (\tilde{m}_i - \tilde{a}_i)
@@ -302,7 +302,7 @@ and the decision variables are
 * $z_{ij}^x$ : Indicates if vessel $i$ is to the left of vessel $j$ at berth
 * $z_{ij}^y$ : Indicates that the berthing time of vessel $i$ is before that of $j$
 
-Using Nasseri's Method in [|#1](#Footnotes#1.md) the BAP can be described as
+Using Nasseri's Method in [#1](#Footnotes#1.md) the BAP can be described as
 
 $$
 min\; \sum_{i\in V} (m1_i - a3_i, m2_i - a2_i, m3_i - a1_i)
@@ -328,7 +328,7 @@ $$
 \end{array}
 $$
 
-An example solution in [|#1](#Footnotes#1.md) can be shown in the following figure:
+An example solution in [#1](#Footnotes#1.md) can be shown in the following figure:
 
 {{local:docs/../img/fuzzy_berth_plan.png|Fuzzy berth plan in polygonal-shape}}
 

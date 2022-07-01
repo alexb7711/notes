@@ -1,36 +1,36 @@
 # Contents
-        - [|Optimal Estimation](#Optimal Estimation.md)
-        - [|(1) Introduction](#(1) Introduction.md)
-        - [|(2) Deterministic System Model](#(2) Deterministic System Model.md)
-        - [|(3) Probability Theory](#(3) Probability Theory.md)
-                - [|Moments of Random Variables](#(3) Probability Theory#Moments of Random Variables.md)
-        - [|(4) Stochastic Process and Linear Dynamic System Models](#(4) Stochastic Process and Linear Dynamic System Models.md)
-                - [|System Modeling: Objective and Directions](#(4) Stochastic Process and Linear Dynamic System Models#System Modeling: Objective and Directions.md)
-                - [|Foundations: White Gaussian Noise and Brownian Motion](#(4) Stochastic Process and Linear Dynamic System Models#Foundations: White Gaussian Noise and Brownian Motion.md)
-                - [|Stochastic Integrals](#(4) Stochastic Process and Linear Dynamic System Models#Stochastic Integrals.md)
-                - [|Stochastic Differentials](#(4) Stochastic Process and Linear Dynamic System Models#Stochastic Differentials.md)
-                - [|Linear Stochastic Differential Equations](#(4) Stochastic Process and Linear Dynamic System Models#Linear Stochastic Differential Equations.md)
-                - [|Linear Stochastic Difference Equations](#(4) Stochastic Process and Linear Dynamic System Models#Linear Stochastic Difference Equations.md)
-                        - [|Lear's Method](#(4) Stochastic Process and Linear Dynamic System Models#Linear Stochastic Difference Equations#Lear's Method.md)
-                        - [|Savage's Method](#(4) Stochastic Process and Linear Dynamic System Models#Linear Stochastic Difference Equations#Savage's Method.md)
-                - [|The Overall System Model](#(4) Stochastic Process and Linear Dynamic System Models#The Overall System Model.md)
-        - [|(5) Optimal Filtering](#(5) Optimal Filtering.md)
-        - [|Footnotes](#Footnotes.md)
+        - [Optimal Estimation](#Optimal Estimation.md)
+        - [(1) Introduction](#(1) Introduction.md)
+        - [(2) Deterministic System Model](#(2) Deterministic System Model.md)
+        - [(3) Probability Theory](#(3) Probability Theory.md)
+                - [Moments of Random Variables](#(3) Probability Theory#Moments of Random Variables.md)
+        - [(4) Stochastic Process and Linear Dynamic System Models](#(4) Stochastic Process and Linear Dynamic System Models.md)
+                - [System Modeling: Objective and Directions](#(4) Stochastic Process and Linear Dynamic System Models#System Modeling: Objective and Directions.md)
+                - [Foundations: White Gaussian Noise and Brownian Motion](#(4) Stochastic Process and Linear Dynamic System Models#Foundations: White Gaussian Noise and Brownian Motion.md)
+                - [Stochastic Integrals](#(4) Stochastic Process and Linear Dynamic System Models#Stochastic Integrals.md)
+                - [Stochastic Differentials](#(4) Stochastic Process and Linear Dynamic System Models#Stochastic Differentials.md)
+                - [Linear Stochastic Differential Equations](#(4) Stochastic Process and Linear Dynamic System Models#Linear Stochastic Differential Equations.md)
+                - [Linear Stochastic Difference Equations](#(4) Stochastic Process and Linear Dynamic System Models#Linear Stochastic Difference Equations.md)
+                        - [Lear's Method](#(4) Stochastic Process and Linear Dynamic System Models#Linear Stochastic Difference Equations#Lear's Method.md)
+                        - [Savage's Method](#(4) Stochastic Process and Linear Dynamic System Models#Linear Stochastic Difference Equations#Savage's Method.md)
+                - [The Overall System Model](#(4) Stochastic Process and Linear Dynamic System Models#The Overall System Model.md)
+        - [(5) Optimal Filtering](#(5) Optimal Filtering.md)
+        - [Footnotes](#Footnotes.md)
 
 # Optimal Estimation
-This page has notes taken from the book (below) and [|class notes](optimal_estimation_class.md).
+This page has notes taken from the book (below) and [class notes](optimal_estimation_class.md).
 
 # (1) Introduction
 # (2) Deterministic System Model
 # (3) Probability Theory
 ## Moments of Random Variables
-* The first moment is the mean [|#1](#Footnotes#1.md)
+* The first moment is the mean [#1](#Footnotes#1.md)
 
  {{$
 	\boldsymbol{m} \equiv E![pic](x_i)
  }}$
 
-* The second (noncentral) moment is defined by the _autocorrelation matrix_ of $x$ [|#1](#Footnotes#1.md).
+* The second (noncentral) moment is defined by the _autocorrelation matrix_ of $x$ [#1](#Footnotes#1.md).
 
 {{$
 	\Gamma \equiv E![pic](xx^T)
@@ -47,10 +47,10 @@ This page has notes taken from the book (below) and [|class notes](optimal_estim
 	where the square root of variance $P_{ii} = E[(x_i - [i](m_.md))^T] = \sigma^2$ is the _standard deviation_ ($\sigma$) of $x_i$.
 
 # (4) Stochastic Process and Linear Dynamic System Models
-This section adds dynamics to the system model developed in Chapter 3 of Maybeck [|#1](#Footnotes#1.md).
+This section adds dynamics to the system model developed in Chapter 3 of Maybeck [#1](#Footnotes#1.md).
 
 ## System Modeling: Objective and Directions
-Suppose we are given a physical system that can be subjected to known controls and to inputs beyond our own direct control (typically noise). Further assume we want to characterize certain outputs of the system, for instance, by depicting their mean and covariance kernal for all time values. Such a characteristic would be necessary to initiate designs of estimators or controllers for the system, and a prerequisite to a means of analyzing the performance capabilities of such devices as well [|#1](#Footnotes#1.md).
+Suppose we are given a physical system that can be subjected to known controls and to inputs beyond our own direct control (typically noise). Further assume we want to characterize certain outputs of the system, for instance, by depicting their mean and covariance kernal for all time values. Such a characteristic would be necessary to initiate designs of estimators or controllers for the system, and a prerequisite to a means of analyzing the performance capabilities of such devices as well [#1](#Footnotes#1.md).
 
 Consider the following differential equation
 
@@ -61,12 +61,12 @@ Consider the following differential equation
 \end{array}
 }}$
 
-A _Markov Process_ states that given a sequence of probability distributions ($F_{x_{t_i | x_{t_i - 1},x_{t_i - 2}, ...}}(\zeta_i | x_{i-1}, x_{i-2}, ...)$), the entire sequence can simply be represented by the previous data set $F_{x_{t_i | x_{t_i - 1```(\zeta_i | x_{i-1})$. Assuming this sequence is greated by Gaussian white noise, the process is known as a _Gauss-Markov_ process [|#1](#Footnotes#1.md).
+A _Markov Process_ states that given a sequence of probability distributions ($F_{x_{t_i | x_{t_i - 1},x_{t_i - 2}, ...}}(\zeta_i | x_{i-1}, x_{i-2}, ...)$), the entire sequence can simply be represented by the previous data set $F_{x_{t_i | x_{t_i - 1```(\zeta_i | x_{i-1})$. Assuming this sequence is greated by Gaussian white noise, the process is known as a _Gauss-Markov_ process [#1](#Footnotes#1.md).
 
-Furthuremore, $w(t)$ and $v(t)$ are white Gaussian noises, assumed independent of each other and their initial conditions. These noises model both the disturbances and noise corruption, but as well as the uncertainty inherent in the model itself (i.e. the model does not perfectly describe the true process) [|#1](#Footnotes#1.md).
+Furthuremore, $w(t)$ and $v(t)$ are white Gaussian noises, assumed independent of each other and their initial conditions. These noises model both the disturbances and noise corruption, but as well as the uncertainty inherent in the model itself (i.e. the model does not perfectly describe the true process) [#1](#Footnotes#1.md).
 
 ## Foundations: White Gaussian Noise and Brownian Motion
-A process $x(\cdot, \cdot)$ is a _white Gaussian process_ if, for any choice of $t_1,...,t_N \in T$, the $N$ random vectors $x(t_1, \cdot),...,x(t_N, \cdot)$ are independent Gaussian random vectors [|#1](#Footnotes#1.md).
+A process $x(\cdot, \cdot)$ is a _white Gaussian process_ if, for any choice of $t_1,...,t_N \in T$, the $N$ random vectors $x(t_1, \cdot),...,x(t_N, \cdot)$ are independent Gaussian random vectors [#1](#Footnotes#1.md).
 
 _Brownian Motion_ will serve as a basic process for continuous-time modeling. With it, models can be properly developed in the form of stochastic differential equations whose solutions can be obtained. The process $\beta(\cdot,\cdot)$ is defined to be a _scalar constant-diffusion Brownian motion process_ if
 
@@ -91,7 +91,7 @@ The statistics at any time instant $i$ is denoted
 \end{array}
 }}$
 
-where $q$ indicates how fast the mean square value of $\beta(\cdot,\cdot)$ diverges from its initial value of zero at time $t_0$. To generalize this the vector Brownian motion with white process can be described as [|#1](#Footnotes#1.md)
+where $q$ indicates how fast the mean square value of $\beta(\cdot,\cdot)$ diverges from its initial value of zero at time $t_0$. To generalize this the vector Brownian motion with white process can be described as [#1](#Footnotes#1.md)
 
 {{$
 \begin{array}{c}
@@ -100,7 +100,7 @@ where $q$ indicates how fast the mean square value of $\beta(\cdot,\cdot)$ diver
 \end{array}
 }}$
 
-Notes that Brownian motion is continuous but not differentiable [|#1](#Footnotes#1.md).
+Notes that Brownian motion is continuous but not differentiable [#1](#Footnotes#1.md).
 
 ## Stochastic Integrals
 A _scalar stochastic integral_ is of the form
@@ -119,13 +119,13 @@ Given a stochastic integral
 l(t) = l(t_0) + \int_{t_0}^t A(\tau) d \beta (\tau)
 }}$
 
-the _stochastic integral_ of $l(t)$ is defined as [|#1](#Footnotes#1.md)
+the _stochastic integral_ of $l(t)$ is defined as [#1](#Footnotes#1.md)
 
 {{$
 dl(t) = A(\tau) d \beta(\tau)
 }}$
 
-Noting that Brownian motion is nondifferentiable, $dl(t)$ is differentiable in the sense that if it is integrated over the entire interval $t_0$ to $t$, it yields the random variable $[l(t) - l(t_0)]$ [|#1](#Footnotes#1.md):
+Noting that Brownian motion is nondifferentiable, $dl(t)$ is differentiable in the sense that if it is integrated over the entire interval $t_0$ to $t$, it yields the random variable $[l(t) - l(t_0)]$ [#1](#Footnotes#1.md):
 
 {{$
 \int_{t_0}^t dlt(t) = l(t) - l(t_0)
@@ -146,7 +146,7 @@ It can be shown that the differential equation of y is
 dy(t) = \dot{D}(t) s(t) dt + D(t) ds(t)
 }}$
 
-Where the integral of the first term can be interpreted as an ordinary Riemann integral for each sample function, and the integral of the second term is a stochastic integral which is defined properly only in th mean square sense. Futhermore, this equation revleals that the sthocastic differential of the linear form obeys the same formal rules as the dtermanistic total differential of a corresponding $y(t) = D(t)s(t)$ [|#1](#Footnotes#1.md).
+Where the integral of the first term can be interpreted as an ordinary Riemann integral for each sample function, and the integral of the second term is a stochastic integral which is defined properly only in th mean square sense. Futhermore, this equation revleals that the sthocastic differential of the linear form obeys the same formal rules as the dtermanistic total differential of a corresponding $y(t) = D(t)s(t)$ [#1](#Footnotes#1.md).
 
 ## Linear Stochastic Differential Equations
 We would like to generate a system of the form
@@ -161,13 +161,13 @@ However, this equation cannot be used to generate a solution directly. Therefore
 dx(t) = F(t)x(t)dt + G(t) d\beta (t)
 }}$
 
-Where $G(\cdot)$ is a known matrix of piecewise continuous functions and $\beta(\cdot, \cdot)$ is a vector-valued Brownian motion process of diffusion $Q(t)$ [|#1](#Footnotes#1.md). Supose we propose a solution of the form
+Where $G(\cdot)$ is a known matrix of piecewise continuous functions and $\beta(\cdot, \cdot)$ is a vector-valued Brownian motion process of diffusion $Q(t)$ [#1](#Footnotes#1.md). Supose we propose a solution of the form
 
 {{$
 x(t) = \Psi (t,t_0) x(t_0) + int_{t_0}^t \Psi(t,\tau) B(\tau) u(\tau) d\tau + \int_{t_0}^t \Psi(t,\tau) G(\tau) d\beta(\tau)
 }}$
 
-that can be shown to satisfy both the initial condition as well as differential equation [|#1](#Footnotes#1.md). The first part of the equation defines the inital state, the second defines _determanistic control inputs_ into the system, and the third term is the set dyanamics to be observed and estimated. It is further noted that this solution is a Gauss-Markov process meaning that the next state relies only on the previous state. Because of this, it is useful to characterize the differential equations for $m_x(t)$ and $P_{xx}(t)$ to describe their evolution in time [|#1](#Footnotes#1.md)
+that can be shown to satisfy both the initial condition as well as differential equation [#1](#Footnotes#1.md). The first part of the equation defines the inital state, the second defines _determanistic control inputs_ into the system, and the third term is the set dyanamics to be observed and estimated. It is further noted that this solution is a Gauss-Markov process meaning that the next state relies only on the previous state. Because of this, it is useful to characterize the differential equations for $m_x(t)$ and $P_{xx}(t)$ to describe their evolution in time [#1](#Footnotes#1.md)
 
 {{$
 \begin{array}{c}
@@ -177,7 +177,7 @@ that can be shown to satisfy both the initial condition as well as differential 
 }}$
 
 ## Linear Stochastic Difference Equations
-For a time-invariant or slowly varying $F(\cdot)$, $B(\cdot)$, and $![pic](G(\cdot)Q(\cdot)G^T(\cdot))$, if the sample period is short compared to the system's natural transients, a first order approxomation to the solution can be used [|#1](#Footnotes#1.md)
+For a time-invariant or slowly varying $F(\cdot)$, $B(\cdot)$, and $![pic](G(\cdot)Q(\cdot)G^T(\cdot))$, if the sample period is short compared to the system's natural transients, a first order approxomation to the solution can be used [#1](#Footnotes#1.md)
 
 {{$
 \begin{array}{c}
@@ -187,7 +187,7 @@ For a time-invariant or slowly varying $F(\cdot)$, $B(\cdot)$, and $![pic](G(\cd
 \end{array}
 }}$
 
-and the mean and covariance are propogated by [|#1](#Footnotes#1.md)
+and the mean and covariance are propogated by [#1](#Footnotes#1.md)
 
 {{$
 \begin{array}{c}

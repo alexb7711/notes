@@ -1,11 +1,11 @@
 # Contents
-        - [|Set Theory](#Set Theory.md)
-                - [|Representation of Sets](#Set Theory#Representation of Sets.md)
-                - [|Cardinality](#Set Theory#Cardinality.md)
-                - [|Types of Sets](#Set Theory#Types of Sets.md)
-                - [|Operations on Classical Sets](#Set Theory#Operations on Classical Sets.md)
-                - [|Properties of Classical Sets](#Set Theory#Properties of Classical Sets.md)
-        - [|Footnotes](#Footnotes.md)
+        - [Set Theory](#Set Theory.md)
+                - [Representation of Sets](#Set Theory#Representation of Sets.md)
+                - [Cardinality](#Set Theory#Cardinality.md)
+                - [Types of Sets](#Set Theory#Types of Sets.md)
+                - [Operations on Classical Sets](#Set Theory#Operations on Classical Sets.md)
+                - [Properties of Classical Sets](#Set Theory#Properties of Classical Sets.md)
+        - [Footnotes](#Footnotes.md)
 
 # Set Theory
 A set is an unordered collection of different elements. For example
@@ -14,7 +14,7 @@ A set is an unordered collection of different elements. For example
 A = \{1,2,3,4,5\}
 }}$
 
-is a set [|#1](#Footnotes#1.md).
+is a set [#1](#Footnotes#1.md).
 
 ## Representation of Sets
 Sets are typically represented in two ways
@@ -31,13 +31,13 @@ A = \{1,2,3,4\}
 A = \{x:p(x)\}
 }}$
 
-where $p(x)$ is some function that describes the set [|#1](#Footnotes#1.md).
+where $p(x)$ is some function that describes the set [#1](#Footnotes#1.md).
 
 ## Cardinality
-Cardinality defines the number of elements in a set [|#1](#Footnotes#1.md).
+Cardinality defines the number of elements in a set [#1](#Footnotes#1.md).
 
 ## Types of Sets
-The following are definitions of some basic sets [|#1](#Footnotes#1.md):
+The following are definitions of some basic sets [#1](#Footnotes#1.md):
 
 * Finite Set: $S = \{x | x \in N and 70 > x > 50\}$
 * Infinite Set: $ S = \{x | x \in N and x > 50\}$
@@ -52,7 +52,7 @@ The following are definitions of some basic sets [|#1](#Footnotes#1.md):
 * Disjoint Set: Two sets that do not have any elements in common
 
 ## Operations on Classical Sets
-The following are some basic operations that can be done on sets [|#1](#Footnotes#1.md):
+The following are some basic operations that can be done on sets [#1](#Footnotes#1.md):
 
 * Union: $A = \{10,11,12,13\}$ and $B = \{13,14,15\}$ then $A \cup B = \{10,11,12,13,14,15\}$
 	* {{https://www.tutorialspoint.com/fuzzy_logic/images/union_operation.jpg|Union}}

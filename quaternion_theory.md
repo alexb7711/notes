@@ -1,14 +1,14 @@
 # Contents
-        - [|Notation](#Notation.md)
-        - [|Quanternion Theory](#Quanternion Theory.md)
-                - [|Introduction](#Quanternion Theory#Introduction.md)
-                - [|Theorem](#Quanternion Theory#Theorem.md)
-                - [|Attitude Quaternion](#Quanternion Theory#Attitude Quaternion.md)
-                - [|Chaining Transformations](#Quanternion Theory#Chaining Transformations.md)
-                - [|Reverse Transformation Direction](#Quanternion Theory#Reverse Transformation Direction.md)
-                - [|Using Quaternions to Transform Vectors](#Quanternion Theory#Using Quaternions to Transform Vectors.md)
-                - [|Creating a Transformation Matrix from Quaternions](#Quanternion Theory#Creating a Transformation Matrix from Quaternions.md)
-        - [|Footnotes](#Footnotes.md)
+        - [Notation](#Notation.md)
+        - [Quanternion Theory](#Quanternion Theory.md)
+                - [Introduction](#Quanternion Theory#Introduction.md)
+                - [Theorem](#Quanternion Theory#Theorem.md)
+                - [Attitude Quaternion](#Quanternion Theory#Attitude Quaternion.md)
+                - [Chaining Transformations](#Quanternion Theory#Chaining Transformations.md)
+                - [Reverse Transformation Direction](#Quanternion Theory#Reverse Transformation Direction.md)
+                - [Using Quaternions to Transform Vectors](#Quanternion Theory#Using Quaternions to Transform Vectors.md)
+                - [Creating a Transformation Matrix from Quaternions](#Quanternion Theory#Creating a Transformation Matrix from Quaternions.md)
+        - [Footnotes](#Footnotes.md)
 
 # Notation
 * $q_1$             : Scalar value
@@ -18,7 +18,7 @@
 # Quanternion Theory
 
 ## Introduction
-The quanternion can be written as [|#1](#Footnotes#1.md)
+The quanternion can be written as [#1](#Footnotes#1.md)
 
 {{$
 \mathbb{H} = \{a + bi + cj + dk : a,b,c,d \in \mathbb{R}\}
@@ -86,7 +86,7 @@ R_{e^{\underline{u}\psi/2}} (\underline{v}) = e^{\underline{u}\psi/2} \underline
 }}$
 
 ## Attitude Quaternion
-Shuster's Convention is most typically encountered in modern aerospace applications. The attitude quaternion is based on the concept of a rotation vector where the $A$ frame is rotated about an axis $\underline{n}$ by an angle $\theta$ to acieve the $B$ frame. The quaternion is defined as [|#2](#Footnotes#2.md)
+Shuster's Convention is most typically encountered in modern aerospace applications. The attitude quaternion is based on the concept of a rotation vector where the $A$ frame is rotated about an axis $\underline{n}$ by an angle $\theta$ to acieve the $B$ frame. The quaternion is defined as [#2](#Footnotes#2.md)
 
 {{$
 q_{A}^B =
@@ -117,7 +117,7 @@ q_{A}^C = q_{B}^C \times q_{A}^B =
 }}$
 
 ## Reverse Transformation Direction
-The [|conjugate](linear_algebra.md) of a quaternion is analogous to the transpose of a tranformation matrix. It reverses the direction of the transformation.
+The [conjugate](linear_algebra.md) of a quaternion is analogous to the transpose of a tranformation matrix. It reverses the direction of the transformation.
 
 {{$
 q_{B}^A = (q_{A}^B)^* = q_1 - \underline{q_1}
@@ -146,4 +146,4 @@ T_{A}^B = I_{3\times 3} - 2q_1 ![pic](\underline{q}_1) + 2 ![pic](\underline{q}_
 
 # Footnotes
 * *1* https://math.ucr.edu/~huerta/introquaternions.pdf
-* *2* [|Optimal Estimation | Preliminaries](local:docs/optimal_estimation/prelims_lectures_notes.htm.md)
+* *2* [Optimal Estimation | Preliminaries](local:docs/optimal_estimation/prelims_lectures_notes.htm.md)

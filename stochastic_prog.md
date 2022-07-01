@@ -1,5 +1,5 @@
 # Stochastic Programming
-As stated by [|Wikipedia](https://en.wikipedia.org/wiki/Stochastic_programming.md):
+As stated by [Wikipedia](https://en.wikipedia.org/wiki/Stochastic_programming.md):
 
 	Stochastic programming is a framework for modeling optimizaiton problems that involve uncertainty. A stochastic program is an optimization problem in which som eor all problem parameters are uncertain, but follow known probability distributions.
 

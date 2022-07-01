@@ -133,4 +133,4 @@ short reverseInt (char ∗c) {
 ```
 # References
 * TODO: Fix this reference later
-    * [|How to write endian-independent code in C](https://developer.ibm.com/articles/au-endianc/.md)
+    * [How to write endian-independent code in C](https://developer.ibm.com/articles/au-endianc/.md)

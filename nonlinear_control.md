@@ -1,7 +1,7 @@
 # Contents
-        - [|Backstepping](#Backstepping.md)
-        - [|Lyapunov Redesign](#Lyapunov Redesign.md)
-                - [|Online Lectures](#Lyapunov Redesign#Online Lectures.md)
+        - [Backstepping](#Backstepping.md)
+        - [Lyapunov Redesign](#Lyapunov Redesign.md)
+                - [Online Lectures](#Lyapunov Redesign#Online Lectures.md)
 
 # Backstepping
 Consider the system
@@ -72,4 +72,4 @@ where $k > 0$. This leaves $V = f(\eta) + g(\eta)\phi(\eta) + z(\eta g(\eta) + u
 # Lyapunov Redesign
 
 ## Online Lectures
-* [|Nonlinear 2020 Backstepping](https://www.youtube.com/watch?v=RzNmxUsMS2I.md)
+* [Nonlinear 2020 Backstepping](https://www.youtube.com/watch?v=RzNmxUsMS2I.md)

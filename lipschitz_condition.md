@@ -71,4 +71,4 @@ Given some $f$ and $D$, when does the Lipschitz Condition hold?
     then the IVP has a unique solution $x=x(t)$ on some interval containing $\tau$.
 
 # References
-* [|YouTube Video](https://www.youtube.com/watch?v=Cnc83B3C2pY.md)
+* [YouTube Video](https://www.youtube.com/watch?v=Cnc83B3C2pY.md)

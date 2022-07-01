@@ -26,4 +26,4 @@ A_{\times} =
 for a $3\times 3$ matrix.
 
 # References
-* [|Skew Symmetric Matrix](https://math.stackexchange.com/questions/2248413/skew-symmetric-matrix-of-vector.md)
+* [Skew Symmetric Matrix](https://math.stackexchange.com/questions/2248413/skew-symmetric-matrix-of-vector.md)

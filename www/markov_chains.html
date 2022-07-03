@@ -24,21 +24,51 @@
 	</div>
 	<div class="content">
 	    <h1 id="discrete-time-markov-chains">Discrete-Time Markov Chains</h1>
-<p>Variables: * Process: evolves over time * Random: Not perfectly predictable * Discrete-time: Possible changes at periods * State: A possible value for <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20X_n" alt="X_n" title="X_n" /></p>
+<p>Variables: * Process: evolves over time * Random: Not perfectly
+predictable * Discrete-time: Possible changes at periods * State: A
+possible value for <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20X_n" alt="X_n"
+title="X_n" class="math inline" /></p>
 <pre><code>Definition: Markov Chain: The future is independent of the past, given the present. In other words,
 
-{{$
-    P(X_{n+1} = j | X_n = i)\; 	ext{depends only on } i 	ext{ and } j
-}}$</code></pre>
-<h1 id="representing-a-discrete-time-markov-chain">Representing A Discrete-Time Markov Chain</h1>
-<p>Ingredients of a discrete-time Markov chain are: * Current State (order them) * Transition possibilities (matrix represents <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20P_%7Bij%7D" alt="P_{ij}" title="P_{ij}" /> that represents the transition probabilities) * Rows sum up to 1</p>
-<h1 id="steady-state-distribution-of-a-discrete-time-markov-chain">Steady-State Distribution of a Discrete-Time Markov Chain</h1>
-<p>Under certain mild conditions, called ergodicity conditions, the state probabilities converge to values that do not depend on the initial state probabilities. <em>A necessary condition for this to occur is that we must be able to reach any other state with positive probability</em>.</p>
-<h2 id="calculating-steady-state-probabilities">Calculating Steady-State Probabilities</h2>
-<p>The probability of entering node <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20i" alt="i" title="i" /> should be the same as the probability exiting node <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20i" alt="i" title="i" />, this is represented by the following equation:</p>
-<p>{{$ <em>i </em>{i j} P_{ij} = _{ji} <em>j P</em>{ji} }}$</p>
+$$
+    P(X_{n+1} = j | X_n = i)\; \text{depends only on } i \text{ and } j
+$$</code></pre>
+<h1 id="representing-a-discrete-time-markov-chain">Representing A
+Discrete-Time Markov Chain</h1>
+<p>Ingredients of a discrete-time Markov chain are: * Current State
+(order them) * Transition possibilities (matrix represents <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20P_%7Bij%7D"
+alt="P_{ij}" title="P_{ij}" class="math inline" /> that represents the
+transition probabilities) * Rows sum up to 1</p>
+<h1
+id="steady-state-distribution-of-a-discrete-time-markov-chain">Steady-State
+Distribution of a Discrete-Time Markov Chain</h1>
+<p>Under certain mild conditions, called ergodicity conditions, the
+state probabilities converge to values that do not depend on the initial
+state probabilities. <em>A necessary condition for this to occur is that
+we must be able to reach any other state with positive
+probability</em>.</p>
+<h2 id="calculating-steady-state-probabilities">Calculating Steady-State
+Probabilities</h2>
+<p>The probability of entering node <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20i" alt="i"
+title="i" class="math inline" /> should be the same as the probability
+exiting node <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20i" alt="i"
+title="i" class="math inline" />, this is represented by the following
+equation:</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20%20%20%5Cpi_i%20%5Csum_%7Bi%20%5Cneq%20j%7D%20P_%7Bij%7D%20%3D%20%5Csum_%7Bj%5Cneq%20i%7D%20%5Cpi_j%20P_%7Bji%7D%0A"
+alt="
+    \pi_i \sum_{i \neq j} P_{ij} = \sum_{j\neq i} \pi_j P_{ji}
+" title="
+    \pi_i \sum_{i \neq j} P_{ij} = \sum_{j\neq i} \pi_j P_{ji}
+" class="math display" /></p>
 <p>This also applies to subsets of the transition diagram.</p>
-<h2 id="markov-chain-ergodicity-conditions">Markov Chain Ergodicity Conditions</h2>
+<h2 id="markov-chain-ergodicity-conditions">Markov Chain Ergodicity
+Conditions</h2>
 <pre><code>Necessary and sufficient condition: For a discrete Markov chain $X$, starting from any initial state or distribution, the probabilities $[\pi_1(n), \pi_2(n), ...]$ converge to a unique positive vector $\pi = [\pi_1, \pi_2,...]$ iff the chain is
 
 * irreducible

@@ -25,35 +25,61 @@
 	<div class="content">
 	    <h1 id="derivatives">Derivatives</h1>
 <h2 id="chain-rule">Chain Rule</h2>
-<p>The chain rule is a formula the expresses the derivative of the composition of two functions <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20f" alt="f" title="f" /> and <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20g" alt="g" title="g" /> in terms of the derivatives of <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20f" alt="f" title="f" /> and <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20g" alt="g" title="g" />. Therefore if we want to find the derivative of <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20h%28x%29%20%3D%20f%28g%28x%29%29" alt="h(x) = f(g(x))" title="h(x) = f(g(x))" /> then</p>
-{{$
-<br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%20%20h%27%28x%29%20%3D%20f%27%28g%28x%29%29g%27%28x%29%20%5C%5C%0A%20%20%20%20%5Ctext%7Bor%20equivalently%7D%20%5C%5C%0A%20%20%20%20h%27%20%3D%20f%28h%20%5Ccirc%20g%29%27%20%3D%20%28f%27%20%5Ccirc%20g%29%5Ccdot%20g%27%20%5C%5C%0A%5Cend%7Barray%7D" alt="egin{array}{l}
-    h%content%#39;(x) = f%content%#39;(g(x))g%content%#39;(x) \
-    	ext{or equivalently} \
-    h%content%#39; = f(h \circ g)%content%#39; = (f%content%#39; \circ g)\cdot g%content%#39; \
-\end{array}" title="egin{array}{l}
-    h%content%#39;(x) = f%content%#39;(g(x))g%content%#39;(x) \
-    	ext{or equivalently} \
-    h%content%#39; = f(h \circ g)%content%#39; = (f%content%#39; \circ g)\cdot g%content%#39; \
-\end{array}" /><br />
-<p>}}$</p>
+<p>The chain rule is a formula the expresses the derivative of the
+composition of two functions <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20f" alt="f"
+title="f" class="math inline" /> and <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20g" alt="g"
+title="g" class="math inline" /> in terms of the derivatives of <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20f" alt="f"
+title="f" class="math inline" /> and <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20g" alt="g"
+title="g" class="math inline" />. Therefore if we want to find the
+derivative of <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20h%28x%29%20%3D%20f%28g%28x%29%29"
+alt="h(x) = f(g(x))" title="h(x) = f(g(x))" class="math inline" />
+then</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%20%20h%27%28x%29%20%3D%20f%27%28g%28x%29%29g%27%28x%29%20%5C%5C%0A%20%20%20%20%5Ctext%7Bor%20equivalently%7D%20%5C%5C%0A%20%20%20%20h%27%20%3D%20f%28h%20%5Ccirc%20g%29%27%20%3D%20%28f%27%20%5Ccirc%20g%29%5Ccdot%20g%27%20%5C%5C%0A%5Cend%7Barray%7D%0A"
+alt="
+\begin{array}{l}
+    h&#39;(x) = f&#39;(g(x))g&#39;(x) \\
+    \text{or equivalently} \\
+    h&#39; = f(h \circ g)&#39; = (f&#39; \circ g)\cdot g&#39; \\
+\end{array}
+" title="
+\begin{array}{l}
+    h&#39;(x) = f&#39;(g(x))g&#39;(x) \\
+    \text{or equivalently} \\
+    h&#39; = f(h \circ g)&#39; = (f&#39; \circ g)\cdot g&#39; \\
+\end{array}
+" class="math display" /></p>
 <h2 id="product-rule">Product Rule</h2>
-<p>The product rule (also known as the Leibniz rule or Leibniz product rule) is a formula used to find the derivative of products of two or more functions.</p>
-{{$
-<br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%20%20%28uv%29%27%20%3D%20u%27%2Av%20%2B%20u%2Av%27%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20%5Ctext%7Bor%20in%20Leibniz%27s%20notation%7D%20%5C%5C%0A%20%20%20%20%5Cfrac%7Bd%28uv%29%7D%7Bdx%7D%20%3D%20%5Cfrac%7Bdu%7D%7Bdz%7Dv%20%2B%20u%20%5Cfrac%7Bdv%7D%7Bdx%7D%20%5C%5C%0A%5Cend%7Barray%7D" alt="egin{array}{l}
-    (uv)%content%#39; = u%content%#39;*v + u*v%content%#39;             \
-    	ext{or in Leibniz%content%#39;s notation} \
-    rac{d(uv)}{dx} = rac{du}{dz}v + u rac{dv}{dx} \
-\end{array}" title="egin{array}{l}
-    (uv)%content%#39; = u%content%#39;*v + u*v%content%#39;             \
-    	ext{or in Leibniz%content%#39;s notation} \
-    rac{d(uv)}{dx} = rac{du}{dz}v + u rac{dv}{dx} \
-\end{array}" /><br />
-<p>}}$</p>
+<p>The product rule (also known as the Leibniz rule or Leibniz product
+rule) is a formula used to find the derivative of products of two or
+more functions.</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%20%20%28uv%29%27%20%3D%20u%27%2Av%20%2B%20u%2Av%27%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20%5Ctext%7Bor%20in%20Leibniz%27s%20notation%7D%20%5C%5C%0A%20%20%20%20%5Cfrac%7Bd%28uv%29%7D%7Bdx%7D%20%3D%20%5Cfrac%7Bdu%7D%7Bdz%7Dv%20%2B%20u%20%5Cfrac%7Bdv%7D%7Bdx%7D%20%5C%5C%0A%5Cend%7Barray%7D%0A"
+alt="
+\begin{array}{l}
+    (uv)&#39; = u&#39;*v + u*v&#39;             \\
+    \text{or in Leibniz&#39;s notation} \\
+    \frac{d(uv)}{dx} = \frac{du}{dz}v + u \frac{dv}{dx} \\
+\end{array}
+" title="
+\begin{array}{l}
+    (uv)&#39; = u&#39;*v + u*v&#39;             \\
+    \text{or in Leibniz&#39;s notation} \\
+    \frac{d(uv)}{dx} = \frac{du}{dz}v + u \frac{dv}{dx} \\
+\end{array}
+" class="math display" /></p>
 <h2 id="sources">Sources</h2>
 <ul>
-<li><a href="https://en.wikipedia.org/wiki/Chain_rule.md">|Chain Rule</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Product_rule.md">|Product Rule</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Chain_rule.md">Chain
+Rule</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Product_rule.md">Product
+Rule</a></li>
 </ul>
 	</div>
 </body>

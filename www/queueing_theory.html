@@ -23,9 +23,11 @@
 		<a href="%root_path%error.html">About</a>
 	</div>
 	<div class="content">
-	    <h1 id="fundamentals-of-queueing-theory">Fundamentals of Queueing Theory</h1>
+	    <h1 id="fundamentals-of-queueing-theory">Fundamentals of Queueing
+Theory</h1>
 <h2 id="introduction">Introduction</h2>
-<h3 id="measurement-of-system-performance">Measurement of System Performance</h3>
+<h3 id="measurement-of-system-performance">Measurement of System
+Performance</h3>
 <ul>
 <li>Types of effectiveness of a queuing system
 <ul>
@@ -33,26 +35,35 @@
 <li>Number of customers</li>
 <li>Idle time</li>
 </ul></li>
-<li>Allows us to allocate resources to acquire a desired system performance</li>
+<li>Allows us to allocate resources to acquire a desired system
+performance</li>
 </ul>
-<h3 id="characteristics-of-queueing-systems">Characteristics of Queueing Systems</h3>
+<h3 id="characteristics-of-queueing-systems">Characteristics of Queueing
+Systems</h3>
 <ol type="1">
 <li>Arrival Pattern of customers
 <ul>
 <li>Common arrival process is the <em>Poisson process</em></li>
-<li>Arrival pattern that does not change with time is <em>stationary</em></li>
-<li>Arrival pattern that does change with time is <em>nonstationary</em></li>
+<li>Arrival pattern that does not change with time is
+<em>stationary</em></li>
+<li>Arrival pattern that does change with time is
+<em>nonstationary</em></li>
 <li>The behavior of arriving customers is also important
 <ul>
-<li>If a customer decides not to enter the queue on arrival, the customer <em>balked</em></li>
-<li>If a customer enters a line then exits later, the customer <em>reneged</em></li>
-<li>If a costumer enters a line then leaves it to enter another line, the customer <em>jockeyed</em></li>
+<li>If a customer decides not to enter the queue on arrival, the
+customer <em>balked</em></li>
+<li>If a customer enters a line then exits later, the customer
+<em>reneged</em></li>
+<li>If a costumer enters a line then leaves it to enter another line,
+the customer <em>jockeyed</em></li>
 </ul></li>
 </ul></li>
 <li>Service pattern of servers
 <ul>
-<li>The server may depend on the number of customers in line. If so, then the server is said to be <em>state-dependent</em></li>
-<li>Servers may be stationary and nonstationary in the same sense of customers</li>
+<li>The server may depend on the number of customers in line. If so,
+then the server is said to be <em>state-dependent</em></li>
+<li>Servers may be stationary and nonstationary in the same sense of
+customers</li>
 </ul></li>
 <li>Number of servers and service channels</li>
 <li>System Capacity</li>
@@ -62,8 +73,10 @@
 <li>LIFO</li>
 <li>Priority sorted
 <ul>
-<li>Nonepreemtive: The highest priority customer goes to the head of the queue but waits for process to finish</li>
-<li>Preemtive: Higher priority is allows to enter service immediately upon arrival</li>
+<li>Nonepreemtive: The highest priority customer goes to the head of the
+queue but waits for process to finish</li>
+<li>Preemtive: Higher priority is allows to enter service immediately
+upon arrival</li>
 </ul></li>
 </ul></li>
 <li>Number of service stages</li>
@@ -72,51 +85,128 @@
 <ul>
 <li>Tail distribution</li>
 </ul>
-<p>{{$ P(X x) = (-x) }}$</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20%20%20P%28X%20%5Cgeq%20x%29%20%3D%20%5Ctext%7Bexp%7D%28-%5Clambda%20x%29%0A"
+alt="
+    P(X \geq x) = \text{exp}(-\lambda x)
+" title="
+    P(X \geq x) = \text{exp}(-\lambda x)
+" class="math display" /></p>
 <ul>
 <li>Mean, variance and squared coefficient of variation:
 <ul>
-<li>Mean: <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20E%28X%29%20%3D%201%2F%5Clambda" alt="E(X) = 1/\lambda" title="E(X) = 1/\lambda" /></li>
-<li>Variance: <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20var%28X%29%20%3D%20E%28X%5E2%29%20-%20%28E%28X%29%29%5E2%20%3D%20E%28%28X%20-%20E%28X%29%29%5E2%20%3D%201%2F%5Clambda%5E2" alt="var(X) = E(X^2) - (E(X))^2 = E((X - E(X))^2 = 1/\lambda^2" title="var(X) = E(X^2) - (E(X))^2 = E((X - E(X))^2 = 1/\lambda^2" /></li>
-<li>Squared coefficient of variation: <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20Cv%5E2%20%3D%20var%28x%29%2F%28E%28X%29%29%5E2%20%3D%201%20%5Cforall%20%5Clambda" alt="Cv^2 = var(x)/(E(X))^2 = 1 orall \lambda" title="Cv^2 = var(x)/(E(X))^2 = 1 orall \lambda" /></li>
+<li>Mean: <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20E%28X%29%20%3D%201%2F%5Clambda"
+alt="E(X) = 1/\lambda" title="E(X) = 1/\lambda"
+class="math inline" /></li>
+<li>Variance: <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20var%28X%29%20%3D%20E%28X%5E2%29%20-%20%28E%28X%29%29%5E2%20%3D%20E%28%28X%20-%20E%28X%29%29%5E2%20%3D%201%2F%5Clambda%5E2"
+alt="var(X) = E(X^2) - (E(X))^2 = E((X - E(X))^2 = 1/\lambda^2"
+title="var(X) = E(X^2) - (E(X))^2 = E((X - E(X))^2 = 1/\lambda^2"
+class="math inline" /></li>
+<li>Squared coefficient of variation: <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20Cv%5E2%20%3D%20var%28x%29%2F%28E%28X%29%29%5E2%20%3D%201%20%5Cforall%20%5Clambda"
+alt="Cv^2 = var(x)/(E(X))^2 = 1 \forall \lambda"
+title="Cv^2 = var(x)/(E(X))^2 = 1 \forall \lambda"
+class="math inline" /></li>
 </ul></li>
 <li>Properties:
 <ul>
 <li>Memoryless
 <ul>
-<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20P%28U_i%20%5Cgeq%20u%29%20%3D%20%5Ctext%7Bexp%7D%28-%5Clambda%20u%29" alt="P(U_i \geq u) = 	ext{exp}(-\lambda u)" title="P(U_i \geq u) = 	ext{exp}(-\lambda u)" /></li>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20P%28U_i%20%5Cgeq%20u%29%20%3D%20%5Ctext%7Bexp%7D%28-%5Clambda%20u%29"
+alt="P(U_i \geq u) = \text{exp}(-\lambda u)"
+title="P(U_i \geq u) = \text{exp}(-\lambda u)"
+class="math inline" /></li>
 </ul></li>
 <li>Minimum of two exponential random variables
 <ul>
 <li>$ P(US) = $</li>
-<li>$ P(U %content%gt; S) = $</li>
+<li>$ P(U &gt; S) = $</li>
 </ul></li>
 </ul></li>
 </ul>
 <h3 id="poisson-arrivals">Poisson Arrivals</h3>
-<p>The successive inter-arrival times <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20U_i%20%3D%20T_%7Bi%2B1%7D%20-%20T_i" alt="U_i = T_{i+1} - T_i" title="U_i = T_{i+1} - T_i" /> are independent and distributed according to the exponential law with parameter <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda" alt="\lambda" title="\lambda" /></p>
-<p>{{$ P(U_i u) = (-u) }}$</p>
-<p>where <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda" alt="\lambda" title="\lambda" /> represents the average arrivals per unit time.</p>
-<h3 id="exponential-service-durations">Exponential Service Durations</h3>
+<p>The successive inter-arrival times <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20U_i%20%3D%20T_%7Bi%2B1%7D%20-%20T_i"
+alt="U_i = T_{i+1} - T_i" title="U_i = T_{i+1} - T_i"
+class="math inline" /> are independent and distributed according to the
+exponential law with parameter <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda"
+alt="\lambda" title="\lambda" class="math inline" /></p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20%20%20P%28U_i%20%5Cgeq%20u%29%20%3D%20%5Ctext%7Bexp%7D%28-%5Clambda%20u%29%0A"
+alt="
+    P(U_i \geq u) = \text{exp}(-\lambda u)
+" title="
+    P(U_i \geq u) = \text{exp}(-\lambda u)
+" class="math display" /></p>
+<p>where <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda"
+alt="\lambda" title="\lambda" class="math inline" /> represents the
+average arrivals per unit time.</p>
+<h3 id="exponential-service-durations">Exponential Service
+Durations</h3>
 <p>In general, it is assumed that</p>
 <ul>
 <li>service times are independent and identically distributed</li>
 <li>characterized by their probability distribution</li>
 </ul>
-<p>The exponential distribution is an important case of service duration</p>
-<p>{{$ P(S_i s) = (-s) }}$</p>
-<p>where <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cmu" alt="\mu" title="\mu" /> is the average number of clients served per unit time.</p>
+<p>The exponential distribution is an important case of service
+duration</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20%20%20P%28S_i%20%5Cgeq%20s%29%20%3D%20%5Ctext%7Bexp%7D%28-%5Cmu%20s%29%0A"
+alt="
+    P(S_i \geq s) = \text{exp}(-\mu s)
+" title="
+    P(S_i \geq s) = \text{exp}(-\mu s)
+" class="math display" /></p>
+<p>where <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cmu"
+alt="\mu" title="\mu" class="math inline" /> is the average number of
+clients served per unit time.</p>
 <h3 id="offered-load">Offered Load</h3>
-<p>Average performance depends on the offered load <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Crho" alt="ho" title="ho" />, defined as</p>
-<p>{{$ =  }}$</p>
-<p>The unit of <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Crho" alt="ho" title="ho" /> is the Erlang, a dimensionless unit.</p>
-<h2 id="motivating-examples-and-mm1-queue">Motivating Examples and M/M/1 queue</h2>
-<h3 id="steady-state-probabilities-computation">Steady-State Probabilities Computation</h3>
-<p>{{$ _i = _0 ^i; i = 1,2,… }}$</p>
-<h3 id="stability-condition-for-steady-state-behavior">Stability Condition for Steady State Behavior</h3>
+<p>Average performance depends on the offered load <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Crho"
+alt="\rho" title="\rho" class="math inline" />, defined as</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20%20%20%5Crho%20%3D%20%5Cfrac%7B%5Clambda%7D%7B%5Cmu%7D%0A"
+alt="
+    \rho = \frac{\lambda}{\mu}
+" title="
+    \rho = \frac{\lambda}{\mu}
+" class="math display" /></p>
+<p>The unit of <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Crho"
+alt="\rho" title="\rho" class="math inline" /> is the Erlang, a
+dimensionless unit.</p>
+<h2 id="motivating-examples-and-mm1-queue">Motivating Examples and M/M/1
+queue</h2>
+<h3 id="steady-state-probabilities-computation">Steady-State
+Probabilities Computation</h3>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20%20%20%5Cpi_i%20%3D%20%5Cpi_0%20%5Cfrac%7B%5Clambda%7D%7B%5Cmu%7D%5Ei%5C%3B%20i%20%3D%201%2C2%2C...%0A"
+alt="
+    \pi_i = \pi_0 \frac{\lambda}{\mu}^i\; i = 1,2,...
+" title="
+    \pi_i = \pi_0 \frac{\lambda}{\mu}^i\; i = 1,2,...
+" class="math display" /></p>
+<h3 id="stability-condition-for-steady-state-behavior">Stability
+Condition for Steady State Behavior</h3>
 <p>The arrival rate is lower than the service rate:</p>
-<p>{{$ %content%lt;  }}$</p>
-<p>or <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Crho%20%3D%20%5Clambda%2F%5Cmu%20%3C%201" alt="ho = \lambda/\mu %content%lt; 1" title="ho = \lambda/\mu %content%lt; 1" /> (traffic intensity or load$</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20%20%20%5Clambda%20%3C%20%5Cmu%0A"
+alt="
+    \lambda &lt; \mu
+" title="
+    \lambda &lt; \mu
+" class="math display" /></p>
+<p>or <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Crho%20%3D%20%5Clambda%2F%5Cmu%20%3C%201"
+alt="\rho = \lambda/\mu &lt; 1" title="\rho = \lambda/\mu &lt; 1"
+class="math inline" /> (traffic intensity or load$</p>
 <h3 id="kendall-notation">Kendall Notation</h3>
 <pre><code>A/B/c/K/m/z</code></pre>
 <ul>
@@ -132,6 +222,11 @@
 </ul></li>
 </ul>
 <table>
+<colgroup>
+<col style="width: 48%" />
+<col style="width: 10%" />
+<col style="width: 40%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th>Characteristics</th>
@@ -142,27 +237,41 @@
 <tbody>
 <tr class="odd">
 <td>Interarrival-time distribution (A)</td>
-<td><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20M" alt="M" title="M" /></td>
+<td><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20M" alt="M"
+title="M" class="math inline" /></td>
 <td>Exponential</td>
 </tr>
 <tr class="even">
 <td></td>
-<td><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20D" alt="D" title="D" /></td>
+<td><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20D" alt="D"
+title="D" class="math inline" /></td>
 <td>Deterministic</td>
 </tr>
 <tr class="odd">
 <td></td>
-<td><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20E_k" alt="E_k" title="E_k" /></td>
-<td>Erlang type <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20k%5C%3B%20%28k%20%3D%201%2C2%29" alt="k\; (k = 1,2)" title="k\; (k = 1,2)" /></td>
+<td><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20E_k" alt="E_k"
+title="E_k" class="math inline" /></td>
+<td>Erlang type <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20k%5C%3B%20%28k%20%3D%201%2C2%29"
+alt="k\; (k = 1,2)" title="k\; (k = 1,2)" class="math inline" /></td>
 </tr>
 <tr class="even">
 <td>Service-time distribution (B)</td>
-<td><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20H_k" alt="H_k" title="H_k" /></td>
-<td>Mixture of <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20k" alt="k" title="k" /> exponentials</td>
+<td><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20H_k" alt="H_k"
+title="H_k" class="math inline" /></td>
+<td>Mixture of <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20k" alt="k"
+title="k" class="math inline" /> exponentials</td>
 </tr>
 <tr class="odd">
 <td></td>
-<td><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20PK" alt="PK" title="PK" /></td>
+<td><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20PK" alt="PK"
+title="PK" class="math inline" /></td>
 <td>Phase type</td>
 </tr>
 <tr class="even">
@@ -209,44 +318,171 @@
 </table>
 <h2 id="littles-law">Little’s Law</h2>
 <ul>
-<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda" alt="\lambda" title="\lambda" />: Average rate that customers arrive to a system</li>
-<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20W" alt="W" title="W" />: Average wait time that a customer spends in the system</li>
-<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20L" alt="L" title="L" />: Average number of customers in the system</li>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda"
+alt="\lambda" title="\lambda" class="math inline" />: Average rate that
+customers arrive to a system</li>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20W" alt="W"
+title="W" class="math inline" />: Average wait time that a customer
+spends in the system</li>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20L" alt="L"
+title="L" class="math inline" />: Average number of customers in the
+system</li>
 </ul>
-<p>{{$ L = W }}$</p>
-<h2 id="h-lambda-g"><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20H%20%3D%20%5Clambda%20G" alt="H = \lambda G" title="H = \lambda G" /></h2>
-<p><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20L%20%3D%20%5Clambda%20W" alt="L = \lambda W" title="L = \lambda W" /> is a special case of a more general relation.</p>
-<p>{{$ H = G }}$</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20%20%20L%20%3D%20%5Clambda%20W%0A"
+alt="
+    L = \lambda W
+" title="
+    L = \lambda W
+" class="math display" /></p>
+<h2 id="h-lambda-g"><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20H%20%3D%20%5Clambda%20G"
+alt="H = \lambda G" title="H = \lambda G" class="math inline" /></h2>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20L%20%3D%20%5Clambda%20W"
+alt="L = \lambda W" title="L = \lambda W" class="math inline" /> is a
+special case of a more general relation.</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20%20%20H%20%3D%20%5Clambda%20G%0A"
+alt="
+    H = \lambda G
+" title="
+    H = \lambda G
+" class="math display" /></p>
 <ul>
-<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20G" alt="G" title="G" />: Average cost or work associated with a customer</li>
-<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20H" alt="H" title="H" />: Total average cost per time incurred by the system</li>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20G" alt="G"
+title="G" class="math inline" />: Average cost or work associated with a
+customer</li>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20H" alt="H"
+title="H" class="math inline" />: Total average cost per time incurred
+by the system</li>
 </ul>
 <h2 id="simple-streams">Simple Streams</h2>
-<p>The foundation for queuing theory is based on the modeling of customers arriving at a queuing system. This is the <em>simple case of streams</em> is represented as the probability that <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20k" alt="k" title="k" /> customers arrive in a timer interval of length <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20t" alt="t" title="t" /> is represented as</p>
-<p>{{$ P_{k}(t) =  e^{t} }}$</p>
-<p>where <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda%20%3E%200" alt="\lambda %content%gt; 0" title="\lambda %content%gt; 0" />. Importantly, the incoming stream is assumed to compose the following properties</p>
-<pre><code>Given any finite group of nonoverlapping time intervals, the number of customers arriving during each interval are [|theory_of_statistics](mutually independent random variables.md).</code></pre>
-<p><em>Definition</em>: A finite or countable sequence <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ctau_n" alt="	au_n" title="	au_n" /> of random variables defined on the same probability space under the ocndition that in any fixed time interval <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%28a%2Cb%29" alt="(a,b)" title="(a,b)" /> with probability 1 a finite number of these variables falls in it is called a <em>stream of homogenous events</em>.</p>
-<p><em>Lemma</em> The number of <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20v%28a%2Cb%29" alt="v(a,b)" title="v(a,b)" /> of events of a stream in the half-interval <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ba-b%29" alt="[a-b)" title="[a-b)" /> is a random variable.</p>
-<h2 id="qualitative-assumptions-and-their-analysis">Qualitative Assumptions and Their Analysis</h2>
-<p>The following are some conditions for estabilshing what a simple stream is:</p>
+<p>The foundation for queuing theory is based on the modeling of
+customers arriving at a queuing system. This is the <em>simple case of
+streams</em> is represented as the probability that <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20k" alt="k"
+title="k" class="math inline" /> customers arrive in a timer interval of
+length <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20t" alt="t"
+title="t" class="math inline" /> is represented as</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20P_%7Bk%7D%28t%29%20%3D%20%5Cfrac%7B%5Clambda%20t%29%5Ek%7D%7Bk%21%7D%20e%5E%7B%5Clambda%20t%7D%0A"
+alt="
+  P_{k}(t) = \frac{\lambda t)^k}{k!} e^{\lambda t}
+" title="
+  P_{k}(t) = \frac{\lambda t)^k}{k!} e^{\lambda t}
+" class="math display" /></p>
+<p>where <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda%20%3E%200"
+alt="\lambda &gt; 0" title="\lambda &gt; 0" class="math inline" />.
+Importantly, the incoming stream is assumed to compose the following
+properties</p>
+<pre><code>Given any finite group of nonoverlapping time intervals, the number of customers arriving during each interval are [theory_of_statistics](mutually independent random variables.md).</code></pre>
+<p><em>Definition</em>: A finite or countable sequence <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ctau_n"
+alt="\tau_n" title="\tau_n" class="math inline" /> of random variables
+defined on the same probability space under the ocndition that in any
+fixed time interval <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%28a%2Cb%29"
+alt="(a,b)" title="(a,b)" class="math inline" /> with probability 1 a
+finite number of these variables falls in it is called a <em>stream of
+homogenous events</em>.</p>
+<p><em>Lemma</em> The number of <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20v%28a%2Cb%29"
+alt="v(a,b)" title="v(a,b)" class="math inline" /> of events of a stream
+in the half-interval <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ba-b%29"
+alt="[a-b)" title="[a-b)" class="math inline" /> is a random
+variable.</p>
+<h2 id="qualitative-assumptions-and-their-analysis">Qualitative
+Assumptions and Their Analysis</h2>
+<p>The following are some conditions for estabilshing what a simple
+stream is:</p>
 <ul>
-<li><em>Stationarity of a stream</em>: The probability that <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20k_1%2C%20k_2%2C%20...%2C%20k_n" alt="k_1, k_2, ..., k_n" title="k_1, k_2, ..., k_n" /> costomers, respectively, will arrive in each interval of any finite group of <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20n" alt="n" title="n" /> nonoverlapping time intervals depends only on the <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20k_i" alt="k_i" title="k_i" /> and on the lengths of the time intervals, but not on their positions on the axis in time.</li>
-<li><em>Absence of aftereffects</em>: The probability of <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20k" alt="k" title="k" /> customers arriving during a time interval $(T,T+t) does not depend on the number and type of customers arriving before <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20T" alt="T" title="T" />.</li>
-<li><em>Orderliness of the stream</em>: Expresses the practical impossibility that two or more customers will arrive at the same instant of time.</li>
+<li><em>Stationarity of a stream</em>: The probability that <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20k_1%2C%20k_2%2C%20...%2C%20k_n"
+alt="k_1, k_2, ..., k_n" title="k_1, k_2, ..., k_n"
+class="math inline" /> costomers, respectively, will arrive in each
+interval of any finite group of <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20n" alt="n"
+title="n" class="math inline" /> nonoverlapping time intervals depends
+only on the <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20k_i" alt="k_i"
+title="k_i" class="math inline" /> and on the lengths of the time
+intervals, but not on their positions on the axis in time.</li>
+<li><em>Absence of aftereffects</em>: The probability of <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20k" alt="k"
+title="k" class="math inline" /> customers arriving during a time
+interval $(T,T+t) does not depend on the number and type of customers
+arriving before <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20T" alt="T"
+title="T" class="math inline" />.</li>
+<li><em>Orderliness of the stream</em>: Expresses the practical
+impossibility that two or more customers will arrive at the same instant
+of time.</li>
 </ul>
-<p>Therefore a simple stream must adhere to all these conditions. Although they don’t comletely model real world scenarios accurately, it provides a good basis to start from</p>
+<p>Therefore a simple stream must adhere to all these conditions.
+Although they don’t comletely model real world scenarios accurately, it
+provides a good basis to start from</p>
 <h2 id="distribution-of-events">Distribution of Events</h2>
-<p><em>Theorem</em>: Under the condition that the number of events of a simple steam in the interval <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%28a%2Cb%29" alt="(a,b)" title="(a,b)" /> equals <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20n" alt="n" title="n" />, the times of these events are independent and uniformally disributed on the interval <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%28a%2Cb%29" alt="(a,b)" title="(a,b)" />.</p>
-<h2 id="the-intensity-and-parameter-of-a-stream">The Intensity and Parameter of a Stream</h2>
-<p>The mean number of customers arriving in a time interval is denoted as</p>
-<p>{{$ M(t) = e^{t} _{k=1}^{} k  = t }}$</p>
-<p>Where <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cmu%28t%29" alt="\mu(t)" title="\mu(t)" /> is the actual number of customers arriving during a time interval of length <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20t" alt="t" title="t" />. The mathematical expectation of the number of costomers arriving in this unit time is called the <em>intensity of th stream</em>. For a simple queue <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda%20%3D%20%5Cmu" alt="\lambda = \mu" title="\lambda = \mu" /> for which <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda" alt="\lambda" title="\lambda" /> is called the <em>parameter of the stream</em>.</p>
+<p><em>Theorem</em>: Under the condition that the number of events of a
+simple steam in the interval <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%28a%2Cb%29"
+alt="(a,b)" title="(a,b)" class="math inline" /> equals <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20n" alt="n"
+title="n" class="math inline" />, the times of these events are
+independent and uniformally disributed on the interval <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%28a%2Cb%29"
+alt="(a,b)" title="(a,b)" class="math inline" />.</p>
+<h2 id="the-intensity-and-parameter-of-a-stream">The Intensity and
+Parameter of a Stream</h2>
+<p>The mean number of customers arriving in a time interval is denoted
+as</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0AM%5Cmu%28t%29%20%3D%20e%5E%7B%5Clambda%20t%7D%20%5Csum_%7Bk%3D1%7D%5E%7B%5Cinfty%7D%20k%20%5Cfrac%7B%28%5Clambda%20t%29%5Ek%29%7D%7Bk%21%7D%20%3D%20%5Clambda%20t%0A"
+alt="
+M\mu(t) = e^{\lambda t} \sum_{k=1}^{\infty} k \frac{(\lambda t)^k)}{k!} = \lambda t
+" title="
+M\mu(t) = e^{\lambda t} \sum_{k=1}^{\infty} k \frac{(\lambda t)^k)}{k!} = \lambda t
+" class="math display" /></p>
+<p>Where <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cmu%28t%29"
+alt="\mu(t)" title="\mu(t)" class="math inline" /> is the actual number
+of customers arriving during a time interval of length <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20t" alt="t"
+title="t" class="math inline" />. The mathematical expectation of the
+number of costomers arriving in this unit time is called the
+<em>intensity of th stream</em>. For a simple queue <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda%20%3D%20%5Cmu"
+alt="\lambda = \mu" title="\lambda = \mu" class="math inline" /> for
+which <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda"
+alt="\lambda" title="\lambda" class="math inline" /> is called the
+<em>parameter of the stream</em>.</p>
 <h1 id="serivicing-and-waiting">Serivicing and Waiting</h1>
 <h1 id="references">References</h1>
 <ul>
-<li>1 <span class="citation" data-cites="fundamentals">@fundamentals</span> | John F Shortle, James M Thompson, Donald Gross, and Carl M Harris. Fundamentals of Queueing Theory. John Wiley {%content%amp;} Sons, Inc., jan 2018.</li>
-<li><a href="https://www.youtube.com/watch?v=rSZWig173xM.md">|Introduction To Queuing Theory</a></li>
+<li>1 <span class="citation"
+data-cites="fundamentals">@fundamentals</span> | John F Shortle, James M
+Thompson, Donald Gross, and Carl M Harris. Fundamentals of Queueing
+Theory. John Wiley {&amp;} Sons, Inc., jan 2018.</li>
+<li><a
+href="https://www.youtube.com/watch?v=rSZWig173xM.md">Introduction To
+Queuing Theory</a></li>
 </ul>
 	</div>
 </body>

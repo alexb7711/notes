@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #################################################################################
 # FUNCTIONS
@@ -19,10 +19,14 @@ function progress_bar()
     _fill=$(printf "%${_done}s")
     _empty=$(printf "%${_left}s")
 
+    # Clear previous line
+    # https://stackoverflow.com/questions/2388090/how-to-delete-and-replace-last-line-in-the-terminal-using-bash
+    tput el
+
     # 1.2 Build progressbar strings and print the ProgressBar line
     # 1.2.1 Output example:
     # 1.2.1.1 Progress : [########################################] 100%
-    printf "\rProcessing $s: [${_fill// /\#}${_empty// /-}] ${_progress}%% \r"
+    printf "Progress: [${_fill// /\#}${_empty// /-}] ${_progress}%% - $f\r"
 }
 
 ##===============================================================================
@@ -30,26 +34,28 @@ function progress_bar()
 function process()
 {
 	# Initialize values
-	file=$1
-	dir=$2
-	header=$3
-	html_file="$dir/$(basename ${file%.*}).html"
+	local file=$1
+	local dir=$2
+	local header_file=$3
+	local html_file="$dir/$(basename ${file%.*}).html"
+	local temp_file="$dir/temp.html"
 
 	# Process markdown
-	pandoc --pdf-engine=xelatex --webtex --listings -o $html_file $file
+	pandoc --pdf-engine=xelatex --webtex --listings -o $temp_file $file
 
 	# Get the text from the file
-	text=$(cat $html_file)
+	header=$(<$header_file)
+	body=$(<$temp_file)
 
 	# Replace %content% with processed markdown
-	awk -v t="$text" '{ gsub(/%content%/, t); print}' $header > $html_file
+	echo "${header//__PLACEHOLDER__/$body}" > $html_file
 }
 
 #################################################################################
 # SCRIPT
 #################################################################################
 outdir="www"
-header="./html/template.html"
+header_file="./html/template.html"
 
 # Create directory and clear it
 mkdir -p $outdir
@@ -60,17 +66,16 @@ files=(*.md)
 cnt=${#files[@]}
 
 # Loop through each markdown file in the directory
-i=0
-
+i=1
 for f in "${files[@]}"
 do
-	# Calculate progress
-	i=$((i+1))
-	progress=$(($i*100/$cnt))
-
 	# Output progress
-	progress_bar $i $progress
+	progress_bar $i $cnt
 
 	# Process file
-	process $f $outdir $header
+	process $f $outdir $header_file
+	
+	# Update index
+	i=$((i+1))
+
 done

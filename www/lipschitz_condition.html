@@ -23,46 +23,113 @@
 		<a href="%root_path%error.html">About</a>
 	</div>
 	<div class="content">
-	    <h1 id="what-is-a-lipschitz-condition">What is a Lipschitz Condition?</h1>
-<p>This is a basic introduction to Lipschitz conditions within the context of differential equations. Lipschitz conditions are connected with “contrastive mappings”, which have important applications to the existence, uniqueness and approximation of solutions to equations - including ordinary differential equations.</p>
+	    <h1 id="what-is-a-lipschitz-condition">What is a Lipschitz
+Condition?</h1>
+<p>This is a basic introduction to Lipschitz conditions within the
+context of differential equations. Lipschitz conditions are connected
+with “contrastive mappings”, which have important applications to the
+existence, uniqueness and approximation of solutions to equations -
+including ordinary differential equations.</p>
 <h2 id="introduction">Introduction</h2>
 <p>General first order initial value problem</p>
-<p>{{$ x’ = f(t,x),; x() = A }}$</p>
-<p>where <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20x%27%20%3D%20%5Cfrac%7Bdx%7D%7Bdt%7D" alt="x%content%#39; = rac{dx}{dt}" title="x%content%#39; = rac{dx}{dt}" /></p>
-<p>Much of the theory for IVP, its variation involves a so-called Lipschitz condition. This condition is the cornerstone for gaining information about solutions to the IVP, such as existence, uniqueness and approximation.</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20%20%20x%27%20%3D%20f%28t%2Cx%29%2C%5C%3B%20x%28%5Ctau%29%20%3D%20A%0A"
+alt="
+    x&#39; = f(t,x),\; x(\tau) = A
+" title="
+    x&#39; = f(t,x),\; x(\tau) = A
+" class="math display" /></p>
+<p>where <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20x%27%20%3D%20%5Cfrac%7Bdx%7D%7Bdt%7D"
+alt="x&#39; = \frac{dx}{dt}" title="x&#39; = \frac{dx}{dt}"
+class="math inline" /></p>
+<p>Much of the theory for IVP, its variation involves a so-called
+Lipschitz condition. This condition is the cornerstone for gaining
+information about solutions to the IVP, such as existence, uniqueness
+and approximation.</p>
 <pre><code>We say $f$ satisfies a Lipschitz condition on a set $D$ if there is a constant $L \geq 0$ such that</code></pre>
-<p>{{$ |f(t,u) - f(t,v)| L |u-v|,;  (t,v),(t,v)D }}$</p>
-<h2 id="when-does-a-lipschitz-condition-hold">When does a Lipschitz condition hold?</h2>
-<p>Given some <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20f" alt="f" title="f" /> and <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20D" alt="D" title="D" />, when does the Lipschitz Condition hold?</p>
-<p><strong>Example</strong> Let <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20D%20%3D%20%5Cmathbb%7BR%7D%5E2" alt="D = \mathbb{R}^2" title="D = \mathbb{R}^2" /> and lat <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20f%28t%2Cu%29%20%3A%3D%20t%5E2%20%2B%202u" alt="f(t,u) := t^2 + 2u" title="f(t,u) := t^2 + 2u" />. For each <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%28t%2Cu%29%2C%20%28t%2Cv%29%20%5Cin%20D" alt="(t,u), (t,v) \in D" title="(t,u), (t,v) \in D" /> consider</p>
-{{$
-<br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bll%7D%0A%20%20%20%20%7C%20f%28t%2Cu%29%20-%20f%28t%2Cv%29%20%7C%20%26%20%3D%20%7C%20%28t%5E2%20%2B%202u%29%20-%20%28t%5E2%20-%202v%29%20%7C%20%5C%5C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%26%20%3D%202%7Cu-v%7C%0A%5Cend%7Barray%7D" alt="egin{array}{ll}
-    | f(t,u) - f(t,v) | %content%amp; = | (t^2 + 2u) - (t^2 - 2v) | \
-                            %content%amp; = 2|u-v|
-\end{array}" title="egin{array}{ll}
-    | f(t,u) - f(t,v) | %content%amp; = | (t^2 + 2u) - (t^2 - 2v) | \
-                            %content%amp; = 2|u-v|
-\end{array}" /><br />
-<p>}}$</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20%20%20%7Cf%28t%2Cu%29%20-%20f%28t%2Cv%29%7C%20%5Cleq%20L%20%7Cu-v%7C%2C%5C%3B%20%5Ctext%7Bfor%20all%20%7D%20%28t%2Cv%29%2C%28t%2Cv%29%5Cin%20D%0A"
+alt="
+    |f(t,u) - f(t,v)| \leq L |u-v|,\; \text{for all } (t,v),(t,v)\in D
+" title="
+    |f(t,u) - f(t,v)| \leq L |u-v|,\; \text{for all } (t,v),(t,v)\in D
+" class="math display" /></p>
+<h2 id="when-does-a-lipschitz-condition-hold">When does a Lipschitz
+condition hold?</h2>
+<p>Given some <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20f" alt="f"
+title="f" class="math inline" /> and <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20D" alt="D"
+title="D" class="math inline" />, when does the Lipschitz Condition
+hold?</p>
+<p><strong>Example</strong> Let <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20D%20%3D%20%5Cmathbb%7BR%7D%5E2"
+alt="D = \mathbb{R}^2" title="D = \mathbb{R}^2" class="math inline" />
+and lat <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20f%28t%2Cu%29%20%3A%3D%20t%5E2%20%2B%202u"
+alt="f(t,u) := t^2 + 2u" title="f(t,u) := t^2 + 2u"
+class="math inline" />. For each <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%28t%2Cu%29%2C%20%28t%2Cv%29%20%5Cin%20D"
+alt="(t,u), (t,v) \in D" title="(t,u), (t,v) \in D"
+class="math inline" /> consider</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bll%7D%0A%20%20%20%20%7C%20f%28t%2Cu%29%20-%20f%28t%2Cv%29%20%7C%20%26%20%3D%20%7C%20%28t%5E2%20%2B%202u%29%20-%20%28t%5E2%20-%202v%29%20%7C%20%5C%5C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%26%20%3D%202%7Cu-v%7C%0A%5Cend%7Barray%7D%0A"
+alt="
+\begin{array}{ll}
+    | f(t,u) - f(t,v) | &amp; = | (t^2 + 2u) - (t^2 - 2v) | \\
+                            &amp; = 2|u-v|
+\end{array}
+" title="
+\begin{array}{ll}
+    | f(t,u) - f(t,v) | &amp; = | (t^2 + 2u) - (t^2 - 2v) | \\
+                            &amp; = 2|u-v|
+\end{array}
+" class="math display" /></p>
 <pre><code>*Lemma*: Let $D$ be a rectangle</code></pre>
-<p>{{$ R:= {(t,p) : t <img src="a,b" alt="pic" />, |p-A| B} }}$</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20%20%20R%3A%3D%20%5C%7B%28t%2Cp%29%20%3A%20t%20%5Cin%20%21%5Bpic%5D%28a%2Cb%29%2C%20%7Cp-A%7C%20%5Cleq%20B%5C%7D%0A"
+alt="
+    R:= \{(t,p) : t \in ![pic](a,b), |p-A| \leq B\}
+" title="
+    R:= \{(t,p) : t \in ![pic](a,b), |p-A| \leq B\}
+" class="math display" /></p>
 <pre><code>or the infinite strip</code></pre>
-<p>{{$ S:= {(t,p) : t <img src="a,b" alt="pic" />, |p-A| } }}$</p>
-<pre><code>If $f : D ightarrow \mathbb{R}$ and $rac{\partial f}{\partial y}$ exists, is continuous and there is some constant $K \geq 0$ such that</code></pre>
-<p>{{$ | (t,y) | K,;  (t,y) D }}$</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20%20%20S%3A%3D%20%5C%7B%28t%2Cp%29%20%3A%20t%20%5Cin%20%21%5Bpic%5D%28a%2Cb%29%2C%20%7Cp-A%7C%20%5Cleq%20%5Cinfty%20%5C%7D%0A"
+alt="
+    S:= \{(t,p) : t \in ![pic](a,b), |p-A| \leq \infty \}
+" title="
+    S:= \{(t,p) : t \in ![pic](a,b), |p-A| \leq \infty \}
+" class="math display" /></p>
+<pre><code>If $f : D \rightarrow \mathbb{R}$ and $\frac{\partial f}{\partial y}$ exists, is continuous and there is some constant $K \geq 0$ such that</code></pre>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20%20%20%5Cleft%7C%20%5Cfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20y%7D%28t%2Cy%29%20%5Cright%7C%20%5Cleq%20K%2C%5C%3B%20%5Ctext%7Bfor%20all%20%7D%20%28t%2Cy%29%20%5Cin%20D%0A"
+alt="
+    \left| \frac{\partial f}{\partial y}(t,y) \right| \leq K,\; \text{for all } (t,y) \in D
+" title="
+    \left| \frac{\partial f}{\partial y}(t,y) \right| \leq K,\; \text{for all } (t,y) \in D
+" class="math display" /></p>
 <pre><code>then the Lipschitz Condition holds with $L=K$</code></pre>
 <h2 id="local-lipshitz">Local Lipshitz</h2>
-<pre><code>*Theorem*: Let $f:Rightarrow \mathbb{R}$ be continuous and let $(	au A) \in R$. If there is a constant $L \geq 0$ satisfying</code></pre>
-<p>{{$ |f(t,u) - f(t,v)| L |u-v|,;  (t,v),(t,v)R</p>
-<p>}}$</p>
-<pre><code>then the IVP has a unique solution $x=x(t)$ on some interval containing $	au$.
+<pre><code>*Theorem*: Let $f:R\rightarrow \mathbb{R}$ be continuous and let $(\tau A) \in R$. If there is a constant $L \geq 0$ satisfying</code></pre>
+<p>$$ |f(t,u) - f(t,v)| L |u-v|,; (t,v),(t,v)R</p>
+<p>$$</p>
+<pre><code>then the IVP has a unique solution $x=x(t)$ on some interval containing $\tau$.
 
-*Corollary*: Let $f:Rightarrow \mathbb{R}$ be continuous and let $rac{\partial f}{\partial y}$ exists and is continuous on $R$ and there is dome constant $K \geq 0$ such that</code></pre>
-<p>{{$ | (t,y) | K,;  (t,y) D }}$</p>
-<pre><code>then the IVP has a unique solution $x=x(t)$ on some interval containing $	au$.</code></pre>
+*Corollary*: Let $f:R\rightarrow \mathbb{R}$ be continuous and let $\frac{\partial f}{\partial y}$ exists and is continuous on $R$ and there is dome constant $K \geq 0$ such that</code></pre>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20%20%20%5Cleft%7C%20%5Cfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20y%7D%28t%2Cy%29%20%5Cright%7C%20%5Cleq%20K%2C%5C%3B%20%5Ctext%7Bfor%20all%20%7D%20%28t%2Cy%29%20%5Cin%20D%0A"
+alt="
+    \left| \frac{\partial f}{\partial y}(t,y) \right| \leq K,\; \text{for all } (t,y) \in D
+" title="
+    \left| \frac{\partial f}{\partial y}(t,y) \right| \leq K,\; \text{for all } (t,y) \in D
+" class="math display" /></p>
+<pre><code>then the IVP has a unique solution $x=x(t)$ on some interval containing $\tau$.</code></pre>
 <h1 id="references">References</h1>
 <ul>
-<li><a href="https://www.youtube.com/watch?v=Cnc83B3C2pY.md">|YouTube Video</a></li>
+<li><a href="https://www.youtube.com/watch?v=Cnc83B3C2pY.md">YouTube
+Video</a></li>
 </ul>
 	</div>
 </body>

@@ -25,7 +25,8 @@
 	<div class="content">
 	    <h1 id="matlab-tips">MATLAB Tips</h1>
 <h2 id="pivoting-function">Pivoting Function</h2>
-<p>The original code can be found here <a href="#Footnotes#1.md">|#1</a>:</p>
+<p>The original code can be found here <a
+href="#Footnotes#1.md">#1</a>:</p>
 <pre><code>function R = pivot(M, r, c)
     % Get matrix dimensions
     [d, w]  = size(M);
@@ -38,18 +39,20 @@
 
     % For all matrix rows
     for k = 1:d
-        %content%lt;!-- Other than the row of interest r --%content%gt;
+        &lt;!-- Other than the row of interest r --&gt;
         if (k ~=r)
-            %%content%lt;!-- Set it equal to the original matrix --%content%gt;
-            %%content%lt;!-- minux a multiple of normalized row r, making --%content%gt;
-            %%content%lt;!-- R(k,c) = 0 --%content%gt;
+            %&lt;!-- Set it equal to the original matrix --&gt;
+            %&lt;!-- minux a multiple of normalized row r, making --&gt;
+            %&lt;!-- R(k,c) = 0 --&gt;
             R(k,:) = M(k,:) - M(k,c) * R(r,:)
         end % if
     end         % for
 end                 % function</code></pre>
 <h2 id="footnotes">Footnotes</h2>
 <ul>
-<li><em>1</em> <a href="http://am121.seas.harvard.edu/site/wp-content/uploads/2014/08/pivotingmaplematlabmathematica.pdf.md">|Pivoting Function</a></li>
+<li><em>1</em> <a
+href="http://am121.seas.harvard.edu/site/wp-content/uploads/2014/08/pivotingmaplematlabmathematica.pdf.md">Pivoting
+Function</a></li>
 </ul>
 	</div>
 </body>

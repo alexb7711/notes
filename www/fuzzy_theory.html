@@ -24,128 +24,344 @@
 	</div>
 	<div class="content">
 	    <h1 id="contents">Contents</h1>
-<pre><code>    - [|Fuzzy Theory](#Fuzzy Theory.md)
-    - [|Introduction](#Introduction.md)
-            - [|Fuzzy Set](#Introduction#Fuzzy Set.md)
-                    - [|Operations of Fuzzy Sets](#Introduction#Fuzzy Set#Operations of Fuzzy Sets.md)
-                    - [|Fuzzy Set Properties](#Introduction#Fuzzy Set#Fuzzy Set Properties.md)
-            - [|Triangular Fuzzy Number](#Introduction#Triangular Fuzzy Number.md)
-            - [|Membership Functions](#Introduction#Membership Functions.md)
-                    - [|Membership Function Properties](#Introduction#Membership Functions#Membership Function Properties.md)
-                    - [|Fuzzification](#Introduction#Membership Functions#Fuzzification.md)
-                            - [|Support Fuzzification (s-fuzzification) Method](#Introduction#Membership Functions#Fuzzification#Support Fuzzification (s-fuzzification) Method.md)
-                            - [|Grade Fuzzification (g-fuzzification) Method](#Introduction#Membership Functions#Fuzzification#Grade Fuzzification (g-fuzzification) Method.md)
-                    - [|Defuzzification](#Introduction#Membership Functions#Defuzzification.md)
-                            - [|Max-Membership Method](#Introduction#Membership Functions#Defuzzification#Max-Membership Method.md)
-                            - [|Centroid Method](#Introduction#Membership Functions#Defuzzification#Centroid Method.md)
-                            - [|Weighted Average Method](#Introduction#Membership Functions#Defuzzification#Weighted Average Method.md)
-                            - [|Mean-Max Membership](#Introduction#Membership Functions#Defuzzification#Mean-Max Membership.md)
-                    - [|Fuzzy Arithmetic](#Introduction#Membership Functions#Fuzzy Arithmetic.md)
-            - [|Comparing Fuzzy Numbers](#Introduction#Comparing Fuzzy Numbers.md)
-    - [|Footnotes](#Footnotes.md)</code></pre>
+<pre><code>    - [Fuzzy Theory](#Fuzzy Theory.md)
+    - [Introduction](#Introduction.md)
+            - [Fuzzy Set](#Introduction#Fuzzy Set.md)
+                    - [Operations of Fuzzy Sets](#Introduction#Fuzzy Set#Operations of Fuzzy Sets.md)
+                    - [Fuzzy Set Properties](#Introduction#Fuzzy Set#Fuzzy Set Properties.md)
+            - [Triangular Fuzzy Number](#Introduction#Triangular Fuzzy Number.md)
+            - [Membership Functions](#Introduction#Membership Functions.md)
+                    - [Membership Function Properties](#Introduction#Membership Functions#Membership Function Properties.md)
+                    - [Fuzzification](#Introduction#Membership Functions#Fuzzification.md)
+                            - [Support Fuzzification (s-fuzzification) Method](#Introduction#Membership Functions#Fuzzification#Support Fuzzification (s-fuzzification) Method.md)
+                            - [Grade Fuzzification (g-fuzzification) Method](#Introduction#Membership Functions#Fuzzification#Grade Fuzzification (g-fuzzification) Method.md)
+                    - [Defuzzification](#Introduction#Membership Functions#Defuzzification.md)
+                            - [Max-Membership Method](#Introduction#Membership Functions#Defuzzification#Max-Membership Method.md)
+                            - [Centroid Method](#Introduction#Membership Functions#Defuzzification#Centroid Method.md)
+                            - [Weighted Average Method](#Introduction#Membership Functions#Defuzzification#Weighted Average Method.md)
+                            - [Mean-Max Membership](#Introduction#Membership Functions#Defuzzification#Mean-Max Membership.md)
+                    - [Fuzzy Arithmetic](#Introduction#Membership Functions#Fuzzy Arithmetic.md)
+            - [Comparing Fuzzy Numbers](#Introduction#Comparing Fuzzy Numbers.md)
+    - [Footnotes](#Footnotes.md)</code></pre>
 <h1 id="fuzzy-theory">Fuzzy Theory</h1>
 <h1 id="introduction">Introduction</h1>
-<p>Fuzzy logic is a form of artificial intelligence that resembles the human decision-making methodology where we allow vague and imprecise information. In other words, it allows for imprecise (non-binary) decision to be modeled <a href="#Footnotes#2.md">|#3</a>. Contradictory to one’s idea of fuzzy logic, fuzzy logic is not logic that is fuzzy, but logic that is is used to describe fuzziness <a href="#Footnotes#1.md">|#1</a>.</p>
-<p>{{https://www.tutorialspoint.com/fuzzy_logic/images/fuzzy_logic_introduction.jpg|Example of fuzzy logic}}</p>
-<p>An important fact about fuzzy logic is that <em>it does not require a model</em>. It works well with complex system where the mechanism are not fully known. As long as you have some intuition about the system, then the rules can be developed in implemented <a href="#Footnotes#2.md">|#3</a>.</p>
-<p>The applied rules are the encoding of knowledge. For example, assume a banker wants to figure out the risk of giving a person a loan. We can say</p>
+<p>Fuzzy logic is a form of artificial intelligence that resembles the
+human decision-making methodology where we allow vague and imprecise
+information. In other words, it allows for imprecise (non-binary)
+decision to be modeled <a href="#Footnotes#2.md">#3</a>. Contradictory
+to one’s idea of fuzzy logic, fuzzy logic is not logic that is fuzzy,
+but logic that is is used to describe fuzziness <a
+href="#Footnotes#1.md">#1</a>.</p>
+<p>{{https://www.tutorialspoint.com/fuzzy_logic/images/fuzzy_logic_introduction.jpg|Example
+of fuzzy logic}}</p>
+<p>An important fact about fuzzy logic is that <em>it does not require a
+model</em>. It works well with complex system where the mechanism are
+not fully known. As long as you have some intuition about the system,
+then the rules can be developed in implemented <a
+href="#Footnotes#2.md">#3</a>.</p>
+<p>The applied rules are the encoding of knowledge. For example, assume
+a banker wants to figure out the risk of giving a person a loan. We can
+say</p>
 <ul>
-<li>Good credit <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Crightarrow" alt="ightarrow" title="ightarrow" /> low risk</li>
-<li>Neutral credit <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Crightarrow" alt="ightarrow" title="ightarrow" /> medium risk</li>
-<li>Bad credit <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Crightarrow" alt="ightarrow" title="ightarrow" /> high risk</li>
+<li>Good credit <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Crightarrow"
+alt="\rightarrow" title="\rightarrow" class="math inline" /> low
+risk</li>
+<li>Neutral credit <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Crightarrow"
+alt="\rightarrow" title="\rightarrow" class="math inline" /> medium
+risk</li>
+<li>Bad credit <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Crightarrow"
+alt="\rightarrow" title="\rightarrow" class="math inline" /> high
+risk</li>
 </ul>
-<p>The set of rules above are the <em>encoding of knowledge</em> that can be used for predictions <a href="#Footnotes#2.md">|#3</a>.</p>
+<p>The set of rules above are the <em>encoding of knowledge</em> that
+can be used for predictions <a href="#Footnotes#2.md">#3</a>.</p>
 <h2 id="fuzzy-set">Fuzzy Set</h2>
-<p>Fuzzy <a href="set_theory.md">|sets</a> allows elements to have varying degrees of memberships in sets. For example consider the image below</p>
+<p>Fuzzy <a href="set_theory.md">sets</a> allows elements to have
+varying degrees of memberships in sets. For example consider the image
+below</p>
 <p>{{https://www.tutorialspoint.com/fuzzy_logic/images/fuzzy_classical_set.jpg}}</p>
-<p>The membership function of classical sets <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A" alt="A" title="A" /> is binary in the sense that the element <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20a_i" alt="a_i" title="a_i" /> is either in the set or not. On the other hand, the membership function of fuzzy set <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ctilde%7BA%7D" alt="	ilde{A}" title="	ilde{A}" /> has elements <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ctilde%7Ba%7D_i" alt="	ilde{a}_i" title="	ilde{a}_i" /> that have <em>varying degrees of membership in the set</em>. In other words, the membership functions describe the degree of truth in fuzzy logic.</p>
+<p>The membership function of classical sets <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A" alt="A"
+title="A" class="math inline" /> is binary in the sense that the element
+<img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20a_i" alt="a_i"
+title="a_i" class="math inline" /> is either in the set or not. On the
+other hand, the membership function of fuzzy set <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ctilde%7BA%7D"
+alt="\tilde{A}" title="\tilde{A}" class="math inline" /> has elements
+<img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ctilde%7Ba%7D_i"
+alt="\tilde{a}_i" title="\tilde{a}_i" class="math inline" /> that have
+<em>varying degrees of membership in the set</em>. In other words, the
+membership functions describe the degree of truth in fuzzy logic.</p>
 <h3 id="operations-of-fuzzy-sets">Operations of Fuzzy Sets</h3>
 <ul>
 <li>Union/Fuzzy ‘OR’
 <ul>
-<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cmu%20_%7B%7B%5Cwidetilde%7BA%7D%5Ccup%20%5Cwidetilde%7BB%7D%20%7D%7D%5Cleft%20%28%20y%20%5Cright%20%29%20%3D%20%5Cmu%20_%7B%5Cwidetilde%7BA%7D%7D%5Cvee%20%5Cmu%20_%5Cwidetilde%7BB%7D%20%5Cquad%20%5Cforall%20y%20%5Cin%20U" alt="\mu _{{\widetilde{A}\cup \widetilde{B} }}\left ( y ight ) = \mu _{\widetilde{A}}ee \mu _\widetilde{B} \quad orall y \in U" title="\mu _{{\widetilde{A}\cup \widetilde{B} }}\left ( y ight ) = \mu _{\widetilde{A}}ee \mu _\widetilde{B} \quad orall y \in U" /> where <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cvee" alt="ee" title="ee" /> is the <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20max" alt="max" title="max" /> operation.</li>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cmu%20_%7B%7B%5Cwidetilde%7BA%7D%5Ccup%20%5Cwidetilde%7BB%7D%20%7D%7D%5Cleft%20%28%20y%20%5Cright%20%29%20%3D%20%5Cmu%20_%7B%5Cwidetilde%7BA%7D%7D%5Cvee%20%5Cmu%20_%5Cwidetilde%7BB%7D%20%5Cquad%20%5Cforall%20y%20%5Cin%20U"
+alt="\mu _{{\widetilde{A}\cup \widetilde{B} }}\left ( y \right ) = \mu _{\widetilde{A}}\vee \mu _\widetilde{B} \quad \forall y \in U"
+title="\mu _{{\widetilde{A}\cup \widetilde{B} }}\left ( y \right ) = \mu _{\widetilde{A}}\vee \mu _\widetilde{B} \quad \forall y \in U"
+class="math inline" /> where <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cvee"
+alt="\vee" title="\vee" class="math inline" /> is the <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20max" alt="max"
+title="max" class="math inline" /> operation.</li>
 <li>{{https://www.tutorialspoint.com/fuzzy_logic/images/union.jpg}}</li>
 </ul></li>
 <li>Intersection/Fuzzy ‘AND’
 <ul>
-<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cmu%20_%7B%7B%5Cwidetilde%7BA%7D%5Ccap%20%5Cwidetilde%7BB%7D%20%7D%7D%5Cleft%20%28%20y%20%5Cright%20%29%20%3D%20%5Cmu%20_%7B%5Cwidetilde%7BA%7D%7D%5Cwedge%20%5Cmu%20_%5Cwidetilde%7BB%7D%20%5Cquad%20%5Cforall%20y%20%5Cin%20U" alt="\mu _{{\widetilde{A}\cap \widetilde{B} }}\left ( y ight ) = \mu _{\widetilde{A}}\wedge \mu _\widetilde{B} \quad orall y \in U" title="\mu _{{\widetilde{A}\cap \widetilde{B} }}\left ( y ight ) = \mu _{\widetilde{A}}\wedge \mu _\widetilde{B} \quad orall y \in U" /> where <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cwedge" alt="\wedge" title="\wedge" /> represents the <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20min" alt="min" title="min" /> oepration</li>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cmu%20_%7B%7B%5Cwidetilde%7BA%7D%5Ccap%20%5Cwidetilde%7BB%7D%20%7D%7D%5Cleft%20%28%20y%20%5Cright%20%29%20%3D%20%5Cmu%20_%7B%5Cwidetilde%7BA%7D%7D%5Cwedge%20%5Cmu%20_%5Cwidetilde%7BB%7D%20%5Cquad%20%5Cforall%20y%20%5Cin%20U"
+alt="\mu _{{\widetilde{A}\cap \widetilde{B} }}\left ( y \right ) = \mu _{\widetilde{A}}\wedge \mu _\widetilde{B} \quad \forall y \in U"
+title="\mu _{{\widetilde{A}\cap \widetilde{B} }}\left ( y \right ) = \mu _{\widetilde{A}}\wedge \mu _\widetilde{B} \quad \forall y \in U"
+class="math inline" /> where <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cwedge"
+alt="\wedge" title="\wedge" class="math inline" /> represents the <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20min" alt="min"
+title="min" class="math inline" /> oepration</li>
 <li>{{https://www.tutorialspoint.com/fuzzy_logic/images/intersection.jpg}}</li>
 </ul></li>
-<li>Complement/Fuzzy ’NOT"
+<li>Complement/Fuzzy ’NOT”
 <ul>
-<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cmu%20_%7B%5Cwidetilde%7BA%7D%7D%20%3D%201-%5Cmu%20_%7B%5Cwidetilde%7BA%7D%7D%5Cleft%20%28%20y%20%5Cright%20%29%5Cquad%20y%20%5Cin%20U" alt="\mu _{\widetilde{A}} = 1-\mu _{\widetilde{A}}\left ( y ight )\quad y \in U" title="\mu _{\widetilde{A}} = 1-\mu _{\widetilde{A}}\left ( y ight )\quad y \in U" /></li>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cmu%20_%7B%5Cwidetilde%7BA%7D%7D%20%3D%201-%5Cmu%20_%7B%5Cwidetilde%7BA%7D%7D%5Cleft%20%28%20y%20%5Cright%20%29%5Cquad%20y%20%5Cin%20U"
+alt="\mu _{\widetilde{A}} = 1-\mu _{\widetilde{A}}\left ( y \right )\quad y \in U"
+title="\mu _{\widetilde{A}} = 1-\mu _{\widetilde{A}}\left ( y \right )\quad y \in U"
+class="math inline" /></li>
 <li>{{https://www.tutorialspoint.com/fuzzy_logic/images/complement.jpg}}</li>
 </ul></li>
 </ul>
-<h3 id="operations-of-trapozoidaltriangular-fuzzy-sets">Operations of Trapozoidal/Triangular Fuzzy Sets</h3>
-{{$
-<br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%20%20%5Ctext%7Blet%20%7D%20%5Ctilde%7BA%7D_1%20%3D%20%28a_1%2C%20b_1%2C%20c_1%2C%20d_1%29%20%5C%5C%0A%20%20%20%20%5Ctext%7Blet%20%7D%20%5Ctilde%7BA%7D_2%20%3D%20%28a_2%2C%20b_2%2C%20c_2%2C%20d_2%29%20%5C%5C%0A%20%20%20%20%5Ctilde%7BA%7D_1%2B%5Ctilde%7BA%7D_2%20%3D%20%28a_1%2Ba_2%2C%20b_1%2Bb_2%2C%20c_1%2Bc_2%2C%20d_1%2Bd_2%29%20%5C%5C%0A%20%20%20%20%5Ctilde%7BA%7D_1-%5Ctilde%7BA%7D_2%20%3D%20%28a_1-d_2%2C%20b_1-c_2%2C%20c_1-b_2%2C%20d_1-a_2%29%20%5C%5C%0A%20%20%20%20%5Ctilde%7BA%7D_1%2A%5Ctilde%7BA%7D_2%20%3D%20%28a_1%20a_2%2C%20b_1%20b_2%2C%20c_1%20c_2%2C%20d_1%20d_2%29%20%5C%5C%0A%5Cend%7Barray%7D" alt="egin{array}{l}
-    	ext{let } 	ilde{A}_1 = (a_1, b_1, c_1, d_1) \
-    	ext{let } 	ilde{A}_2 = (a_2, b_2, c_2, d_2) \
-    	ilde{A}_1+	ilde{A}_2 = (a_1+a_2, b_1+b_2, c_1+c_2, d_1+d_2) \
-    	ilde{A}_1-	ilde{A}_2 = (a_1-d_2, b_1-c_2, c_1-b_2, d_1-a_2) \
-    	ilde{A}_1*	ilde{A}_2 = (a_1 a_2, b_1 b_2, c_1 c_2, d_1 d_2) \
-\end{array}" title="egin{array}{l}
-    	ext{let } 	ilde{A}_1 = (a_1, b_1, c_1, d_1) \
-    	ext{let } 	ilde{A}_2 = (a_2, b_2, c_2, d_2) \
-    	ilde{A}_1+	ilde{A}_2 = (a_1+a_2, b_1+b_2, c_1+c_2, d_1+d_2) \
-    	ilde{A}_1-	ilde{A}_2 = (a_1-d_2, b_1-c_2, c_1-b_2, d_1-a_2) \
-    	ilde{A}_1*	ilde{A}_2 = (a_1 a_2, b_1 b_2, c_1 c_2, d_1 d_2) \
-\end{array}" /><br />
-<p>}}$</p>
+<h3 id="operations-of-trapozoidaltriangular-fuzzy-sets">Operations of
+Trapozoidal/Triangular Fuzzy Sets</h3>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%20%20%5Ctext%7Blet%20%7D%20%5Ctilde%7BA%7D_1%20%3D%20%28a_1%2C%20b_1%2C%20c_1%2C%20d_1%29%20%5C%5C%0A%20%20%20%20%5Ctext%7Blet%20%7D%20%5Ctilde%7BA%7D_2%20%3D%20%28a_2%2C%20b_2%2C%20c_2%2C%20d_2%29%20%5C%5C%0A%20%20%20%20%5Ctilde%7BA%7D_1%2B%5Ctilde%7BA%7D_2%20%3D%20%28a_1%2Ba_2%2C%20b_1%2Bb_2%2C%20c_1%2Bc_2%2C%20d_1%2Bd_2%29%20%5C%5C%0A%20%20%20%20%5Ctilde%7BA%7D_1-%5Ctilde%7BA%7D_2%20%3D%20%28a_1-d_2%2C%20b_1-c_2%2C%20c_1-b_2%2C%20d_1-a_2%29%20%5C%5C%0A%20%20%20%20%5Ctilde%7BA%7D_1%2A%5Ctilde%7BA%7D_2%20%3D%20%28a_1%20a_2%2C%20b_1%20b_2%2C%20c_1%20c_2%2C%20d_1%20d_2%29%20%5C%5C%0A%5Cend%7Barray%7D%0A"
+alt="
+\begin{array}{l}
+    \text{let } \tilde{A}_1 = (a_1, b_1, c_1, d_1) \\
+    \text{let } \tilde{A}_2 = (a_2, b_2, c_2, d_2) \\
+    \tilde{A}_1+\tilde{A}_2 = (a_1+a_2, b_1+b_2, c_1+c_2, d_1+d_2) \\
+    \tilde{A}_1-\tilde{A}_2 = (a_1-d_2, b_1-c_2, c_1-b_2, d_1-a_2) \\
+    \tilde{A}_1*\tilde{A}_2 = (a_1 a_2, b_1 b_2, c_1 c_2, d_1 d_2) \\
+\end{array}
+" title="
+\begin{array}{l}
+    \text{let } \tilde{A}_1 = (a_1, b_1, c_1, d_1) \\
+    \text{let } \tilde{A}_2 = (a_2, b_2, c_2, d_2) \\
+    \tilde{A}_1+\tilde{A}_2 = (a_1+a_2, b_1+b_2, c_1+c_2, d_1+d_2) \\
+    \tilde{A}_1-\tilde{A}_2 = (a_1-d_2, b_1-c_2, c_1-b_2, d_1-a_2) \\
+    \tilde{A}_1*\tilde{A}_2 = (a_1 a_2, b_1 b_2, c_1 c_2, d_1 d_2) \\
+\end{array}
+" class="math display" /></p>
 <h3 id="fuzzy-set-properties">Fuzzy Set Properties</h3>
-<p>Fuzzy sets have the same properties as <a href="set_theory.wiki.md">|classical sets</a></p>
+<p>Fuzzy sets have the same properties as <a
+href="set_theory.wiki.md">classical sets</a></p>
 <h2 id="triangular-fuzzy-number">Triangular Fuzzy Number</h2>
-<p>A triangular fuzzy number is represented by <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ctilde%7Ba%7D%20%3D%20%28a%2C%20m%2C%20b%29" alt="	ilde{a} = (a, m, b)" title="	ilde{a} = (a, m, b)" />.</p>
-<p>{{https://imgr.search.brave.com/WDFxUWmyPZJZq9QI4nZoG6XwO4WAoQ9cDE6RxCIbB3o/fit/650/290/ce/1/aHR0cHM6Ly93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC9wdWJsaWNh/dGlvbi8yNzEyOTM0/NjMvZmlndXJlL2Zp/ZzEvQVM6NjE1MDY1/NzI0MTQxNTY5QDE1/MjM2NTQ1MDQxNzMv/VHJpYW5ndWxhci1m/dXp6eS1udW1iZXIt/ZGlhZ3JhbS5wbmc|Triangular Fuzzy Number}}</p>
+<p>A triangular fuzzy number is represented by <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ctilde%7Ba%7D%20%3D%20%28a%2C%20m%2C%20b%29"
+alt="\tilde{a} = (a, m, b)" title="\tilde{a} = (a, m, b)"
+class="math inline" />.</p>
+<p>{{https://imgr.search.brave.com/WDFxUWmyPZJZq9QI4nZoG6XwO4WAoQ9cDE6RxCIbB3o/fit/650/290/ce/1/aHR0cHM6Ly93d3cu/cmVzZWFyY2hnYXRl/Lm5ldC9wdWJsaWNh/dGlvbi8yNzEyOTM0/NjMvZmlndXJlL2Zp/ZzEvQVM6NjE1MDY1/NzI0MTQxNTY5QDE1/MjM2NTQ1MDQxNzMv/VHJpYW5ndWxhci1m/dXp6eS1udW1iZXIt/ZGlhZ3JhbS5wbmc|Triangular
+Fuzzy Number}}</p>
 <h2 id="membership-functions">Membership Functions</h2>
-<p>Mathematically, membership functions are denoted as <a href="#Footnotes#1.md">|#1</a></p>
-<p>{{$  = { ( y,_{} ( y ) ) | yU} }}$</p>
-<h3 id="membership-function-properties">Membership Function Properties</h3>
+<p>Mathematically, membership functions are denoted as <a
+href="#Footnotes#1.md">#1</a></p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cwidetilde%7BA%7D%20%3D%20%5Cleft%20%5C%7B%20%5Cleft%20%28%20y%2C%5Cmu%20_%7B%5Cwidetilde%7BA%7D%7D%20%5Cleft%20%28%20y%20%5Cright%20%29%20%5Cright%20%29%20%7C%20y%5Cin%20U%5Cright%20%5C%7D%0A"
+alt="
+\widetilde{A} = \left \{ \left ( y,\mu _{\widetilde{A}} \left ( y \right ) \right ) | y\in U\right \}
+" title="
+\widetilde{A} = \left \{ \left ( y,\mu _{\widetilde{A}} \left ( y \right ) \right ) | y\in U\right \}
+" class="math display" /></p>
+<h3 id="membership-function-properties">Membership Function
+Properties</h3>
 <ul>
-<li>Core: The set of values <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20y" alt="y" title="y" /> such that <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cmu_%7B%5Ctilde%7BA%7D%7D%28y%29%20%3D%201" alt="\mu_{	ilde{A}}(y) = 1" title="\mu_{	ilde{A}}(y) = 1" /></li>
-<li>Support: The set of values <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20y" alt="y" title="y" /> such that <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cmu_%7B%5Ctilde%7BA%7D%7D%28y%29%20%3E%200" alt="\mu_{	ilde{A}}(y) %content%gt; 0" title="\mu_{	ilde{A}}(y) %content%gt; 0" /></li>
-<li>Boundary: <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%201%20%3E%20%5Cmu_%7B%5Ctilde%7BA%7D%7D%28y%29%20%3E%200" alt="1 %content%gt; \mu_{	ilde{A}}(y) %content%gt; 0" title="1 %content%gt; \mu_{	ilde{A}}(y) %content%gt; 0" /></li>
+<li>Core: The set of values <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20y" alt="y"
+title="y" class="math inline" /> such that <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cmu_%7B%5Ctilde%7BA%7D%7D%28y%29%20%3D%201"
+alt="\mu_{\tilde{A}}(y) = 1" title="\mu_{\tilde{A}}(y) = 1"
+class="math inline" /></li>
+<li>Support: The set of values <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20y" alt="y"
+title="y" class="math inline" /> such that <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cmu_%7B%5Ctilde%7BA%7D%7D%28y%29%20%3E%200"
+alt="\mu_{\tilde{A}}(y) &gt; 0" title="\mu_{\tilde{A}}(y) &gt; 0"
+class="math inline" /></li>
+<li>Boundary: <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%201%20%3E%20%5Cmu_%7B%5Ctilde%7BA%7D%7D%28y%29%20%3E%200"
+alt="1 &gt; \mu_{\tilde{A}}(y) &gt; 0"
+title="1 &gt; \mu_{\tilde{A}}(y) &gt; 0" class="math inline" /></li>
 </ul>
 <p>{{https://www.tutorialspoint.com/fuzzy_logic/images/membership_functions_features.jpg}}</p>
 <h3 id="fuzzification">Fuzzification</h3>
-<p>This is the process of transforming crisp sets into fuzzy sets. This process is used to determine how much the crisp number lies in each given region. In the example of determining risk for giving a loan in <a href="#Footnotes#2.md">|#2</a>, the example of a crisp value being fuzzified was <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20660%20%3D%20%21%5Bpic%5D%280%2C0.9%2C0.1%29" alt="660 = ![pic](0,0.9,0.1)" title="660 = ![pic](0,0.9,0.1)" /> where the fuzzy value is bad, neutral, and good credit, respectively. There are multiple methods of doing this, two of methods are shown below <a href="#Footnotes#1.md">|#1</a></p>
-<p>{{https://www.researchgate.net/profile/Abderrahim_Bennassar/publication/286013789/figure/fig2/AS:307781908353025@1450392333054/Block-diagram-of-a-fuzzy-logic-controller.png|Fuzzy logic block diagram}}</p>
-<h4 id="support-fuzzification-s-fuzzification-method">Support Fuzzification (s-fuzzification) Method</h4>
-<p>{{$  = _1Q( x_1 )+_2Q( x_2 )+…+_nQ( x_n ) }}$</p>
-<p>where <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20Q%28x_i%29" alt="Q(x_i)" title="Q(x_i)" /> is called the <em>kernel of fuzzification</em>. This method is implemented by keeping <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cmu_i" alt="\mu_i" title="\mu_i" /> constant and <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20x_i" alt="x_i" title="x_i" /> is transformed into a fuzzy set <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20Q%28x_i%29" alt="Q(x_i)" title="Q(x_i)" />.</p>
-<h4 id="grade-fuzzification-g-fuzzification-method">Grade Fuzzification (g-fuzzification) Method</h4>
-<p>This is very similar to the s-fuzzification, but <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20x_i" alt="x_i" title="x_i" /> is held constant and <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cmu_i" alt="\mu_i" title="\mu_i" /> is expressed as a fuzzy set.</p>
+<p>This is the process of transforming crisp sets into fuzzy sets. This
+process is used to determine how much the crisp number lies in each
+given region. In the example of determining risk for giving a loan in <a
+href="#Footnotes#2.md">#2</a>, the example of a crisp value being
+fuzzified was <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20660%20%3D%20%21%5Bpic%5D%280%2C0.9%2C0.1%29"
+alt="660 = ![pic](0,0.9,0.1)" title="660 = ![pic](0,0.9,0.1)"
+class="math inline" /> where the fuzzy value is bad, neutral, and good
+credit, respectively. There are multiple methods of doing this, two of
+methods are shown below <a href="#Footnotes#1.md">#1</a></p>
+<p>{{https://www.researchgate.net/profile/Abderrahim_Bennassar/publication/286013789/figure/fig2/AS:307781908353025@1450392333054/Block-diagram-of-a-fuzzy-logic-controller.png|Fuzzy
+logic block diagram}}</p>
+<h4 id="support-fuzzification-s-fuzzification-method">Support
+Fuzzification (s-fuzzification) Method</h4>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cwidetilde%7BA%7D%20%3D%20%5Cmu%20_1Q%5Cleft%20%28%20x_1%20%5Cright%20%29%2B%5Cmu%20_2Q%5Cleft%20%28%20x_2%20%5Cright%20%29%2B...%2B%5Cmu%20_nQ%5Cleft%20%28%20x_n%20%5Cright%20%29%0A"
+alt="
+\widetilde{A} = \mu _1Q\left ( x_1 \right )+\mu _2Q\left ( x_2 \right )+...+\mu _nQ\left ( x_n \right )
+" title="
+\widetilde{A} = \mu _1Q\left ( x_1 \right )+\mu _2Q\left ( x_2 \right )+...+\mu _nQ\left ( x_n \right )
+" class="math display" /></p>
+<p>where <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20Q%28x_i%29"
+alt="Q(x_i)" title="Q(x_i)" class="math inline" /> is called the
+<em>kernel of fuzzification</em>. This method is implemented by keeping
+<img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cmu_i"
+alt="\mu_i" title="\mu_i" class="math inline" /> constant and <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20x_i" alt="x_i"
+title="x_i" class="math inline" /> is transformed into a fuzzy set <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20Q%28x_i%29"
+alt="Q(x_i)" title="Q(x_i)" class="math inline" />.</p>
+<h4 id="grade-fuzzification-g-fuzzification-method">Grade Fuzzification
+(g-fuzzification) Method</h4>
+<p>This is very similar to the s-fuzzification, but <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20x_i" alt="x_i"
+title="x_i" class="math inline" /> is held constant and <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cmu_i"
+alt="\mu_i" title="\mu_i" class="math inline" /> is expressed as a fuzzy
+set.</p>
 <h3 id="defuzzification">Defuzzification</h3>
-<p>This is the process of transforming fuzzy sets into crisp sets <a href="#Footnotes#1.md">|#1</a>. This process happens after inferences have been made on the fuzzy numbers. This usually implies another set of fuzzy rules that determines the ranges of memberships <a href="#Footnotes#2.md">|#2</a>. Similar to the fuzzification process, there are multiple ways to defuzzify values <a href="#Footnotes#1.md">|#1</a>:</p>
-<p>{{https://www.researchgate.net/profile/Abderrahim_Bennassar/publication/286013789/figure/fig2/AS:307781908353025@1450392333054/Block-diagram-of-a-fuzzy-logic-controller.png|Fuzzy logic block diagram}}</p>
+<p>This is the process of transforming fuzzy sets into crisp sets <a
+href="#Footnotes#1.md">#1</a>. This process happens after inferences
+have been made on the fuzzy numbers. This usually implies another set of
+fuzzy rules that determines the ranges of memberships <a
+href="#Footnotes#2.md">#2</a>. Similar to the fuzzification process,
+there are multiple ways to defuzzify values <a
+href="#Footnotes#1.md">#1</a>:</p>
+<p>{{https://www.researchgate.net/profile/Abderrahim_Bennassar/publication/286013789/figure/fig2/AS:307781908353025@1450392333054/Block-diagram-of-a-fuzzy-logic-controller.png|Fuzzy
+logic block diagram}}</p>
 <h4 id="max-membership-method">Max-Membership Method</h4>
-<p>This method is limited to peak output functions. Mathematically it is represented as</p>
-<p>{{$ <em>{}( x^* )%content%gt;</em>{}( x ) : for :all:x X }}$</p>
-<p>where <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20x%5E%2A" alt="x^*" title="x^*" /> is the defuzzified output.</p>
+<p>This method is limited to peak output functions. Mathematically it is
+represented as</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cmu%20_%7B%5Cwidetilde%7BA%7D%7D%5Cleft%20%28%20x%5E%2A%20%5Cright%20%29%3E%5Cmu%20_%7B%5Cwidetilde%7BA%7D%7D%5Cleft%20%28%20x%20%5Cright%20%29%20%5C%3A%20for%20%5C%3Aall%5C%3Ax%20%5Cin%20X%0A"
+alt="
+\mu _{\widetilde{A}}\left ( x^* \right )&gt;\mu _{\widetilde{A}}\left ( x \right ) \: for \:all\:x \in X
+" title="
+\mu _{\widetilde{A}}\left ( x^* \right )&gt;\mu _{\widetilde{A}}\left ( x \right ) \: for \:all\:x \in X
+" class="math display" /></p>
+<p>where <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20x%5E%2A"
+alt="x^*" title="x^*" class="math inline" /> is the defuzzified
+output.</p>
 <h4 id="centroid-method">Centroid Method</h4>
 <p>Also known as the center of area or the center of gravity method:</p>
-<p>{{$ x^* =  }}$</p>
-<p>What this means is that given the fuzzy value to be defizzified, draw a horizontal line at the percentage of the membership as indicated by the fuzzy value, merge the areas together, and find the centroid of the geometric shape that was generated <a href="#Footnotes#2.md">|#2</a>.</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0Ax%5E%2A%20%3D%20%5Cfrac%7B%5Cint%20%5Cmu%20_%7B%5Cwidetilde%7BA%7D%7D%5Cleft%20%28%20x%20%5Cright%20%29.xdx%7D%7B%5Cint%20%5Cmu%20_%7B%5Cwidetilde%7BA%7D%7D%5Cleft%20%28%20x%20%5Cright%20%29.dx%7D%0A"
+alt="
+x^* = \frac{\int \mu _{\widetilde{A}}\left ( x \right ).xdx}{\int \mu _{\widetilde{A}}\left ( x \right ).dx}
+" title="
+x^* = \frac{\int \mu _{\widetilde{A}}\left ( x \right ).xdx}{\int \mu _{\widetilde{A}}\left ( x \right ).dx}
+" class="math display" /></p>
+<p>What this means is that given the fuzzy value to be defizzified, draw
+a horizontal line at the percentage of the membership as indicated by
+the fuzzy value, merge the areas together, and find the centroid of the
+geometric shape that was generated <a href="#Footnotes#2.md">#2</a>.</p>
 <h4 id="weighted-average-method">Weighted Average Method</h4>
-<p>Each membership function is weighted by its maximum membership value:</p>
-<p>{{$ x^* =  }}$</p>
+<p>Each membership function is weighted by its maximum membership
+value:</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0Ax%5E%2A%20%3D%20%5Cfrac%7B%5Csum%20%5Cmu%20_%7B%5Cwidetilde%7BA%7D%7D%5Cleft%20%28%20%5Coverline%7Bx_i%7D%20%5Cright%20%29.%5Coverline%7Bx_i%7D%7D%7B%5Csum%20%5Cmu%20_%7B%5Cwidetilde%7BA%7D%7D%5Cleft%20%28%20%5Coverline%7Bx_i%7D%20%5Cright%20%29%7D%0A"
+alt="
+x^* = \frac{\sum \mu _{\widetilde{A}}\left ( \overline{x_i} \right ).\overline{x_i}}{\sum \mu _{\widetilde{A}}\left ( \overline{x_i} \right )}
+" title="
+x^* = \frac{\sum \mu _{\widetilde{A}}\left ( \overline{x_i} \right ).\overline{x_i}}{\sum \mu _{\widetilde{A}}\left ( \overline{x_i} \right )}
+" class="math display" /></p>
 <h4 id="mean-max-membership">Mean-Max Membership</h4>
 <p>Also known as the middle of the maxima</p>
-<p>{{$ x^* =  }}$</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0Ax%5E%2A%20%3D%20%5Cfrac%7B%5Cdisplaystyle%20%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%5Coverline%7Bx_i%7D%7D%7Bn%7D%0A"
+alt="
+x^* = \frac{\displaystyle \sum_{i=1}^{n}\overline{x_i}}{n}
+" title="
+x^* = \frac{\displaystyle \sum_{i=1}^{n}\overline{x_i}}{n}
+" class="math display" /></p>
 <h3 id="fuzzy-arithmetic">Fuzzy Arithmetic</h3>
-<p>If we have a nonnegative, triangular fuzzy number <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ctilde%7Ba%7D%20%3D%20%28a_1%2C%20a_2%2C%20a_3%29" alt="	ilde{a} = (a_1, a_2, a_3)" title="	ilde{a} = (a_1, a_2, a_3)" /> and <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ctilde%7Bb%7D%20%3D%20%28b_1%2C%20b_2%2C%20b_3%29" alt="	ilde{b} = (b_1, b_2, b_3)" title="	ilde{b} = (b_1, b_2, b_3)" />, then the sum is defined as</p>
-<p>{{$ + = (a_1 + b_1, a_2 + b_2, a_3 + b_3) }}$</p>
+<p>If we have a nonnegative, triangular fuzzy number <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ctilde%7Ba%7D%20%3D%20%28a_1%2C%20a_2%2C%20a_3%29"
+alt="\tilde{a} = (a_1, a_2, a_3)" title="\tilde{a} = (a_1, a_2, a_3)"
+class="math inline" /> and <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ctilde%7Bb%7D%20%3D%20%28b_1%2C%20b_2%2C%20b_3%29"
+alt="\tilde{b} = (b_1, b_2, b_3)" title="\tilde{b} = (b_1, b_2, b_3)"
+class="math inline" />, then the sum is defined as</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Ctilde%7Ba%7D%2B%5Ctilde%7Bb%7D%20%3D%20%28a_1%20%2B%20b_1%2C%20a_2%20%2B%20b_2%2C%20a_3%20%2B%20b_3%29%0A"
+alt="
+\tilde{a}+\tilde{b} = (a_1 + b_1, a_2 + b_2, a_3 + b_3)
+" title="
+\tilde{a}+\tilde{b} = (a_1 + b_1, a_2 + b_2, a_3 + b_3)
+" class="math display" /></p>
 <p>and the difference is</p>
-<p>{{$ + = (a_1 - b_3, a_2 - b_2, a_3 - b_1) }}$</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Ctilde%7Ba%7D%2B%5Ctilde%7Bb%7D%20%3D%20%28a_1%20-%20b_3%2C%20a_2%20-%20b_2%2C%20a_3%20-%20b_1%29%0A"
+alt="
+\tilde{a}+\tilde{b} = (a_1 - b_3, a_2 - b_2, a_3 - b_1)
+" title="
+\tilde{a}+\tilde{b} = (a_1 - b_3, a_2 - b_2, a_3 - b_1)
+" class="math display" /></p>
 <h2 id="comparing-fuzzy-numbers">Comparing Fuzzy Numbers</h2>
-<p>This is the same concept as <a href="#Defuzzification.md">|defuzzification</a>, but now we will put in context of its use. It is important to be able to compare fuzzy numbers, especially for <a href="fuzzy_lin_prog.md">|Fuzzy Linear Programming</a> so one is able to state whether <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ctilde%7Ba%7D%20%3C%20%5Ctilde%7Bb%7D" alt="	ilde{a} %content%lt; 	ilde{b}" title="	ilde{a} %content%lt; 	ilde{b}" /> or <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ctilde%7Ba%7D%20%3E%20%5Ctilde%7Bb%7D" alt="	ilde{a} %content%gt; 	ilde{b}" title="	ilde{a} %content%gt; 	ilde{b}" /> when defining constraints. These methods are known as _ordering function. A common ordering function is simply taking the average of the fuzzy number <a href="#Footnotes#1.md">|#1</a>, <a href="#Footnotes#3.md">|#3</a>:</p>
-<p>{{$ R() =  }}$</p>
+<p>This is the same concept as <a
+href="#Defuzzification.md">defuzzification</a>, but now we will put in
+context of its use. It is important to be able to compare fuzzy numbers,
+especially for <a href="fuzzy_lin_prog.md">Fuzzy Linear Programming</a>
+so one is able to state whether <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ctilde%7Ba%7D%20%3C%20%5Ctilde%7Bb%7D"
+alt="\tilde{a} &lt; \tilde{b}" title="\tilde{a} &lt; \tilde{b}"
+class="math inline" /> or <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ctilde%7Ba%7D%20%3E%20%5Ctilde%7Bb%7D"
+alt="\tilde{a} &gt; \tilde{b}" title="\tilde{a} &gt; \tilde{b}"
+class="math inline" /> when defining constraints. These methods are
+known as _ordering function. A common ordering function is simply taking
+the average of the fuzzy number <a href="#Footnotes#1.md">#1</a>, <a
+href="#Footnotes#3.md">#3</a>:</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0AR%28%5Ctilde%7Ba%7D%29%20%3D%20%5Cfrac%7Ba%20%2B%20m%20%2B%20b%7D%7B3%7D%0A"
+alt="
+R(\tilde{a}) = \frac{a + m + b}{3}
+" title="
+R(\tilde{a}) = \frac{a + m + b}{3}
+" class="math display" /></p>
 <h1 id="footnotes">Footnotes</h1>
 <ul>
-<li><em>1</em> <span class="citation" data-cites="tutorials_fuzzy">@tutorials_fuzzy</span> | Fuzzy logic, 2021. [Online; accessed 21-October-2021].</li>
-<li><em>2</em> <span class="citation" data-cites="matlab_fuzzy_logic">@matlab_fuzzy_logic</span> | MATLAB. What is fuzzy logic, Aug 2021.</li>
-<li><em>3</em> <span class="citation" data-cites="kaur_2016">@kaur_2016</span> | Jagdeep Kaur and Amit Kumar (2016). An Introduction to Fuzzy Linear Programming Problems</li>
+<li><em>1</em> <span class="citation"
+data-cites="tutorials_fuzzy">@tutorials_fuzzy</span> | Fuzzy logic,
+2021. [Online; accessed 21-October-2021].</li>
+<li><em>2</em> <span class="citation"
+data-cites="matlab_fuzzy_logic">@matlab_fuzzy_logic</span> | MATLAB.
+What is fuzzy logic, Aug 2021.</li>
+<li><em>3</em> <span class="citation"
+data-cites="kaur_2016">@kaur_2016</span> | Jagdeep Kaur and Amit Kumar
+(2016). An Introduction to Fuzzy Linear Programming Problems</li>
 </ul>
 	</div>
 </body>

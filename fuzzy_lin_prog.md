@@ -1,18 +1,3 @@
-# Contents
-        - [Fuzzy Linear Programming](#Fuzzy Linear Programming.md)
-                - [Fuzzy Objective](#Fuzzy Linear Programming#Fuzzy Objective.md)
-                - [Fuzzy Constraints](#Fuzzy Linear Programming#Fuzzy Constraints.md)
-                - [Fuzzy Coefficients](#Fuzzy Linear Programming#Fuzzy Coefficients.md)
-        - [Formulating FFLP](#Formulating FFLP.md)
-                - [A General FLP Model](#Formulating FFLP#A General FLP Model.md)
-                        - [Nasseri's Method](#Formulating FFLP#A General FLP Model#Nasseri's Method.md)
-                        - [Zimmermans's Methods](#Formulating FFLP#A General FLP Model#Zimmermans's Methods.md)
-                                - [min operator](#Formulating FFLP#A General FLP Model#Zimmermans's Methods#min operator.md)
-                                - [product operator](#Formulating FFLP#A General FLP Model#Zimmermans's Methods#product operator.md)
-                - [Zimmerman's Product Example](#Formulating FFLP#Zimmerman's Product Example.md)
-                - [Fuzzy Berth Allocation Problem (BAP) Example](#Formulating FFLP#Fuzzy Berth Allocation Problem (BAP) Example.md)
-        - [Footnotes](#Footnotes.md)
-
 # Fuzzy Linear Programming
 Fuzzy linear programming introduces the idea of uncertainty into the model's parameters. This allows for adaptability of plans or "fuzziness" to the solution of the linear program. By doing so, this allows for a more robust model that is guaranteed to result in an efficient solution [#1](#Footnotes#1.md), [#3](#Footnotes#3.md). Fuzzy LP is based off [fuzzy theory](fuzzy_theory.md) which is the basis that allows for the uncertainty.
 
@@ -92,7 +77,7 @@ Given a similar model to solve as before the model for fuzzy coefficients can be
 
 $$
 \begin{array}{l}
-	\text{max } cx                                                 \\
+	\text{max } cx                                                  \\
 	[(1-1/2h)(a_i + \bar{a}_i) + 1/2h(a_i - \underline{a}_i)]x \leq \\
 	(1-1/2h)(b_i + \bar{b}_i) + 1/2h(b_i - \underline{b}_i),        \\
 	[1/2h(a_i + \bar{a}_i) + (1-1/2h)(a_i - \underline{a}_i)]x \leq \\

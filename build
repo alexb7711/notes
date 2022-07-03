@@ -38,14 +38,13 @@ function process()
 	local dir=$2
 	local header_file=$3
 	local html_file="$dir/$(basename ${file%.*}).html"
-	local temp_file="$dir/temp.html"
 
 	# Process markdown
-	pandoc --pdf-engine=xelatex --webtex --listings -o $temp_file $file
+	pandoc --pdf-engine=xelatex --webtex --listings -o $html_file $file
 
 	# Get the text from the file
 	header=$(<$header_file)
-	body=$(<$temp_file)
+	body=$(<$html_file)
 
 	# Replace %content% with processed markdown
 	echo "${header//__PLACEHOLDER__/$body}" > $html_file

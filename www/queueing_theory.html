@@ -23,7 +23,226 @@
 		<a href="%root_path%error.html">About</a>
 	</div>
 	<div class="content">
-	    <h1 id="fundamentals-of-queueing-theory">Fundamentals of Queueing
+	    <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>queueing_theory</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#fundamentals-of-queueing-theory"
+id="toc-fundamentals-of-queueing-theory">Fundamentals of Queueing
+Theory</a>
+<ul>
+<li><a href="#introduction" id="toc-introduction">Introduction</a>
+<ul>
+<li><a href="#measurement-of-system-performance"
+id="toc-measurement-of-system-performance">Measurement of System
+Performance</a></li>
+<li><a href="#characteristics-of-queueing-systems"
+id="toc-characteristics-of-queueing-systems">Characteristics of Queueing
+Systems</a></li>
+<li><a href="#exponential-distribution"
+id="toc-exponential-distribution">Exponential Distribution</a></li>
+<li><a href="#poisson-arrivals" id="toc-poisson-arrivals">Poisson
+Arrivals</a></li>
+<li><a href="#exponential-service-durations"
+id="toc-exponential-service-durations">Exponential Service
+Durations</a></li>
+<li><a href="#offered-load" id="toc-offered-load">Offered Load</a></li>
+</ul></li>
+<li><a href="#motivating-examples-and-mm1-queue"
+id="toc-motivating-examples-and-mm1-queue">Motivating Examples and M/M/1
+queue</a>
+<ul>
+<li><a href="#steady-state-probabilities-computation"
+id="toc-steady-state-probabilities-computation">Steady-State
+Probabilities Computation</a></li>
+<li><a href="#stability-condition-for-steady-state-behavior"
+id="toc-stability-condition-for-steady-state-behavior">Stability
+Condition for Steady State Behavior</a></li>
+<li><a href="#kendall-notation" id="toc-kendall-notation">Kendall
+Notation</a></li>
+</ul></li>
+<li><a href="#littles-law" id="toc-littles-law">Little’s Law</a></li>
+<li><a href="#h-lambda-g" id="toc-h-lambda-g"><img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20H%20%3D%20%5C%5Clambda%20G"
+alt="H = \\lambda G" title="H = \\lambda G"
+class="math inline" /></a></li>
+<li><a href="#simple-streams" id="toc-simple-streams">Simple
+Streams</a></li>
+<li><a href="#qualitative-assumptions-and-their-analysis"
+id="toc-qualitative-assumptions-and-their-analysis">Qualitative
+Assumptions and Their Analysis</a></li>
+<li><a href="#distribution-of-events"
+id="toc-distribution-of-events">Distribution of Events</a></li>
+<li><a href="#the-intensity-and-parameter-of-a-stream"
+id="toc-the-intensity-and-parameter-of-a-stream">The Intensity and
+Parameter of a Stream</a></li>
+</ul></li>
+<li><a href="#serivicing-and-waiting"
+id="toc-serivicing-and-waiting">Serivicing and Waiting</a></li>
+<li><a href="#references" id="toc-references">References</a></li>
+</ul>
+</nav>
+<h1 id="fundamentals-of-queueing-theory">Fundamentals of Queueing
 Theory</h1>
 <h2 id="introduction">Introduction</h2>
 <h3 id="measurement-of-system-performance">Measurement of System
@@ -86,28 +305,26 @@ upon arrival</li>
 <li>Tail distribution</li>
 </ul>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20%20%20P%28X%20%5Cgeq%20x%29%20%3D%20%5Ctext%7Bexp%7D%28-%5Clambda%20x%29%0A"
-alt="
-    P(X \geq x) = \text{exp}(-\lambda x)
-" title="
-    P(X \geq x) = \text{exp}(-\lambda x)
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20P%28X%20%5C%5Cgeq%20x%29%20%3D%20%5C%5Ctext%7Bexp%7D%28-%5C%5Clambda%20x%29"
+alt="P(X \\geq x) = \\text{exp}(-\\lambda x)"
+title="P(X \\geq x) = \\text{exp}(-\\lambda x)"
+class="math display" /></p>
 <ul>
 <li>Mean, variance and squared coefficient of variation:
 <ul>
 <li>Mean: <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20E%28X%29%20%3D%201%2F%5Clambda"
-alt="E(X) = 1/\lambda" title="E(X) = 1/\lambda"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20E%28X%29%20%3D%201%2F%5C%5Clambda"
+alt="E(X) = 1/\\lambda" title="E(X) = 1/\\lambda"
 class="math inline" /></li>
 <li>Variance: <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20var%28X%29%20%3D%20E%28X%5E2%29%20-%20%28E%28X%29%29%5E2%20%3D%20E%28%28X%20-%20E%28X%29%29%5E2%20%3D%201%2F%5Clambda%5E2"
-alt="var(X) = E(X^2) - (E(X))^2 = E((X - E(X))^2 = 1/\lambda^2"
-title="var(X) = E(X^2) - (E(X))^2 = E((X - E(X))^2 = 1/\lambda^2"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20var%28X%29%20%3D%20E%28X%5E2%29%20-%20%28E%28X%29%29%5E2%20%3D%20E%28%28X%20-%20E%28X%29%29%5E2%20%3D%201%2F%5C%5Clambda%5E2"
+alt="var(X) = E(X^2) - (E(X))^2 = E((X - E(X))^2 = 1/\\lambda^2"
+title="var(X) = E(X^2) - (E(X))^2 = E((X - E(X))^2 = 1/\\lambda^2"
 class="math inline" /></li>
 <li>Squared coefficient of variation: <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20Cv%5E2%20%3D%20var%28x%29%2F%28E%28X%29%29%5E2%20%3D%201%20%5Cforall%20%5Clambda"
-alt="Cv^2 = var(x)/(E(X))^2 = 1 \forall \lambda"
-title="Cv^2 = var(x)/(E(X))^2 = 1 \forall \lambda"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20Cv%5E2%20%3D%20var%28x%29%2F%28E%28X%29%29%5E2%20%3D%201%20%5C%5Cforall%20%5C%5Clambda"
+alt="Cv^2 = var(x)/(E(X))^2 = 1 \\forall \\lambda"
+title="Cv^2 = var(x)/(E(X))^2 = 1 \\forall \\lambda"
 class="math inline" /></li>
 </ul></li>
 <li>Properties:
@@ -115,36 +332,34 @@ class="math inline" /></li>
 <li>Memoryless
 <ul>
 <li><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20P%28U_i%20%5Cgeq%20u%29%20%3D%20%5Ctext%7Bexp%7D%28-%5Clambda%20u%29"
-alt="P(U_i \geq u) = \text{exp}(-\lambda u)"
-title="P(U_i \geq u) = \text{exp}(-\lambda u)"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20P%28U_i%20%5C%5Cgeq%20u%29%20%3D%20%5C%5Ctext%7Bexp%7D%28-%5C%5Clambda%20u%29"
+alt="P(U_i \\geq u) = \\text{exp}(-\\lambda u)"
+title="P(U_i \\geq u) = \\text{exp}(-\\lambda u)"
 class="math inline" /></li>
 </ul></li>
 <li>Minimum of two exponential random variables
 <ul>
-<li>$ P(US) = $</li>
-<li>$ P(U &gt; S) = $</li>
+<li>$ P(U\leq S) = \frac{\lambda}{\lambda + \mu}$</li>
+<li>$ P(U &gt; S) = \frac{\mu}{\lambda + \mu}$</li>
 </ul></li>
 </ul></li>
 </ul>
 <h3 id="poisson-arrivals">Poisson Arrivals</h3>
 <p>The successive inter-arrival times <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20U_i%20%3D%20T_%7Bi%2B1%7D%20-%20T_i"
-alt="U_i = T_{i+1} - T_i" title="U_i = T_{i+1} - T_i"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20U_i%20%3D%20T%5C_%7Bi%2B1%7D%20-%20T_i"
+alt="U_i = T\_{i+1} - T_i" title="U_i = T\_{i+1} - T_i"
 class="math inline" /> are independent and distributed according to the
 exponential law with parameter <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda"
-alt="\lambda" title="\lambda" class="math inline" /></p>
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5C%5Clambda"
+alt="\\lambda" title="\\lambda" class="math inline" /></p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20%20%20P%28U_i%20%5Cgeq%20u%29%20%3D%20%5Ctext%7Bexp%7D%28-%5Clambda%20u%29%0A"
-alt="
-    P(U_i \geq u) = \text{exp}(-\lambda u)
-" title="
-    P(U_i \geq u) = \text{exp}(-\lambda u)
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20P%28U_i%20%5C%5Cgeq%20u%29%20%3D%20%5C%5Ctext%7Bexp%7D%28-%5C%5Clambda%20u%29"
+alt="P(U_i \\geq u) = \\text{exp}(-\\lambda u)"
+title="P(U_i \\geq u) = \\text{exp}(-\\lambda u)"
+class="math display" /></p>
 <p>where <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda"
-alt="\lambda" title="\lambda" class="math inline" /> represents the
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5C%5Clambda"
+alt="\\lambda" title="\\lambda" class="math inline" /> represents the
 average arrivals per unit time.</p>
 <h3 id="exponential-service-durations">Exponential Service
 Durations</h3>
@@ -156,56 +371,46 @@ Durations</h3>
 <p>The exponential distribution is an important case of service
 duration</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20%20%20P%28S_i%20%5Cgeq%20s%29%20%3D%20%5Ctext%7Bexp%7D%28-%5Cmu%20s%29%0A"
-alt="
-    P(S_i \geq s) = \text{exp}(-\mu s)
-" title="
-    P(S_i \geq s) = \text{exp}(-\mu s)
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20P%28S_i%20%5C%5Cgeq%20s%29%20%3D%20%5C%5Ctext%7Bexp%7D%28-%5C%5Cmu%20s%29"
+alt="P(S_i \\geq s) = \\text{exp}(-\\mu s)"
+title="P(S_i \\geq s) = \\text{exp}(-\\mu s)"
+class="math display" /></p>
 <p>where <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cmu"
-alt="\mu" title="\mu" class="math inline" /> is the average number of
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5C%5Cmu"
+alt="\\mu" title="\\mu" class="math inline" /> is the average number of
 clients served per unit time.</p>
 <h3 id="offered-load">Offered Load</h3>
 <p>Average performance depends on the offered load <img
 style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Crho"
-alt="\rho" title="\rho" class="math inline" />, defined as</p>
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5C%5Crho"
+alt="\\rho" title="\\rho" class="math inline" />, defined as</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20%20%20%5Crho%20%3D%20%5Cfrac%7B%5Clambda%7D%7B%5Cmu%7D%0A"
-alt="
-    \rho = \frac{\lambda}{\mu}
-" title="
-    \rho = \frac{\lambda}{\mu}
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5C%5Crho%20%3D%20%5C%5Cfrac%7B%5C%5Clambda%7D%7B%5C%5Cmu%7D"
+alt="\\rho = \\frac{\\lambda}{\\mu}"
+title="\\rho = \\frac{\\lambda}{\\mu}" class="math display" /></p>
 <p>The unit of <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Crho"
-alt="\rho" title="\rho" class="math inline" /> is the Erlang, a
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5C%5Crho"
+alt="\\rho" title="\\rho" class="math inline" /> is the Erlang, a
 dimensionless unit.</p>
 <h2 id="motivating-examples-and-mm1-queue">Motivating Examples and M/M/1
 queue</h2>
 <h3 id="steady-state-probabilities-computation">Steady-State
 Probabilities Computation</h3>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20%20%20%5Cpi_i%20%3D%20%5Cpi_0%20%5Cfrac%7B%5Clambda%7D%7B%5Cmu%7D%5Ei%5C%3B%20i%20%3D%201%2C2%2C...%0A"
-alt="
-    \pi_i = \pi_0 \frac{\lambda}{\mu}^i\; i = 1,2,...
-" title="
-    \pi_i = \pi_0 \frac{\lambda}{\mu}^i\; i = 1,2,...
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5C%5Cpi_i%20%3D%20%5C%5Cpi_0%20%5C%5Cfrac%7B%5C%5Clambda%7D%7B%5C%5Cmu%7D%5Ei%3B%20i%20%3D%201%2C2%2C..."
+alt="\\pi_i = \\pi_0 \\frac{\\lambda}{\\mu}^i; i = 1,2,..."
+title="\\pi_i = \\pi_0 \\frac{\\lambda}{\\mu}^i; i = 1,2,..."
+class="math display" /></p>
 <h3 id="stability-condition-for-steady-state-behavior">Stability
 Condition for Steady State Behavior</h3>
 <p>The arrival rate is lower than the service rate:</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20%20%20%5Clambda%20%3C%20%5Cmu%0A"
-alt="
-    \lambda &lt; \mu
-" title="
-    \lambda &lt; \mu
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5C%5Clambda%20%3C%20%5C%5Cmu"
+alt="\\lambda &lt; \\mu" title="\\lambda &lt; \\mu"
+class="math display" /></p>
 <p>or <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Crho%20%3D%20%5Clambda%2F%5Cmu%20%3C%201"
-alt="\rho = \lambda/\mu &lt; 1" title="\rho = \lambda/\mu &lt; 1"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5C%5Crho%20%3D%20%5C%5Clambda%2F%5C%5Cmu%20%3C%201"
+alt="\\rho = \\lambda/\\mu &lt; 1" title="\\rho = \\lambda/\\mu &lt; 1"
 class="math inline" /> (traffic intensity or load$</p>
 <h3 id="kendall-notation">Kendall Notation</h3>
 <pre><code>A/B/c/K/m/z</code></pre>
@@ -222,11 +427,6 @@ class="math inline" /> (traffic intensity or load$</p>
 </ul></li>
 </ul>
 <table>
-<colgroup>
-<col style="width: 48%" />
-<col style="width: 10%" />
-<col style="width: 40%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th>Characteristics</th>
@@ -255,8 +455,8 @@ title="D" class="math inline" /></td>
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20E_k" alt="E_k"
 title="E_k" class="math inline" /></td>
 <td>Erlang type <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20k%5C%3B%20%28k%20%3D%201%2C2%29"
-alt="k\; (k = 1,2)" title="k\; (k = 1,2)" class="math inline" /></td>
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20k%3B%20%28k%20%3D%201%2C2%29"
+alt="k; (k = 1,2)" title="k; (k = 1,2)" class="math inline" /></td>
 </tr>
 <tr class="even">
 <td>Service-time distribution (B)</td>
@@ -319,9 +519,9 @@ title="PK" class="math inline" /></td>
 <h2 id="littles-law">Little’s Law</h2>
 <ul>
 <li><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda"
-alt="\lambda" title="\lambda" class="math inline" />: Average rate that
-customers arrive to a system</li>
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5C%5Clambda"
+alt="\\lambda" title="\\lambda" class="math inline" />: Average rate
+that customers arrive to a system</li>
 <li><img style="vertical-align:middle"
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20W" alt="W"
 title="W" class="math inline" />: Average wait time that a customer
@@ -332,26 +532,18 @@ title="L" class="math inline" />: Average number of customers in the
 system</li>
 </ul>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20%20%20L%20%3D%20%5Clambda%20W%0A"
-alt="
-    L = \lambda W
-" title="
-    L = \lambda W
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20L%20%3D%20%5C%5Clambda%20W"
+alt="L = \\lambda W" title="L = \\lambda W" class="math display" /></p>
 <h2 id="h-lambda-g"><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20H%20%3D%20%5Clambda%20G"
-alt="H = \lambda G" title="H = \lambda G" class="math inline" /></h2>
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20H%20%3D%20%5C%5Clambda%20G"
+alt="H = \\lambda G" title="H = \\lambda G" class="math inline" /></h2>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20L%20%3D%20%5Clambda%20W"
-alt="L = \lambda W" title="L = \lambda W" class="math inline" /> is a
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20L%20%3D%20%5C%5Clambda%20W"
+alt="L = \\lambda W" title="L = \\lambda W" class="math inline" /> is a
 special case of a more general relation.</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20%20%20H%20%3D%20%5Clambda%20G%0A"
-alt="
-    H = \lambda G
-" title="
-    H = \lambda G
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20H%20%3D%20%5C%5Clambda%20G"
+alt="H = \\lambda G" title="H = \\lambda G" class="math display" /></p>
 <ul>
 <li><img style="vertical-align:middle"
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20G" alt="G"
@@ -373,22 +565,20 @@ length <img style="vertical-align:middle"
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20t" alt="t"
 title="t" class="math inline" /> is represented as</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20P_%7Bk%7D%28t%29%20%3D%20%5Cfrac%7B%5Clambda%20t%29%5Ek%7D%7Bk%21%7D%20e%5E%7B%5Clambda%20t%7D%0A"
-alt="
-  P_{k}(t) = \frac{\lambda t)^k}{k!} e^{\lambda t}
-" title="
-  P_{k}(t) = \frac{\lambda t)^k}{k!} e^{\lambda t}
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20P%5C_%7Bk%7D%28t%29%20%3D%20%5C%5Cfrac%7B%5C%5Clambda%20t%29%5Ek%7D%7Bk%21%7D%20e%5E%7B%5C%5Clambda%20t%7D"
+alt="P\_{k}(t) = \\frac{\\lambda t)^k}{k!} e^{\\lambda t}"
+title="P\_{k}(t) = \\frac{\\lambda t)^k}{k!} e^{\\lambda t}"
+class="math display" /></p>
 <p>where <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda%20%3E%200"
-alt="\lambda &gt; 0" title="\lambda &gt; 0" class="math inline" />.
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5C%5Clambda%20%3E%200"
+alt="\\lambda &gt; 0" title="\\lambda &gt; 0" class="math inline" />.
 Importantly, the incoming stream is assumed to compose the following
 properties</p>
 <pre><code>Given any finite group of nonoverlapping time intervals, the number of customers arriving during each interval are [theory_of_statistics](mutually independent random variables.md).</code></pre>
 <p><em>Definition</em>: A finite or countable sequence <img
 style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ctau_n"
-alt="\tau_n" title="\tau_n" class="math inline" /> of random variables
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5C%5Ctau_n"
+alt="\\tau_n" title="\\tau_n" class="math inline" /> of random variables
 defined on the same probability space under the ocndition that in any
 fixed time interval <img style="vertical-align:middle"
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%28a%2Cb%29"
@@ -451,27 +641,25 @@ Parameter of a Stream</h2>
 <p>The mean number of customers arriving in a time interval is denoted
 as</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0AM%5Cmu%28t%29%20%3D%20e%5E%7B%5Clambda%20t%7D%20%5Csum_%7Bk%3D1%7D%5E%7B%5Cinfty%7D%20k%20%5Cfrac%7B%28%5Clambda%20t%29%5Ek%29%7D%7Bk%21%7D%20%3D%20%5Clambda%20t%0A"
-alt="
-M\mu(t) = e^{\lambda t} \sum_{k=1}^{\infty} k \frac{(\lambda t)^k)}{k!} = \lambda t
-" title="
-M\mu(t) = e^{\lambda t} \sum_{k=1}^{\infty} k \frac{(\lambda t)^k)}{k!} = \lambda t
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20M%5C%5Cmu%28t%29%20%3D%20e%5E%7B%5C%5Clambda%20t%7D%20%5C%5Csum%5C_%7Bk%3D1%7D%5E%7B%5C%5Cinfty%7D%20k%20%5C%5Cfrac%7B%28%5C%5Clambda%20t%29%5Ek%29%7D%7Bk%21%7D%20%3D%20%5C%5Clambda%20t"
+alt="M\\mu(t) = e^{\\lambda t} \\sum\_{k=1}^{\\infty} k \\frac{(\\lambda t)^k)}{k!} = \\lambda t"
+title="M\\mu(t) = e^{\\lambda t} \\sum\_{k=1}^{\\infty} k \\frac{(\\lambda t)^k)}{k!} = \\lambda t"
+class="math display" /></p>
 <p>Where <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cmu%28t%29"
-alt="\mu(t)" title="\mu(t)" class="math inline" /> is the actual number
-of customers arriving during a time interval of length <img
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5C%5Cmu%28t%29"
+alt="\\mu(t)" title="\\mu(t)" class="math inline" /> is the actual
+number of customers arriving during a time interval of length <img
 style="vertical-align:middle"
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20t" alt="t"
 title="t" class="math inline" />. The mathematical expectation of the
 number of costomers arriving in this unit time is called the
 <em>intensity of th stream</em>. For a simple queue <img
 style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda%20%3D%20%5Cmu"
-alt="\lambda = \mu" title="\lambda = \mu" class="math inline" /> for
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5C%5Clambda%20%3D%20%5C%5Cmu"
+alt="\\lambda = \\mu" title="\\lambda = \\mu" class="math inline" /> for
 which <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda"
-alt="\lambda" title="\lambda" class="math inline" /> is called the
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5C%5Clambda"
+alt="\\lambda" title="\\lambda" class="math inline" /> is called the
 <em>parameter of the stream</em>.</p>
 <h1 id="serivicing-and-waiting">Serivicing and Waiting</h1>
 <h1 id="references">References</h1>
@@ -484,6 +672,8 @@ Theory. John Wiley {&amp;} Sons, Inc., jan 2018.</li>
 href="https://www.youtube.com/watch?v=rSZWig173xM.md">Introduction To
 Queuing Theory</a></li>
 </ul>
+</body>
+</html>
 	</div>
 </body>
 </html>

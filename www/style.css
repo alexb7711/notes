@@ -59,7 +59,10 @@ ul {
 
 dt { font-weight: bold; }
 
-img { border: none; }
+img {
+      border: 8px;
+      filter: invert(90%);
+}
 
 pre {
   border-left: 5px solid #dcdcdc;

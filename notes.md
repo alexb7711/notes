@@ -1,22 +1,6 @@
-## Contents
-        - [Knowledge Base](#Knowledge Base.md)
-        - [Estimation](#Estimation.md)
-                - [Optimal Estimation](#Estimation#Optimal Estimation.md)
-        - [Mathematics](#Mathematics.md)
-                - [Calculus](#Mathematics#Calculus.md)
-                - [Fuzzy Logic](#Mathematics#Fuzzy Logic.md)
-                - [Linear Algebra](#Mathematics#Linear Algebra.md)
-                        - [Vectors](#Mathematics#Linear Algebra#Vectors.md)
-                - [Set Theory](#Mathematics#Set Theory.md)
-                - [Quaternions](#Mathematics#Quaternions.md)
-                - [Queue Theory](#Mathematics#Queue Theory.md)
-        - [Optimization](#Optimization.md)
-                - [Parametric Programming](#Optimization#Parametric Programming.md)
-                - [Linear Programming](#Optimization#Linear Programming.md)
-                        - [Fuzzy Linear Programming](#Optimization#Linear Programming#Fuzzy Linear Programming.md)
-                        - [Stochastic Programmming](#Optimization#Linear Programming#Stochastic Programmming.md)
-        - [Programming](#Programming.md)
-                - [MATLAB](#Programming#MATLAB.md)
+---
+title: "Notes"
+---
 
 # Knowledge Base
 This page is somewhat misleading. I provide links to general starting points, but the idea is to have a free-flowing set of knowledge that can be interconnected with one another. The idea is to separate yourself from the idea of categorizing topics in your head and effectively building mental barriers between these ideas. To reiterate, the links before only provide general starting points for what you may be interested in finding.
@@ -37,7 +21,7 @@ The set of references can be found in the `main.bib`.
 * [Derivatives](derivatives.md)
 
 ## Fuzzy Logic
-* [Fuzzy Logic](fuzzy_theory.wiki.md)
+* [Fuzzy Logic](fuzzy_theory.html)
 
 ## Linear Algebra
 [Linear algebra](linear_algebra.md) is the branch of mathematics concerning linear equations and their representation in vector spaces and through matrices.
@@ -52,7 +36,7 @@ The theory of [sets](set_theory.md) in a nutshell.
 Theory of [quaternions](quaternion_theory.md) in a nutshell
 
 ## Queue Theory
-[Queueing Theory](queueing_theory.wiki.md)
+[Queueing Theory](queueing_theory.html)
 
 # Optimization
 Below are some sections on optimization types. [This link has a set of notes from optimization for engineers](optimization_for_engineers_class.md).
@@ -64,10 +48,10 @@ Parametric programming is a type of optimization, where the optimization problem
 Process of optimization by setting up the worlds largest set of linear equations
 
 ### Fuzzy Linear Programming
-[Fuzzy Linear Programming](fuzzy_lin_prog.wiki.md)
+[Fuzzy Linear Programming](fuzzy_lin_prog.html)
 
 ### Stochastic Programmming
-[Stochastic Programming](stochastic_prog.wiki.md) is a framework for modeling optimizaiton problems that involve uncertainty. A stochastic program is an optimization problem in which som eor all problem parameters are uncertain, but follow known probability distributions.
+[Stochastic Programming](stochastic_prog.html) is a framework for modeling optimizaiton problems that involve uncertainty. A stochastic program is an optimization problem in which som eor all problem parameters are uncertain, but follow known probability distributions.
 
 # Programming
 ## MATLAB

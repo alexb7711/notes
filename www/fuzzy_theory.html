@@ -23,7 +23,205 @@
 		<a href="%root_path%error.html">About</a>
 	</div>
 	<div class="content">
-	    <h1 id="contents">Contents</h1>
+	    <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>fuzzy_theory</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#contents" id="toc-contents">Contents</a></li>
+<li><a href="#fuzzy-theory" id="toc-fuzzy-theory">Fuzzy Theory</a></li>
+<li><a href="#introduction" id="toc-introduction">Introduction</a>
+<ul>
+<li><a href="#fuzzy-set" id="toc-fuzzy-set">Fuzzy Set</a>
+<ul>
+<li><a href="#operations-of-fuzzy-sets"
+id="toc-operations-of-fuzzy-sets">Operations of Fuzzy Sets</a></li>
+<li><a href="#operations-of-trapozoidaltriangular-fuzzy-sets"
+id="toc-operations-of-trapozoidaltriangular-fuzzy-sets">Operations of
+Trapozoidal/Triangular Fuzzy Sets</a></li>
+<li><a href="#fuzzy-set-properties" id="toc-fuzzy-set-properties">Fuzzy
+Set Properties</a></li>
+</ul></li>
+<li><a href="#triangular-fuzzy-number"
+id="toc-triangular-fuzzy-number">Triangular Fuzzy Number</a></li>
+<li><a href="#membership-functions"
+id="toc-membership-functions">Membership Functions</a>
+<ul>
+<li><a href="#membership-function-properties"
+id="toc-membership-function-properties">Membership Function
+Properties</a></li>
+<li><a href="#fuzzification"
+id="toc-fuzzification">Fuzzification</a></li>
+<li><a href="#defuzzification"
+id="toc-defuzzification">Defuzzification</a></li>
+<li><a href="#fuzzy-arithmetic" id="toc-fuzzy-arithmetic">Fuzzy
+Arithmetic</a></li>
+</ul></li>
+<li><a href="#comparing-fuzzy-numbers"
+id="toc-comparing-fuzzy-numbers">Comparing Fuzzy Numbers</a></li>
+</ul></li>
+<li><a href="#footnotes" id="toc-footnotes">Footnotes</a></li>
+</ul>
+</nav>
+<h1 id="contents">Contents</h1>
 <pre><code>    - [Fuzzy Theory](#Fuzzy Theory.md)
     - [Introduction](#Introduction.md)
             - [Fuzzy Set](#Introduction#Fuzzy Set.md)
@@ -142,27 +340,23 @@ class="math inline" /></li>
 <h3 id="operations-of-trapozoidaltriangular-fuzzy-sets">Operations of
 Trapozoidal/Triangular Fuzzy Sets</h3>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%20%20%5Ctext%7Blet%20%7D%20%5Ctilde%7BA%7D_1%20%3D%20%28a_1%2C%20b_1%2C%20c_1%2C%20d_1%29%20%5C%5C%0A%20%20%20%20%5Ctext%7Blet%20%7D%20%5Ctilde%7BA%7D_2%20%3D%20%28a_2%2C%20b_2%2C%20c_2%2C%20d_2%29%20%5C%5C%0A%20%20%20%20%5Ctilde%7BA%7D_1%2B%5Ctilde%7BA%7D_2%20%3D%20%28a_1%2Ba_2%2C%20b_1%2Bb_2%2C%20c_1%2Bc_2%2C%20d_1%2Bd_2%29%20%5C%5C%0A%20%20%20%20%5Ctilde%7BA%7D_1-%5Ctilde%7BA%7D_2%20%3D%20%28a_1-d_2%2C%20b_1-c_2%2C%20c_1-b_2%2C%20d_1-a_2%29%20%5C%5C%0A%20%20%20%20%5Ctilde%7BA%7D_1%2A%5Ctilde%7BA%7D_2%20%3D%20%28a_1%20a_2%2C%20b_1%20b_2%2C%20c_1%20c_2%2C%20d_1%20d_2%29%20%5C%5C%0A%5Cend%7Barray%7D%0A"
-alt="
-\begin{array}{l}
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%20%20%5Ctext%7Blet%20%7D%20%5Ctilde%7BA%7D_1%20%3D%20%28a_1%2C%20b_1%2C%20c_1%2C%20d_1%29%20%5C%5C%0A%20%20%20%20%5Ctext%7Blet%20%7D%20%5Ctilde%7BA%7D_2%20%3D%20%28a_2%2C%20b_2%2C%20c_2%2C%20d_2%29%20%5C%5C%0A%20%20%20%20%5Ctilde%7BA%7D_1%2B%5Ctilde%7BA%7D_2%20%3D%20%28a_1%2Ba_2%2C%20b_1%2Bb_2%2C%20c_1%2Bc_2%2C%20d_1%2Bd_2%29%20%5C%5C%0A%20%20%20%20%5Ctilde%7BA%7D_1-%5Ctilde%7BA%7D_2%20%3D%20%28a_1-d_2%2C%20b_1-c_2%2C%20c_1-b_2%2C%20d_1-a_2%29%20%5C%5C%0A%20%20%20%20%5Ctilde%7BA%7D_1%2A%5Ctilde%7BA%7D_2%20%3D%20%28a_1%20a_2%2C%20b_1%20b_2%2C%20c_1%20c_2%2C%20d_1%20d_2%29%20%5C%5C%0A%5Cend%7Barray%7D"
+alt="\begin{array}{l}
     \text{let } \tilde{A}_1 = (a_1, b_1, c_1, d_1) \\
     \text{let } \tilde{A}_2 = (a_2, b_2, c_2, d_2) \\
     \tilde{A}_1+\tilde{A}_2 = (a_1+a_2, b_1+b_2, c_1+c_2, d_1+d_2) \\
     \tilde{A}_1-\tilde{A}_2 = (a_1-d_2, b_1-c_2, c_1-b_2, d_1-a_2) \\
     \tilde{A}_1*\tilde{A}_2 = (a_1 a_2, b_1 b_2, c_1 c_2, d_1 d_2) \\
-\end{array}
-" title="
-\begin{array}{l}
+\end{array}" title="\begin{array}{l}
     \text{let } \tilde{A}_1 = (a_1, b_1, c_1, d_1) \\
     \text{let } \tilde{A}_2 = (a_2, b_2, c_2, d_2) \\
     \tilde{A}_1+\tilde{A}_2 = (a_1+a_2, b_1+b_2, c_1+c_2, d_1+d_2) \\
     \tilde{A}_1-\tilde{A}_2 = (a_1-d_2, b_1-c_2, c_1-b_2, d_1-a_2) \\
     \tilde{A}_1*\tilde{A}_2 = (a_1 a_2, b_1 b_2, c_1 c_2, d_1 d_2) \\
-\end{array}
-" class="math display" /></p>
+\end{array}" class="math display" /></p>
 <h3 id="fuzzy-set-properties">Fuzzy Set Properties</h3>
 <p>Fuzzy sets have the same properties as <a
-href="set_theory.wiki.md">classical sets</a></p>
+href="set_theory.html">classical sets</a></p>
 <h2 id="triangular-fuzzy-number">Triangular Fuzzy Number</h2>
 <p>A triangular fuzzy number is represented by <img
 style="vertical-align:middle"
@@ -175,12 +369,10 @@ Fuzzy Number}}</p>
 <p>Mathematically, membership functions are denoted as <a
 href="#Footnotes#1.md">#1</a></p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cwidetilde%7BA%7D%20%3D%20%5Cleft%20%5C%7B%20%5Cleft%20%28%20y%2C%5Cmu%20_%7B%5Cwidetilde%7BA%7D%7D%20%5Cleft%20%28%20y%20%5Cright%20%29%20%5Cright%20%29%20%7C%20y%5Cin%20U%5Cright%20%5C%7D%0A"
-alt="
-\widetilde{A} = \left \{ \left ( y,\mu _{\widetilde{A}} \left ( y \right ) \right ) | y\in U\right \}
-" title="
-\widetilde{A} = \left \{ \left ( y,\mu _{\widetilde{A}} \left ( y \right ) \right ) | y\in U\right \}
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cwidetilde%7BA%7D%20%3D%20%5Cleft%20%5C%7B%20%5Cleft%20%28%20y%2C%5Cmu%20_%7B%5Cwidetilde%7BA%7D%7D%20%5Cleft%20%28%20y%20%5Cright%20%29%20%5Cright%20%29%20%7C%20y%5Cin%20U%5Cright%20%5C%7D"
+alt="\widetilde{A} = \left \{ \left ( y,\mu _{\widetilde{A}} \left ( y \right ) \right ) | y\in U\right \}"
+title="\widetilde{A} = \left \{ \left ( y,\mu _{\widetilde{A}} \left ( y \right ) \right ) | y\in U\right \}"
+class="math display" /></p>
 <h3 id="membership-function-properties">Membership Function
 Properties</h3>
 <ul>
@@ -220,12 +412,10 @@ logic block diagram}}</p>
 <h4 id="support-fuzzification-s-fuzzification-method">Support
 Fuzzification (s-fuzzification) Method</h4>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cwidetilde%7BA%7D%20%3D%20%5Cmu%20_1Q%5Cleft%20%28%20x_1%20%5Cright%20%29%2B%5Cmu%20_2Q%5Cleft%20%28%20x_2%20%5Cright%20%29%2B...%2B%5Cmu%20_nQ%5Cleft%20%28%20x_n%20%5Cright%20%29%0A"
-alt="
-\widetilde{A} = \mu _1Q\left ( x_1 \right )+\mu _2Q\left ( x_2 \right )+...+\mu _nQ\left ( x_n \right )
-" title="
-\widetilde{A} = \mu _1Q\left ( x_1 \right )+\mu _2Q\left ( x_2 \right )+...+\mu _nQ\left ( x_n \right )
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cwidetilde%7BA%7D%20%3D%20%5Cmu%20_1Q%5Cleft%20%28%20x_1%20%5Cright%20%29%2B%5Cmu%20_2Q%5Cleft%20%28%20x_2%20%5Cright%20%29%2B...%2B%5Cmu%20_nQ%5Cleft%20%28%20x_n%20%5Cright%20%29"
+alt="\widetilde{A} = \mu _1Q\left ( x_1 \right )+\mu _2Q\left ( x_2 \right )+...+\mu _nQ\left ( x_n \right )"
+title="\widetilde{A} = \mu _1Q\left ( x_1 \right )+\mu _2Q\left ( x_2 \right )+...+\mu _nQ\left ( x_n \right )"
+class="math display" /></p>
 <p>where <img style="vertical-align:middle"
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20Q%28x_i%29"
 alt="Q(x_i)" title="Q(x_i)" class="math inline" /> is called the
@@ -263,12 +453,10 @@ logic block diagram}}</p>
 <p>This method is limited to peak output functions. Mathematically it is
 represented as</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cmu%20_%7B%5Cwidetilde%7BA%7D%7D%5Cleft%20%28%20x%5E%2A%20%5Cright%20%29%3E%5Cmu%20_%7B%5Cwidetilde%7BA%7D%7D%5Cleft%20%28%20x%20%5Cright%20%29%20%5C%3A%20for%20%5C%3Aall%5C%3Ax%20%5Cin%20X%0A"
-alt="
-\mu _{\widetilde{A}}\left ( x^* \right )&gt;\mu _{\widetilde{A}}\left ( x \right ) \: for \:all\:x \in X
-" title="
-\mu _{\widetilde{A}}\left ( x^* \right )&gt;\mu _{\widetilde{A}}\left ( x \right ) \: for \:all\:x \in X
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cmu%20_%7B%5Cwidetilde%7BA%7D%7D%5Cleft%20%28%20x%5E%2A%20%5Cright%20%29%3E%5Cmu%20_%7B%5Cwidetilde%7BA%7D%7D%5Cleft%20%28%20x%20%5Cright%20%29%20%5C%3A%20for%20%5C%3Aall%5C%3Ax%20%5Cin%20X"
+alt="\mu _{\widetilde{A}}\left ( x^* \right )&gt;\mu _{\widetilde{A}}\left ( x \right ) \: for \:all\:x \in X"
+title="\mu _{\widetilde{A}}\left ( x^* \right )&gt;\mu _{\widetilde{A}}\left ( x \right ) \: for \:all\:x \in X"
+class="math display" /></p>
 <p>where <img style="vertical-align:middle"
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20x%5E%2A"
 alt="x^*" title="x^*" class="math inline" /> is the defuzzified
@@ -276,12 +464,10 @@ output.</p>
 <h4 id="centroid-method">Centroid Method</h4>
 <p>Also known as the center of area or the center of gravity method:</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0Ax%5E%2A%20%3D%20%5Cfrac%7B%5Cint%20%5Cmu%20_%7B%5Cwidetilde%7BA%7D%7D%5Cleft%20%28%20x%20%5Cright%20%29.xdx%7D%7B%5Cint%20%5Cmu%20_%7B%5Cwidetilde%7BA%7D%7D%5Cleft%20%28%20x%20%5Cright%20%29.dx%7D%0A"
-alt="
-x^* = \frac{\int \mu _{\widetilde{A}}\left ( x \right ).xdx}{\int \mu _{\widetilde{A}}\left ( x \right ).dx}
-" title="
-x^* = \frac{\int \mu _{\widetilde{A}}\left ( x \right ).xdx}{\int \mu _{\widetilde{A}}\left ( x \right ).dx}
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20x%5E%2A%20%3D%20%5Cfrac%7B%5Cint%20%5Cmu%20_%7B%5Cwidetilde%7BA%7D%7D%5Cleft%20%28%20x%20%5Cright%20%29.xdx%7D%7B%5Cint%20%5Cmu%20_%7B%5Cwidetilde%7BA%7D%7D%5Cleft%20%28%20x%20%5Cright%20%29.dx%7D"
+alt="x^* = \frac{\int \mu _{\widetilde{A}}\left ( x \right ).xdx}{\int \mu _{\widetilde{A}}\left ( x \right ).dx}"
+title="x^* = \frac{\int \mu _{\widetilde{A}}\left ( x \right ).xdx}{\int \mu _{\widetilde{A}}\left ( x \right ).dx}"
+class="math display" /></p>
 <p>What this means is that given the fuzzy value to be defizzified, draw
 a horizontal line at the percentage of the membership as indicated by
 the fuzzy value, merge the areas together, and find the centroid of the
@@ -290,21 +476,17 @@ geometric shape that was generated <a href="#Footnotes#2.md">#2</a>.</p>
 <p>Each membership function is weighted by its maximum membership
 value:</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0Ax%5E%2A%20%3D%20%5Cfrac%7B%5Csum%20%5Cmu%20_%7B%5Cwidetilde%7BA%7D%7D%5Cleft%20%28%20%5Coverline%7Bx_i%7D%20%5Cright%20%29.%5Coverline%7Bx_i%7D%7D%7B%5Csum%20%5Cmu%20_%7B%5Cwidetilde%7BA%7D%7D%5Cleft%20%28%20%5Coverline%7Bx_i%7D%20%5Cright%20%29%7D%0A"
-alt="
-x^* = \frac{\sum \mu _{\widetilde{A}}\left ( \overline{x_i} \right ).\overline{x_i}}{\sum \mu _{\widetilde{A}}\left ( \overline{x_i} \right )}
-" title="
-x^* = \frac{\sum \mu _{\widetilde{A}}\left ( \overline{x_i} \right ).\overline{x_i}}{\sum \mu _{\widetilde{A}}\left ( \overline{x_i} \right )}
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20x%5E%2A%20%3D%20%5Cfrac%7B%5Csum%20%5Cmu%20_%7B%5Cwidetilde%7BA%7D%7D%5Cleft%20%28%20%5Coverline%7Bx_i%7D%20%5Cright%20%29.%5Coverline%7Bx_i%7D%7D%7B%5Csum%20%5Cmu%20_%7B%5Cwidetilde%7BA%7D%7D%5Cleft%20%28%20%5Coverline%7Bx_i%7D%20%5Cright%20%29%7D"
+alt="x^* = \frac{\sum \mu _{\widetilde{A}}\left ( \overline{x_i} \right ).\overline{x_i}}{\sum \mu _{\widetilde{A}}\left ( \overline{x_i} \right )}"
+title="x^* = \frac{\sum \mu _{\widetilde{A}}\left ( \overline{x_i} \right ).\overline{x_i}}{\sum \mu _{\widetilde{A}}\left ( \overline{x_i} \right )}"
+class="math display" /></p>
 <h4 id="mean-max-membership">Mean-Max Membership</h4>
 <p>Also known as the middle of the maxima</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0Ax%5E%2A%20%3D%20%5Cfrac%7B%5Cdisplaystyle%20%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%5Coverline%7Bx_i%7D%7D%7Bn%7D%0A"
-alt="
-x^* = \frac{\displaystyle \sum_{i=1}^{n}\overline{x_i}}{n}
-" title="
-x^* = \frac{\displaystyle \sum_{i=1}^{n}\overline{x_i}}{n}
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20x%5E%2A%20%3D%20%5Cfrac%7B%5Cdisplaystyle%20%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%5Coverline%7Bx_i%7D%7D%7Bn%7D"
+alt="x^* = \frac{\displaystyle \sum_{i=1}^{n}\overline{x_i}}{n}"
+title="x^* = \frac{\displaystyle \sum_{i=1}^{n}\overline{x_i}}{n}"
+class="math display" /></p>
 <h3 id="fuzzy-arithmetic">Fuzzy Arithmetic</h3>
 <p>If we have a nonnegative, triangular fuzzy number <img
 style="vertical-align:middle"
@@ -315,20 +497,16 @@ src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ctilde%7Bb%7D%20%3D%2
 alt="\tilde{b} = (b_1, b_2, b_3)" title="\tilde{b} = (b_1, b_2, b_3)"
 class="math inline" />, then the sum is defined as</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Ctilde%7Ba%7D%2B%5Ctilde%7Bb%7D%20%3D%20%28a_1%20%2B%20b_1%2C%20a_2%20%2B%20b_2%2C%20a_3%20%2B%20b_3%29%0A"
-alt="
-\tilde{a}+\tilde{b} = (a_1 + b_1, a_2 + b_2, a_3 + b_3)
-" title="
-\tilde{a}+\tilde{b} = (a_1 + b_1, a_2 + b_2, a_3 + b_3)
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Ctilde%7Ba%7D%2B%5Ctilde%7Bb%7D%20%3D%20%28a_1%20%2B%20b_1%2C%20a_2%20%2B%20b_2%2C%20a_3%20%2B%20b_3%29"
+alt="\tilde{a}+\tilde{b} = (a_1 + b_1, a_2 + b_2, a_3 + b_3)"
+title="\tilde{a}+\tilde{b} = (a_1 + b_1, a_2 + b_2, a_3 + b_3)"
+class="math display" /></p>
 <p>and the difference is</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Ctilde%7Ba%7D%2B%5Ctilde%7Bb%7D%20%3D%20%28a_1%20-%20b_3%2C%20a_2%20-%20b_2%2C%20a_3%20-%20b_1%29%0A"
-alt="
-\tilde{a}+\tilde{b} = (a_1 - b_3, a_2 - b_2, a_3 - b_1)
-" title="
-\tilde{a}+\tilde{b} = (a_1 - b_3, a_2 - b_2, a_3 - b_1)
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Ctilde%7Ba%7D%2B%5Ctilde%7Bb%7D%20%3D%20%28a_1%20-%20b_3%2C%20a_2%20-%20b_2%2C%20a_3%20-%20b_1%29"
+alt="\tilde{a}+\tilde{b} = (a_1 - b_3, a_2 - b_2, a_3 - b_1)"
+title="\tilde{a}+\tilde{b} = (a_1 - b_3, a_2 - b_2, a_3 - b_1)"
+class="math display" /></p>
 <h2 id="comparing-fuzzy-numbers">Comparing Fuzzy Numbers</h2>
 <p>This is the same concept as <a
 href="#Defuzzification.md">defuzzification</a>, but now we will put in
@@ -345,12 +523,9 @@ known as _ordering function. A common ordering function is simply taking
 the average of the fuzzy number <a href="#Footnotes#1.md">#1</a>, <a
 href="#Footnotes#3.md">#3</a>:</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0AR%28%5Ctilde%7Ba%7D%29%20%3D%20%5Cfrac%7Ba%20%2B%20m%20%2B%20b%7D%7B3%7D%0A"
-alt="
-R(\tilde{a}) = \frac{a + m + b}{3}
-" title="
-R(\tilde{a}) = \frac{a + m + b}{3}
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20R%28%5Ctilde%7Ba%7D%29%20%3D%20%5Cfrac%7Ba%20%2B%20m%20%2B%20b%7D%7B3%7D"
+alt="R(\tilde{a}) = \frac{a + m + b}{3}"
+title="R(\tilde{a}) = \frac{a + m + b}{3}" class="math display" /></p>
 <h1 id="footnotes">Footnotes</h1>
 <ul>
 <li><em>1</em> <span class="citation"
@@ -363,6 +538,8 @@ What is fuzzy logic, Aug 2021.</li>
 data-cites="kaur_2016">@kaur_2016</span> | Jagdeep Kaur and Amit Kumar
 (2016). An Introduction to Fuzzy Linear Programming Problems</li>
 </ul>
+</body>
+</html>
 	</div>
 </body>
 </html>

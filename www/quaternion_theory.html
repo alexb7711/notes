@@ -23,7 +23,194 @@
 		<a href="%root_path%error.html">About</a>
 	</div>
 	<div class="content">
-	    <h1 id="contents">Contents</h1>
+	    <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>quaternion_theory</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#contents" id="toc-contents">Contents</a></li>
+<li><a href="#notation" id="toc-notation">Notation</a></li>
+<li><a href="#quanternion-theory"
+id="toc-quanternion-theory">Quanternion Theory</a>
+<ul>
+<li><a href="#introduction" id="toc-introduction">Introduction</a></li>
+<li><a href="#theorem" id="toc-theorem">Theorem</a></li>
+<li><a href="#attitude-quaternion" id="toc-attitude-quaternion">Attitude
+Quaternion</a></li>
+<li><a href="#chaining-transformations"
+id="toc-chaining-transformations">Chaining Transformations</a></li>
+<li><a href="#reverse-transformation-direction"
+id="toc-reverse-transformation-direction">Reverse Transformation
+Direction</a></li>
+<li><a href="#using-quaternions-to-transform-vectors"
+id="toc-using-quaternions-to-transform-vectors">Using Quaternions to
+Transform Vectors</a></li>
+<li><a href="#creating-a-transformation-matrix-from-quaternions"
+id="toc-creating-a-transformation-matrix-from-quaternions">Creating a
+Transformation Matrix from Quaternions</a></li>
+</ul></li>
+<li><a href="#footnotes" id="toc-footnotes">Footnotes</a></li>
+</ul>
+</nav>
+<h1 id="contents">Contents</h1>
 <pre><code>    - [Notation](#Notation.md)
     - [Quanternion Theory](#Quanternion Theory.md)
             - [Introduction](#Quanternion Theory#Introduction.md)
@@ -51,12 +238,10 @@ alt="3\times 1" title="3\times 1" class="math inline" /> vector</li>
 <p>The quanternion can be written as <a
 href="#Footnotes#1.md">#1</a></p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cmathbb%7BH%7D%20%3D%20%5C%7Ba%20%2B%20bi%20%2B%20cj%20%2B%20dk%20%3A%20a%2Cb%2Cc%2Cd%20%5Cin%20%5Cmathbb%7BR%7D%5C%7D%0A"
-alt="
-\mathbb{H} = \{a + bi + cj + dk : a,b,c,d \in \mathbb{R}\}
-" title="
-\mathbb{H} = \{a + bi + cj + dk : a,b,c,d \in \mathbb{R}\}
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cmathbb%7BH%7D%20%3D%20%5C%7Ba%20%2B%20bi%20%2B%20cj%20%2B%20dk%20%3A%20a%2Cb%2Cc%2Cd%20%5Cin%20%5Cmathbb%7BR%7D%5C%7D"
+alt="\mathbb{H} = \{a + bi + cj + dk : a,b,c,d \in \mathbb{R}\}"
+title="\mathbb{H} = \{a + bi + cj + dk : a,b,c,d \in \mathbb{R}\}"
+class="math display" /></p>
 <p>Where <img style="vertical-align:middle"
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20i" alt="i"
 title="i" class="math inline" />, <img style="vertical-align:middle"
@@ -69,54 +254,42 @@ alt="\sqrt{-1}" title="\sqrt{-1}" class="math inline" />. The
 intereseting thing is that we can think of a quaternion as <em>having a
 scalar part and a vector part</em>:</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%28v_0%2C%20%5Cunderline%7Bv%7D%29%20%3D%20%28v_0%2C%20v_1%20i%20%2B%20v_2%20j%20%2B%20v_3%20k%0A"
-alt="
-(v_0, \underline{v}) = (v_0, v_1 i + v_2 j + v_3 k
-" title="
-(v_0, \underline{v}) = (v_0, v_1 i + v_2 j + v_3 k
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%28v_0%2C%20%5Cunderline%7Bv%7D%29%20%3D%20%28v_0%2C%20v_1%20i%20%2B%20v_2%20j%20%2B%20v_3%20k"
+alt="(v_0, \underline{v}) = (v_0, v_1 i + v_2 j + v_3 k"
+title="(v_0, \underline{v}) = (v_0, v_1 i + v_2 j + v_3 k"
+class="math display" /></p>
 <p>Now if you think of three-dimensional space as being purely imaginary
 quaternions:</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cmathbb%7BR%7D%5E3%20%3D%20%5C%7Bxi%20%2B%20yj%20%2B%20zk%20%3A%20x%2Cy%2Cz%20%5Cin%20%5Cmathbb%7BR%7D%5C%7D%0A"
-alt="
-\mathbb{R}^3 = \{xi + yj + zk : x,y,z \in \mathbb{R}\}
-" title="
-\mathbb{R}^3 = \{xi + yj + zk : x,y,z \in \mathbb{R}\}
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cmathbb%7BR%7D%5E3%20%3D%20%5C%7Bxi%20%2B%20yj%20%2B%20zk%20%3A%20x%2Cy%2Cz%20%5Cin%20%5Cmathbb%7BR%7D%5C%7D"
+alt="\mathbb{R}^3 = \{xi + yj + zk : x,y,z \in \mathbb{R}\}"
+title="\mathbb{R}^3 = \{xi + yj + zk : x,y,z \in \mathbb{R}\}"
+class="math display" /></p>
 <p>Just like for complex numbers, the rotations are done using <em>unit
 quaternions</em>:</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%20%20cos%5Cpsi%20%2B%20i%20sin%5Cpsi%20%5C%5C%0A%20%20%20%20cos%5Cpsi%20%2B%20j%20sin%5Cpsi%20%5C%5C%0A%20%20%20%20cos%5Cpsi%20%2B%20k%20sin%5Cpsi%20%5C%5C%0A%5Cend%7Barray%7D%0A"
-alt="
-\begin{array}{l}
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%20%20cos%5Cpsi%20%2B%20i%20sin%5Cpsi%20%5C%5C%0A%20%20%20%20cos%5Cpsi%20%2B%20j%20sin%5Cpsi%20%5C%5C%0A%20%20%20%20cos%5Cpsi%20%2B%20k%20sin%5Cpsi%20%5C%5C%0A%5Cend%7Barray%7D"
+alt="\begin{array}{l}
     cos\psi + i sin\psi \\
     cos\psi + j sin\psi \\
     cos\psi + k sin\psi \\
-\end{array}
-" title="
-\begin{array}{l}
+\end{array}" title="\begin{array}{l}
     cos\psi + i sin\psi \\
     cos\psi + j sin\psi \\
     cos\psi + k sin\psi \\
-\end{array}
-" class="math display" /></p>
+\end{array}" class="math display" /></p>
 <p>Where this can be rewritten using Euler’s formula as:</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%20%20e%5E%7Bi%5Cpsi%7D%20%5C%5C%0A%20%20%20%20e%5E%7Bj%5Cpsi%7D%20%5C%5C%0A%20%20%20%20e%5E%7Bk%5Cpsi%7D%20%5C%5C%0A%5Cend%7Barray%7D%0A"
-alt="
-\begin{array}{l}
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%20%20e%5E%7Bi%5Cpsi%7D%20%5C%5C%0A%20%20%20%20e%5E%7Bj%5Cpsi%7D%20%5C%5C%0A%20%20%20%20e%5E%7Bk%5Cpsi%7D%20%5C%5C%0A%5Cend%7Barray%7D"
+alt="\begin{array}{l}
     e^{i\psi} \\
     e^{j\psi} \\
     e^{k\psi} \\
-\end{array}
-" title="
-\begin{array}{l}
+\end{array}" title="\begin{array}{l}
     e^{i\psi} \\
     e^{j\psi} \\
     e^{k\psi} \\
-\end{array}
-" class="math display" /></p>
+\end{array}" class="math display" /></p>
 <p>Now lets generalize this idea. Take any unit imaginary quaternion
 <img style="vertical-align:middle"
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20u%20%3D%20u_1%20i%20%2B%20u_2%20j%20%2B%20u_3%20k"
@@ -124,42 +297,32 @@ alt="u = u_1 i + u_2 j + u_3 k" title="u = u_1 i + u_2 j + u_3 k"
 class="math inline" />. That is, any unit vector. Then this can be
 represented as</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0Acos%5Cpsi%20%2B%20%5Cunderline%7Bu%7D%20sin%5Cpsi%0A"
-alt="
-cos\psi + \underline{u} sin\psi
-" title="
-cos\psi + \underline{u} sin\psi
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20cos%5Cpsi%20%2B%20%5Cunderline%7Bu%7D%20sin%5Cpsi"
+alt="cos\psi + \underline{u} sin\psi"
+title="cos\psi + \underline{u} sin\psi" class="math display" /></p>
 <p>By analogy with Euler’s formula, it can be rewritten as</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0Ae%5E%7B%5Cunderline%7Bu%7D%5Cpsi%7D%0A"
-alt="
-e^{\underline{u}\psi}
-" title="
-e^{\underline{u}\psi}
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20e%5E%7B%5Cunderline%7Bu%7D%5Cpsi%7D"
+alt="e^{\underline{u}\psi}" title="e^{\underline{u}\psi}"
+class="math display" /></p>
 <h2 id="theorem">Theorem</h2>
 <p>Oh no, a theorem in the introduction! Its really not that bad.</p>
 <pre><code>If $\underline{u}$ is a unit vector, and $\underline{v}$ is any vector, the expression</code></pre>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0Ae%5E%7B%5Cunderline%7Bu%7D%5Cpsi%7D%20%5Cunderline%7Bv%7D%20e%5E%7B-%5Cunderline%7Bu%7D%5Cpsi%7D%0A"
-alt="
-e^{\underline{u}\psi} \underline{v} e^{-\underline{u}\psi}
-" title="
-e^{\underline{u}\psi} \underline{v} e^{-\underline{u}\psi}
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20e%5E%7B%5Cunderline%7Bu%7D%5Cpsi%7D%20%5Cunderline%7Bv%7D%20e%5E%7B-%5Cunderline%7Bu%7D%5Cpsi%7D"
+alt="e^{\underline{u}\psi} \underline{v} e^{-\underline{u}\psi}"
+title="e^{\underline{u}\psi} \underline{v} e^{-\underline{u}\psi}"
+class="math display" /></p>
 <pre><code>gives the result of rotating $\underline{v}$ about the axis in the $\underline{u}$ direction by $2\psi$ degrees.</code></pre>
 <p>Therefore to rotate by <img style="vertical-align:middle"
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cpsi"
 alt="\psi" title="\psi" class="math inline" /> degrees, we get the
 following equation</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0AR_%7Be%5E%7B%5Cunderline%7Bu%7D%5Cpsi%2F2%7D%7D%20%28%5Cunderline%7Bv%7D%29%20%3D%20e%5E%7B%5Cunderline%7Bu%7D%5Cpsi%2F2%7D%20%5Cunderline%7Bv%7D%20e%5E%7B-%5Cunderline%7Bu%7D%5Cpsi%2F2%7D%0A"
-alt="
-R_{e^{\underline{u}\psi/2}} (\underline{v}) = e^{\underline{u}\psi/2} \underline{v} e^{-\underline{u}\psi/2}
-" title="
-R_{e^{\underline{u}\psi/2}} (\underline{v}) = e^{\underline{u}\psi/2} \underline{v} e^{-\underline{u}\psi/2}
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20R_%7Be%5E%7B%5Cunderline%7Bu%7D%5Cpsi%2F2%7D%7D%20%28%5Cunderline%7Bv%7D%29%20%3D%20e%5E%7B%5Cunderline%7Bu%7D%5Cpsi%2F2%7D%20%5Cunderline%7Bv%7D%20e%5E%7B-%5Cunderline%7Bu%7D%5Cpsi%2F2%7D"
+alt="R_{e^{\underline{u}\psi/2}} (\underline{v}) = e^{\underline{u}\psi/2} \underline{v} e^{-\underline{u}\psi/2}"
+title="R_{e^{\underline{u}\psi/2}} (\underline{v}) = e^{\underline{u}\psi/2} \underline{v} e^{-\underline{u}\psi/2}"
+class="math display" /></p>
 <h2 id="attitude-quaternion">Attitude Quaternion</h2>
 <p>Shuster’s Convention is most typically encountered in modern
 aerospace applications. The attitude quaternion is based on the concept
@@ -177,91 +340,73 @@ src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20B" alt="B"
 title="B" class="math inline" /> frame. The quaternion is defined as <a
 href="#Footnotes#2.md">#2</a></p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0Aq_%7BA%7D%5EB%20%3D%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20cos%28%5Ctheta%2F2%29%20%5C%5C%0A%20%20%20%20sin%28%5Ctheta%2F2%29%20%5Cunderline%7Bn%7D%0A%5Cend%7Bbmatrix%7D%0A"
-alt="
-q_{A}^B =
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20q_%7BA%7D%5EB%20%3D%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20cos%28%5Ctheta%2F2%29%20%5C%5C%0A%20%20%20%20sin%28%5Ctheta%2F2%29%20%5Cunderline%7Bn%7D%0A%5Cend%7Bbmatrix%7D"
+alt="q_{A}^B =
 \begin{bmatrix}
     cos(\theta/2) \\
     sin(\theta/2) \underline{n}
-\end{bmatrix}
-" title="
-q_{A}^B =
+\end{bmatrix}" title="q_{A}^B =
 \begin{bmatrix}
     cos(\theta/2) \\
     sin(\theta/2) \underline{n}
-\end{bmatrix}
-" class="math display" /></p>
+\end{bmatrix}" class="math display" /></p>
 <h2 id="chaining-transformations">Chaining Transformations</h2>
 <p>Given two quaternions</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%20%20q_%7BA%7D%5EB%20%3D%20q_1%20%2B%20%5Cunderline%7Bq_1%7D%20%2F%2F%20%0A%20%20%20%20q_%7BB%7D%5Ec%20%3D%20q_2%20%2B%20%5Cunderline%7Bq_2%7D%0A%5Cend%7Barray%7D%0A"
-alt="
-\begin{array}{l}
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%20%20q_%7BA%7D%5EB%20%3D%20q_1%20%2B%20%5Cunderline%7Bq_1%7D%20%2F%2F%20%0A%20%20%20%20q_%7BB%7D%5Ec%20%3D%20q_2%20%2B%20%5Cunderline%7Bq_2%7D%0A%5Cend%7Barray%7D"
+alt="\begin{array}{l}
     q_{A}^B = q_1 + \underline{q_1} // 
     q_{B}^c = q_2 + \underline{q_2}
-\end{array}
-" title="
-\begin{array}{l}
+\end{array}" title="\begin{array}{l}
     q_{A}^B = q_1 + \underline{q_1} // 
     q_{B}^c = q_2 + \underline{q_2}
-\end{array}
-" class="math display" /></p>
+\end{array}" class="math display" /></p>
 <p>One can chain the the transformations together to achive <img
 style="vertical-align:middle"
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20q_%7BA%7D%5EC"
 alt="q_{A}^C" title="q_{A}^C" class="math inline" /> by</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0Aq_%7BA%7D%5EC%20%3D%20q_%7BB%7D%5EC%20%5Ctimes%20q_%7BA%7D%5EB%20%3D%20%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20q_1%20q_2%20-%20%5Cunderline%7Bq_1%7D%20%5Ccdot%20%5Cunderline%7Bq_2%7D%20%5C%5C%0A%20%20%20%20q_1%20%5Cunderline%7Bq%7D_2%20%2B%20q_2%20%5Cunderline%7Bq%7D_1%20-%20%5Cunderline%7Bq%7D_1%20%5Ctimes%20%5Cunderline%7Bq%7D_2%20%5C%5C%0A%5Cend%7Bbmatrix%7D%0A"
-alt="
-q_{A}^C = q_{B}^C \times q_{A}^B = 
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20q_%7BA%7D%5EC%20%3D%20q_%7BB%7D%5EC%20%5Ctimes%20q_%7BA%7D%5EB%20%3D%20%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20q_1%20q_2%20-%20%5Cunderline%7Bq_1%7D%20%5Ccdot%20%5Cunderline%7Bq_2%7D%20%5C%5C%0A%20%20%20%20q_1%20%5Cunderline%7Bq%7D_2%20%2B%20q_2%20%5Cunderline%7Bq%7D_1%20-%20%5Cunderline%7Bq%7D_1%20%5Ctimes%20%5Cunderline%7Bq%7D_2%20%5C%5C%0A%5Cend%7Bbmatrix%7D"
+alt="q_{A}^C = q_{B}^C \times q_{A}^B = 
 \begin{bmatrix}
     q_1 q_2 - \underline{q_1} \cdot \underline{q_2} \\
     q_1 \underline{q}_2 + q_2 \underline{q}_1 - \underline{q}_1 \times \underline{q}_2 \\
-\end{bmatrix}
-" title="
-q_{A}^C = q_{B}^C \times q_{A}^B = 
+\end{bmatrix}" title="q_{A}^C = q_{B}^C \times q_{A}^B = 
 \begin{bmatrix}
     q_1 q_2 - \underline{q_1} \cdot \underline{q_2} \\
     q_1 \underline{q}_2 + q_2 \underline{q}_1 - \underline{q}_1 \times \underline{q}_2 \\
-\end{bmatrix}
-" class="math display" /></p>
+\end{bmatrix}" class="math display" /></p>
 <h2 id="reverse-transformation-direction">Reverse Transformation
 Direction</h2>
 <p>The <a href="linear_algebra.md">conjugate</a> of a quaternion is
 analogous to the transpose of a tranformation matrix. It reverses the
 direction of the transformation.</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0Aq_%7BB%7D%5EA%20%3D%20%28q_%7BA%7D%5EB%29%5E%2A%20%3D%20q_1%20-%20%5Cunderline%7Bq_1%7D%0A"
-alt="
-q_{B}^A = (q_{A}^B)^* = q_1 - \underline{q_1}
-" title="
-q_{B}^A = (q_{A}^B)^* = q_1 - \underline{q_1}
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20q_%7BB%7D%5EA%20%3D%20%28q_%7BA%7D%5EB%29%5E%2A%20%3D%20q_1%20-%20%5Cunderline%7Bq_1%7D"
+alt="q_{B}^A = (q_{A}^B)^* = q_1 - \underline{q_1}"
+title="q_{B}^A = (q_{A}^B)^* = q_1 - \underline{q_1}"
+class="math display" /></p>
 <h2 id="using-quaternions-to-transform-vectors">Using Quaternions to
 Transform Vectors</h2>
 <p>Quaternions can transform vectors by pre and post multiplying a
 “pure” quaternion containing the vector</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%200%20%5C%5C%20%5Cunderline%7Bv%7D%5Eb%0A%5Cend%7Bbmatrix%7D%20%3D%20%0Aq_%7Bi%7D%5Eb%20%5Ctimes%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%200%20%5C%5C%20%5Cunderline%7Bv%7D%5Ei%0A%5Cend%7Bbmatrix%7D%20%5Ctimes%0A%28q_%7Bi%7D%5Eb%29%5E%2A%0A"
-alt="
-\begin{bmatrix}
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Bbmatrix%7D%0A%20%20%20%200%20%5C%5C%20%5Cunderline%7Bv%7D%5Eb%0A%5Cend%7Bbmatrix%7D%20%3D%20%0Aq_%7Bi%7D%5Eb%20%5Ctimes%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%200%20%5C%5C%20%5Cunderline%7Bv%7D%5Ei%0A%5Cend%7Bbmatrix%7D%20%5Ctimes%0A%28q_%7Bi%7D%5Eb%29%5E%2A"
+alt="\begin{bmatrix}
     0 \\ \underline{v}^b
 \end{bmatrix} = 
 q_{i}^b \times
 \begin{bmatrix}
     0 \\ \underline{v}^i
 \end{bmatrix} \times
-(q_{i}^b)^*
-" title="
-\begin{bmatrix}
+(q_{i}^b)^*" title="\begin{bmatrix}
     0 \\ \underline{v}^b
 \end{bmatrix} = 
 q_{i}^b \times
 \begin{bmatrix}
     0 \\ \underline{v}^i
 \end{bmatrix} \times
-(q_{i}^b)^*
-" class="math display" /></p>
+(q_{i}^b)^*" class="math display" /></p>
 <h2 id="creating-a-transformation-matrix-from-quaternions">Creating a
 Transformation Matrix from Quaternions</h2>
 <p>The transformation matrix <img style="vertical-align:middle"
@@ -273,12 +418,10 @@ alt="q_{A}^B = q_1 + \underline{q}_1"
 title="q_{A}^B = q_1 + \underline{q}_1" class="math inline" /> via the
 following equation</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0AT_%7BA%7D%5EB%20%3D%20I_%7B3%5Ctimes%203%7D%20-%202q_1%20%21%5Bpic%5D%28%5Cunderline%7Bq%7D_1%29%20%2B%202%20%21%5Bpic%5D%28%5Cunderline%7Bq%7D_1%29%5E2%0A"
-alt="
-T_{A}^B = I_{3\times 3} - 2q_1 ![pic](\underline{q}_1) + 2 ![pic](\underline{q}_1)^2
-" title="
-T_{A}^B = I_{3\times 3} - 2q_1 ![pic](\underline{q}_1) + 2 ![pic](\underline{q}_1)^2
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20T_%7BA%7D%5EB%20%3D%20I_%7B3%5Ctimes%203%7D%20-%202q_1%20%21%5Bpic%5D%28%5Cunderline%7Bq%7D_1%29%20%2B%202%20%21%5Bpic%5D%28%5Cunderline%7Bq%7D_1%29%5E2"
+alt="T_{A}^B = I_{3\times 3} - 2q_1 ![pic](\underline{q}_1) + 2 ![pic](\underline{q}_1)^2"
+title="T_{A}^B = I_{3\times 3} - 2q_1 ![pic](\underline{q}_1) + 2 ![pic](\underline{q}_1)^2"
+class="math display" /></p>
 <h1 id="footnotes">Footnotes</h1>
 <ul>
 <li><em>1</em> https://math.ucr.edu/~huerta/introquaternions.pdf</li>
@@ -286,6 +429,8 @@ T_{A}^B = I_{3\times 3} - 2q_1 ![pic](\underline{q}_1) + 2 ![pic](\underline{q}_
 href="local:docs/optimal_estimation/prelims_lectures_notes.htm.md">Optimal
 Estimation | Preliminaries</a></li>
 </ul>
+</body>
+</html>
 	</div>
 </body>
 </html>

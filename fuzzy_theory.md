@@ -66,7 +66,7 @@ $$
 $$
 
 ### Fuzzy Set Properties
-Fuzzy sets have the same properties as [classical sets](set_theory.wiki.md)
+Fuzzy sets have the same properties as [classical sets](set_theory.html)
 
 ## Triangular Fuzzy Number
 A triangular fuzzy number is represented by $\tilde{a} = (a, m, b)$.

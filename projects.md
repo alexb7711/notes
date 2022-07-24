@@ -9,7 +9,7 @@
 * [tabbed](https://github.com/alexb7711/tabbed.md)
 
 ## Open Source
-* [dm-bw](error.wiki.md)
+* [dm-bw](error.html)
 
 ## Master's Degree
 * [UTA-PAP](https://gitlab.com/alex.brown7711/uta-pap.md)

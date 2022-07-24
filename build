@@ -40,7 +40,7 @@ function process()
 	local html_file="$dir/$(basename ${file%.*}).html"
 
 	# Process markdown
-	pandoc --pdf-engine=xelatex --webtex --listings -o $html_file $file
+	pandoc -s --toc --pdf-engine=xelatex --webtex --listings -o $html_file $file
 
 	# Get the text from the file
 	header=$(<$header_file)

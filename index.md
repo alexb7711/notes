@@ -16,9 +16,9 @@ This blog will mainly consist of my personal notes taken while trying to learn c
 * Developing a game engine/framework (TBD)
 * And any other things that peak my interest
 
-I'll keep an updated list [here](todo.wiki.md) on things that I want to learn and explore. If there is anything that you may think is interesting or would like to contribute, feel free to make a pull request. This blog is built with [VimWiki](https://vimwiki.github.io/.md), so the rules for linking pages together is pretty simple.
+I'll keep an updated list [here](todo.html) on things that I want to learn and explore. If there is anything that you may think is interesting or would like to contribute, feel free to make a pull request. This blog is built with [VimWiki](https://vimwiki.github.io/.html), so the rules for linking pages together is pretty simple.
 
-You can also find me on [Youtube](https://www.youtube.com/channel/UC9Y2Lk1mgsMb-NVZCrkplxQ.md)
+You can also find me on [Youtube](https://www.youtube.com/channel/UC9Y2Lk1mgsMb-NVZCrkplxQ.html)
 
 # Notes and Posts
 This website has two purposes:
@@ -27,4 +27,4 @@ This website has two purposes:
 * Blog posts
 
 ## Notes
-This is my knowledge base of [notes](notes.wiki.md). Its messy, doesn't make much sense, but its mine.
+This is my knowledge base of [notes](notes.html). Its messy, doesn't make much sense, but its mine.

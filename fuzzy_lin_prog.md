@@ -250,7 +250,7 @@ $$
 Where the maximum "overval satisfaction" of $\lambda = 0.74$ is achived with $x = [5.03, 7.32]^T$.
 
 ## Fuzzy Berth Allocation Problem (BAP) Example
-In the [BAP](berth_allocation_problem.wiki.md), arrivals of each vessel are highly uncertain, meaning vessels can arrive earlier or later than they were scheduled to arrive. Having to frequently review the berthing plan is not desirable from a planning of resources point of view. A FFLP for the BAP problem to minimize the total time can be expressed as
+In the [BAP](berth_allocation_problem.html), arrivals of each vessel are highly uncertain, meaning vessels can arrive earlier or later than they were scheduled to arrive. Having to frequently review the berthing plan is not desirable from a planning of resources point of view. A FFLP for the BAP problem to minimize the total time can be expressed as
 
 $$
 min\; \sum_{i\in V} (\tilde{m}_i - \tilde{a}_i)

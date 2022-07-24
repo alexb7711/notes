@@ -23,7 +23,218 @@
 		<a href="%root_path%error.html">About</a>
 	</div>
 	<div class="content">
-	    <h1 id="contents">Contents</h1>
+	    <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>optimal_estimation</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#contents" id="toc-contents">Contents</a></li>
+<li><a href="#optimal-estimation" id="toc-optimal-estimation">Optimal
+Estimation</a></li>
+<li><a href="#introduction" id="toc-introduction">(1)
+Introduction</a></li>
+<li><a href="#deterministic-system-model"
+id="toc-deterministic-system-model">(2) Deterministic System
+Model</a></li>
+<li><a href="#probability-theory" id="toc-probability-theory">(3)
+Probability Theory</a>
+<ul>
+<li><a href="#moments-of-random-variables"
+id="toc-moments-of-random-variables">Moments of Random
+Variables</a></li>
+</ul></li>
+<li><a href="#stochastic-process-and-linear-dynamic-system-models"
+id="toc-stochastic-process-and-linear-dynamic-system-models">(4)
+Stochastic Process and Linear Dynamic System Models</a>
+<ul>
+<li><a href="#system-modeling-objective-and-directions"
+id="toc-system-modeling-objective-and-directions">System Modeling:
+Objective and Directions</a></li>
+<li><a href="#foundations-white-gaussian-noise-and-brownian-motion"
+id="toc-foundations-white-gaussian-noise-and-brownian-motion">Foundations:
+White Gaussian Noise and Brownian Motion</a></li>
+<li><a href="#stochastic-integrals"
+id="toc-stochastic-integrals">Stochastic Integrals</a></li>
+<li><a href="#stochastic-differentials"
+id="toc-stochastic-differentials">Stochastic Differentials</a></li>
+<li><a href="#linear-stochastic-differential-equations"
+id="toc-linear-stochastic-differential-equations">Linear Stochastic
+Differential Equations</a></li>
+<li><a href="#linear-stochastic-difference-equations"
+id="toc-linear-stochastic-difference-equations">Linear Stochastic
+Difference Equations</a>
+<ul>
+<li><a href="#lears-method" id="toc-lears-method">Lear’s Method</a></li>
+<li><a href="#savages-method" id="toc-savages-method">Savage’s
+Method</a></li>
+</ul></li>
+<li><a href="#the-overall-system-model"
+id="toc-the-overall-system-model">The Overall System Model</a></li>
+</ul></li>
+<li><a href="#optimal-filtering" id="toc-optimal-filtering">(5) Optimal
+Filtering</a></li>
+<li><a href="#footnotes" id="toc-footnotes">Footnotes</a></li>
+</ul>
+</nav>
+<h1 id="contents">Contents</h1>
 <pre><code>    - [Optimal Estimation](#Optimal Estimation.md)
     - [(1) Introduction](#(1) Introduction.md)
     - [(2) Deterministic System Model](#(2) Deterministic System Model.md)
@@ -52,12 +263,9 @@ href="optimal_estimation_class.md">class notes</a>.</p>
 <li>The first moment is the mean <a href="#Footnotes#1.md">#1</a></li>
 </ul>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20%20%20%5Cboldsymbol%7Bm%7D%20%5Cequiv%20E%21%5Bpic%5D%28x_i%29%0A%20"
-alt="
-    \boldsymbol{m} \equiv E![pic](x_i)
- " title="
-    \boldsymbol{m} \equiv E![pic](x_i)
- " class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cboldsymbol%7Bm%7D%20%5Cequiv%20E%21%5Bpic%5D%28x_i%29"
+alt="\boldsymbol{m} \equiv E![pic](x_i)"
+title="\boldsymbol{m} \equiv E![pic](x_i)" class="math display" /></p>
 <ul>
 <li>The second (noncentral) moment is defined by the <em>autocorrelation
 matrix</em> of <img style="vertical-align:middle"
@@ -65,24 +273,18 @@ src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20x" alt="x"
 title="x" class="math inline" /> <a href="#Footnotes#1.md">#1</a>.</li>
 </ul>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20%20%20%5CGamma%20%5Cequiv%20E%21%5Bpic%5D%28xx%5ET%29%0A"
-alt="
-    \Gamma \equiv E![pic](xx^T)
-" title="
-    \Gamma \equiv E![pic](xx^T)
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5CGamma%20%5Cequiv%20E%21%5Bpic%5D%28xx%5ET%29"
+alt="\Gamma \equiv E![pic](xx^T)" title="\Gamma \equiv E![pic](xx^T)"
+class="math display" /></p>
 <pre><code>which allows us to view the correlation of $x_i$ and $x_j$.</code></pre>
 <ul>
 <li>The second (central) moment is the <em>covariance</em> matrix and is
 expressed as</li>
 </ul>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20%20%20P%20%5Cequiv%20E%5B%28x_i%20-%20m_i%29%28x_j%20-%20m_j%29%5ET%5D%0A"
-alt="
-    P \equiv E[(x_i - m_i)(x_j - m_j)^T]
-" title="
-    P \equiv E[(x_i - m_i)(x_j - m_j)^T]
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20P%20%5Cequiv%20E%5B%28x_i%20-%20m_i%29%28x_j%20-%20m_j%29%5ET%5D"
+alt="P \equiv E[(x_i - m_i)(x_j - m_j)^T]"
+title="P \equiv E[(x_i - m_i)(x_j - m_j)^T]" class="math display" /></p>
 <pre><code>where the square root of variance $P_{ii} = E[(x_i - [i](m_.md))^T] = \sigma^2$ is the _standard deviation_ ($\sigma$) of $x_i$.</code></pre>
 <h1 id="stochastic-process-and-linear-dynamic-system-models">(4)
 Stochastic Process and Linear Dynamic System Models</h1>
@@ -100,18 +302,14 @@ of analyzing the performance capabilities of such devices as well <a
 href="#Footnotes#1.md">#1</a>.</p>
 <p>Consider the following differential equation</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bc%7D%0A%20%20%20%20%5Cdot%7Bx%7D%20%3D%20F%28t%29x%28t%29%20%2B%20B%28t%29u%28t%29%20%2B%20G%28t%29w%28t%29%20%5C%5C%0A%20%20%20%20z%28t_i%29%20%3D%20H%28t_i%29x%28t_i%29%20%2B%20v%28t_i%29%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%5Cend%7Barray%7D%0A"
-alt="
-\begin{array}{c}
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bc%7D%0A%20%20%20%20%5Cdot%7Bx%7D%20%3D%20F%28t%29x%28t%29%20%2B%20B%28t%29u%28t%29%20%2B%20G%28t%29w%28t%29%20%5C%5C%0A%20%20%20%20z%28t_i%29%20%3D%20H%28t_i%29x%28t_i%29%20%2B%20v%28t_i%29%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%5Cend%7Barray%7D"
+alt="\begin{array}{c}
     \dot{x} = F(t)x(t) + B(t)u(t) + G(t)w(t) \\
     z(t_i) = H(t_i)x(t_i) + v(t_i)           \\
-\end{array}
-" title="
-\begin{array}{c}
+\end{array}" title="\begin{array}{c}
     \dot{x} = F(t)x(t) + B(t)u(t) + G(t)w(t) \\
     z(t_i) = H(t_i)x(t_i) + v(t_i)           \\
-\end{array}
-" class="math display" /></p>
+\end{array}" class="math display" /></p>
 <p>A <em>Markov Process</em> states that given a sequence of probability
 distributions (<img style="vertical-align:middle"
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20F_%7Bx_%7Bt_i%20%7C%20x_%7Bt_i%20-%201%7D%2Cx_%7Bt_i%20-%202%7D%2C%20...%7D%7D%28%5Czeta_i%20%7C%20x_%7Bi-1%7D%2C%20x_%7Bi-2%7D%2C%20...%29"
@@ -177,35 +375,27 @@ src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20T" alt="T"
 title="T" class="math inline" />,</li>
 </ul>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bc%7D%0A%20%20%20%20E%5C%7B%20%5B%5Cbeta%28t_2%29%20-%20%5Cbeta%28t_1%29%5D%5C%7D%20%3D%200%20%5C%5C%0A%20%20%20%20E%5C%7B%20%5B%5Cbeta%28t_2%29%20-%20%5Cbeta%28t_1%29%5D%5E2%20%3D%20q%7Ct_2%20-%20t_1%7C%0A%5Cend%7Barray%7D%0A"
-alt="
-\begin{array}{c}
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bc%7D%0A%20%20%20%20E%5C%7B%20%5B%5Cbeta%28t_2%29%20-%20%5Cbeta%28t_1%29%5D%5C%7D%20%3D%200%20%5C%5C%0A%20%20%20%20E%5C%7B%20%5B%5Cbeta%28t_2%29%20-%20%5Cbeta%28t_1%29%5D%5E2%20%3D%20q%7Ct_2%20-%20t_1%7C%0A%5Cend%7Barray%7D"
+alt="\begin{array}{c}
     E\{ [\beta(t_2) - \beta(t_1)]\} = 0 \\
     E\{ [\beta(t_2) - \beta(t_1)]^2 = q|t_2 - t_1|
-\end{array}
-" title="
-\begin{array}{c}
+\end{array}" title="\begin{array}{c}
     E\{ [\beta(t_2) - \beta(t_1)]\} = 0 \\
     E\{ [\beta(t_2) - \beta(t_1)]^2 = q|t_2 - t_1|
-\end{array}
-" class="math display" /></p>
+\end{array}" class="math display" /></p>
 <pre><code>where $q$ is known as the _diffusion_ of the process.</code></pre>
 <p>The statistics at any time instant <img style="vertical-align:middle"
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20i" alt="i"
 title="i" class="math inline" /> is denoted</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bc%7D%0A%20%20%20%20m_%7B%5Cbeta%7D%28t_i%20%29%20%20%20%20%20%20%3D%20E%5C%7B%20%21%5Bpic%5D%28%5Cbeta%28t_i%29%29%5C%7D%20%3D%200%20%5C%5C%0A%20%20%20%20P_%7B%5Cbeta%20%5Cbeta%7D%28t_i%29%20%3D%20E%5C%7B%20%21%5Bpic%5D%28%5Cbeta%28t_i%29%5E2%29%20%3D%20q%7Ct_i%20-%20t_0%7C%0A%5Cend%7Barray%7D%0A"
-alt="
-\begin{array}{c}
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bc%7D%0A%20%20%20%20m_%7B%5Cbeta%7D%28t_i%20%29%20%20%20%20%20%20%3D%20E%5C%7B%20%21%5Bpic%5D%28%5Cbeta%28t_i%29%29%5C%7D%20%3D%200%20%5C%5C%0A%20%20%20%20P_%7B%5Cbeta%20%5Cbeta%7D%28t_i%29%20%3D%20E%5C%7B%20%21%5Bpic%5D%28%5Cbeta%28t_i%29%5E2%29%20%3D%20q%7Ct_i%20-%20t_0%7C%0A%5Cend%7Barray%7D"
+alt="\begin{array}{c}
     m_{\beta}(t_i )      = E\{ ![pic](\beta(t_i))\} = 0 \\
     P_{\beta \beta}(t_i) = E\{ ![pic](\beta(t_i)^2) = q|t_i - t_0|
-\end{array}
-" title="
-\begin{array}{c}
+\end{array}" title="\begin{array}{c}
     m_{\beta}(t_i )      = E\{ ![pic](\beta(t_i))\} = 0 \\
     P_{\beta \beta}(t_i) = E\{ ![pic](\beta(t_i)^2) = q|t_i - t_0|
-\end{array}
-" class="math display" /></p>
+\end{array}" class="math display" /></p>
 <p>where <img style="vertical-align:middle"
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20q" alt="q"
 title="q" class="math inline" /> indicates how fast the mean square
@@ -219,29 +409,23 @@ title="t_0" class="math inline" />. To generalize this the vector
 Brownian motion with white process can be described as <a
 href="#Footnotes#1.md">#1</a></p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bc%7D%0A%20%20%20%20E%5C%7Bw%28t%5C%7D%20%20%20%20%20%20%20%20%20%3D%200%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20E%5C%7D%7Bw%28t%29w%28t%29%5ET%5C%7D%20%3D%20Q%28t%29%20%5Cdelta%28t-t%27%29%20%5C%5C%0A%5Cend%7Barray%7D%0A"
-alt="
-\begin{array}{c}
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bc%7D%0A%20%20%20%20E%5C%7Bw%28t%5C%7D%20%20%20%20%20%20%20%20%20%3D%200%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20E%5C%7D%7Bw%28t%29w%28t%29%5ET%5C%7D%20%3D%20Q%28t%29%20%5Cdelta%28t-t%27%29%20%5C%5C%0A%5Cend%7Barray%7D"
+alt="\begin{array}{c}
     E\{w(t\}         = 0                 \\
     E\}{w(t)w(t)^T\} = Q(t) \delta(t-t&#39;) \\
-\end{array}
-" title="
-\begin{array}{c}
+\end{array}" title="\begin{array}{c}
     E\{w(t\}         = 0                 \\
     E\}{w(t)w(t)^T\} = Q(t) \delta(t-t&#39;) \\
-\end{array}
-" class="math display" /></p>
+\end{array}" class="math display" /></p>
 <p>Notes that Brownian motion is continuous but not differentiable <a
 href="#Footnotes#1.md">#1</a>.</p>
 <h2 id="stochastic-integrals">Stochastic Integrals</h2>
 <p>A <em>scalar stochastic integral</em> is of the form</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0Al%28t%2C%5Ccdot%29%20%3D%20%5Cint_%7Bt_0%7D%5Et%20a%28%5Ctau%29%20d%5Cbeta%20%28%5Ctau%2C%5Ccdot%29%0A"
-alt="
-l(t,\cdot) = \int_{t_0}^t a(\tau) d\beta (\tau,\cdot)
-" title="
-l(t,\cdot) = \int_{t_0}^t a(\tau) d\beta (\tau,\cdot)
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20l%28t%2C%5Ccdot%29%20%3D%20%5Cint_%7Bt_0%7D%5Et%20a%28%5Ctau%29%20d%5Cbeta%20%28%5Ctau%2C%5Ccdot%29"
+alt="l(t,\cdot) = \int_{t_0}^t a(\tau) d\beta (\tau,\cdot)"
+title="l(t,\cdot) = \int_{t_0}^t a(\tau) d\beta (\tau,\cdot)"
+class="math display" /></p>
 <ul>
 <li>Stocastic integrals exibit the usual linear properties of ordinary
 integrals</li>
@@ -258,24 +442,19 @@ variation.</li>
 <h2 id="stochastic-differentials">Stochastic Differentials</h2>
 <p>Given a stochastic integral</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0Al%28t%29%20%3D%20l%28t_0%29%20%2B%20%5Cint_%7Bt_0%7D%5Et%20A%28%5Ctau%29%20d%20%5Cbeta%20%28%5Ctau%29%0A"
-alt="
-l(t) = l(t_0) + \int_{t_0}^t A(\tau) d \beta (\tau)
-" title="
-l(t) = l(t_0) + \int_{t_0}^t A(\tau) d \beta (\tau)
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20l%28t%29%20%3D%20l%28t_0%29%20%2B%20%5Cint_%7Bt_0%7D%5Et%20A%28%5Ctau%29%20d%20%5Cbeta%20%28%5Ctau%29"
+alt="l(t) = l(t_0) + \int_{t_0}^t A(\tau) d \beta (\tau)"
+title="l(t) = l(t_0) + \int_{t_0}^t A(\tau) d \beta (\tau)"
+class="math display" /></p>
 <p>the <em>stochastic integral</em> of <img
 style="vertical-align:middle"
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20l%28t%29"
 alt="l(t)" title="l(t)" class="math inline" /> is defined as <a
 href="#Footnotes#1.md">#1</a></p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0Adl%28t%29%20%3D%20A%28%5Ctau%29%20d%20%5Cbeta%28%5Ctau%29%0A"
-alt="
-dl(t) = A(\tau) d \beta(\tau)
-" title="
-dl(t) = A(\tau) d \beta(\tau)
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20dl%28t%29%20%3D%20A%28%5Ctau%29%20d%20%5Cbeta%28%5Ctau%29"
+alt="dl(t) = A(\tau) d \beta(\tau)"
+title="dl(t) = A(\tau) d \beta(\tau)" class="math display" /></p>
 <p>Noting that Brownian motion is nondifferentiable, <img
 style="vertical-align:middle"
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20dl%28t%29"
@@ -291,37 +470,28 @@ src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Bl%28t%29%20-%20l%28t
 alt="[l(t) - l(t_0)]" title="[l(t) - l(t_0)]" class="math inline" /> <a
 href="#Footnotes#1.md">#1</a>:</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cint_%7Bt_0%7D%5Et%20dlt%28t%29%20%3D%20l%28t%29%20-%20l%28t_0%29%0A"
-alt="
-\int_{t_0}^t dlt(t) = l(t) - l(t_0)
-" title="
-\int_{t_0}^t dlt(t) = l(t) - l(t_0)
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cint_%7Bt_0%7D%5Et%20dlt%28t%29%20%3D%20l%28t%29%20-%20l%28t_0%29"
+alt="\int_{t_0}^t dlt(t) = l(t) - l(t_0)"
+title="\int_{t_0}^t dlt(t) = l(t) - l(t_0)" class="math display" /></p>
 <p>Suppose we have a matrix <img style="vertical-align:middle"
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20D%28%5Ccdot%29"
 alt="D(\cdot)" title="D(\cdot)" class="math inline" /> of differentiable
 functions as well as a stocastic integral of the form</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bc%7D%0A%20%20%20%20s%28t%29%20%3D%20s%28t_0%29%20%2B%20%5Cint_%7Bt_0%29%5Et%20A%28%5Ctau%29%20d%5Cbeta%20%28%5Ctau%29%20%5C%5C%0A%20%20%20%20y%28t%29%20%3D%20D%28t%29%20s%28t%29%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%5Cend%7Barray%7D%0A"
-alt="
-\begin{array}{c}
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bc%7D%0A%20%20%20%20s%28t%29%20%3D%20s%28t_0%29%20%2B%20%5Cint_%7Bt_0%29%5Et%20A%28%5Ctau%29%20d%5Cbeta%20%28%5Ctau%29%20%5C%5C%0A%20%20%20%20y%28t%29%20%3D%20D%28t%29%20s%28t%29%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%5Cend%7Barray%7D"
+alt="\begin{array}{c}
     s(t) = s(t_0) + \int_{t_0)^t A(\tau) d\beta (\tau) \\
     y(t) = D(t) s(t)                                   \\
-\end{array}
-" title="
-\begin{array}{c}
+\end{array}" title="\begin{array}{c}
     s(t) = s(t_0) + \int_{t_0)^t A(\tau) d\beta (\tau) \\
     y(t) = D(t) s(t)                                   \\
-\end{array}
-" class="math display" /></p>
+\end{array}" class="math display" /></p>
 <p>It can be shown that the differential equation of y is</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0Ady%28t%29%20%3D%20%5Cdot%7BD%7D%28t%29%20s%28t%29%20dt%20%2B%20D%28t%29%20ds%28t%29%0A"
-alt="
-dy(t) = \dot{D}(t) s(t) dt + D(t) ds(t)
-" title="
-dy(t) = \dot{D}(t) s(t) dt + D(t) ds(t)
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20dy%28t%29%20%3D%20%5Cdot%7BD%7D%28t%29%20s%28t%29%20dt%20%2B%20D%28t%29%20ds%28t%29"
+alt="dy(t) = \dot{D}(t) s(t) dt + D(t) ds(t)"
+title="dy(t) = \dot{D}(t) s(t) dt + D(t) ds(t)"
+class="math display" /></p>
 <p>Where the integral of the first term can be interpreted as an
 ordinary Riemann integral for each sample function, and the integral of
 the second term is a stochastic integral which is defined properly only
@@ -336,22 +506,16 @@ href="#Footnotes#1.md">#1</a>.</p>
 Differential Equations</h2>
 <p>We would like to generate a system of the form</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cdot%7Bx%7D%28t%29%20%3D%20F%28t%29%20x%28t%29%20%2B%20G%28t%29%20w%28t%29%0A"
-alt="
-\dot{x}(t) = F(t) x(t) + G(t) w(t)
-" title="
-\dot{x}(t) = F(t) x(t) + G(t) w(t)
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cdot%7Bx%7D%28t%29%20%3D%20F%28t%29%20x%28t%29%20%2B%20G%28t%29%20w%28t%29"
+alt="\dot{x}(t) = F(t) x(t) + G(t) w(t)"
+title="\dot{x}(t) = F(t) x(t) + G(t) w(t)" class="math display" /></p>
 <p>However, this equation cannot be used to generate a solution
 directly. Therefore we employ the <em>linear stochastic differential
 equation</em></p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0Adx%28t%29%20%3D%20F%28t%29x%28t%29dt%20%2B%20G%28t%29%20d%5Cbeta%20%28t%29%0A"
-alt="
-dx(t) = F(t)x(t)dt + G(t) d\beta (t)
-" title="
-dx(t) = F(t)x(t)dt + G(t) d\beta (t)
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20dx%28t%29%20%3D%20F%28t%29x%28t%29dt%20%2B%20G%28t%29%20d%5Cbeta%20%28t%29"
+alt="dx(t) = F(t)x(t)dt + G(t) d\beta (t)"
+title="dx(t) = F(t)x(t)dt + G(t) d\beta (t)" class="math display" /></p>
 <p>Where <img style="vertical-align:middle"
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20G%28%5Ccdot%29"
 alt="G(\cdot)" title="G(\cdot)" class="math inline" /> is a known matrix
@@ -365,12 +529,10 @@ alt="Q(t)" title="Q(t)" class="math inline" /> <a
 href="#Footnotes#1.md">#1</a>. Supose we propose a solution of the
 form</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0Ax%28t%29%20%3D%20%5CPsi%20%28t%2Ct_0%29%20x%28t_0%29%20%2B%20int_%7Bt_0%7D%5Et%20%5CPsi%28t%2C%5Ctau%29%20B%28%5Ctau%29%20u%28%5Ctau%29%20d%5Ctau%20%2B%20%5Cint_%7Bt_0%7D%5Et%20%5CPsi%28t%2C%5Ctau%29%20G%28%5Ctau%29%20d%5Cbeta%28%5Ctau%29%0A"
-alt="
-x(t) = \Psi (t,t_0) x(t_0) + int_{t_0}^t \Psi(t,\tau) B(\tau) u(\tau) d\tau + \int_{t_0}^t \Psi(t,\tau) G(\tau) d\beta(\tau)
-" title="
-x(t) = \Psi (t,t_0) x(t_0) + int_{t_0}^t \Psi(t,\tau) B(\tau) u(\tau) d\tau + \int_{t_0}^t \Psi(t,\tau) G(\tau) d\beta(\tau)
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20x%28t%29%20%3D%20%5CPsi%20%28t%2Ct_0%29%20x%28t_0%29%20%2B%20int_%7Bt_0%7D%5Et%20%5CPsi%28t%2C%5Ctau%29%20B%28%5Ctau%29%20u%28%5Ctau%29%20d%5Ctau%20%2B%20%5Cint_%7Bt_0%7D%5Et%20%5CPsi%28t%2C%5Ctau%29%20G%28%5Ctau%29%20d%5Cbeta%28%5Ctau%29"
+alt="x(t) = \Psi (t,t_0) x(t_0) + int_{t_0}^t \Psi(t,\tau) B(\tau) u(\tau) d\tau + \int_{t_0}^t \Psi(t,\tau) G(\tau) d\beta(\tau)"
+title="x(t) = \Psi (t,t_0) x(t_0) + int_{t_0}^t \Psi(t,\tau) B(\tau) u(\tau) d\tau + \int_{t_0}^t \Psi(t,\tau) G(\tau) d\beta(\tau)"
+class="math display" /></p>
 <p>that can be shown to satisfy both the initial condition as well as
 differential equation <a href="#Footnotes#1.md">#1</a>. The first part
 of the equation defines the inital state, the second defines
@@ -387,18 +549,14 @@ src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20P_%7Bxx%7D%28t%29"
 alt="P_{xx}(t)" title="P_{xx}(t)" class="math inline" /> to describe
 their evolution in time <a href="#Footnotes#1.md">#1</a></p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bc%7D%0A%20%20%20%20%5Cdot%7Bm%7D_x%28t%29%20%20%20%20%3D%20F%28t%29m_x%28t%29%20%20%2B%20B%28t%29u%28t%29%20%5C%5C%0A%20%20%20%20%5Cdot%7BP%7D_%7Bxx%7D%28t%29%20%3D%20F%28t%29P_%7Bxx%7D%28t%29%20%2B%20P_%7Bxx%7D%28t%29F%5ET%28t%29%20%2B%20G%28t%29Q%28t%29G%5ET%28t%29%0A%5Cend%7Barray%7D%0A"
-alt="
-\begin{array}{c}
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bc%7D%0A%20%20%20%20%5Cdot%7Bm%7D_x%28t%29%20%20%20%20%3D%20F%28t%29m_x%28t%29%20%20%2B%20B%28t%29u%28t%29%20%5C%5C%0A%20%20%20%20%5Cdot%7BP%7D_%7Bxx%7D%28t%29%20%3D%20F%28t%29P_%7Bxx%7D%28t%29%20%2B%20P_%7Bxx%7D%28t%29F%5ET%28t%29%20%2B%20G%28t%29Q%28t%29G%5ET%28t%29%0A%5Cend%7Barray%7D"
+alt="\begin{array}{c}
     \dot{m}_x(t)    = F(t)m_x(t)  + B(t)u(t) \\
     \dot{P}_{xx}(t) = F(t)P_{xx}(t) + P_{xx}(t)F^T(t) + G(t)Q(t)G^T(t)
-\end{array}
-" title="
-\begin{array}{c}
+\end{array}" title="\begin{array}{c}
     \dot{m}_x(t)    = F(t)m_x(t)  + B(t)u(t) \\
     \dot{P}_{xx}(t) = F(t)P_{xx}(t) + P_{xx}(t)F^T(t) + G(t)Q(t)G^T(t)
-\end{array}
-" class="math display" /></p>
+\end{array}" class="math display" /></p>
 <h2 id="linear-stochastic-difference-equations">Linear Stochastic
 Difference Equations</h2>
 <p>For a time-invariant or slowly varying <img
@@ -416,90 +574,68 @@ the sample period is short compared to the system’s natural transients,
 a first order approxomation to the solution can be used <a
 href="#Footnotes#1.md">#1</a></p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bc%7D%0A%20%20%20%20%5CPsi%28t_%7Bi%2B1%7D%2C%20t_i%29%20%5Capprox%20I%20%2B%20F%28t_i%29%5Bt_%7Bi%2B1%7D%2C%20t_i%5D%20%5C%5C%0A%20%20%20%20B_d%20%5Capprox%20B%28t_i%29%5Bt_%7Bi%2B1%7D%2C%20t_i%5D%20%5C%5C%0A%20%20%20%20Q_d%28t_i%29%20%5Capprox%20G%28t_i%29Q%28t_i%29G%5ET%28t_i%29%5Bt_%7Bi%2B1%7D%2C%20t_i%5D%0A%5Cend%7Barray%7D%0A"
-alt="
-\begin{array}{c}
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bc%7D%0A%20%20%20%20%5CPsi%28t_%7Bi%2B1%7D%2C%20t_i%29%20%5Capprox%20I%20%2B%20F%28t_i%29%5Bt_%7Bi%2B1%7D%2C%20t_i%5D%20%5C%5C%0A%20%20%20%20B_d%20%5Capprox%20B%28t_i%29%5Bt_%7Bi%2B1%7D%2C%20t_i%5D%20%5C%5C%0A%20%20%20%20Q_d%28t_i%29%20%5Capprox%20G%28t_i%29Q%28t_i%29G%5ET%28t_i%29%5Bt_%7Bi%2B1%7D%2C%20t_i%5D%0A%5Cend%7Barray%7D"
+alt="\begin{array}{c}
     \Psi(t_{i+1}, t_i) \approx I + F(t_i)[t_{i+1}, t_i] \\
     B_d \approx B(t_i)[t_{i+1}, t_i] \\
     Q_d(t_i) \approx G(t_i)Q(t_i)G^T(t_i)[t_{i+1}, t_i]
-\end{array}
-" title="
-\begin{array}{c}
+\end{array}" title="\begin{array}{c}
     \Psi(t_{i+1}, t_i) \approx I + F(t_i)[t_{i+1}, t_i] \\
     B_d \approx B(t_i)[t_{i+1}, t_i] \\
     Q_d(t_i) \approx G(t_i)Q(t_i)G^T(t_i)[t_{i+1}, t_i]
-\end{array}
-" class="math display" /></p>
+\end{array}" class="math display" /></p>
 <p>and the mean and covariance are propogated by <a
 href="#Footnotes#1.md">#1</a></p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bc%7D%0A%20%20%20%20m_x%28t_%7Bi%2B1%7D%29%20%3D%20%5CPsi%28t_%7Bi%2B1%7D%2C%20t_i%29%20m_x%28t_i%29%20%2B%20B_d%28t_i%29u%28t_i%29%20%5C%5C%0A%20%20%20%20P_%7Bxx%7D%28t_%7Bt%2B1%7D%29%20%3D%20%5CPsi%28t_%7Bi%2B1%7D%2C%20t_i%29%20P_xx%28t_i%29%20%5CPsi%5ET%20%28t_%7Bi%2B1%7D%2C%20t_i%29%20%2B%20G%28t_i%29Q%28t_i%29G%5ET%28t_i%29%0A%5Cend%7Barray%7D%0A"
-alt="
-\begin{array}{c}
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bc%7D%0A%20%20%20%20m_x%28t_%7Bi%2B1%7D%29%20%3D%20%5CPsi%28t_%7Bi%2B1%7D%2C%20t_i%29%20m_x%28t_i%29%20%2B%20B_d%28t_i%29u%28t_i%29%20%5C%5C%0A%20%20%20%20P_%7Bxx%7D%28t_%7Bt%2B1%7D%29%20%3D%20%5CPsi%28t_%7Bi%2B1%7D%2C%20t_i%29%20P_xx%28t_i%29%20%5CPsi%5ET%20%28t_%7Bi%2B1%7D%2C%20t_i%29%20%2B%20G%28t_i%29Q%28t_i%29G%5ET%28t_i%29%0A%5Cend%7Barray%7D"
+alt="\begin{array}{c}
     m_x(t_{i+1}) = \Psi(t_{i+1}, t_i) m_x(t_i) + B_d(t_i)u(t_i) \\
     P_{xx}(t_{t+1}) = \Psi(t_{i+1}, t_i) P_xx(t_i) \Psi^T (t_{i+1}, t_i) + G(t_i)Q(t_i)G^T(t_i)
-\end{array}
-" title="
-\begin{array}{c}
+\end{array}" title="\begin{array}{c}
     m_x(t_{i+1}) = \Psi(t_{i+1}, t_i) m_x(t_i) + B_d(t_i)u(t_i) \\
     P_{xx}(t_{t+1}) = \Psi(t_{i+1}, t_i) P_xx(t_i) \Psi^T (t_{i+1}, t_i) + G(t_i)Q(t_i)G^T(t_i)
-\end{array}
-" class="math display" /></p>
+\end{array}" class="math display" /></p>
 <h3 id="lears-method">Lear’s Method</h3>
 <p>Given a differential equation of the form</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0Ads%28t%29%20%3D%20F%28t%29x%28t%29dt%20%2B%20B%28t%29%20u%28t%29%20dt%20%2B%20G%28t%29d%5Cbeta%20%28t%29%0A"
-alt="
-ds(t) = F(t)x(t)dt + B(t) u(t) dt + G(t)d\beta (t)
-" title="
-ds(t) = F(t)x(t)dt + B(t) u(t) dt + G(t)d\beta (t)
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20ds%28t%29%20%3D%20F%28t%29x%28t%29dt%20%2B%20B%28t%29%20u%28t%29%20dt%20%2B%20G%28t%29d%5Cbeta%20%28t%29"
+alt="ds(t) = F(t)x(t)dt + B(t) u(t) dt + G(t)d\beta (t)"
+title="ds(t) = F(t)x(t)dt + B(t) u(t) dt + G(t)d\beta (t)"
+class="math display" /></p>
 <p>The solution can be approximated as</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5CPsi%28t_%7Bi%2B1%7D%2C%20t_i%29%20%3D%20I%20%2B%20%5CDelta%20t%20%5Cfrac%7BF%28t_%7Bi%2B1%7D%20%2B%20F%28t_i%29%7D%7B2%7D%20%2B%20%5Cfrac%7B%5CDelta%20t%5E2%7D%7B2%7D%20F%28t_%7Bi%2B1%7D%29F%28t_i%29%0A"
-alt="
-\Psi(t_{i+1}, t_i) = I + \Delta t \frac{F(t_{i+1} + F(t_i)}{2} + \frac{\Delta t^2}{2} F(t_{i+1})F(t_i)
-" title="
-\Psi(t_{i+1}, t_i) = I + \Delta t \frac{F(t_{i+1} + F(t_i)}{2} + \frac{\Delta t^2}{2} F(t_{i+1})F(t_i)
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5CPsi%28t_%7Bi%2B1%7D%2C%20t_i%29%20%3D%20I%20%2B%20%5CDelta%20t%20%5Cfrac%7BF%28t_%7Bi%2B1%7D%20%2B%20F%28t_i%29%7D%7B2%7D%20%2B%20%5Cfrac%7B%5CDelta%20t%5E2%7D%7B2%7D%20F%28t_%7Bi%2B1%7D%29F%28t_i%29"
+alt="\Psi(t_{i+1}, t_i) = I + \Delta t \frac{F(t_{i+1} + F(t_i)}{2} + \frac{\Delta t^2}{2} F(t_{i+1})F(t_i)"
+title="\Psi(t_{i+1}, t_i) = I + \Delta t \frac{F(t_{i+1} + F(t_i)}{2} + \frac{\Delta t^2}{2} F(t_{i+1})F(t_i)"
+class="math display" /></p>
 <h3 id="savages-method">Savage’s Method</h3>
 <p>Given a differential equation of the form</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0Adx%28t%29%20%3D%20F%28t%29x%28t%29dt%20%2B%20B%28t%29%20u%28t%29%20dt%20%2B%20G%28t%29d%5Cbeta%20%28t%29%0A"
-alt="
-dx(t) = F(t)x(t)dt + B(t) u(t) dt + G(t)d\beta (t)
-" title="
-dx(t) = F(t)x(t)dt + B(t) u(t) dt + G(t)d\beta (t)
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20dx%28t%29%20%3D%20F%28t%29x%28t%29dt%20%2B%20B%28t%29%20u%28t%29%20dt%20%2B%20G%28t%29d%5Cbeta%20%28t%29"
+alt="dx(t) = F(t)x(t)dt + B(t) u(t) dt + G(t)d\beta (t)"
+title="dx(t) = F(t)x(t)dt + B(t) u(t) dt + G(t)d\beta (t)"
+class="math display" /></p>
 <p>The solution can be approximated as</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%20%20%5CDelta%20%5CPsi%20%3D%20%5Cint_%7Bt_i%7D%5E%7Bt_%7Bi%2B1%7D%7D%20F%28%5Ctau%29%20d%5Ctau%20%5C%5C%0A%20%20%20%20%5CPsi%28t_%7Bi%2B1%7D%2Ct_i%29%20%3D%20I%20%2B%20%5CDelta%20%5CPsi%20%2B%20%5Cfrac%7B%5CDelta%20%5CPsi%5E2%7D%7B2%21%7D%20%2B%20%5Cfrac%7B%5CDelta%20%5CPsi%5E3%7D%7B3%21%7D%20%2B%20%5Ccdots%0A%5Cend%7Barray%7D%0A"
-alt="
-\begin{array}{l}
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%20%20%5CDelta%20%5CPsi%20%3D%20%5Cint_%7Bt_i%7D%5E%7Bt_%7Bi%2B1%7D%7D%20F%28%5Ctau%29%20d%5Ctau%20%5C%5C%0A%20%20%20%20%5CPsi%28t_%7Bi%2B1%7D%2Ct_i%29%20%3D%20I%20%2B%20%5CDelta%20%5CPsi%20%2B%20%5Cfrac%7B%5CDelta%20%5CPsi%5E2%7D%7B2%21%7D%20%2B%20%5Cfrac%7B%5CDelta%20%5CPsi%5E3%7D%7B3%21%7D%20%2B%20%5Ccdots%0A%5Cend%7Barray%7D"
+alt="\begin{array}{l}
     \Delta \Psi = \int_{t_i}^{t_{i+1}} F(\tau) d\tau \\
     \Psi(t_{i+1},t_i) = I + \Delta \Psi + \frac{\Delta \Psi^2}{2!} + \frac{\Delta \Psi^3}{3!} + \cdots
-\end{array}
-" title="
-\begin{array}{l}
+\end{array}" title="\begin{array}{l}
     \Delta \Psi = \int_{t_i}^{t_{i+1}} F(\tau) d\tau \\
     \Psi(t_{i+1},t_i) = I + \Delta \Psi + \frac{\Delta \Psi^2}{2!} + \frac{\Delta \Psi^3}{3!} + \cdots
-\end{array}
-" class="math display" /></p>
+\end{array}" class="math display" /></p>
 <h2 id="the-overall-system-model">The Overall System Model</h2>
 <p>The measurements can be written as</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bl%7D%0Adx%28t%29%20%3D%20F%28t%29x%28t%29dt%20%2B%20B%28t%29%20u%28t%29%20dt%20%2B%20G%28t%29d%5Cbeta%20%28t%29%0Az%28t_i%29%20%3D%20H%28t_i%29x%28t_i%29%20%2B%20v%28t_i%29%0A%5Cend%7Barray%7D%0A"
-alt="
-\begin{array}{l}
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bl%7D%0Adx%28t%29%20%3D%20F%28t%29x%28t%29dt%20%2B%20B%28t%29%20u%28t%29%20dt%20%2B%20G%28t%29d%5Cbeta%20%28t%29%0Az%28t_i%29%20%3D%20H%28t_i%29x%28t_i%29%20%2B%20v%28t_i%29%0A%5Cend%7Barray%7D"
+alt="\begin{array}{l}
 dx(t) = F(t)x(t)dt + B(t) u(t) dt + G(t)d\beta (t)
 z(t_i) = H(t_i)x(t_i) + v(t_i)
-\end{array}
-" title="
-\begin{array}{l}
+\end{array}" title="\begin{array}{l}
 dx(t) = F(t)x(t)dt + B(t) u(t) dt + G(t)d\beta (t)
 z(t_i) = H(t_i)x(t_i) + v(t_i)
-\end{array}
-" class="math display" /></p>
+\end{array}" class="math display" /></p>
 <p>Where <img style="vertical-align:middle"
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20dx%28t%29"
 alt="dx(t)" title="dx(t)" class="math inline" /> is the continuous model
@@ -523,6 +659,8 @@ data-cites="maybeck_1979">@maybeck_1979</span> | Peter S. Maybeck.
 Stochastic models, estimation and control: A series of monographs and
 textbooks. Acad. Press, 1979.</li>
 </ul>
+</body>
+</html>
 	</div>
 </body>
 </html>

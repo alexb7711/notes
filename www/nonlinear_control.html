@@ -23,25 +23,194 @@
 		<a href="%root_path%error.html">About</a>
 	</div>
 	<div class="content">
-	    <h1 id="contents">Contents</h1>
+	    <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>nonlinear_control</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#contents" id="toc-contents">Contents</a></li>
+<li><a href="#backstepping" id="toc-backstepping">Backstepping</a></li>
+<li><a href="#lyapunov-redesign" id="toc-lyapunov-redesign">Lyapunov
+Redesign</a>
+<ul>
+<li><a href="#online-lectures" id="toc-online-lectures">Online
+Lectures</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="contents">Contents</h1>
 <pre><code>    - [Backstepping](#Backstepping.md)
     - [Lyapunov Redesign](#Lyapunov Redesign.md)
             - [Online Lectures](#Lyapunov Redesign#Online Lectures.md)</code></pre>
 <h1 id="backstepping">Backstepping</h1>
 <p>Consider the system</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%5Cdot%7B%5Ceta%7D%20%3D%20f_a%28%5Ceta%29%20%2B%20g_a%28%5Ceta%29%20%5Czeta%20%5C%5C%0A%20%20%5Cdot%7B%5Czeta%7D%20%3D%20f_b%28%5Ceta%2C%5Czeta%29%20%2B%20g_b%28%5Ceta%2C%5Czeta%29u%0A%5Cend%7Barray%7D%0A"
-alt="
-\begin{array}{l}
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%5Cdot%7B%5Ceta%7D%20%3D%20f_a%28%5Ceta%29%20%2B%20g_a%28%5Ceta%29%20%5Czeta%20%5C%5C%0A%20%20%5Cdot%7B%5Czeta%7D%20%3D%20f_b%28%5Ceta%2C%5Czeta%29%20%2B%20g_b%28%5Ceta%2C%5Czeta%29u%0A%5Cend%7Barray%7D"
+alt="\begin{array}{l}
   \dot{\eta} = f_a(\eta) + g_a(\eta) \zeta \\
   \dot{\zeta} = f_b(\eta,\zeta) + g_b(\eta,\zeta)u
-\end{array}
-" title="
-\begin{array}{l}
+\end{array}" title="\begin{array}{l}
   \dot{\eta} = f_a(\eta) + g_a(\eta) \zeta \\
   \dot{\zeta} = f_b(\eta,\zeta) + g_b(\eta,\zeta)u
-\end{array}
-" class="math display" /></p>
+\end{array}" class="math display" /></p>
 <p>where the state is <img style="vertical-align:middle"
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20x%3D%5Cbegin%7Bbmatrix%7D%20%5Ceta%20%26%20%5Czeta%20%5Cend%7Bbmatrix%7D%5ET"
 alt="x=\begin{bmatrix} \eta &amp; \zeta \end{bmatrix}^T"
@@ -70,18 +239,14 @@ src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cdot%7B%5Ceta%7D%20%5
 alt="\dot{\eta} \rightarrow 0" title="\dot{\eta} \rightarrow 0"
 class="math inline" />. Let</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%5Czeta%20%3D%20%5Cphi%28%5Ceta%29%20%5C%5C%0A%20%20%5Cphi%280%29%20%3D%200%0A%5Cend%7Barray%7D%0A"
-alt="
-\begin{array}{l}
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%5Czeta%20%3D%20%5Cphi%28%5Ceta%29%20%5C%5C%0A%20%20%5Cphi%280%29%20%3D%200%0A%5Cend%7Barray%7D"
+alt="\begin{array}{l}
   \zeta = \phi(\eta) \\
   \phi(0) = 0
-\end{array}
-" title="
-\begin{array}{l}
+\end{array}" title="\begin{array}{l}
   \zeta = \phi(\eta) \\
   \phi(0) = 0
-\end{array}
-" class="math display" /></p>
+\end{array}" class="math display" /></p>
 <p>such that <img style="vertical-align:middle"
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ceta%20%5Crightarrow%200"
 alt="\eta \rightarrow 0" title="\eta \rightarrow 0"
@@ -99,12 +264,10 @@ src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ceta%20%5Crightarrow%
 alt="\eta \rightarrow 0" title="\eta \rightarrow 0"
 class="math inline" /></p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cdot%7BV%7D_1%20%3D%20%5Ceta%5ET%28f%28%5Ceta%29%20%2B%20g%28%5Ceta%29%5Cphi%28%5Ceta%29%5D%20%5Cleq%20w%28%5Ceta%29%0A"
-alt="
-\dot{V}_1 = \eta^T(f(\eta) + g(\eta)\phi(\eta)] \leq w(\eta)
-" title="
-\dot{V}_1 = \eta^T(f(\eta) + g(\eta)\phi(\eta)] \leq w(\eta)
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cdot%7BV%7D_1%20%3D%20%5Ceta%5ET%28f%28%5Ceta%29%20%2B%20g%28%5Ceta%29%5Cphi%28%5Ceta%29%5D%20%5Cleq%20w%28%5Ceta%29"
+alt="\dot{V}_1 = \eta^T(f(\eta) + g(\eta)\phi(\eta)] \leq w(\eta)"
+title="\dot{V}_1 = \eta^T(f(\eta) + g(\eta)\phi(\eta)] \leq w(\eta)"
+class="math display" /></p>
 <p>Going back to the <img style="vertical-align:middle"
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cdot%7B%5Ceta%7D"
 alt="\dot{\eta}" title="\dot{\eta}" class="math inline" /> equation, add
@@ -113,12 +276,10 @@ src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20g%28%5Ceta%29%5Cphi%28%
 alt="g(\eta)\phi(\eta)" title="g(\eta)\phi(\eta)" class="math inline" />
 to it such that you are left with:</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%20%20%5Cdot%7B%5Ceta%7D%20%3D%20%5Ceta%28f%28%5Ceta%29%20%2B%20g%28%5Ceta%29%28%5Czeta%20-%20%5Cphi%28%5Ceta%29%29%20%2B%20g%28%5Ceta%29%5Cphi%28%5Ceta%29%29%0A"
-alt="
-  \dot{\eta} = \eta(f(\eta) + g(\eta)(\zeta - \phi(\eta)) + g(\eta)\phi(\eta))
-" title="
-  \dot{\eta} = \eta(f(\eta) + g(\eta)(\zeta - \phi(\eta)) + g(\eta)\phi(\eta))
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cdot%7B%5Ceta%7D%20%3D%20%5Ceta%28f%28%5Ceta%29%20%2B%20g%28%5Ceta%29%28%5Czeta%20-%20%5Cphi%28%5Ceta%29%29%20%2B%20g%28%5Ceta%29%5Cphi%28%5Ceta%29%29"
+alt="\dot{\eta} = \eta(f(\eta) + g(\eta)(\zeta - \phi(\eta)) + g(\eta)\phi(\eta))"
+title="\dot{\eta} = \eta(f(\eta) + g(\eta)(\zeta - \phi(\eta)) + g(\eta)\phi(\eta))"
+class="math display" /></p>
 <p>and let <img style="vertical-align:middle"
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20z%20%3D%20%5Czeta%20-%20%5Cphi%28%5Ceta%29"
 alt="z = \zeta - \phi(\eta)" title="z = \zeta - \phi(\eta)"
@@ -142,52 +303,42 @@ style="vertical-align:middle"
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20z" alt="z"
 title="z" class="math inline" /> term</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bl%7D%0A%5Cdot%7B%5Ceta%7D%20%3D%20f%28%5Ceta%29%20%2B%20g%28%5Ceta%29%5Cphi%28%5Ceta%29%20%2B%20g%28%5Ceta%29z%20%5C%5C%0A%5Cdot%7Bz%7D%20%3D%20u%20-%20%5Cdot%7B%5Cphi%7D%0A%5Cend%7Barray%7D%0A"
-alt="
-\begin{array}{l}
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bl%7D%0A%5Cdot%7B%5Ceta%7D%20%3D%20f%28%5Ceta%29%20%2B%20g%28%5Ceta%29%5Cphi%28%5Ceta%29%20%2B%20g%28%5Ceta%29z%20%5C%5C%0A%5Cdot%7Bz%7D%20%3D%20u%20-%20%5Cdot%7B%5Cphi%7D%0A%5Cend%7Barray%7D"
+alt="\begin{array}{l}
 \dot{\eta} = f(\eta) + g(\eta)\phi(\eta) + g(\eta)z \\
 \dot{z} = u - \dot{\phi}
-\end{array}
-" title="
-\begin{array}{l}
+\end{array}" title="\begin{array}{l}
 \dot{\eta} = f(\eta) + g(\eta)\phi(\eta) + g(\eta)z \\
 \dot{z} = u - \dot{\phi}
-\end{array}
-" class="math display" /></p>
+\end{array}" class="math display" /></p>
 <p>Now that we have our new system defined our new system, we want to
 prove that the original system added on to the new system is still
 stable</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0A%5Cbegin%7Barray%7D%7Bl%7D%0AV%20%3D%20V1%20%2B%20V2%20%5C%0AV%20%3D%20V1%20%2B%201%2F2z%5E2%0A%5Cdot%7BV%7D%20%3D%20%5Ceta%20f%28%5Ceta%29%20%2B%20%5Ceat%20g%28%5Ceta%29z%20%2B%20%5Ceta%20g%28%5Ceta%29%5Cphi%28%5Ceta%29%20%2B%20z%5Cdot%7Bz%7D%20%5C%5C%0A%5Cdot%7BV%7D%20%3D%20f%28%5Ceta%29%20%2B%20g%28%5Ceta%29z%20%2B%20g%28%5Ceta%29%5Cphi%28%5Ceta%29%20%2B%20z%28u%20-%20%5Cdot%7B%5Cphi%7D%29%20%5C%5C%0A%5Cdot%7BV%7D%20%3D%20f%28%5Ceta%29%20%2B%20g%28%5Ceta%29%5Cphi%28%5Ceta%29%20%2B%20z%28%5Ceta%20g%28%5Ceta%29%20%2B%20u%20-%20%5Cdot%7B%5Cphi%7D%29%0A%5Cend%7Barray%7D%0A"
-alt="
-\begin{array}{l}
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bl%7D%0AV%20%3D%20V1%20%2B%20V2%20%5C%0AV%20%3D%20V1%20%2B%201%2F2z%5E2%0A%5Cdot%7BV%7D%20%3D%20%5Ceta%20f%28%5Ceta%29%20%2B%20%5Ceat%20g%28%5Ceta%29z%20%2B%20%5Ceta%20g%28%5Ceta%29%5Cphi%28%5Ceta%29%20%2B%20z%5Cdot%7Bz%7D%20%5C%5C%0A%5Cdot%7BV%7D%20%3D%20f%28%5Ceta%29%20%2B%20g%28%5Ceta%29z%20%2B%20g%28%5Ceta%29%5Cphi%28%5Ceta%29%20%2B%20z%28u%20-%20%5Cdot%7B%5Cphi%7D%29%20%5C%5C%0A%5Cdot%7BV%7D%20%3D%20f%28%5Ceta%29%20%2B%20g%28%5Ceta%29%5Cphi%28%5Ceta%29%20%2B%20z%28%5Ceta%20g%28%5Ceta%29%20%2B%20u%20-%20%5Cdot%7B%5Cphi%7D%29%0A%5Cend%7Barray%7D"
+alt="\begin{array}{l}
 V = V1 + V2 \
 V = V1 + 1/2z^2
 \dot{V} = \eta f(\eta) + \eat g(\eta)z + \eta g(\eta)\phi(\eta) + z\dot{z} \\
 \dot{V} = f(\eta) + g(\eta)z + g(\eta)\phi(\eta) + z(u - \dot{\phi}) \\
 \dot{V} = f(\eta) + g(\eta)\phi(\eta) + z(\eta g(\eta) + u - \dot{\phi})
-\end{array}
-" title="
-\begin{array}{l}
+\end{array}" title="\begin{array}{l}
 V = V1 + V2 \
 V = V1 + 1/2z^2
 \dot{V} = \eta f(\eta) + \eat g(\eta)z + \eta g(\eta)\phi(\eta) + z\dot{z} \\
 \dot{V} = f(\eta) + g(\eta)z + g(\eta)\phi(\eta) + z(u - \dot{\phi}) \\
 \dot{V} = f(\eta) + g(\eta)\phi(\eta) + z(\eta g(\eta) + u - \dot{\phi})
-\end{array}
-" class="math display" /></p>
+\end{array}" class="math display" /></p>
 <p>We want to cancel out all the terms in the parenthesis with <img
 style="vertical-align:middle"
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20u" alt="u"
 title="u" class="math inline" /> as well as create the controller that
 will stabilize the system. Choose</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%0Au%20%3D%20%5Cdot%7B%5Cphi%7D%28%5Ceta%29%20-%20%5Ceta%20g%28%5Ceta%29%20-%20kz%0A"
-alt="
-u = \dot{\phi}(\eta) - \eta g(\eta) - kz
-" title="
-u = \dot{\phi}(\eta) - \eta g(\eta) - kz
-" class="math display" /></p>
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20u%20%3D%20%5Cdot%7B%5Cphi%7D%28%5Ceta%29%20-%20%5Ceta%20g%28%5Ceta%29%20-%20kz"
+alt="u = \dot{\phi}(\eta) - \eta g(\eta) - kz"
+title="u = \dot{\phi}(\eta) - \eta g(\eta) - kz"
+class="math display" /></p>
 <p>where <img style="vertical-align:middle"
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20k%20%3E%200"
 alt="k &gt; 0" title="k &gt; 0" class="math inline" />. This leaves <img
@@ -202,6 +353,8 @@ class="math inline" /></p>
 <li><a href="https://www.youtube.com/watch?v=RzNmxUsMS2I.md">Nonlinear
 2020 Backstepping</a></li>
 </ul>
+</body>
+</html>
 	</div>
 </body>
 </html>

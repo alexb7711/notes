@@ -53,7 +53,7 @@ function process()
 #################################################################################
 # SCRIPT
 #################################################################################
-outdir="www"
+outdir="docs"
 header_file="./html/template.html"
 
 # Create directory and clear it

@@ -68,6 +68,30 @@ A few notes can be taken about this theorem:
 * The limits for $\lambda$ and $W$ must exists. This therefore does not include systems that grow without bound (i.e. customers arrive faster than the services can output)
 * The theorem does not nececarrily require "queues". Rather it requries a "system" to which the entities arrive and from which they depart. The system can therefore be reguarded as a black box with no specific requirements as to what happens in the box.
 
+### $H = \lambda G$
+It turns out that Little's Law is a special case of a more general relationship $H = \lambda G$
+
+* $G$: Cost or work
+* $H$: Total average cost per time incurred by the system
+* $\lambda$: Average rate that customers arrive to the system
+
+### Distributional Form of Little's Law
+TODO: Link to probablity section for moments
+TODO: Link for stationary
+
+Little's law provides a relationship between the first moments of $N(T) \equiv A(t) - D(t)$ (Arrival - Departure) and $W^k$. It is also possible to relate higher moments as well. To state the distributional form a few assumptions are made
+
+1. Arrival process is stationary
+2. Customers depart from the system in the order they arrive
+3. The time spent $W^k$ by the $k$th customer in the system is stationary
+4. $W^k$ is independent of the arrival process after the arrival of customer $k$
+
+\begin{equation}
+   Pr\{N(t) \leq j\} = Pr\{A(W^k) \leq j\}
+\end{equation}
+
+The statement above states: if one generates a random waiting time $W^k$ and then generates a random number of arrivals occuring over an interval of length $W^k$ then this has to be the same distribution as the number of customers in the system.
+
 # Review of Stochastic Process
 
 # Simple Markovian Queuing Models

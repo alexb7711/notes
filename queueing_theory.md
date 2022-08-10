@@ -1,187 +1,105 @@
-# Fundamentals of Queueing Theory
+# Introduction
 
-## Introduction
+## Characteristics of Queueing Systems
 
-### Measurement of System Performance
+* Arrival pattern of customers
+    * Usual arrival processes are stochastic so it is necessary to know the probability distribution describing the times between successvie customer intervals (Poisson process)
+* Service paterns of servers
+    *  Service times are typically stochastic as well, so it is good to know the probability distribution to describe the sequence of customer service times
+* Number of servers and service channels
+    *  The number of servers cause the system to be expensive to it is good to have the numbers of server be a choice
+* System capacity
+    * Physical limiations of the system.
+* Queue discipline
+    *  FIFO, LIFO, RSS (random selection of service), etc.
+* Number of service stages
+    * Single stage service, multi-stage service
 
-* Types of effectiveness of a queuing system
-  * Waiting Time
-  * Number of customers
-  * Idle time
-* Allows us to allocate resources to acquire a desired system performance
-
-### Characteristics of Queueing Systems
-
-1. Arrival Pattern of customers
-   * Common arrival process is the *Poisson process*
-   * Arrival pattern that does not change with time is *stationary*
-   * Arrival pattern that does change with time is *nonstationary*
-   * The behavior of arriving customers is also important
-     * If a customer decides not to enter the queue on arrival, the customer *balked*
-     * If a customer enters a line then exits later, the customer *reneged*
-     * If a costumer enters a line then leaves it to enter another line, the customer *jockeyed*
-2. Service pattern of servers
-   * The server may depend on the number of customers in line. If so, then the server is said to be *state-dependent*
-   * Servers may be stationary and nonstationary in the same sense of customers
-3. Number of servers and service channels
-4. System Capacity
-5. Queue discipline
-   * FIFO
-   * LIFO
-   * Priority sorted
-     * Nonepreemtive: The highest priority customer goes to the head of the queue but waits for process to finish
-     * Preemtive: Higher priority is allows to enter service immediately upon arrival
-6. Number of service stages
-
-### Exponential Distribution
-
-* Tail distribution
-
-$$ P(X \\geq x) = \\text{exp}(-\\lambda x) $$
-
-* Mean, variance and squared coefficient of variation:
-  * Mean: $E(X) = 1/\\lambda$
-  * Variance: $var(X) = E(X^2) - (E(X))^2 = E((X - E(X))^2 = 1/\\lambda^2$
-  * Squared coefficient of variation: $Cv^2 = var(x)/(E(X))^2 = 1 \\forall \\lambda$
-* Properties:
-  * Memoryless
-    * $P(U_i \\geq u) = \\text{exp}(-\\lambda u)$
-  * Minimum of two exponential random variables
-    * $ P(U\\leq S) = \\frac{\\lambda}{\\lambda + \\mu}$
-    * $ P(U > S) = \\frac{\\mu}{\\lambda + \\mu}$
-
-### Poisson Arrivals
-
-The successive inter-arrival times $U_i = T\_{i+1} - T_i$ are independent and distributed according to the exponential law with parameter $\\lambda$
-
-$$ P(U_i \\geq u) = \\text{exp}(-\\lambda u) $$
-
-where $\\lambda$ represents the average arrivals per unit time.
-
-### Exponential Service Durations
-
-In general, it is assumed that
-
-* service times are independent and identically distributed
-* characterized by their probability distribution
-
-The exponential distribution is an important case of service duration
-
-$$ P(S_i \\geq s) = \\text{exp}(-\\mu s) $$
-
-where $\\mu$ is the average number of clients served per unit time.
-
-### Offered Load
-
-Average performance depends on the offered load $\\rho$, defined as
-
-$$ \\rho = \\frac{\\lambda}{\\mu} $$
-
-The unit of $\\rho$ is the Erlang, a dimensionless unit.
-
-## Motivating Examples and M/M/1 queue
-
-### Steady-State Probabilities Computation
-
-$$ \\pi_i = \\pi_0 \\frac{\\lambda}{\\mu}^i; i = 1,2,... $$
-
-### Stability Condition for Steady State Behavior
-
-The arrival rate is lower than the service rate:
-
-$$ \\lambda < \\mu $$
-
-or $\\rho = \\lambda/\\mu < 1$ (traffic intensity or load$
-
-### Kendall Notation
-
-```
-A/B/c/K/m/z
-```
-
-* A: Interarrival distribution
-* B: Service time distribution
-* X: number of servers
-* Y: The capacity of the queue
-* Z: Queue discipline
-  * FIFO
-  * LIFO
-  * etc.
-
-| Characteristics | Symbol | Explanation |
-|-----------------|--------|-------------|
-| Interarrival-time distribution (A) | $M$ | Exponential |
-|  | $D$ | Deterministic |
-|  | $E_k$ | Erlang type $k; (k = 1,2)$ |
-| Service-time distribution (B) | $H_k$ | Mixture of $k$ exponentials |
-|  | $PK$ | Phase type |
-|  | G | General |
-| Parallel servers (X) | 1 2 |  |
-| System capacity (Y) | 1 2 |  |
-| Queue discipline (Z) | FCFS | First come first serve |
-|  | LCFS | Last come first serve |
-|  | RSS | Random selection for service |
-|  | PR | Priority |
-|  | GD | General discipline |
+### Notation
++--------------------------------+----------------+-------------------------------+
+| Characteristics                | Symbol         | Explanation                   |
++================================+================+===============================+
+| Interval-time distribution (A) | $M$            | Exponential                   |
+| Service-time distribution (B)  | $D$            | Deterministic                 |
+|                                | $E_k$          | Erlang type $k \in (1,2,...)$ |
+|                                | $H_k$          | Mixture of $k$ exponentials   |
+|                                | $PH$           | Phase type                    |
+|                                | $G$            | General                       |
++--------------------------------+----------------+-------------------------------+
+| Parallel servers (X)           | $1,2,...,\inf$ |                               |
+| System Capacity (Y)            | $1,2,...,\inf$ |                               |
+| Queue discipline (Q)           | FIFO           | First In First Out            | 
+|                                | LIFO           | Last In First Out             |
+|                                | RSS            | Random Selection of Service   |
+|                                | PR             | Priority                      |
+|                                | GD             | General discipline            |
++--------------------------------+----------------+-------------------------------+
 
 ## Little's Law
+A fundamental law used extensivly in queuing theory is Little's Law. Little's Law provides a relationship between three funcamental quantities: The average rage $\lambda$ that customers arrive to the system, the average wait time $W$ that a customer spends in the system, and the average number $L$ of customers in the system. This relationship is given by $L=\lambda W$.
 
-* $\\lambda$: Average rate that customers arrive to a system
-* $W$: Average wait time that a customer spends in the system
-* $L$: Average number of customers in the system
+\begin{equation}
+\label{eq:little\limits}
 
-$$ L = \\lambda W $$
+\begin{array}{lll}
 
-## $H = \\lambda G$
+    \lambda \equiv \lim_{t \rightarrow \inf} \frac{A(t)}{t}             &
+    W \equiv \lim_{k \rightarrow \inf} \frac{1}{k} \sum_{i=1}^{k} W^k   &
+    L \equiv \lim_{T \rightarrow \inf} \frac{1}{T} \int_{0}^{T} N(t) dt
 
-$L = \\lambda W$ is a special case of a more general relation.
+\end{array}
+\end{equation}
 
-$$ H = \\lambda G $$
+Where 
 
-* $G$: Average cost or work associated with a customer
+* $A(t)$: Cumulative number of arrivals at time $t$
+* $W^k$: Time customer $k$ spends in the system
+* $N(t)$: Number of customers in the system at time $t$
+
+> Theorem 1.1: [Little's Law] If the limit $\lambda$ and $W$ in \ref{eq:little-limits} exists and are finits then the limit $L$ exists and
+
+$$
+L = \lambda W
+$$
+
+A few notes can be taken about this theorem:
+
+* It is a statement about long running averages
+* The limits for $\lambda$ and $W$ must exists. This therefore does not include systems that grow without bound (i.e. customers arrive faster than the services can output)
+* The theorem does not nececarrily require "queues". Rather it requries a "system" to which the entities arrive and from which they depart. The system can therefore be reguarded as a black box with no specific requirements as to what happens in the box.
+
+### $H = \lambda G$
+It turns out that Little's Law is a special case of a more general relationship $H = \lambda G$
+
+* $G$: Cost or work
 * $H$: Total average cost per time incurred by the system
+* $\lambda$: Average rate that customers arrive to the system
 
-## Simple Streams
+### Distributional Form of Little's Law
+TODO: Link to probablity section for moments
+TODO: Link for stationary
 
-The foundation for queuing theory is based on the modeling of customers arriving at a queuing system. This is the *simple case of streams* is represented as the probability that $k$ customers arrive in a timer interval of length $t$ is represented as
+Little's law provides a relationship between the first moments of $N(T) \equiv A(t) - D(t)$ (Arrival - Departure) and $W^k$. It is also possible to relate higher moments as well. To state the distributional form a few assumptions are made
 
-$$ P\_{k}(t) = \\frac{\\lambda t)^k}{k!} e^{\\lambda t} $$
+1. Arrival process is stationary
+2. Customers depart from the system in the order they arrive
+3. The time spent $W^k$ by the $k$th customer in the system is stationary
+4. $W^k$ is independent of the arrival process after the arrival of customer $k$
 
-where $\\lambda > 0$. Importantly, the incoming stream is assumed to compose the following properties
+\begin{equation}
+   Pr\{N(t) \leq j\} = Pr\{A(W^k) \leq j\}
+\end{equation}
 
-```
-Given any finite group of nonoverlapping time intervals, the number of customers arriving during each interval are [theory_of_statistics](mutually independent random variables.md).
-```
+The statement above states: if one generates a random waiting time $W^k$ and then generates a random number of arrivals occuring over an interval of length $W^k$ then this has to be the same distribution as the number of customers in the system.
 
-*Definition*: A finite or countable sequence $\\tau_n$ of random variables defined on the same probability space under the ocndition that in any fixed time interval $(a,b)$ with probability 1 a finite number of these variables falls in it is called a *stream of homogenous events*.
+# Review of Stochastic Process
 
-*Lemma* The number of $v(a,b)$ of events of a stream in the half-interval $[a-b)$ is a random variable.
+# Simple Markovian Queuing Models
 
-## Qualitative Assumptions and Their Analysis
+# Advanced Markovian Queuing Models
 
-The following are some conditions for estabilshing what a simple stream is:
+# General Arrival or Service Patterns
 
-* *Stationarity of a stream*: The probability that $k_1, k_2, ..., k_n$ costomers, respectively, will arrive in each interval of any finite group of $n$ nonoverlapping time intervals depends only on the $k_i$ and on the lengths of the time intervals, but not on their positions on the axis in time.
-* *Absence of aftereffects*: The probability of $k$ customers arriving during a time interval $(T,T+t) does not depend on the number and type of customers arriving before $T$.
-* *Orderliness of the stream*: Expresses the practical impossibility that two or more customers will arrive at the same instant of time.
+# Bounds And Approximations
 
-Therefore a simple stream must adhere to all these conditions. Although they don't comletely model real world scenarios accurately, it provides a good basis to start from
-
-## Distribution of Events
-
-*Theorem*: Under the condition that the number of events of a simple steam in the interval $(a,b)$ equals $n$, the times of these events are independent and uniformally disributed on the interval $(a,b)$.
-
-## The Intensity and Parameter of a Stream
-
-The mean number of customers arriving in a time interval is denoted as
-
-$$ M\\mu(t) = e^{\\lambda t} \\sum\_{k=1}^{\\infty} k \\frac{(\\lambda t)^k)}{k!} = \\lambda t $$
-
-Where $\\mu(t)$ is the actual number of customers arriving during a time interval of length $t$. The mathematical expectation of the number of costomers arriving in this unit time is called the *intensity of th stream*. For a simple queue $\\lambda = \\mu$ for which $\\lambda$ is called the *parameter of the stream*.
-
-# Serivicing and Waiting
-
-# References
-
-* 1 @fundamentals | John F Shortle, James M Thompson, Donald Gross, and Carl M Harris. Fundamentals of Queueing Theory. John Wiley {&} Sons, Inc., jan 2018.
-* [Introduction To Queuing Theory](https://www.youtube.com/watch?v=rSZWig173xM.md)
+# Numerical Techniques And Simulation

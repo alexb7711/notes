@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<head>
+	<link rel="Stylesheet" type="text/css" href="./style.css" />
+	<title>%title%</title>
+	<meta http-equiv="Content-Type" content="width=device-with, initial-scale=1.0; text/html; charset=utf-8" name="viewport"/>
+</head>
+<body>
+	<div class="nav"><h2 id="Alexander Brown" class="header">Alexander Brown - Electrical Engineer</h2>
+		<!-- <p> -->
+		    <!-- email: alex.brown7711@aggiemail.usu.edu -->
+		<!-- </p> -->
+		<a href="%root_path%index.html">Home</a> |
+		<a href="%root_path%blog.html">Blog</a> |
+		<a href="%root_path%notes.html">Notes</a> |
+		<a href="%root_path%classes.html">Classes</a> |
+		<a href="%root_path%projects.html">Projects</a> |
+		<a href="%root_path%todo.html">Todo</a> |
+		<a href="%root_path%error.html">About</a>
+	</div>
+	<div class="content">
+	    <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>set_theory</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#contents" id="toc-contents">Contents</a></li>
+<li><a href="#set-theory" id="toc-set-theory">Set Theory</a>
+<ul>
+<li><a href="#representation-of-sets"
+id="toc-representation-of-sets">Representation of Sets</a></li>
+<li><a href="#cardinality" id="toc-cardinality">Cardinality</a></li>
+<li><a href="#types-of-sets" id="toc-types-of-sets">Types of
+Sets</a></li>
+<li><a href="#operations-on-classical-sets"
+id="toc-operations-on-classical-sets">Operations on Classical
+Sets</a></li>
+<li><a href="#properties-of-classical-sets"
+id="toc-properties-of-classical-sets">Properties of Classical
+Sets</a></li>
+</ul></li>
+<li><a href="#footnotes" id="toc-footnotes">Footnotes</a></li>
+</ul>
+</nav>
+<h1 id="contents">Contents</h1>
+<pre><code>    - [Set Theory](#Set Theory.md)
+            - [Representation of Sets](#Set Theory#Representation of Sets.md)
+            - [Cardinality](#Set Theory#Cardinality.md)
+            - [Types of Sets](#Set Theory#Types of Sets.md)
+            - [Operations on Classical Sets](#Set Theory#Operations on Classical Sets.md)
+            - [Properties of Classical Sets](#Set Theory#Properties of Classical Sets.md)
+    - [Footnotes](#Footnotes.md)</code></pre>
+<h1 id="set-theory">Set Theory</h1>
+<p>A set is an unordered collection of different elements. For
+example</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20A%20%3D%20%5C%7B1%2C2%2C3%2C4%2C5%5C%7D"
+alt="A = \{1,2,3,4,5\}" title="A = \{1,2,3,4,5\}"
+class="math display" /></p>
+<p>is a set <a href="#Footnotes#1.md">#1</a>.</p>
+<h2 id="representation-of-sets">Representation of Sets</h2>
+<p>Sets are typically represented in two ways</p>
+<ul>
+<li>Roster or Tabular Form</li>
+</ul>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20A%20%3D%20%5C%7B1%2C2%2C3%2C4%5C%7D"
+alt="A = \{1,2,3,4\}" title="A = \{1,2,3,4\}"
+class="math display" /></p>
+<ul>
+<li>Set Builder Notation</li>
+</ul>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20A%20%3D%20%5C%7Bx%3Ap%28x%29%5C%7D"
+alt="A = \{x:p(x)\}" title="A = \{x:p(x)\}" class="math display" /></p>
+<p>where <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20p%28x%29"
+alt="p(x)" title="p(x)" class="math inline" /> is some function that
+describes the set <a href="#Footnotes#1.md">#1</a>.</p>
+<h2 id="cardinality">Cardinality</h2>
+<p>Cardinality defines the number of elements in a set <a
+href="#Footnotes#1.md">#1</a>.</p>
+<h2 id="types-of-sets">Types of Sets</h2>
+<p>The following are definitions of some basic sets <a
+href="#Footnotes#1.md">#1</a>:</p>
+<ul>
+<li>Finite Set: <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20S%20%3D%20%5C%7Bx%20%7C%20x%20%5Cin%20N%20and%2070%20%3E%20x%20%3E%2050%5C%7D"
+alt="S = \{x | x \in N and 70 &gt; x &gt; 50\}"
+title="S = \{x | x \in N and 70 &gt; x &gt; 50\}"
+class="math inline" /></li>
+<li>Infinite Set: $ S = {x | x N and x &gt; 50}$</li>
+<li>Subset: <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20S%20%3D%20X%20%5Csubseteq%20Y"
+alt="S = X \subseteq Y" title="S = X \subseteq Y"
+class="math inline" /></li>
+<li>Proper Subset: <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20S%20%3D%20X%20%5Csubset%20Y"
+alt="S = X \subset Y" title="S = X \subset Y"
+class="math inline" /></li>
+<li>Universal Set: The collection of all elements in a particular
+context or application</li>
+<li>Empty (Null) Set: The cardinality of an empty set is zero i.e. <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20S%20%3D%20%5Cemptyset"
+alt="S = \emptyset" title="S = \emptyset" class="math inline" /></li>
+<li>Singleton (Unit) Set: Set that contains only one element</li>
+<li>Equal Set: Two sets that contains the same elements</li>
+<li>Equivalent Set: Two sets that have the same cardinality</li>
+<li>Overlapping Set: Two sets that have at least one element in
+common</li>
+<li>Disjoint Set: Two sets that do not have any elements in common</li>
+</ul>
+<h2 id="operations-on-classical-sets">Operations on Classical Sets</h2>
+<p>The following are some basic operations that can be done on sets <a
+href="#Footnotes#1.md">#1</a>:</p>
+<ul>
+<li>Union: <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%20%3D%20%5C%7B10%2C11%2C12%2C13%5C%7D"
+alt="A = \{10,11,12,13\}" title="A = \{10,11,12,13\}"
+class="math inline" /> and <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20B%20%3D%20%5C%7B13%2C14%2C15%5C%7D"
+alt="B = \{13,14,15\}" title="B = \{13,14,15\}" class="math inline" />
+then <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%20%5Ccup%20B%20%3D%20%5C%7B10%2C11%2C12%2C13%2C14%2C15%5C%7D"
+alt="A \cup B = \{10,11,12,13,14,15\}"
+title="A \cup B = \{10,11,12,13,14,15\}" class="math inline" />
+<ul>
+<li>{{https://www.tutorialspoint.com/fuzzy_logic/images/union_operation.jpg|Union}}</li>
+</ul></li>
+<li>Intersection:
+<ul>
+<li>{{https://www.tutorialspoint.com/fuzzy_logic/images/intersection_operation.jpg|Intersection}}</li>
+</ul></li>
+<li>Difference / Relative Complement: The set difference of sets <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A" alt="A"
+title="A" class="math inline" /> and <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20B" alt="B"
+title="B" class="math inline" /> is the set of elements of which are
+only in <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A" alt="A"
+title="A" class="math inline" /> but not in <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20B" alt="B"
+title="B" class="math inline" />.
+<ul>
+<li>{{https://www.tutorialspoint.com/fuzzy_logic/images/relative_complement_operation.jpg}}</li>
+</ul></li>
+<li>Complement of a set:
+<ul>
+<li>{{https://www.tutorialspoint.com/fuzzy_logic/images/complement_of_set.jpg}}</li>
+</ul></li>
+<li>Cartesian Product / Cross Product: The set of all possible ordered
+pairs.
+<ul>
+<li>Example: <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%3D%5C%7Ba%2Cb%5C%7D"
+alt="A=\{a,b\}" title="A=\{a,b\}" class="math inline" /> and <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20B%3D%5C%7B1%2C2%5C%7D"
+alt="B=\{1,2\}" title="B=\{1,2\}" class="math inline" /> then <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%5Ctimes%20B%20%3D%20%5C%7B%28a%2C1%29%2C%28a%2C2%29%2C%28b%2C1%29%2C%28b%2C2%29%5C%7D"
+alt="A\times B = \{(a,1),(a,2),(b,1),(b,2)\}"
+title="A\times B = \{(a,1),(a,2),(b,1),(b,2)\}"
+class="math inline" /></li>
+</ul></li>
+</ul>
+<h2 id="properties-of-classical-sets">Properties of Classical Sets</h2>
+<ul>
+<li>Commutative Property
+<ul>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%20%5Ccup%20B%20%3D%20B%20%5Ccup%20A"
+alt="A \cup B = B \cup A" title="A \cup B = B \cup A"
+class="math inline" /></li>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%20%5Ccap%20B%20%3D%20B%20%5Ccap%20A"
+alt="A \cap B = B \cap A" title="A \cap B = B \cap A"
+class="math inline" /></li>
+</ul></li>
+<li>Associate Property
+<ul>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%20%5Ccup%20%28B%20%5Ccup%20C%29%20%3D%20%28A%20%5Ccup%20B%29%20%5Ccup%20C"
+alt="A \cup (B \cup C) = (A \cup B) \cup C"
+title="A \cup (B \cup C) = (A \cup B) \cup C"
+class="math inline" /></li>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%20%5Ccap%20%28B%20%5Ccap%20C%29%20%3D%20%28A%20%5Ccap%20B%29%20%5Ccap%20C"
+alt="A \cap (B \cap C) = (A \cap B) \cap C"
+title="A \cap (B \cap C) = (A \cap B) \cap C"
+class="math inline" /></li>
+</ul></li>
+<li>Distributive Property
+<ul>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%5Ccup%20%5Cleft%20%28%20B%5Ccap%20C%20%5Cright%20%29%20%3D%20%5Cleft%20%28%20A%5Ccup%20B%20%5Cright%20%29%5Ccap%20%5Cleft%20%28%20A%5Ccup%20C%20%5Cright%20%29"
+alt="A\cup \left ( B\cap C \right ) = \left ( A\cup B \right )\cap \left ( A\cup C \right )"
+title="A\cup \left ( B\cap C \right ) = \left ( A\cup B \right )\cap \left ( A\cup C \right )"
+class="math inline" /></li>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%5Ccap%20%5Cleft%20%28%20B%5Ccup%20C%20%5Cright%20%29%20%3D%20%5Cleft%20%28%20A%5Ccap%20B%20%5Cright%20%29%5Ccup%20%5Cleft%20%28%20A%5Ccap%20C%20%5Cright%20%29"
+alt="A\cap \left ( B\cup C \right ) = \left ( A\cap B \right )\cup \left ( A\cap C \right )"
+title="A\cap \left ( B\cup C \right ) = \left ( A\cap B \right )\cup \left ( A\cap C \right )"
+class="math inline" /></li>
+</ul></li>
+<li>Idempotency Property
+<ul>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%20%5Ccup%20A%20%3D%20A"
+alt="A \cup A = A" title="A \cup A = A" class="math inline" /></li>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%20%5Ccap%20A%20%3D%20A"
+alt="A \cap A = A" title="A \cap A = A" class="math inline" /></li>
+</ul></li>
+<li>Identity Property: For set <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A" alt="A"
+title="A" class="math inline" /> and universal set <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20X" alt="X"
+title="X" class="math inline" />, this property statesA
+<ul>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%20%5Ccap%20X%20%3D%20A"
+alt="A \cap X = A" title="A \cap X = A" class="math inline" /></li>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%20%5Ccup%20X%20%3D%20X"
+alt="A \cup X = X" title="A \cup X = X" class="math inline" /></li>
+</ul></li>
+<li>Transitive Property
+<ul>
+<li>If <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%20%5Csubseteq%20B%20%5Csubseteq%20C"
+alt="A \subseteq B \subseteq C" title="A \subseteq B \subseteq C"
+class="math inline" />, then <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%20%5Csubseteq%20C"
+alt="A \subseteq C" title="A \subseteq C" class="math inline" /></li>
+</ul></li>
+<li>Involution Property
+<ul>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Coverline%7B%7B%5Coverline%7BA%60%60%60%20%3D%20A"
+alt="\overline{{\overline{A``` = A"
+title="\overline{{\overline{A``` = A" class="math inline" /></li>
+</ul></li>
+<li>De Morgan’s Law
+<ul>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Coverline%7BA%5Ccap%20B%7D%20%3D%20%5Coverline%7BA%7D%20%5Ccup%20%5Coverline%7BB%7D"
+alt="\overline{A\cap B} = \overline{A} \cup \overline{B}"
+title="\overline{A\cap B} = \overline{A} \cup \overline{B}"
+class="math inline" /></li>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Coverline%7BA%5Ccup%20B%7D%20%3D%20%5Coverline%7BA%7D%20%5Ccap%20%5Coverline%7BB%7D"
+alt="\overline{A\cup B} = \overline{A} \cap \overline{B}"
+title="\overline{A\cup B} = \overline{A} \cap \overline{B}"
+class="math inline" /></li>
+</ul></li>
+</ul>
+<h1 id="footnotes">Footnotes</h1>
+<ul>
+<li><em>1</em> <span class="citation"
+data-cites="tutorials_fuzzy">@tutorials_fuzzy</span> fuzzy tutorial |
+Fuzzy logic, 2021. [Online; accessed 21-October-2021].</li>
+</ul>
+</body>
+</html>
+	</div>
+</body>
+</html>

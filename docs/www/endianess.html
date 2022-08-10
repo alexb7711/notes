@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<head>
+	<link rel="Stylesheet" type="text/css" href="./style.css" />
+	<title>%title%</title>
+	<meta http-equiv="Content-Type" content="width=device-with, initial-scale=1.0; text/html; charset=utf-8" name="viewport"/>
+</head>
+<body>
+	<div class="nav"><h2 id="Alexander Brown" class="header">Alexander Brown - Electrical Engineer</h2>
+		<!-- <p> -->
+		    <!-- email: alex.brown7711@aggiemail.usu.edu -->
+		<!-- </p> -->
+		<a href="%root_path%index.html">Home</a> |
+		<a href="%root_path%blog.html">Blog</a> |
+		<a href="%root_path%notes.html">Notes</a> |
+		<a href="%root_path%classes.html">Classes</a> |
+		<a href="%root_path%projects.html">Projects</a> |
+		<a href="%root_path%todo.html">Todo</a> |
+		<a href="%root_path%error.html">About</a>
+	</div>
+	<div class="content">
+	    <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>endianess</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#how-to-write-endian-independent-code-in-c"
+id="toc-how-to-write-endian-independent-code-in-c">How to write
+endian-independent code in C</a>
+<ul>
+<li><a href="#when-endianness-affects-code"
+id="toc-when-endianness-affects-code">When endianness affects
+code</a></li>
+<li><a href="#test-endianess-at-run-time"
+id="toc-test-endianess-at-run-time">Test endianess at run time</a></li>
+<li><a href="#network-byte-order" id="toc-network-byte-order">Network
+byte order</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="how-to-write-endian-independent-code-in-c">How to write
+endian-independent code in C</h1>
+<h2 id="when-endianness-affects-code">When endianness affects code</h2>
+<ul>
+<li>Endianess does not apply to everything
+<ul>
+<li>Bitwise and bitshift operations are fine on <code>ints</code> for
+example
+<ul>
+<li>the ordering of the bits are still the same as when they came in so
+the operations are performed correctly</li>
+</ul></li>
+<li><code>char</code> arrays can be accessed one byte at a time.
+However, this is not true with an <code>int</code> or
+<code>long</code>.</li>
+</ul></li>
+<li>Endiansess does matter when using a type cast that depends on a
+certain endian being in use. For example</li>
+</ul>
+<pre><code>unsigned char endian![pic](2) = {1, 0};
+short x;
+  
+x = ∗(short ∗) endian;</code></pre>
+<pre><code>depending on the enianess, `x` can be represent different values.</code></pre>
+<h2 id="test-endianess-at-run-time">Test endianess at run time</h2>
+<p>the listing below tests the first byte of the multi-byte integer
+<code>i</code> to determine if it is 0 or 1. If it is 1, the running
+platform is assumed to be little-endian. If it is 0, it is assumed to be
+big-endian.</p>
+<pre><code>unsigned char endian![pic](2) = {1, 0};
+short x;
+  
+x = ∗(short ∗) endian;unsigned char endian![pic](2) = {1, 0};
+short x;
+  
+x = ∗(short ∗) endian;</code></pre>
+<p>Another way to determine endiannes is to use a character pointer to
+the bytes of an int and then check its first byte to see if it is 0 or
+1. The listing below shows an example.</p>
+<pre><code>#define LITTLE_ENDIAN 0
+#define BIG_ENDIAN    1
+
+int endian() {
+    int i = 1;
+    char ∗p = (char ∗)&amp;i;
+
+    if (p![pic](0) == 1)
+        return LITTLE_ENDIAN;
+    else
+        return BIG_ENDIAN;
+}</code></pre>
+<h2 id="network-byte-order">Network byte order</h2>
+<p>Network communication protocols must also have an endianess. This is
+commonly referred to as <em>network byte order</em>. To enable
+conversations, sockets provide a set of macros to convert to and from
+host to network byte order:</p>
+<pre class="htons()```"><code>Reorder the bytes of a 16-bit unsigned value from processor order to network order. The macro name can be read as “host to network short.”
+
+```htonl()```
+Reorder the bytes of a 32-bit unsigned value from processor order to network order. The macro name can be read as “host to network long.”
+
+```ntohs()```
+Reorder the bytes of a 16-bit unsigned value from network order to processor order. The macro name can be read as “network to host short.”
+
+```ntohl()```
+Reorder the bytes of a 32-bit unsigned value from network order to processor order. The macro name can be read as “network to host long.”
+
+
+## Reversing the byte order
+The goal is to write code that doesn&#39;t fail, regardless of the endianness of the machine. *It would be nice to avoid having to specify coditional compliation flags and just let the code automatically determine the endianness of the machine.* The following method check and reverses endianess of a `short`:
+
+* Method 1: Using bit shifting and ANDs</code></pre>
+<p>short reverseShort (short s) { unsigned char c1, c2;</p>
+<pre><code>if (is_bigendian()) {
+    return s;
+} else {
+    c1 = s &amp; 255;
+    c2 = (s &gt;&gt; 8) &amp; 255;
+
+    return (c1 &lt;&lt; 8) + c2;
+}</code></pre>
+<p>}</p>
+<pre><code>* Method 2: Using pointer to an array of characters</code></pre>
+<p>short reverseShort (char ∗c) { short s; char ∗p = (char ∗)&amp;s;</p>
+<pre><code>if (is_bigendian()) {
+    p![pic](0) = c![pic](0);
+    p![pic](1) = c![pic](1);
+} else {
+    p![pic](0) = c![pic](1);
+    p![pic](1) = c![pic](0);
+}
+
+return s;</code></pre>
+<p>}</p>
+<pre><code>
+Now lets see how an int would be handled:
+
+* Method 1: Using bit shifting and bit ANDs</code></pre>
+<p>int reverseInt (int i) { unsigned char c1, c2, c3, c4;</p>
+<pre><code>if (is_bigendian()) {
+    return i;
+} else {
+    c1 = i &amp; 255;
+    c2 = (i &gt;&gt; 8) &amp; 255;
+    c3 = (i &gt;&gt; 16) &amp; 255;
+    c4 = (i &gt;&gt; 24) &amp; 255;
+
+    return ((int)c1 &lt;&lt; 24) + ((int)c2 &lt;&lt; 16) + ((int)c3 &lt;&lt; 8) + c4;</code></pre>
+<p>}</p>
+<pre><code>* Method 2: Using pointer to an array of characters</code></pre>
+<p>short reverseInt (char ∗c) { int i; char ∗p = (char ∗)&amp;i;</p>
+<pre><code>if (is_bigendian()) {
+    p![pic](0) = c![pic](0);
+    p![pic](1) = c![pic](1);
+    p![pic](2) = c![pic](2);
+    p![pic](3) = c![pic](3);
+} else {
+    p![pic](0) = c![pic](3);
+    p![pic](1) = c![pic](2);
+    p![pic](2) = c![pic](1);
+    p![pic](3) = c![pic](0);
+}</code></pre>
+<p>``` # References * TODO: Fix this reference later * <a
+href="https://developer.ibm.com/articles/au-endianc/.md">How to write
+endian-independent code in C</a></p>
+</body>
+</html>
+	</div>
+</body>
+</html>

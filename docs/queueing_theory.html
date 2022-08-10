@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<head>
+	<link rel="Stylesheet" type="text/css" href="./style.css" />
+	<title>%title%</title>
+	<meta http-equiv="Content-Type" content="width=device-with, initial-scale=1.0; text/html; charset=utf-8" name="viewport"/>
+</head>
+<body>
+	<div class="nav"><h2 id="Alexander Brown" class="header">Alexander Brown - Electrical Engineer</h2>
+		<!-- <p> -->
+		    <!-- email: alex.brown7711@aggiemail.usu.edu -->
+		<!-- </p> -->
+		<a href="%root_path%index.html">Home</a> |
+		<a href="%root_path%blog.html">Blog</a> |
+		<a href="%root_path%notes.html">Notes</a> |
+		<a href="%root_path%classes.html">Classes</a> |
+		<a href="%root_path%projects.html">Projects</a> |
+		<a href="%root_path%todo.html">Todo</a> |
+		<a href="%root_path%error.html">About</a>
+	</div>
+	<div class="content">
+	    <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>queueing_theory</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#introduction" id="toc-introduction">Introduction</a>
+<ul>
+<li><a href="#characteristics-of-queueing-systems"
+id="toc-characteristics-of-queueing-systems">Characteristics of Queueing
+Systems</a>
+<ul>
+<li><a href="#notation" id="toc-notation">Notation</a></li>
+</ul></li>
+<li><a href="#littles-law" id="toc-littles-law">Little’s Law</a>
+<ul>
+<li><a href="#h-lambda-g" id="toc-h-lambda-g"><img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20H%20%3D%20%5Clambda%20G"
+alt="H = \lambda G" title="H = \lambda G"
+class="math inline" /></a></li>
+<li><a href="#distributional-form-of-littles-law"
+id="toc-distributional-form-of-littles-law">Distributional Form of
+Little’s Law</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#review-of-stochastic-process"
+id="toc-review-of-stochastic-process">Review of Stochastic
+Process</a></li>
+<li><a href="#simple-markovian-queuing-models"
+id="toc-simple-markovian-queuing-models">Simple Markovian Queuing
+Models</a></li>
+<li><a href="#advanced-markovian-queuing-models"
+id="toc-advanced-markovian-queuing-models">Advanced Markovian Queuing
+Models</a></li>
+<li><a href="#general-arrival-or-service-patterns"
+id="toc-general-arrival-or-service-patterns">General Arrival or Service
+Patterns</a></li>
+<li><a href="#bounds-and-approximations"
+id="toc-bounds-and-approximations">Bounds And Approximations</a></li>
+<li><a href="#numerical-techniques-and-simulation"
+id="toc-numerical-techniques-and-simulation">Numerical Techniques And
+Simulation</a></li>
+</ul>
+</nav>
+<h1 id="introduction">Introduction</h1>
+<h2 id="characteristics-of-queueing-systems">Characteristics of Queueing
+Systems</h2>
+<ul>
+<li>Arrival pattern of customers
+<ul>
+<li>Usual arrival processes are stochastic so it is necessary to know
+the probability distribution describing the times between successvie
+customer intervals (Poisson process)</li>
+</ul></li>
+<li>Service paterns of servers
+<ul>
+<li>Service times are typically stochastic as well, so it is good to
+know the probability distribution to describe the sequence of customer
+service times</li>
+</ul></li>
+<li>Number of servers and service channels
+<ul>
+<li>The number of servers cause the system to be expensive to it is good
+to have the numbers of server be a choice</li>
+</ul></li>
+<li>System capacity
+<ul>
+<li>Physical limiations of the system.</li>
+</ul></li>
+<li>Queue discipline
+<ul>
+<li>FIFO, LIFO, RSS (random selection of service), etc.</li>
+</ul></li>
+<li>Number of service stages
+<ul>
+<li>Single stage service, multi-stage service</li>
+</ul></li>
+</ul>
+<h3 id="notation">Notation</h3>
+<table>
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 20%" />
+<col style="width: 39%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Characteristics</th>
+<th>Symbol</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Interval-time distribution (A) Service-time distribution (B)</td>
+<td><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20M" alt="M"
+title="M" class="math inline" /> <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20D" alt="D"
+title="D" class="math inline" /> <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20E_k" alt="E_k"
+title="E_k" class="math inline" /> <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20H_k" alt="H_k"
+title="H_k" class="math inline" /> <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20PH" alt="PH"
+title="PH" class="math inline" /> <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20G" alt="G"
+title="G" class="math inline" /></td>
+<td>Exponential Deterministic Erlang type <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20k%20%5Cin%20%281%2C2%2C...%29"
+alt="k \in (1,2,...)" title="k \in (1,2,...)" class="math inline" />
+Mixture of <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20k" alt="k"
+title="k" class="math inline" /> exponentials Phase type General</td>
+</tr>
+<tr class="even">
+<td>Parallel servers (X) System Capacity (Y) Queue discipline (Q)</td>
+<td><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%201%2C2%2C...%2C%5Cinf"
+alt="1,2,...,\inf" title="1,2,...,\inf" class="math inline" /> <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%201%2C2%2C...%2C%5Cinf"
+alt="1,2,...,\inf" title="1,2,...,\inf" class="math inline" /> FIFO LIFO
+RSS PR GD</td>
+<td>First In First Out Last In First Out Random Selection of Service
+Priority General discipline</td>
+</tr>
+</tbody>
+</table>
+<h2 id="littles-law">Little’s Law</h2>
+<p>A fundamental law used extensivly in queuing theory is Little’s Law.
+Little’s Law provides a relationship between three funcamental
+quantities: The average rage <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda"
+alt="\lambda" title="\lambda" class="math inline" /> that customers
+arrive to the system, the average wait time <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20W" alt="W"
+title="W" class="math inline" /> that a customer spends in the system,
+and the average number <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20L" alt="L"
+title="L" class="math inline" /> of customers in the system. This
+relationship is given by <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20L%3D%5Clambda%20W"
+alt="L=\lambda W" title="L=\lambda W" class="math inline" />.</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Bequation%7D%0A%5Clabel%7Beq%3Alittle%5Climits%7D%0A%0A%5Cbegin%7Barray%7D%7Blll%7D%0A%0A%20%20%20%20%5Clambda%20%5Cequiv%20%5Clim_%7Bt%20%5Crightarrow%20%5Cinf%7D%20%5Cfrac%7BA%28t%29%7D%7Bt%7D%20%20%20%20%20%20%20%20%20%20%20%20%20%26%0A%20%20%20%20W%20%5Cequiv%20%5Clim_%7Bk%20%5Crightarrow%20%5Cinf%7D%20%5Cfrac%7B1%7D%7Bk%7D%20%5Csum_%7Bi%3D1%7D%5E%7Bk%7D%20W%5Ek%20%20%20%26%0A%20%20%20%20L%20%5Cequiv%20%5Clim_%7BT%20%5Crightarrow%20%5Cinf%7D%20%5Cfrac%7B1%7D%7BT%7D%20%5Cint_%7B0%7D%5E%7BT%7D%20N%28t%29%20dt%0A%0A%5Cend%7Barray%7D%0A%5Cend%7Bequation%7D"
+alt="\begin{equation}
+\label{eq:little\limits}
+
+\begin{array}{lll}
+
+    \lambda \equiv \lim_{t \rightarrow \inf} \frac{A(t)}{t}             &amp;
+    W \equiv \lim_{k \rightarrow \inf} \frac{1}{k} \sum_{i=1}^{k} W^k   &amp;
+    L \equiv \lim_{T \rightarrow \inf} \frac{1}{T} \int_{0}^{T} N(t) dt
+
+\end{array}
+\end{equation}" title="\begin{equation}
+\label{eq:little\limits}
+
+\begin{array}{lll}
+
+    \lambda \equiv \lim_{t \rightarrow \inf} \frac{A(t)}{t}             &amp;
+    W \equiv \lim_{k \rightarrow \inf} \frac{1}{k} \sum_{i=1}^{k} W^k   &amp;
+    L \equiv \lim_{T \rightarrow \inf} \frac{1}{T} \int_{0}^{T} N(t) dt
+
+\end{array}
+\end{equation}" class="math display" /></p>
+<p>Where</p>
+<ul>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%28t%29"
+alt="A(t)" title="A(t)" class="math inline" />: Cumulative number of
+arrivals at time <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20t" alt="t"
+title="t" class="math inline" /></li>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20W%5Ek"
+alt="W^k" title="W^k" class="math inline" />: Time customer <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20k" alt="k"
+title="k" class="math inline" /> spends in the system</li>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20N%28t%29"
+alt="N(t)" title="N(t)" class="math inline" />: Number of customers in
+the system at time <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20t" alt="t"
+title="t" class="math inline" /></li>
+</ul>
+<blockquote>
+<p>Theorem 1.1: <a href="#littles-law">Little’s Law</a> If the limit
+<img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda"
+alt="\lambda" title="\lambda" class="math inline" /> and <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20W" alt="W"
+title="W" class="math inline" /> in exists and are finits then the limit
+<img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20L" alt="L"
+title="L" class="math inline" /> exists and</p>
+</blockquote>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20L%20%3D%20%5Clambda%20W"
+alt="L = \lambda W" title="L = \lambda W" class="math display" /></p>
+<p>A few notes can be taken about this theorem:</p>
+<ul>
+<li>It is a statement about long running averages</li>
+<li>The limits for <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda"
+alt="\lambda" title="\lambda" class="math inline" /> and <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20W" alt="W"
+title="W" class="math inline" /> must exists. This therefore does not
+include systems that grow without bound (i.e. customers arrive faster
+than the services can output)</li>
+<li>The theorem does not nececarrily require “queues”. Rather it
+requries a “system” to which the entities arrive and from which they
+depart. The system can therefore be reguarded as a black box with no
+specific requirements as to what happens in the box.</li>
+</ul>
+<h3 id="h-lambda-g"><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20H%20%3D%20%5Clambda%20G"
+alt="H = \lambda G" title="H = \lambda G" class="math inline" /></h3>
+<p>It turns out that Little’s Law is a special case of a more general
+relationship <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20H%20%3D%20%5Clambda%20G"
+alt="H = \lambda G" title="H = \lambda G" class="math inline" /></p>
+<ul>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20G" alt="G"
+title="G" class="math inline" />: Cost or work</li>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20H" alt="H"
+title="H" class="math inline" />: Total average cost per time incurred
+by the system</li>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda"
+alt="\lambda" title="\lambda" class="math inline" />: Average rate that
+customers arrive to the system</li>
+</ul>
+<h3 id="distributional-form-of-littles-law">Distributional Form of
+Little’s Law</h3>
+<p>TODO: Link to probablity section for moments TODO: Link for
+stationary</p>
+<p>Little’s law provides a relationship between the first moments of
+<img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20N%28T%29%20%5Cequiv%20A%28t%29%20-%20D%28t%29"
+alt="N(T) \equiv A(t) - D(t)" title="N(T) \equiv A(t) - D(t)"
+class="math inline" /> (Arrival - Departure) and <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20W%5Ek"
+alt="W^k" title="W^k" class="math inline" />. It is also possible to
+relate higher moments as well. To state the distributional form a few
+assumptions are made</p>
+<ol type="1">
+<li>Arrival process is stationary</li>
+<li>Customers depart from the system in the order they arrive</li>
+<li>The time spent <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20W%5Ek"
+alt="W^k" title="W^k" class="math inline" /> by the <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20k" alt="k"
+title="k" class="math inline" />th customer in the system is
+stationary</li>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20W%5Ek"
+alt="W^k" title="W^k" class="math inline" /> is independent of the
+arrival process after the arrival of customer <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20k" alt="k"
+title="k" class="math inline" /></li>
+</ol>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Bequation%7D%0A%20%20%20Pr%5C%7BN%28t%29%20%5Cleq%20j%5C%7D%20%3D%20Pr%5C%7BA%28W%5Ek%29%20%5Cleq%20j%5C%7D%0A%5Cend%7Bequation%7D"
+alt="\begin{equation}
+   Pr\{N(t) \leq j\} = Pr\{A(W^k) \leq j\}
+\end{equation}" title="\begin{equation}
+   Pr\{N(t) \leq j\} = Pr\{A(W^k) \leq j\}
+\end{equation}" class="math display" /></p>
+<p>The statement above states: if one generates a random waiting time
+<img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20W%5Ek"
+alt="W^k" title="W^k" class="math inline" /> and then generates a random
+number of arrivals occuring over an interval of length <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20W%5Ek"
+alt="W^k" title="W^k" class="math inline" /> then this has to be the
+same distribution as the number of customers in the system.</p>
+<h1 id="review-of-stochastic-process">Review of Stochastic Process</h1>
+<h1 id="simple-markovian-queuing-models">Simple Markovian Queuing
+Models</h1>
+<h1 id="advanced-markovian-queuing-models">Advanced Markovian Queuing
+Models</h1>
+<h1 id="general-arrival-or-service-patterns">General Arrival or Service
+Patterns</h1>
+<h1 id="bounds-and-approximations">Bounds And Approximations</h1>
+<h1 id="numerical-techniques-and-simulation">Numerical Techniques And
+Simulation</h1>
+</body>
+</html>
+	</div>
+</body>
+</html>

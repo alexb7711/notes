@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<head>
+	<link rel="Stylesheet" type="text/css" href="./style.css" />
+	<title>%title%</title>
+	<meta http-equiv="Content-Type" content="width=device-with, initial-scale=1.0; text/html; charset=utf-8" name="viewport"/>
+</head>
+<body>
+	<div class="nav"><h2 id="Alexander Brown" class="header">Alexander Brown - Electrical Engineer</h2>
+		<!-- <p> -->
+		    <!-- email: alex.brown7711@aggiemail.usu.edu -->
+		<!-- </p> -->
+		<a href="%root_path%index.html">Home</a> |
+		<a href="%root_path%blog.html">Blog</a> |
+		<a href="%root_path%notes.html">Notes</a> |
+		<a href="%root_path%classes.html">Classes</a> |
+		<a href="%root_path%projects.html">Projects</a> |
+		<a href="%root_path%todo.html">Todo</a> |
+		<a href="%root_path%error.html">About</a>
+	</div>
+	<div class="content">
+	    <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>markov_chains</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#discrete-time-markov-chains"
+id="toc-discrete-time-markov-chains">Discrete-Time Markov
+Chains</a></li>
+<li><a href="#representing-a-discrete-time-markov-chain"
+id="toc-representing-a-discrete-time-markov-chain">Representing A
+Discrete-Time Markov Chain</a></li>
+<li><a href="#steady-state-distribution-of-a-discrete-time-markov-chain"
+id="toc-steady-state-distribution-of-a-discrete-time-markov-chain">Steady-State
+Distribution of a Discrete-Time Markov Chain</a>
+<ul>
+<li><a href="#calculating-steady-state-probabilities"
+id="toc-calculating-steady-state-probabilities">Calculating Steady-State
+Probabilities</a></li>
+<li><a href="#markov-chain-ergodicity-conditions"
+id="toc-markov-chain-ergodicity-conditions">Markov Chain Ergodicity
+Conditions</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="discrete-time-markov-chains">Discrete-Time Markov Chains</h1>
+<p>Variables: * Process: evolves over time * Random: Not perfectly
+predictable * Discrete-time: Possible changes at periods * State: A
+possible value for <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20X_n" alt="X_n"
+title="X_n" class="math inline" /></p>
+<pre><code>Definition: Markov Chain: The future is independent of the past, given the present. In other words,
+
+$$
+    P(X_{n+1} = j | X_n = i)\; \text{depends only on } i \text{ and } j
+$$</code></pre>
+<h1 id="representing-a-discrete-time-markov-chain">Representing A
+Discrete-Time Markov Chain</h1>
+<p>Ingredients of a discrete-time Markov chain are: * Current State
+(order them) * Transition possibilities (matrix represents <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20P_%7Bij%7D"
+alt="P_{ij}" title="P_{ij}" class="math inline" /> that represents the
+transition probabilities) * Rows sum up to 1</p>
+<h1
+id="steady-state-distribution-of-a-discrete-time-markov-chain">Steady-State
+Distribution of a Discrete-Time Markov Chain</h1>
+<p>Under certain mild conditions, called ergodicity conditions, the
+state probabilities converge to values that do not depend on the initial
+state probabilities. <em>A necessary condition for this to occur is that
+we must be able to reach any other state with positive
+probability</em>.</p>
+<h2 id="calculating-steady-state-probabilities">Calculating Steady-State
+Probabilities</h2>
+<p>The probability of entering node <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20i" alt="i"
+title="i" class="math inline" /> should be the same as the probability
+exiting node <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20i" alt="i"
+title="i" class="math inline" />, this is represented by the following
+equation:</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cpi_i%20%5Csum_%7Bi%20%5Cneq%20j%7D%20P_%7Bij%7D%20%3D%20%5Csum_%7Bj%5Cneq%20i%7D%20%5Cpi_j%20P_%7Bji%7D"
+alt="\pi_i \sum_{i \neq j} P_{ij} = \sum_{j\neq i} \pi_j P_{ji}"
+title="\pi_i \sum_{i \neq j} P_{ij} = \sum_{j\neq i} \pi_j P_{ji}"
+class="math display" /></p>
+<p>This also applies to subsets of the transition diagram.</p>
+<h2 id="markov-chain-ergodicity-conditions">Markov Chain Ergodicity
+Conditions</h2>
+<pre><code>Necessary and sufficient condition: For a discrete Markov chain $X$, starting from any initial state or distribution, the probabilities $[\pi_1(n), \pi_2(n), ...]$ converge to a unique positive vector $\pi = [\pi_1, \pi_2,...]$ iff the chain is
+
+* irreducible
+* aperiodic
+* positive recurrent</code></pre>
+</body>
+</html>
+	</div>
+</body>
+</html>

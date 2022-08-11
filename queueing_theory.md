@@ -93,6 +93,84 @@ Little's law provides a relationship between the first moments of $N(T) \equiv A
 The statement above states: if one generates a random waiting time $W^k$ and then generates a random number of arrivals occuring over an interval of length $W^k$ then this has to be the same distribution as the number of customers in the system.
 
 # Review of Stochastic Process
+TODO: Add stochastic process section link here
+
+Exponential distributions are often used to model the time until a particular event occurs. It is closely related to the Poisson process as well as fundamental to the theory of Markov chains.
+
+> Definition 2.1: An exponential random variable is a continuous random variable with probability density function (PDF)
+
+\begin{equation}
+    f(t) = \lambda e^{-\lambda t}\; (t\geq 0)
+\end{equation}
+
+> where $\lambda$ is a constant.
+
+
+Furthermore,
+
+> Theorem 2.1: An exponential random variable has the memoryless property
+
+> Theorem 2.3: Let $T_1,...,T_n$ be independent exponential random variables with rates $\lambda_1,...,\lambda_n$, respectively. Then $min\{T_1,...,T_n\}$ is exponentially distributed with rate $\lambda_1+...+\lambda_n$.
+
+> Theorem 2.4 Let $T_1,...,T_n$ be independent exponential random variables with rates $\lambda_1,...,\lambda_n$, respectively. Then
+
+\begin{equation}
+    Pr\{T_i = min\{T_1,...,T_n\}\} = \frac{\lambda_i}{\lambda_1+...+\lambda_n}
+\end{equation}
+
+> Theorem 2.5: Let $T_1,...,T_n$ be independent exponential random variables with rates $\lambda_1,...,\lambda_n$, and let $T = min\{T_1,...,T_n\}$. Then the event $\{T_i = T\}$ is independent of $T$.
+
+## The Poisson Process
+Intuitively, the process can be though of describing events that occur "randomly" in time. A _counting_ process is a stochastic process in which $N(t)$ takes on nonnegative integer values and is nondecreasing in time. A counting process typically represents the cumulative number of events that have occurred by time $t$.
+
+> Definition 2.3: A Poisson process with rate $\lambda > 0$ is a counting process $N(t)$ with the following properties:
+>
+> 1. $N(0) = 0$
+> 2. $Pr\{ \text{1 event between } t+ \Delta t\} = \lambda \Delta t + o(\Delta_t)$
+> 3. $Pr\{ \text{2 event between } t+ \Delta t\} = o(\Delta_t)$
+> 4. The number of events in non-overlapping intervals are statistically independent; that is, the process has independent increments.
+
+The Poison random variable is
+
+> Definition 2.4: A Poisson random variable is a discrete random variable with probability mass function
+
+\begin{equation}
+    p_n = e^{-A \frac{A^n}{n!}}\; (n=0,1,2,...)
+\end{equation}
+
+> where $A>0$ is a constant.
+
+The following theorem links the Poisson process and the Poisson random variable.
+
+> Theorem 2.6: Let $N(t)$ be a Poisson process with rate $\lambda >0$. The number of events occurring by time $t$ is a Poisson random variable with mean $\lambda t$. That is,
+
+\begin{equation}
+    p_n = e^{-A \frac{A^n}{n!}}\; (n=0,1,2,...)
+\end{equation}
+
+> where $p_n(t) \equiv Pr\{N(t) = n\}$.
+
+Furthermore, the Poisson process is
+
+* The distribution is stationary, that is the of the number of events in a given time interval is dependent only on the length of the interval and not the location of the interval
+* The times between successive events are exponentially distributed with rate $\lambda$
+* Event times are uniformly distributed on a time interval $[0,T]$, given that a certain number of events have occurred on the interval. The _ordered_ event times follow the order statistics of $k$ independent uniform random variables.
+* (Splitting): Let $N(t)$ be a Poisson process with rate $\lambda$. Suppose that each event is labeled a type-i event with probability $p_i$, independent of all else. Let $N_i(t)$ be the number of type-i events by time $t$. Then $N_i(t)$ is a Poisson process with rate $\lambda p_i,\; i=1,...,n$. Furthermore, $N_i(t)$ and $N_j(t)$ are independent for all $i\neq j$.
+* (Superposition): Let $N_1(t),...,N_n(t)$ be independent Poisson processes with rates $\lambda_1,...,\lambda_n$, respectively. Then $N(t) \equiv N_(1) + ... + N_n(t)$ is a Poisson process with rate $\lambda \equiv \lambda_1 + ... + \lambda_n$.
+
+## Discrete-Time Markov Chains
+For discrete-time Markov chains, the transitions are assumed to occur at discrete points in time. The fundamental assumption that underlines Markov chains is the Markov property
+
+\begin{equation}
+    Pr\{X_{x+1} = j | X_0 = i_0, X_1=i_1,...,X_n=i_n\} = Pr\{ X_{n+1} = j | X_n = i_n \}
+\end{equation}
+
+Intuitively, this means that to characterize the future behavior it is just as useful to know only the present state or the present state as well as all the history.
+
+### Properties of Markov Chains
+State $j$ is *accessible* to state $i\; (i \rightarrow j)$ if there exists an $n \geq 0$ such that $p_{ij}^n > 0$. Two states communicate with each other if $i \leftrightarrow j$. A chain is *irreducible* if all of its state communicate (any state can get to any other state). A state is recurrent if the probability of returning to itself is 1, and it is transient if it will return to itself in $n$ steps.
+
+### Long-Run Behavior
 
 # Simple Markovian Queuing Models
 

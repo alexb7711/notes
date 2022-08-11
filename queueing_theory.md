@@ -16,24 +16,24 @@
     * Single stage service, multi-stage service
 
 ### Notation
-+--------------------------------+----------------+-------------------------------+
-| Characteristics                | Symbol         | Explanation                   |
-+================================+================+===============================+
-| Interval-time distribution (A) | $M$            | Exponential                   |
-| Service-time distribution (B)  | $D$            | Deterministic                 |
-|                                | $E_k$          | Erlang type $k \in (1,2,...)$ |
-|                                | $H_k$          | Mixture of $k$ exponentials   |
-|                                | $PH$           | Phase type                    |
-|                                | $G$            | General                       |
-+--------------------------------+----------------+-------------------------------+
-| Parallel servers (X)           | $1,2,...,\inf$ |                               |
-| System Capacity (Y)            | $1,2,...,\inf$ |                               |
-| Queue discipline (Q)           | FIFO           | First In First Out            | 
-|                                | LIFO           | Last In First Out             |
-|                                | RSS            | Random Selection of Service   |
-|                                | PR             | Priority                      |
-|                                | GD             | General discipline            |
-+--------------------------------+----------------+-------------------------------+
++-------------------------------------+---------------------+------------------------------------+
+| Characteristics                     | Symbol              | Explanation                        |
++=====================================+=====================+====================================+
+| Interval-time distribution (A)<br/> | $M$            <br/>| Exponential                   <br/>|
+| Service-time distribution (B) <br/> | $D$            <br/>| Deterministic                 <br/>|
+|                                     | $E_k$          <br/>| Erlang type $k \in (1,2,...)$ <br/>|
+|                                     | $H_k$          <br/>| Mixture of $k$ exponentials   <br/>|
+|                                     | $PH$           <br/>| Phase type                    <br/>|
+|                                     | $G$            <br/>| General                       <br/>|
++-------------------------------------+---------------------+------------------------------------+
+| Parallel servers (X)                | $1,2,...,\inf$ <br/>|                                    |
+| System Capacity (Y)                 | $1,2,...,\inf$ <br/>|                                    |
+| Queue discipline (Q)                | FIFO           <br/>| First In First Out            <br/>|
+|                                     | LIFO           <br/>| Last In First Out             <br/>|
+|                                     | RSS            <br/>| Random Selection of Service   <br/>|
+|                                     | PR             <br/>| Priority                      <br/>|
+|                                     | GD             <br/>| General discipline            <br/>|
++-------------------------------------+---------------------+------------------------------------+
 
 ## Little's Law
 A fundamental law used extensivly in queuing theory is Little's Law. Little's Law provides a relationship between three funcamental quantities: The average rage $\lambda$ that customers arrive to the system, the average wait time $W$ that a customer spends in the system, and the average number $L$ of customers in the system. This relationship is given by $L=\lambda W$.
@@ -50,7 +50,7 @@ A fundamental law used extensivly in queuing theory is Little's Law. Little's La
 \end{array}
 \end{equation}
 
-Where 
+Where
 
 * $A(t)$: Cumulative number of arrivals at time $t$
 * $W^k$: Time customer $k$ spends in the system
@@ -58,15 +58,15 @@ Where
 
 > Theorem 1.1: [Little's Law] If the limit $\lambda$ and $W$ in \ref{eq:little-limits} exists and are finits then the limit $L$ exists and
 
-$$
+\begin{equation*}
 L = \lambda W
-$$
+\end{equation*}
 
 A few notes can be taken about this theorem:
 
 * It is a statement about long running averages
 * The limits for $\lambda$ and $W$ must exists. This therefore does not include systems that grow without bound (i.e. customers arrive faster than the services can output)
-* The theorem does not nececarrily require "queues". Rather it requries a "system" to which the entities arrive and from which they depart. The system can therefore be reguarded as a black box with no specific requirements as to what happens in the box.
+* The theorem does not necessarily require "queues". Rather it requries a "system" to which the entities arrive and from which they depart. The system can therefore be regarded as a black box with no specific requirements as to what happens in the box.
 
 ### $H = \lambda G$
 It turns out that Little's Law is a special case of a more general relationship $H = \lambda G$
@@ -76,7 +76,7 @@ It turns out that Little's Law is a special case of a more general relationship 
 * $\lambda$: Average rate that customers arrive to the system
 
 ### Distributional Form of Little's Law
-TODO: Link to probablity section for moments
+TODO: Link to probability section for moments
 TODO: Link for stationary
 
 Little's law provides a relationship between the first moments of $N(T) \equiv A(t) - D(t)$ (Arrival - Departure) and $W^k$. It is also possible to relate higher moments as well. To state the distributional form a few assumptions are made

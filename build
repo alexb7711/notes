@@ -29,7 +29,32 @@ function progress_bar()
 }
 
 ##===============================================================================
+# Replaces a keyword with the specified text string.
 #
+# INPUT:
+# * $1: text to update
+# * $2: keyword to be replaced
+# * $3: text string
+# * $4: file to update
+#
+# OUTPUT:
+# * NONE
+#
+function replace()
+{
+	# Variables
+	local text=$1
+	local keyword=$2
+	local string=$3
+	local file=$4
+	
+	# Search and replace text
+	echo "${text//$keyword/$string}" > $file
+}
+
+##===============================================================================
+# Process the markdown, prepend html header file, and update the header file
+# for each file.
 function process()
 {
 	# Initialize values
@@ -45,11 +70,11 @@ function process()
 	header=$(<$header_file)
 	body=$(<$html_file)
 
-	# Replace __PLACEHOLDER__ with processed markdown
-	echo "${header//__PLACEHOLDER__/$body}" > $html_file
+	# Replace __CONTENT__ with processed markdown
+	replace $header "__CONTENT__" $body $html_file
 	
-	# Replace __HEADER__ with processed markdown
-	echo "${header//__HEADER__/$(basename ${file%.*})}" > $html_file
+	# Replace __TITLE__ with processed markdown
+	replace $header "__TITLE__" $(basename ${file%.*}) $html_file
 }
 
 #################################################################################

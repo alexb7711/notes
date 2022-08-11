@@ -5,7 +5,6 @@
 #################################################################################
 
 ##===============================================================================
-#
 # Create a fancy little progress bar
 # https://stackoverflow.com/questions/238073/how-to-add-a-progress-bar-to-a-shell-script
 function progress_bar()
@@ -46,8 +45,11 @@ function process()
 	header=$(<$header_file)
 	body=$(<$html_file)
 
-	# Replace %content% with processed markdown
+	# Replace __PLACEHOLDER__ with processed markdown
 	echo "${header//__PLACEHOLDER__/$body}" > $html_file
+	
+	# Replace __HEADER__ with processed markdown
+	echo "${header//__HEADER__/$(basename ${file%.*})}" > $html_file
 }
 
 #################################################################################

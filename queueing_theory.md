@@ -171,6 +171,7 @@ Intuitively, this means that to characterize the future behavior it is just as u
 State $j$ is *accessible* to state $i\; (i \rightarrow j)$ if there exists an $n \geq 0$ such that $p_{ij}^n > 0$. Two states communicate with each other if $i \leftrightarrow j$. A chain is *irreducible* if all of its state communicate (any state can get to any other state). A state is recurrent if the probability of returning to itself is 1, and it is transient if it will return to itself in $n$ steps.
 
 ### Long-Run Behavior
+The concept of long run behavior consists of the idea that the probability of being at a particular state does not depend on the starting state.
 
 # Simple Markovian Queuing Models
 

@@ -5,7 +5,6 @@
 #################################################################################
 
 ##===============================================================================
-#
 # Create a fancy little progress bar
 # https://stackoverflow.com/questions/238073/how-to-add-a-progress-bar-to-a-shell-script
 function progress_bar()
@@ -30,7 +29,8 @@ function progress_bar()
 }
 
 ##===============================================================================
-#
+# Process the markdown, prepend html header file, and update the header file
+# for each file.
 function process()
 {
 	# Initialize values
@@ -46,8 +46,14 @@ function process()
 	header=$(<$header_file)
 	body=$(<$html_file)
 
-	# Replace %content% with processed markdown
-	echo "${header//__PLACEHOLDER__/$body}" > $html_file
+	# Replace __CONTENT__ with processed markdown
+        echo "${header//__CONTENT__/$body}" > $html_file
+
+        # Get text from file
+        body=$(<$html_file)
+
+	# Replace __TITLE__ with processed markdown
+        echo "${body//__TITLE__/$(basename{file%.*})}" > $html_file
 }
 
 #################################################################################
@@ -73,7 +79,7 @@ do
 
 	# Process file
 	process $f $outdir $header_file
-	
+
 	# Update index
 	i=$((i+1))
 

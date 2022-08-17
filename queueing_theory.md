@@ -173,6 +173,16 @@ State $j$ is *accessible* to state $i\; (i \rightarrow j)$ if there exists an $n
 ### Long-Run Behavior
 The concept of long run behavior consists of the idea that the probability of being at a particular state does not depend on the starting state.
 
+> Theorem 2.13: An irreducible and positive recurrent discrete-time Markov chain has a unique soltion to the stationary equations
+
+\begin{equation}
+\begin{array}{ccc}
+   \pi = \pi P  & \text{and} & \sum_j \pi_j = 1
+\end{array}   
+\end{equation}
+
+> namely, $\pi_j = 1/m_{jj}$. Futhermore, if the chain is aperiodic, the limiting probability distrobution exists and is equal to the stationary distribution.
+
 # Simple Markovian Queuing Models
 
 # Advanced Markovian Queuing Models

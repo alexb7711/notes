@@ -25,9 +25,9 @@
 |                                     | $H_k$          <br/>| Mixture of $k$ exponentials   <br/>|
 |                                     | $PH$           <br/>| Phase type                    <br/>|
 |                                     | $G$            <br/>| General                       <br/>|
-+-------------------------------------+---------------------+------------------------------------+
-| Parallel servers (X)                | $1,2,...,\inf$ <br/>|                                    |
-| System Capacity (Y)                 | $1,2,...,\inf$ <br/>|                                    |
+    +-------------------------------------+-----------------+------------------------------------+
+| Parallel servers (X)                | $1,2,.,\infty$ <br/>|                                    |
+| System Capacity (Y)                 | $1,2,.,\infty$ <br/>|                                    |
 | Queue discipline (Q)                | FIFO           <br/>| First In First Out            <br/>|
 |                                     | LIFO           <br/>| Last In First Out             <br/>|
 |                                     | RSS            <br/>| Random Selection of Service   <br/>|
@@ -43,9 +43,9 @@ A fundamental law used extensivly in queuing theory is Little's Law. Little's La
 
 \begin{array}{lll}
 
-    \lambda \equiv \lim_{t \rightarrow \inf} \frac{A(t)}{t}             &
-    W \equiv \lim_{k \rightarrow \inf} \frac{1}{k} \sum_{i=1}^{k} W^k   &
-    L \equiv \lim_{T \rightarrow \inf} \frac{1}{T} \int_{0}^{T} N(t) dt
+    \lambda \equiv \lim_{t \rightarrow \infty} \frac{A(t)}{t}             &
+    W \equiv \lim_{k \rightarrow \infty} \frac{1}{k} \sum_{i=1}^{k} W^k   &
+    L \equiv \lim_{T \rightarrow \infty} \frac{1}{T} \int_{0}^{T} N(t) dt
 
 \end{array}
 \end{equation}
@@ -73,7 +73,7 @@ It turns out that Little's Law is a special case of a more general relationship 
 
 * $G$: Cost or work
 * $H$: Total average cost per time incurred by the system
-* $\lambda$: Average rate that customers arrive to the system
+nn* $\lambda$: Average rate that customers arrive to the system
 
 ### Distributional Form of Little's Law
 TODO: Link to probability section for moments
@@ -104,7 +104,6 @@ Exponential distributions are often used to model the time until a particular ev
 \end{equation}
 
 > where $\lambda$ is a constant.
-
 
 Furthermore,
 
@@ -178,10 +177,13 @@ The concept of long run behavior consists of the idea that the probability of be
 \begin{equation}
 \begin{array}{ccc}
    \pi = \pi P  & \text{and} & \sum_j \pi_j = 1
-\end{array}   
+\end{array}
 \end{equation}
 
-> namely, $\pi_j = 1/m_{jj}$. Futhermore, if the chain is aperiodic, the limiting probability distrobution exists and is equal to the stationary distribution.
+> namely, $\pi_j = 1/m_{jj}$. Futhermore, if the chain is aperiodic, the limiting probability distribution exists and is equal to the stationary distribution.
+
+### Ergodicity
+[Ergodicity](./statistics.html#ergodicity) is important in that it deals with the problem of determining measures of a stochastic process.
 
 # Simple Markovian Queuing Models
 

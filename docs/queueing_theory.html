@@ -80,6 +80,7 @@ id="toc-properties-of-markov-chains">Properties of Markov
 Chains</a></li>
 <li><a href="#long-run-behavior" id="toc-long-run-behavior">Long-Run
 Behavior</a></li>
+<li><a href="#ergodicity" id="toc-ergodicity">Ergodicity</a></li>
 </ul></li>
 </ul></li>
 <li><a href="#simple-markovian-queuing-models"
@@ -177,20 +178,27 @@ src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20k" alt="k"
 title="k" class="math inline" /> exponentials <br/> Phase type <br/>
 General <br/></td>
 </tr>
-<tr class="even">
-<td>Parallel servers (X) System Capacity (Y) Queue discipline (Q)</td>
-<td><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%201%2C2%2C...%2C%5Cinf"
-alt="1,2,...,\inf" title="1,2,...,\inf" class="math inline" /> <br/>
-<img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%201%2C2%2C...%2C%5Cinf"
-alt="1,2,...,\inf" title="1,2,...,\inf" class="math inline" /> <br/>
-FIFO <br/> LIFO <br/> RSS <br/> PR <br/> GD <br/></td>
-<td>First In First Out <br/> Last In First Out <br/> Random Selection of
-Service <br/> Priority <br/> General discipline <br/></td>
-</tr>
 </tbody>
 </table>
+<pre><code>+-------------------------------------+-----------------+------------------------------------+</code></pre>
+<div class="line-block">Parallel servers (X) | <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%201%2C2%2C.%2C%5Cinfty"
+alt="1,2,.,\infty" title="1,2,.,\infty" class="math inline" /> <br/>|
+|<br />
+System Capacity (Y) | <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%201%2C2%2C.%2C%5Cinfty"
+alt="1,2,.,\infty" title="1,2,.,\infty" class="math inline" /> <br/>|
+|<br />
+Queue discipline (Q) | FIFO <br/>| First In First Out <br/>|<br />
+                                    | LIFO <br/>| Last In First Out
+<br/>|<br />
+                                    | RSS <br/>| Random Selection of
+Service <br/>|<br />
+                                    | PR <br/>| Priority <br/>|<br />
+                                    | GD <br/>| General discipline
+<br/>|</div>
+<p>+————————————-+———————+————————————+</p>
 <h2 id="littles-law">Little’s Law</h2>
 <p>A fundamental law used extensivly in queuing theory is Little’s Law.
 Little’s Law provides a relationship between three funcamental
@@ -208,15 +216,15 @@ relationship is given by <img style="vertical-align:middle"
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20L%3D%5Clambda%20W"
 alt="L=\lambda W" title="L=\lambda W" class="math inline" />.</p>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Bequation%7D%0A%5Clabel%7Beq%3Alittle%5Climits%7D%0A%0A%5Cbegin%7Barray%7D%7Blll%7D%0A%0A%20%20%20%20%5Clambda%20%5Cequiv%20%5Clim_%7Bt%20%5Crightarrow%20%5Cinf%7D%20%5Cfrac%7BA%28t%29%7D%7Bt%7D%20%20%20%20%20%20%20%20%20%20%20%20%20%26%0A%20%20%20%20W%20%5Cequiv%20%5Clim_%7Bk%20%5Crightarrow%20%5Cinf%7D%20%5Cfrac%7B1%7D%7Bk%7D%20%5Csum_%7Bi%3D1%7D%5E%7Bk%7D%20W%5Ek%20%20%20%26%0A%20%20%20%20L%20%5Cequiv%20%5Clim_%7BT%20%5Crightarrow%20%5Cinf%7D%20%5Cfrac%7B1%7D%7BT%7D%20%5Cint_%7B0%7D%5E%7BT%7D%20N%28t%29%20dt%0A%0A%5Cend%7Barray%7D%0A%5Cend%7Bequation%7D"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Bequation%7D%0A%5Clabel%7Beq%3Alittle%5Climits%7D%0A%0A%5Cbegin%7Barray%7D%7Blll%7D%0A%0A%20%20%20%20%5Clambda%20%5Cequiv%20%5Clim_%7Bt%20%5Crightarrow%20%5Cinfty%7D%20%5Cfrac%7BA%28t%29%7D%7Bt%7D%20%20%20%20%20%20%20%20%20%20%20%20%20%26%0A%20%20%20%20W%20%5Cequiv%20%5Clim_%7Bk%20%5Crightarrow%20%5Cinfty%7D%20%5Cfrac%7B1%7D%7Bk%7D%20%5Csum_%7Bi%3D1%7D%5E%7Bk%7D%20W%5Ek%20%20%20%26%0A%20%20%20%20L%20%5Cequiv%20%5Clim_%7BT%20%5Crightarrow%20%5Cinfty%7D%20%5Cfrac%7B1%7D%7BT%7D%20%5Cint_%7B0%7D%5E%7BT%7D%20N%28t%29%20dt%0A%0A%5Cend%7Barray%7D%0A%5Cend%7Bequation%7D"
 alt="\begin{equation}
 \label{eq:little\limits}
 
 \begin{array}{lll}
 
-    \lambda \equiv \lim_{t \rightarrow \inf} \frac{A(t)}{t}             &amp;
-    W \equiv \lim_{k \rightarrow \inf} \frac{1}{k} \sum_{i=1}^{k} W^k   &amp;
-    L \equiv \lim_{T \rightarrow \inf} \frac{1}{T} \int_{0}^{T} N(t) dt
+    \lambda \equiv \lim_{t \rightarrow \infty} \frac{A(t)}{t}             &amp;
+    W \equiv \lim_{k \rightarrow \infty} \frac{1}{k} \sum_{i=1}^{k} W^k   &amp;
+    L \equiv \lim_{T \rightarrow \infty} \frac{1}{T} \int_{0}^{T} N(t) dt
 
 \end{array}
 \end{equation}" title="\begin{equation}
@@ -224,9 +232,9 @@ alt="\begin{equation}
 
 \begin{array}{lll}
 
-    \lambda \equiv \lim_{t \rightarrow \inf} \frac{A(t)}{t}             &amp;
-    W \equiv \lim_{k \rightarrow \inf} \frac{1}{k} \sum_{i=1}^{k} W^k   &amp;
-    L \equiv \lim_{T \rightarrow \inf} \frac{1}{T} \int_{0}^{T} N(t) dt
+    \lambda \equiv \lim_{t \rightarrow \infty} \frac{A(t)}{t}             &amp;
+    W \equiv \lim_{k \rightarrow \infty} \frac{1}{k} \sum_{i=1}^{k} W^k   &amp;
+    L \equiv \lim_{T \rightarrow \infty} \frac{1}{T} \int_{0}^{T} N(t) dt
 
 \end{array}
 \end{equation}" class="math display" /></p>
@@ -300,8 +308,7 @@ title="G" class="math inline" />: Cost or work</li>
 <li><img style="vertical-align:middle"
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20H" alt="H"
 title="H" class="math inline" />: Total average cost per time incurred
-by the system</li>
-<li><img style="vertical-align:middle"
+by the system nn* <img style="vertical-align:middle"
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda"
 alt="\lambda" title="\lambda" class="math inline" />: Average rate that
 customers arrive to the system</li>
@@ -634,23 +641,27 @@ starting state.</p>
 Markov chain has a unique soltion to the stationary equations</p>
 </blockquote>
 <p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Bequation%7D%0A%5Cbegin%7Barray%7D%7Bccc%7D%0A%20%20%20%5Cpi%20%3D%20%5Cpi%20P%20%20%26%20%5Ctext%7Band%7D%20%26%20%5Csum_j%20%5Cpi_j%20%3D%201%0A%5Cend%7Barray%7D%20%20%20%0A%5Cend%7Bequation%7D"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Bequation%7D%0A%5Cbegin%7Barray%7D%7Bccc%7D%0A%20%20%20%5Cpi%20%3D%20%5Cpi%20P%20%20%26%20%5Ctext%7Band%7D%20%26%20%5Csum_j%20%5Cpi_j%20%3D%201%0A%5Cend%7Barray%7D%0A%5Cend%7Bequation%7D"
 alt="\begin{equation}
 \begin{array}{ccc}
    \pi = \pi P  &amp; \text{and} &amp; \sum_j \pi_j = 1
-\end{array}   
+\end{array}
 \end{equation}" title="\begin{equation}
 \begin{array}{ccc}
    \pi = \pi P  &amp; \text{and} &amp; \sum_j \pi_j = 1
-\end{array}   
+\end{array}
 \end{equation}" class="math display" /></p>
 <blockquote>
 <p>namely, <img style="vertical-align:middle"
 src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cpi_j%20%3D%201%2Fm_%7Bjj%7D"
 alt="\pi_j = 1/m_{jj}" title="\pi_j = 1/m_{jj}" class="math inline" />.
 Futhermore, if the chain is aperiodic, the limiting probability
-distrobution exists and is equal to the stationary distribution.</p>
+distribution exists and is equal to the stationary distribution.</p>
 </blockquote>
+<h3 id="ergodicity">Ergodicity</h3>
+<p><a href="./statistics.html#ergodicity">Ergodicity</a> is important in
+that it deals with the problem of determining measures of a stochastic
+process.</p>
 <h1 id="simple-markovian-queuing-models">Simple Markovian Queuing
 Models</h1>
 <h1 id="advanced-markovian-queuing-models">Advanced Markovian Queuing

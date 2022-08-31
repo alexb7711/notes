@@ -183,7 +183,7 @@ The concept of long run behavior consists of the idea that the probability of be
 > namely, $\pi_j = 1/m_{jj}$. Futhermore, if the chain is aperiodic, the limiting probability distribution exists and is equal to the stationary distribution.
 
 ### Ergodicity
-[Ergodicity](./statistics.html#ergodicity) is important in that it deals with the problem of determining measures of a stochastic process.
+[Ergodicity](./statistics.html#ergodicity) is important in that it deals with the problem of determining measures of a stochastic process. In general, a stochastic process is ergotic if all its "measures" can be determined, or well approximated from a single realization. Since statistical measures are usually expressed as time averages it is said: the stochastic process is ergotic if the time averages equal ensemble averages (expected values). *An ensemble average is obtained from multiple realizations of the process at a fixed point in time*. 
 
 # Simple Markovian Queuing Models
 

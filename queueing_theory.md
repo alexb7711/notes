@@ -185,6 +185,20 @@ The concept of long run behavior consists of the idea that the probability of be
 ### Ergodicity
 [Ergodicity](./statistics.html#ergodicity) is important in that it deals with the problem of determining measures of a stochastic process. In general, a stochastic process is ergotic if all its "measures" can be determined, or well approximated from a single realization. Since statistical measures are usually expressed as time averages it is said: the stochastic process is ergotic if the time averages equal ensemble averages (expected values). *An ensemble average is obtained from multiple realizations of the process at a fixed point in time*. 
 
+We say that a process is fully ergodic (ergodic in distribution function) if this property holds for all moments. A process might be ergodic for certain moments, but not for others. In queueing theory, we are typically interested in fully ergodic processes.
+
+## Continuous-Time Markov Chains
+A CTMC transitions from state to state just like a discretetime Markov chain, but the time spent in each state is now an exponential random variable in continuous time. Alternatively, a CTMC can be parameterized by a matrix
+
+$$
+q_{ij} = v_i p_{ij}
+$$
+
+* $v_i$ can be interpreted as the transition rate out of state $i$
+* $q_{ij}$ can be interpreted as the transition rate from state $i$ to state $j$
+
+> The equation above states that the transition rate from $i$ to $j$ equals the transition rate out of $i$ multiplied by the probability of going from $i$ to $j$.
+
 # Simple Markovian Queuing Models
 
 # Advanced Markovian Queuing Models

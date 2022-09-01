@@ -199,6 +199,30 @@ $$
 
 > The equation above states that the transition rate from $i$ to $j$ equals the transition rate out of $i$ multiplied by the probability of going from $i$ to $j$.
 
+This also drives the meaning of the *rate-transistion matrix*
+
+$$
+\begin{bmatrix}
+v_{0} & q_{01} & q_{02} & \cdots \\
+q_{10} & v_{1} & q_{11} & \cdots \\
+\vdots & \vdots & \ddots & \ddots 
+\end{bmatrix}
+$$
+
+Many queueing systems can be represented as birth death processes, where the system state $X(t)$ denotes the number of customers in the system at time $t$
+
+### Long-Run Behavior
+
+> Theorem 2.16: For a continuous time Markov chain, if the embedded discretetime chain is irreducible and positive recurrent, then there is a unique solution to the stationary equations $0 = pQ$ and $\sum_j p_j = 1$ where 0 is a vector of zeros (0; 0; : : :). Furthermore, if the mean holding times in all states are bounded (vi > 0 for all i), the chain has a limiting probability distribution equal to the stationary distribution.
+
+In component form
+
+$$
+   p_j v_j = \sum_{r \neq j} p_r q_{rj}
+$$
+
+This can be interpreted as follows. The left side is the rate of transitions out of state $j$. On the right side, $p_r q_{rj}$ is the rate of transitions from state $r$ to $j$. Summing over $r$ gives the overall rate of transitions into state $j$. Thus, theorem 2.16 is a statement that the rate of transitions out of a state equals the rate of transitions into the state.
+
 # Simple Markovian Queuing Models
 
 # Advanced Markovian Queuing Models

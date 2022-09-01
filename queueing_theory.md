@@ -224,6 +224,7 @@ $$
 This can be interpreted as follows. The left side is the rate of transitions out of state $j$. On the right side, $p_r q_{rj}$ is the rate of transitions from state $r$ to $j$. Summing over $r$ gives the overall rate of transitions into state $j$. Thus, theorem 2.16 is a statement that the rate of transitions out of a state equals the rate of transitions into the state.
 
 # Simple Markovian Queuing Models
+In this chapter we develop a broad class of simple queueing models using the theory of birth death processes.
 
 # Advanced Markovian Queuing Models
 

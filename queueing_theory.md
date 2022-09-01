@@ -226,6 +226,22 @@ This can be interpreted as follows. The left side is the rate of transitions out
 # Simple Markovian Queuing Models
 In this chapter we develop a broad class of simple queueing models using the theory of birth death processes.
 
+## Birth-Death Processes
+A birth death process consists of a set of states {0, 1, 2, . . .}, typically denoting the “population" of some system. When the system is in state $n \geq 0$, the time until the next arrival (or “birth") is an exponential random variable with rate $\lambda_n$. In queueing theory, the states denote the number of customers in the system. "Births" correspond to customer arrivals and “deaths" correspond to customer departures.
+
+It can be found that
+
+$$
+\begin{array}{c}
+p_n = p_0 \prod_{i=1}^n \frac{\lambda_{i-1}}{\mu_i} \\
+p_0 = (1 + \sum_{n-1}^{\infty} \prod_{i=1}^n frac{\lambda_{i-1}}{\mu_i})^{-1}
+\end{array}
+$$
+
+* $p_n$ is the long-term fraction of the time the system is in state $n$
+
+## Single-Server Queues (M/M/1)
+
 # Advanced Markovian Queuing Models
 
 # General Arrival or Service Patterns

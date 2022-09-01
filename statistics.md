@@ -58,3 +58,7 @@ is called a stationary distribution.
 
 # Ergodicity
  A stochastic process $X(t)$ is ergodic in the most general sense if all its "measures" can be determined or well approximated from a single realization $X_0(t)$ of the process.
+
+# TODO Poisson Process
+
+# TODO Exponential Random Variable

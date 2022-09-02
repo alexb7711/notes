@@ -1,0 +1,32 @@
+* Contents
+:PROPERTIES:
+:CUSTOM_ID: contents
+:END:
+#+begin_example
+    - [Linear Algebra](#Linear Algebra.md)
+            - [Matrices](#Linear Algebra#Matrices.md)
+                    - [Conjugate Matrix](#Linear Algebra#Matrices#Conjugate Matrix.md)
+#+end_example
+
+* Linear Algebra
+:PROPERTIES:
+:CUSTOM_ID: linear-algebra
+:END:
+** Matrices
+:PROPERTIES:
+:CUSTOM_ID: matrices
+:END:
+*** Conjugate Matrix
+:PROPERTIES:
+:CUSTOM_ID: conjugate-matrix
+:END:
+The conjugate matrix is obtained by taking the /complex conjugate/ of
+each element of the matrix. If we are given a complex variable
+\(z = x + iy\), the complex conjugate of it is represented as
+
+\[
+\bar{z} = x - iy
+\]
+
+Therefore, the conjugate matrix does this for every element in the
+matrix.

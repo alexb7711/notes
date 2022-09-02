@@ -1,0 +1,78 @@
+* Optimization for Engineers
+:PROPERTIES:
+:CUSTOM_ID: optimization-for-engineers
+:END:
+** Mathematical Review
+:PROPERTIES:
+:CUSTOM_ID: mathematical-review
+:END:
+- [[local:docs/optimization_for_engineers/Lecture1-1.htm.md][Lecture 1]]
+- [[local:docs/optimization_for_engineers/Lecture1-2.htm.md][Lecture 2]]
+
+** Unconstrained Optimization
+:PROPERTIES:
+:CUSTOM_ID: unconstrained-optimization
+:END:
+- [[local:docs/optimization_for_engineers/Lecture2-1.htm.md][Lecture 1]]
+- [[local:docs/optimization_for_engineers/Lecture2-2.htm.md][Lecture 2]]
+- [[local:docs/optimization_for_engineers/Lecture3-1.htm.md][Lecture 3]]
+- [[local:docs/optimization_for_engineers/Lecture3-2.htm.md][Lecture 4]]
+
+** Linear Programming
+:PROPERTIES:
+:CUSTOM_ID: linear-programming
+:END:
+- [[local:docs/optimization_for_engineers/Lecture4-1.htm.md][Lecture 1]]
+- [[local:docs/optimization_for_engineers/Lecture4-2.htm.md][Lecture 2]]
+- [[local:docs/optimization_for_engineers/Lecture4-3.htm.md][Lecture 3]]
+- [[local:docs/optimization_for_engineers/Lecture5-1.htm.md][Lecture 4]]
+- [[local:docs/optimization_for_engineers/Lecture5-1.htm.md][Lecture 5]]
+
+** MILP
+:PROPERTIES:
+:CUSTOM_ID: milp
+:END:
+- [[local:docs/optimization_for_engineers/Lecture6-1.htm.md][Lecture 1]]
+- [[local:docs/optimization_for_engineers/Lecture6-2.htm.md][Lecture 2]]
+
+** Convex Optimization
+:PROPERTIES:
+:CUSTOM_ID: convex-optimization
+:END:
+- [[local:docs/optimization_for_engineers/Lecture8-1.htm.md][Lecture 1]]
+- [[local:docs/optimization_for_engineers/Lecture8-2.htm.md][Lecture 2]]
+
+** Nonlinear Programming
+:PROPERTIES:
+:CUSTOM_ID: nonlinear-programming
+:END:
+- [[local:docs/optimization_for_engineers/Lecture10-1.htm.md][Lecture
+  1]]
+- [[local:docs/optimization_for_engineers/Lecture10-1.htm.md][Lecture
+  2]]
+- [[local:docs/optimization_for_engineers/Lecture10-1.htm.md][Lecture
+  3]]
+
+** Multi-Objective Optimization
+:PROPERTIES:
+:CUSTOM_ID: multi-objective-optimization
+:END:
+- [[local:docs/optimization_for_engineers/Lecture11-01.htm.md][Lecture
+  1]]
+- [[local:docs/optimization_for_engineers/Lecture11-02.htm.md][Lecture
+  2]]
+
+** Global Search
+:PROPERTIES:
+:CUSTOM_ID: global-search
+:END:
+- [[local:docs/optimization_for_engineers/Lecture12-01.htm.md][Lecture
+  1]]
+- [[local:docs/optimization_for_engineers/Lecture12-02.htm.md][Lecture
+  2]]
+
+** Interesting Optimization Applications
+:PROPERTIES:
+:CUSTOM_ID: interesting-optimization-applications
+:END:
+- [[local:docs/optimization_for_engineers/Lecture9-1.htm.md][Lecture 1]]

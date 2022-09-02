@@ -1,0 +1,20 @@
+* Blog
+:PROPERTIES:
+:CUSTOM_ID: blog
+:END:
+** Engineering
+:PROPERTIES:
+:CUSTOM_ID: engineering
+:END:
+** Game Development
+:PROPERTIES:
+:CUSTOM_ID: game-development
+:END:
+** Linux
+:PROPERTIES:
+:CUSTOM_ID: linux
+:END:
+** Vim
+:PROPERTIES:
+:CUSTOM_ID: vim
+:END:

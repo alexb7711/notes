@@ -1,0 +1,1272 @@
+#+TITLE: Rust 4 Dummies
+
+* Idioms
+Idioms are commonly used styles, guidelines and patterns largely agreed upon by
+a community. Writing idiomatic code allows developers to understand better what
+is happening.
+
+** Use of borrowed types for arguments
+Using a target of a deref coercion can increase the flexibility of your code
+when you are deciding which argument type to use for a function argument. In
+this way, the function will accept more input types. Deref coercion is defined
+in the rust programming language as:
+
+#+begin_center
+Deref coercion converts a reference to a type that implements the Deref trait
+into a reference to another type. For example, deref coercion can convert
+&String to &str because String implements the Deref trait such that it returns
+&str.
+#+end_center
+
+As an example of this:
+
+#+begin_src rust
+  fn three_vowels(word: &String) -> bool {
+    let mut vowel_count = 0;
+    for c in word.chars() {
+        match c {
+            'a' | 'e' | 'i' | 'o' | 'u' => {
+                vowel_count += 1;
+                if vowel_count >= 3 {
+                    return true
+                }
+            }
+            _ => vowel_count = 0
+        }
+    }
+    false
+}
+
+fn main() {
+    let ferris = "Ferris".to_string();
+    let curious = "Curious".to_string();
+    println!("{}: {}", ferris, three_vowels(&ferris));
+    println!("{}: {}", curious, three_vowels(&curious));
+
+    // This works fine, but the following two lines would fail:
+    // println!("Ferris: {}", three_vowels("Ferris"));
+    // println!("Curious: {}", three_vowels("Curious"));
+
+}
+#+end_src
+
+The commented out code *does not run* because a normal* ~&str~ cannot be
+"derefrenced" to a ~&String~, whereas the opposite is true. To have the whole
+file run, simply change the function parameter to
+
+#+begin_src rust
+  fn three_vowels(word: &str) -> bool { ...
+#+end_src
+
+** Concatenating strings with ~format!~
+It is often more convenient to use ~format!~ to build up strings, especially
+when there is a mix of literal and non-literal strings.
+
+#+begin_src rust
+fn say_hello(name: &str) -> String {
+    // We could construct the result string manually.
+    // let mut result = "Hello ".to_owned();
+    // result.push_str(name);
+    // result.push('!');
+    // result
+
+    // But using format! is better.
+    format!("Hello {}!", name)
+}
+#+end_src
+
+*** Disadvantages
+It is usually not the most efficient way to combine strings - a series of push
+operations on a mutable string is usually the most efficient (especially if the
+string has been pre-allocated to the expected size).
+
+** Constructors
+Rust does not have constructors, so the common keyword is to use ~new~.
+
+#+begin_src rust
+/// Time in seconds.
+///
+/// # Example
+///
+/// ```
+/// let s = Second::new(42);
+/// assert_eq!(42, s.value());
+/// ```
+pub struct Second {
+    value: u64
+}
+
+impl Second {
+    // Constructs a new instance of [`Second`].
+    // Note this is an associated function - no self.
+    pub fn new(value: u64) -> Self {
+        Self { value }
+    }
+
+    /// Returns the value in seconds.
+    pub fn value(&self) -> u64 {
+        self.value
+    }
+}
+#+end_src
+
+*** Default Constructors
+Rust supports default constructors
+
+#+begin_src rust
+impl Default for Second {
+    fn default() -> Self {
+        Self { value: 0 }
+    }
+}
+#+end_src
+
+Another way to do this is to use derive default on the structure
+
+#+begin_src rust
+#[derive(Default)]
+pub struct Second {
+    value: u64
+}
+#+end_src
+
+** Collections are smart pointers
+Use of the ~Deref~ trait to treat collections like smart pointers, offering
+owning and borrowed views of data. Example of collections are
+
+- A vector allows you to store a variable number of values next to each other.
+- A string is a collection of characters. We’ve mentioned the String type previously, but in this chapter we’ll talk about it in depth.
+- A hash map allows you to associate a value with a particular key. It’s a
+  particular implementation of the more general data structure called a map.
+
+  #+begin_src rust
+use std::ops::Deref;
+
+struct Vec<T> {
+    data: RawVec<T>,
+    //..
+}
+
+impl<T> Deref for Vec<T> {
+    type Target = [T];
+
+    fn deref(&self) -> &[T] {
+        //..
+    }
+}
+  #+end_src
+
+This means allows implicit derefrencing from ~&Vec<T>~ to ~&T~ and includes
+the relationship in auto-derefrencing searches.
+
+** Finalisation in Destructors
+An object's destructor can be used to run code that must be ran before exit.
+
+#+begin_src rust
+fn bar() -> Result<(), ()> {
+    // These don't need to be defined inside the function.
+    struct Foo;
+
+    // Implement a destructor for Foo.
+    impl Drop for Foo {
+        fn drop(&mut self) {
+            println!("exit");
+        }
+    }
+
+    // The dtor of _exit will run however the function `bar` is exited.
+    let _exit = Foo;
+    // Implicit return with `?` operator.
+    baz()?;
+    // Normal return.
+    Ok(())
+}
+#+end_src
+
+** ~mem::{take(_), replace(_)}~ to keep owned values in changed enums
+Say we have a ~&mut MyEnum~ which has (at least) two variants, ~A { name:
+String, x: u8 }~ and ~B { name: String }~. Now we want to change ~MyEnum::A to a
+B~ if ~x~ is zero, while keeping ~MyEnum::B~ intact.
+
+We can do this without cloning the ~name~.
+
+#+begin_src rust
+use std::mem;
+
+enum MyEnum {
+    A { name: String, x: u8 },
+    B { name: String }
+}
+
+fn a_to_b(e: &mut MyEnum) {
+    if let MyEnum::A { name, x: 0 } = e {
+        // this takes out our `name` and put in an empty String instead
+        // (note that empty strings don't allocate).
+        // Then, construct the new enum variant (which will
+        // be assigned to `*e`).
+        *e = MyEnum::B { name: mem::take(name) }
+    }
+}
+
+#+end_src
+
+** On-Stack Dynamic Dispatch
+We can dynamically dispatch over multiple values, however, to do so, we need to
+declare multiple variables to bind differently-typed objects. To extend the
+lifetime as necessary, we can use deferred conditional initialization, as seen
+below:
+
+#+begin_src rust
+use std::io;
+use std::fs;
+
+
+// These must live longer than `readable`, and thus are declared first:
+let (mut stdin_read, mut file_read);
+
+// We need to ascribe the type to get dynamic dispatch.
+let readable: &mut dyn io::Read = if arg == "-" {
+    stdin_read = io::stdin();
+    &mut stdin_read
+} else {
+    file_read = fs::File::open(arg)?;
+    &mut file_read
+};
+
+// Read from `readable` here.
+#+end_src
+
+This code allows us to
+
+- read in a file or
+- create a new file
+
+all for the same variable (which gets the handle at the end). Furthermore, We do
+not need to allocate anything on the heap. Neither do we need to initialize
+something we won't use later, nor do we need to monomorphize the whole code that
+follows to work with both ~File~ or ~Stdin~.
+
+** FFI (foreign function interface) Idioms
+This section contains idioms that may be useful when doing FFI.
+
+*** Error Handling in FFI
+This best practice shows different kinds of error codes, and how to expose them
+in a usable way:
+
+- Flat Enums should be converted to integers and returned as codes.
+- Structured Enums should be converted to an integer code with a string error
+message for detail.
+- Custom Error Types should become "transparent", with a C representation.
+
+#+name: Flat Enums
+#+begin_src rust
+enum DatabaseError {
+    IsReadOnly = 1, // user attempted a write operation
+    IOError = 2, // user should read the C errno() for what it was
+    FileCorrupted = 3, // user should run a repair tool to recover it
+}
+
+impl From<DatabaseError> for libc::c_int {
+    fn from(e: DatabaseError) -> libc::c_int {
+        (e as i8).into()
+    }
+}
+  #+end_src
+
+#+name: Structured Enums
+#+begin_src rust
+pub mod errors {
+    enum DatabaseError {
+        IsReadOnly,
+        IOError(std::io::Error),
+        FileCorrupted(String), // message describing the issue
+    }
+
+    impl From<DatabaseError> for libc::c_int {
+        fn from(e: DatabaseError) -> libc::c_int {
+            match e {
+                DatabaseError::IsReadOnly => 1,
+                DatabaseError::IOError(_) => 2,
+                DatabaseError::FileCorrupted(_) => 3,
+            }
+        }
+    }
+}
+
+pub mod c_api {
+    use super::errors::DatabaseError;
+
+    #[no_mangle]
+    pub extern "C" fn db_error_description(
+        e: *const DatabaseError
+        ) -> *mut libc::c_char {
+
+        let error: &DatabaseError = unsafe {
+            // SAFETY: pointer lifetime is greater than the current stack frame
+            &*e
+        };
+
+        let error_str: String = match error {
+            DatabaseError::IsReadOnly => {
+                format!("cannot write to read-only database");
+            }
+            DatabaseError::IOError(e) => {
+                format!("I/O Error: {}", e);
+            }
+            DatabaseError::FileCorrupted(s) => {
+                format!("File corrupted, run repair: {}", &s);
+            }
+        };
+
+        let c_error = unsafe {
+            // SAFETY: copying error_str to an allocated buffer with a NUL
+            // character at the end
+            let mut malloc: *mut u8 = libc::malloc(error_str.len() + 1) as *mut _;
+
+            if malloc.is_null() {
+                return std::ptr::null_mut();
+            }
+
+            let src = error_str.as_bytes().as_ptr();
+
+            std::ptr::copy_nonoverlapping(src, malloc, error_str.len());
+
+            std::ptr::write(malloc.add(error_str.len()), 0);
+
+            malloc as *mut libc::c_char
+        };
+
+        c_error
+    }
+}
+#+end_src
+
+#+name: Custom Error Types
+#+begin_src rust
+struct ParseError {
+    expected: char,
+    line: u32,
+    ch: u16
+}
+
+impl ParseError { /* ... */ }
+
+/* Create a second version which is exposed as a C structure */
+#[repr(C)]
+pub struct parse_error {
+    pub expected: libc::c_char,
+    pub line: u32,
+    pub ch: u16
+}
+
+impl From<ParseError> for parse_error {
+    fn from(e: ParseError) -> parse_error {
+        let ParseError { expected, line, ch } = e;
+        parse_error { expected, line, ch }
+    }
+}
+#+end_src
+
+*** Accepting Strings
+When accepting strings via FFI through pointers, there are two principles that
+should be followed:
+
+- Keep foreign strings "borrowed", rather than copying them directly.
+- Minimize the amount of complexity and unsafe code involved in converting from a
+C-style string to native Rust strings.
+
+*** Passing Strings
+When passing strings to FFI functions, there are four principles that should be
+followed:
+
+- Make the lifetime of owned strings as long as possible.
+- Minimize unsafe code during the conversion.
+- If the C code can modify the string data, use ~Vec~ instead of ~CString~.
+- Unless the Foreign Function API requires it, the ownership of the string should
+not transfer to the callee.
+
+** Iterating over an ~Option~
+~Option~ should be seen as a container that contains either zero or one
+element. In particular it implements the ~IntoIterator~ trait, and such can be
+used with generic code that needs such a type.
+
+#+begin_src rust
+let turing = Some("Turing");
+let mut logicians = vec!["Curry", "Kleene", "Markov"];
+
+logicians.extend(turing);
+
+// equivalent to
+if let Some(turing_inner) = turing {
+    logicians.push(turing_inner);
+}
+#+end_src
+
+This works because ~Option~ implements ~IntoIterator~ and so does ~Vec~.
+Therefore if we perform the ~extend~ action it will either work, or not (~OK~ or
+~Err~).
+
+** Pass variables to closure
+First to describe what a closure is. It is a functional programming paradigm. In
+rust they are defined as:
+
+#+begin_verse
+Rust’s closures are anonymous functions you can save in a variable or pass as
+arguments to other functions. You can create the closure in one place and then
+call the closure elsewhere to evaluate it in a different context. Unlike
+functions, closures can capture values from the scope in which they’re
+defined. We’ll demonstrate how these closure features allow for code reuse and
+behavior customization.
+#+end_verse
+
+To read more on it, [[https://doc.rust-lang.org/book/ch13-01-closures.html?highlight=closure#moving-captured-values-out-of-closures-and-the-fn-traits][here is a link to the book]]. As an example:
+
+#+begin_src rust
+use std::rc::Rc;
+
+let num1 = Rc::new(1);
+let num2 = Rc::new(2);
+let num3 = Rc::new(3);
+let closure = {
+    // `num1` is moved
+    let num2 = num2.clone();  // `num2` is cloned
+    let num3 = num3.as_ref();  // `num3` is borrowed
+    move || {
+        *num1 + *num2 + *num3;
+    }
+};
+#+end_src
+
+where [[https://doc.rust-lang.org/std/rc/index.html][~Rc~]] and [[https://doc.rust-lang.org/std/keyword.move.html][~move~]] are as documented.
+
+** Easy doc initialization
+If a struct takes significant effort to initialize when writing docs, it can be
+quicker to wrap your example with a helper function which takes the struct as an
+argument. This the method that is used when reading through the rust books and some
+ of the code is hidden.
+
+If you have something like this to initialize:
+
+#+begin_src rust
+struct Connection {
+    name: String,
+    stream: TcpStream,
+}
+
+impl Connection {
+    /// Sends a request over the connection.
+    ///
+    /// # Example
+    /// ```no_run
+    /// # // Boilerplate are required to get an example working.
+    /// # let stream = TcpStream::connect("127.0.0.1:34254");
+    /// # let connection = Connection { name: "foo".to_owned(), stream };
+    /// # let request = Request::new("RequestId", RequestType::Get, "payload");
+    /// let response = connection.send_request(request);
+    /// assert!(response.is_ok());
+    /// ```
+    fn send_request(&self, request: Request) -> Result<Status, SendErr> {
+        // ...
+    }
+
+    /// Oh no, all that boilerplate needs to be repeated here!
+    fn check_status(&self) -> Status {
+        // ...
+    }
+}
+#+end_src
+
+Instead of typing all of this boilerplate to create a Connection and Request, it
+is easier to just create a wrapping helper function which takes them as
+arguments:
+
+#+begin_src rust
+struct Connection {
+    name: String,
+    stream: TcpStream,
+}
+
+impl Connection {
+    /// Sends a request over the connection.
+    ///
+    /// # Example
+    /// ```
+    /// # fn call_send(connection: Connection, request: Request) {
+    /// let response = connection.send_request(request);
+    /// assert!(response.is_ok());
+    /// # }
+    /// ```
+    fn send_request(&self, request: Request) {
+        // ...
+    }
+}
+#+end_src
+
+*Note* in the above example the line ~assert!(response.is_ok());~ will not
+actually run while testing because it is inside a function which is never
+invoked.
+
+When running tests, the code in the comments will not actually be ran, but it
+will be compiled.
+
+** Temporary mutability
+Often it is necessary to prepare and process some data, but after that data are
+only inspected and never modified. The intention can be made explicit by
+redefining the mutable variable as immutable.
+
+It can be done either by processing data within a nested block or by redefining
+the variable.
+
+#+name: Nesting block
+#+begin_src rust
+struct Connection {
+    name: String,
+    stream: TcpStream,
+}
+
+impl Connection {
+    /// Sends a request over the connection.
+    ///
+    /// # Example
+    /// ```
+    /// # fn call_send(connection: Connection, request: Request) {
+    /// let response = connection.send_request(request);
+    /// assert!(response.is_ok());
+    /// # }
+    /// ```
+    fn send_request(&self, request: Request) {
+        // ...
+    }
+}
+#+end_src
+
+#+name: Variable rebinding
+#+begin_src rust
+let mut data = get_vec();
+data.sort();
+let data = data;
+
+// Here `data` is immutable.
+#+end_src
+
+* Design Patterns
+[[https://rust-unofficial.github.io/patterns/patterns/index.html][This directly from the book]]:
+
+#+begin_quote
+Design patterns are "general reusable solutions to a commonly occurring problem
+within a given context in software design". Design patterns are a great way to
+describe the culture of a programming language. Design patterns are very
+language-specific - what is a pattern in one language may be unnecessary in
+another due to a language feature, or impossible to express due to a missing
+feature.
+
+If overused, design patterns can add unnecessary complexity to
+programs. However, they are a great way to share intermediate and advanced level
+knowledge about a programming language.
+
+Rust has many unique features. These features give us
+great benefit by removing whole classes of problems. Some of them are also
+patterns that are unique to Rust.
+
+YAGNI is an acronym that stands for You Aren't Going to Need It. It's a
+vital software design principle to apply as you write code.
+
+The best code I ever wrote was code I never wrote.
+
+If we apply YAGNI to design patterns, we see that the features of Rust allow us
+to throw out many patterns. For instance, there is no need for the strategy
+pattern in Rust because we can just use traits.
+#+end_quote
+
+** Behavioral Patterns
+Design patterns that identify common communication patterns among objects. By
+doing so, these patterns increase flexibility in carrying out communication.
+
+*** Command
+The basic idea of the Command pattern is to separate out actions into its own
+objects and pass them as parameters.
+
+**** Example
+Define two database operations ~create table~ and ~add field~. Each of these
+operations is a command which knows how to undo the command, e.g., ~drop table~
+and ~remove field~. When a user invokes a database migration operation then each
+command is executed in the defined order, and when the user invokes the rollback
+operation then the whole set of commands is invoked in reverse order.
+
+#+name: Trait objects
+#+begin_src rust
+  pub trait Migration {
+    fn execute(&self) -> &str;
+    fn rollback(&self) -> &str;
+}
+
+pub struct CreateTable;
+impl Migration for CreateTable {
+    fn execute(&self) -> &str {
+        "create table"
+    }
+    fn rollback(&self) -> &str {
+        "drop table"
+    }
+}
+
+pub struct AddField;
+impl Migration for AddField {
+    fn execute(&self) -> &str {
+        "add field"
+    }
+    fn rollback(&self) -> &str {
+        "remove field"
+    }
+}
+
+struct Schema {
+    commands: Vec<Box<dyn Migration>>,
+}
+
+impl Schema {
+    fn new() -> Self {
+        Self { commands: vec![] }
+    }
+
+    fn add_migration(&mut self, cmd: Box<dyn Migration>) {
+        self.commands.push(cmd);
+    }
+
+    fn execute(&self) -> Vec<&str> {
+        self.commands.iter().map(|cmd| cmd.execute()).collect()
+    }
+    fn rollback(&self) -> Vec<&str> {
+        self.commands
+            .iter()
+            .rev() // reverse iterator's direction
+            .map(|cmd| cmd.rollback())
+            .collect()
+    }
+}
+
+fn main() {
+    let mut schema = Schema::new();
+
+    let cmd = Box::new(CreateTable);
+    schema.add_migration(cmd);
+    let cmd = Box::new(AddField);
+    schema.add_migration(cmd);
+
+    assert_eq!(vec!["create table", "add field"], schema.execute());
+    assert_eq!(vec!["remove field", "drop table"], schema.rollback());
+}
+#+end_src
+
+#+name: Function pointers
+#+begin_src rust
+type FnPtr = fn() -> String;
+struct Command {
+    execute: FnPtr,
+    rollback: FnPtr,
+}
+
+struct Schema {
+    commands: Vec<Command>,
+}
+
+impl Schema {
+    fn new() -> Self {
+        Self { commands: vec![] }
+    }
+    fn add_migration(&mut self, execute: FnPtr, rollback: FnPtr) {
+        self.commands.push(Command { execute, rollback });
+    }
+    fn execute(&self) -> Vec<String> {
+        self.commands.iter().map(|cmd| (cmd.execute)()).collect()
+    }
+    fn rollback(&self) -> Vec<String> {
+        self.commands
+            .iter()
+            .rev()
+            .map(|cmd| (cmd.rollback)())
+            .collect()
+    }
+}
+
+fn add_field() -> String {
+    "add field".to_string()
+}
+
+fn remove_field() -> String {
+    "remove field".to_string()
+}
+
+fn main() {
+    let mut schema = Schema::new();
+    schema.add_migration(|| "create table".to_string(), || "drop table".to_string());
+    schema.add_migration(add_field, remove_field);
+    assert_eq!(vec!["create table", "add field"], schema.execute());
+    assert_eq!(vec!["remove field", "drop table"], schema.rollback());
+}
+#+end_src
+
+#+name: Fn trait operations
+#+begin_src rust
+type Migration<'a> = Box<dyn Fn() -> &'a str>;
+
+struct Schema<'a> {
+    executes: Vec<Migration<'a>>,
+    rollbacks: Vec<Migration<'a>>,
+}
+
+impl<'a> Schema<'a> {
+    fn new() -> Self {
+        Self {
+            executes: vec![],
+            rollbacks: vec![],
+        }
+    }
+    fn add_migration<E, R>(&mut self, execute: E, rollback: R)
+    where
+        E: Fn() -> &'a str + 'static,
+        R: Fn() -> &'a str + 'static,
+    {
+        self.executes.push(Box::new(execute));
+        self.rollbacks.push(Box::new(rollback));
+    }
+    fn execute(&self) -> Vec<&str> {
+        self.executes.iter().map(|cmd| cmd()).collect()
+    }
+    fn rollback(&self) -> Vec<&str> {
+        self.rollbacks.iter().rev().map(|cmd| cmd()).collect()
+    }
+}
+
+fn add_field() -> &'static str {
+    "add field"
+}
+
+fn remove_field() -> &'static str {
+    "remove field"
+}
+
+fn main() {
+    let mut schema = Schema::new();
+    schema.add_migration(|| "create table", || "drop table");
+    schema.add_migration(add_field, remove_field);
+    assert_eq!(vec!["create table", "add field"], schema.execute());
+    assert_eq!(vec!["remove field", "drop table"], schema.rollback());
+}
+#+end_src
+
+*** Newtype
+What if in some cases we want a type to behave similar to another type or
+enforce some behavior at compile time when using only type aliases would not be
+enough?
+
+For example, if we want to create a custom Display implementation for String due
+to security considerations (e.g. passwords).
+
+For such cases we could use the Newtype pattern to provide type safety and
+encapsulation.
+
+#+begin_src rust
+// Some type, not necessarily in the same module or even crate.
+struct Foo {
+    //..
+}
+
+impl Foo {
+    // These functions are not present on Bar.
+    //..
+}
+
+// The newtype.
+pub struct Bar(Foo);
+
+impl Bar {
+    // Constructor.
+    pub fn new(
+        //..
+    ) -> Self {
+
+        //..
+
+    }
+
+    //..
+}
+
+fn main() {
+    let b = Bar::new(...);
+
+    // Foo and Bar are type incompatible, the following do not type check.
+    // let f: Foo = b;
+    // let b: Bar = Foo { ... };
+}
+#+end_src
+
+[[https://doc.rust-lang.org/stable/book/ch19-04-advanced-types.html#creating-type-synonyms-with-type-aliases][More on typing here.]]
+
+*** Resource Acquisition is Initialization (RAII)
+RAII is a useful pattern for ensuring resources are properly deallocated or
+finalised. We can make use of the borrow checker in Rust to statically prevent
+errors stemming from using resources after finalisation takes place.
+
+#+begin_src rust
+use std::ops::Deref;
+
+struct Foo {}
+
+struct Mutex<T> {
+    // We keep a reference to our data: T here.
+    //..
+}
+
+struct MutexGuard<'a, T: 'a> {
+    data: &'a T,
+    //..
+}
+
+// Locking the mutex is explicit.
+impl<T> Mutex<T> {
+    fn lock(&self) -> MutexGuard<T> {
+        // Lock the underlying OS mutex.
+        //..
+
+        // MutexGuard keeps a reference to self
+        MutexGuard {
+            data: self,
+            //..
+        }
+    }
+}
+
+// Destructor for unlocking the mutex.
+impl<'a, T> Drop for MutexGuard<'a, T> {
+    fn drop(&mut self) {
+        // Unlock the underlying OS mutex.
+        //..
+    }
+}
+
+// Implementing Deref means we can treat MutexGuard like a pointer to T.
+impl<'a, T> Deref for MutexGuard<'a, T> {
+    type Target = T;
+
+    fn deref(&self) -> &T {
+        self.data
+    }
+}
+
+fn baz(x: Mutex<Foo>) {
+    let xx = x.lock();
+    xx.foo(); // foo is a method on Foo.
+    // The borrow checker ensures we can't store a reference to the underlying
+    // Foo which will outlive the guard xx.
+
+    // x is unlocked when we exit this function and xx's destructor is executed.
+}
+#+end_src
+
+*** Strategy (aka Policy)
+The Strategy design pattern is a technique that enables separation of
+concerns. It also allows to decouple software modules through Dependency
+Inversion.
+
+The basic idea behind the Strategy pattern is that, given an algorithm solving a
+particular problem, we define only the skeleton of the algorithm at an abstract
+level, and we separate the specific algorithm’s implementation into different
+parts.
+
+In this way, a client using the algorithm may choose a specific implementation,
+while the general algorithm workflow remains the same. In other words, the
+abstract specification of the class does not depend on the specific
+implementation of the derived class, but specific implementation must adhere to
+the abstract specification. This is why we call it "Dependency Inversion".
+
+**** Example
+Imagine we are working on a project that generates reports every month. We need
+the reports to be generated in different formats (strategies), e.g., in ~JSON~
+or ~Plain Text~ formats. But things vary over time, and we don't know what kind
+of requirement we may get in the future. For example, we may need to generate
+our report in a completely new format, or just modify one of the existing
+formats.
+
+#+begin_src rust
+use std::collections::HashMap;
+
+type Data = HashMap<String, u32>;
+
+trait Formatter {
+    fn format(&self, data: &Data, buf: &mut String);
+}
+
+struct Report;
+
+impl Report {
+    // Write should be used but we kept it as String to ignore error handling
+    fn generate<T: Formatter>(g: T, s: &mut String) {
+        // backend operations...
+        let mut data = HashMap::new();
+        data.insert("one".to_string(), 1);
+        data.insert("two".to_string(), 2);
+        // generate report
+        g.format(&data, s);
+    }
+}
+
+struct Text;
+impl Formatter for Text {
+    fn format(&self, data: &Data, buf: &mut String) {
+        for (k, v) in data {
+            let entry = format!("{} {}\n", k, v);
+            buf.push_str(&entry);
+        }
+    }
+}
+
+struct Json;
+impl Formatter for Json {
+    fn format(&self, data: &Data, buf: &mut String) {
+        buf.push('[');
+        for (k, v) in data.into_iter() {
+            let entry = format!(r#"{{"{}":"{}"}}"#, k, v);
+            buf.push_str(&entry);
+            buf.push(',');
+        }
+        buf.pop(); // remove extra , at the end
+        buf.push(']');
+    }
+}
+
+fn main() {
+    let mut s = String::from("");
+    Report::generate(Text, &mut s);
+    assert!(s.contains("one 1"));
+    assert!(s.contains("two 2"));
+
+    s.clear(); // reuse the same buffer
+    Report::generate(Json, &mut s);
+    assert!(s.contains(r#"{"one":"1"}"#));
+    assert!(s.contains(r#"{"two":"2"}"#));
+}
+#+end_src
+
+*** Visitor
+A visitor encapsulates an algorithm that operates over a heterogeneous
+collection of objects. It allows multiple different algorithms to be written
+over the same data without having to modify the data (or their primary
+behavior).
+
+Furthermore, the visitor pattern allows separating the traversal of a collection
+of objects from the operations performed on each object.
+
+#+begin_src rust
+// The data we will visit
+mod ast {
+    pub enum Stmt {
+        Expr(Expr),
+        Let(Name, Expr),
+    }
+
+    pub struct Name {
+        value: String,
+    }
+
+    pub enum Expr {
+        IntLit(i64),
+        Add(Box<Expr>, Box<Expr>),
+        Sub(Box<Expr>, Box<Expr>),
+    }
+}
+
+// The abstract visitor
+mod visit {
+    use ast::*;
+
+    pub trait Visitor<T> {
+        fn visit_name(&mut self, n: &Name) -> T;
+        fn visit_stmt(&mut self, s: &Stmt) -> T;
+        fn visit_expr(&mut self, e: &Expr) -> T;
+    }
+}
+
+use visit::*;
+use ast::*;
+
+// An example concrete implementation - walks the AST interpreting it as code.
+struct Interpreter;
+impl Visitor<i64> for Interpreter {
+    fn visit_name(&mut self, n: &Name) -> i64 { panic!() }
+    fn visit_stmt(&mut self, s: &Stmt) -> i64 {
+        match *s {
+            Stmt::Expr(ref e) => self.visit_expr(e),
+            Stmt::Let(..) => unimplemented!(),
+        }
+    }
+
+    fn visit_expr(&mut self, e: &Expr) -> i64 {
+        match *e {
+            Expr::IntLit(n) => n,
+            Expr::Add(ref lhs, ref rhs) => self.visit_expr(lhs) + self.visit_expr(rhs),
+            Expr::Sub(ref lhs, ref rhs) => self.visit_expr(lhs) - self.visit_expr(rhs),
+        }
+    }
+}
+#+end_arc
+
+** Creational Patterns
+Design patterns that deal with object creation mechanisms, trying to create
+objects in a manner suitable to the situation. The basic form of object creation
+could result in design problems or in added complexity to the design. Creational
+design patterns solve this problem by somehow controlling this object creation.
+
+*** Builder
+Construct an object with calls to a builder helper. This pattern is seen more
+frequently in Rust (and for simpler objects) than in many other languages
+because Rust lacks overloading. Since you can only have a single method with a
+given name, having multiple constructors is less nice in Rust than in C++, Java,
+or others.
+
+#+begin_src rust
+#![allow(unused)]
+fn main() {
+#[derive(Debug, PartialEq)]
+pub struct Foo {
+    // Lots of complicated fields.
+    bar: String,
+}
+
+impl Foo {
+    // This method will help users to discover the builder
+    pub fn builder() -> FooBuilder {
+        FooBuilder::default()
+    }
+}
+
+#[derive(Default)]
+pub struct FooBuilder {
+    // Probably lots of optional fields.
+    bar: String,
+}
+
+impl FooBuilder {
+    pub fn new(/* ... */) -> FooBuilder {
+        // Set the minimally required fields of Foo.
+        FooBuilder {
+            bar: String::from("X"),
+        }
+    }
+
+    pub fn name(mut self, bar: String) -> FooBuilder {
+        // Set the name on the builder itself, and return the builder by value.
+        self.bar = bar;
+        self
+    }
+
+    // If we can get away with not consuming the Builder here, that is an
+    // advantage. It means we can use the FooBuilder as a template for constructing
+    // many Foos.
+    pub fn build(self) -> Foo {
+        // Create a Foo from the FooBuilder, applying all settings in FooBuilder
+        // to Foo.
+        Foo { bar: self.bar }
+    }
+}
+
+#[test]
+fn builder_test() {
+    let foo = Foo {
+        bar: String::from("Y"),
+    };
+    let foo_from_builder: Foo = FooBuilder::new().name(String::from("Y")).build();
+    assert_eq!(foo, foo_from_builder);
+}
+}
+#+end_src
+
+*** Fold
+Run an algorithm over each item in a collection of data to create a new item,
+thus creating a whole new collection. This seems like a weird sort of
+inheritance model.
+
+#+begin_src rust
+// The data we will fold, a simple AST.
+mod ast {
+    pub enum Stmt {
+        Expr(Box<Expr>),
+        Let(Box<Name>, Box<Expr>),
+    }
+
+    pub struct Name {
+        value: String,
+    }
+
+    pub enum Expr {
+        IntLit(i64),
+        Add(Box<Expr>, Box<Expr>),
+        Sub(Box<Expr>, Box<Expr>),
+    }
+}
+
+// The abstract folder
+mod fold {
+    use ast::*;
+
+    pub trait Folder {
+        // A leaf node just returns the node itself. In some cases, we can do this
+        // to inner nodes too.
+        fn fold_name(&mut self, n: Box<Name>) -> Box<Name> { n }
+        // Create a new inner node by folding its children.
+        fn fold_stmt(&mut self, s: Box<Stmt>) -> Box<Stmt> {
+            match *s {
+                Stmt::Expr(e) => Box::new(Stmt::Expr(self.fold_expr(e))),
+                Stmt::Let(n, e) => Box::new(Stmt::Let(self.fold_name(n), self.fold_expr(e))),
+            }
+        }
+        fn fold_expr(&mut self, e: Box<Expr>) -> Box<Expr> { ... }
+    }
+}
+
+use fold::*;
+use ast::*;
+
+// An example concrete implementation - renames every name to 'foo'.
+struct Renamer;
+impl Folder for Renamer {
+    fn fold_name(&mut self, n: Box<Name>) -> Box<Name> {
+        Box::new(Name { value: "foo".to_owned() })
+    }
+    // Use the default methods for the other nodes.
+}
+#+end_src
+
+** Structural Patterns
+Design patterns that ease the design by identifying a simple way to realize
+relationships among entities.
+
+*** Compose structs together for better borrowing
+Sometimes a large struct will cause issues with the borrow checker - although
+fields can be borrowed independently, sometimes the whole struct ends up being
+used at once, preventing other uses. A solution might be to decompose the structure
+into several smaller structures. Then compose these together into the original
+struct. Then each struct can be borrowed separately and have more flexible
+behavior.
+
+**** Example
+#+begin_src rust
+#![allow(unused)]
+fn main() {
+struct A {
+    f1: u32,
+    f2: u32,
+    f3: u32,
+}
+
+fn foo(a: &mut A) -> &u32 { &a.f2 }
+fn bar(a: &mut A) -> u32 { a.f1 + a.f3 }
+
+fn baz(a: &mut A) {
+    // The later usage of x causes a to be borrowed for the rest of the function.
+    let x = foo(a);
+    // Borrow checker error:
+    // let y = bar(a); // ~ ERROR: cannot borrow `*a` as mutable more than once
+                       //          at a time
+    println!("{}", x);
+}
+}
+#+end_src
+
+To fix this
+
+#+begin_src rust
+#![allow(unused)]
+fn main() {
+// A is now composed of two structs - B and C.
+struct A {
+    b: B,
+    c: C,
+}
+struct B {
+    f2: u32,
+}
+struct C {
+    f1: u32,
+    f3: u32,
+}
+
+// These functions take a B or C, rather than A.
+fn foo(b: &mut B) -> &u32 { &b.f2 }
+fn bar(c: &mut C) -> u32 { c.f1 + c.f3 }
+
+fn baz(a: &mut A) {
+    let x = foo(&mut a.b);
+    // Now it's OK!
+    let y = bar(&mut a.c);
+    println!("{}", x);
+}
+}
+#+end_src
+
+*** Prefer small crates
+Prefer small crates that do one thing well.
+
+Cargo and crates.io make it easy to add third-party libraries, much more so than
+in say C or C++. Moreover, since packages on crates.io cannot be edited or
+removed after publication, any build that works now should continue to work in
+the future. We should take advantage of this tooling, and use smaller, more
+fine-grained dependencies.
+
+* Functional Usage of Rust
+In computer science, functional programming is a programming paradigm where
+programs are constructed by applying and composing functions. It is a
+declarative programming paradigm in which function definitions are trees of
+expressions that each return a value, rather than a sequence of imperative
+statements which change the state of the program.
+
+** Programming paradigms
+One of the biggest hurdles to understanding functional programs when coming from
+an imperative background is the shift in thinking. Imperative programs describe
+*how* to do something, whereas declarative programs describe *what* to do. Let's
+sum the numbers from 1 to 10 to show this.
+
+#+name: Imperative
+#+begin_src rust
+#![allow(unused)]
+fn main() {
+let mut sum = 0;
+for i in 1..11 {
+    sum += i;
+}
+println!("{}", sum);
+}
+#+end_src
+
+#+name: Declarative
+#+begin_src rust
+#![allow(unused)]
+fn main() {
+println!("{}", (1..11).fold(0, |a, b| a + b));
+}
+#+end_src
+
+** Generics as Type Classes
+Rust's type system is designed more like functional languages (like Haskell)
+rather than imperative languages (like Java and C++). As a result, Rust can turn
+many kinds of programming problems into "static typing" problems. This is one of
+the biggest wins of choosing a functional language, and is critical to many of
+Rust's compile time guarantees.
+
+#+begin_quote
+A key part of this idea is the way generic types work. In C++ and Java, for
+example, generic types are a meta-programming construct for the
+compiler. ~vector<int>~ and ~vector<char>~ in C++ are just two different copies
+of the same boilerplate code for a vector type (known as a ~template~) with two
+different filled in.
+
+In Rust, a generic type parameter creates what is known in functional languages
+as a "type class constraint", and each different parameter filled in by an end
+user *actually changes the type*. In other words, ~Vec<isize>~ and ~Vec<char>~
+are two different types, which are recognized as distinct by all parts of the
+type system.
+#+end_quote
+
+* References
+[[https://rust-unofficial.github.io/patterns/intro.html][- Rust Design Patterns]]

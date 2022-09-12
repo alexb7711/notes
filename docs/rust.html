@@ -1,0 +1,1713 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-09-12 Mon 11:18 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rust 4 Dummies</title>
+<meta name="author" content="Alexander Brown" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href=" ./style.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Rust 4 Dummies</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org8a9f95a">1. Idioms</a>
+<ul>
+<li><a href="#orgfaa2c46">1.1. Use of borrowed types for arguments</a></li>
+<li><a href="#orgb0c58fb">1.2. Concatenating strings with <code>format!</code></a>
+<ul>
+<li><a href="#org98dd61a">1.2.1. Disadvantages</a></li>
+</ul>
+</li>
+<li><a href="#orgfc383eb">1.3. Constructors</a>
+<ul>
+<li><a href="#orge7e40aa">1.3.1. Default Constructors</a></li>
+</ul>
+</li>
+<li><a href="#org17eaeeb">1.4. Collections are smart pointers</a></li>
+<li><a href="#orgf8c6ac5">1.5. Finalisation in Destructors</a></li>
+<li><a href="#org678c0ad">1.6. <code>mem::{take(_), replace(_)}</code> to keep owned values in changed enums</a></li>
+<li><a href="#org5c684b2">1.7. On-Stack Dynamic Dispatch</a></li>
+<li><a href="#org1203517">1.8. FFI (foreign function interface) Idioms</a>
+<ul>
+<li><a href="#orgf7b8d48">1.8.1. Error Handling in FFI</a></li>
+<li><a href="#org4ee6f20">1.8.2. Accepting Strings</a></li>
+<li><a href="#orgcbfcdd3">1.8.3. Passing Strings</a></li>
+</ul>
+</li>
+<li><a href="#org3e0fc3d">1.9. Iterating over an <code>Option</code></a></li>
+<li><a href="#orgfbb8c96">1.10. Pass variables to closure</a></li>
+<li><a href="#org076404c">1.11. Easy doc initialization</a></li>
+<li><a href="#orgd1d8b6b">1.12. Temporary mutability</a></li>
+</ul>
+</li>
+<li><a href="#org799ecd1">2. Design Patterns</a>
+<ul>
+<li><a href="#org41e45b6">2.1. Behavioral Patterns</a>
+<ul>
+<li><a href="#orgad99866">2.1.1. Command</a></li>
+<li><a href="#orgf0b6bd2">2.1.2. Newtype</a></li>
+<li><a href="#org20d3faa">2.1.3. Resource Acquisition is Initialization (RAII)</a></li>
+<li><a href="#orgf1edc32">2.1.4. Strategy (aka Policy)</a></li>
+<li><a href="#orgec029a7">2.1.5. Visitor</a></li>
+</ul>
+</li>
+<li><a href="#org8389bf7">2.2. Creational Patterns</a>
+<ul>
+<li><a href="#orgfe837c5">2.2.1. Builder</a></li>
+<li><a href="#org9ed7693">2.2.2. Fold</a></li>
+</ul>
+</li>
+<li><a href="#org7a972a9">2.3. Structural Patterns</a>
+<ul>
+<li><a href="#org5d74eb6">2.3.1. Compose structs together for better borrowing</a></li>
+<li><a href="#orgcb4a1f0">2.3.2. Prefer small crates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org6b72171">3. Functional Usage of Rust</a>
+<ul>
+<li><a href="#orgb62b32c">3.1. Programming paradigms</a></li>
+<li><a href="#orga077c39">3.2. Generics as Type Classes</a></li>
+</ul>
+</li>
+<li><a href="#org85a6df0">4. References</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8a9f95a" class="outline-2">
+<h2 id="org8a9f95a"><span class="section-number-2">1.</span> Idioms</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Idioms are commonly used styles, guidelines and patterns largely agreed upon by
+a community. Writing idiomatic code allows developers to understand better what
+is happening.
+</p>
+</div>
+
+<div id="outline-container-orgfaa2c46" class="outline-3">
+<h3 id="orgfaa2c46"><span class="section-number-3">1.1.</span> Use of borrowed types for arguments</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Using a target of a deref coercion can increase the flexibility of your code
+when you are deciding which argument type to use for a function argument. In
+this way, the function will accept more input types. Deref coercion is defined
+in the rust programming language as:
+</p>
+
+<div class="org-center">
+<p>
+Deref coercion converts a reference to a type that implements the Deref trait
+into a reference to another type. For example, deref coercion can convert
+&amp;String to &amp;str because String implements the Deref trait such that it returns
+&amp;str.
+</p>
+</div>
+
+<p>
+As an example of this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">  fn three_vowels(word: &amp;String) -&gt; bool {
+    let mut vowel_count = 0;
+    for c in word.chars() {
+	match c {
+	    'a' | 'e' | 'i' | 'o' | 'u' =&gt; {
+		vowel_count += 1;
+		if vowel_count &gt;= 3 {
+		    return true
+		}
+	    }
+	    _ =&gt; vowel_count = 0
+	}
+    }
+    false
+}
+
+fn main() {
+    let ferris = "Ferris".to_string();
+    let curious = "Curious".to_string();
+    println!("{}: {}", ferris, three_vowels(&amp;ferris));
+    println!("{}: {}", curious, three_vowels(&amp;curious));
+
+    // This works fine, but the following two lines would fail:
+    // println!("Ferris: {}", three_vowels("Ferris"));
+    // println!("Curious: {}", three_vowels("Curious"));
+
+}
+</pre>
+</div>
+
+<p>
+The commented out code <b>does not run</b> because a normal* <code>&amp;str</code> cannot be
+"derefrenced" to a <code>&amp;String</code>, whereas the opposite is true. To have the whole
+file run, simply change the function parameter to
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">fn three_vowels(word: &amp;str) -&gt; bool { ...
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb0c58fb" class="outline-3">
+<h3 id="orgb0c58fb"><span class="section-number-3">1.2.</span> Concatenating strings with <code>format!</code></h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+It is often more convenient to use <code>format!</code> to build up strings, especially
+when there is a mix of literal and non-literal strings.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">fn say_hello(name: &amp;str) -&gt; String {
+    // We could construct the result string manually.
+    // let mut result = "Hello ".to_owned();
+    // result.push_str(name);
+    // result.push('!');
+    // result
+
+    // But using format! is better.
+    format!("Hello {}!", name)
+}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org98dd61a" class="outline-4">
+<h4 id="org98dd61a"><span class="section-number-4">1.2.1.</span> Disadvantages</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+It is usually not the most efficient way to combine strings - a series of push
+operations on a mutable string is usually the most efficient (especially if the
+string has been pre-allocated to the expected size).
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfc383eb" class="outline-3">
+<h3 id="orgfc383eb"><span class="section-number-3">1.3.</span> Constructors</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+Rust does not have constructors, so the common keyword is to use <code>new</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">/// Time in seconds.
+///
+/// # Example
+///
+/// ```
+/// let s = Second::new(42);
+/// assert_eq!(42, s.value());
+/// ```
+pub struct Second {
+    value: u64
+}
+
+impl Second {
+    // Constructs a new instance of [`Second`].
+    // Note this is an associated function - no self.
+    pub fn new(value: u64) -&gt; Self {
+	Self { value }
+    }
+
+    /// Returns the value in seconds.
+    pub fn value(&amp;self) -&gt; u64 {
+	self.value
+    }
+}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orge7e40aa" class="outline-4">
+<h4 id="orge7e40aa"><span class="section-number-4">1.3.1.</span> Default Constructors</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<p>
+Rust supports default constructors
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">impl Default for Second {
+    fn default() -&gt; Self {
+	Self { value: 0 }
+    }
+}
+</pre>
+</div>
+
+<p>
+Another way to do this is to use derive default on the structure
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">#[derive(Default)]
+pub struct Second {
+    value: u64
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org17eaeeb" class="outline-3">
+<h3 id="org17eaeeb"><span class="section-number-3">1.4.</span> Collections are smart pointers</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+Use of the <code>Deref</code> trait to treat collections like smart pointers, offering
+owning and borrowed views of data. Example of collections are
+</p>
+
+<ul class="org-ul">
+<li>A vector allows you to store a variable number of values next to each other.</li>
+<li>A string is a collection of characters. We’ve mentioned the String type previously, but in this chapter we’ll talk about it in depth.</li>
+<li><p>
+A hash map allows you to associate a value with a particular key. It’s a
+particular implementation of the more general data structure called a map.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">use std::ops::Deref;
+
+struct Vec&lt;T&gt; {
+    data: RawVec&lt;T&gt;,
+    //..
+}
+
+impl&lt;T&gt; Deref for Vec&lt;T&gt; {
+    type Target = [T];
+
+    fn deref(&amp;self) -&gt; &amp;[T] {
+	//..
+    }
+}
+</pre>
+</div></li>
+</ul>
+
+<p>
+This means allows implicit derefrencing from <code>&amp;Vec&lt;T&gt;</code> to <code>&amp;T</code> and includes
+the relationship in auto-derefrencing searches.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf8c6ac5" class="outline-3">
+<h3 id="orgf8c6ac5"><span class="section-number-3">1.5.</span> Finalisation in Destructors</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+An object's destructor can be used to run code that must be ran before exit.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">fn bar() -&gt; Result&lt;(), ()&gt; {
+    // These don't need to be defined inside the function.
+    struct Foo;
+
+    // Implement a destructor for Foo.
+    impl Drop for Foo {
+	fn drop(&amp;mut self) {
+	    println!("exit");
+	}
+    }
+
+    // The dtor of _exit will run however the function `bar` is exited.
+    let _exit = Foo;
+    // Implicit return with `?` operator.
+    baz()?;
+    // Normal return.
+    Ok(())
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org678c0ad" class="outline-3">
+<h3 id="org678c0ad"><span class="section-number-3">1.6.</span> <code>mem::{take(_), replace(_)}</code> to keep owned values in changed enums</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+Say we have a <code>&amp;mut MyEnum</code> which has (at least) two variants, <code>A { name:
+String, x: u8 }</code> and <code>B { name: String }</code>. Now we want to change <code>MyEnum::A to a
+B</code> if <code>x</code> is zero, while keeping <code>MyEnum::B</code> intact.
+</p>
+
+<p>
+We can do this without cloning the <code>name</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">use std::mem;
+
+enum MyEnum {
+    A { name: String, x: u8 },
+    B { name: String }
+}
+
+fn a_to_b(e: &amp;mut MyEnum) {
+    if let MyEnum::A { name, x: 0 } = e {
+	// this takes out our `name` and put in an empty String instead
+	// (note that empty strings don't allocate).
+	// Then, construct the new enum variant (which will
+	// be assigned to `*e`).
+	*e = MyEnum::B { name: mem::take(name) }
+    }
+}
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5c684b2" class="outline-3">
+<h3 id="org5c684b2"><span class="section-number-3">1.7.</span> On-Stack Dynamic Dispatch</h3>
+<div class="outline-text-3" id="text-1-7">
+<p>
+We can dynamically dispatch over multiple values, however, to do so, we need to
+declare multiple variables to bind differently-typed objects. To extend the
+lifetime as necessary, we can use deferred conditional initialization, as seen
+below:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">use std::io;
+use std::fs;
+
+
+// These must live longer than `readable`, and thus are declared first:
+let (mut stdin_read, mut file_read);
+
+// We need to ascribe the type to get dynamic dispatch.
+let readable: &amp;mut dyn io::Read = if arg == "-" {
+    stdin_read = io::stdin();
+    &amp;mut stdin_read
+} else {
+    file_read = fs::File::open(arg)?;
+    &amp;mut file_read
+};
+
+// Read from `readable` here.
+</pre>
+</div>
+
+<p>
+This code allows us to
+</p>
+
+<ul class="org-ul">
+<li>read in a file or</li>
+<li>create a new file</li>
+</ul>
+
+<p>
+all for the same variable (which gets the handle at the end). Furthermore, We do
+not need to allocate anything on the heap. Neither do we need to initialize
+something we won't use later, nor do we need to monomorphize the whole code that
+follows to work with both <code>File</code> or <code>Stdin</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1203517" class="outline-3">
+<h3 id="org1203517"><span class="section-number-3">1.8.</span> FFI (foreign function interface) Idioms</h3>
+<div class="outline-text-3" id="text-1-8">
+<p>
+This section contains idioms that may be useful when doing FFI.
+</p>
+</div>
+
+<div id="outline-container-orgf7b8d48" class="outline-4">
+<h4 id="orgf7b8d48"><span class="section-number-4">1.8.1.</span> Error Handling in FFI</h4>
+<div class="outline-text-4" id="text-1-8-1">
+<p>
+This best practice shows different kinds of error codes, and how to expose them
+in a usable way:
+</p>
+
+<ul class="org-ul">
+<li>Flat Enums should be converted to integers and returned as codes.</li>
+<li>Structured Enums should be converted to an integer code with a string error</li>
+</ul>
+<p>
+message for detail.
+</p>
+<ul class="org-ul">
+<li>Custom Error Types should become "transparent", with a C representation.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-rust" id="org564c5de">enum DatabaseError {
+    IsReadOnly = 1, // user attempted a write operation
+    IOError = 2, // user should read the C errno() for what it was
+    FileCorrupted = 3, // user should run a repair tool to recover it
+}
+
+impl From&lt;DatabaseError&gt; for libc::c_int {
+    fn from(e: DatabaseError) -&gt; libc::c_int {
+	(e as i8).into()
+    }
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-rust" id="org4d2b3a9">pub mod errors {
+    enum DatabaseError {
+	IsReadOnly,
+	IOError(std::io::Error),
+	FileCorrupted(String), // message describing the issue
+    }
+
+    impl From&lt;DatabaseError&gt; for libc::c_int {
+	fn from(e: DatabaseError) -&gt; libc::c_int {
+	    match e {
+		DatabaseError::IsReadOnly =&gt; 1,
+		DatabaseError::IOError(_) =&gt; 2,
+		DatabaseError::FileCorrupted(_) =&gt; 3,
+	    }
+	}
+    }
+}
+
+pub mod c_api {
+    use super::errors::DatabaseError;
+
+    #[no_mangle]
+    pub extern "C" fn db_error_description(
+	e: *const DatabaseError
+	) -&gt; *mut libc::c_char {
+
+	let error: &amp;DatabaseError = unsafe {
+	    // SAFETY: pointer lifetime is greater than the current stack frame
+	    &amp;*e
+	};
+
+	let error_str: String = match error {
+	    DatabaseError::IsReadOnly =&gt; {
+		format!("cannot write to read-only database");
+	    }
+	    DatabaseError::IOError(e) =&gt; {
+		format!("I/O Error: {}", e);
+	    }
+	    DatabaseError::FileCorrupted(s) =&gt; {
+		format!("File corrupted, run repair: {}", &amp;s);
+	    }
+	};
+
+	let c_error = unsafe {
+	    // SAFETY: copying error_str to an allocated buffer with a NUL
+	    // character at the end
+	    let mut malloc: *mut u8 = libc::malloc(error_str.len() + 1) as *mut _;
+
+	    if malloc.is_null() {
+		return std::ptr::null_mut();
+	    }
+
+	    let src = error_str.as_bytes().as_ptr();
+
+	    std::ptr::copy_nonoverlapping(src, malloc, error_str.len());
+
+	    std::ptr::write(malloc.add(error_str.len()), 0);
+
+	    malloc as *mut libc::c_char
+	};
+
+	c_error
+    }
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-rust" id="orgabb9ed7">struct ParseError {
+    expected: char,
+    line: u32,
+    ch: u16
+}
+
+impl ParseError { /* ... */ }
+
+/* Create a second version which is exposed as a C structure */
+#[repr(C)]
+pub struct parse_error {
+    pub expected: libc::c_char,
+    pub line: u32,
+    pub ch: u16
+}
+
+impl From&lt;ParseError&gt; for parse_error {
+    fn from(e: ParseError) -&gt; parse_error {
+	let ParseError { expected, line, ch } = e;
+	parse_error { expected, line, ch }
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4ee6f20" class="outline-4">
+<h4 id="org4ee6f20"><span class="section-number-4">1.8.2.</span> Accepting Strings</h4>
+<div class="outline-text-4" id="text-1-8-2">
+<p>
+When accepting strings via FFI through pointers, there are two principles that
+should be followed:
+</p>
+
+<ul class="org-ul">
+<li>Keep foreign strings "borrowed", rather than copying them directly.</li>
+<li>Minimize the amount of complexity and unsafe code involved in converting from a</li>
+</ul>
+<p>
+C-style string to native Rust strings.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcbfcdd3" class="outline-4">
+<h4 id="orgcbfcdd3"><span class="section-number-4">1.8.3.</span> Passing Strings</h4>
+<div class="outline-text-4" id="text-1-8-3">
+<p>
+When passing strings to FFI functions, there are four principles that should be
+followed:
+</p>
+
+<ul class="org-ul">
+<li>Make the lifetime of owned strings as long as possible.</li>
+<li>Minimize unsafe code during the conversion.</li>
+<li>If the C code can modify the string data, use <code>Vec</code> instead of <code>CString</code>.</li>
+<li>Unless the Foreign Function API requires it, the ownership of the string should</li>
+</ul>
+<p>
+not transfer to the callee.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3e0fc3d" class="outline-3">
+<h3 id="org3e0fc3d"><span class="section-number-3">1.9.</span> Iterating over an <code>Option</code></h3>
+<div class="outline-text-3" id="text-1-9">
+<p>
+<code>Option</code> should be seen as a container that contains either zero or one
+element. In particular it implements the <code>IntoIterator</code> trait, and such can be
+used with generic code that needs such a type.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">let turing = Some("Turing");
+let mut logicians = vec!["Curry", "Kleene", "Markov"];
+
+logicians.extend(turing);
+
+// equivalent to
+if let Some(turing_inner) = turing {
+    logicians.push(turing_inner);
+}
+</pre>
+</div>
+
+<p>
+This works because <code>Option</code> implements <code>IntoIterator</code> and so does <code>Vec</code>.
+Therefore if we perform the <code>extend</code> action it will either work, or not (<code>OK</code> or
+<code>Err</code>).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfbb8c96" class="outline-3">
+<h3 id="orgfbb8c96"><span class="section-number-3">1.10.</span> Pass variables to closure</h3>
+<div class="outline-text-3" id="text-1-10">
+<p>
+First to describe what a closure is. It is a functional programming paradigm. In
+rust they are defined as:
+</p>
+
+<p class="verse">
+Rust’s closures are anonymous functions you can save in a variable or pass as<br />
+arguments to other functions. You can create the closure in one place and then<br />
+call the closure elsewhere to evaluate it in a different context. Unlike<br />
+functions, closures can capture values from the scope in which they’re<br />
+defined. We’ll demonstrate how these closure features allow for code reuse and<br />
+behavior customization.<br />
+</p>
+
+<p>
+To read more on it, <a href="https://doc.rust-lang.org/book/ch13-01-closures.html?highlight=closure#moving-captured-values-out-of-closures-and-the-fn-traits">here is a link to the book</a>. As an example:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">use std::rc::Rc;
+
+let num1 = Rc::new(1);
+let num2 = Rc::new(2);
+let num3 = Rc::new(3);
+let closure = {
+    // `num1` is moved
+    let num2 = num2.clone();  // `num2` is cloned
+    let num3 = num3.as_ref();  // `num3` is borrowed
+    move || {
+	*num1 + *num2 + *num3;
+    }
+};
+</pre>
+</div>
+
+<p>
+where <a href="https://doc.rust-lang.org/std/rc/index.html"><code>Rc</code></a> and <a href="https://doc.rust-lang.org/std/keyword.move.html"><code>move</code></a> are as documented.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org076404c" class="outline-3">
+<h3 id="org076404c"><span class="section-number-3">1.11.</span> Easy doc initialization</h3>
+<div class="outline-text-3" id="text-1-11">
+<p>
+If a struct takes significant effort to initialize when writing docs, it can be
+quicker to wrap your example with a helper function which takes the struct as an
+argument. This the method that is used when reading through the rust books and some
+ of the code is hidden.
+</p>
+
+<p>
+If you have something like this to initialize:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">struct Connection {
+    name: String,
+    stream: TcpStream,
+}
+
+impl Connection {
+    /// Sends a request over the connection.
+    ///
+    /// # Example
+    /// ```no_run
+    /// # // Boilerplate are required to get an example working.
+    /// # let stream = TcpStream::connect("127.0.0.1:34254");
+    /// # let connection = Connection { name: "foo".to_owned(), stream };
+    /// # let request = Request::new("RequestId", RequestType::Get, "payload");
+    /// let response = connection.send_request(request);
+    /// assert!(response.is_ok());
+    /// ```
+    fn send_request(&amp;self, request: Request) -&gt; Result&lt;Status, SendErr&gt; {
+	// ...
+    }
+
+    /// Oh no, all that boilerplate needs to be repeated here!
+    fn check_status(&amp;self) -&gt; Status {
+	// ...
+    }
+}
+</pre>
+</div>
+
+<p>
+Instead of typing all of this boilerplate to create a Connection and Request, it
+is easier to just create a wrapping helper function which takes them as
+arguments:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">struct Connection {
+    name: String,
+    stream: TcpStream,
+}
+
+impl Connection {
+    /// Sends a request over the connection.
+    ///
+    /// # Example
+    /// ```
+    /// # fn call_send(connection: Connection, request: Request) {
+    /// let response = connection.send_request(request);
+    /// assert!(response.is_ok());
+    /// # }
+    /// ```
+    fn send_request(&amp;self, request: Request) {
+	// ...
+    }
+}
+</pre>
+</div>
+
+<p>
+<b>Note</b> in the above example the line <code>assert!(response.is_ok());</code> will not
+actually run while testing because it is inside a function which is never
+invoked.
+</p>
+
+<p>
+When running tests, the code in the comments will not actually be ran, but it
+will be compiled.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd1d8b6b" class="outline-3">
+<h3 id="orgd1d8b6b"><span class="section-number-3">1.12.</span> Temporary mutability</h3>
+<div class="outline-text-3" id="text-1-12">
+<p>
+Often it is necessary to prepare and process some data, but after that data are
+only inspected and never modified. The intention can be made explicit by
+redefining the mutable variable as immutable.
+</p>
+
+<p>
+It can be done either by processing data within a nested block or by redefining
+the variable.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust" id="orgb92bb96">struct Connection {
+    name: String,
+    stream: TcpStream,
+}
+
+impl Connection {
+    /// Sends a request over the connection.
+    ///
+    /// # Example
+    /// ```
+    /// # fn call_send(connection: Connection, request: Request) {
+    /// let response = connection.send_request(request);
+    /// assert!(response.is_ok());
+    /// # }
+    /// ```
+    fn send_request(&amp;self, request: Request) {
+	// ...
+    }
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-rust" id="org166b6a1">let mut data = get_vec();
+data.sort();
+let data = data;
+
+// Here `data` is immutable.
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org799ecd1" class="outline-2">
+<h2 id="org799ecd1"><span class="section-number-2">2.</span> Design Patterns</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+<a href="https://rust-unofficial.github.io/patterns/patterns/index.html">This directly from the book</a>:
+</p>
+
+<blockquote>
+<p>
+Design patterns are "general reusable solutions to a commonly occurring problem
+within a given context in software design". Design patterns are a great way to
+describe the culture of a programming language. Design patterns are very
+language-specific - what is a pattern in one language may be unnecessary in
+another due to a language feature, or impossible to express due to a missing
+feature.
+</p>
+
+<p>
+If overused, design patterns can add unnecessary complexity to
+programs. However, they are a great way to share intermediate and advanced level
+knowledge about a programming language.
+</p>
+
+<p>
+Rust has many unique features. These features give us
+great benefit by removing whole classes of problems. Some of them are also
+patterns that are unique to Rust.
+</p>
+
+<p>
+YAGNI is an acronym that stands for You Aren't Going to Need It. It's a
+vital software design principle to apply as you write code.
+</p>
+
+<p>
+The best code I ever wrote was code I never wrote.
+</p>
+
+<p>
+If we apply YAGNI to design patterns, we see that the features of Rust allow us
+to throw out many patterns. For instance, there is no need for the strategy
+pattern in Rust because we can just use traits.
+</p>
+</blockquote>
+</div>
+
+<div id="outline-container-org41e45b6" class="outline-3">
+<h3 id="org41e45b6"><span class="section-number-3">2.1.</span> Behavioral Patterns</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Design patterns that identify common communication patterns among objects. By
+doing so, these patterns increase flexibility in carrying out communication.
+</p>
+</div>
+
+<div id="outline-container-orgad99866" class="outline-4">
+<h4 id="orgad99866"><span class="section-number-4">2.1.1.</span> Command</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<p>
+The basic idea of the Command pattern is to separate out actions into its own
+objects and pass them as parameters.
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="orgdf3ca68"></a>Example<br />
+<div class="outline-text-5" id="text-2-1-1-1">
+<p>
+Define two database operations <code>create table</code> and <code>add field</code>. Each of these
+operations is a command which knows how to undo the command, e.g., <code>drop table</code>
+and <code>remove field</code>. When a user invokes a database migration operation then each
+command is executed in the defined order, and when the user invokes the rollback
+operation then the whole set of commands is invoked in reverse order.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust" id="orgfd2448f">  pub trait Migration {
+    fn execute(&amp;self) -&gt; &amp;str;
+    fn rollback(&amp;self) -&gt; &amp;str;
+}
+
+pub struct CreateTable;
+impl Migration for CreateTable {
+    fn execute(&amp;self) -&gt; &amp;str {
+	"create table"
+    }
+    fn rollback(&amp;self) -&gt; &amp;str {
+	"drop table"
+    }
+}
+
+pub struct AddField;
+impl Migration for AddField {
+    fn execute(&amp;self) -&gt; &amp;str {
+	"add field"
+    }
+    fn rollback(&amp;self) -&gt; &amp;str {
+	"remove field"
+    }
+}
+
+struct Schema {
+    commands: Vec&lt;Box&lt;dyn Migration&gt;&gt;,
+}
+
+impl Schema {
+    fn new() -&gt; Self {
+	Self { commands: vec![] }
+    }
+
+    fn add_migration(&amp;mut self, cmd: Box&lt;dyn Migration&gt;) {
+	self.commands.push(cmd);
+    }
+
+    fn execute(&amp;self) -&gt; Vec&lt;&amp;str&gt; {
+	self.commands.iter().map(|cmd| cmd.execute()).collect()
+    }
+    fn rollback(&amp;self) -&gt; Vec&lt;&amp;str&gt; {
+	self.commands
+	    .iter()
+	    .rev() // reverse iterator's direction
+	    .map(|cmd| cmd.rollback())
+	    .collect()
+    }
+}
+
+fn main() {
+    let mut schema = Schema::new();
+
+    let cmd = Box::new(CreateTable);
+    schema.add_migration(cmd);
+    let cmd = Box::new(AddField);
+    schema.add_migration(cmd);
+
+    assert_eq!(vec!["create table", "add field"], schema.execute());
+    assert_eq!(vec!["remove field", "drop table"], schema.rollback());
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-rust" id="orgb4feaf9">type FnPtr = fn() -&gt; String;
+struct Command {
+    execute: FnPtr,
+    rollback: FnPtr,
+}
+
+struct Schema {
+    commands: Vec&lt;Command&gt;,
+}
+
+impl Schema {
+    fn new() -&gt; Self {
+	Self { commands: vec![] }
+    }
+    fn add_migration(&amp;mut self, execute: FnPtr, rollback: FnPtr) {
+	self.commands.push(Command { execute, rollback });
+    }
+    fn execute(&amp;self) -&gt; Vec&lt;String&gt; {
+	self.commands.iter().map(|cmd| (cmd.execute)()).collect()
+    }
+    fn rollback(&amp;self) -&gt; Vec&lt;String&gt; {
+	self.commands
+	    .iter()
+	    .rev()
+	    .map(|cmd| (cmd.rollback)())
+	    .collect()
+    }
+}
+
+fn add_field() -&gt; String {
+    "add field".to_string()
+}
+
+fn remove_field() -&gt; String {
+    "remove field".to_string()
+}
+
+fn main() {
+    let mut schema = Schema::new();
+    schema.add_migration(|| "create table".to_string(), || "drop table".to_string());
+    schema.add_migration(add_field, remove_field);
+    assert_eq!(vec!["create table", "add field"], schema.execute());
+    assert_eq!(vec!["remove field", "drop table"], schema.rollback());
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-rust" id="orgb9942b3">type Migration&lt;'a&gt; = Box&lt;dyn Fn() -&gt; &amp;'a str&gt;;
+
+struct Schema&lt;'a&gt; {
+    executes: Vec&lt;Migration&lt;'a&gt;&gt;,
+    rollbacks: Vec&lt;Migration&lt;'a&gt;&gt;,
+}
+
+impl&lt;'a&gt; Schema&lt;'a&gt; {
+    fn new() -&gt; Self {
+	Self {
+	    executes: vec![],
+	    rollbacks: vec![],
+	}
+    }
+    fn add_migration&lt;E, R&gt;(&amp;mut self, execute: E, rollback: R)
+    where
+	E: Fn() -&gt; &amp;'a str + 'static,
+	R: Fn() -&gt; &amp;'a str + 'static,
+    {
+	self.executes.push(Box::new(execute));
+	self.rollbacks.push(Box::new(rollback));
+    }
+    fn execute(&amp;self) -&gt; Vec&lt;&amp;str&gt; {
+	self.executes.iter().map(|cmd| cmd()).collect()
+    }
+    fn rollback(&amp;self) -&gt; Vec&lt;&amp;str&gt; {
+	self.rollbacks.iter().rev().map(|cmd| cmd()).collect()
+    }
+}
+
+fn add_field() -&gt; &amp;'static str {
+    "add field"
+}
+
+fn remove_field() -&gt; &amp;'static str {
+    "remove field"
+}
+
+fn main() {
+    let mut schema = Schema::new();
+    schema.add_migration(|| "create table", || "drop table");
+    schema.add_migration(add_field, remove_field);
+    assert_eq!(vec!["create table", "add field"], schema.execute());
+    assert_eq!(vec!["remove field", "drop table"], schema.rollback());
+}
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-orgf0b6bd2" class="outline-4">
+<h4 id="orgf0b6bd2"><span class="section-number-4">2.1.2.</span> Newtype</h4>
+<div class="outline-text-4" id="text-2-1-2">
+<p>
+What if in some cases we want a type to behave similar to another type or
+enforce some behavior at compile time when using only type aliases would not be
+enough?
+</p>
+
+<p>
+For example, if we want to create a custom Display implementation for String due
+to security considerations (e.g. passwords).
+</p>
+
+<p>
+For such cases we could use the Newtype pattern to provide type safety and
+encapsulation.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">// Some type, not necessarily in the same module or even crate.
+struct Foo {
+    //..
+}
+
+impl Foo {
+    // These functions are not present on Bar.
+    //..
+}
+
+// The newtype.
+pub struct Bar(Foo);
+
+impl Bar {
+    // Constructor.
+    pub fn new(
+	//..
+    ) -&gt; Self {
+
+	//..
+
+    }
+
+    //..
+}
+
+fn main() {
+    let b = Bar::new(...);
+
+    // Foo and Bar are type incompatible, the following do not type check.
+    // let f: Foo = b;
+    // let b: Bar = Foo { ... };
+}
+</pre>
+</div>
+
+<p>
+<a href="https://doc.rust-lang.org/stable/book/ch19-04-advanced-types.html#creating-type-synonyms-with-type-aliases">More on typing here.</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org20d3faa" class="outline-4">
+<h4 id="org20d3faa"><span class="section-number-4">2.1.3.</span> Resource Acquisition is Initialization (RAII)</h4>
+<div class="outline-text-4" id="text-2-1-3">
+<p>
+RAII is a useful pattern for ensuring resources are properly deallocated or
+finalised. We can make use of the borrow checker in Rust to statically prevent
+errors stemming from using resources after finalisation takes place.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">use std::ops::Deref;
+
+struct Foo {}
+
+struct Mutex&lt;T&gt; {
+    // We keep a reference to our data: T here.
+    //..
+}
+
+struct MutexGuard&lt;'a, T: 'a&gt; {
+    data: &amp;'a T,
+    //..
+}
+
+// Locking the mutex is explicit.
+impl&lt;T&gt; Mutex&lt;T&gt; {
+    fn lock(&amp;self) -&gt; MutexGuard&lt;T&gt; {
+	// Lock the underlying OS mutex.
+	//..
+
+	// MutexGuard keeps a reference to self
+	MutexGuard {
+	    data: self,
+	    //..
+	}
+    }
+}
+
+// Destructor for unlocking the mutex.
+impl&lt;'a, T&gt; Drop for MutexGuard&lt;'a, T&gt; {
+    fn drop(&amp;mut self) {
+	// Unlock the underlying OS mutex.
+	//..
+    }
+}
+
+// Implementing Deref means we can treat MutexGuard like a pointer to T.
+impl&lt;'a, T&gt; Deref for MutexGuard&lt;'a, T&gt; {
+    type Target = T;
+
+    fn deref(&amp;self) -&gt; &amp;T {
+	self.data
+    }
+}
+
+fn baz(x: Mutex&lt;Foo&gt;) {
+    let xx = x.lock();
+    xx.foo(); // foo is a method on Foo.
+    // The borrow checker ensures we can't store a reference to the underlying
+    // Foo which will outlive the guard xx.
+
+    // x is unlocked when we exit this function and xx's destructor is executed.
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf1edc32" class="outline-4">
+<h4 id="orgf1edc32"><span class="section-number-4">2.1.4.</span> Strategy (aka Policy)</h4>
+<div class="outline-text-4" id="text-2-1-4">
+<p>
+The Strategy design pattern is a technique that enables separation of
+concerns. It also allows to decouple software modules through Dependency
+Inversion.
+</p>
+
+<p>
+The basic idea behind the Strategy pattern is that, given an algorithm solving a
+particular problem, we define only the skeleton of the algorithm at an abstract
+level, and we separate the specific algorithm’s implementation into different
+parts.
+</p>
+
+<p>
+In this way, a client using the algorithm may choose a specific implementation,
+while the general algorithm workflow remains the same. In other words, the
+abstract specification of the class does not depend on the specific
+implementation of the derived class, but specific implementation must adhere to
+the abstract specification. This is why we call it "Dependency Inversion".
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="org8fa0f40"></a>Example<br />
+<div class="outline-text-5" id="text-2-1-4-1">
+<p>
+Imagine we are working on a project that generates reports every month. We need
+the reports to be generated in different formats (strategies), e.g., in <code>JSON</code>
+or <code>Plain Text</code> formats. But things vary over time, and we don't know what kind
+of requirement we may get in the future. For example, we may need to generate
+our report in a completely new format, or just modify one of the existing
+formats.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">use std::collections::HashMap;
+
+type Data = HashMap&lt;String, u32&gt;;
+
+trait Formatter {
+    fn format(&amp;self, data: &amp;Data, buf: &amp;mut String);
+}
+
+struct Report;
+
+impl Report {
+    // Write should be used but we kept it as String to ignore error handling
+    fn generate&lt;T: Formatter&gt;(g: T, s: &amp;mut String) {
+	// backend operations...
+	let mut data = HashMap::new();
+	data.insert("one".to_string(), 1);
+	data.insert("two".to_string(), 2);
+	// generate report
+	g.format(&amp;data, s);
+    }
+}
+
+struct Text;
+impl Formatter for Text {
+    fn format(&amp;self, data: &amp;Data, buf: &amp;mut String) {
+	for (k, v) in data {
+	    let entry = format!("{} {}\n", k, v);
+	    buf.push_str(&amp;entry);
+	}
+    }
+}
+
+struct Json;
+impl Formatter for Json {
+    fn format(&amp;self, data: &amp;Data, buf: &amp;mut String) {
+	buf.push('[');
+	for (k, v) in data.into_iter() {
+	    let entry = format!(r#"{{"{}":"{}"}}"#, k, v);
+	    buf.push_str(&amp;entry);
+	    buf.push(',');
+	}
+	buf.pop(); // remove extra , at the end
+	buf.push(']');
+    }
+}
+
+fn main() {
+    let mut s = String::from("");
+    Report::generate(Text, &amp;mut s);
+    assert!(s.contains("one 1"));
+    assert!(s.contains("two 2"));
+
+    s.clear(); // reuse the same buffer
+    Report::generate(Json, &amp;mut s);
+    assert!(s.contains(r#"{"one":"1"}"#));
+    assert!(s.contains(r#"{"two":"2"}"#));
+}
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-orgec029a7" class="outline-4">
+<h4 id="orgec029a7"><span class="section-number-4">2.1.5.</span> Visitor</h4>
+<div class="outline-text-4" id="text-2-1-5">
+<p>
+A visitor encapsulates an algorithm that operates over a heterogeneous
+collection of objects. It allows multiple different algorithms to be written
+over the same data without having to modify the data (or their primary
+behavior).
+</p>
+
+<p>
+Furthermore, the visitor pattern allows separating the traversal of a collection
+of objects from the operations performed on each object.
+</p>
+
+<p>
+#+begin<sub>src</sub> rust
+// The data we will visit
+mod ast {
+    pub enum Stmt {
+        Expr(Expr),
+        Let(Name, Expr),
+    }
+</p>
+
+<p>
+pub struct Name {
+    value: String,
+}
+</p>
+
+<p>
+    pub enum Expr {
+        IntLit(i64),
+        Add(Box&lt;Expr&gt;, Box&lt;Expr&gt;),
+        Sub(Box&lt;Expr&gt;, Box&lt;Expr&gt;),
+    }
+}
+</p>
+
+<p>
+// The abstract visitor
+mod visit {
+    use ast::*;
+</p>
+
+<p>
+    pub trait Visitor&lt;T&gt; {
+        fn visit<sub>name</sub>(&amp;mut self, n: &amp;Name) -&gt; T;
+        fn visit<sub>stmt</sub>(&amp;mut self, s: &amp;Stmt) -&gt; T;
+        fn visit<sub>expr</sub>(&amp;mut self, e: &amp;Expr) -&gt; T;
+    }
+}
+</p>
+
+<p>
+use visit::*;
+use ast::*;
+</p>
+
+<p>
+// An example concrete implementation - walks the AST interpreting it as code.
+struct Interpreter;
+impl Visitor&lt;i64&gt; for Interpreter {
+    fn visit<sub>name</sub>(&amp;mut self, n: &amp;Name) -&gt; i64 { panic!() }
+    fn visit<sub>stmt</sub>(&amp;mut self, s: &amp;Stmt) -&gt; i64 {
+        match *s {
+            Stmt::Expr(ref e) =&gt; self.visit<sub>expr</sub>(e),
+            Stmt::Let(..) =&gt; unimplemented!(),
+        }
+    }
+</p>
+
+<p>
+    fn visit<sub>expr</sub>(&amp;mut self, e: &amp;Expr) -&gt; i64 {
+        match *e {
+            Expr::IntLit(n) =&gt; n,
+            Expr::Add(ref lhs, ref rhs) =&gt; self.visit<sub>expr</sub>(lhs) + self.visit<sub>expr</sub>(rhs),
+            Expr::Sub(ref lhs, ref rhs) =&gt; self.visit<sub>expr</sub>(lhs) - self.visit<sub>expr</sub>(rhs),
+        }
+    }
+}
+#+end<sub>arc</sub>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8389bf7" class="outline-3">
+<h3 id="org8389bf7"><span class="section-number-3">2.2.</span> Creational Patterns</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Design patterns that deal with object creation mechanisms, trying to create
+objects in a manner suitable to the situation. The basic form of object creation
+could result in design problems or in added complexity to the design. Creational
+design patterns solve this problem by somehow controlling this object creation.
+</p>
+</div>
+
+<div id="outline-container-orgfe837c5" class="outline-4">
+<h4 id="orgfe837c5"><span class="section-number-4">2.2.1.</span> Builder</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+Construct an object with calls to a builder helper. This pattern is seen more
+frequently in Rust (and for simpler objects) than in many other languages
+because Rust lacks overloading. Since you can only have a single method with a
+given name, having multiple constructors is less nice in Rust than in C++, Java,
+or others.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">#![allow(unused)]
+fn main() {
+#[derive(Debug, PartialEq)]
+pub struct Foo {
+    // Lots of complicated fields.
+    bar: String,
+}
+
+impl Foo {
+    // This method will help users to discover the builder
+    pub fn builder() -&gt; FooBuilder {
+	FooBuilder::default()
+    }
+}
+
+#[derive(Default)]
+pub struct FooBuilder {
+    // Probably lots of optional fields.
+    bar: String,
+}
+
+impl FooBuilder {
+    pub fn new(/* ... */) -&gt; FooBuilder {
+	// Set the minimally required fields of Foo.
+	FooBuilder {
+	    bar: String::from("X"),
+	}
+    }
+
+    pub fn name(mut self, bar: String) -&gt; FooBuilder {
+	// Set the name on the builder itself, and return the builder by value.
+	self.bar = bar;
+	self
+    }
+
+    // If we can get away with not consuming the Builder here, that is an
+    // advantage. It means we can use the FooBuilder as a template for constructing
+    // many Foos.
+    pub fn build(self) -&gt; Foo {
+	// Create a Foo from the FooBuilder, applying all settings in FooBuilder
+	// to Foo.
+	Foo { bar: self.bar }
+    }
+}
+
+#[test]
+fn builder_test() {
+    let foo = Foo {
+	bar: String::from("Y"),
+    };
+    let foo_from_builder: Foo = FooBuilder::new().name(String::from("Y")).build();
+    assert_eq!(foo, foo_from_builder);
+}
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9ed7693" class="outline-4">
+<h4 id="org9ed7693"><span class="section-number-4">2.2.2.</span> Fold</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<p>
+Run an algorithm over each item in a collection of data to create a new item,
+thus creating a whole new collection. This seems like a weird sort of
+inheritance model.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">// The data we will fold, a simple AST.
+mod ast {
+    pub enum Stmt {
+	Expr(Box&lt;Expr&gt;),
+	Let(Box&lt;Name&gt;, Box&lt;Expr&gt;),
+    }
+
+    pub struct Name {
+	value: String,
+    }
+
+    pub enum Expr {
+	IntLit(i64),
+	Add(Box&lt;Expr&gt;, Box&lt;Expr&gt;),
+	Sub(Box&lt;Expr&gt;, Box&lt;Expr&gt;),
+    }
+}
+
+// The abstract folder
+mod fold {
+    use ast::*;
+
+    pub trait Folder {
+	// A leaf node just returns the node itself. In some cases, we can do this
+	// to inner nodes too.
+	fn fold_name(&amp;mut self, n: Box&lt;Name&gt;) -&gt; Box&lt;Name&gt; { n }
+	// Create a new inner node by folding its children.
+	fn fold_stmt(&amp;mut self, s: Box&lt;Stmt&gt;) -&gt; Box&lt;Stmt&gt; {
+	    match *s {
+		Stmt::Expr(e) =&gt; Box::new(Stmt::Expr(self.fold_expr(e))),
+		Stmt::Let(n, e) =&gt; Box::new(Stmt::Let(self.fold_name(n), self.fold_expr(e))),
+	    }
+	}
+	fn fold_expr(&amp;mut self, e: Box&lt;Expr&gt;) -&gt; Box&lt;Expr&gt; { ... }
+    }
+}
+
+use fold::*;
+use ast::*;
+
+// An example concrete implementation - renames every name to 'foo'.
+struct Renamer;
+impl Folder for Renamer {
+    fn fold_name(&amp;mut self, n: Box&lt;Name&gt;) -&gt; Box&lt;Name&gt; {
+	Box::new(Name { value: "foo".to_owned() })
+    }
+    // Use the default methods for the other nodes.
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7a972a9" class="outline-3">
+<h3 id="org7a972a9"><span class="section-number-3">2.3.</span> Structural Patterns</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+Design patterns that ease the design by identifying a simple way to realize
+relationships among entities.
+</p>
+</div>
+
+<div id="outline-container-org5d74eb6" class="outline-4">
+<h4 id="org5d74eb6"><span class="section-number-4">2.3.1.</span> Compose structs together for better borrowing</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<p>
+Sometimes a large struct will cause issues with the borrow checker - although
+fields can be borrowed independently, sometimes the whole struct ends up being
+used at once, preventing other uses. A solution might be to decompose the structure
+into several smaller structures. Then compose these together into the original
+struct. Then each struct can be borrowed separately and have more flexible
+behavior.
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="orgd6985ce"></a>Example<br />
+<div class="outline-text-5" id="text-2-3-1-1">
+<div class="org-src-container">
+<pre class="src src-rust">#![allow(unused)]
+fn main() {
+struct A {
+    f1: u32,
+    f2: u32,
+    f3: u32,
+}
+
+fn foo(a: &amp;mut A) -&gt; &amp;u32 { &amp;a.f2 }
+fn bar(a: &amp;mut A) -&gt; u32 { a.f1 + a.f3 }
+
+fn baz(a: &amp;mut A) {
+    // The later usage of x causes a to be borrowed for the rest of the function.
+    let x = foo(a);
+    // Borrow checker error:
+    // let y = bar(a); // ~ ERROR: cannot borrow `*a` as mutable more than once
+		       //          at a time
+    println!("{}", x);
+}
+}
+</pre>
+</div>
+
+<p>
+To fix this
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">#![allow(unused)]
+fn main() {
+// A is now composed of two structs - B and C.
+struct A {
+    b: B,
+    c: C,
+}
+struct B {
+    f2: u32,
+}
+struct C {
+    f1: u32,
+    f3: u32,
+}
+
+// These functions take a B or C, rather than A.
+fn foo(b: &amp;mut B) -&gt; &amp;u32 { &amp;b.f2 }
+fn bar(c: &amp;mut C) -&gt; u32 { c.f1 + c.f3 }
+
+fn baz(a: &amp;mut A) {
+    let x = foo(&amp;mut a.b);
+    // Now it's OK!
+    let y = bar(&amp;mut a.c);
+    println!("{}", x);
+}
+}
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-orgcb4a1f0" class="outline-4">
+<h4 id="orgcb4a1f0"><span class="section-number-4">2.3.2.</span> Prefer small crates</h4>
+<div class="outline-text-4" id="text-2-3-2">
+<p>
+Prefer small crates that do one thing well.
+</p>
+
+<p>
+Cargo and crates.io make it easy to add third-party libraries, much more so than
+in say C or C++. Moreover, since packages on crates.io cannot be edited or
+removed after publication, any build that works now should continue to work in
+the future. We should take advantage of this tooling, and use smaller, more
+fine-grained dependencies.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6b72171" class="outline-2">
+<h2 id="org6b72171"><span class="section-number-2">3.</span> Functional Usage of Rust</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+In computer science, functional programming is a programming paradigm where
+programs are constructed by applying and composing functions. It is a
+declarative programming paradigm in which function definitions are trees of
+expressions that each return a value, rather than a sequence of imperative
+statements which change the state of the program.
+</p>
+</div>
+
+<div id="outline-container-orgb62b32c" class="outline-3">
+<h3 id="orgb62b32c"><span class="section-number-3">3.1.</span> Programming paradigms</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+One of the biggest hurdles to understanding functional programs when coming from
+an imperative background is the shift in thinking. Imperative programs describe
+<b>how</b> to do something, whereas declarative programs describe <b>what</b> to do. Let's
+sum the numbers from 1 to 10 to show this.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust" id="org1cdd7a1">#![allow(unused)]
+fn main() {
+let mut sum = 0;
+for i in 1..11 {
+    sum += i;
+}
+println!("{}", sum);
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-rust" id="orgbed7f31">#![allow(unused)]
+fn main() {
+println!("{}", (1..11).fold(0, |a, b| a + b));
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga077c39" class="outline-3">
+<h3 id="orga077c39"><span class="section-number-3">3.2.</span> Generics as Type Classes</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+Rust's type system is designed more like functional languages (like Haskell)
+rather than imperative languages (like Java and C++). As a result, Rust can turn
+many kinds of programming problems into "static typing" problems. This is one of
+the biggest wins of choosing a functional language, and is critical to many of
+Rust's compile time guarantees.
+</p>
+
+<blockquote>
+<p>
+A key part of this idea is the way generic types work. In C++ and Java, for
+example, generic types are a meta-programming construct for the
+compiler. <code>vector&lt;int&gt;</code> and <code>vector&lt;char&gt;</code> in C++ are just two different copies
+of the same boilerplate code for a vector type (known as a <code>template</code>) with two
+different filled in.
+</p>
+
+<p>
+In Rust, a generic type parameter creates what is known in functional languages
+as a "type class constraint", and each different parameter filled in by an end
+user <b>actually changes the type</b>. In other words, <code>Vec&lt;isize&gt;</code> and <code>Vec&lt;char&gt;</code>
+are two different types, which are recognized as distinct by all parts of the
+type system.
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org85a6df0" class="outline-2">
+<h2 id="org85a6df0"><span class="section-number-2">4.</span> References</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+<a href="https://rust-unofficial.github.io/patterns/intro.html">- Rust Design Patterns</a>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Alexander Brown</p>
+<p class="date">Created: 2022-09-12 Mon 11:18</p>
+</div>
+</body>
+</html>

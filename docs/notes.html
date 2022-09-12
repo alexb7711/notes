@@ -1,164 +1,253 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-	<!-- <link rel="Stylesheet" type="text/css" href="./style.css" /> -->
-	<title></title>
-	<meta http-equiv="Content-Type" content="width=device-with, initial-scale=1.0; text/html; charset=utf-8" name="viewport"/>
+<!-- 2022-09-12 Mon 11:18 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Alexander Brown" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href=" ./style.css" />
 </head>
 <body>
-	<div class="nav"><h2 id="Alexander Brown" class="header">Alexander Brown - Electrical Engineer</h2>
-		<!-- <p> -->
-		    <!-- email: alex.brown7711@aggiemail.usu.edu -->
-		<!-- </p> -->
-		<a href="%root_path%index.html">Home</a> |
-		<a href="%root_path%blog.html">Blog</a> |
-		<a href="%root_path%notes.html">Notes</a> |
-		<a href="%root_path%classes.html">Classes</a> |
-		<a href="%root_path%projects.html">Projects</a> |
-		<a href="%root_path%todo.html">Todo</a> |
-		<a href="%root_path%error.html">About</a>
-	</div>
-	<div class="content">
-	    <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
-<head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Notes</title>
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-  </style>
-  <link rel="stylesheet" href="style.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<header id="title-block-header">
-<h1 class="title">Notes</h1>
-</header>
-<nav id="TOC" role="doc-toc">
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#knowledge-base" id="toc-knowledge-base">Knowledge
-Base</a></li>
-<li><a href="#control-theory" id="toc-control-theory">Control
-Theory</a></li>
-<li><a href="#estimation" id="toc-estimation">Estimation</a>
+<li><a href="#knowledge-base">1. Knowledge Base</a></li>
+<li><a href="#control-theory">2. Control Theory</a></li>
+<li><a href="#estimation">3. Estimation</a>
 <ul>
-<li><a href="#optimal-estimation" id="toc-optimal-estimation">Optimal
-Estimation</a></li>
-</ul></li>
-<li><a href="#mathematics" id="toc-mathematics">Mathematics</a>
-<ul>
-<li><a href="#calculus" id="toc-calculus">Calculus</a></li>
-<li><a href="#fuzzy-logic" id="toc-fuzzy-logic">Fuzzy Logic</a></li>
-<li><a href="#linear-algebra" id="toc-linear-algebra">Linear Algebra</a>
-<ul>
-<li><a href="#vectors" id="toc-vectors">Vectors</a></li>
-</ul></li>
-<li><a href="#set-theory" id="toc-set-theory">Set Theory</a></li>
-<li><a href="#quaternions" id="toc-quaternions">Quaternions</a></li>
-<li><a href="#queue-theory" id="toc-queue-theory">Queue Theory</a></li>
-</ul></li>
-<li><a href="#optimization" id="toc-optimization">Optimization</a>
-<ul>
-<li><a href="#parametric-programming"
-id="toc-parametric-programming">Parametric Programming</a></li>
-<li><a href="#linear-programming" id="toc-linear-programming">Linear
-Programming</a>
-<ul>
-<li><a href="#fuzzy-linear-programming"
-id="toc-fuzzy-linear-programming">Fuzzy Linear Programming</a></li>
-<li><a href="#stochastic-programmming"
-id="toc-stochastic-programmming">Stochastic Programmming</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#programming" id="toc-programming">Programming</a>
-<ul>
-<li><a href="#matlab" id="toc-matlab">MATLAB</a></li>
-</ul></li>
+<li><a href="#optimal-estimation">3.1. Optimal Estimation</a></li>
 </ul>
-</nav>
-<h1 id="knowledge-base">Knowledge Base</h1>
-<p>This page is somewhat misleading. I provide links to general starting
+</li>
+<li><a href="#mathematics">4. Mathematics</a>
+<ul>
+<li><a href="#calculus">4.1. Calculus</a></li>
+<li><a href="#fuzzy-logic">4.2. Fuzzy Logic</a></li>
+<li><a href="#linear-algebra">4.3. Linear Algebra</a>
+<ul>
+<li><a href="#vectors">4.3.1. Vectors</a></li>
+</ul>
+</li>
+<li><a href="#set-theory">4.4. Set Theory</a></li>
+<li><a href="#quaternions">4.5. Quaternions</a></li>
+<li><a href="#queue-theory">4.6. Queue Theory</a></li>
+</ul>
+</li>
+<li><a href="#optimization">5. Optimization</a>
+<ul>
+<li><a href="#parametric-programming">5.1. Parametric Programming</a></li>
+<li><a href="#linear-programming">5.2. Linear Programming</a>
+<ul>
+<li><a href="#fuzzy-linear-programming">5.2.1. Fuzzy Linear Programming</a></li>
+<li><a href="#stochastic-programmming">5.2.2. Stochastic Programmming</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#programming">6. Programming</a>
+<ul>
+<li><a href="#matlab">6.1. MATLAB</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-knowledge-base" class="outline-2">
+<h2 id="knowledge-base"><span class="section-number-2">1.</span> Knowledge Base</h2>
+<div class="outline-text-2" id="text-knowledge-base">
+<p>
+This page is somewhat misleading. I provide links to general starting
 points, but the idea is to have a free-flowing set of knowledge that can
 be interconnected with one another. The idea is to separate yourself
 from the idea of categorizing topics in your head and effectively
 building mental barriers between these ideas. To reiterate, the links
 before only provide general starting points for what you may be
-interested in finding.</p>
-<p>The set of references can be found in the <code>main.bib</code>.</p>
-<h1 id="control-theory">Control Theory</h1>
-<ul>
+interested in finding.
+</p>
+
+<p>
+The set of references can be found in the <code>main.bib</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-control-theory" class="outline-2">
+<h2 id="control-theory"><span class="section-number-2">2.</span> Control Theory</h2>
+<div class="outline-text-2" id="text-control-theory">
+<ul class="org-ul">
 <li><a href="nonlinear_control.md">Nonlinear Control</a></li>
 </ul>
-<h1 id="estimation">Estimation</h1>
-<p><a href="estimation.md">Estimation</a> is the process of attempting
-to derive the true value of measurements taken from a system that are
-subect to noise and/or bias.</p>
-<h2 id="optimal-estimation">Optimal Estimation</h2>
-<p><a href="optimal_estimation.md">Optimal Estimation</a>, much like
+</div>
+</div>
+
+<div id="outline-container-estimation" class="outline-2">
+<h2 id="estimation"><span class="section-number-2">3.</span> Estimation</h2>
+<div class="outline-text-2" id="text-estimation">
+<p>
+<a href="estimation.md">Estimation</a> is the process of attempting to
+derive the true value of measurements taken from a system that are
+subect to noise and/or bias.
+</p>
+</div>
+
+<div id="outline-container-optimal-estimation" class="outline-3">
+<h3 id="optimal-estimation"><span class="section-number-3">3.1.</span> Optimal Estimation</h3>
+<div class="outline-text-3" id="text-optimal-estimation">
+<p>
+<a href="optimal_estimation.md">Optimal Estimation</a>, much like
 estimation, attempts to estimate the true value from a measurement that
 has been subject to noise and bias. This optimization method is known as
-the <a href="kalman_filter.md">Kalman Filter</a>.</p>
-<h1 id="mathematics">Mathematics</h1>
-<h2 id="calculus">Calculus</h2>
-<ul>
+the <a href="kalman_filter.md">Kalman Filter</a>.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-mathematics" class="outline-2">
+<h2 id="mathematics"><span class="section-number-2">4.</span> Mathematics</h2>
+<div class="outline-text-2" id="text-mathematics">
+</div>
+<div id="outline-container-calculus" class="outline-3">
+<h3 id="calculus"><span class="section-number-3">4.1.</span> Calculus</h3>
+<div class="outline-text-3" id="text-calculus">
+<ul class="org-ul">
 <li><a href="derivatives.md">Derivatives</a></li>
 </ul>
-<h2 id="fuzzy-logic">Fuzzy Logic</h2>
-<ul>
+</div>
+</div>
+
+<div id="outline-container-fuzzy-logic" class="outline-3">
+<h3 id="fuzzy-logic"><span class="section-number-3">4.2.</span> Fuzzy Logic</h3>
+<div class="outline-text-3" id="text-fuzzy-logic">
+<ul class="org-ul">
 <li><a href="fuzzy_theory.html">Fuzzy Logic</a></li>
 </ul>
-<h2 id="linear-algebra">Linear Algebra</h2>
-<p><a href="linear_algebra.md">Linear algebra</a> is the branch of
-mathematics concerning linear equations and their representation in
-vector spaces and through matrices.</p>
-<h3 id="vectors">Vectors</h3>
-<p><a href="vectors.md">Vectors</a></p>
-<h2 id="set-theory">Set Theory</h2>
-<p>The theory of <a href="set_theory.md">sets</a> in a nutshell.</p>
-<h2 id="quaternions">Quaternions</h2>
-<p>Theory of <a href="quaternion_theory.md">quaternions</a> in a
-nutshell</p>
-<h2 id="queue-theory">Queue Theory</h2>
-<p><a href="queueing_theory.html">Queueing Theory</a></p>
-<h1 id="optimization">Optimization</h1>
-<p>Below are some sections on optimization types. <a
-href="optimization_for_engineers_class.md">This link has a set of notes
-from optimization for engineers</a>.</p>
-<h2 id="parametric-programming">Parametric Programming</h2>
-<p>Parametric programming is a type of optimization, where the
-optimization problem is solved as a function of one or multiple
-parameters.</p>
-<h2 id="linear-programming">Linear Programming</h2>
-<p>Process of optimization by setting up the worlds largest set of
-linear equations</p>
-<h3 id="fuzzy-linear-programming">Fuzzy Linear Programming</h3>
-<p><a href="fuzzy_lin_prog.html">Fuzzy Linear Programming</a></p>
-<h3 id="stochastic-programmming">Stochastic Programmming</h3>
-<p><a href="stochastic_prog.html">Stochastic Programming</a> is a
-framework for modeling optimizaiton problems that involve uncertainty. A
-stochastic program is an optimization problem in which som eor all
-problem parameters are uncertain, but follow known probability
-distributions.</p>
-<h1 id="programming">Programming</h1>
-<h2 id="matlab">MATLAB</h2>
-<p>MATLAB is sorta butts, but here are some useful <a
-href="matlab_tips.md">tips</a></p>
-</body>
-</html>
-	</div>
+</div>
+</div>
+
+<div id="outline-container-linear-algebra" class="outline-3">
+<h3 id="linear-algebra"><span class="section-number-3">4.3.</span> Linear Algebra</h3>
+<div class="outline-text-3" id="text-linear-algebra">
+<p>
+<a href="linear_algebra.md">Linear algebra</a> is the branch of mathematics
+concerning linear equations and their representation in vector spaces
+and through matrices.
+</p>
+</div>
+
+<div id="outline-container-vectors" class="outline-4">
+<h4 id="vectors"><span class="section-number-4">4.3.1.</span> Vectors</h4>
+<div class="outline-text-4" id="text-vectors">
+<p>
+<a href="vectors.md">Vectors</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-set-theory" class="outline-3">
+<h3 id="set-theory"><span class="section-number-3">4.4.</span> Set Theory</h3>
+<div class="outline-text-3" id="text-set-theory">
+<p>
+The theory of <a href="set_theory.md">sets</a> in a nutshell.
+</p>
+</div>
+</div>
+
+<div id="outline-container-quaternions" class="outline-3">
+<h3 id="quaternions"><span class="section-number-3">4.5.</span> Quaternions</h3>
+<div class="outline-text-3" id="text-quaternions">
+<p>
+Theory of <a href="quaternion_theory.md">quaternions</a> in a nutshell
+</p>
+</div>
+</div>
+
+<div id="outline-container-queue-theory" class="outline-3">
+<h3 id="queue-theory"><span class="section-number-3">4.6.</span> Queue Theory</h3>
+<div class="outline-text-3" id="text-queue-theory">
+<p>
+<a href="queueing_theory.html">Queueing Theory</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-optimization" class="outline-2">
+<h2 id="optimization"><span class="section-number-2">5.</span> Optimization</h2>
+<div class="outline-text-2" id="text-optimization">
+<p>
+Below are some sections on optimization types.
+<a href="optimization_for_engineers_class.md">This link has a set of notes
+from optimization for engineers</a>.
+</p>
+</div>
+
+<div id="outline-container-parametric-programming" class="outline-3">
+<h3 id="parametric-programming"><span class="section-number-3">5.1.</span> Parametric Programming</h3>
+<div class="outline-text-3" id="text-parametric-programming">
+<p>
+Parametric programming is a type of optimization, where the optimization
+problem is solved as a function of one or multiple parameters.
+</p>
+</div>
+</div>
+
+<div id="outline-container-linear-programming" class="outline-3">
+<h3 id="linear-programming"><span class="section-number-3">5.2.</span> Linear Programming</h3>
+<div class="outline-text-3" id="text-linear-programming">
+<p>
+Process of optimization by setting up the worlds largest set of linear
+equations
+</p>
+</div>
+
+<div id="outline-container-fuzzy-linear-programming" class="outline-4">
+<h4 id="fuzzy-linear-programming"><span class="section-number-4">5.2.1.</span> Fuzzy Linear Programming</h4>
+<div class="outline-text-4" id="text-fuzzy-linear-programming">
+<p>
+<a href="fuzzy_lin_prog.html">Fuzzy Linear Programming</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-stochastic-programmming" class="outline-4">
+<h4 id="stochastic-programmming"><span class="section-number-4">5.2.2.</span> Stochastic Programmming</h4>
+<div class="outline-text-4" id="text-stochastic-programmming">
+<p>
+<a href="stochastic_prog.html">Stochastic Programming</a> is a framework for
+modeling optimizaiton problems that involve uncertainty. A stochastic
+program is an optimization problem in which som eor all problem
+parameters are uncertain, but follow known probability distributions.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-programming" class="outline-2">
+<h2 id="programming"><span class="section-number-2">6.</span> Programming</h2>
+<div class="outline-text-2" id="text-programming">
+</div>
+<div id="outline-container-matlab" class="outline-3">
+<h3 id="matlab"><span class="section-number-3">6.1.</span> MATLAB</h3>
+<div class="outline-text-3" id="text-matlab">
+<p>
+MATLAB is sorta butts, but here are some useful
+<a href="matlab_tips.md">tips</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Alexander Brown</p>
+<p class="date">Created: 2022-09-12 Mon 11:18</p>
+</div>
 </body>
 </html>

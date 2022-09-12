@@ -1,65 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-	<!-- <link rel="Stylesheet" type="text/css" href="./style.css" /> -->
-	<title></title>
-	<meta http-equiv="Content-Type" content="width=device-with, initial-scale=1.0; text/html; charset=utf-8" name="viewport"/>
+<!-- 2022-09-12 Mon 11:18 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Alexander Brown" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href=" ./style.css" />
 </head>
 <body>
-	<div class="nav"><h2 id="Alexander Brown" class="header">Alexander Brown - Electrical Engineer</h2>
-		<!-- <p> -->
-		    <!-- email: alex.brown7711@aggiemail.usu.edu -->
-		<!-- </p> -->
-		<a href="%root_path%index.html">Home</a> |
-		<a href="%root_path%blog.html">Blog</a> |
-		<a href="%root_path%notes.html">Notes</a> |
-		<a href="%root_path%classes.html">Classes</a> |
-		<a href="%root_path%projects.html">Projects</a> |
-		<a href="%root_path%todo.html">Todo</a> |
-		<a href="%root_path%error.html">About</a>
-	</div>
-	<div class="content">
-	    <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
-<head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>matlab_tips</title>
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-  </style>
-  <link rel="stylesheet" href="style.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<nav id="TOC" role="doc-toc">
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#matlab-tips" id="toc-matlab-tips">MATLAB Tips</a>
+<li><a href="#matlab-tips">1. MATLAB Tips</a>
 <ul>
-<li><a href="#pivoting-function" id="toc-pivoting-function">Pivoting
-Function</a></li>
-<li><a href="#footnotes" id="toc-footnotes">Footnotes</a></li>
-</ul></li>
+<li><a href="#pivoting-function">1.1. Pivoting Function</a></li>
 </ul>
-</nav>
-<h1 id="matlab-tips">MATLAB Tips</h1>
-<h2 id="pivoting-function">Pivoting Function</h2>
-<p>The original code can be found here <a
-href="#Footnotes#1.md">#1</a>:</p>
-<pre><code>function R = pivot(M, r, c)
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-matlab-tips" class="outline-2">
+<h2 id="matlab-tips"><span class="section-number-2">1.</span> MATLAB Tips</h2>
+<div class="outline-text-2" id="text-matlab-tips">
+</div>
+<div id="outline-container-pivoting-function" class="outline-3">
+<h3 id="pivoting-function"><span class="section-number-3">1.1.</span> Pivoting Function</h3>
+<div class="outline-text-3" id="text-pivoting-function">
+<p>
+The original code can be found here #1:
+</p>
+
+<pre class="example" id="org18228d0">
+function R = pivot(M, r, c)
     % Get matrix dimensions
     [d, w]  = size(M);
 
@@ -79,15 +57,15 @@ href="#Footnotes#1.md">#1</a>:</p>
             R(k,:) = M(k,:) - M(k,c) * R(r,:)
         end % if
     end         % for
-end                 % function</code></pre>
-<h2 id="footnotes">Footnotes</h2>
-<ul>
-<li><em>1</em> <a
-href="http://am121.seas.harvard.edu/site/wp-content/uploads/2014/08/pivotingmaplematlabmathematica.pdf.md">Pivoting
-Function</a></li>
-</ul>
-</body>
-</html>
-	</div>
+end                 % function
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Alexander Brown</p>
+<p class="date">Created: 2022-09-12 Mon 11:18</p>
+</div>
 </body>
 </html>

@@ -1,93 +1,103 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-	<!-- <link rel="Stylesheet" type="text/css" href="./style.css" /> -->
-	<title></title>
-	<meta http-equiv="Content-Type" content="width=device-with, initial-scale=1.0; text/html; charset=utf-8" name="viewport"/>
+<!-- 2022-09-12 Mon 11:18 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Alexander Brown" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href=" ./style.css" />
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
-	<div class="nav"><h2 id="Alexander Brown" class="header">Alexander Brown - Electrical Engineer</h2>
-		<!-- <p> -->
-		    <!-- email: alex.brown7711@aggiemail.usu.edu -->
-		<!-- </p> -->
-		<a href="%root_path%index.html">Home</a> |
-		<a href="%root_path%blog.html">Blog</a> |
-		<a href="%root_path%notes.html">Notes</a> |
-		<a href="%root_path%classes.html">Classes</a> |
-		<a href="%root_path%projects.html">Projects</a> |
-		<a href="%root_path%todo.html">Todo</a> |
-		<a href="%root_path%error.html">About</a>
-	</div>
-	<div class="content">
-	    <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
-<head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>stochastic_prog</title>
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-  </style>
-  <link rel="stylesheet" href="style.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<nav id="TOC" role="doc-toc">
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#stochastic-programming"
-id="toc-stochastic-programming">Stochastic Programming</a>
+<li><a href="#stochastic-programming">1. Stochastic Programming</a>
 <ul>
-<li><a href="#two-stage-problem" id="toc-two-stage-problem">Two-Stage
-Problem</a></li>
-</ul></li>
-<li><a href="#footnotes" id="toc-footnotes">Footnotes</a></li>
+<li><a href="#two-stage-problem">1.1. Two-Stage Problem</a></li>
 </ul>
-</nav>
-<h1 id="stochastic-programming">Stochastic Programming</h1>
-<p>As stated by <a
-href="https://en.wikipedia.org/wiki/Stochastic_programming.md">Wikipedia</a>:</p>
-<pre><code>Stochastic programming is a framework for modeling optimizaiton problems that involve uncertainty. A stochastic program is an optimization problem in which som eor all problem parameters are uncertain, but follow known probability distributions.</code></pre>
-<h2 id="two-stage-problem">Two-Stage Problem</h2>
-<p>The idea of two-stage stochastic programming is that (optimal)
-decisions should be based on data at the time the decisions are made and
-cannot depend on future observations. The two-stag formulation is widely
-used in stochastic programming. The general formulation of a two-stage
-stochastic programming problem is <a href="#.md">1</a> :</p>
-<p>$$</p>
-<p>min_{x X}{g(x) = f(x) + E_{<img src="\zeta" alt="pic" />}<img
-src="Q(x,\zeta)" alt="pic" />}</p>
-<p>$$</p>
-<p>where <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%28x%2C%5Czeta%29"
-alt="A(x,\zeta)" title="A(x,\zeta)" class="math inline" /> is the
-optimal value of the second-stage problem</p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20min_%7By%7D%5C%7Bq%28y%2C%5Czeta%29%20%7C%20T%28%5Czeta%29x%20%2B%20W%28%5Czeta%29y%20%3D%20h%28%5Czeta%29%5C%7D%20%5C%5C"
-alt="min_{y}\{q(y,\zeta) | T(\zeta)x + W(\zeta)y = h(\zeta)\} \\"
-title="min_{y}\{q(y,\zeta) | T(\zeta)x + W(\zeta)y = h(\zeta)\} \\"
-class="math display" /></p>
-<h1 id="footnotes">Footnotes</h1>
-<ul>
-<li><em>1</em>. <span class="citation"
-data-cites="wiki_stochastic_programming">@wiki_stochastic_programming</span>:
-{Wikipedia contributors} (2021). Stochastic programming — {Wikipedia}{,}
-The Free Encyclopedia</li>
+</li>
 </ul>
-</body>
-</html>
-	</div>
+</div>
+</div>
+<div id="outline-container-stochastic-programming" class="outline-2">
+<h2 id="stochastic-programming"><span class="section-number-2">1.</span> Stochastic Programming</h2>
+<div class="outline-text-2" id="text-stochastic-programming">
+<p>
+As stated by
+<a href="https://en.wikipedia.org/wiki/Stochastic_programming.md">Wikipedia</a>:
+</p>
+
+<pre class="example" id="org2bac168">
+Stochastic programming is a framework for modeling optimizaiton problems that involve uncertainty. A stochastic program is an optimization problem in which som eor all problem parameters are uncertain, but follow known probability distributions.
+</pre>
+</div>
+
+<div id="outline-container-two-stage-problem" class="outline-3">
+<h3 id="two-stage-problem"><span class="section-number-3">1.1.</span> Two-Stage Problem</h3>
+<div class="outline-text-3" id="text-two-stage-problem">
+<p>
+The idea of two-stage stochastic programming is that (optimal) decisions
+should be based on data at the time the decisions are made and cannot
+depend on future observations. The two-stag formulation is widely used
+in stochastic programming. The general formulation of a two-stage
+stochastic programming problem is TODO: REF :
+</p>
+
+<p>
+$$
+</p>
+
+<p>
+min<sub>x &isin; X</sub>{g(x) = f(x) + E<sub>&zeta;</sub>Q(x,&zeta;)}
+</p>
+
+<p>
+$$
+</p>
+
+<p>
+where \(A(x,\zeta)\) is the optimal value of the second-stage problem
+</p>
+
+<p>
+\[
+min_{y}\{q(y,\zeta) | T(\zeta)x + W(\zeta)y = h(\zeta)\} \\
+\]
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Alexander Brown</p>
+<p class="date">Created: 2022-09-12 Mon 11:18</p>
+</div>
 </body>
 </html>

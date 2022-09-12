@@ -1,106 +1,98 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-	<!-- <link rel="Stylesheet" type="text/css" href="./style.css" /> -->
-	<title></title>
-	<meta http-equiv="Content-Type" content="width=device-with, initial-scale=1.0; text/html; charset=utf-8" name="viewport"/>
+<!-- 2022-09-12 Mon 11:18 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Alexander Brown" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href=" ./style.css" />
 </head>
 <body>
-	<div class="nav"><h2 id="Alexander Brown" class="header">Alexander Brown - Electrical Engineer</h2>
-		<!-- <p> -->
-		    <!-- email: alex.brown7711@aggiemail.usu.edu -->
-		<!-- </p> -->
-		<a href="%root_path%index.html">Home</a> |
-		<a href="%root_path%blog.html">Blog</a> |
-		<a href="%root_path%notes.html">Notes</a> |
-		<a href="%root_path%classes.html">Classes</a> |
-		<a href="%root_path%projects.html">Projects</a> |
-		<a href="%root_path%todo.html">Todo</a> |
-		<a href="%root_path%error.html">About</a>
-	</div>
-	<div class="content">
-	    <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
-<head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>endianess</title>
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-  </style>
-  <link rel="stylesheet" href="style.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<nav id="TOC" role="doc-toc">
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#how-to-write-endian-independent-code-in-c"
-id="toc-how-to-write-endian-independent-code-in-c">How to write
-endian-independent code in C</a>
+<li><a href="#how-to-write-endian-independent-code-in-c">1. How to write endian-independent code in C</a>
 <ul>
-<li><a href="#when-endianness-affects-code"
-id="toc-when-endianness-affects-code">When endianness affects
-code</a></li>
-<li><a href="#test-endianess-at-run-time"
-id="toc-test-endianess-at-run-time">Test endianess at run time</a></li>
-<li><a href="#network-byte-order" id="toc-network-byte-order">Network
-byte order</a></li>
-</ul></li>
+<li><a href="#when-endianness-affects-code">1.1. When endianness affects code</a></li>
+<li><a href="#test-endianess-at-run-time">1.2. Test endianess at run time</a></li>
+<li><a href="#network-byte-order">1.3. Network byte order</a></li>
 </ul>
-</nav>
-<h1 id="how-to-write-endian-independent-code-in-c">How to write
-endian-independent code in C</h1>
-<h2 id="when-endianness-affects-code">When endianness affects code</h2>
-<ul>
+</li>
+<li><a href="#orgc185a9d">2. Method 1: Using bit shifting and ANDs</a></li>
+<li><a href="#orgba90631">3. Method 2: Using pointer to an array of characters</a></li>
+<li><a href="#orgfd1e5bd">4. Method 1: Using bit shifting and bit ANDs</a></li>
+<li><a href="#org04a2642">5. Method 2: Using pointer to an array of characters</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-how-to-write-endian-independent-code-in-c" class="outline-2">
+<h2 id="how-to-write-endian-independent-code-in-c"><span class="section-number-2">1.</span> How to write endian-independent code in C</h2>
+<div class="outline-text-2" id="text-how-to-write-endian-independent-code-in-c">
+</div>
+<div id="outline-container-when-endianness-affects-code" class="outline-3">
+<h3 id="when-endianness-affects-code"><span class="section-number-3">1.1.</span> When endianness affects code</h3>
+<div class="outline-text-3" id="text-when-endianness-affects-code">
+<ul class="org-ul">
 <li>Endianess does not apply to everything
-<ul>
-<li>Bitwise and bitshift operations are fine on <code>ints</code> for
-example
-<ul>
-<li>the ordering of the bits are still the same as when they came in so
-the operations are performed correctly</li>
+<ul class="org-ul">
+<li>Bitwise and bitshift operations are fine on <code>ints</code> for example
+<ul class="org-ul">
+<li>the ordering of the bits are still the same as when they came in
+so the operations are performed correctly</li>
 </ul></li>
-<li><code>char</code> arrays can be accessed one byte at a time.
-However, this is not true with an <code>int</code> or
-<code>long</code>.</li>
+<li><code>char</code> arrays can be accessed one byte at a time. However, this is
+not true with an <code>int</code> or <code>long</code>.</li>
 </ul></li>
 <li>Endiansess does matter when using a type cast that depends on a
 certain endian being in use. For example</li>
 </ul>
-<pre><code>unsigned char endian![pic](2) = {1, 0};
+
+<pre class="example" id="org3691075">
+unsigned char endian![pic](2) = {1, 0};
 short x;
   
-x = ∗(short ∗) endian;</code></pre>
-<pre><code>depending on the enianess, `x` can be represent different values.</code></pre>
-<h2 id="test-endianess-at-run-time">Test endianess at run time</h2>
-<p>the listing below tests the first byte of the multi-byte integer
-<code>i</code> to determine if it is 0 or 1. If it is 1, the running
-platform is assumed to be little-endian. If it is 0, it is assumed to be
-big-endian.</p>
-<pre><code>unsigned char endian![pic](2) = {1, 0};
+x = ∗(short ∗) endian;
+</pre>
+
+<pre class="example" id="org690dce8">
+depending on the enianess, `x` can be represent different values.
+</pre>
+</div>
+</div>
+
+<div id="outline-container-test-endianess-at-run-time" class="outline-3">
+<h3 id="test-endianess-at-run-time"><span class="section-number-3">1.2.</span> Test endianess at run time</h3>
+<div class="outline-text-3" id="text-test-endianess-at-run-time">
+<p>
+the listing below tests the first byte of the multi-byte integer <code>i</code> to
+determine if it is 0 or 1. If it is 1, the running platform is assumed
+to be little-endian. If it is 0, it is assumed to be big-endian.
+</p>
+
+<pre class="example" id="org6779f8d">
+unsigned char endian![pic](2) = {1, 0};
 short x;
   
 x = ∗(short ∗) endian;unsigned char endian![pic](2) = {1, 0};
 short x;
   
-x = ∗(short ∗) endian;</code></pre>
-<p>Another way to determine endiannes is to use a character pointer to
-the bytes of an int and then check its first byte to see if it is 0 or
-1. The listing below shows an example.</p>
-<pre><code>#define LITTLE_ENDIAN 0
+x = ∗(short ∗) endian;
+</pre>
+
+<p>
+Another way to determine endiannes is to use a character pointer to the
+bytes of an int and then check its first byte to see if it is 0 or 1.
+The listing below shows an example.
+</p>
+
+<pre class="example" id="org898cdc9">
+#define LITTLE_ENDIAN 0
 #define BIG_ENDIAN    1
 
 int endian() {
@@ -111,41 +103,94 @@ int endian() {
         return LITTLE_ENDIAN;
     else
         return BIG_ENDIAN;
-}</code></pre>
-<h2 id="network-byte-order">Network byte order</h2>
-<p>Network communication protocols must also have an endianess. This is
-commonly referred to as <em>network byte order</em>. To enable
-conversations, sockets provide a set of macros to convert to and from
-host to network byte order:</p>
-<pre class="htons()```"><code>Reorder the bytes of a 16-bit unsigned value from processor order to network order. The macro name can be read as “host to network short.”
+}
+</pre>
+</div>
+</div>
 
+<div id="outline-container-network-byte-order" class="outline-3">
+<h3 id="network-byte-order"><span class="section-number-3">1.3.</span> Network byte order</h3>
+<div class="outline-text-3" id="text-network-byte-order">
+<p>
+Network communication protocols must also have an endianess. This is
+commonly referred to as <i>network byte order</i>. To enable conversations,
+sockets provide a set of macros to convert to and from host to network
+byte order:
+</p>
+
+<p>
+#+begin<sub>example</sub>
+Reorder the bytes of a 16-bit unsigned value from processor order to network order. The macro name can be read as “host to network short.”
+</p>
+
+<p>
 ```htonl()```
 Reorder the bytes of a 32-bit unsigned value from processor order to network order. The macro name can be read as “host to network long.”
+</p>
 
+<p>
 ```ntohs()```
 Reorder the bytes of a 16-bit unsigned value from network order to processor order. The macro name can be read as “network to host short.”
+</p>
 
+<p>
 ```ntohl()```
 Reorder the bytes of a 32-bit unsigned value from network order to processor order. The macro name can be read as “network to host long.”
+</p>
 
 
+<p>
 ## Reversing the byte order
-The goal is to write code that doesn&#39;t fail, regardless of the endianness of the machine. *It would be nice to avoid having to specify coditional compliation flags and just let the code automatically determine the endianness of the machine.* The following method check and reverses endianess of a `short`:
+The goal is to write code that doesn't fail, regardless of the endianness of the machine. <b>It would be nice to avoid having to specify coditional compliation flags and just let the code automatically determine the endianness of the machine.</b> The following method check and reverses endianess of a `short`:
+</p>
+</div>
+</div>
+</div>
 
-* Method 1: Using bit shifting and ANDs</code></pre>
-<p>short reverseShort (short s) { unsigned char c1, c2;</p>
-<pre><code>if (is_bigendian()) {
+<div id="outline-container-orgc185a9d" class="outline-2">
+<h2 id="orgc185a9d"><span class="section-number-2">2.</span> Method 1: Using bit shifting and ANDs</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+#+end<sub>example</sub>
+</p>
+
+<p>
+short reverseShort (short s) { unsigned char c1, c2;
+</p>
+
+<pre class="example" id="orge189f61">
+if (is_bigendian()) {
     return s;
 } else {
     c1 = s &amp; 255;
     c2 = (s &gt;&gt; 8) &amp; 255;
 
     return (c1 &lt;&lt; 8) + c2;
-}</code></pre>
-<p>}</p>
-<pre><code>* Method 2: Using pointer to an array of characters</code></pre>
-<p>short reverseShort (char ∗c) { short s; char ∗p = (char ∗)&amp;s;</p>
-<pre><code>if (is_bigendian()) {
+}
+</pre>
+
+<p>
+}
+</p>
+
+<p>
+#+begin<sub>example</sub>
+</p>
+</div>
+</div>
+<div id="outline-container-orgba90631" class="outline-2">
+<h2 id="orgba90631"><span class="section-number-2">3.</span> Method 2: Using pointer to an array of characters</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+#+end<sub>example</sub>
+</p>
+
+<p>
+short reverseShort (char ∗c) { short s; char ∗p = (char ∗)&amp;s;
+</p>
+
+<pre class="example" id="org457a474">
+if (is_bigendian()) {
     p![pic](0) = c![pic](0);
     p![pic](1) = c![pic](1);
 } else {
@@ -153,14 +198,36 @@ The goal is to write code that doesn&#39;t fail, regardless of the endianness of
     p![pic](1) = c![pic](0);
 }
 
-return s;</code></pre>
-<p>}</p>
-<pre><code>
-Now lets see how an int would be handled:
+return s;
+</pre>
 
-* Method 1: Using bit shifting and bit ANDs</code></pre>
-<p>int reverseInt (int i) { unsigned char c1, c2, c3, c4;</p>
-<pre><code>if (is_bigendian()) {
+<p>
+}
+</p>
+
+<p>
+#+begin<sub>example</sub>
+</p>
+
+<p>
+Now lets see how an int would be handled:
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfd1e5bd" class="outline-2">
+<h2 id="orgfd1e5bd"><span class="section-number-2">4.</span> Method 1: Using bit shifting and bit ANDs</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+#+end<sub>example</sub>
+</p>
+
+<p>
+int reverseInt (int i) { unsigned char c1, c2, c3, c4;
+</p>
+
+<pre class="example" id="org6879505">
+if (is_bigendian()) {
     return i;
 } else {
     c1 = i &amp; 255;
@@ -168,11 +235,31 @@ Now lets see how an int would be handled:
     c3 = (i &gt;&gt; 16) &amp; 255;
     c4 = (i &gt;&gt; 24) &amp; 255;
 
-    return ((int)c1 &lt;&lt; 24) + ((int)c2 &lt;&lt; 16) + ((int)c3 &lt;&lt; 8) + c4;</code></pre>
-<p>}</p>
-<pre><code>* Method 2: Using pointer to an array of characters</code></pre>
-<p>short reverseInt (char ∗c) { int i; char ∗p = (char ∗)&amp;i;</p>
-<pre><code>if (is_bigendian()) {
+    return ((int)c1 &lt;&lt; 24) + ((int)c2 &lt;&lt; 16) + ((int)c3 &lt;&lt; 8) + c4;
+</pre>
+
+<p>
+}
+</p>
+
+<p>
+#+begin<sub>example</sub>
+</p>
+</div>
+</div>
+<div id="outline-container-org04a2642" class="outline-2">
+<h2 id="org04a2642"><span class="section-number-2">5.</span> Method 2: Using pointer to an array of characters</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+#+end<sub>example</sub>
+</p>
+
+<p>
+short reverseInt (char ∗c) { int i; char ∗p = (char ∗)&amp;i;
+</p>
+
+<pre class="example" id="org4ffdafc">
+if (is_bigendian()) {
     p![pic](0) = c![pic](0);
     p![pic](1) = c![pic](1);
     p![pic](2) = c![pic](2);
@@ -182,12 +269,20 @@ Now lets see how an int would be handled:
     p![pic](1) = c![pic](2);
     p![pic](2) = c![pic](1);
     p![pic](3) = c![pic](0);
-}</code></pre>
-<p>``` # References * TODO: Fix this reference later * <a
-href="https://developer.ibm.com/articles/au-endianc/.md">How to write
-endian-independent code in C</a></p>
-</body>
-</html>
-	</div>
+}
+</pre>
+
+<p>
+``` # References * TODO: Fix this reference later *
+<a href="https://developer.ibm.com/articles/au-endianc/.md">How to write
+endian-independent code in C</a>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Alexander Brown</p>
+<p class="date">Created: 2022-09-12 Mon 11:18</p>
+</div>
 </body>
 </html>

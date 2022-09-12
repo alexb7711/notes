@@ -1,92 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-	<!-- <link rel="Stylesheet" type="text/css" href="./style.css" /> -->
-	<title></title>
-	<meta http-equiv="Content-Type" content="width=device-with, initial-scale=1.0; text/html; charset=utf-8" name="viewport"/>
+<!-- 2022-09-12 Mon 11:18 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Alexander Brown" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href=" ./style.css" />
 </head>
 <body>
-	<div class="nav"><h2 id="Alexander Brown" class="header">Alexander Brown - Electrical Engineer</h2>
-		<!-- <p> -->
-		    <!-- email: alex.brown7711@aggiemail.usu.edu -->
-		<!-- </p> -->
-		<a href="%root_path%index.html">Home</a> |
-		<a href="%root_path%blog.html">Blog</a> |
-		<a href="%root_path%notes.html">Notes</a> |
-		<a href="%root_path%classes.html">Classes</a> |
-		<a href="%root_path%projects.html">Projects</a> |
-		<a href="%root_path%todo.html">Todo</a> |
-		<a href="%root_path%error.html">About</a>
-	</div>
-	<div class="content">
-	    <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
-<head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>wm</title>
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-  </style>
-  <link rel="stylesheet" href="style.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<nav id="TOC" role="doc-toc">
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#writing-a-x-window-manager"
-id="toc-writing-a-x-window-manager">Writing a X Window Manager</a>
+<li><a href="#writing-a-x-window-manager">1. Writing a X Window Manager</a>
 <ul>
-<li><a href="#window-hierarchy" id="toc-window-hierarchy">Window
-Hierarchy</a></li>
-<li><a href="#substructure-redirection"
-id="toc-substructure-redirection">Substructure Redirection</a></li>
-<li><a href="#reparenting" id="toc-reparenting">Reparenting</a></li>
-</ul></li>
-<li><a href="#sources" id="toc-sources">Sources</a></li>
+<li><a href="#window-hierarchy">1.1. Window Hierarchy</a></li>
+<li><a href="#substructure-redirection">1.2. Substructure Redirection</a></li>
+<li><a href="#reparenting">1.3. Reparenting</a></li>
 </ul>
-</nav>
-<h1 id="writing-a-x-window-manager">Writing a X Window Manager</h1>
-<h2 id="window-hierarchy">Window Hierarchy</h2>
-<p>Windows are organized into a tree hierarchy. The root of the
-hierarchy is the root window, a virtual, invisible window that ha the
-same size as the screen and is always present. Top level windows are
-direct children of the root window. UI elements within a top level
-window are descendants of that window. This hierarchy also enforces that
-the child is clipped to the boundaries of its parent.</p>
-<h2 id="substructure-redirection">Substructure Redirection</h2>
-<p>Substructure redirection is the mechanism that allows a window
-manager to intercept requests to draw window decorations, resize, etc. A
-window manager must subscribe to <em>substructure redirection</em> on
-the root window so that all requests are passed through the window
-manager.</p>
-<h2 id="reparenting">Reparenting</h2>
-<p>The process of reparenting is what allows windows frames to be drawn
+</li>
+<li><a href="#sources">2. Sources</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-writing-a-x-window-manager" class="outline-2">
+<h2 id="writing-a-x-window-manager"><span class="section-number-2">1.</span> Writing a X Window Manager</h2>
+<div class="outline-text-2" id="text-writing-a-x-window-manager">
+</div>
+<div id="outline-container-window-hierarchy" class="outline-3">
+<h3 id="window-hierarchy"><span class="section-number-3">1.1.</span> Window Hierarchy</h3>
+<div class="outline-text-3" id="text-window-hierarchy">
+<p>
+Windows are organized into a tree hierarchy. The root of the hierarchy
+is the root window, a virtual, invisible window that ha the same size as
+the screen and is always present. Top level windows are direct children
+of the root window. UI elements within a top level window are
+descendants of that window. This hierarchy also enforces that the child
+is clipped to the boundaries of its parent.
+</p>
+</div>
+</div>
+
+<div id="outline-container-substructure-redirection" class="outline-3">
+<h3 id="substructure-redirection"><span class="section-number-3">1.2.</span> Substructure Redirection</h3>
+<div class="outline-text-3" id="text-substructure-redirection">
+<p>
+Substructure redirection is the mechanism that allows a window manager
+to intercept requests to draw window decorations, resize, etc. A window
+manager must subscribe to <i>substructure redirection</i> on the root window
+so that all requests are passed through the window manager.
+</p>
+</div>
+</div>
+
+<div id="outline-container-reparenting" class="outline-3">
+<h3 id="reparenting"><span class="section-number-3">1.3.</span> Reparenting</h3>
+<div class="outline-text-3" id="text-reparenting">
+<p>
+The process of reparenting is what allows windows frames to be drawn
 (max, min, hide buttons). When a window is created, the window manager
 is notified and makes the window a child of a frame generated by the
 window manager. Because the window is no longer a direct descendent from
 the root window the window manager cannot modify it UNLESS it has also
-registed for substructure redirection on each frame window it
-creates.</p>
-<h1 id="sources">Sources</h1>
-<p><a
-href="https://jichu4n.com/posts/how-x-window-managers-work-and-how-to-write-one-part-i/.md">How
-X Window Managers Work, And How To Write One</a></p>
-</body>
-</html>
-	</div>
+registed for substructure redirection on each frame window it creates.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sources" class="outline-2">
+<h2 id="sources"><span class="section-number-2">2.</span> Sources</h2>
+<div class="outline-text-2" id="text-sources">
+<p>
+<a href="https://jichu4n.com/posts/how-x-window-managers-work-and-how-to-write-one-part-i/.md">How
+X Window Managers Work, And How To Write One</a>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Alexander Brown</p>
+<p class="date">Created: 2022-09-12 Mon 11:18</p>
+</div>
 </body>
 </html>

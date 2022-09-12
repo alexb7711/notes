@@ -1,177 +1,141 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-	<!-- <link rel="Stylesheet" type="text/css" href="./style.css" /> -->
-	<title></title>
-	<meta http-equiv="Content-Type" content="width=device-with, initial-scale=1.0; text/html; charset=utf-8" name="viewport"/>
+<!-- 2022-09-12 Mon 11:18 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Alexander Brown" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href=" ./style.css" />
 </head>
 <body>
-	<div class="nav"><h2 id="Alexander Brown" class="header">Alexander Brown - Electrical Engineer</h2>
-		<!-- <p> -->
-		    <!-- email: alex.brown7711@aggiemail.usu.edu -->
-		<!-- </p> -->
-		<a href="%root_path%index.html">Home</a> |
-		<a href="%root_path%blog.html">Blog</a> |
-		<a href="%root_path%notes.html">Notes</a> |
-		<a href="%root_path%classes.html">Classes</a> |
-		<a href="%root_path%projects.html">Projects</a> |
-		<a href="%root_path%todo.html">Todo</a> |
-		<a href="%root_path%error.html">About</a>
-	</div>
-	<div class="content">
-	    <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
-<head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>optimization_for_engineers_class</title>
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-  </style>
-  <link rel="stylesheet" href="style.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<nav id="TOC" role="doc-toc">
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#optimization-for-engineers"
-id="toc-optimization-for-engineers">Optimization for Engineers</a>
+<li><a href="#optimization-for-engineers">1. Optimization for Engineers</a>
 <ul>
-<li><a href="#mathematical-review"
-id="toc-mathematical-review">Mathematical Review</a></li>
-<li><a href="#unconstrained-optimization"
-id="toc-unconstrained-optimization">Unconstrained Optimization</a></li>
-<li><a href="#linear-programming" id="toc-linear-programming">Linear
-Programming</a></li>
-<li><a href="#milp" id="toc-milp">MILP</a></li>
-<li><a href="#convex-optimization" id="toc-convex-optimization">Convex
-Optimization</a></li>
-<li><a href="#nonlinear-programming"
-id="toc-nonlinear-programming">Nonlinear Programming</a></li>
-<li><a href="#multi-objective-optimization"
-id="toc-multi-objective-optimization">Multi-Objective
-Optimization</a></li>
-<li><a href="#global-search" id="toc-global-search">Global
-Search</a></li>
-<li><a href="#interesting-optimization-applications"
-id="toc-interesting-optimization-applications">Interesting Optimization
-Applications</a></li>
-</ul></li>
+<li><a href="#mathematical-review">1.1. Mathematical Review</a></li>
+<li><a href="#unconstrained-optimization">1.2. Unconstrained Optimization</a></li>
+<li><a href="#linear-programming">1.3. Linear Programming</a></li>
+<li><a href="#milp">1.4. MILP</a></li>
+<li><a href="#convex-optimization">1.5. Convex Optimization</a></li>
+<li><a href="#nonlinear-programming">1.6. Nonlinear Programming</a></li>
+<li><a href="#multi-objective-optimization">1.7. Multi-Objective Optimization</a></li>
+<li><a href="#global-search">1.8. Global Search</a></li>
+<li><a href="#interesting-optimization-applications">1.9. Interesting Optimization Applications</a></li>
 </ul>
-</nav>
-<h1 id="optimization-for-engineers">Optimization for Engineers</h1>
-<h2 id="mathematical-review">Mathematical Review</h2>
-<ul>
-<li><a
-href="local:docs/optimization_for_engineers/Lecture1-1.htm.md">Lecture
-1</a></li>
-<li><a
-href="local:docs/optimization_for_engineers/Lecture1-2.htm.md">Lecture
-2</a></li>
+</li>
 </ul>
-<h2 id="unconstrained-optimization">Unconstrained Optimization</h2>
-<ul>
-<li><a
-href="local:docs/optimization_for_engineers/Lecture2-1.htm.md">Lecture
-1</a></li>
-<li><a
-href="local:docs/optimization_for_engineers/Lecture2-2.htm.md">Lecture
-2</a></li>
-<li><a
-href="local:docs/optimization_for_engineers/Lecture3-1.htm.md">Lecture
-3</a></li>
-<li><a
-href="local:docs/optimization_for_engineers/Lecture3-2.htm.md">Lecture
-4</a></li>
+</div>
+</div>
+<div id="outline-container-optimization-for-engineers" class="outline-2">
+<h2 id="optimization-for-engineers"><span class="section-number-2">1.</span> Optimization for Engineers</h2>
+<div class="outline-text-2" id="text-optimization-for-engineers">
+</div>
+<div id="outline-container-mathematical-review" class="outline-3">
+<h3 id="mathematical-review"><span class="section-number-3">1.1.</span> Mathematical Review</h3>
+<div class="outline-text-3" id="text-mathematical-review">
+<ul class="org-ul">
+<li><a href="./optimization_for_engineers/Lecture1-1.htm">Lecture 1</a></li>
+<li><a href="./optimization_for_engineers/Lecture1-2.htm">Lecture 2</a></li>
 </ul>
-<h2 id="linear-programming">Linear Programming</h2>
-<ul>
-<li><a
-href="local:docs/optimization_for_engineers/Lecture4-1.htm.md">Lecture
-1</a></li>
-<li><a
-href="local:docs/optimization_for_engineers/Lecture4-2.htm.md">Lecture
-2</a></li>
-<li><a
-href="local:docs/optimization_for_engineers/Lecture4-3.htm.md">Lecture
-3</a></li>
-<li><a
-href="local:docs/optimization_for_engineers/Lecture5-1.htm.md">Lecture
-4</a></li>
-<li><a
-href="local:docs/optimization_for_engineers/Lecture5-1.htm.md">Lecture
-5</a></li>
+</div>
+</div>
+
+<div id="outline-container-unconstrained-optimization" class="outline-3">
+<h3 id="unconstrained-optimization"><span class="section-number-3">1.2.</span> Unconstrained Optimization</h3>
+<div class="outline-text-3" id="text-unconstrained-optimization">
+<ul class="org-ul">
+<li><a href="./optimization_for_engineers/Lecture2-1.htm">Lecture 1</a></li>
+<li><a href="./optimization_for_engineers/Lecture2-2.htm">Lecture 2</a></li>
+<li><a href="./optimization_for_engineers/Lecture3-1.htm">Lecture 3</a></li>
+<li><a href="./optimization_for_engineers/Lecture3-2.htm">Lecture 4</a></li>
 </ul>
-<h2 id="milp">MILP</h2>
-<ul>
-<li><a
-href="local:docs/optimization_for_engineers/Lecture6-1.htm.md">Lecture
-1</a></li>
-<li><a
-href="local:docs/optimization_for_engineers/Lecture6-2.htm.md">Lecture
-2</a></li>
+</div>
+</div>
+
+<div id="outline-container-linear-programming" class="outline-3">
+<h3 id="linear-programming"><span class="section-number-3">1.3.</span> Linear Programming</h3>
+<div class="outline-text-3" id="text-linear-programming">
+<ul class="org-ul">
+<li><a href="./optimization_for_engineers/Lecture4-1.htm">Lecture 1</a></li>
+<li><a href="./optimization_for_engineers/Lecture4-2.htm">Lecture 2</a></li>
+<li><a href="./optimization_for_engineers/Lecture4-3.htm">Lecture 3</a></li>
+<li><a href="./optimization_for_engineers/Lecture5-1.htm">Lecture 4</a></li>
+<li><a href="./optimization_for_engineers/Lecture5-1.htm">Lecture 5</a></li>
 </ul>
-<h2 id="convex-optimization">Convex Optimization</h2>
-<ul>
-<li><a
-href="local:docs/optimization_for_engineers/Lecture8-1.htm.md">Lecture
-1</a></li>
-<li><a
-href="local:docs/optimization_for_engineers/Lecture8-2.htm.md">Lecture
-2</a></li>
+</div>
+</div>
+
+<div id="outline-container-milp" class="outline-3">
+<h3 id="milp"><span class="section-number-3">1.4.</span> MILP</h3>
+<div class="outline-text-3" id="text-milp">
+<ul class="org-ul">
+<li><a href="./optimization_for_engineers/Lecture6-1.htm">Lecture 1</a></li>
+<li><a href="./optimization_for_engineers/Lecture6-2.htm">Lecture 2</a></li>
 </ul>
-<h2 id="nonlinear-programming">Nonlinear Programming</h2>
-<ul>
-<li><a
-href="local:docs/optimization_for_engineers/Lecture10-1.htm.md">Lecture
-1</a></li>
-<li><a
-href="local:docs/optimization_for_engineers/Lecture10-1.htm.md">Lecture
-2</a></li>
-<li><a
-href="local:docs/optimization_for_engineers/Lecture10-1.htm.md">Lecture
-3</a></li>
+</div>
+</div>
+
+<div id="outline-container-convex-optimization" class="outline-3">
+<h3 id="convex-optimization"><span class="section-number-3">1.5.</span> Convex Optimization</h3>
+<div class="outline-text-3" id="text-convex-optimization">
+<ul class="org-ul">
+<li><a href="./optimization_for_engineers/Lecture8-1.htm">Lecture 1</a></li>
+<li><a href="./optimization_for_engineers/Lecture8-2.htm">Lecture 2</a></li>
 </ul>
-<h2 id="multi-objective-optimization">Multi-Objective Optimization</h2>
-<ul>
-<li><a
-href="local:docs/optimization_for_engineers/Lecture11-01.htm.md">Lecture
-1</a></li>
-<li><a
-href="local:docs/optimization_for_engineers/Lecture11-02.htm.md">Lecture
-2</a></li>
+</div>
+</div>
+
+<div id="outline-container-nonlinear-programming" class="outline-3">
+<h3 id="nonlinear-programming"><span class="section-number-3">1.6.</span> Nonlinear Programming</h3>
+<div class="outline-text-3" id="text-nonlinear-programming">
+<ul class="org-ul">
+<li><a href="./optimization_for_engineers/Lecture10-1.htm">Lecture 1</a></li>
+<li><a href="./optimization_for_engineers/Lecture10-1.htm">Lecture 2</a></li>
+<li><a href="./optimization_for_engineers/Lecture10-1.htm">Lecture 3</a></li>
 </ul>
-<h2 id="global-search">Global Search</h2>
-<ul>
-<li><a
-href="local:docs/optimization_for_engineers/Lecture12-01.htm.md">Lecture
-1</a></li>
-<li><a
-href="local:docs/optimization_for_engineers/Lecture12-02.htm.md">Lecture
-2</a></li>
+</div>
+</div>
+
+<div id="outline-container-multi-objective-optimization" class="outline-3">
+<h3 id="multi-objective-optimization"><span class="section-number-3">1.7.</span> Multi-Objective Optimization</h3>
+<div class="outline-text-3" id="text-multi-objective-optimization">
+<ul class="org-ul">
+<li><a href="./optimization_for_engineers/Lecture11-01.htm">Lecture 1</a></li>
+<li><a href="./optimization_for_engineers/Lecture11-02.htm">Lecture 2</a></li>
 </ul>
-<h2 id="interesting-optimization-applications">Interesting Optimization
-Applications</h2>
-<ul>
-<li><a
-href="local:docs/optimization_for_engineers/Lecture9-1.htm.md">Lecture
-1</a></li>
+</div>
+</div>
+
+<div id="outline-container-global-search" class="outline-3">
+<h3 id="global-search"><span class="section-number-3">1.8.</span> Global Search</h3>
+<div class="outline-text-3" id="text-global-search">
+<ul class="org-ul">
+<li><a href="./optimization_for_engineers/Lecture12-01.htm">Lecture 1</a></li>
+<li><a href="./optimization_for_engineers/Lecture12-02.htm">Lecture 2</a></li>
 </ul>
-</body>
-</html>
-	</div>
+</div>
+</div>
+
+<div id="outline-container-interesting-optimization-applications" class="outline-3">
+<h3 id="interesting-optimization-applications"><span class="section-number-3">1.9.</span> Interesting Optimization Applications</h3>
+<div class="outline-text-3" id="text-interesting-optimization-applications">
+<ul class="org-ul">
+<li><a href="./optimization_for_engineers/Lecture9-1.htm">Lecture 1</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Alexander Brown</p>
+<p class="date">Created: 2022-09-12 Mon 11:18</p>
+</div>
 </body>
 </html>

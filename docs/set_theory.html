@@ -1,295 +1,238 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-	<!-- <link rel="Stylesheet" type="text/css" href="./style.css" /> -->
-	<title></title>
-	<meta http-equiv="Content-Type" content="width=device-with, initial-scale=1.0; text/html; charset=utf-8" name="viewport"/>
+<!-- 2022-09-12 Mon 11:18 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Alexander Brown" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href=" ./style.css" />
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
-	<div class="nav"><h2 id="Alexander Brown" class="header">Alexander Brown - Electrical Engineer</h2>
-		<!-- <p> -->
-		    <!-- email: alex.brown7711@aggiemail.usu.edu -->
-		<!-- </p> -->
-		<a href="%root_path%index.html">Home</a> |
-		<a href="%root_path%blog.html">Blog</a> |
-		<a href="%root_path%notes.html">Notes</a> |
-		<a href="%root_path%classes.html">Classes</a> |
-		<a href="%root_path%projects.html">Projects</a> |
-		<a href="%root_path%todo.html">Todo</a> |
-		<a href="%root_path%error.html">About</a>
-	</div>
-	<div class="content">
-	    <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
-<head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>set_theory</title>
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-  </style>
-  <link rel="stylesheet" href="style.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<nav id="TOC" role="doc-toc">
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#contents" id="toc-contents">Contents</a></li>
-<li><a href="#set-theory" id="toc-set-theory">Set Theory</a>
+<li><a href="#contents">1. Contents</a></li>
+<li><a href="#set-theory">2. Set Theory</a>
 <ul>
-<li><a href="#representation-of-sets"
-id="toc-representation-of-sets">Representation of Sets</a></li>
-<li><a href="#cardinality" id="toc-cardinality">Cardinality</a></li>
-<li><a href="#types-of-sets" id="toc-types-of-sets">Types of
-Sets</a></li>
-<li><a href="#operations-on-classical-sets"
-id="toc-operations-on-classical-sets">Operations on Classical
-Sets</a></li>
-<li><a href="#properties-of-classical-sets"
-id="toc-properties-of-classical-sets">Properties of Classical
-Sets</a></li>
-</ul></li>
-<li><a href="#footnotes" id="toc-footnotes">Footnotes</a></li>
+<li><a href="#representation-of-sets">2.1. Representation of Sets</a></li>
+<li><a href="#cardinality">2.2. Cardinality</a></li>
+<li><a href="#types-of-sets">2.3. Types of Sets</a></li>
+<li><a href="#operations-on-classical-sets">2.4. Operations on Classical Sets</a></li>
+<li><a href="#properties-of-classical-sets">2.5. Properties of Classical Sets</a></li>
 </ul>
-</nav>
-<h1 id="contents">Contents</h1>
-<pre><code>    - [Set Theory](#Set Theory.md)
-            - [Representation of Sets](#Set Theory#Representation of Sets.md)
-            - [Cardinality](#Set Theory#Cardinality.md)
-            - [Types of Sets](#Set Theory#Types of Sets.md)
-            - [Operations on Classical Sets](#Set Theory#Operations on Classical Sets.md)
-            - [Properties of Classical Sets](#Set Theory#Properties of Classical Sets.md)
-    - [Footnotes](#Footnotes.md)</code></pre>
-<h1 id="set-theory">Set Theory</h1>
-<p>A set is an unordered collection of different elements. For
-example</p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20A%20%3D%20%5C%7B1%2C2%2C3%2C4%2C5%5C%7D"
-alt="A = \{1,2,3,4,5\}" title="A = \{1,2,3,4,5\}"
-class="math display" /></p>
-<p>is a set <a href="#Footnotes#1.md">#1</a>.</p>
-<h2 id="representation-of-sets">Representation of Sets</h2>
-<p>Sets are typically represented in two ways</p>
-<ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-contents" class="outline-2">
+<h2 id="contents"><span class="section-number-2">1.</span> Contents</h2>
+<div class="outline-text-2" id="text-contents">
+</div>
+</div>
+
+<div id="outline-container-set-theory" class="outline-2">
+<h2 id="set-theory"><span class="section-number-2">2.</span> Set Theory</h2>
+<div class="outline-text-2" id="text-set-theory">
+<p>
+A set is an unordered collection of different elements. For example
+</p>
+
+<p>
+\[
+A = \{1,2,3,4,5\}
+\]
+</p>
+
+<p>
+is a set #1.
+</p>
+</div>
+
+<div id="outline-container-representation-of-sets" class="outline-3">
+<h3 id="representation-of-sets"><span class="section-number-3">2.1.</span> Representation of Sets</h3>
+<div class="outline-text-3" id="text-representation-of-sets">
+<p>
+Sets are typically represented in two ways
+</p>
+
+<ul class="org-ul">
 <li>Roster or Tabular Form</li>
 </ul>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20A%20%3D%20%5C%7B1%2C2%2C3%2C4%5C%7D"
-alt="A = \{1,2,3,4\}" title="A = \{1,2,3,4\}"
-class="math display" /></p>
-<ul>
+
+<p>
+\[
+A = \{1,2,3,4\}
+\]
+</p>
+
+<ul class="org-ul">
 <li>Set Builder Notation</li>
 </ul>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20A%20%3D%20%5C%7Bx%3Ap%28x%29%5C%7D"
-alt="A = \{x:p(x)\}" title="A = \{x:p(x)\}" class="math display" /></p>
-<p>where <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20p%28x%29"
-alt="p(x)" title="p(x)" class="math inline" /> is some function that
-describes the set <a href="#Footnotes#1.md">#1</a>.</p>
-<h2 id="cardinality">Cardinality</h2>
-<p>Cardinality defines the number of elements in a set <a
-href="#Footnotes#1.md">#1</a>.</p>
-<h2 id="types-of-sets">Types of Sets</h2>
-<p>The following are definitions of some basic sets <a
-href="#Footnotes#1.md">#1</a>:</p>
-<ul>
-<li>Finite Set: <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20S%20%3D%20%5C%7Bx%20%7C%20x%20%5Cin%20N%20and%2070%20%3E%20x%20%3E%2050%5C%7D"
-alt="S = \{x | x \in N and 70 &gt; x &gt; 50\}"
-title="S = \{x | x \in N and 70 &gt; x &gt; 50\}"
-class="math inline" /></li>
-<li>Infinite Set: $ S = {x | x N and x &gt; 50}$</li>
-<li>Subset: <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20S%20%3D%20X%20%5Csubseteq%20Y"
-alt="S = X \subseteq Y" title="S = X \subseteq Y"
-class="math inline" /></li>
-<li>Proper Subset: <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20S%20%3D%20X%20%5Csubset%20Y"
-alt="S = X \subset Y" title="S = X \subset Y"
-class="math inline" /></li>
-<li>Universal Set: The collection of all elements in a particular
-context or application</li>
-<li>Empty (Null) Set: The cardinality of an empty set is zero i.e. <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20S%20%3D%20%5Cemptyset"
-alt="S = \emptyset" title="S = \emptyset" class="math inline" /></li>
+
+<p>
+\[
+A = \{x:p(x)\}
+\]
+</p>
+
+<p>
+where \(p(x)\) is some function that describes the set
+#1.
+</p>
+</div>
+</div>
+
+<div id="outline-container-cardinality" class="outline-3">
+<h3 id="cardinality"><span class="section-number-3">2.2.</span> Cardinality</h3>
+<div class="outline-text-3" id="text-cardinality">
+<p>
+Cardinality defines the number of elements in a #1
+</p>
+</div>
+</div>
+
+<div id="outline-container-types-of-sets" class="outline-3">
+<h3 id="types-of-sets"><span class="section-number-3">2.3.</span> Types of Sets</h3>
+<div class="outline-text-3" id="text-types-of-sets">
+<p>
+The following are definitions of some basic sets
+#1:
+</p>
+
+<ul class="org-ul">
+<li>Finite Set: \(S = \{x | x \in N and 70 > x > 50\}\)</li>
+<li>Infinite Set: $ S = {x | x &isin; N and x &gt; 50}$</li>
+<li>Subset: \(S = X \subseteq Y\)</li>
+<li>Proper Subset: \(S = X \subset Y\)</li>
+<li>Universal Set: The collection of all elements in a particular context
+or application</li>
+<li>Empty (Null) Set: The cardinality of an empty set is zero
+i.e. \(S = \emptyset\)</li>
 <li>Singleton (Unit) Set: Set that contains only one element</li>
 <li>Equal Set: Two sets that contains the same elements</li>
 <li>Equivalent Set: Two sets that have the same cardinality</li>
-<li>Overlapping Set: Two sets that have at least one element in
-common</li>
+<li>Overlapping Set: Two sets that have at least one element in common</li>
 <li>Disjoint Set: Two sets that do not have any elements in common</li>
 </ul>
-<h2 id="operations-on-classical-sets">Operations on Classical Sets</h2>
-<p>The following are some basic operations that can be done on sets <a
-href="#Footnotes#1.md">#1</a>:</p>
-<ul>
-<li>Union: <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%20%3D%20%5C%7B10%2C11%2C12%2C13%5C%7D"
-alt="A = \{10,11,12,13\}" title="A = \{10,11,12,13\}"
-class="math inline" /> and <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20B%20%3D%20%5C%7B13%2C14%2C15%5C%7D"
-alt="B = \{13,14,15\}" title="B = \{13,14,15\}" class="math inline" />
-then <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%20%5Ccup%20B%20%3D%20%5C%7B10%2C11%2C12%2C13%2C14%2C15%5C%7D"
-alt="A \cup B = \{10,11,12,13,14,15\}"
-title="A \cup B = \{10,11,12,13,14,15\}" class="math inline" />
-<ul>
-<li>{{https://www.tutorialspoint.com/fuzzy_logic/images/union_operation.jpg|Union}}</li>
+</div>
+</div>
+
+<div id="outline-container-operations-on-classical-sets" class="outline-3">
+<h3 id="operations-on-classical-sets"><span class="section-number-3">2.4.</span> Operations on Classical Sets</h3>
+<div class="outline-text-3" id="text-operations-on-classical-sets">
+<p>
+The following are some basic operations that can be done on sets
+#1:
+</p>
+
+<ul class="org-ul">
+<li>Union: \(A = \{10,11,12,13\}\) and \(B = \{13,14,15\}\) then
+\(A \cup B = \{10,11,12,13,14,15\}\)
+<ul class="org-ul">
+<li><a href="https://www.tutorialspoint.com/fuzzy_logic/images/union_operation.jpg">Union</a></li>
 </ul></li>
 <li>Intersection:
-<ul>
-<li>{{https://www.tutorialspoint.com/fuzzy_logic/images/intersection_operation.jpg|Intersection}}</li>
+<ul class="org-ul">
+<li><a href="https://www.tutorialspoint.com/fuzzy_logic/images/intersection_operation.jpg">Intersection</a></li>
 </ul></li>
-<li>Difference / Relative Complement: The set difference of sets <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A" alt="A"
-title="A" class="math inline" /> and <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20B" alt="B"
-title="B" class="math inline" /> is the set of elements of which are
-only in <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A" alt="A"
-title="A" class="math inline" /> but not in <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20B" alt="B"
-title="B" class="math inline" />.
-<ul>
-<li>{{https://www.tutorialspoint.com/fuzzy_logic/images/relative_complement_operation.jpg}}</li>
+<li>Difference / Relative Complement: The set difference of sets \(A\) and
+\(B\) is the set of elements of which are only in \(A\) but not in
+\(B\).
+<ul class="org-ul">
+<li><img src="https://www.tutorialspoint.com/fuzzy_logic/images/relative_complement_operation.jpg" alt="relative_complement_operation.jpg" /></li>
 </ul></li>
 <li>Complement of a set:
-<ul>
-<li>{{https://www.tutorialspoint.com/fuzzy_logic/images/complement_of_set.jpg}}</li>
+<ul class="org-ul">
+<li><img src="https://www.tutorialspoint.com/fuzzy_logic/images/complement_of_set.jpg" alt="complement_of_set.jpg" /></li>
 </ul></li>
 <li>Cartesian Product / Cross Product: The set of all possible ordered
 pairs.
-<ul>
-<li>Example: <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%3D%5C%7Ba%2Cb%5C%7D"
-alt="A=\{a,b\}" title="A=\{a,b\}" class="math inline" /> and <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20B%3D%5C%7B1%2C2%5C%7D"
-alt="B=\{1,2\}" title="B=\{1,2\}" class="math inline" /> then <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%5Ctimes%20B%20%3D%20%5C%7B%28a%2C1%29%2C%28a%2C2%29%2C%28b%2C1%29%2C%28b%2C2%29%5C%7D"
-alt="A\times B = \{(a,1),(a,2),(b,1),(b,2)\}"
-title="A\times B = \{(a,1),(a,2),(b,1),(b,2)\}"
-class="math inline" /></li>
+<ul class="org-ul">
+<li>Example: \(A=\{a,b\}\) and \(B=\{1,2\}\) then
+\(A\times B = \{(a,1),(a,2),(b,1),(b,2)\}\)</li>
 </ul></li>
 </ul>
-<h2 id="properties-of-classical-sets">Properties of Classical Sets</h2>
-<ul>
+</div>
+</div>
+
+<div id="outline-container-properties-of-classical-sets" class="outline-3">
+<h3 id="properties-of-classical-sets"><span class="section-number-3">2.5.</span> Properties of Classical Sets</h3>
+<div class="outline-text-3" id="text-properties-of-classical-sets">
+<ul class="org-ul">
 <li>Commutative Property
-<ul>
-<li><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%20%5Ccup%20B%20%3D%20B%20%5Ccup%20A"
-alt="A \cup B = B \cup A" title="A \cup B = B \cup A"
-class="math inline" /></li>
-<li><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%20%5Ccap%20B%20%3D%20B%20%5Ccap%20A"
-alt="A \cap B = B \cap A" title="A \cap B = B \cap A"
-class="math inline" /></li>
+<ul class="org-ul">
+<li>\(A \cup B = B \cup A\)</li>
+<li>\(A \cap B = B \cap A\)</li>
 </ul></li>
 <li>Associate Property
-<ul>
-<li><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%20%5Ccup%20%28B%20%5Ccup%20C%29%20%3D%20%28A%20%5Ccup%20B%29%20%5Ccup%20C"
-alt="A \cup (B \cup C) = (A \cup B) \cup C"
-title="A \cup (B \cup C) = (A \cup B) \cup C"
-class="math inline" /></li>
-<li><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%20%5Ccap%20%28B%20%5Ccap%20C%29%20%3D%20%28A%20%5Ccap%20B%29%20%5Ccap%20C"
-alt="A \cap (B \cap C) = (A \cap B) \cap C"
-title="A \cap (B \cap C) = (A \cap B) \cap C"
-class="math inline" /></li>
+<ul class="org-ul">
+<li>\(A \cup (B \cup C) = (A \cup B) \cup C\)</li>
+<li>\(A \cap (B \cap C) = (A \cap B) \cap C\)</li>
 </ul></li>
 <li>Distributive Property
-<ul>
-<li><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%5Ccup%20%5Cleft%20%28%20B%5Ccap%20C%20%5Cright%20%29%20%3D%20%5Cleft%20%28%20A%5Ccup%20B%20%5Cright%20%29%5Ccap%20%5Cleft%20%28%20A%5Ccup%20C%20%5Cright%20%29"
-alt="A\cup \left ( B\cap C \right ) = \left ( A\cup B \right )\cap \left ( A\cup C \right )"
-title="A\cup \left ( B\cap C \right ) = \left ( A\cup B \right )\cap \left ( A\cup C \right )"
-class="math inline" /></li>
-<li><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%5Ccap%20%5Cleft%20%28%20B%5Ccup%20C%20%5Cright%20%29%20%3D%20%5Cleft%20%28%20A%5Ccap%20B%20%5Cright%20%29%5Ccup%20%5Cleft%20%28%20A%5Ccap%20C%20%5Cright%20%29"
-alt="A\cap \left ( B\cup C \right ) = \left ( A\cap B \right )\cup \left ( A\cap C \right )"
-title="A\cap \left ( B\cup C \right ) = \left ( A\cap B \right )\cup \left ( A\cap C \right )"
-class="math inline" /></li>
+<ul class="org-ul">
+<li>\(A\cup \left ( B\cap C \right ) = \left ( A\cup B \right )\cap \left ( A\cup C \right )\)</li>
+<li>\(A\cap \left ( B\cup C \right ) = \left ( A\cap B \right )\cup \left ( A\cap C \right )\)</li>
 </ul></li>
 <li>Idempotency Property
-<ul>
-<li><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%20%5Ccup%20A%20%3D%20A"
-alt="A \cup A = A" title="A \cup A = A" class="math inline" /></li>
-<li><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%20%5Ccap%20A%20%3D%20A"
-alt="A \cap A = A" title="A \cap A = A" class="math inline" /></li>
+<ul class="org-ul">
+<li>\(A \cup A = A\)</li>
+<li>\(A \cap A = A\)</li>
 </ul></li>
-<li>Identity Property: For set <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A" alt="A"
-title="A" class="math inline" /> and universal set <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20X" alt="X"
-title="X" class="math inline" />, this property statesA
-<ul>
-<li><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%20%5Ccap%20X%20%3D%20A"
-alt="A \cap X = A" title="A \cap X = A" class="math inline" /></li>
-<li><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%20%5Ccup%20X%20%3D%20X"
-alt="A \cup X = X" title="A \cup X = X" class="math inline" /></li>
+<li>Identity Property: For set \(A\) and universal set \(X\), this
+property statesA
+<ul class="org-ul">
+<li>\(A \cap X = A\)</li>
+<li>\(A \cup X = X\)</li>
 </ul></li>
 <li>Transitive Property
-<ul>
-<li>If <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%20%5Csubseteq%20B%20%5Csubseteq%20C"
-alt="A \subseteq B \subseteq C" title="A \subseteq B \subseteq C"
-class="math inline" />, then <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%20%5Csubseteq%20C"
-alt="A \subseteq C" title="A \subseteq C" class="math inline" /></li>
+<ul class="org-ul">
+<li>If \(A \subseteq B \subseteq C\), then \(A \subseteq C\)</li>
 </ul></li>
 <li>Involution Property
-<ul>
-<li><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Coverline%7B%7B%5Coverline%7BA%60%60%60%20%3D%20A"
-alt="\overline{{\overline{A``` = A"
-title="\overline{{\overline{A``` = A" class="math inline" /></li>
+<ul class="org-ul">
+<li>\(\overline{{\overline{A``` = A\)</li>
 </ul></li>
-<li>De Morgan’s Law
-<ul>
-<li><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Coverline%7BA%5Ccap%20B%7D%20%3D%20%5Coverline%7BA%7D%20%5Ccup%20%5Coverline%7BB%7D"
-alt="\overline{A\cap B} = \overline{A} \cup \overline{B}"
-title="\overline{A\cap B} = \overline{A} \cup \overline{B}"
-class="math inline" /></li>
-<li><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Coverline%7BA%5Ccup%20B%7D%20%3D%20%5Coverline%7BA%7D%20%5Ccap%20%5Coverline%7BB%7D"
-alt="\overline{A\cup B} = \overline{A} \cap \overline{B}"
-title="\overline{A\cup B} = \overline{A} \cap \overline{B}"
-class="math inline" /></li>
+<li>De Morgan's Law
+<ul class="org-ul">
+<li>\(\overline{A\cap B} = \overline{A} \cup \overline{B}\)</li>
+<li>\(\overline{A\cup B} = \overline{A} \cap \overline{B}\)</li>
 </ul></li>
 </ul>
-<h1 id="footnotes">Footnotes</h1>
-<ul>
-<li><em>1</em> <span class="citation"
-data-cites="tutorials_fuzzy">@tutorials_fuzzy</span> fuzzy tutorial |
-Fuzzy logic, 2021. [Online; accessed 21-October-2021].</li>
-</ul>
-</body>
-</html>
-	</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Alexander Brown</p>
+<p class="date">Created: 2022-09-12 Mon 11:18</p>
+</div>
 </body>
 </html>

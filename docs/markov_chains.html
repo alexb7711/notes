@@ -1,122 +1,148 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-	<!-- <link rel="Stylesheet" type="text/css" href="./style.css" /> -->
-	<title></title>
-	<meta http-equiv="Content-Type" content="width=device-with, initial-scale=1.0; text/html; charset=utf-8" name="viewport"/>
+<!-- 2022-09-12 Mon 11:18 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Alexander Brown" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href=" ./style.css" />
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
-	<div class="nav"><h2 id="Alexander Brown" class="header">Alexander Brown - Electrical Engineer</h2>
-		<!-- <p> -->
-		    <!-- email: alex.brown7711@aggiemail.usu.edu -->
-		<!-- </p> -->
-		<a href="%root_path%index.html">Home</a> |
-		<a href="%root_path%blog.html">Blog</a> |
-		<a href="%root_path%notes.html">Notes</a> |
-		<a href="%root_path%classes.html">Classes</a> |
-		<a href="%root_path%projects.html">Projects</a> |
-		<a href="%root_path%todo.html">Todo</a> |
-		<a href="%root_path%error.html">About</a>
-	</div>
-	<div class="content">
-	    <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
-<head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>markov_chains</title>
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-  </style>
-  <link rel="stylesheet" href="style.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<nav id="TOC" role="doc-toc">
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#discrete-time-markov-chains"
-id="toc-discrete-time-markov-chains">Discrete-Time Markov
-Chains</a></li>
-<li><a href="#representing-a-discrete-time-markov-chain"
-id="toc-representing-a-discrete-time-markov-chain">Representing A
-Discrete-Time Markov Chain</a></li>
-<li><a href="#steady-state-distribution-of-a-discrete-time-markov-chain"
-id="toc-steady-state-distribution-of-a-discrete-time-markov-chain">Steady-State
-Distribution of a Discrete-Time Markov Chain</a>
+<li><a href="#discrete-time-markov-chains">1. Discrete-Time Markov Chains</a></li>
+<li><a href="#representing-a-discrete-time-markov-chain">2. Representing A Discrete-Time Markov Chain</a></li>
+<li><a href="#steady-state-distribution-of-a-discrete-time-markov-chain">3. Steady-State Distribution of a Discrete-Time Markov Chain</a>
 <ul>
-<li><a href="#calculating-steady-state-probabilities"
-id="toc-calculating-steady-state-probabilities">Calculating Steady-State
-Probabilities</a></li>
-<li><a href="#markov-chain-ergodicity-conditions"
-id="toc-markov-chain-ergodicity-conditions">Markov Chain Ergodicity
-Conditions</a></li>
-</ul></li>
+<li><a href="#calculating-steady-state-probabilities">3.1. Calculating Steady-State Probabilities</a></li>
+<li><a href="#markov-chain-ergodicity-conditions">3.2. Markov Chain Ergodicity Conditions</a></li>
 </ul>
-</nav>
-<h1 id="discrete-time-markov-chains">Discrete-Time Markov Chains</h1>
-<p>Variables: * Process: evolves over time * Random: Not perfectly
+</li>
+<li><a href="#org1ee4e0e">4. irreducible</a></li>
+<li><a href="#org580811a">5. aperiodic</a></li>
+<li><a href="#org8d1ab9f">6. positive recurrent</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-discrete-time-markov-chains" class="outline-2">
+<h2 id="discrete-time-markov-chains"><span class="section-number-2">1.</span> Discrete-Time Markov Chains</h2>
+<div class="outline-text-2" id="text-discrete-time-markov-chains">
+<p>
+Variables: * Process: evolves over time * Random: Not perfectly
 predictable * Discrete-time: Possible changes at periods * State: A
-possible value for <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20X_n" alt="X_n"
-title="X_n" class="math inline" /></p>
-<pre><code>Definition: Markov Chain: The future is independent of the past, given the present. In other words,
+possible value for \(X_n\)
+</p>
+
+<pre class="example" id="org2f073c3">
+Definition: Markov Chain: The future is independent of the past, given the present. In other words,
 
 $$
     P(X_{n+1} = j | X_n = i)\; \text{depends only on } i \text{ and } j
-$$</code></pre>
-<h1 id="representing-a-discrete-time-markov-chain">Representing A
-Discrete-Time Markov Chain</h1>
-<p>Ingredients of a discrete-time Markov chain are: * Current State
-(order them) * Transition possibilities (matrix represents <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20P_%7Bij%7D"
-alt="P_{ij}" title="P_{ij}" class="math inline" /> that represents the
-transition probabilities) * Rows sum up to 1</p>
-<h1
-id="steady-state-distribution-of-a-discrete-time-markov-chain">Steady-State
-Distribution of a Discrete-Time Markov Chain</h1>
-<p>Under certain mild conditions, called ergodicity conditions, the
-state probabilities converge to values that do not depend on the initial
-state probabilities. <em>A necessary condition for this to occur is that
-we must be able to reach any other state with positive
-probability</em>.</p>
-<h2 id="calculating-steady-state-probabilities">Calculating Steady-State
-Probabilities</h2>
-<p>The probability of entering node <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20i" alt="i"
-title="i" class="math inline" /> should be the same as the probability
-exiting node <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20i" alt="i"
-title="i" class="math inline" />, this is represented by the following
-equation:</p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cpi_i%20%5Csum_%7Bi%20%5Cneq%20j%7D%20P_%7Bij%7D%20%3D%20%5Csum_%7Bj%5Cneq%20i%7D%20%5Cpi_j%20P_%7Bji%7D"
-alt="\pi_i \sum_{i \neq j} P_{ij} = \sum_{j\neq i} \pi_j P_{ji}"
-title="\pi_i \sum_{i \neq j} P_{ij} = \sum_{j\neq i} \pi_j P_{ji}"
-class="math display" /></p>
-<p>This also applies to subsets of the transition diagram.</p>
-<h2 id="markov-chain-ergodicity-conditions">Markov Chain Ergodicity
-Conditions</h2>
-<pre><code>Necessary and sufficient condition: For a discrete Markov chain $X$, starting from any initial state or distribution, the probabilities $[\pi_1(n), \pi_2(n), ...]$ converge to a unique positive vector $\pi = [\pi_1, \pi_2,...]$ iff the chain is
+$$
+</pre>
+</div>
+</div>
 
-* irreducible
-* aperiodic
-* positive recurrent</code></pre>
-</body>
-</html>
-	</div>
+<div id="outline-container-representing-a-discrete-time-markov-chain" class="outline-2">
+<h2 id="representing-a-discrete-time-markov-chain"><span class="section-number-2">2.</span> Representing A Discrete-Time Markov Chain</h2>
+<div class="outline-text-2" id="text-representing-a-discrete-time-markov-chain">
+<p>
+Ingredients of a discrete-time Markov chain are: * Current State (order
+them) * Transition possibilities (matrix represents \(P_{ij}\) that
+represents the transition probabilities) * Rows sum up to 1
+</p>
+</div>
+</div>
+
+<div id="outline-container-steady-state-distribution-of-a-discrete-time-markov-chain" class="outline-2">
+<h2 id="steady-state-distribution-of-a-discrete-time-markov-chain"><span class="section-number-2">3.</span> Steady-State Distribution of a Discrete-Time Markov Chain</h2>
+<div class="outline-text-2" id="text-steady-state-distribution-of-a-discrete-time-markov-chain">
+<p>
+Under certain mild conditions, called ergodicity conditions, the state
+probabilities converge to values that do not depend on the initial state
+probabilities. <i>A necessary condition for this to occur is that we must
+be able to reach any other state with positive probability</i>.
+</p>
+</div>
+
+<div id="outline-container-calculating-steady-state-probabilities" class="outline-3">
+<h3 id="calculating-steady-state-probabilities"><span class="section-number-3">3.1.</span> Calculating Steady-State Probabilities</h3>
+<div class="outline-text-3" id="text-calculating-steady-state-probabilities">
+<p>
+The probability of entering node \(i\) should be the same as the
+probability exiting node \(i\), this is represented by the following
+equation:
+</p>
+
+<p>
+\[
+    \pi_i \sum_{i \neq j} P_{ij} = \sum_{j\neq i} \pi_j P_{ji}
+\]
+</p>
+
+<p>
+This also applies to subsets of the transition diagram.
+</p>
+</div>
+</div>
+
+<div id="outline-container-markov-chain-ergodicity-conditions" class="outline-3">
+<h3 id="markov-chain-ergodicity-conditions"><span class="section-number-3">3.2.</span> Markov Chain Ergodicity Conditions</h3>
+<div class="outline-text-3" id="text-markov-chain-ergodicity-conditions">
+<p>
+#+begin<sub>example</sub>
+Necessary and sufficient condition: For a discrete Markov chain \(X\), starting from any initial state or distribution, the probabilities \([\pi_1(n), \pi_2(n), ...]\) converge to a unique positive vector \(\pi = [\pi_1, \pi_2,...]\) iff the chain is
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1ee4e0e" class="outline-2">
+<h2 id="org1ee4e0e"><span class="section-number-2">4.</span> irreducible</h2>
+</div>
+<div id="outline-container-org580811a" class="outline-2">
+<h2 id="org580811a"><span class="section-number-2">5.</span> aperiodic</h2>
+</div>
+<div id="outline-container-org8d1ab9f" class="outline-2">
+<h2 id="org8d1ab9f"><span class="section-number-2">6.</span> positive recurrent</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+#+end<sub>example</sub>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Alexander Brown</p>
+<p class="date">Created: 2022-09-12 Mon 11:18</p>
+</div>
 </body>
 </html>

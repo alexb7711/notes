@@ -1,112 +1,118 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-	<!-- <link rel="Stylesheet" type="text/css" href="./style.css" /> -->
-	<title></title>
-	<meta http-equiv="Content-Type" content="width=device-with, initial-scale=1.0; text/html; charset=utf-8" name="viewport"/>
+<!-- 2022-09-12 Mon 11:18 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Alexander Brown" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href=" ./style.css" />
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
-	<div class="nav"><h2 id="Alexander Brown" class="header">Alexander Brown - Electrical Engineer</h2>
-		<!-- <p> -->
-		    <!-- email: alex.brown7711@aggiemail.usu.edu -->
-		<!-- </p> -->
-		<a href="%root_path%index.html">Home</a> |
-		<a href="%root_path%blog.html">Blog</a> |
-		<a href="%root_path%notes.html">Notes</a> |
-		<a href="%root_path%classes.html">Classes</a> |
-		<a href="%root_path%projects.html">Projects</a> |
-		<a href="%root_path%todo.html">Todo</a> |
-		<a href="%root_path%error.html">About</a>
-	</div>
-	<div class="content">
-	    <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
-<head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>derivatives</title>
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-  </style>
-  <link rel="stylesheet" href="style.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<nav id="TOC" role="doc-toc">
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#derivatives" id="toc-derivatives">Derivatives</a>
+<li><a href="#derivatives">1. Derivatives</a>
 <ul>
-<li><a href="#chain-rule" id="toc-chain-rule">Chain Rule</a></li>
-<li><a href="#product-rule" id="toc-product-rule">Product Rule</a></li>
-<li><a href="#sources" id="toc-sources">Sources</a></li>
-</ul></li>
+<li><a href="#chain-rule">1.1. Chain Rule</a></li>
+<li><a href="#product-rule">1.2. Product Rule</a></li>
+<li><a href="#sources">1.3. Sources</a></li>
 </ul>
-</nav>
-<h1 id="derivatives">Derivatives</h1>
-<h2 id="chain-rule">Chain Rule</h2>
-<p>The chain rule is a formula the expresses the derivative of the
-composition of two functions <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20f" alt="f"
-title="f" class="math inline" /> and <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20g" alt="g"
-title="g" class="math inline" /> in terms of the derivatives of <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20f" alt="f"
-title="f" class="math inline" /> and <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20g" alt="g"
-title="g" class="math inline" />. Therefore if we want to find the
-derivative of <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20h%28x%29%20%3D%20f%28g%28x%29%29"
-alt="h(x) = f(g(x))" title="h(x) = f(g(x))" class="math inline" />
-then</p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%20%20h%27%28x%29%20%3D%20f%27%28g%28x%29%29g%27%28x%29%20%5C%5C%0A%20%20%20%20%5Ctext%7Bor%20equivalently%7D%20%5C%5C%0A%20%20%20%20h%27%20%3D%20f%28h%20%5Ccirc%20g%29%27%20%3D%20%28f%27%20%5Ccirc%20g%29%5Ccdot%20g%27%20%5C%5C%0A%5Cend%7Barray%7D"
-alt="\begin{array}{l}
-    h&#39;(x) = f&#39;(g(x))g&#39;(x) \\
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-derivatives" class="outline-2">
+<h2 id="derivatives"><span class="section-number-2">1.</span> Derivatives</h2>
+<div class="outline-text-2" id="text-derivatives">
+</div>
+<div id="outline-container-chain-rule" class="outline-3">
+<h3 id="chain-rule"><span class="section-number-3">1.1.</span> Chain Rule</h3>
+<div class="outline-text-3" id="text-chain-rule">
+<p>
+The chain rule is a formula the expresses the derivative of the
+composition of two functions \(f\) and \(g\) in terms of the derivatives
+of \(f\) and \(g\). Therefore if we want to find the derivative of
+\(h(x) = f(g(x))\) then
+</p>
+
+<p>
+\[
+</p>
+\begin{array}{l}
+    h'(x) = f'(g(x))g'(x) \\
     \text{or equivalently} \\
-    h&#39; = f(h \circ g)&#39; = (f&#39; \circ g)\cdot g&#39; \\
-\end{array}" title="\begin{array}{l}
-    h&#39;(x) = f&#39;(g(x))g&#39;(x) \\
-    \text{or equivalently} \\
-    h&#39; = f(h \circ g)&#39; = (f&#39; \circ g)\cdot g&#39; \\
-\end{array}" class="math display" /></p>
-<h2 id="product-rule">Product Rule</h2>
-<p>The product rule (also known as the Leibniz rule or Leibniz product
+    h' = f(h \circ g)' = (f' \circ g)\cdot g' \\
+\end{array}
+<p>
+\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-product-rule" class="outline-3">
+<h3 id="product-rule"><span class="section-number-3">1.2.</span> Product Rule</h3>
+<div class="outline-text-3" id="text-product-rule">
+<p>
+The product rule (also known as the Leibniz rule or Leibniz product
 rule) is a formula used to find the derivative of products of two or
-more functions.</p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%20%20%28uv%29%27%20%3D%20u%27%2Av%20%2B%20u%2Av%27%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20%5Ctext%7Bor%20in%20Leibniz%27s%20notation%7D%20%5C%5C%0A%20%20%20%20%5Cfrac%7Bd%28uv%29%7D%7Bdx%7D%20%3D%20%5Cfrac%7Bdu%7D%7Bdz%7Dv%20%2B%20u%20%5Cfrac%7Bdv%7D%7Bdx%7D%20%5C%5C%0A%5Cend%7Barray%7D"
-alt="\begin{array}{l}
-    (uv)&#39; = u&#39;*v + u*v&#39;             \\
-    \text{or in Leibniz&#39;s notation} \\
+more functions.
+</p>
+
+<p>
+\[
+</p>
+\begin{array}{l}
+    (uv)' = u'*v + u*v'             \\
+    \text{or in Leibniz's notation} \\
     \frac{d(uv)}{dx} = \frac{du}{dz}v + u \frac{dv}{dx} \\
-\end{array}" title="\begin{array}{l}
-    (uv)&#39; = u&#39;*v + u*v&#39;             \\
-    \text{or in Leibniz&#39;s notation} \\
-    \frac{d(uv)}{dx} = \frac{du}{dz}v + u \frac{dv}{dx} \\
-\end{array}" class="math display" /></p>
-<h2 id="sources">Sources</h2>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/Chain_rule.md">Chain
-Rule</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Product_rule.md">Product
-Rule</a></li>
+\end{array}
+<p>
+\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-sources" class="outline-3">
+<h3 id="sources"><span class="section-number-3">1.3.</span> Sources</h3>
+<div class="outline-text-3" id="text-sources">
+<ul class="org-ul">
+<li><a href="https://en.wikipedia.org/wiki/Chain_rule.md">Chain Rule</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Product_rule.md">Product Rule</a></li>
 </ul>
-</body>
-</html>
-	</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Alexander Brown</p>
+<p class="date">Created: 2022-09-12 Mon 11:18</p>
+</div>
 </body>
 </html>

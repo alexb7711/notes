@@ -1,123 +1,126 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-	<!-- <link rel="Stylesheet" type="text/css" href="./style.css" /> -->
-	<title></title>
-	<meta http-equiv="Content-Type" content="width=device-with, initial-scale=1.0; text/html; charset=utf-8" name="viewport"/>
+<!-- 2022-09-12 Mon 11:18 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Alexander Brown" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href=" ./style.css" />
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
-	<div class="nav"><h2 id="Alexander Brown" class="header">Alexander Brown - Electrical Engineer</h2>
-		<!-- <p> -->
-		    <!-- email: alex.brown7711@aggiemail.usu.edu -->
-		<!-- </p> -->
-		<a href="%root_path%index.html">Home</a> |
-		<a href="%root_path%blog.html">Blog</a> |
-		<a href="%root_path%notes.html">Notes</a> |
-		<a href="%root_path%classes.html">Classes</a> |
-		<a href="%root_path%projects.html">Projects</a> |
-		<a href="%root_path%todo.html">Todo</a> |
-		<a href="%root_path%error.html">About</a>
-	</div>
-	<div class="content">
-	    <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
-<head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>vectors</title>
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-  </style>
-  <link rel="stylesheet" href="style.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<nav id="TOC" role="doc-toc">
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#vectors" id="toc-vectors">Vectors</a>
+<li><a href="#vectors">1. Vectors</a>
 <ul>
-<li><a href="#vector-spaces" id="toc-vector-spaces">Vector
-Spaces</a></li>
-<li><a href="#skew-symmetric-matrix" id="toc-skew-symmetric-matrix">Skew
-Symmetric Matrix</a></li>
-</ul></li>
-<li><a href="#references" id="toc-references">References</a></li>
+<li><a href="#vector-spaces">1.1. Vector Spaces</a></li>
+<li><a href="#skew-symmetric-matrix">1.2. Skew Symmetric Matrix</a></li>
 </ul>
-</nav>
-<h1 id="vectors">Vectors</h1>
-<h2 id="vector-spaces">Vector Spaces</h2>
-<ul>
-<li>Addition: <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Bx_1%2C%20x_2%2C%20x_3%5D%20%2B%20%5By_1%2C%20y_2%2C%20y_3%5D%20%3D%20%5Bx_1%20%2B%20y_1%2C%20x_2%20%2B%20y_2%2C%20x_3%20%2B%20y_3%5D"
-alt="[x_1, x_2, x_3] + [y_1, y_2, y_3] = [x_1 + y_1, x_2 + y_2, x_3 + y_3]"
-title="[x_1, x_2, x_3] + [y_1, y_2, y_3] = [x_1 + y_1, x_2 + y_2, x_3 + y_3]"
-class="math inline" /></li>
-<li>Scalar multiplication: <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20t%5Bx_1%2C%20x_2%2C%20x_3%5D%20%3D%20%5Btx_1%2C%20tx_2%2C%20tx_3%5D"
-alt="t[x_1, x_2, x_3] = [tx_1, tx_2, tx_3]"
-title="t[x_1, x_2, x_3] = [tx_1, tx_2, tx_3]"
-class="math inline" /></li>
+</li>
+<li><a href="#references">2. References</a></li>
 </ul>
-<p>Consider that <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20z_i%20%3D%20x_i%20%2B%20y_i"
-alt="z_i = x_i + y_i" title="z_i = x_i + y_i" class="math inline" />, a
-vector space is then a collection of objects that can be added to each
-other and multiplied by numbers, subjet to certain laws of algebra.</p>
-<pre><code>Lemma: If $W$ is a nonempty subset of vector space $V$ which is closed under the operations of $V$, then $W$ is itself a vector space.</code></pre>
-<p>Furthermore, <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20W" alt="W"
-title="W" class="math inline" /> from the lemma above is known as a
-<em>subspace</em>. Any subspace of <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cmathbb%7BR%7D%5E%7BA%29"
-alt="\mathbb{R}^{A)" title="\mathbb{R}^{A)" class="math inline" /> is
-called a <em>function space</em>. In other words, a function space is a
-collection of real-valued functions on a common domain.</p>
-<h2 id="skew-symmetric-matrix">Skew Symmetric Matrix</h2>
-<p>A skew symmetric matrix is denoted as <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A_%7B%5Ctimes%7D"
-alt="A_{\times}" title="A_{\times}" class="math inline" /> or <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%28A%5Ctimes%29"
-alt="(A\times)" title="(A\times)" class="math inline" />. This indicates
-a skew symmetric matrix that is denoted as:</p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20A_%7B%5Ctimes%7D%20%3D%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%200%20%20%20%20%26%20-A_3%20%26%20A_2%20%5C%5C%0A%20%20%20%20A_3%20%20%26%200%20%20%20%20%26%20-A_1%20%5C%5C%0A%20%20%20%20-A_2%20%26%20A_1%20%20%26%200%20%5C%5C%0A%5Cend%7Bbmatrix%7D"
-alt="A_{\times} =
+</div>
+</div>
+<div id="outline-container-vectors" class="outline-2">
+<h2 id="vectors"><span class="section-number-2">1.</span> Vectors</h2>
+<div class="outline-text-2" id="text-vectors">
+</div>
+<div id="outline-container-vector-spaces" class="outline-3">
+<h3 id="vector-spaces"><span class="section-number-3">1.1.</span> Vector Spaces</h3>
+<div class="outline-text-3" id="text-vector-spaces">
+<ul class="org-ul">
+<li>Addition:
+\([x_1, x_2, x_3] + [y_1, y_2, y_3] = [x_1 + y_1, x_2 + y_2, x_3 + y_3]\)</li>
+<li>Scalar multiplication: \(t[x_1, x_2, x_3] = [tx_1, tx_2, tx_3]\)</li>
+</ul>
+
+<p>
+Consider that \(z_i = x_i + y_i\), a vector space is then a collection
+of objects that can be added to each other and multiplied by numbers,
+subjet to certain laws of algebra.
+</p>
+
+<pre class="example" id="org92c28e1">
+Lemma: If $W$ is a nonempty subset of vector space $V$ which is closed under the operations of $V$, then $W$ is itself a vector space.
+</pre>
+
+<p>
+Furthermore, \(W\) from the lemma above is known as a <i>subspace</i>. Any
+subspace of \(\mathbb{R}^{A)\) is called a <i>function space</i>. In other
+words, a function space is a collection of real-valued functions on a
+common domain.
+</p>
+</div>
+</div>
+
+<div id="outline-container-skew-symmetric-matrix" class="outline-3">
+<h3 id="skew-symmetric-matrix"><span class="section-number-3">1.2.</span> Skew Symmetric Matrix</h3>
+<div class="outline-text-3" id="text-skew-symmetric-matrix">
+<p>
+A skew symmetric matrix is denoted as \(A_{\times}\) or \((A\times)\).
+This indicates a skew symmetric matrix that is denoted as:
+</p>
+
+<p>
+\[
+A<sub>&times;</sub> =
+</p>
 \begin{bmatrix}
-    0    &amp; -A_3 &amp; A_2 \\
-    A_3  &amp; 0    &amp; -A_1 \\
-    -A_2 &amp; A_1  &amp; 0 \\
-\end{bmatrix}" title="A_{\times} =
-\begin{bmatrix}
-    0    &amp; -A_3 &amp; A_2 \\
-    A_3  &amp; 0    &amp; -A_1 \\
-    -A_2 &amp; A_1  &amp; 0 \\
-\end{bmatrix}" class="math display" /></p>
-<p>for a <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%203%5Ctimes%203"
-alt="3\times 3" title="3\times 3" class="math inline" /> matrix.</p>
-<h1 id="references">References</h1>
-<ul>
-<li><a
-href="https://math.stackexchange.com/questions/2248413/skew-symmetric-matrix-of-vector.md">Skew
+    0    & -A_3 & A_2 \\
+    A_3  & 0    & -A_1 \\
+    -A_2 & A_1  & 0 \\
+\end{bmatrix}
+<p>
+\]
+</p>
+
+<p>
+for a \(3\times 3\) matrix.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-references" class="outline-2">
+<h2 id="references"><span class="section-number-2">2.</span> References</h2>
+<div class="outline-text-2" id="text-references">
+<ul class="org-ul">
+<li><a href="https://math.stackexchange.com/questions/2248413/skew-symmetric-matrix-of-vector.md">Skew
 Symmetric Matrix</a></li>
 </ul>
-</body>
-</html>
-	</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Alexander Brown</p>
+<p class="date">Created: 2022-09-12 Mon 11:18</p>
+</div>
 </body>
 </html>

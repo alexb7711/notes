@@ -1,187 +1,214 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-	<!-- <link rel="Stylesheet" type="text/css" href="./style.css" /> -->
-	<title></title>
-	<meta http-equiv="Content-Type" content="width=device-with, initial-scale=1.0; text/html; charset=utf-8" name="viewport"/>
+<!-- 2022-09-12 Mon 11:18 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Alexander Brown" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href=" ./style.css" />
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
-	<div class="nav"><h2 id="Alexander Brown" class="header">Alexander Brown - Electrical Engineer</h2>
-		<!-- <p> -->
-		    <!-- email: alex.brown7711@aggiemail.usu.edu -->
-		<!-- </p> -->
-		<a href="%root_path%index.html">Home</a> |
-		<a href="%root_path%blog.html">Blog</a> |
-		<a href="%root_path%notes.html">Notes</a> |
-		<a href="%root_path%classes.html">Classes</a> |
-		<a href="%root_path%projects.html">Projects</a> |
-		<a href="%root_path%todo.html">Todo</a> |
-		<a href="%root_path%error.html">About</a>
-	</div>
-	<div class="content">
-	    <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
-<head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>statistics</title>
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-  </style>
-  <link rel="stylesheet" href="style.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<nav id="TOC" role="doc-toc">
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#random-variables" id="toc-random-variables">Random
-Variables</a></li>
-<li><a
-href="#probability-density-function-cumulative-distribution-function-cdf"
-id="toc-probability-density-function-cumulative-distribution-function-cdf">Probability
-Density Function (Cumulative Distribution Function) (CDF)</a></li>
-<li><a href="#probability-density-function-pdf"
-id="toc-probability-density-function-pdf">Probability Density Function
-(PDF)</a></li>
-<li><a href="#expected-values" id="toc-expected-values">Expected
-Values</a></li>
-<li><a href="#first-and-second-momentst"
-id="toc-first-and-second-momentst">First And Second MomentsT</a></li>
-<li><a href="#transition-matrix" id="toc-transition-matrix">Transition
-Matrix</a></li>
-<li><a href="#stationary-distribution"
-id="toc-stationary-distribution">Stationary Distribution</a></li>
-<li><a href="#ergodicity" id="toc-ergodicity">Ergodicity</a></li>
+<li><a href="#random-variables">1. Random Variables</a></li>
+<li><a href="#probability-density-function-cumulative-distribution-function-cdf">2. Probability Density Function (Cumulative Distribution Function) (CDF)</a></li>
+<li><a href="#probability-density-function-pdf">3. Probability Density Function (PDF)</a></li>
+<li><a href="#expected-values">4. Expected Values</a></li>
+<li><a href="#first-and-second-momentst">5. First And Second MomentsT</a></li>
+<li><a href="#transition-matrix">6. Transition Matrix</a></li>
+<li><a href="#stationary-distribution">7. Stationary Distribution</a></li>
+<li><a href="#ergodicity">8. Ergodicity</a></li>
+<li><a href="#todo-poisson-process">9. <span class="todo TODO">TODO</span> Poisson Process</a></li>
+<li><a href="#todo-exponential-random-variable">10. <span class="todo TODO">TODO</span> Exponential Random Variable</a></li>
 </ul>
-</nav>
-<h1 id="random-variables">Random Variables</h1>
-<p>Real-valued point function which assigns a real value to each point
-in the sample space. This is typically denoted as</p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20x%28%5Comega%29%20%3D%20x"
-alt="x(\omega) = x" title="x(\omega) = x" class="math display" /></p>
-<h1
-id="probability-density-function-cumulative-distribution-function-cdf">Probability
-Density Function (Cumulative Distribution Function) (CDF)</h1>
-<p>The probabilities established as <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20P%28A%29"
-alt="P(A)" title="P(A)" class="math inline" /> and the realizations <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20x%28%5Comega%29"
-alt="x(\omega)" title="x(\omega)" class="math inline" /> of the random
-variable <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20x" alt="x"
-title="x" class="math inline" /> are related by the probability
-distribution function <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20F_x%28%5Ccdot%29"
-alt="F_x(\cdot)" title="F_x(\cdot)" class="math inline" />. a mapping
-from <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cmathbb%7BR%7D%5En"
-alt="\mathbb{R}^n" title="\mathbb{R}^n" class="math inline" /> to <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5B0%2C1%5D"
-alt="[0,1]" title="[0,1]" class="math inline" />. that yields <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20F_x%28%5Cxi%29"
-alt="F_x(\xi)" title="F_x(\xi)" class="math inline" /> as the
-probability of the set of <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Comega%20%5Cin%20Omega"
-alt="\omega \in Omega" title="\omega \in Omega" class="math inline" />
-such that <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20x%28%5Comega%29%20%5Cleq%20%5Cxi"
-alt="x(\omega) \leq \xi" title="x(\omega) \leq \xi"
-class="math inline" />.</p>
-<h1 id="probability-density-function-pdf">Probability Density Function
-(PDF)</h1>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20F_x%28%5Cxi%29%20%3D%20%5Cint_%7B-%20%5Cinfty%7D%5E%7B%5Cxi%7D%20f_x%28%5Crho%29%20d%5Crho"
-alt="F_x(\xi) = \int_{- \infty}^{\xi} f_x(\rho) d\rho"
-title="F_x(\xi) = \int_{- \infty}^{\xi} f_x(\rho) d\rho"
-class="math display" /></p>
-<h1 id="expected-values">Expected Values</h1>
-<p>The expected value is just the average value one would obtain over
-the ensemble of outcomes of an “experiment”. It is denoted as <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20E%5Bx%5D"
-alt="E[x]" title="E[x]" class="math inline" />.</p>
-<h1 id="first-and-second-momentst">First And Second MomentsT</h1>
-<p>The first moment is simply the mean of a random variable <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20x" alt="x"
-title="x" class="math inline" />:</p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20m%20%5Cequiv%20E%5Bx%5D%20%3D%20%5Cint_%7B-%20%5Cinfty%7D%5E%7B%5Cinfty%7D%20%5Cxi%20f_x%28%5Cxi%29%20d%5Cxi"
-alt="m \equiv E[x] = \int_{- \infty}^{\infty} \xi f_x(\xi) d\xi"
-title="m \equiv E[x] = \int_{- \infty}^{\infty} \xi f_x(\xi) d\xi"
-class="math display" /></p>
-<p>The second (non-central) moment (otherwise known as the
-autocorrelation matrix) of <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20x" alt="x"
-title="x" class="math inline" /> is</p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5CPsi%20%5Cequiv%20E%5Bxx%5ET%5D%20%3D%20%5Cint_%7B-%20%5Cinfty%7D%5E%7B%5Cinfty%7D%20%5Cxi%20%5Cxi%5ET%20f_x%28%5Cxi%29%20d%5Cxi"
-alt="\Psi \equiv E[xx^T] = \int_{- \infty}^{\infty} \xi \xi^T f_x(\xi) d\xi"
-title="\Psi \equiv E[xx^T] = \int_{- \infty}^{\infty} \xi \xi^T f_x(\xi) d\xi"
-class="math display" /></p>
-<p>The second central moment of <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20x" alt="x"
-title="x" class="math inline" /> (covariance matrix) can be written
-as:</p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20P%20%5Cequiv%20E%5B%28x-m%29%28x-m%29%5ET%5D%20%3D%20%5Cint_%7B-%20%5Cinfty%7D%5E%7B%5Cinfty%7D%20%28%5Cxi%20-%20m%29%28%5Cxi%20-%20m%29%5ET%20f_x%28%5Cxi%29%20d%5Cxi"
-alt="P \equiv E[(x-m)(x-m)^T] = \int_{- \infty}^{\infty} (\xi - m)(\xi - m)^T f_x(\xi) d\xi"
-title="P \equiv E[(x-m)(x-m)^T] = \int_{- \infty}^{\infty} (\xi - m)(\xi - m)^T f_x(\xi) d\xi"
-class="math display" /></p>
-<p>Where <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20P" alt="P"
-title="P" class="math inline" /> is positive semi-definite (eigenvalues
-are nonnegative).</p>
-<h1 id="transition-matrix">Transition Matrix</h1>
-<p>A transition matrix describes the probability of moving from one node
-in a graph to another. Markov chains are said to be</p>
-<ul>
-<li>Irreducible: It is possible to move from any state in the state
-space to any other state</li>
-<li>Recurrent: The probability of eventually returning to a state is
-1</li>
+</div>
+</div>
+<div id="outline-container-random-variables" class="outline-2">
+<h2 id="random-variables"><span class="section-number-2">1.</span> Random Variables</h2>
+<div class="outline-text-2" id="text-random-variables">
+<p>
+Real-valued point function which assigns a real value to each point in
+the sample space. This is typically denoted as
+</p>
+
+<p>
+\[
+    x(\omega) = x
+\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-probability-density-function-cumulative-distribution-function-cdf" class="outline-2">
+<h2 id="probability-density-function-cumulative-distribution-function-cdf"><span class="section-number-2">2.</span> Probability Density Function (Cumulative Distribution Function) (CDF)</h2>
+<div class="outline-text-2" id="text-probability-density-function-cumulative-distribution-function-cdf">
+<p>
+The probabilities established as \(P(A)\) and the realizations
+\(x(\omega)\) of the random variable \(x\) are related by the
+probability distribution function \(F_x(\cdot)\). a mapping from
+\(\mathbb{R}^n\) to \([0,1]\). that yields \(F_x(\xi)\) as the
+probability of the set of \(\omega \in Omega\) such that
+\(x(\omega) \leq \xi\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-probability-density-function-pdf" class="outline-2">
+<h2 id="probability-density-function-pdf"><span class="section-number-2">3.</span> Probability Density Function (PDF)</h2>
+<div class="outline-text-2" id="text-probability-density-function-pdf">
+<p>
+\[
+    F_x(\xi) = \int_{- \infty}^{\xi} f_x(\rho) d\rho
+\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-expected-values" class="outline-2">
+<h2 id="expected-values"><span class="section-number-2">4.</span> Expected Values</h2>
+<div class="outline-text-2" id="text-expected-values">
+<p>
+The expected value is just the average value one would obtain over the
+ensemble of outcomes of an "experiment". It is denoted as \(E[x]\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-first-and-second-momentst" class="outline-2">
+<h2 id="first-and-second-momentst"><span class="section-number-2">5.</span> First And Second MomentsT</h2>
+<div class="outline-text-2" id="text-first-and-second-momentst">
+<p>
+The first moment is simply the mean of a random variable \(x\):
+</p>
+
+<p>
+\[
+    m \equiv E[x] = \int_{- \infty}^{\infty} \xi f_x(\xi) d\xi
+\]
+</p>
+
+<p>
+The second (non-central) moment (otherwise known as the autocorrelation
+matrix) of \(x\) is
+</p>
+
+<p>
+\[
+    \Psi \equiv E[xx^T] = \int_{- \infty}^{\infty} \xi \xi^T f_x(\xi) d\xi
+\]
+</p>
+
+<p>
+The second central moment of \(x\) (covariance matrix) can be written
+as:
+</p>
+
+<p>
+\[
+    P \equiv E[(x-m)(x-m)^T] = \int_{- \infty}^{\infty} (\xi - m)(\xi - m)^T f_x(\xi) d\xi
+\]
+</p>
+
+<p>
+Where \(P\) is positive semi-definite (eigenvalues are nonnegative).
+</p>
+</div>
+</div>
+
+<div id="outline-container-transition-matrix" class="outline-2">
+<h2 id="transition-matrix"><span class="section-number-2">6.</span> Transition Matrix</h2>
+<div class="outline-text-2" id="text-transition-matrix">
+<p>
+A transition matrix describes the probability of moving from one node in
+a graph to another. Markov chains are said to be
+</p>
+
+<ul class="org-ul">
+<li>Irreducible: It is possible to move from any state in the state space
+to any other state</li>
+<li>Recurrent: The probability of eventually returning to a state is 1</li>
 <li>The rows add up to 1</li>
 </ul>
-<h1 id="stationary-distribution">Stationary Distribution</h1>
-<p>Any solution to the stationary equations</p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bc%7D%0A%20%20%20%20p%20%3D%20p%20P%20%5C%5C%0A%20%20%20%20%5Csum_%7Bj%7D%20p_j%20%3D%201%0A%5Cend%7Barray%7D"
-alt="\begin{array}{c}
+</div>
+</div>
+
+<div id="outline-container-stationary-distribution" class="outline-2">
+<h2 id="stationary-distribution"><span class="section-number-2">7.</span> Stationary Distribution</h2>
+<div class="outline-text-2" id="text-stationary-distribution">
+<p>
+Any solution to the stationary equations
+</p>
+
+<p>
+\[
+</p>
+\begin{array}{c}
     p = p P \\
     \sum_{j} p_j = 1
-\end{array}" title="\begin{array}{c}
-    p = p P \\
-    \sum_{j} p_j = 1
-\end{array}" class="math display" /></p>
-<p>is called a stationary distribution.</p>
-<h1 id="ergodicity">Ergodicity</h1>
-<p>A stochastic process <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20X%28t%29"
-alt="X(t)" title="X(t)" class="math inline" /> is ergodic in the most
-general sense if all its “measures” can be determined or well
-approximated from a single realization <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20X_0%28t%29"
-alt="X_0(t)" title="X_0(t)" class="math inline" /> of the process.</p>
-</body>
-</html>
-	</div>
+\end{array}
+<p>
+\]
+</p>
+
+<p>
+is called a stationary distribution.
+</p>
+</div>
+</div>
+
+<div id="outline-container-ergodicity" class="outline-2">
+<h2 id="ergodicity"><span class="section-number-2">8.</span> Ergodicity</h2>
+<div class="outline-text-2" id="text-ergodicity">
+<p>
+A stochastic process \(X(t)\) is ergodic in the most general sense if
+all its "measures" can be determined or well approximated from a single
+realization \(X_0(t)\) of the process.
+</p>
+</div>
+</div>
+
+<div id="outline-container-todo-poisson-process" class="outline-2">
+<h2 id="todo-poisson-process"><span class="section-number-2">9.</span> <span class="todo TODO">TODO</span> Poisson Process</h2>
+<div class="outline-text-2" id="text-todo-poisson-process">
+</div>
+</div>
+<div id="outline-container-todo-exponential-random-variable" class="outline-2">
+<h2 id="todo-exponential-random-variable"><span class="section-number-2">10.</span> <span class="todo TODO">TODO</span> Exponential Random Variable</h2>
+<div class="outline-text-2" id="text-todo-exponential-random-variable">
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Alexander Brown</p>
+<p class="date">Created: 2022-09-12 Mon 11:18</p>
+</div>
 </body>
 </html>

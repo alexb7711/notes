@@ -1,678 +1,743 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-	<!-- <link rel="Stylesheet" type="text/css" href="./style.css" /> -->
-	<title></title>
-	<meta http-equiv="Content-Type" content="width=device-with, initial-scale=1.0; text/html; charset=utf-8" name="viewport"/>
+<!-- 2022-09-12 Mon 11:18 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Alexander Brown" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href=" ./style.css" />
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
-	<div class="nav"><h2 id="Alexander Brown" class="header">Alexander Brown - Electrical Engineer</h2>
-		<!-- <p> -->
-		    <!-- email: alex.brown7711@aggiemail.usu.edu -->
-		<!-- </p> -->
-		<a href="%root_path%index.html">Home</a> |
-		<a href="%root_path%blog.html">Blog</a> |
-		<a href="%root_path%notes.html">Notes</a> |
-		<a href="%root_path%classes.html">Classes</a> |
-		<a href="%root_path%projects.html">Projects</a> |
-		<a href="%root_path%todo.html">Todo</a> |
-		<a href="%root_path%error.html">About</a>
-	</div>
-	<div class="content">
-	    <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
-<head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>queueing_theory</title>
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-  </style>
-  <link rel="stylesheet" href="style.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<nav id="TOC" role="doc-toc">
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#introduction" id="toc-introduction">Introduction</a>
+<li><a href="#introduction">1. Introduction</a>
 <ul>
-<li><a href="#characteristics-of-queueing-systems"
-id="toc-characteristics-of-queueing-systems">Characteristics of Queueing
-Systems</a>
+<li><a href="#characteristics-of-queueing-systems">1.1. Characteristics of Queueing Systems</a>
 <ul>
-<li><a href="#notation" id="toc-notation">Notation</a></li>
-</ul></li>
-<li><a href="#littles-law" id="toc-littles-law">Little’s Law</a>
-<ul>
-<li><a href="#h-lambda-g" id="toc-h-lambda-g"><img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20H%20%3D%20%5Clambda%20G"
-alt="H = \lambda G" title="H = \lambda G"
-class="math inline" /></a></li>
-<li><a href="#distributional-form-of-littles-law"
-id="toc-distributional-form-of-littles-law">Distributional Form of
-Little’s Law</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#review-of-stochastic-process"
-id="toc-review-of-stochastic-process">Review of Stochastic Process</a>
-<ul>
-<li><a href="#the-poisson-process" id="toc-the-poisson-process">The
-Poisson Process</a></li>
-<li><a href="#discrete-time-markov-chains"
-id="toc-discrete-time-markov-chains">Discrete-Time Markov Chains</a>
-<ul>
-<li><a href="#properties-of-markov-chains"
-id="toc-properties-of-markov-chains">Properties of Markov
-Chains</a></li>
-<li><a href="#long-run-behavior" id="toc-long-run-behavior">Long-Run
-Behavior</a></li>
-<li><a href="#ergodicity" id="toc-ergodicity">Ergodicity</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#simple-markovian-queuing-models"
-id="toc-simple-markovian-queuing-models">Simple Markovian Queuing
-Models</a></li>
-<li><a href="#advanced-markovian-queuing-models"
-id="toc-advanced-markovian-queuing-models">Advanced Markovian Queuing
-Models</a></li>
-<li><a href="#general-arrival-or-service-patterns"
-id="toc-general-arrival-or-service-patterns">General Arrival or Service
-Patterns</a></li>
-<li><a href="#bounds-and-approximations"
-id="toc-bounds-and-approximations">Bounds And Approximations</a></li>
-<li><a href="#numerical-techniques-and-simulation"
-id="toc-numerical-techniques-and-simulation">Numerical Techniques And
-Simulation</a></li>
+<li><a href="#notation">1.1.1. Notation</a></li>
 </ul>
-</nav>
-<h1 id="introduction">Introduction</h1>
-<h2 id="characteristics-of-queueing-systems">Characteristics of Queueing
-Systems</h2>
+</li>
+<li><a href="#littles-law">1.2. Little's Law</a>
 <ul>
+<li><a href="#h-lambda-g">1.2.1. \(H = \lambda G\)</a></li>
+<li><a href="#distributional-form-of-littles-law">1.2.2. Distributional Form of Little's Law</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#review-of-stochastic-process">2. Review of Stochastic Process</a>
+<ul>
+<li><a href="#the-poisson-process">2.1. The Poisson Process</a></li>
+<li><a href="#discrete-time-markov-chains">2.2. Discrete-Time Markov Chains</a>
+<ul>
+<li><a href="#properties-of-markov-chains">2.2.1. Properties of Markov Chains</a></li>
+<li><a href="#long-run-behavior">2.2.2. Long-Run Behavior</a></li>
+<li><a href="#ergodicity">2.2.3. Ergodicity</a></li>
+</ul>
+</li>
+<li><a href="#continuous-time-markov-chains">2.3. Continuous-Time Markov Chains</a>
+<ul>
+<li><a href="#long-run-behavior-1">2.3.1. Long-Run Behavior</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#simple-markovian-queuing-models">3. Simple Markovian Queuing Models</a>
+<ul>
+<li><a href="#birth-death-processes">3.1. Birth-Death Processes</a></li>
+<li><a href="#single-server-queues-mm1">3.2. Single-Server Queues (M/M/1)</a></li>
+</ul>
+</li>
+<li><a href="#advanced-markovian-queuing-models">4. Advanced Markovian Queuing Models</a></li>
+<li><a href="#general-arrival-or-service-patterns">5. General Arrival or Service Patterns</a></li>
+<li><a href="#bounds-and-approximations">6. Bounds And Approximations</a></li>
+<li><a href="#numerical-techniques-and-simulation">7. Numerical Techniques And Simulation</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-introduction" class="outline-2">
+<h2 id="introduction"><span class="section-number-2">1.</span> Introduction</h2>
+<div class="outline-text-2" id="text-introduction">
+</div>
+<div id="outline-container-characteristics-of-queueing-systems" class="outline-3">
+<h3 id="characteristics-of-queueing-systems"><span class="section-number-3">1.1.</span> Characteristics of Queueing Systems</h3>
+<div class="outline-text-3" id="text-characteristics-of-queueing-systems">
+<ul class="org-ul">
 <li>Arrival pattern of customers
-<ul>
+<ul class="org-ul">
 <li>Usual arrival processes are stochastic so it is necessary to know
 the probability distribution describing the times between successvie
 customer intervals (Poisson process)</li>
 </ul></li>
 <li>Service paterns of servers
-<ul>
+<ul class="org-ul">
 <li>Service times are typically stochastic as well, so it is good to
-know the probability distribution to describe the sequence of customer
-service times</li>
+know the probability distribution to describe the sequence of
+customer service times</li>
 </ul></li>
 <li>Number of servers and service channels
-<ul>
+<ul class="org-ul">
 <li>The number of servers cause the system to be expensive to it is good
 to have the numbers of server be a choice</li>
 </ul></li>
 <li>System capacity
-<ul>
+<ul class="org-ul">
 <li>Physical limiations of the system.</li>
 </ul></li>
 <li>Queue discipline
-<ul>
+<ul class="org-ul">
 <li>FIFO, LIFO, RSS (random selection of service), etc.</li>
 </ul></li>
 <li>Number of service stages
-<ul>
+<ul class="org-ul">
 <li>Single stage service, multi-stage service</li>
 </ul></li>
 </ul>
-<h3 id="notation">Notation</h3>
-<table>
+</div>
+
+<div id="outline-container-notation" class="outline-4">
+<h4 id="notation"><span class="section-number-4">1.1.1.</span> Notation</h4>
+<div class="outline-text-4" id="text-notation">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
 <colgroup>
-<col style="width: 39%" />
-<col style="width: 22%" />
-<col style="width: 38%" />
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
 </colgroup>
 <thead>
-<tr class="header">
-<th>Characteristics</th>
-<th>Symbol</th>
-<th>Explanation</th>
+<tr>
+<th scope="col" class="org-left">Characteristics</th>
+<th scope="col" class="org-left">Symbol</th>
+<th scope="col" class="org-left">Explanation</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>Interval-time distribution (A)<br/> Service-time distribution (B)
-<br/></td>
-<td><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20M" alt="M"
-title="M" class="math inline" /> <br/> <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20D" alt="D"
-title="D" class="math inline" /> <br/> <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20E_k" alt="E_k"
-title="E_k" class="math inline" /> <br/> <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20H_k" alt="H_k"
-title="H_k" class="math inline" /> <br/> <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20PH" alt="PH"
-title="PH" class="math inline" /> <br/> <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20G" alt="G"
-title="G" class="math inline" /> <br/></td>
-<td>Exponential <br/> Deterministic <br/> Erlang type <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20k%20%5Cin%20%281%2C2%2C...%29"
-alt="k \in (1,2,...)" title="k \in (1,2,...)" class="math inline" />
-<br/> Mixture of <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20k" alt="k"
-title="k" class="math inline" /> exponentials <br/> Phase type <br/>
-General <br/></td>
+<tr>
+<td class="org-left">Interval-time distribution (A) Service-time distribution (B)</td>
+<td class="org-left">\(M\) \(D\) \(E_k\) \(H_k\) \(PH\) \(G\)</td>
+<td class="org-left">Exponential Deterministic Erlang type \(k \in (1,2,...)\) Mixture of \(k\) exponentials Phase type General</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Parallel servers (X)</td>
+<td class="org-left">\(1,2,.,\infty\)</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">System Capacity (Y)</td>
+<td class="org-left">\(1,2,.,\infty\)</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Queue discipline (Q)</td>
+<td class="org-left">FIFO</td>
+<td class="org-left">First In First Out</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">LIFO</td>
+<td class="org-left">Last In First Out</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">RSS</td>
+<td class="org-left">Random Selection of Service</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">PR</td>
+<td class="org-left">Priority</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">GD</td>
+<td class="org-left">General discipline</td>
 </tr>
 </tbody>
 </table>
-<pre><code>+-------------------------------------+-----------------+------------------------------------+</code></pre>
-<div class="line-block">Parallel servers (X) | <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%201%2C2%2C.%2C%5Cinfty"
-alt="1,2,.,\infty" title="1,2,.,\infty" class="math inline" /> <br/>|
-|<br />
-System Capacity (Y) | <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%201%2C2%2C.%2C%5Cinfty"
-alt="1,2,.,\infty" title="1,2,.,\infty" class="math inline" /> <br/>|
-|<br />
-Queue discipline (Q) | FIFO <br/>| First In First Out <br/>|<br />
-                                    | LIFO <br/>| Last In First Out
-<br/>|<br />
-                                    | RSS <br/>| Random Selection of
-Service <br/>|<br />
-                                    | PR <br/>| Priority <br/>|<br />
-                                    | GD <br/>| General discipline
-<br/>|</div>
-<p>+————————————-+———————+————————————+</p>
-<h2 id="littles-law">Little’s Law</h2>
-<p>A fundamental law used extensivly in queuing theory is Little’s Law.
-Little’s Law provides a relationship between three funcamental
-quantities: The average rage <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda"
-alt="\lambda" title="\lambda" class="math inline" /> that customers
-arrive to the system, the average wait time <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20W" alt="W"
-title="W" class="math inline" /> that a customer spends in the system,
-and the average number <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20L" alt="L"
-title="L" class="math inline" /> of customers in the system. This
-relationship is given by <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20L%3D%5Clambda%20W"
-alt="L=\lambda W" title="L=\lambda W" class="math inline" />.</p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Bequation%7D%0A%5Clabel%7Beq%3Alittle%5Climits%7D%0A%0A%5Cbegin%7Barray%7D%7Blll%7D%0A%0A%20%20%20%20%5Clambda%20%5Cequiv%20%5Clim_%7Bt%20%5Crightarrow%20%5Cinfty%7D%20%5Cfrac%7BA%28t%29%7D%7Bt%7D%20%20%20%20%20%20%20%20%20%20%20%20%20%26%0A%20%20%20%20W%20%5Cequiv%20%5Clim_%7Bk%20%5Crightarrow%20%5Cinfty%7D%20%5Cfrac%7B1%7D%7Bk%7D%20%5Csum_%7Bi%3D1%7D%5E%7Bk%7D%20W%5Ek%20%20%20%26%0A%20%20%20%20L%20%5Cequiv%20%5Clim_%7BT%20%5Crightarrow%20%5Cinfty%7D%20%5Cfrac%7B1%7D%7BT%7D%20%5Cint_%7B0%7D%5E%7BT%7D%20N%28t%29%20dt%0A%0A%5Cend%7Barray%7D%0A%5Cend%7Bequation%7D"
-alt="\begin{equation}
+</div>
+</div>
+</div>
+
+<div id="outline-container-littles-law" class="outline-3">
+<h3 id="littles-law"><span class="section-number-3">1.2.</span> Little's Law</h3>
+<div class="outline-text-3" id="text-littles-law">
+<p>
+A fundamental law used extensivly in queuing theory is Little's Law.
+Little's Law provides a relationship between three funcamental
+quantities: The average rage \(\lambda\) that customers arrive to the
+system, the average wait time \(W\) that a customer spends in the
+system, and the average number \(L\) of customers in the system. This
+relationship is given by \(L=\lambda W\).
+</p>
+
+\begin{equation}
 \label{eq:little\limits}
 
 \begin{array}{lll}
 
-    \lambda \equiv \lim_{t \rightarrow \infty} \frac{A(t)}{t}             &amp;
-    W \equiv \lim_{k \rightarrow \infty} \frac{1}{k} \sum_{i=1}^{k} W^k   &amp;
+    \lambda \equiv \lim_{t \rightarrow \infty} \frac{A(t)}{t}             &
+    W \equiv \lim_{k \rightarrow \infty} \frac{1}{k} \sum_{i=1}^{k} W^k   &
     L \equiv \lim_{T \rightarrow \infty} \frac{1}{T} \int_{0}^{T} N(t) dt
 
 \end{array}
-\end{equation}" title="\begin{equation}
-\label{eq:little\limits}
+\end{equation}
 
-\begin{array}{lll}
+<p>
+Where
+</p>
 
-    \lambda \equiv \lim_{t \rightarrow \infty} \frac{A(t)}{t}             &amp;
-    W \equiv \lim_{k \rightarrow \infty} \frac{1}{k} \sum_{i=1}^{k} W^k   &amp;
-    L \equiv \lim_{T \rightarrow \infty} \frac{1}{T} \int_{0}^{T} N(t) dt
-
-\end{array}
-\end{equation}" class="math display" /></p>
-<p>Where</p>
-<ul>
-<li><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%28t%29"
-alt="A(t)" title="A(t)" class="math inline" />: Cumulative number of
-arrivals at time <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20t" alt="t"
-title="t" class="math inline" /></li>
-<li><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20W%5Ek"
-alt="W^k" title="W^k" class="math inline" />: Time customer <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20k" alt="k"
-title="k" class="math inline" /> spends in the system</li>
-<li><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20N%28t%29"
-alt="N(t)" title="N(t)" class="math inline" />: Number of customers in
-the system at time <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20t" alt="t"
-title="t" class="math inline" /></li>
+<ul class="org-ul">
+<li>\(A(t)\): Cumulative number of arrivals at time \(t\)</li>
+<li>\(W^k\): Time customer \(k\) spends in the system</li>
+<li>\(N(t)\): Number of customers in the system at time \(t\)</li>
 </ul>
+
 <blockquote>
-<p>Theorem 1.1: <a href="#littles-law">Little’s Law</a> If the limit
-<img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda"
-alt="\lambda" title="\lambda" class="math inline" /> and <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20W" alt="W"
-title="W" class="math inline" /> in exists and are finits then the limit
-<img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20L" alt="L"
-title="L" class="math inline" /> exists and</p>
+<p>
+Theorem 1.1: <a href="#littles-law">Little's Law</a> If the limit \(\lambda\) and
+\(W\) in \ref{eq:little-limits} exists and are finits then the limit
+\(L\) exists and
+</p>
 </blockquote>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Bequation%2A%7D%0AL%20%3D%20%5Clambda%20W%0A%5Cend%7Bequation%2A%7D"
-alt="\begin{equation*}
+
+\begin{equation*}
 L = \lambda W
-\end{equation*}" title="\begin{equation*}
-L = \lambda W
-\end{equation*}" class="math display" /></p>
-<p>A few notes can be taken about this theorem:</p>
-<ul>
+\end{equation*}
+
+<p>
+A few notes can be taken about this theorem:
+</p>
+
+<ul class="org-ul">
 <li>It is a statement about long running averages</li>
-<li>The limits for <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda"
-alt="\lambda" title="\lambda" class="math inline" /> and <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20W" alt="W"
-title="W" class="math inline" /> must exists. This therefore does not
-include systems that grow without bound (i.e. customers arrive faster
-than the services can output)</li>
-<li>The theorem does not necessarily require “queues”. Rather it
-requries a “system” to which the entities arrive and from which they
-depart. The system can therefore be regarded as a black box with no
-specific requirements as to what happens in the box.</li>
+<li>The limits for \(\lambda\) and \(W\) must exists. This therefore does
+not include systems that grow without bound (i.e. customers arrive
+faster than the services can output)</li>
+<li>The theorem does not necessarily require "queues". Rather it requries
+a "system" to which the entities arrive and from which they depart.
+The system can therefore be regarded as a black box with no specific
+requirements as to what happens in the box.</li>
 </ul>
-<h3 id="h-lambda-g"><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20H%20%3D%20%5Clambda%20G"
-alt="H = \lambda G" title="H = \lambda G" class="math inline" /></h3>
-<p>It turns out that Little’s Law is a special case of a more general
-relationship <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20H%20%3D%20%5Clambda%20G"
-alt="H = \lambda G" title="H = \lambda G" class="math inline" /></p>
-<ul>
-<li><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20G" alt="G"
-title="G" class="math inline" />: Cost or work</li>
-<li><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20H" alt="H"
-title="H" class="math inline" />: Total average cost per time incurred
-by the system nn* <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda"
-alt="\lambda" title="\lambda" class="math inline" />: Average rate that
-customers arrive to the system</li>
+</div>
+
+<div id="outline-container-h-lambda-g" class="outline-4">
+<h4 id="h-lambda-g"><span class="section-number-4">1.2.1.</span> \(H = \lambda G\)</h4>
+<div class="outline-text-4" id="text-h-lambda-g">
+<p>
+It turns out that Little's Law is a special case of a more general
+relationship \(H = \lambda G\)
+</p>
+
+<ul class="org-ul">
+<li>\(G\): Cost or work</li>
+<li>\(H\): Total average cost per time incurred by the system nn*
+\(\lambda\): Average rate that customers arrive to the system</li>
 </ul>
-<h3 id="distributional-form-of-littles-law">Distributional Form of
-Little’s Law</h3>
-<p>TODO: Link to probability section for moments TODO: Link for
-stationary</p>
-<p>Little’s law provides a relationship between the first moments of
-<img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20N%28T%29%20%5Cequiv%20A%28t%29%20-%20D%28t%29"
-alt="N(T) \equiv A(t) - D(t)" title="N(T) \equiv A(t) - D(t)"
-class="math inline" /> (Arrival - Departure) and <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20W%5Ek"
-alt="W^k" title="W^k" class="math inline" />. It is also possible to
-relate higher moments as well. To state the distributional form a few
-assumptions are made</p>
-<ol type="1">
+</div>
+</div>
+
+<div id="outline-container-distributional-form-of-littles-law" class="outline-4">
+<h4 id="distributional-form-of-littles-law"><span class="section-number-4">1.2.2.</span> Distributional Form of Little's Law</h4>
+<div class="outline-text-4" id="text-distributional-form-of-littles-law">
+<p>
+TODO: Link to probability section for moments TODO: Link for stationary
+</p>
+
+<p>
+Little's law provides a relationship between the first moments of
+\(N(T) \equiv A(t) - D(t)\) (Arrival - Departure) and \(W^k\). It is
+also possible to relate higher moments as well. To state the
+distributional form a few assumptions are made
+</p>
+
+<ol class="org-ol">
 <li>Arrival process is stationary</li>
 <li>Customers depart from the system in the order they arrive</li>
-<li>The time spent <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20W%5Ek"
-alt="W^k" title="W^k" class="math inline" /> by the <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20k" alt="k"
-title="k" class="math inline" />th customer in the system is
+<li>The time spent \(W^k\) by the \(k\)th customer in the system is
 stationary</li>
-<li><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20W%5Ek"
-alt="W^k" title="W^k" class="math inline" /> is independent of the
-arrival process after the arrival of customer <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20k" alt="k"
-title="k" class="math inline" /></li>
+<li>\(W^k\) is independent of the arrival process after the arrival of
+customer \(k\)</li>
 </ol>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Bequation%7D%0A%20%20%20Pr%5C%7BN%28t%29%20%5Cleq%20j%5C%7D%20%3D%20Pr%5C%7BA%28W%5Ek%29%20%5Cleq%20j%5C%7D%0A%5Cend%7Bequation%7D"
-alt="\begin{equation}
+
+\begin{equation}
    Pr\{N(t) \leq j\} = Pr\{A(W^k) \leq j\}
-\end{equation}" title="\begin{equation}
-   Pr\{N(t) \leq j\} = Pr\{A(W^k) \leq j\}
-\end{equation}" class="math display" /></p>
-<p>The statement above states: if one generates a random waiting time
-<img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20W%5Ek"
-alt="W^k" title="W^k" class="math inline" /> and then generates a random
-number of arrivals occuring over an interval of length <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20W%5Ek"
-alt="W^k" title="W^k" class="math inline" /> then this has to be the
-same distribution as the number of customers in the system.</p>
-<h1 id="review-of-stochastic-process">Review of Stochastic Process</h1>
-<p>TODO: Add stochastic process section link here</p>
-<p>Exponential distributions are often used to model the time until a
+\end{equation}
+
+<p>
+The statement above states: if one generates a random waiting time
+\(W^k\) and then generates a random number of arrivals occuring over an
+interval of length \(W^k\) then this has to be the same distribution as
+the number of customers in the system.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-review-of-stochastic-process" class="outline-2">
+<h2 id="review-of-stochastic-process"><span class="section-number-2">2.</span> Review of Stochastic Process</h2>
+<div class="outline-text-2" id="text-review-of-stochastic-process">
+<p>
+TODO: Add stochastic process section link here
+</p>
+
+<p>
+Exponential distributions are often used to model the time until a
 particular event occurs. It is closely related to the Poisson process as
-well as fundamental to the theory of Markov chains.</p>
+well as fundamental to the theory of Markov chains.
+</p>
+
 <blockquote>
-<p>Definition 2.1: An exponential random variable is a continuous random
-variable with probability density function (PDF)</p>
+<p>
+Definition 2.1: An exponential random variable is a continuous random
+variable with probability density function (PDF)
+</p>
 </blockquote>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Bequation%7D%0A%20%20%20%20f%28t%29%20%3D%20%5Clambda%20e%5E%7B-%5Clambda%20t%7D%5C%3B%20%28t%5Cgeq%200%29%0A%5Cend%7Bequation%7D"
-alt="\begin{equation}
+
+\begin{equation}
     f(t) = \lambda e^{-\lambda t}\; (t\geq 0)
-\end{equation}" title="\begin{equation}
-    f(t) = \lambda e^{-\lambda t}\; (t\geq 0)
-\end{equation}" class="math display" /></p>
+\end{equation}
+
 <blockquote>
-<p>where <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda"
-alt="\lambda" title="\lambda" class="math inline" /> is a constant.</p>
+<p>
+where \(\lambda\) is a constant.
+</p>
 </blockquote>
-<p>Furthermore,</p>
+
+<p>
+Furthermore,
+</p>
+
 <blockquote>
-<p>Theorem 2.1: An exponential random variable has the memoryless
-property</p>
+<p>
+Theorem 2.1: An exponential random variable has the memoryless property
+</p>
 </blockquote>
+
 <blockquote>
-<p>Theorem 2.3: Let <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20T_1%2C...%2CT_n"
-alt="T_1,...,T_n" title="T_1,...,T_n" class="math inline" /> be
-independent exponential random variables with rates <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda_1%2C...%2C%5Clambda_n"
-alt="\lambda_1,...,\lambda_n" title="\lambda_1,...,\lambda_n"
-class="math inline" />, respectively. Then <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20min%5C%7BT_1%2C...%2CT_n%5C%7D"
-alt="min\{T_1,...,T_n\}" title="min\{T_1,...,T_n\}"
-class="math inline" /> is exponentially distributed with rate <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda_1%2B...%2B%5Clambda_n"
-alt="\lambda_1+...+\lambda_n" title="\lambda_1+...+\lambda_n"
-class="math inline" />.</p>
+<p>
+Theorem 2.3: Let \(T_1,...,T_n\) be independent exponential random
+variables with rates \(\lambda_1,...,\lambda_n\), respectively. Then
+\(min\{T_1,...,T_n\}\) is exponentially distributed with rate
+\(\lambda_1+...+\lambda_n\).
+</p>
 </blockquote>
+
 <blockquote>
-<p>Theorem 2.4 Let <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20T_1%2C...%2CT_n"
-alt="T_1,...,T_n" title="T_1,...,T_n" class="math inline" /> be
-independent exponential random variables with rates <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda_1%2C...%2C%5Clambda_n"
-alt="\lambda_1,...,\lambda_n" title="\lambda_1,...,\lambda_n"
-class="math inline" />, respectively. Then</p>
+<p>
+Theorem 2.4 Let \(T_1,...,T_n\) be independent exponential random
+variables with rates \(\lambda_1,...,\lambda_n\), respectively. Then
+</p>
 </blockquote>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Bequation%7D%0A%20%20%20%20Pr%5C%7BT_i%20%3D%20min%5C%7BT_1%2C...%2CT_n%5C%7D%5C%7D%20%3D%20%5Cfrac%7B%5Clambda_i%7D%7B%5Clambda_1%2B...%2B%5Clambda_n%7D%0A%5Cend%7Bequation%7D"
-alt="\begin{equation}
+
+\begin{equation}
     Pr\{T_i = min\{T_1,...,T_n\}\} = \frac{\lambda_i}{\lambda_1+...+\lambda_n}
-\end{equation}" title="\begin{equation}
-    Pr\{T_i = min\{T_1,...,T_n\}\} = \frac{\lambda_i}{\lambda_1+...+\lambda_n}
-\end{equation}" class="math display" /></p>
+\end{equation}
+
 <blockquote>
-<p>Theorem 2.5: Let <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20T_1%2C...%2CT_n"
-alt="T_1,...,T_n" title="T_1,...,T_n" class="math inline" /> be
-independent exponential random variables with rates <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda_1%2C...%2C%5Clambda_n"
-alt="\lambda_1,...,\lambda_n" title="\lambda_1,...,\lambda_n"
-class="math inline" />, and let <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20T%20%3D%20min%5C%7BT_1%2C...%2CT_n%5C%7D"
-alt="T = min\{T_1,...,T_n\}" title="T = min\{T_1,...,T_n\}"
-class="math inline" />. Then the event <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5C%7BT_i%20%3D%20T%5C%7D"
-alt="\{T_i = T\}" title="\{T_i = T\}" class="math inline" /> is
-independent of <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20T" alt="T"
-title="T" class="math inline" />.</p>
+<p>
+Theorem 2.5: Let \(T_1,...,T_n\) be independent exponential random
+variables with rates \(\lambda_1,...,\lambda_n\), and let
+\(T = min\{T_1,...,T_n\}\). Then the event \(\{T_i = T\}\) is
+independent of \(T\).
+</p>
 </blockquote>
-<h2 id="the-poisson-process">The Poisson Process</h2>
-<p>Intuitively, the process can be though of describing events that
-occur “randomly” in time. A <em>counting</em> process is a stochastic
-process in which <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20N%28t%29"
-alt="N(t)" title="N(t)" class="math inline" /> takes on nonnegative
-integer values and is nondecreasing in time. A counting process
-typically represents the cumulative number of events that have occurred
-by time <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20t" alt="t"
-title="t" class="math inline" />.</p>
+</div>
+
+<div id="outline-container-the-poisson-process" class="outline-3">
+<h3 id="the-poisson-process"><span class="section-number-3">2.1.</span> The Poisson Process</h3>
+<div class="outline-text-3" id="text-the-poisson-process">
+<p>
+Intuitively, the process can be though of describing events that occur
+"randomly" in time. A <i>counting</i> process is a stochastic process in
+which \(N(t)\) takes on nonnegative integer values and is nondecreasing
+in time. A counting process typically represents the cumulative number
+of events that have occurred by time \(t\).
+</p>
+
 <blockquote>
-<p>Definition 2.3: A Poisson process with rate <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda%20%3E%200"
-alt="\lambda &gt; 0" title="\lambda &gt; 0" class="math inline" /> is a
-counting process <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20N%28t%29"
-alt="N(t)" title="N(t)" class="math inline" /> with the following
-properties:</p>
-<ol type="1">
-<li><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20N%280%29%20%3D%200"
-alt="N(0) = 0" title="N(0) = 0" class="math inline" /></li>
-<li><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20Pr%5C%7B%20%5Ctext%7B1%20event%20between%20%7D%20t%2B%20%5CDelta%20t%5C%7D%20%3D%20%5Clambda%20%5CDelta%20t%20%2B%20o%28%5CDelta_t%29"
-alt="Pr\{ \text{1 event between } t+ \Delta t\} = \lambda \Delta t + o(\Delta_t)"
-title="Pr\{ \text{1 event between } t+ \Delta t\} = \lambda \Delta t + o(\Delta_t)"
-class="math inline" /></li>
-<li><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20Pr%5C%7B%20%5Ctext%7B2%20event%20between%20%7D%20t%2B%20%5CDelta%20t%5C%7D%20%3D%20o%28%5CDelta_t%29"
-alt="Pr\{ \text{2 event between } t+ \Delta t\} = o(\Delta_t)"
-title="Pr\{ \text{2 event between } t+ \Delta t\} = o(\Delta_t)"
-class="math inline" /></li>
+<p>
+Definition 2.3: A Poisson process with rate \(\lambda > 0\) is a
+counting process \(N(t)\) with the following properties:
+</p>
+
+<ol class="org-ol">
+<li>\(N(0) = 0\)</li>
+<li>\(Pr\{ \text{1 event between } t+ \Delta t\} = \lambda \Delta t + o(\Delta_t)\)</li>
+<li>\(Pr\{ \text{2 event between } t+ \Delta t\} = o(\Delta_t)\)</li>
 <li>The number of events in non-overlapping intervals are statistically
 independent; that is, the process has independent increments.</li>
 </ol>
 </blockquote>
-<p>The Poison random variable is</p>
+
+<p>
+The Poison random variable is
+</p>
+
 <blockquote>
-<p>Definition 2.4: A Poisson random variable is a discrete random
-variable with probability mass function</p>
+<p>
+Definition 2.4: A Poisson random variable is a discrete random variable
+with probability mass function
+</p>
 </blockquote>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Bequation%7D%0A%20%20%20%20p_n%20%3D%20e%5E%7B-A%20%5Cfrac%7BA%5En%7D%7Bn%21%7D%7D%5C%3B%20%28n%3D0%2C1%2C2%2C...%29%0A%5Cend%7Bequation%7D"
-alt="\begin{equation}
+
+\begin{equation}
     p_n = e^{-A \frac{A^n}{n!}}\; (n=0,1,2,...)
-\end{equation}" title="\begin{equation}
-    p_n = e^{-A \frac{A^n}{n!}}\; (n=0,1,2,...)
-\end{equation}" class="math display" /></p>
+\end{equation}
+
 <blockquote>
-<p>where <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20A%3E0"
-alt="A&gt;0" title="A&gt;0" class="math inline" /> is a constant.</p>
+<p>
+where \(A>0\) is a constant.
+</p>
 </blockquote>
-<p>The following theorem links the Poisson process and the Poisson
-random variable.</p>
+
+<p>
+The following theorem links the Poisson process and the Poisson random
+variable.
+</p>
+
 <blockquote>
-<p>Theorem 2.6: Let <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20N%28t%29"
-alt="N(t)" title="N(t)" class="math inline" /> be a Poisson process with
-rate <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda%20%3E0"
-alt="\lambda &gt;0" title="\lambda &gt;0" class="math inline" />. The
-number of events occurring by time <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20t" alt="t"
-title="t" class="math inline" /> is a Poisson random variable with mean
-<img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda%20t"
-alt="\lambda t" title="\lambda t" class="math inline" />. That is,</p>
+<p>
+Theorem 2.6: Let \(N(t)\) be a Poisson process with rate \(\lambda >0\).
+The number of events occurring by time \(t\) is a Poisson random
+variable with mean \(\lambda t\). That is,
+</p>
 </blockquote>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Bequation%7D%0A%20%20%20%20p_n%20%3D%20e%5E%7B-A%20%5Cfrac%7BA%5En%7D%7Bn%21%7D%7D%5C%3B%20%28n%3D0%2C1%2C2%2C...%29%0A%5Cend%7Bequation%7D"
-alt="\begin{equation}
+
+\begin{equation}
     p_n = e^{-A \frac{A^n}{n!}}\; (n=0,1,2,...)
-\end{equation}" title="\begin{equation}
-    p_n = e^{-A \frac{A^n}{n!}}\; (n=0,1,2,...)
-\end{equation}" class="math display" /></p>
+\end{equation}
+
 <blockquote>
-<p>where <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20p_n%28t%29%20%5Cequiv%20Pr%5C%7BN%28t%29%20%3D%20n%5C%7D"
-alt="p_n(t) \equiv Pr\{N(t) = n\}" title="p_n(t) \equiv Pr\{N(t) = n\}"
-class="math inline" />.</p>
+<p>
+where \(p_n(t) \equiv Pr\{N(t) = n\}\).
+</p>
 </blockquote>
-<p>Furthermore, the Poisson process is</p>
-<ul>
-<li>The distribution is stationary, that is the of the number of events
-in a given time interval is dependent only on the length of the interval
+
+<p>
+Furthermore, the Poisson process is
+</p>
+
+<ul class="org-ul">
+<li>The distribution is stationary, that is the of the number of events in
+a given time interval is dependent only on the length of the interval
 and not the location of the interval</li>
-<li>The times between successive events are exponentially distributed
-with rate <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda"
-alt="\lambda" title="\lambda" class="math inline" /></li>
-<li>Event times are uniformly distributed on a time interval <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5B0%2CT%5D"
-alt="[0,T]" title="[0,T]" class="math inline" />, given that a certain
-number of events have occurred on the interval. The <em>ordered</em>
-event times follow the order statistics of <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20k" alt="k"
-title="k" class="math inline" /> independent uniform random
-variables.</li>
-<li>(Splitting): Let <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20N%28t%29"
-alt="N(t)" title="N(t)" class="math inline" /> be a Poisson process with
-rate <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda"
-alt="\lambda" title="\lambda" class="math inline" />. Suppose that each
-event is labeled a type-i event with probability <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20p_i" alt="p_i"
-title="p_i" class="math inline" />, independent of all else. Let <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20N_i%28t%29"
-alt="N_i(t)" title="N_i(t)" class="math inline" /> be the number of
-type-i events by time <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20t" alt="t"
-title="t" class="math inline" />. Then <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20N_i%28t%29"
-alt="N_i(t)" title="N_i(t)" class="math inline" /> is a Poisson process
-with rate <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda%20p_i%2C%5C%3B%20i%3D1%2C...%2Cn"
-alt="\lambda p_i,\; i=1,...,n" title="\lambda p_i,\; i=1,...,n"
-class="math inline" />. Furthermore, <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20N_i%28t%29"
-alt="N_i(t)" title="N_i(t)" class="math inline" /> and <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20N_j%28t%29"
-alt="N_j(t)" title="N_j(t)" class="math inline" /> are independent for
-all <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20i%5Cneq%20j"
-alt="i\neq j" title="i\neq j" class="math inline" />.</li>
-<li>(Superposition): Let <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20N_1%28t%29%2C...%2CN_n%28t%29"
-alt="N_1(t),...,N_n(t)" title="N_1(t),...,N_n(t)" class="math inline" />
-be independent Poisson processes with rates <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda_1%2C...%2C%5Clambda_n"
-alt="\lambda_1,...,\lambda_n" title="\lambda_1,...,\lambda_n"
-class="math inline" />, respectively. Then <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20N%28t%29%20%5Cequiv%20N_%281%29%20%2B%20...%20%2B%20N_n%28t%29"
-alt="N(t) \equiv N_(1) + ... + N_n(t)"
-title="N(t) \equiv N_(1) + ... + N_n(t)" class="math inline" /> is a
-Poisson process with rate <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Clambda%20%5Cequiv%20%5Clambda_1%20%2B%20...%20%2B%20%5Clambda_n"
-alt="\lambda \equiv \lambda_1 + ... + \lambda_n"
-title="\lambda \equiv \lambda_1 + ... + \lambda_n"
-class="math inline" />.</li>
+<li>The times between successive events are exponentially distributed with
+rate \(\lambda\)</li>
+<li>Event times are uniformly distributed on a time interval \([0,T]\),
+given that a certain number of events have occurred on the interval.
+The <i>ordered</i> event times follow the order statistics of \(k\)
+independent uniform random variables.</li>
+<li>(Splitting): Let \(N(t)\) be a Poisson process with rate \(\lambda\).
+Suppose that each event is labeled a type-i event with probability
+\(p_i\), independent of all else. Let \(N_i(t)\) be the number of
+type-i events by time \(t\). Then \(N_i(t)\) is a Poisson process with
+rate \(\lambda p_i,\; i=1,...,n\). Furthermore, \(N_i(t)\) and
+\(N_j(t)\) are independent for all \(i\neq j\).</li>
+<li>(Superposition): Let \(N_1(t),...,N_n(t)\) be independent Poisson
+processes with rates \(\lambda_1,...,\lambda_n\), respectively. Then
+\(N(t) \equiv N_(1) + ... + N_n(t)\) is a Poisson process with rate
+\(\lambda \equiv \lambda_1 + ... + \lambda_n\).</li>
 </ul>
-<h2 id="discrete-time-markov-chains">Discrete-Time Markov Chains</h2>
-<p>For discrete-time Markov chains, the transitions are assumed to occur
-at discrete points in time. The fundamental assumption that underlines
-Markov chains is the Markov property</p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Bequation%7D%0A%20%20%20%20Pr%5C%7BX_%7Bx%2B1%7D%20%3D%20j%20%7C%20X_0%20%3D%20i_0%2C%20X_1%3Di_1%2C...%2CX_n%3Di_n%5C%7D%20%3D%20Pr%5C%7B%20X_%7Bn%2B1%7D%20%3D%20j%20%7C%20X_n%20%3D%20i_n%20%5C%7D%0A%5Cend%7Bequation%7D"
-alt="\begin{equation}
+</div>
+</div>
+
+<div id="outline-container-discrete-time-markov-chains" class="outline-3">
+<h3 id="discrete-time-markov-chains"><span class="section-number-3">2.2.</span> Discrete-Time Markov Chains</h3>
+<div class="outline-text-3" id="text-discrete-time-markov-chains">
+<p>
+For discrete-time Markov chains, the transitions are assumed to occur at
+discrete points in time. The fundamental assumption that underlines
+Markov chains is the Markov property
+</p>
+
+\begin{equation}
     Pr\{X_{x+1} = j | X_0 = i_0, X_1=i_1,...,X_n=i_n\} = Pr\{ X_{n+1} = j | X_n = i_n \}
-\end{equation}" title="\begin{equation}
-    Pr\{X_{x+1} = j | X_0 = i_0, X_1=i_1,...,X_n=i_n\} = Pr\{ X_{n+1} = j | X_n = i_n \}
-\end{equation}" class="math display" /></p>
-<p>Intuitively, this means that to characterize the future behavior it
-is just as useful to know only the present state or the present state as
-well as all the history.</p>
-<h3 id="properties-of-markov-chains">Properties of Markov Chains</h3>
-<p>State <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20j" alt="j"
-title="j" class="math inline" /> is <em>accessible</em> to state <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20i%5C%3B%20%28i%20%5Crightarrow%20j%29"
-alt="i\; (i \rightarrow j)" title="i\; (i \rightarrow j)"
-class="math inline" /> if there exists an <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20n%20%5Cgeq%200"
-alt="n \geq 0" title="n \geq 0" class="math inline" /> such that <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20p_%7Bij%7D%5En%20%3E%200"
-alt="p_{ij}^n &gt; 0" title="p_{ij}^n &gt; 0" class="math inline" />.
-Two states communicate with each other if <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20i%20%5Cleftrightarrow%20j"
-alt="i \leftrightarrow j" title="i \leftrightarrow j"
-class="math inline" />. A chain is <em>irreducible</em> if all of its
-state communicate (any state can get to any other state). A state is
-recurrent if the probability of returning to itself is 1, and it is
-transient if it will return to itself in <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20n" alt="n"
-title="n" class="math inline" /> steps.</p>
-<h3 id="long-run-behavior">Long-Run Behavior</h3>
-<p>The concept of long run behavior consists of the idea that the
+\end{equation}
+
+<p>
+Intuitively, this means that to characterize the future behavior it is
+just as useful to know only the present state or the present state as
+well as all the history.
+</p>
+</div>
+
+<div id="outline-container-properties-of-markov-chains" class="outline-4">
+<h4 id="properties-of-markov-chains"><span class="section-number-4">2.2.1.</span> Properties of Markov Chains</h4>
+<div class="outline-text-4" id="text-properties-of-markov-chains">
+<p>
+State \(j\) is <i>accessible</i> to state \(i\; (i \rightarrow j)\) if there
+exists an \(n \geq 0\) such that \(p_{ij}^n > 0\). Two states
+communicate with each other if \(i \leftrightarrow j\). A chain is
+<i>irreducible</i> if all of its state communicate (any state can get to any
+other state). A state is recurrent if the probability of returning to
+itself is 1, and it is transient if it will return to itself in \(n\)
+steps.
+</p>
+</div>
+</div>
+
+<div id="outline-container-long-run-behavior" class="outline-4">
+<h4 id="long-run-behavior"><span class="section-number-4">2.2.2.</span> Long-Run Behavior</h4>
+<div class="outline-text-4" id="text-long-run-behavior">
+<p>
+The concept of long run behavior consists of the idea that the
 probability of being at a particular state does not depend on the
-starting state.</p>
+starting state.
+</p>
+
 <blockquote>
-<p>Theorem 2.13: An irreducible and positive recurrent discrete-time
-Markov chain has a unique soltion to the stationary equations</p>
+<p>
+Theorem 2.13: An irreducible and positive recurrent discrete-time Markov
+chain has a unique soltion to the stationary equations
+</p>
 </blockquote>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Bequation%7D%0A%5Cbegin%7Barray%7D%7Bccc%7D%0A%20%20%20%5Cpi%20%3D%20%5Cpi%20P%20%20%26%20%5Ctext%7Band%7D%20%26%20%5Csum_j%20%5Cpi_j%20%3D%201%0A%5Cend%7Barray%7D%0A%5Cend%7Bequation%7D"
-alt="\begin{equation}
+
+\begin{equation}
 \begin{array}{ccc}
-   \pi = \pi P  &amp; \text{and} &amp; \sum_j \pi_j = 1
+   \pi = \pi P  & \text{and} & \sum_j \pi_j = 1
 \end{array}
-\end{equation}" title="\begin{equation}
-\begin{array}{ccc}
-   \pi = \pi P  &amp; \text{and} &amp; \sum_j \pi_j = 1
-\end{array}
-\end{equation}" class="math display" /></p>
+\end{equation}
+
 <blockquote>
-<p>namely, <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cpi_j%20%3D%201%2Fm_%7Bjj%7D"
-alt="\pi_j = 1/m_{jj}" title="\pi_j = 1/m_{jj}" class="math inline" />.
-Futhermore, if the chain is aperiodic, the limiting probability
-distribution exists and is equal to the stationary distribution.</p>
+<p>
+namely, \(\pi_j = 1/m_{jj}\). Futhermore, if the chain is aperiodic, the
+limiting probability distribution exists and is equal to the stationary
+distribution.
+</p>
 </blockquote>
-<h3 id="ergodicity">Ergodicity</h3>
-<p><a href="./statistics.html#ergodicity">Ergodicity</a> is important in
-that it deals with the problem of determining measures of a stochastic
-process.</p>
-<h1 id="simple-markovian-queuing-models">Simple Markovian Queuing
-Models</h1>
-<h1 id="advanced-markovian-queuing-models">Advanced Markovian Queuing
-Models</h1>
-<h1 id="general-arrival-or-service-patterns">General Arrival or Service
-Patterns</h1>
-<h1 id="bounds-and-approximations">Bounds And Approximations</h1>
-<h1 id="numerical-techniques-and-simulation">Numerical Techniques And
-Simulation</h1>
-</body>
-</html>
-	</div>
+</div>
+</div>
+
+<div id="outline-container-ergodicity" class="outline-4">
+<h4 id="ergodicity"><span class="section-number-4">2.2.3.</span> Ergodicity</h4>
+<div class="outline-text-4" id="text-ergodicity">
+<p>
+<a href="./statistics.html#ergodicity">Ergodicity</a> is important in that it
+deals with the problem of determining measures of a stochastic process.
+In general, a stochastic process is ergotic if all its "measures" can be
+determined, or well approximated from a single realization. Since
+statistical measures are usually expressed as time averages it is said:
+the stochastic process is ergotic if the time averages equal ensemble
+averages (expected values). <i>An ensemble average is obtained from
+multiple realizations of the process at a fixed point in time</i>.
+</p>
+
+<p>
+We say that a process is fully ergodic (ergodic in distribution
+function) if this property holds for all moments. A process might be
+ergodic for certain moments, but not for others. In queueing theory, we
+are typically interested in fully ergodic processes.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-continuous-time-markov-chains" class="outline-3">
+<h3 id="continuous-time-markov-chains"><span class="section-number-3">2.3.</span> Continuous-Time Markov Chains</h3>
+<div class="outline-text-3" id="text-continuous-time-markov-chains">
+<p>
+A CTMC transitions from state to state just like a discretetime Markov
+chain, but the time spent in each state is now an exponential random
+variable in continuous time. Alternatively, a CTMC can be parameterized
+by a matrix
+</p>
+
+<p>
+\[
+q_{ij} = v_i p_{ij}
+\]
+</p>
+
+<ul class="org-ul">
+<li>\(v_i\) can be interpreted as the transition rate out of state \(i\)</li>
+<li>\(q_{ij}\) can be interpreted as the transition rate from state \(i\)
+to state \(j\)</li>
+</ul>
+
+<blockquote>
+<p>
+The equation above states that the transition rate from \(i\) to \(j\)
+equals the transition rate out of \(i\) multiplied by the probability of
+going from \(i\) to \(j\).
+</p>
+</blockquote>
+
+<p>
+This also drives the meaning of the <i>rate-transistion matrix</i>
+</p>
+
+<p>
+\[
+</p>
+\begin{bmatrix}
+v_{0} & q_{01} & q_{02} & \cdots \\
+q_{10} & v_{1} & q_{11} & \cdots \\
+\vdots & \vdots & \ddots & \ddots
+\end{bmatrix}
+<p>
+\]
+</p>
+
+<p>
+Many queueing systems can be represented as birth death processes, where
+the system state \(X(t)\) denotes the number of customers in the system
+at time \(t\)
+</p>
+</div>
+
+<div id="outline-container-long-run-behavior-1" class="outline-4">
+<h4 id="long-run-behavior-1"><span class="section-number-4">2.3.1.</span> Long-Run Behavior</h4>
+<div class="outline-text-4" id="text-long-run-behavior-1">
+<blockquote>
+<p>
+Theorem 2.16: For a continuous time Markov chain, if the embedded
+discretetime chain is irreducible and positive recurrent, then there is
+a unique solution to the stationary equations \(0 = pQ\) and
+\(\sum_j p_j = 1\) where 0 is a vector of zeros (0; 0; : : :).
+Furthermore, if the mean holding times in all states are bounded (vi &gt; 0
+for all i), the chain has a limiting probability distribution equal to
+the stationary distribution.
+</p>
+</blockquote>
+
+<p>
+In component form
+</p>
+
+<p>
+\[
+   p_j v_j = \sum_{r \neq j} p_r q_{rj}
+\]
+</p>
+
+<p>
+This can be interpreted as follows. The left side is the rate of
+transitions out of state \(j\). On the right side, \(p_r q_{rj}\) is the
+rate of transitions from state \(r\) to \(j\). Summing over \(r\) gives
+the overall rate of transitions into state \(j\). Thus, theorem 2.16 is
+a statement that the rate of transitions out of a state equals the rate
+of transitions into the state.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-simple-markovian-queuing-models" class="outline-2">
+<h2 id="simple-markovian-queuing-models"><span class="section-number-2">3.</span> Simple Markovian Queuing Models</h2>
+<div class="outline-text-2" id="text-simple-markovian-queuing-models">
+<p>
+In this chapter we develop a broad class of simple queueing models using
+the theory of birth death processes.
+</p>
+</div>
+
+<div id="outline-container-birth-death-processes" class="outline-3">
+<h3 id="birth-death-processes"><span class="section-number-3">3.1.</span> Birth-Death Processes</h3>
+<div class="outline-text-3" id="text-birth-death-processes">
+<p>
+A birth death process consists of a set of states {0, 1, 2, . . .},
+typically denoting the "population" of some system. When the system is
+in state \(n \geq 0\), the time until the next arrival (or "birth") is
+an exponential random variable with rate \(\lambda_n\). In queueing
+theory, the states denote the number of customers in the system.
+"Births" correspond to customer arrivals and "deaths" correspond to
+customer departures.
+</p>
+
+<p>
+It can be found that
+</p>
+
+<p>
+\[
+</p>
+\begin{array}{c}
+p_n = p_0 \prod_{i=1}^n \frac{\lambda_{i-1}}{\mu_i} \\
+p_0 = (1 + \sum_{n-1}^{\infty} \prod_{i=1}^n frac{\lambda_{i-1}}{\mu_i})^{-1}
+\end{array}
+<p>
+\]
+</p>
+
+<ul class="org-ul">
+<li>\(p_n\) is the long-term fraction of the time the system is in state
+\(n\)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-single-server-queues-mm1" class="outline-3">
+<h3 id="single-server-queues-mm1"><span class="section-number-3">3.2.</span> Single-Server Queues (M/M/1)</h3>
+<div class="outline-text-3" id="text-single-server-queues-mm1">
+</div>
+</div>
+</div>
+<div id="outline-container-advanced-markovian-queuing-models" class="outline-2">
+<h2 id="advanced-markovian-queuing-models"><span class="section-number-2">4.</span> Advanced Markovian Queuing Models</h2>
+<div class="outline-text-2" id="text-advanced-markovian-queuing-models">
+</div>
+</div>
+<div id="outline-container-general-arrival-or-service-patterns" class="outline-2">
+<h2 id="general-arrival-or-service-patterns"><span class="section-number-2">5.</span> General Arrival or Service Patterns</h2>
+<div class="outline-text-2" id="text-general-arrival-or-service-patterns">
+</div>
+</div>
+<div id="outline-container-bounds-and-approximations" class="outline-2">
+<h2 id="bounds-and-approximations"><span class="section-number-2">6.</span> Bounds And Approximations</h2>
+<div class="outline-text-2" id="text-bounds-and-approximations">
+</div>
+</div>
+<div id="outline-container-numerical-techniques-and-simulation" class="outline-2">
+<h2 id="numerical-techniques-and-simulation"><span class="section-number-2">7.</span> Numerical Techniques And Simulation</h2>
+<div class="outline-text-2" id="text-numerical-techniques-and-simulation">
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Alexander Brown</p>
+<p class="date">Created: 2022-09-12 Mon 11:18</p>
+</div>
 </body>
 </html>

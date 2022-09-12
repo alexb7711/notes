@@ -1,527 +1,582 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-	<!-- <link rel="Stylesheet" type="text/css" href="./style.css" /> -->
-	<title></title>
-	<meta http-equiv="Content-Type" content="width=device-with, initial-scale=1.0; text/html; charset=utf-8" name="viewport"/>
+<!-- 2022-09-12 Mon 11:18 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Alexander Brown" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href=" ./style.css" />
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
-	<div class="nav"><h2 id="Alexander Brown" class="header">Alexander Brown - Electrical Engineer</h2>
-		<!-- <p> -->
-		    <!-- email: alex.brown7711@aggiemail.usu.edu -->
-		<!-- </p> -->
-		<a href="%root_path%index.html">Home</a> |
-		<a href="%root_path%blog.html">Blog</a> |
-		<a href="%root_path%notes.html">Notes</a> |
-		<a href="%root_path%classes.html">Classes</a> |
-		<a href="%root_path%projects.html">Projects</a> |
-		<a href="%root_path%todo.html">Todo</a> |
-		<a href="%root_path%error.html">About</a>
-	</div>
-	<div class="content">
-	    <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
-<head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>optimal_estimation</title>
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-  </style>
-  <link rel="stylesheet" href="style.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<nav id="TOC" role="doc-toc">
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#contents" id="toc-contents">Contents</a></li>
-<li><a href="#optimal-estimation" id="toc-optimal-estimation">Optimal
-Estimation</a></li>
-<li><a href="#introduction" id="toc-introduction">(1)
-Introduction</a></li>
-<li><a href="#deterministic-system-model"
-id="toc-deterministic-system-model">(2) Deterministic System
-Model</a></li>
-<li><a href="#probability-theory" id="toc-probability-theory">(3)
-Probability Theory</a>
+<li><a href="#contents">1. Contents</a></li>
+<li><a href="#optimal-estimation">2. Optimal Estimation</a></li>
+<li><a href="#introduction">3. (1) Introduction</a></li>
+<li><a href="#deterministic-system-model">4. (2) Deterministic System Model</a></li>
+<li><a href="#probability-theory">5. (3) Probability Theory</a>
 <ul>
-<li><a href="#moments-of-random-variables"
-id="toc-moments-of-random-variables">Moments of Random
-Variables</a></li>
-</ul></li>
-<li><a href="#stochastic-process-and-linear-dynamic-system-models"
-id="toc-stochastic-process-and-linear-dynamic-system-models">(4)
-Stochastic Process and Linear Dynamic System Models</a>
-<ul>
-<li><a href="#system-modeling-objective-and-directions"
-id="toc-system-modeling-objective-and-directions">System Modeling:
-Objective and Directions</a></li>
-<li><a href="#foundations-white-gaussian-noise-and-brownian-motion"
-id="toc-foundations-white-gaussian-noise-and-brownian-motion">Foundations:
-White Gaussian Noise and Brownian Motion</a></li>
-<li><a href="#stochastic-integrals"
-id="toc-stochastic-integrals">Stochastic Integrals</a></li>
-<li><a href="#stochastic-differentials"
-id="toc-stochastic-differentials">Stochastic Differentials</a></li>
-<li><a href="#linear-stochastic-differential-equations"
-id="toc-linear-stochastic-differential-equations">Linear Stochastic
-Differential Equations</a></li>
-<li><a href="#linear-stochastic-difference-equations"
-id="toc-linear-stochastic-difference-equations">Linear Stochastic
-Difference Equations</a>
-<ul>
-<li><a href="#lears-method" id="toc-lears-method">Lear’s Method</a></li>
-<li><a href="#savages-method" id="toc-savages-method">Savage’s
-Method</a></li>
-</ul></li>
-<li><a href="#the-overall-system-model"
-id="toc-the-overall-system-model">The Overall System Model</a></li>
-</ul></li>
-<li><a href="#optimal-filtering" id="toc-optimal-filtering">(5) Optimal
-Filtering</a></li>
-<li><a href="#footnotes" id="toc-footnotes">Footnotes</a></li>
+<li><a href="#moments-of-random-variables">5.1. Moments of Random Variables</a></li>
 </ul>
-</nav>
-<h1 id="contents">Contents</h1>
-<pre><code>    - [Optimal Estimation](#Optimal Estimation.md)
-    - [(1) Introduction](#(1) Introduction.md)
-    - [(2) Deterministic System Model](#(2) Deterministic System Model.md)
-    - [(3) Probability Theory](#(3) Probability Theory.md)
-            - [Moments of Random Variables](#(3) Probability Theory#Moments of Random Variables.md)
-    - [(4) Stochastic Process and Linear Dynamic System Models](#(4) Stochastic Process and Linear Dynamic System Models.md)
-            - [System Modeling: Objective and Directions](#(4) Stochastic Process and Linear Dynamic System Models#System Modeling: Objective and Directions.md)
-            - [Foundations: White Gaussian Noise and Brownian Motion](#(4) Stochastic Process and Linear Dynamic System Models#Foundations: White Gaussian Noise and Brownian Motion.md)
-            - [Stochastic Integrals](#(4) Stochastic Process and Linear Dynamic System Models#Stochastic Integrals.md)
-            - [Stochastic Differentials](#(4) Stochastic Process and Linear Dynamic System Models#Stochastic Differentials.md)
-            - [Linear Stochastic Differential Equations](#(4) Stochastic Process and Linear Dynamic System Models#Linear Stochastic Differential Equations.md)
-            - [Linear Stochastic Difference Equations](#(4) Stochastic Process and Linear Dynamic System Models#Linear Stochastic Difference Equations.md)
-                    - [Lear&#39;s Method](#(4) Stochastic Process and Linear Dynamic System Models#Linear Stochastic Difference Equations#Lear&#39;s Method.md)
-                    - [Savage&#39;s Method](#(4) Stochastic Process and Linear Dynamic System Models#Linear Stochastic Difference Equations#Savage&#39;s Method.md)
-            - [The Overall System Model](#(4) Stochastic Process and Linear Dynamic System Models#The Overall System Model.md)
-    - [(5) Optimal Filtering](#(5) Optimal Filtering.md)
-    - [Footnotes](#Footnotes.md)</code></pre>
-<h1 id="optimal-estimation">Optimal Estimation</h1>
-<p>This page has notes taken from the book (below) and <a
-href="optimal_estimation_class.md">class notes</a>.</p>
-<h1 id="introduction">(1) Introduction</h1>
-<h1 id="deterministic-system-model">(2) Deterministic System Model</h1>
-<h1 id="probability-theory">(3) Probability Theory</h1>
-<h2 id="moments-of-random-variables">Moments of Random Variables</h2>
+</li>
+<li><a href="#stochastic-process-and-linear-dynamic-system-models">6. (4) Stochastic Process and Linear Dynamic System Models</a>
 <ul>
-<li>The first moment is the mean <a href="#Footnotes#1.md">#1</a></li>
+<li><a href="#system-modeling-objective-and-directions">6.1. System Modeling: Objective and Directions</a></li>
+<li><a href="#foundations-white-gaussian-noise-and-brownian-motion">6.2. Foundations: White Gaussian Noise and Brownian Motion</a></li>
+<li><a href="#stochastic-integrals">6.3. Stochastic Integrals</a></li>
+<li><a href="#stochastic-differentials">6.4. Stochastic Differentials</a></li>
+<li><a href="#linear-stochastic-differential-equations">6.5. Linear Stochastic Differential Equations</a></li>
+<li><a href="#linear-stochastic-difference-equations">6.6. Linear Stochastic Difference Equations</a>
+<ul>
+<li><a href="#lears-method">6.6.1. Lear's Method</a></li>
+<li><a href="#savages-method">6.6.2. Savage's Method</a></li>
 </ul>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cboldsymbol%7Bm%7D%20%5Cequiv%20E%21%5Bpic%5D%28x_i%29"
-alt="\boldsymbol{m} \equiv E![pic](x_i)"
-title="\boldsymbol{m} \equiv E![pic](x_i)" class="math display" /></p>
-<ul>
-<li>The second (noncentral) moment is defined by the <em>autocorrelation
-matrix</em> of <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20x" alt="x"
-title="x" class="math inline" /> <a href="#Footnotes#1.md">#1</a>.</li>
+</li>
+<li><a href="#the-overall-system-model">6.7. The Overall System Model</a></li>
 </ul>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5CGamma%20%5Cequiv%20E%21%5Bpic%5D%28xx%5ET%29"
-alt="\Gamma \equiv E![pic](xx^T)" title="\Gamma \equiv E![pic](xx^T)"
-class="math display" /></p>
-<pre><code>which allows us to view the correlation of $x_i$ and $x_j$.</code></pre>
-<ul>
-<li>The second (central) moment is the <em>covariance</em> matrix and is
+</li>
+<li><a href="#optimal-filtering">7. (5) Optimal Filtering</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-contents" class="outline-2">
+<h2 id="contents"><span class="section-number-2">1.</span> Contents</h2>
+<div class="outline-text-2" id="text-contents">
+</div>
+</div>
+<div id="outline-container-optimal-estimation" class="outline-2">
+<h2 id="optimal-estimation"><span class="section-number-2">2.</span> Optimal Estimation</h2>
+<div class="outline-text-2" id="text-optimal-estimation">
+<p>
+This page has notes taken from the book (below) and
+<a href="optimal_estimation_class">class notes</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-introduction" class="outline-2">
+<h2 id="introduction"><span class="section-number-2">3.</span> (1) Introduction</h2>
+<div class="outline-text-2" id="text-introduction">
+</div>
+</div>
+<div id="outline-container-deterministic-system-model" class="outline-2">
+<h2 id="deterministic-system-model"><span class="section-number-2">4.</span> (2) Deterministic System Model</h2>
+<div class="outline-text-2" id="text-deterministic-system-model">
+</div>
+</div>
+<div id="outline-container-probability-theory" class="outline-2">
+<h2 id="probability-theory"><span class="section-number-2">5.</span> (3) Probability Theory</h2>
+<div class="outline-text-2" id="text-probability-theory">
+</div>
+<div id="outline-container-moments-of-random-variables" class="outline-3">
+<h3 id="moments-of-random-variables"><span class="section-number-3">5.1.</span> Moments of Random Variables</h3>
+<div class="outline-text-3" id="text-moments-of-random-variables">
+<ul class="org-ul">
+<li>The first moment is the #1.</li>
+</ul>
+
+<p>
+\[
+    \boldsymbol{m} \equiv E![pic](x_i)
+ \]
+</p>
+
+<ul class="org-ul">
+<li>The second (noncentral) moment is defined by the <i>autocorrelation
+matrix</i> of \(x\) #1.</li>
+</ul>
+
+<p>
+\[
+    \Gamma \equiv E![pic](xx^T)
+\]
+</p>
+
+<pre class="example" id="org5650d5f">
+which allows us to view the correlation of $x_i$ and $x_j$.
+</pre>
+
+<ul class="org-ul">
+<li>The second (central) moment is the <i>covariance</i> matrix and is
 expressed as</li>
 </ul>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20P%20%5Cequiv%20E%5B%28x_i%20-%20m_i%29%28x_j%20-%20m_j%29%5ET%5D"
-alt="P \equiv E[(x_i - m_i)(x_j - m_j)^T]"
-title="P \equiv E[(x_i - m_i)(x_j - m_j)^T]" class="math display" /></p>
-<pre><code>where the square root of variance $P_{ii} = E[(x_i - [i](m_.md))^T] = \sigma^2$ is the _standard deviation_ ($\sigma$) of $x_i$.</code></pre>
-<h1 id="stochastic-process-and-linear-dynamic-system-models">(4)
-Stochastic Process and Linear Dynamic System Models</h1>
-<p>This section adds dynamics to the system model developed in Chapter 3
-of Maybeck <a href="#Footnotes#1.md">#1</a>.</p>
-<h2 id="system-modeling-objective-and-directions">System Modeling:
-Objective and Directions</h2>
-<p>Suppose we are given a physical system that can be subjected to known
+
+<p>
+\[
+    P \equiv E[(x_i - m_i)(x_j - m_j)^T]
+\]
+</p>
+
+<pre class="example" id="org92206c4">
+where the square root of variance $P_{ii} = E[(x_i - [i](m_.md))^T] = \sigma^2$ is the _standard deviation_ ($\sigma$) of $x_i$.
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-stochastic-process-and-linear-dynamic-system-models" class="outline-2">
+<h2 id="stochastic-process-and-linear-dynamic-system-models"><span class="section-number-2">6.</span> (4) Stochastic Process and Linear Dynamic System Models</h2>
+<div class="outline-text-2" id="text-stochastic-process-and-linear-dynamic-system-models">
+<p>
+This section adds dynamics to the system model developed in Chapter 3 of
+Maybeck #1.
+</p>
+</div>
+
+<div id="outline-container-system-modeling-objective-and-directions" class="outline-3">
+<h3 id="system-modeling-objective-and-directions"><span class="section-number-3">6.1.</span> System Modeling: Objective and Directions</h3>
+<div class="outline-text-3" id="text-system-modeling-objective-and-directions">
+<p>
+Suppose we are given a physical system that can be subjected to known
 controls and to inputs beyond our own direct control (typically noise).
 Further assume we want to characterize certain outputs of the system,
 for instance, by depicting their mean and covariance kernal for all time
 values. Such a characteristic would be necessary to initiate designs of
 estimators or controllers for the system, and a prerequisite to a means
-of analyzing the performance capabilities of such devices as well <a
-href="#Footnotes#1.md">#1</a>.</p>
-<p>Consider the following differential equation</p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bc%7D%0A%20%20%20%20%5Cdot%7Bx%7D%20%3D%20F%28t%29x%28t%29%20%2B%20B%28t%29u%28t%29%20%2B%20G%28t%29w%28t%29%20%5C%5C%0A%20%20%20%20z%28t_i%29%20%3D%20H%28t_i%29x%28t_i%29%20%2B%20v%28t_i%29%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%5Cend%7Barray%7D"
-alt="\begin{array}{c}
+of analyzing the performance capabilities of such devices as well
+#1.
+</p>
+
+<p>
+Consider the following differential equation
+</p>
+
+<p>
+\[
+</p>
+\begin{array}{c}
     \dot{x} = F(t)x(t) + B(t)u(t) + G(t)w(t) \\
     z(t_i) = H(t_i)x(t_i) + v(t_i)           \\
-\end{array}" title="\begin{array}{c}
-    \dot{x} = F(t)x(t) + B(t)u(t) + G(t)w(t) \\
-    z(t_i) = H(t_i)x(t_i) + v(t_i)           \\
-\end{array}" class="math display" /></p>
-<p>A <em>Markov Process</em> states that given a sequence of probability
-distributions (<img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20F_%7Bx_%7Bt_i%20%7C%20x_%7Bt_i%20-%201%7D%2Cx_%7Bt_i%20-%202%7D%2C%20...%7D%7D%28%5Czeta_i%20%7C%20x_%7Bi-1%7D%2C%20x_%7Bi-2%7D%2C%20...%29"
-alt="F_{x_{t_i | x_{t_i - 1},x_{t_i - 2}, ...}}(\zeta_i | x_{i-1}, x_{i-2}, ...)"
-title="F_{x_{t_i | x_{t_i - 1},x_{t_i - 2}, ...}}(\zeta_i | x_{i-1}, x_{i-2}, ...)"
-class="math inline" />), the entire sequence can simply be represented
-by the previous data set <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20F_%7Bx_%7Bt_i%20%7C%20x_%7Bt_i%20-%201%60%60%60%28%5Czeta_i%20%7C%20x_%7Bi-1%7D%29"
-alt="F_{x_{t_i | x_{t_i - 1```(\zeta_i | x_{i-1})"
-title="F_{x_{t_i | x_{t_i - 1```(\zeta_i | x_{i-1})"
-class="math inline" />. Assuming this sequence is greated by Gaussian
-white noise, the process is known as a <em>Gauss-Markov</em> process <a
-href="#Footnotes#1.md">#1</a>.</p>
-<p>Furthuremore, <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20w%28t%29"
-alt="w(t)" title="w(t)" class="math inline" /> and <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20v%28t%29"
-alt="v(t)" title="v(t)" class="math inline" /> are white Gaussian
-noises, assumed independent of each other and their initial conditions.
-These noises model both the disturbances and noise corruption, but as
-well as the uncertainty inherent in the model itself (i.e. the model
-does not perfectly describe the true process) <a
-href="#Footnotes#1.md">#1</a>.</p>
-<h2
-id="foundations-white-gaussian-noise-and-brownian-motion">Foundations:
-White Gaussian Noise and Brownian Motion</h2>
-<p>A process <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20x%28%5Ccdot%2C%20%5Ccdot%29"
-alt="x(\cdot, \cdot)" title="x(\cdot, \cdot)" class="math inline" /> is
-a <em>white Gaussian process</em> if, for any choice of <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20t_1%2C...%2Ct_N%20%5Cin%20T"
-alt="t_1,...,t_N \in T" title="t_1,...,t_N \in T"
-class="math inline" />, the <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20N" alt="N"
-title="N" class="math inline" /> random vectors <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20x%28t_1%2C%20%5Ccdot%29%2C...%2Cx%28t_N%2C%20%5Ccdot%29"
-alt="x(t_1, \cdot),...,x(t_N, \cdot)"
-title="x(t_1, \cdot),...,x(t_N, \cdot)" class="math inline" /> are
-independent Gaussian random vectors <a
-href="#Footnotes#1.md">#1</a>.</p>
-<p><em>Brownian Motion</em> will serve as a basic process for
-continuous-time modeling. With it, models can be properly developed in
-the form of stochastic differential equations whose solutions can be
-obtained. The process <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cbeta%28%5Ccdot%2C%5Ccdot%29"
-alt="\beta(\cdot,\cdot)" title="\beta(\cdot,\cdot)"
-class="math inline" /> is defined to be a <em>scalar constant-diffusion
-Brownian motion process</em> if</p>
-<ul>
+\end{array}
+<p>
+\]
+</p>
+
+<p>
+A <i>Markov Process</i> states that given a sequence of probability
+distributions
+(\(F_{x_{t_i | x_{t_i - 1},x_{t_i - 2}, ...}}(\zeta_i | x_{i-1}, x_{i-2}, ...)\)),
+the entire sequence can simply be represented by the previous data set
+\(F_{x_{t_i | x_{t_i - 1```(\zeta_i | x_{i-1})\). Assuming this sequence
+is greated by Gaussian white noise, the process is known as a
+<i>Gauss-Markov</i> process #1.
+</p>
+
+<p>
+Furthuremore, \(w(t)\) and \(v(t)\) are white Gaussian noises, assumed
+independent of each other and their initial conditions. These noises
+model both the disturbances and noise corruption, but as well as the
+uncertainty inherent in the model itself (i.e. the model does not
+perfectly describe the true process) #1.
+</p>
+</div>
+</div>
+
+<div id="outline-container-foundations-white-gaussian-noise-and-brownian-motion" class="outline-3">
+<h3 id="foundations-white-gaussian-noise-and-brownian-motion"><span class="section-number-3">6.2.</span> Foundations: White Gaussian Noise and Brownian Motion</h3>
+<div class="outline-text-3" id="text-foundations-white-gaussian-noise-and-brownian-motion">
+<p>
+A process \(x(\cdot, \cdot)\) is a <i>white Gaussian process</i> if, for any
+choice of \(t_1,...,t_N \in T\), the \(N\) random vectors
+\(x(t_1, \cdot),...,x(t_N, \cdot)\) are independent Gaussian random
+vectors #1.
+</p>
+
+<p>
+<i>Brownian Motion</i> will serve as a basic process for continuous-time
+modeling. With it, models can be properly developed in the form of
+stochastic differential equations whose solutions can be obtained. The
+process \(\beta(\cdot,\cdot)\) is defined to be a <i>scalar
+constant-diffusion Brownian motion process</i> if
+</p>
+
+<ul class="org-ul">
 <li>It is a process with independent increments</li>
-<li>The increments are Gaussian random variables such that for <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20t_1" alt="t_1"
-title="t_1" class="math inline" /> and <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20t_2" alt="t_2"
-title="t_2" class="math inline" /> any time instant in <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20T" alt="T"
-title="T" class="math inline" />,</li>
+<li>The increments are Gaussian random variables such that for \(t_1\) and
+\(t_2\) any time instant in \(T\),</li>
 </ul>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bc%7D%0A%20%20%20%20E%5C%7B%20%5B%5Cbeta%28t_2%29%20-%20%5Cbeta%28t_1%29%5D%5C%7D%20%3D%200%20%5C%5C%0A%20%20%20%20E%5C%7B%20%5B%5Cbeta%28t_2%29%20-%20%5Cbeta%28t_1%29%5D%5E2%20%3D%20q%7Ct_2%20-%20t_1%7C%0A%5Cend%7Barray%7D"
-alt="\begin{array}{c}
+
+<p>
+\[
+</p>
+\begin{array}{c}
     E\{ [\beta(t_2) - \beta(t_1)]\} = 0 \\
     E\{ [\beta(t_2) - \beta(t_1)]^2 = q|t_2 - t_1|
-\end{array}" title="\begin{array}{c}
-    E\{ [\beta(t_2) - \beta(t_1)]\} = 0 \\
-    E\{ [\beta(t_2) - \beta(t_1)]^2 = q|t_2 - t_1|
-\end{array}" class="math display" /></p>
-<pre><code>where $q$ is known as the _diffusion_ of the process.</code></pre>
-<p>The statistics at any time instant <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20i" alt="i"
-title="i" class="math inline" /> is denoted</p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bc%7D%0A%20%20%20%20m_%7B%5Cbeta%7D%28t_i%20%29%20%20%20%20%20%20%3D%20E%5C%7B%20%21%5Bpic%5D%28%5Cbeta%28t_i%29%29%5C%7D%20%3D%200%20%5C%5C%0A%20%20%20%20P_%7B%5Cbeta%20%5Cbeta%7D%28t_i%29%20%3D%20E%5C%7B%20%21%5Bpic%5D%28%5Cbeta%28t_i%29%5E2%29%20%3D%20q%7Ct_i%20-%20t_0%7C%0A%5Cend%7Barray%7D"
-alt="\begin{array}{c}
+\end{array}
+<p>
+\]
+</p>
+
+<pre class="example" id="org1e99507">
+where $q$ is known as the _diffusion_ of the process.
+</pre>
+
+<p>
+The statistics at any time instant \(i\) is denoted
+</p>
+
+<p>
+\[
+</p>
+\begin{array}{c}
     m_{\beta}(t_i )      = E\{ ![pic](\beta(t_i))\} = 0 \\
     P_{\beta \beta}(t_i) = E\{ ![pic](\beta(t_i)^2) = q|t_i - t_0|
-\end{array}" title="\begin{array}{c}
-    m_{\beta}(t_i )      = E\{ ![pic](\beta(t_i))\} = 0 \\
-    P_{\beta \beta}(t_i) = E\{ ![pic](\beta(t_i)^2) = q|t_i - t_0|
-\end{array}" class="math display" /></p>
-<p>where <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20q" alt="q"
-title="q" class="math inline" /> indicates how fast the mean square
-value of <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cbeta%28%5Ccdot%2C%5Ccdot%29"
-alt="\beta(\cdot,\cdot)" title="\beta(\cdot,\cdot)"
-class="math inline" /> diverges from its initial value of zero at time
-<img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20t_0" alt="t_0"
-title="t_0" class="math inline" />. To generalize this the vector
-Brownian motion with white process can be described as <a
-href="#Footnotes#1.md">#1</a></p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bc%7D%0A%20%20%20%20E%5C%7Bw%28t%5C%7D%20%20%20%20%20%20%20%20%20%3D%200%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%20%20%20%20E%5C%7D%7Bw%28t%29w%28t%29%5ET%5C%7D%20%3D%20Q%28t%29%20%5Cdelta%28t-t%27%29%20%5C%5C%0A%5Cend%7Barray%7D"
-alt="\begin{array}{c}
+\end{array}
+<p>
+\]
+</p>
+
+<p>
+where \(q\) indicates how fast the mean square value of
+\(\beta(\cdot,\cdot)\) diverges from its initial value of zero at time
+\(t_0\). To generalize this the vector Brownian motion with white
+process can be described as #1
+</p>
+
+<p>
+\[
+</p>
+\begin{array}{c}
     E\{w(t\}         = 0                 \\
-    E\}{w(t)w(t)^T\} = Q(t) \delta(t-t&#39;) \\
-\end{array}" title="\begin{array}{c}
-    E\{w(t\}         = 0                 \\
-    E\}{w(t)w(t)^T\} = Q(t) \delta(t-t&#39;) \\
-\end{array}" class="math display" /></p>
-<p>Notes that Brownian motion is continuous but not differentiable <a
-href="#Footnotes#1.md">#1</a>.</p>
-<h2 id="stochastic-integrals">Stochastic Integrals</h2>
-<p>A <em>scalar stochastic integral</em> is of the form</p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20l%28t%2C%5Ccdot%29%20%3D%20%5Cint_%7Bt_0%7D%5Et%20a%28%5Ctau%29%20d%5Cbeta%20%28%5Ctau%2C%5Ccdot%29"
-alt="l(t,\cdot) = \int_{t_0}^t a(\tau) d\beta (\tau,\cdot)"
-title="l(t,\cdot) = \int_{t_0}^t a(\tau) d\beta (\tau,\cdot)"
-class="math display" /></p>
-<ul>
+    E\}{w(t)w(t)^T\} = Q(t) \delta(t-t') \\
+\end{array}
+<p>
+\]
+</p>
+
+<p>
+Notes that Brownian motion is continuous but not differentiable
+#1.
+</p>
+</div>
+</div>
+
+<div id="outline-container-stochastic-integrals" class="outline-3">
+<h3 id="stochastic-integrals"><span class="section-number-3">6.3.</span> Stochastic Integrals</h3>
+<div class="outline-text-3" id="text-stochastic-integrals">
+<p>
+A <i>scalar stochastic integral</i> is of the form
+</p>
+
+<p>
+\[
+l(t,\cdot) = \int_{t_0}^t a(\tau) d\beta (\tau,\cdot)
+\]
+</p>
+
+<ul class="org-ul">
 <li>Stocastic integrals exibit the usual linear properties of ordinary
 integrals</li>
-<li>Integration by parts is also valid. However, the second term is not
-a stocastic integral but an ordinary Stieltjes integral definable for
-each sample of <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cbeta%28%5Ccdot%2C%20%5Ccdot%29"
-alt="\beta(\cdot, \cdot)" title="\beta(\cdot, \cdot)"
-class="math inline" />, if <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20a%28%5Ccdot%29"
-alt="a(\cdot)" title="a(\cdot)" class="math inline" /> is of bounded
+<li>Integration by parts is also valid. However, the second term is not a
+stocastic integral but an ordinary Stieltjes integral definable for
+each sample of \(\beta(\cdot, \cdot)\), if \(a(\cdot)\) is of bounded
 variation.</li>
 </ul>
-<h2 id="stochastic-differentials">Stochastic Differentials</h2>
-<p>Given a stochastic integral</p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20l%28t%29%20%3D%20l%28t_0%29%20%2B%20%5Cint_%7Bt_0%7D%5Et%20A%28%5Ctau%29%20d%20%5Cbeta%20%28%5Ctau%29"
-alt="l(t) = l(t_0) + \int_{t_0}^t A(\tau) d \beta (\tau)"
-title="l(t) = l(t_0) + \int_{t_0}^t A(\tau) d \beta (\tau)"
-class="math display" /></p>
-<p>the <em>stochastic integral</em> of <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20l%28t%29"
-alt="l(t)" title="l(t)" class="math inline" /> is defined as <a
-href="#Footnotes#1.md">#1</a></p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20dl%28t%29%20%3D%20A%28%5Ctau%29%20d%20%5Cbeta%28%5Ctau%29"
-alt="dl(t) = A(\tau) d \beta(\tau)"
-title="dl(t) = A(\tau) d \beta(\tau)" class="math display" /></p>
-<p>Noting that Brownian motion is nondifferentiable, <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20dl%28t%29"
-alt="dl(t)" title="dl(t)" class="math inline" /> is differentiable in
-the sense that if it is integrated over the entire interval <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20t_0" alt="t_0"
-title="t_0" class="math inline" /> to <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20t" alt="t"
-title="t" class="math inline" />, it yields the random variable <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Bl%28t%29%20-%20l%28t_0%29%5D"
-alt="[l(t) - l(t_0)]" title="[l(t) - l(t_0)]" class="math inline" /> <a
-href="#Footnotes#1.md">#1</a>:</p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cint_%7Bt_0%7D%5Et%20dlt%28t%29%20%3D%20l%28t%29%20-%20l%28t_0%29"
-alt="\int_{t_0}^t dlt(t) = l(t) - l(t_0)"
-title="\int_{t_0}^t dlt(t) = l(t) - l(t_0)" class="math display" /></p>
-<p>Suppose we have a matrix <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20D%28%5Ccdot%29"
-alt="D(\cdot)" title="D(\cdot)" class="math inline" /> of differentiable
-functions as well as a stocastic integral of the form</p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bc%7D%0A%20%20%20%20s%28t%29%20%3D%20s%28t_0%29%20%2B%20%5Cint_%7Bt_0%29%5Et%20A%28%5Ctau%29%20d%5Cbeta%20%28%5Ctau%29%20%5C%5C%0A%20%20%20%20y%28t%29%20%3D%20D%28t%29%20s%28t%29%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%0A%5Cend%7Barray%7D"
-alt="\begin{array}{c}
+</div>
+</div>
+
+<div id="outline-container-stochastic-differentials" class="outline-3">
+<h3 id="stochastic-differentials"><span class="section-number-3">6.4.</span> Stochastic Differentials</h3>
+<div class="outline-text-3" id="text-stochastic-differentials">
+<p>
+Given a stochastic integral
+</p>
+
+<p>
+\[
+l(t) = l(t_0) + \int_{t_0}^t A(\tau) d \beta (\tau)
+\]
+</p>
+
+<p>
+the <i>stochastic integral</i> of \(l(t)\) is defined #1
+</p>
+
+<p>
+\[
+dl(t) = A(\tau) d \beta(\tau)
+\]
+</p>
+
+<p>
+Noting that Brownian motion is nondifferentiable, \(dl(t)\) is
+differentiable in the sense that if it is integrated over the entire
+interval \(t_0\) to \(t\), it yields the random variable
+\([l(t) - l(t_0)]\) #1:
+</p>
+
+<p>
+\[
+\int_{t_0}^t dlt(t) = l(t) - l(t_0)
+\]
+</p>
+
+<p>
+Suppose we have a matrix \(D(\cdot)\) of differentiable functions as
+well as a stocastic integral of the form
+</p>
+
+<p>
+\[
+</p>
+\begin{array}{c}
     s(t) = s(t_0) + \int_{t_0)^t A(\tau) d\beta (\tau) \\
     y(t) = D(t) s(t)                                   \\
-\end{array}" title="\begin{array}{c}
-    s(t) = s(t_0) + \int_{t_0)^t A(\tau) d\beta (\tau) \\
-    y(t) = D(t) s(t)                                   \\
-\end{array}" class="math display" /></p>
-<p>It can be shown that the differential equation of y is</p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20dy%28t%29%20%3D%20%5Cdot%7BD%7D%28t%29%20s%28t%29%20dt%20%2B%20D%28t%29%20ds%28t%29"
-alt="dy(t) = \dot{D}(t) s(t) dt + D(t) ds(t)"
-title="dy(t) = \dot{D}(t) s(t) dt + D(t) ds(t)"
-class="math display" /></p>
-<p>Where the integral of the first term can be interpreted as an
-ordinary Riemann integral for each sample function, and the integral of
-the second term is a stochastic integral which is defined properly only
-in th mean square sense. Futhermore, this equation revleals that the
+\end{array}
+<p>
+\]
+</p>
+
+<p>
+It can be shown that the differential equation of y is
+</p>
+
+<p>
+\[
+dy(t) = \dot{D}(t) s(t) dt + D(t) ds(t)
+\]
+</p>
+
+<p>
+Where the integral of the first term can be interpreted as an ordinary
+Riemann integral for each sample function, and the integral of the
+second term is a stochastic integral which is defined properly only in
+th mean square sense. Futhermore, this equation revleals that the
 sthocastic differential of the linear form obeys the same formal rules
-as the dtermanistic total differential of a corresponding <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20y%28t%29%20%3D%20D%28t%29s%28t%29"
-alt="y(t) = D(t)s(t)" title="y(t) = D(t)s(t)" class="math inline" /> <a
-href="#Footnotes#1.md">#1</a>.</p>
-<h2 id="linear-stochastic-differential-equations">Linear Stochastic
-Differential Equations</h2>
-<p>We would like to generate a system of the form</p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cdot%7Bx%7D%28t%29%20%3D%20F%28t%29%20x%28t%29%20%2B%20G%28t%29%20w%28t%29"
-alt="\dot{x}(t) = F(t) x(t) + G(t) w(t)"
-title="\dot{x}(t) = F(t) x(t) + G(t) w(t)" class="math display" /></p>
-<p>However, this equation cannot be used to generate a solution
-directly. Therefore we employ the <em>linear stochastic differential
-equation</em></p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20dx%28t%29%20%3D%20F%28t%29x%28t%29dt%20%2B%20G%28t%29%20d%5Cbeta%20%28t%29"
-alt="dx(t) = F(t)x(t)dt + G(t) d\beta (t)"
-title="dx(t) = F(t)x(t)dt + G(t) d\beta (t)" class="math display" /></p>
-<p>Where <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20G%28%5Ccdot%29"
-alt="G(\cdot)" title="G(\cdot)" class="math inline" /> is a known matrix
-of piecewise continuous functions and <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cbeta%28%5Ccdot%2C%20%5Ccdot%29"
-alt="\beta(\cdot, \cdot)" title="\beta(\cdot, \cdot)"
-class="math inline" /> is a vector-valued Brownian motion process of
-diffusion <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20Q%28t%29"
-alt="Q(t)" title="Q(t)" class="math inline" /> <a
-href="#Footnotes#1.md">#1</a>. Supose we propose a solution of the
-form</p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20x%28t%29%20%3D%20%5CPsi%20%28t%2Ct_0%29%20x%28t_0%29%20%2B%20int_%7Bt_0%7D%5Et%20%5CPsi%28t%2C%5Ctau%29%20B%28%5Ctau%29%20u%28%5Ctau%29%20d%5Ctau%20%2B%20%5Cint_%7Bt_0%7D%5Et%20%5CPsi%28t%2C%5Ctau%29%20G%28%5Ctau%29%20d%5Cbeta%28%5Ctau%29"
-alt="x(t) = \Psi (t,t_0) x(t_0) + int_{t_0}^t \Psi(t,\tau) B(\tau) u(\tau) d\tau + \int_{t_0}^t \Psi(t,\tau) G(\tau) d\beta(\tau)"
-title="x(t) = \Psi (t,t_0) x(t_0) + int_{t_0}^t \Psi(t,\tau) B(\tau) u(\tau) d\tau + \int_{t_0}^t \Psi(t,\tau) G(\tau) d\beta(\tau)"
-class="math display" /></p>
-<p>that can be shown to satisfy both the initial condition as well as
-differential equation <a href="#Footnotes#1.md">#1</a>. The first part
-of the equation defines the inital state, the second defines
-<em>determanistic control inputs</em> into the system, and the third
-term is the set dyanamics to be observed and estimated. It is further
-noted that this solution is a Gauss-Markov process meaning that the next
-state relies only on the previous state. Because of this, it is useful
-to characterize the differential equations for <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20m_x%28t%29"
-alt="m_x(t)" title="m_x(t)" class="math inline" /> and <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20P_%7Bxx%7D%28t%29"
-alt="P_{xx}(t)" title="P_{xx}(t)" class="math inline" /> to describe
-their evolution in time <a href="#Footnotes#1.md">#1</a></p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bc%7D%0A%20%20%20%20%5Cdot%7Bm%7D_x%28t%29%20%20%20%20%3D%20F%28t%29m_x%28t%29%20%20%2B%20B%28t%29u%28t%29%20%5C%5C%0A%20%20%20%20%5Cdot%7BP%7D_%7Bxx%7D%28t%29%20%3D%20F%28t%29P_%7Bxx%7D%28t%29%20%2B%20P_%7Bxx%7D%28t%29F%5ET%28t%29%20%2B%20G%28t%29Q%28t%29G%5ET%28t%29%0A%5Cend%7Barray%7D"
-alt="\begin{array}{c}
+as the dtermanistic total differential of a corresponding
+\(y(t) = D(t)s(t)\) #1.
+</p>
+</div>
+</div>
+
+<div id="outline-container-linear-stochastic-differential-equations" class="outline-3">
+<h3 id="linear-stochastic-differential-equations"><span class="section-number-3">6.5.</span> Linear Stochastic Differential Equations</h3>
+<div class="outline-text-3" id="text-linear-stochastic-differential-equations">
+<p>
+We would like to generate a system of the form
+</p>
+
+<p>
+\[
+\dot{x}(t) = F(t) x(t) + G(t) w(t)
+\]
+</p>
+
+<p>
+However, this equation cannot be used to generate a solution directly.
+Therefore we employ the <i>linear stochastic differential equation</i>
+</p>
+
+<p>
+\[
+dx(t) = F(t)x(t)dt + G(t) d\beta (t)
+\]
+</p>
+
+<p>
+Where \(G(\cdot)\) is a known matrix of piecewise continuous functions
+and \(\beta(\cdot, \cdot)\) is a vector-valued Brownian motion process
+of diffusion \(Q(t)\) #1. Supose we propose a
+solution of the form
+</p>
+
+<p>
+\[
+x(t) = \Psi (t,t_0) x(t_0) + int_{t_0}^t \Psi(t,\tau) B(\tau) u(\tau) d\tau + \int_{t_0}^t \Psi(t,\tau) G(\tau) d\beta(\tau)
+\]
+</p>
+
+<p>
+that can be shown to satisfy both the initial condition as well as
+differential equation #1. The first part of the
+equation defines the initial state, the second defines <i>determanistic
+control inputs</i> into the system, and the third term is the set dyanamics
+to be observed and estimated. It is further noted that this solution is
+a Gauss-Markov process meaning that the next state relies only on the
+previous state. Because of this, it is useful to characterize the
+differential equations for \(m_x(t)\) and \(P_{xx}(t)\) to describe
+their evolution in time #1
+</p>
+
+<p>
+\[
+</p>
+\begin{array}{c}
     \dot{m}_x(t)    = F(t)m_x(t)  + B(t)u(t) \\
     \dot{P}_{xx}(t) = F(t)P_{xx}(t) + P_{xx}(t)F^T(t) + G(t)Q(t)G^T(t)
-\end{array}" title="\begin{array}{c}
-    \dot{m}_x(t)    = F(t)m_x(t)  + B(t)u(t) \\
-    \dot{P}_{xx}(t) = F(t)P_{xx}(t) + P_{xx}(t)F^T(t) + G(t)Q(t)G^T(t)
-\end{array}" class="math display" /></p>
-<h2 id="linear-stochastic-difference-equations">Linear Stochastic
-Difference Equations</h2>
-<p>For a time-invariant or slowly varying <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20F%28%5Ccdot%29"
-alt="F(\cdot)" title="F(\cdot)" class="math inline" />, <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20B%28%5Ccdot%29"
-alt="B(\cdot)" title="B(\cdot)" class="math inline" />, and <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%21%5Bpic%5D%28G%28%5Ccdot%29Q%28%5Ccdot%29G%5ET%28%5Ccdot%29%29"
-alt="![pic](G(\cdot)Q(\cdot)G^T(\cdot))"
-title="![pic](G(\cdot)Q(\cdot)G^T(\cdot))" class="math inline" />, if
-the sample period is short compared to the system’s natural transients,
-a first order approxomation to the solution can be used <a
-href="#Footnotes#1.md">#1</a></p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bc%7D%0A%20%20%20%20%5CPsi%28t_%7Bi%2B1%7D%2C%20t_i%29%20%5Capprox%20I%20%2B%20F%28t_i%29%5Bt_%7Bi%2B1%7D%2C%20t_i%5D%20%5C%5C%0A%20%20%20%20B_d%20%5Capprox%20B%28t_i%29%5Bt_%7Bi%2B1%7D%2C%20t_i%5D%20%5C%5C%0A%20%20%20%20Q_d%28t_i%29%20%5Capprox%20G%28t_i%29Q%28t_i%29G%5ET%28t_i%29%5Bt_%7Bi%2B1%7D%2C%20t_i%5D%0A%5Cend%7Barray%7D"
-alt="\begin{array}{c}
+\end{array}
+<p>
+\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-linear-stochastic-difference-equations" class="outline-3">
+<h3 id="linear-stochastic-difference-equations"><span class="section-number-3">6.6.</span> Linear Stochastic Difference Equations</h3>
+<div class="outline-text-3" id="text-linear-stochastic-difference-equations">
+<p>
+For a time-invariant or slowly varying \(F(\cdot)\), \(B(\cdot)\), and
+\(![pic](G(\cdot)Q(\cdot)G^T(\cdot))\), if the sample period is short
+compared to the system's natural transients, a first order approxomation
+to the solution can be used #1
+</p>
+
+<p>
+\[
+</p>
+\begin{array}{c}
     \Psi(t_{i+1}, t_i) \approx I + F(t_i)[t_{i+1}, t_i] \\
     B_d \approx B(t_i)[t_{i+1}, t_i] \\
     Q_d(t_i) \approx G(t_i)Q(t_i)G^T(t_i)[t_{i+1}, t_i]
-\end{array}" title="\begin{array}{c}
-    \Psi(t_{i+1}, t_i) \approx I + F(t_i)[t_{i+1}, t_i] \\
-    B_d \approx B(t_i)[t_{i+1}, t_i] \\
-    Q_d(t_i) \approx G(t_i)Q(t_i)G^T(t_i)[t_{i+1}, t_i]
-\end{array}" class="math display" /></p>
-<p>and the mean and covariance are propogated by <a
-href="#Footnotes#1.md">#1</a></p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bc%7D%0A%20%20%20%20m_x%28t_%7Bi%2B1%7D%29%20%3D%20%5CPsi%28t_%7Bi%2B1%7D%2C%20t_i%29%20m_x%28t_i%29%20%2B%20B_d%28t_i%29u%28t_i%29%20%5C%5C%0A%20%20%20%20P_%7Bxx%7D%28t_%7Bt%2B1%7D%29%20%3D%20%5CPsi%28t_%7Bi%2B1%7D%2C%20t_i%29%20P_xx%28t_i%29%20%5CPsi%5ET%20%28t_%7Bi%2B1%7D%2C%20t_i%29%20%2B%20G%28t_i%29Q%28t_i%29G%5ET%28t_i%29%0A%5Cend%7Barray%7D"
-alt="\begin{array}{c}
+\end{array}
+<p>
+\]
+</p>
+
+<p>
+and the mean and covariance are propogated by #1
+</p>
+
+<p>
+\[
+</p>
+\begin{array}{c}
     m_x(t_{i+1}) = \Psi(t_{i+1}, t_i) m_x(t_i) + B_d(t_i)u(t_i) \\
     P_{xx}(t_{t+1}) = \Psi(t_{i+1}, t_i) P_xx(t_i) \Psi^T (t_{i+1}, t_i) + G(t_i)Q(t_i)G^T(t_i)
-\end{array}" title="\begin{array}{c}
-    m_x(t_{i+1}) = \Psi(t_{i+1}, t_i) m_x(t_i) + B_d(t_i)u(t_i) \\
-    P_{xx}(t_{t+1}) = \Psi(t_{i+1}, t_i) P_xx(t_i) \Psi^T (t_{i+1}, t_i) + G(t_i)Q(t_i)G^T(t_i)
-\end{array}" class="math display" /></p>
-<h3 id="lears-method">Lear’s Method</h3>
-<p>Given a differential equation of the form</p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20ds%28t%29%20%3D%20F%28t%29x%28t%29dt%20%2B%20B%28t%29%20u%28t%29%20dt%20%2B%20G%28t%29d%5Cbeta%20%28t%29"
-alt="ds(t) = F(t)x(t)dt + B(t) u(t) dt + G(t)d\beta (t)"
-title="ds(t) = F(t)x(t)dt + B(t) u(t) dt + G(t)d\beta (t)"
-class="math display" /></p>
-<p>The solution can be approximated as</p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5CPsi%28t_%7Bi%2B1%7D%2C%20t_i%29%20%3D%20I%20%2B%20%5CDelta%20t%20%5Cfrac%7BF%28t_%7Bi%2B1%7D%20%2B%20F%28t_i%29%7D%7B2%7D%20%2B%20%5Cfrac%7B%5CDelta%20t%5E2%7D%7B2%7D%20F%28t_%7Bi%2B1%7D%29F%28t_i%29"
-alt="\Psi(t_{i+1}, t_i) = I + \Delta t \frac{F(t_{i+1} + F(t_i)}{2} + \frac{\Delta t^2}{2} F(t_{i+1})F(t_i)"
-title="\Psi(t_{i+1}, t_i) = I + \Delta t \frac{F(t_{i+1} + F(t_i)}{2} + \frac{\Delta t^2}{2} F(t_{i+1})F(t_i)"
-class="math display" /></p>
-<h3 id="savages-method">Savage’s Method</h3>
-<p>Given a differential equation of the form</p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20dx%28t%29%20%3D%20F%28t%29x%28t%29dt%20%2B%20B%28t%29%20u%28t%29%20dt%20%2B%20G%28t%29d%5Cbeta%20%28t%29"
-alt="dx(t) = F(t)x(t)dt + B(t) u(t) dt + G(t)d\beta (t)"
-title="dx(t) = F(t)x(t)dt + B(t) u(t) dt + G(t)d\beta (t)"
-class="math display" /></p>
-<p>The solution can be approximated as</p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bl%7D%0A%20%20%20%20%5CDelta%20%5CPsi%20%3D%20%5Cint_%7Bt_i%7D%5E%7Bt_%7Bi%2B1%7D%7D%20F%28%5Ctau%29%20d%5Ctau%20%5C%5C%0A%20%20%20%20%5CPsi%28t_%7Bi%2B1%7D%2Ct_i%29%20%3D%20I%20%2B%20%5CDelta%20%5CPsi%20%2B%20%5Cfrac%7B%5CDelta%20%5CPsi%5E2%7D%7B2%21%7D%20%2B%20%5Cfrac%7B%5CDelta%20%5CPsi%5E3%7D%7B3%21%7D%20%2B%20%5Ccdots%0A%5Cend%7Barray%7D"
-alt="\begin{array}{l}
+\end{array}
+<p>
+\]
+</p>
+</div>
+
+<div id="outline-container-lears-method" class="outline-4">
+<h4 id="lears-method"><span class="section-number-4">6.6.1.</span> Lear's Method</h4>
+<div class="outline-text-4" id="text-lears-method">
+<p>
+Given a differential equation of the form
+</p>
+
+<p>
+\[
+ds(t) = F(t)x(t)dt + B(t) u(t) dt + G(t)d\beta (t)
+\]
+</p>
+
+<p>
+The solution can be approximated as
+</p>
+
+<p>
+\[
+\Psi(t_{i+1}, t_i) = I + \Delta t \frac{F(t_{i+1} + F(t_i)}{2} + \frac{\Delta t^2}{2} F(t_{i+1})F(t_i)
+\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-savages-method" class="outline-4">
+<h4 id="savages-method"><span class="section-number-4">6.6.2.</span> Savage's Method</h4>
+<div class="outline-text-4" id="text-savages-method">
+<p>
+Given a differential equation of the form
+</p>
+
+<p>
+\[
+dx(t) = F(t)x(t)dt + B(t) u(t) dt + G(t)d\beta (t)
+\]
+</p>
+
+<p>
+The solution can be approximated as
+</p>
+
+<p>
+\[
+</p>
+\begin{array}{l}
     \Delta \Psi = \int_{t_i}^{t_{i+1}} F(\tau) d\tau \\
     \Psi(t_{i+1},t_i) = I + \Delta \Psi + \frac{\Delta \Psi^2}{2!} + \frac{\Delta \Psi^3}{3!} + \cdots
-\end{array}" title="\begin{array}{l}
-    \Delta \Psi = \int_{t_i}^{t_{i+1}} F(\tau) d\tau \\
-    \Psi(t_{i+1},t_i) = I + \Delta \Psi + \frac{\Delta \Psi^2}{2!} + \frac{\Delta \Psi^3}{3!} + \cdots
-\end{array}" class="math display" /></p>
-<h2 id="the-overall-system-model">The Overall System Model</h2>
-<p>The measurements can be written as</p>
-<p><img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Barray%7D%7Bl%7D%0Adx%28t%29%20%3D%20F%28t%29x%28t%29dt%20%2B%20B%28t%29%20u%28t%29%20dt%20%2B%20G%28t%29d%5Cbeta%20%28t%29%0Az%28t_i%29%20%3D%20H%28t_i%29x%28t_i%29%20%2B%20v%28t_i%29%0A%5Cend%7Barray%7D"
-alt="\begin{array}{l}
+\end{array}
+<p>
+\]
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-the-overall-system-model" class="outline-3">
+<h3 id="the-overall-system-model"><span class="section-number-3">6.7.</span> The Overall System Model</h3>
+<div class="outline-text-3" id="text-the-overall-system-model">
+<p>
+The measurements can be written as
+</p>
+
+<p>
+\[
+</p>
+\begin{array}{l}
 dx(t) = F(t)x(t)dt + B(t) u(t) dt + G(t)d\beta (t)
 z(t_i) = H(t_i)x(t_i) + v(t_i)
-\end{array}" title="\begin{array}{l}
-dx(t) = F(t)x(t)dt + B(t) u(t) dt + G(t)d\beta (t)
-z(t_i) = H(t_i)x(t_i) + v(t_i)
-\end{array}" class="math display" /></p>
-<p>Where <img style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20dx%28t%29"
-alt="dx(t)" title="dx(t)" class="math inline" /> is the continuous model
-with measurements available at intervals <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20z%28t_i%29"
-alt="z(t_i)" title="z(t_i)" class="math inline" />. The noise will be
-modeled as a white Gaussian discrete-time stocastic process with a first
-moment (mean) of 0 and a second moment (covariance) of <img
-style="vertical-align:middle"
-src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20R%28t_i%29%5C%3B%20%5Ciff%20t_i%20%3D%20t_j"
-alt="R(t_i)\; \iff t_i = t_j" title="R(t_i)\; \iff t_i = t_j"
-class="math inline" />.</p>
-<h1 id="optimal-filtering">(5) Optimal Filtering</h1>
-<p>{{https://2.bp.blogspot.com/_7YSZm5NIAmQ/S_wNkdp6ClI/AAAAAAAAAOU/hEYy4fWR9Rg/s1600/rw_plot.jpg|Plot
-of estimate, mean, and covariance}}</p>
-<h1 id="footnotes">Footnotes</h1>
-<ul>
-<li><em>1</em> <span class="citation"
-data-cites="maybeck_1979">@maybeck_1979</span> | Peter S. Maybeck.
-Stochastic models, estimation and control: A series of monographs and
-textbooks. Acad. Press, 1979.</li>
-</ul>
-</body>
-</html>
-	</div>
+\end{array}
+<p>
+\]
+</p>
+
+<p>
+Where \(dx(t)\) is the continuous model with measurements available at
+intervals \(z(t_i)\). The noise will be modeled as a white Gaussian
+discrete-time stocastic process with a first moment (mean) of 0 and a
+second moment (covariance) of \(R(t_i)\; \iff t_i = t_j\).
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-optimal-filtering" class="outline-2">
+<h2 id="optimal-filtering"><span class="section-number-2">7.</span> (5) Optimal Filtering</h2>
+<div class="outline-text-2" id="text-optimal-filtering">
+<p>
+<a href="https://2.bp.blogspot.com/_7YSZm5NIAmQ/S_wNkdp6ClI/AAAAAAAAAOU/hEYy4fWR9Rg/s1600/rw_plot.jpg">Plot</a>
+</p>
+
+<p>
+of estimate, mean, and covariance}}
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Alexander Brown</p>
+<p class="date">Created: 2022-09-12 Mon 11:18</p>
+</div>
 </body>
 </html>

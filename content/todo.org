@@ -1,0 +1,36 @@
+* Topics
+:PROPERTIES:
+:CUSTOM_ID: topics
+:END:
+Below is a living list of online courses, video ideas, etc. that I would
+like to cover/make content on
+
+* Video Ideas
+:PROPERTIES:
+:CUSTOM_ID: video-ideas
+:END:
+** [[https://www.youtube.com/channel/UC9Y2Lk1mgsMb-NVZCrkplxQ.md][Alex Brown]]
+:PROPERTIES:
+:CUSTOM_ID: alex-brown
+:END:
+- [ ] Simple static website generator
+- [ ] Arch Linux install script
+
+** [[https://www.youtube.com/c/Loomuh.md][Loomuh]]
+:PROPERTIES:
+:CUSTOM_ID: loomuh
+:END:
+- [ ] Fallout 1
+- [ ] Fallout 2
+
+** Projects
+:PROPERTIES:
+:CUSTOM_ID: projects
+:END:
+- Frog tank sun/mist blaster
+- Security system
+- Video controller clone
+- Stream deck clone
+  - [[file:docs/design_drawings/stream-deck.htm.md][Design Drawing]]
+- Audio interface
+- Turtlebot clone

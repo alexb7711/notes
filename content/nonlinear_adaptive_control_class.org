@@ -1,0 +1,18 @@
+* Class Notes
+:PROPERTIES:
+:CUSTOM_ID: class-notes
+:END:
+- [[file:nonlinear_adaptive_control/1_introduction.htm][Introduction]]
+- [[file:./nonlinear_adaptive_control/2_preliminaries.htm][Preliminaries]]
+- [[file:./nonlinear_adaptive_control/3_vectors.htm][Vectors]]
+- [[file:./nonlinear_adaptive_control/4_fundamental_properties.htm][Fundamental Properties]]
+- [[file:./nonlinear_adaptive_control/5_stability_of_time_invariant_systems.htm][Stability of Time Invariant Systems]]
+  - [[file:./nonlinear_adaptive_control/5_hwk1_class.htm][HWK1 Class]]
+  - [[file:./nonlinear_adaptive_control/5_lyaponov_time.htm][Lyaponov Function Examples]]
+- [[file:./nonlinear_adaptive_control/6_linearization.htm][Linearization]]
+- [[file:./nonlinear_adaptive_control/7_stability_of_time_varying_systems.htm][Stability of Time Varying Systems]]
+- [[file:./nonlinear_adaptive_control/8_input_stability_and_controllability.htm][Input Stability and Controllability]]
+- [[file:./nonlinear_adaptive_control/9_feedback_linearization.htm][Feedback Linearization]]
+- [[file:./nonlinear_adaptive_control/10_backstepping_and_passivity.htm][Backstepping and Passivity]]
+- [[file:./nonlinear_adaptive_control/11_robust_stabilization.htm][Robust Stabilization]]
+- [[file:./nonlinear_adaptive_control/12_adaptive_control.htm][Adaptive Control]]

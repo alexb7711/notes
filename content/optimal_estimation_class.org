@@ -1,0 +1,60 @@
+* Contents
+:PROPERTIES:
+:CUSTOM_ID: contents
+:END:
+
+* Optimal Estimation Class Notes
+:PROPERTIES:
+:CUSTOM_ID: optimal-estimation-class-notes
+:END:
+** Kalman Filter Debugging Guide
+:PROPERTIES:
+:CUSTOM_ID: kalman-filter-debugging-guide
+:END:
+- [[file:docs/optimal_estimation/engineers_guide_to_debugging_an_indirect_extended_kalman_filter.htm][Engineers Guide To Debugging An Indirect Extended Klaman Filter]]
+
+** Class Notes
+:PROPERTIES:
+:CUSTOM_ID: class-notes
+:END:
+- Preliminaries and Math Review
+  - [[file:docs/optimal_estimation/prelims_lectures_notes.htm][Introduction and Deterministic System Models]]
+- Probability Theory and Static Models
+  - [[file:docs/optimal_estimation/probability_theory_and_static_models_1.htm][Probability Theory and Static Models Part 1]]
+  - [[file:docs/optimal_estimation/probability_theory_and_static_models_2.htm][Probability Theory and Static Models Part 2]]
+- Stochastic Processes and Linear Dynamic System Model
+- Optimal Filtering
+  - [[file:docs/optimal_estimation/optimal_filtering.htm][Optimal Filtering]]
+
+* Video Lectures
+:PROPERTIES:
+:CUSTOM_ID: video-lectures
+:END:
+- Preliminaries and Math Review
+  - [[https://usu-my.sharepoint.com/:v:/g/personal/a01704744_aggies_usu_edu/EcL4KWD9H-NMi42mC-gA7C8B-elNw0Y-Osvm59TsOW--xQ?e=P7yhJQ][Lecture 1]]
+  - [[https://usu-my.sharepoint.com/:v:/g/personal/a01704744_aggies_usu_edu/EQr2Y_Pcb-9Po9_Ii3roODgBe_uJAyr6IPVsE69E3vcRYQ?e=ci2wc3][Lecture 2]]
+  - [[https://usu-my.sharepoint.com/:v:/g/personal/a01704744_aggies_usu_edu/EWsLfZuY2BVEjIa246FHV_YBIY9pEtrSu-y7JvkNA2LOOQ?e=PPVOt8][Lecture 3]]
+- Probability Theory and Static Models
+  - [[https://usu-my.sharepoint.com/:v:/g/personal/a01704744_aggies_usu_edu/ESc98bj7kbtBi1d0jsQCq3oBrhchV_14jhWoMKdw2rjheA?e=HxSmDo][Lecture 1]]
+  - [[https://usu-my.sharepoint.com/:v:/g/personal/a01704744_aggies_usu_edu/EWS6fvfr08ZEgnFGJgQ8uoYBHZVC17bwtAOIVVrze3kfig?e=P0SZgN][Lecture 2]]
+  - [[https://usu-my.sharepoint.com/:v:/g/personal/a01704744_aggies_usu_edu/EQq6Zg-4KCNArlXlt7oWneMBM9LRYwk1jnXGtL0Is5Iurg?e=WCronx][Lecture 3]]
+  - [[https://usu-my.sharepoint.com/:v:/g/personal/a01704744_aggies_usu_edu/EZPEScP0Y3VLsbeYxeGnVm0BUwEQ_8vQoJ1ZJhfMU9xCbA?e=qgB5e8][Lecture 4]]
+- Stochastic Processes and Linear Dynamic System Model
+  - [[https://usu-my.sharepoint.com/:v:/g/personal/a01704744_aggies_usu_edu/EYb2N62rjGxCiCPJ1saLZCYB9RQP_MvAuZ5xvuBrgPSPDg?e=O6FWdr][Lecture 1]]
+  -[[https://usu-my.sharepoint.com/:v:/g/personal/a01704744_aggies_usu_edu/EVhf_JYoRb9AlObbktifCycBkrJ_g9fkEojVCqbcsWUYMw?e=UhcIs4][ Lecture 2]]
+  - [[https://usu-my.sharepoint.com/:v:/g/personal/a01704744_aggies_usu_edu/EVhf_JYoRb9AlObbktifCycBkrJ_g9fkEojVCqbcsWUYMw?e=gvqgrh][Lecture 3]]
+  - [[https://usu-my.sharepoint.com/:v:/g/personal/a01704744_aggies_usu_edu/EaNpjCoArRNOizodNiM3tDQB8WntuF63gYp8QfXMGre3JA?e=Wl0gms][Lecture 4 (Nearly an hour in)]]
+  - [[https://usu-my.sharepoint.com/:v:/g/personal/a01704744_aggies_usu_edu/EWiMTTQWfRpDilHzyZCSL0oB6r7ivbfWiVlC1sa6bP4L3Q?e=o9dkOP][Lecture 5]]
+  - [[https://usu-my.sharepoint.com/:v:/g/personal/a01704744_aggies_usu_edu/EYSu4wl88XNBgdsYizwZHakB4BZseufUPVztaOgGM2xbqQ?e=eCccgq][Lecture 6]]
+- Optimal Filtering
+  - [[https://usu-my.sharepoint.com/:v:/g/personal/a01704744_aggies_usu_edu/EV0NdwAOJRxDp-K-5QXArJoBlQqJMjl6urskjv9uwpac5Q?e=EoumW3][Lecture 1]]
+  - [[https://usu-my.sharepoint.com/:v:/g/personal/a01704744_aggies_usu_edu/EV0NdwAOJRxDp-K-5QXArJoBlQqJMjl6urskjv9uwpac5Q?e=6IjGQg][Lecture 2]]
+  - [[https://usu-my.sharepoint.com/:v:/g/personal/a01704744_aggies_usu_edu/EW-iadb85hdOoGCYnDQTKS8BSBOJ71JAq5G5oowuollpww?e=QRfxa3][Lecture 3]]
+  - [[https://usu-my.sharepoint.com/:v:/g/personal/a01704744_aggies_usu_edu/Ed54GoX6Un5LtCAMgEZfOkgBuWmSlgBmtMv-DGDufIftAA?e=W4nmNO][Lecture 4 (40 min)]]
+  - [[https://usu-my.sharepoint.com/:v:/g/personal/a01704744_aggies_usu_edu/Ed54GoX6Un5LtCAMgEZfOkgBuWmSlgBmtMv-DGDufIftAA?e=t7dM7E][Lecture 5]]
+
+** Project Notes
+:PROPERTIES:
+:CUSTOM_ID: project-notes
+:END:
+- [[file:docs/optimal_estimation/trn_project.htm][Terrain Relative Navigation Project]]

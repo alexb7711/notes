@@ -1,43 +1,20 @@
-* Contents
-:PROPERTIES:
-:CUSTOM_ID: contents
-:END:
-#+begin_example
-    - [Home](#Home.md)
-    - [Notes and Posts](#Notes and Posts.md)
-            - [Notes](#Notes and Posts#Notes.md)
-#+end_example
-
 * Home
 :PROPERTIES:
 :CUSTOM_ID: home
 :END:
 Hello!
 
-Welcome to my blog. My name is Alex Brown. I am a Mechanical Engineer
-graduate with a minor in Computer Science. I'm now working full time as
-an Embedded Software Engineer as well as getting my master's degree in
-Electrical Engineering.
+Welcome to my blog, wiki, second-brain thing! This site will mainly consist of my personal notes taken while trying to
+learn new things. This will include things such as:
 
-This blog will mainly consist of my personal notes taken while trying to
-learn cool new things. This will include things such as:
-
-- Minimalistic desktop Linux setups and tools (Never ends)
-- Linux server setup and tools (Got a new NAS, going to start from
-  scratch soon)
-- (Neo)Vim
-- Developing a game engine/framework (TBD)
+- Minimal desktop Linux setups and tools
+- Emacs
+- 3D printing
+- Programming, embedded programming
+- Linux server setup and tools
 - And any other things that peak my interest
 
-I'll keep an updated list [[file:todo.html][here]] on things that I want
-to learn and explore. If there is anything that you may think is
-interesting or would like to contribute, feel free to make a pull
-request. This blog is built with
-[[https://vimwiki.github.io/.html][VimWiki]], so the rules for linking
-pages together is pretty simple.
-
-You can also find me on
-[[https://www.youtube.com/channel/UC9Y2Lk1mgsMb-NVZCrkplxQ.html][Youtube]]
+I keep a (not so updated) list [[file:todo.html][here]] on things that I want to learn and explore.
 
 * Notes and Posts
 :PROPERTIES:
@@ -52,5 +29,13 @@ This website has two purposes:
 :PROPERTIES:
 :CUSTOM_ID: notes
 :END:
-This is my knowledge base of [[file:notes.html][notes]]. Its messy,
-doesn't make much sense, but its mine.
+This is my knowledge base of [[file:notes.html][notes]]. Its messy, doesn't make much sense, but its mine.
+
+** TODO Blog
+:PROPERTIES:
+:CUSTOM_ID: blog
+:END:
+
+* Social
+- [[https://www.youtube.com/channel/UC9Y2Lk1mgsMb-NVZCrkplxQ.html][Youtube]]
+- [[https://www.twitch.tv/alexbstudy][Twitch]]

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-09-12 Mon 11:42 -->
+<!-- 2022-11-19 Sat 18:47 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -94,14 +94,12 @@
 <li>Arrival pattern of customers
 <ul class="org-ul">
 <li>Usual arrival processes are stochastic so it is necessary to know
-the probability distribution describing the times between successvie
-customer intervals (Poisson process)</li>
+the probability distribution describing the times between successive customer intervals (Poisson process)</li>
 </ul></li>
 <li>Service paterns of servers
 <ul class="org-ul">
 <li>Service times are typically stochastic as well, so it is good to
-know the probability distribution to describe the sequence of
-customer service times</li>
+know the probability distribution to describe the sequence of customer service times</li>
 </ul></li>
 <li>Number of servers and service channels
 <ul class="org-ul">
@@ -202,12 +200,10 @@ to have the numbers of server be a choice</li>
 <h3 id="littles-law"><span class="section-number-3">1.2.</span> Little's Law</h3>
 <div class="outline-text-3" id="text-littles-law">
 <p>
-A fundamental law used extensivly in queuing theory is Little's Law.
-Little's Law provides a relationship between three funcamental
-quantities: The average rage \(\lambda\) that customers arrive to the
-system, the average wait time \(W\) that a customer spends in the
-system, and the average number \(L\) of customers in the system. This
-relationship is given by \(L=\lambda W\).
+A fundamental law used extensivly in queuing theory is Little's Law.  Little's Law provides a relationship between three
+fundamental quantities: The average rage \(\lambda\) that customers arrive to the system, the average wait time \(W\)
+that a customer spends in the system, and the average number \(L\) of customers in the system. This relationship is
+given by \(L=\lambda W\).
 </p>
 
 \begin{equation}
@@ -215,12 +211,10 @@ relationship is given by \(L=\lambda W\).
 
 \begin{array}{lll}
 
-    \lambda \equiv \lim_{t \rightarrow \infty} \frac{A(t)}{t}             &
-    W \equiv \lim_{k \rightarrow \infty} \frac{1}{k} \sum_{i=1}^{k} W^k   &
-    L \equiv \lim_{T \rightarrow \infty} \frac{1}{T} \int_{0}^{T} N(t) dt
+    \lambda \equiv \lim_{t \rightarrow \infty} \frac{A(t)}{t} & W \equiv \lim_{k \rightarrow \infty} \frac{1}{k}
+    \sum_{i=1}^{k} W^k & L \equiv \lim_{T \rightarrow \infty} \frac{1}{T} \int_{0}^{T} N(t) dt
 
-\end{array}
-\end{equation}
+\end{array} \end{equation}
 
 <p>
 Where
@@ -234,15 +228,13 @@ Where
 
 <blockquote>
 <p>
-Theorem 1.1: <a href="#littles-law">Little's Law</a> If the limit \(\lambda\) and
-\(W\) in \ref{eq:little-limits} exists and are finits then the limit
-\(L\) exists and
+Theorem 1.1: <a href="#littles-law">Little's Law</a> If the limit \(\lambda\) and \(W\) in \ref{eq:little-limits} exists and are finits then the
+limit \(L\) exists and
 </p>
 </blockquote>
 
 \begin{equation*}
-L = \lambda W
-\end{equation*}
+L = \lambda W \end{equation*}
 
 <p>
 A few notes can be taken about this theorem:
@@ -251,12 +243,10 @@ A few notes can be taken about this theorem:
 <ul class="org-ul">
 <li>It is a statement about long running averages</li>
 <li>The limits for \(\lambda\) and \(W\) must exists. This therefore does
-not include systems that grow without bound (i.e. customers arrive
-faster than the services can output)</li>
+not include systems that grow without bound (i.e. customers arrive faster than the services can output)</li>
 <li>The theorem does not necessarily require "queues". Rather it requries
-a "system" to which the entities arrive and from which they depart.
-The system can therefore be regarded as a black box with no specific
-requirements as to what happens in the box.</li>
+a "system" to which the entities arrive and from which they depart.  The system can therefore be regarded as a black
+box with no specific requirements as to what happens in the box.</li>
 </ul>
 </div>
 
@@ -264,8 +254,7 @@ requirements as to what happens in the box.</li>
 <h4 id="h-lambda-g"><span class="section-number-4">1.2.1.</span> \(H = \lambda G\)</h4>
 <div class="outline-text-4" id="text-h-lambda-g">
 <p>
-It turns out that Little's Law is a special case of a more general
-relationship \(H = \lambda G\)
+It turns out that Little's Law is a special case of a more general relationship \(H = \lambda G\)
 </p>
 
 <ul class="org-ul">
@@ -284,10 +273,9 @@ TODO: Link to probability section for moments TODO: Link for stationary
 </p>
 
 <p>
-Little's law provides a relationship between the first moments of
-\(N(T) \equiv A(t) - D(t)\) (Arrival - Departure) and \(W^k\). It is
-also possible to relate higher moments as well. To state the
-distributional form a few assumptions are made
+Little's law provides a relationship between the first moments of \(N(T) \equiv A(t) - D(t)\) (Arrival - Departure) and
+\(W^k\). It is also possible to relate higher moments as well. To state the distributional form a few assumptions are
+made
 </p>
 
 <ol class="org-ol">
@@ -300,14 +288,12 @@ customer \(k\)</li>
 </ol>
 
 \begin{equation}
-   Pr\{N(t) \leq j\} = Pr\{A(W^k) \leq j\}
-\end{equation}
+   Pr\{N(t) \leq j\} = Pr\{A(W^k) \leq j\} \end{equation}
 
 <p>
-The statement above states: if one generates a random waiting time
-\(W^k\) and then generates a random number of arrivals occuring over an
-interval of length \(W^k\) then this has to be the same distribution as
-the number of customers in the system.
+The statement above states: if one generates a random waiting time \(W^k\) and then generates a random number of
+arrivals occuring over an interval of length \(W^k\) then this has to be the same distribution as the number of
+customers in the system.
 </p>
 </div>
 </div>
@@ -322,21 +308,18 @@ TODO: Add stochastic process section link here
 </p>
 
 <p>
-Exponential distributions are often used to model the time until a
-particular event occurs. It is closely related to the Poisson process as
-well as fundamental to the theory of Markov chains.
+Exponential distributions are often used to model the time until a particular event occurs. It is closely related to the
+Poisson process as well as fundamental to the theory of Markov chains.
 </p>
 
 <blockquote>
 <p>
-Definition 2.1: An exponential random variable is a continuous random
-variable with probability density function (PDF)
+Definition 2.1: An exponential random variable is a continuous random variable with probability density function (PDF)
 </p>
 </blockquote>
 
 \begin{equation}
-    f(t) = \lambda e^{-\lambda t}\; (t\geq 0)
-\end{equation}
+    f(t) = \lambda e^{-\lambda t}\; (t\geq 0) \end{equation}
 
 <blockquote>
 <p>
@@ -356,30 +339,25 @@ Theorem 2.1: An exponential random variable has the memoryless property
 
 <blockquote>
 <p>
-Theorem 2.3: Let \(T_1,...,T_n\) be independent exponential random
-variables with rates \(\lambda_1,...,\lambda_n\), respectively. Then
-\(min\{T_1,...,T_n\}\) is exponentially distributed with rate
-\(\lambda_1+...+\lambda_n\).
+Theorem 2.3: Let \(T_1,...,T_n\) be independent exponential random variables with rates \(\lambda_1,...,\lambda_n\),
+respectively. Then \(min\{T_1,...,T_n\}\) is exponentially distributed with rate \(\lambda_1+...+\lambda_n\).
 </p>
 </blockquote>
 
 <blockquote>
 <p>
-Theorem 2.4 Let \(T_1,...,T_n\) be independent exponential random
-variables with rates \(\lambda_1,...,\lambda_n\), respectively. Then
+Theorem 2.4 Let \(T_1,...,T_n\) be independent exponential random variables with rates \(\lambda_1,...,\lambda_n\),
+respectively. Then
 </p>
 </blockquote>
 
 \begin{equation}
-    Pr\{T_i = min\{T_1,...,T_n\}\} = \frac{\lambda_i}{\lambda_1+...+\lambda_n}
-\end{equation}
+    Pr\{T_i = min\{T_1,...,T_n\}\} = \frac{\lambda_i}{\lambda_1+...+\lambda_n} \end{equation}
 
 <blockquote>
 <p>
-Theorem 2.5: Let \(T_1,...,T_n\) be independent exponential random
-variables with rates \(\lambda_1,...,\lambda_n\), and let
-\(T = min\{T_1,...,T_n\}\). Then the event \(\{T_i = T\}\) is
-independent of \(T\).
+Theorem 2.5: Let \(T_1,...,T_n\) be independent exponential random variables with rates \(\lambda_1,...,\lambda_n\), and
+let \(T = min\{T_1,...,T_n\}\). Then the event \(\{T_i = T\}\) is independent of \(T\).
 </p>
 </blockquote>
 </div>
@@ -388,17 +366,15 @@ independent of \(T\).
 <h3 id="the-poisson-process"><span class="section-number-3">2.1.</span> The Poisson Process</h3>
 <div class="outline-text-3" id="text-the-poisson-process">
 <p>
-Intuitively, the process can be though of describing events that occur
-"randomly" in time. A <i>counting</i> process is a stochastic process in
-which \(N(t)\) takes on nonnegative integer values and is nondecreasing
-in time. A counting process typically represents the cumulative number
-of events that have occurred by time \(t\).
+Intuitively, the process can be though of describing events that occur "randomly" in time. A <i>counting</i> process is a
+stochastic process in which \(N(t)\) takes on nonnegative integer values and is nondecreasing in time. A counting
+process typically represents the cumulative number of events that have occurred by time \(t\).
 </p>
 
 <blockquote>
 <p>
-Definition 2.3: A Poisson process with rate \(\lambda > 0\) is a
-counting process \(N(t)\) with the following properties:
+Definition 2.3: A Poisson process with rate \(\lambda > 0\) is a counting process \(N(t)\) with the following
+properties:
 </p>
 
 <ol class="org-ol">
@@ -416,14 +392,12 @@ The Poison random variable is
 
 <blockquote>
 <p>
-Definition 2.4: A Poisson random variable is a discrete random variable
-with probability mass function
+Definition 2.4: A Poisson random variable is a discrete random variable with probability mass function
 </p>
 </blockquote>
 
 \begin{equation}
-    p_n = e^{-A \frac{A^n}{n!}}\; (n=0,1,2,...)
-\end{equation}
+    p_n = e^{-A \frac{A^n}{n!}}\; (n=0,1,2,...)  \end{equation}
 
 <blockquote>
 <p>
@@ -432,21 +406,18 @@ where \(A>0\) is a constant.
 </blockquote>
 
 <p>
-The following theorem links the Poisson process and the Poisson random
-variable.
+The following theorem links the Poisson process and the Poisson random variable.
 </p>
 
 <blockquote>
 <p>
-Theorem 2.6: Let \(N(t)\) be a Poisson process with rate \(\lambda >0\).
-The number of events occurring by time \(t\) is a Poisson random
-variable with mean \(\lambda t\). That is,
+Theorem 2.6: Let \(N(t)\) be a Poisson process with rate \(\lambda >0\).  The number of events occurring by time \(t\)
+is a Poisson random variable with mean \(\lambda t\). That is,
 </p>
 </blockquote>
 
 \begin{equation}
-    p_n = e^{-A \frac{A^n}{n!}}\; (n=0,1,2,...)
-\end{equation}
+    p_n = e^{-A \frac{A^n}{n!}}\; (n=0,1,2,...)  \end{equation}
 
 <blockquote>
 <p>
@@ -460,24 +431,19 @@ Furthermore, the Poisson process is
 
 <ul class="org-ul">
 <li>The distribution is stationary, that is the of the number of events in
-a given time interval is dependent only on the length of the interval
-and not the location of the interval</li>
+a given time interval is dependent only on the length of the interval and not the location of the interval</li>
 <li>The times between successive events are exponentially distributed with
 rate \(\lambda\)</li>
 <li>Event times are uniformly distributed on a time interval \([0,T]\),
-given that a certain number of events have occurred on the interval.
-The <i>ordered</i> event times follow the order statistics of \(k\)
-independent uniform random variables.</li>
+given that a certain number of events have occurred on the interval.  The <i>ordered</i> event times follow the order
+statistics of \(k\) independent uniform random variables.</li>
 <li>(Splitting): Let \(N(t)\) be a Poisson process with rate \(\lambda\).
-Suppose that each event is labeled a type-i event with probability
-\(p_i\), independent of all else. Let \(N_i(t)\) be the number of
-type-i events by time \(t\). Then \(N_i(t)\) is a Poisson process with
-rate \(\lambda p_i,\; i=1,...,n\). Furthermore, \(N_i(t)\) and
-\(N_j(t)\) are independent for all \(i\neq j\).</li>
+Suppose that each event is labeled a type-i event with probability \(p_i\), independent of all else. Let \(N_i(t)\) be
+the number of type-i events by time \(t\). Then \(N_i(t)\) is a Poisson process with rate \(\lambda p_i,\;
+  i=1,...,n\). Furthermore, \(N_i(t)\) and \(N_j(t)\) are independent for all \(i\neq j\).</li>
 <li>(Superposition): Let \(N_1(t),...,N_n(t)\) be independent Poisson
-processes with rates \(\lambda_1,...,\lambda_n\), respectively. Then
-\(N(t) \equiv N_(1) + ... + N_n(t)\) is a Poisson process with rate
-\(\lambda \equiv \lambda_1 + ... + \lambda_n\).</li>
+processes with rates \(\lambda_1,...,\lambda_n\), respectively. Then \(N(t) \equiv N_(1) + ... + N_n(t)\) is a Poisson
+process with rate \(\lambda \equiv \lambda_1 + ... + \lambda_n\).</li>
 </ul>
 </div>
 </div>
@@ -486,19 +452,16 @@ processes with rates \(\lambda_1,...,\lambda_n\), respectively. Then
 <h3 id="discrete-time-markov-chains"><span class="section-number-3">2.2.</span> Discrete-Time Markov Chains</h3>
 <div class="outline-text-3" id="text-discrete-time-markov-chains">
 <p>
-For discrete-time Markov chains, the transitions are assumed to occur at
-discrete points in time. The fundamental assumption that underlines
-Markov chains is the Markov property
+For discrete-time Markov chains, the transitions are assumed to occur at discrete points in time. The fundamental
+assumption that underlines Markov chains is the Markov property
 </p>
 
 \begin{equation}
-    Pr\{X_{x+1} = j | X_0 = i_0, X_1=i_1,...,X_n=i_n\} = Pr\{ X_{n+1} = j | X_n = i_n \}
-\end{equation}
+    Pr\{X_{x+1} = j | X_0 = i_0, X_1=i_1,...,X_n=i_n\} = Pr\{ X_{n+1} = j | X_n = i_n \} \end{equation}
 
 <p>
-Intuitively, this means that to characterize the future behavior it is
-just as useful to know only the present state or the present state as
-well as all the history.
+Intuitively, this means that to characterize the future behavior it is just as useful to know only the present state or
+the present state as well as all the history.
 </p>
 </div>
 
@@ -506,13 +469,10 @@ well as all the history.
 <h4 id="properties-of-markov-chains"><span class="section-number-4">2.2.1.</span> Properties of Markov Chains</h4>
 <div class="outline-text-4" id="text-properties-of-markov-chains">
 <p>
-State \(j\) is <i>accessible</i> to state \(i\; (i \rightarrow j)\) if there
-exists an \(n \geq 0\) such that \(p_{ij}^n > 0\). Two states
-communicate with each other if \(i \leftrightarrow j\). A chain is
-<i>irreducible</i> if all of its state communicate (any state can get to any
-other state). A state is recurrent if the probability of returning to
-itself is 1, and it is transient if it will return to itself in \(n\)
-steps.
+State \(j\) is <i>accessible</i> to state \(i\; (i \rightarrow j)\) if there exists an \(n \geq 0\) such that \(p_{ij}^n >
+0\). Two states communicate with each other if \(i \leftrightarrow j\). A chain is <i>irreducible</i> if all of its state
+communicate (any state can get to any other state). A state is recurrent if the probability of returning to itself is 1,
+and it is transient if it will return to itself in \(n\) steps.
 </p>
 </div>
 </div>
@@ -521,29 +481,25 @@ steps.
 <h4 id="long-run-behavior"><span class="section-number-4">2.2.2.</span> Long-Run Behavior</h4>
 <div class="outline-text-4" id="text-long-run-behavior">
 <p>
-The concept of long run behavior consists of the idea that the
-probability of being at a particular state does not depend on the
-starting state.
+The concept of long run behavior consists of the idea that the probability of being at a particular state does not
+depend on the starting state.
 </p>
 
 <blockquote>
 <p>
-Theorem 2.13: An irreducible and positive recurrent discrete-time Markov
-chain has a unique soltion to the stationary equations
+Theorem 2.13: An irreducible and positive recurrent discrete-time Markov chain has a unique soltion to the stationary
+equations
 </p>
 </blockquote>
 
 \begin{equation}
 \begin{array}{ccc}
-   \pi = \pi P  & \text{and} & \sum_j \pi_j = 1
-\end{array}
-\end{equation}
+   \pi = \pi P & \text{and} & \sum_j \pi_j = 1 \end{array} \end{equation}
 
 <blockquote>
 <p>
-namely, \(\pi_j = 1/m_{jj}\). Futhermore, if the chain is aperiodic, the
-limiting probability distribution exists and is equal to the stationary
-distribution.
+namely, \(\pi_j = 1/m_{jj}\). Futhermore, if the chain is aperiodic, the limiting probability distribution exists and is
+equal to the stationary distribution.
 </p>
 </blockquote>
 </div>
@@ -553,21 +509,17 @@ distribution.
 <h4 id="ergodicity"><span class="section-number-4">2.2.3.</span> Ergodicity</h4>
 <div class="outline-text-4" id="text-ergodicity">
 <p>
-<a href="./statistics.html#ergodicity">Ergodicity</a> is important in that it
-deals with the problem of determining measures of a stochastic process.
-In general, a stochastic process is ergotic if all its "measures" can be
-determined, or well approximated from a single realization. Since
-statistical measures are usually expressed as time averages it is said:
-the stochastic process is ergotic if the time averages equal ensemble
-averages (expected values). <i>An ensemble average is obtained from
-multiple realizations of the process at a fixed point in time</i>.
+<a href="./statistics.html#ergodicity">Ergodicity</a> is important in that it deals with the problem of determining measures of a
+stochastic process.  In general, a stochastic process is ergotic if all its "measures" can be determined, or well
+approximated from a single realization. Since statistical measures are usually expressed as time averages it is said:
+the stochastic process is ergotic if the time averages equal ensemble averages (expected values). <i>An ensemble average
+is obtained from multiple realizations of the process at a fixed point in time</i>.
 </p>
 
 <p>
-We say that a process is fully ergodic (ergodic in distribution
-function) if this property holds for all moments. A process might be
-ergodic for certain moments, but not for others. In queueing theory, we
-are typically interested in fully ergodic processes.
+We say that a process is fully ergodic (ergodic in distribution function) if this property holds for all moments. A
+process might be ergodic for certain moments, but not for others. In queueing theory, we are typically interested in
+fully ergodic processes.
 </p>
 </div>
 </div>
@@ -577,16 +529,12 @@ are typically interested in fully ergodic processes.
 <h3 id="continuous-time-markov-chains"><span class="section-number-3">2.3.</span> Continuous-Time Markov Chains</h3>
 <div class="outline-text-3" id="text-continuous-time-markov-chains">
 <p>
-A CTMC transitions from state to state just like a discretetime Markov
-chain, but the time spent in each state is now an exponential random
-variable in continuous time. Alternatively, a CTMC can be parameterized
-by a matrix
+A CTMC transitions from state to state just like a discretetime Markov chain, but the time spent in each state is now an
+exponential random variable in continuous time. Alternatively, a CTMC can be parameterized by a matrix
 </p>
 
 <p>
-\[
-q_{ij} = v_i p_{ij}
-\]
+\[ q_{ij} = v_i p_{ij} \]
 </p>
 
 <ul class="org-ul">
@@ -597,9 +545,8 @@ to state \(j\)</li>
 
 <blockquote>
 <p>
-The equation above states that the transition rate from \(i\) to \(j\)
-equals the transition rate out of \(i\) multiplied by the probability of
-going from \(i\) to \(j\).
+The equation above states that the transition rate from \(i\) to \(j\) equals the transition rate out of \(i\)
+multiplied by the probability of going from \(i\) to \(j\).
 </p>
 </blockquote>
 
@@ -608,15 +555,11 @@ This also drives the meaning of the <i>rate-transistion matrix</i>
 </p>
 
 \begin{bmatrix}
-v_{0} & q_{01} & q_{02} & \cdots \\
-q_{10} & v_{1} & q_{11} & \cdots \\
-\vdots & \vdots & \ddots & \ddots
-\end{bmatrix}
+v_{0} & q_{01} & q_{02} & \cdots \\ q_{10} & v_{1} & q_{11} & \cdots \\ \vdots & \vdots & \ddots & \ddots \end{bmatrix}
 
 <p>
-Many queueing systems can be represented as birth death processes, where
-the system state \(X(t)\) denotes the number of customers in the system
-at time \(t\)
+Many queueing systems can be represented as birth death processes, where the system state \(X(t)\) denotes the number of
+customers in the system at time \(t\)
 </p>
 </div>
 
@@ -625,13 +568,10 @@ at time \(t\)
 <div class="outline-text-4" id="text-long-run-behavior-1">
 <blockquote>
 <p>
-Theorem 2.16: For a continuous time Markov chain, if the embedded
-discretetime chain is irreducible and positive recurrent, then there is
-a unique solution to the stationary equations \(0 = pQ\) and
-\(\sum_j p_j = 1\) where 0 is a vector of zeros (0; 0; : : :).
-Furthermore, if the mean holding times in all states are bounded (vi &gt; 0
-for all i), the chain has a limiting probability distribution equal to
-the stationary distribution.
+Theorem 2.16: For a continuous time Markov chain, if the embedded discretetime chain is irreducible and positive
+recurrent, then there is a unique solution to the stationary equations \(0 = pQ\) and \(\sum_j p_j = 1\) where 0 is a
+vector of zeros (0; 0; : : :).  Furthermore, if the mean holding times in all states are bounded (vi &gt; 0 for all i), the
+chain has a limiting probability distribution equal to the stationary distribution.
 </p>
 </blockquote>
 
@@ -640,18 +580,14 @@ In component form
 </p>
 
 <p>
-\[
-   p_j v_j = \sum_{r \neq j} p_r q_{rj}
-\]
+\[ p_j v_j = \sum_{r \neq j} p_r q_{rj} \]
 </p>
 
 <p>
-This can be interpreted as follows. The left side is the rate of
-transitions out of state \(j\). On the right side, \(p_r q_{rj}\) is the
-rate of transitions from state \(r\) to \(j\). Summing over \(r\) gives
-the overall rate of transitions into state \(j\). Thus, theorem 2.16 is
-a statement that the rate of transitions out of a state equals the rate
-of transitions into the state.
+This can be interpreted as follows. The left side is the rate of transitions out of state \(j\). On the right side,
+\(p_r q_{rj}\) is the rate of transitions from state \(r\) to \(j\). Summing over \(r\) gives the overall rate of
+transitions into state \(j\). Thus, theorem 2.16 is a statement that the rate of transitions out of a state equals the
+rate of transitions into the state.
 </p>
 </div>
 </div>
@@ -662,8 +598,7 @@ of transitions into the state.
 <h2 id="simple-markovian-queuing-models"><span class="section-number-2">3.</span> Simple Markovian Queuing Models</h2>
 <div class="outline-text-2" id="text-simple-markovian-queuing-models">
 <p>
-In this chapter we develop a broad class of simple queueing models using
-the theory of birth death processes.
+In this chapter we develop a broad class of simple queueing models using the theory of birth death processes.
 </p>
 </div>
 
@@ -671,13 +606,10 @@ the theory of birth death processes.
 <h3 id="birth-death-processes"><span class="section-number-3">3.1.</span> Birth-Death Processes</h3>
 <div class="outline-text-3" id="text-birth-death-processes">
 <p>
-A birth death process consists of a set of states {0, 1, 2, . . .},
-typically denoting the "population" of some system. When the system is
-in state \(n \geq 0\), the time until the next arrival (or "birth") is
-an exponential random variable with rate \(\lambda_n\). In queueing
-theory, the states denote the number of customers in the system.
-"Births" correspond to customer arrivals and "deaths" correspond to
-customer departures.
+A birth death process consists of a set of states {0, 1, 2, . . .}, typically denoting the "population" of some
+system. When the system is in state \(n \geq 0\), the time until the next arrival (or "birth") is an exponential random
+variable with rate \(\lambda_n\). In queuing theory, the states denote the number of customers in the system.  "Births"
+correspond to customer arrivals and "deaths" correspond to customer departures.
 </p>
 
 <p>
@@ -685,9 +617,8 @@ It can be found that
 </p>
 
 \begin{array}{c}
-p_n = p_0 \prod_{i=1}^n \frac{\lambda_{i-1}}{\mu_i} \\
-p_0 = (1 + \sum_{n-1}^{\infty} \prod_{i=1}^n frac{\lambda_{i-1}}{\mu_i})^{-1}
-\end{array}
+p_n = p_0 \prod_{i=1}^n \frac{\lambda_{i-1}}{\mu_i} \\ p_0 = (1 + \sum_{n-1}^{\infty} \prod_{i=1}^n
+frac{\lambda_{i-1}}{\mu_i})^{-1} \end{array}
 
 <ul class="org-ul">
 <li>\(p_n\) is the long-term fraction of the time the system is in state
@@ -725,7 +656,7 @@ p_0 = (1 + \sum_{n-1}^{\infty} \prod_{i=1}^n frac{\lambda_{i-1}}{\mu_i})^{-1}
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alexander Brown</p>
-<p class="date">Created: 2022-09-12 Mon 11:42</p>
+<p class="date">Created: 2022-11-19 Sat 18:47</p>
 </div>
 </body>
 </html>

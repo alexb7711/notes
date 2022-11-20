@@ -2,38 +2,30 @@
 :PROPERTIES:
 :CUSTOM_ID: knowledge-base
 :END:
-This page is somewhat misleading. I provide links to general starting
-points, but the idea is to have a free-flowing set of knowledge that can
-be interconnected with one another. The idea is to separate yourself
-from the idea of categorizing topics in your head and effectively
-building mental barriers between these ideas. To reiterate, the links
-before only provide general starting points for what you may be
-interested in finding.
-
-The set of references can be found in the =main.bib=.
+This page is somewhat misleading. I provide links to general starting points, but the idea is to have a free-flowing set
+of knowledge that can be interconnected with one another. The idea is to separate yourself from the idea of categorizing
+topics in your head and effectively building mental barriers between these ideas. To reiterate, the links before only
+provide general starting points for what you may be interested in finding.
 
 * Control Theory
 :PROPERTIES:
 :CUSTOM_ID: control-theory
 :END:
-- [[file:nonlinear_control.md][Nonlinear Control]]
+- [[file:nonlinear_control.html][Nonlinear Control]]
 
 * Estimation
 :PROPERTIES:
 :CUSTOM_ID: estimation
 :END:
-[[file:estimation.md][Estimation]] is the process of attempting to
-derive the true value of measurements taken from a system that are
-subect to noise and/or bias.
+[[file:estimation.html][Estimation]] is the process of attempting to derive the true value of measurements taken from a system that are subect to
+noise and/or bias.
 
 ** Optimal Estimation
 :PROPERTIES:
 :CUSTOM_ID: optimal-estimation
 :END:
-[[file:optimal_estimation.md][Optimal Estimation]], much like
-estimation, attempts to estimate the true value from a measurement that
-has been subject to noise and bias. This optimization method is known as
-the [[file:kalman_filter.md][Kalman Filter]].
+[[file:optimal_estimation.html][Optimal Estimation]], much like estimation, attempts to estimate the true value from a measurement that has been subject
+to noise and bias. This optimization method is known as the [[file:kalman_filter.html][Kalman Filter]].
 
 * Mathematics
 :PROPERTIES:
@@ -43,7 +35,7 @@ the [[file:kalman_filter.md][Kalman Filter]].
 :PROPERTIES:
 :CUSTOM_ID: calculus
 :END:
-- [[file:derivatives.md][Derivatives]]
+- [[file:derivatives.html][Derivatives]]
 
 ** Fuzzy Logic
 :PROPERTIES:
@@ -55,27 +47,26 @@ the [[file:kalman_filter.md][Kalman Filter]].
 :PROPERTIES:
 :CUSTOM_ID: linear-algebra
 :END:
-[[file:linear_algebra.md][Linear algebra]] is the branch of mathematics
-concerning linear equations and their representation in vector spaces
-and through matrices.
+[[file:linear_algebra.html][Linear algebra]] is the branch of mathematics concerning linear equations and their representation in vector spaces and
+through matrices.
 
 *** Vectors
 :PROPERTIES:
 :CUSTOM_ID: vectors
 :END:
-[[file:vectors.md][Vectors]]
+[[file:vectors.html][Vectors]]
 
 ** Set Theory
 :PROPERTIES:
 :CUSTOM_ID: set-theory
 :END:
-The theory of [[file:set_theory.md][sets]] in a nutshell.
+The theory of [[file:set_theory.html][sets]] in a nutshell.
 
 ** Quaternions
 :PROPERTIES:
 :CUSTOM_ID: quaternions
 :END:
-Theory of [[file:quaternion_theory.md][quaternions]] in a nutshell
+Theory of [[file:quaternion_theory.html][quaternions]] in a nutshell
 
 ** Queue Theory
 :PROPERTIES:
@@ -87,23 +78,20 @@ Theory of [[file:quaternion_theory.md][quaternions]] in a nutshell
 :PROPERTIES:
 :CUSTOM_ID: optimization
 :END:
-Below are some sections on optimization types.
-[[file:optimization_for_engineers_class.md][This link has a set of notes
-from optimization for engineers]].
+Below are some sections on optimization types. [[file:optimization_for_engineers_class.html][This link has a set of notes from optimization for engineers]].
 
 ** Parametric Programming
 :PROPERTIES:
 :CUSTOM_ID: parametric-programming
 :END:
-Parametric programming is a type of optimization, where the optimization
-problem is solved as a function of one or multiple parameters.
+Parametric programming is a type of optimization, where the optimization problem is solved as a function of one or
+multiple parameters.
 
 ** Linear Programming
 :PROPERTIES:
 :CUSTOM_ID: linear-programming
 :END:
-Process of optimization by setting up the worlds largest set of linear
-equations
+Process of optimization by setting up the world's largest set of linear equations
 
 *** Fuzzy Linear Programming
 :PROPERTIES:
@@ -115,18 +103,17 @@ equations
 :PROPERTIES:
 :CUSTOM_ID: stochastic-programmming
 :END:
-[[file:stochastic_prog.html][Stochastic Programming]] is a framework for
-modeling optimizaiton problems that involve uncertainty. A stochastic
-program is an optimization problem in which som eor all problem
-parameters are uncertain, but follow known probability distributions.
+[[file:stochastic_prog.html][Stochastic Programming]] is a framework for modeling optimizaiton problems that involve uncertainty. A stochastic program
+is an optimization problem in which som eor all problem parameters are uncertain, but follow known probability
+distributions.
 
 * Programming
 :PROPERTIES:
 :CUSTOM_ID: programming
 :END:
+
 ** MATLAB
 :PROPERTIES:
 :CUSTOM_ID: matlab
 :END:
-MATLAB is sorta butts, but here are some useful
-[[file:matlab_tips.md][tips]]
+MATLAB is sorta butts, but here are some useful [[file:matlab_tips.html][tips]]

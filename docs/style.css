@@ -60,8 +60,8 @@ ul {
 dt { font-weight: bold; }
 
 img {
-      border: 8px;
-      filter: invert(90%);
+    margin: auto;
+    display: block;
 }
 
 pre {

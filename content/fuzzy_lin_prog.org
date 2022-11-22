@@ -1,7 +1,51 @@
-* Fuzzy Linear Programming
+#+title: Introduction to Fuzzy Linear Programming Problems: Theory, Methods, and Applictions
+
+#+latex_header:  \newcommand{\membership}{\mu_{\tilde{A}}(x)} 
+#+latex_header:  \newcommand{\fuzzy_set}{\mu_{\tilde{A}}} 
+
+* State of the Art
 :PROPERTIES:
-:CUSTOM_ID: fuzzy-linear-programming
+:CUSTOM_ID: state-of-the-art
 :END:
+The main objective of fuzzy linear programming is to find the best solution possible with
+imprecise, vague, uncertain or incomplete information. In literature, most of the fuzzy
+linear programming models deal with the fuzziness related to the function(s)' coefficients,
+technological coefficients, and the right hand side values of the constraints.
+
+Because the decision making process in crisp solutions expect exact conditions, presenting
+a reasonable range of values for the decision variables can be comparitavely better than the
+currently available crisp solution. Fuzzy solutions may serve the regions containing potential
+satisfactory solutions around the optimal solution. Therefore, even with fuzzy linear
+programs, the final decisions can be the same as the crisp.
+
+Fully fuzzy linear programs have been an attractive topic to reseachers for years. However,
+the literature on fully fuzzy linear programming is not rich as there are few studies
+available on this topic.
+
+* Non-negative Fuzzy Optimal Solution of Fully Fuzzy Linear Programming Problems with Equality Constraints
+
+** Preliminaries
+
+#+caption: Definition 2.1
+#+begin_quote
+Let $X$ be a classical set of objects. Then, the set of ordered pairs 
+$\tilde{A} = \{(x, \membership) : x \in X\}$, where $\fuzzy_set : \rightarrow [0, 1]$, is called a fuzzy
+set in $X$. the evaulation function $\membership$ is called the membership function.
+#+end_quote
+
+#+caption: Definition 2.2
+#+begin_quote
+Let $\tilde{A} be a fuzzy set in $X$ and $\lambda \in [0,1]$ be a real number. Then, a classical set
+$A^{\lambda} \{ x \in X : \memburship \ge \lambda \}$ is called an $\lambda$-cut or parametric form
+of $\tilde{A}$.
+#+end_quote
+
+#+caption: Definition 2.2
+#+begin_quote
+A fuzzy set
+#+end_quote
+
+* Misc Papers
 Fuzzy linear programming introduces the idea of uncertainty into the
 model's parameters. This allows for adaptability of plans or "fuzziness"
 to the solution of the linear program. By doing so, this allows for a
@@ -52,55 +96,65 @@ between constraints and the objective functions is fully symmetric
 As stated previously, fuzzy constraints tolerate violations in the
 accomplishment of the constraints. The constraint can be represented by
 
-\[
+#+begin_latex latex
+\begin{equation}
 a_i x \lesssim b_i
-\]
+\end{equation}
+#+end_latex
 
 Where \(a\) and \(b\) modeled using a [[file:fuzzy_theory.org][membership function ]] as described in #2 and #3.
 
-\[
+#+begin_latex latex
+\begin{equation}
 \mu_i (x) =
 \begin{cases}
     1          & \text{if } a_i x \leq b                        \\
     f_i(a_i x) & \text{if } b_i \leq a_i x \leq b_i + \bar{b}_i \\
     0          & \text{if } a_i x \geq b_i + \bar{b}_i          \\
 \end{cases}
-\]
+\end{equation}
+#+end_latex
 
 A fuzzy solution is found from the solution of the
 [[file:parametric_lin_prog.org][parametric linear #2.
 
-\[
+#+begin_latex latex
+\begin{equation}
 \begin{array}{l}
     \text{max } xc    \\
     Ax \leq g(\alpha) \\
     x \geq 0          \\
     \alpha \in (0,1]
 \end{array}
-\]
+\end{equation}
+#+end_latex
 
 where \(g(\alpha)\) is a column vector defined by the inverse functions
 of the \(f_i\).
 
 Zimmerman proposes that given a LP:
 
-\[
+#+begin_latex latex
+\begin{equation}
 \begin{array}{l}
     cx \lesssim z_0 \\
     Ax \lesssim b   \\
     x \gtrsim 0
 \end{array}
-\]
+\end{equation}
+#+end_latex
 
 with a linear [[file:fuzzy_theory.org][membership function]], the
 solution can be of the form #3.
 
-\[
+#+begin_latex latex
+\begin{equation}
 \begin{array}{l}
     f(x) = 1 - \frac{(Bx)_i - b_i'}{\bar{b}_i} \\
     \lambda \leq \frac{b_i'}{\bar{b}_i} - (\frac{B}{\bar{b}} x)_i
 \end{array}
-\]
+\end{equation}
+#+end_latex
 
 where \(f(\cdot)\) defines the linear membership function and
 \(\lambda\) is the developed linear constraint. \(B\) is the constraint
@@ -117,14 +171,17 @@ If the decision maker does not know exactly the values of the
 coefficients taking part in the problem, fuzzy numbers can be used to
 represent this uncertainty #2.
 
-\[
+#+begin_latex latex
+\begin{equation}
 \sum_{j=1}^n \tilde{a}_{ij} x_j \leq \tilde{b}_i
-\]
+\end{equation}
+#+end_latex
 
 Given a similar model to solve as before the model for fuzzy
 coefficients can be defined as
 
-\[
+#+begin_latex latex
+\begin{equation}
 \begin{array}{l}
     \text{max } cx                                                  \\
     [(1-1/2h)(a_i + \bar{a}_i) + 1/2h(a_i - \underline{a}_i)]x \leq \\
@@ -133,7 +190,8 @@ coefficients can be defined as
     1/2h(b_i + \bar{b}_i)+(1-1/2h)(b_i - \underline{b}_i),          \\
     x \geq 0
 \end{array}
-\]
+\end{equation}
+#+end_latex
 
 where \(h \in (0,1]\) is a level or degree of optimism being specified
 by the decision maker a priori. \((a + \bar{a})\) is the upper bound and
@@ -153,22 +211,26 @@ This section contains a list of different ways of formulating LP's.
 :END:
 Consider
 
-\[
+#+begin_latex latex
+\begin{equation}
 \begin{array}{l}
     \text{max } cx \\
     Ax \lesssim b  \\
     x \geq 0
 \end{array}
-\]
+\end{equation}
+#+end_latex
 
 where \(a\) is a matrix of fuzzy numbers and \(b\) is a column vector of
 fuzzy numbers. We can then create an ordering via
 [[file:fuzzy_theory.org][ranking functions]] and state the "fuzziness"
 with the following constraint:
 
-\[
+#+begin_latex latex
+\begin{equation}
 Ax < b + (1-\alpha)
-\]
+\end{equation}
+#+end_latex
 
 Where if \(\alpha=1\) then the constraint is completely verified and if
 \(\alpha = 0\) then the variable is fully "fuzzy".
@@ -179,39 +241,47 @@ Where if \(\alpha=1\) then the constraint is completely verified and if
 :END:
 Given an FFLP:
 
-\[
+#+begin_latex latex
+\begin{equation}
     max\; \sum_{j=1}^n \tilde{c}_j \tilde{x}_j \\
-\] subject to \[
+
+subject to 
     \sum_{j=1}^n \tilde{a}_{ij} \tilde{x}_j \leq \tilde{b}_i\; \forall i = 1 - m \\
-\]
+\end{equation}
+#+end_latex
 
 where \(\tilde{c_j}\), \(\tilde{a_{ij\)$, \(\tilde{b_j}\) are parameters
 and \(\tilde{x_j}\) are non-negative fuzzy numbers #1. Because these are fuzzy numbers, we can
 represent them as such:
 
-\[
+#+begin_latex latex
+\begin{equation}
 \begin{array}{l}
     \tilde{c}_j    = (c1_j, c2_j, c3_j)          \\
     \tilde{a}_{ij} = (a1_{ij}, a2_{ij}, a3_{ij}) \\
     \tilde{b}_j    = (b1_j, b2_j, b3_j)          \\
     \tilde{x}_j    = (x1_j, x2_j, x3_j)          \\
 \end{array}
-\]
+\end{equation}
+#+end_latex
 
 Nasseri then proposes that the FFLP can be rewritten as a LP in the
 following manner:
 
-\[
+#+begin_latex latex
+\begin{equation}
 max\; R\Big(\sum_{j=1}^n (c1_j, c2_j, c3_j)(x1_j, x2_j, x3_j)\Big)
-\] Subject to \[
-\begin{array}{c}
+
+ Subject to 
+
     \sum_{j=1}^n a1_{ij}x1_j \leq b1_j \\
     \sum_{j=2}^n a2_{ij}x2_j \leq b2_j \\
     \sum_{j=3}^n a3_{ij}x3_j \leq b3_j \\
     x2_j - x1_j \geq 0 \\
     x3_j - x2_j \geq 0 \\
 \end{array}
-\]
+\end{equation}
+#+end_latex
 
 *** Zimmermans's Methods
 :PROPERTIES:
@@ -230,20 +300,24 @@ Given a FLP with objective function(s) \(c^T x\) that is subject to
 constraints \(Ax \leq b\). A membership function can be written such
 that
 
-\[
+#+begin_latex latex
+\begin{equation}
 \begin{cases}
     0                        & \text{for } (A'x)_i \leq b'_i            \\
     \frac{(A'x)_i b'_i}{d_i} & \text{for b_i < (A'x)_i \leq b'_i + d_i} \\
     1                        & \text{for } (A'x)_i > b'_i + d_i
 \end{cases}
-\]
+\end{equation}
+#+end_latex
 
 Where this draws a line from \(z(-b'_i) = 0\) to \(z(d_i) = 1\).
 Constraints can then be made using the form
 
-\[
+#+begin_latex latex
+\begin{equation}
 \lambda = \frac{b'_i}{d_i} - (\frac{A}{d_i}x)_i
-\]
+\end{equation}
+#+end_latex
 
 which is appended to the set of constraints.
 
@@ -253,20 +327,24 @@ which is appended to the set of constraints.
 :END:
 This method uses the same membership function
 
-\[
+#+begin_latex latex
+\begin{equation}
 \begin{cases}
     0                        & \text{for } (A'x)_i \leq b'_i            \\
     \frac{(A'x)_i b'_i}{d_i} & \text{for b_i < (A'x)_i \leq b'_i + d_i} \\
     1                        & \text{for } (A'x)_i > b'_i + d_i
 \end{cases}
-\]
+\end{equation}
+#+end_latex
 
 Rather than append to the constraints and maximize or minimize
 \(\lambda\), the objective function is updated with
 
-\[
+#+begin_latex latex
+\begin{equation}
 \text{max } \prod_{i = 1}^K = \frac{(c^i)^T x - p_i}{d_i}
-\]
+\end{equation}
+#+end_latex
 
 where \(c^i\) is the vector to be multiplied with \(x\). The constraints
 are left the same.
@@ -297,7 +375,8 @@ figure below
 
 and the problem is written as
 
-\[
+#+begin_latex latex
+\begin{equation}
 \begin{array}{l}
     \text{max } Z(x) =
     \begin{bmatrix}
@@ -314,12 +393,14 @@ and the problem is written as
     3x_1 + x_2 \leq 30  \\
     x1,x2 \geq 0
 \end{array}
-\]
+\end{equation}
+#+end_latex
 
 Using the method proposed by Zimmerman (as described in
 Fuzzy Constraints, one yields the following formulation
 
-\[
+#+begin_latex latex
+\begin{equation}
 \begin{array}{l}
     \text{max } \lambda \\
     \lambda \leq -0.05582x_1 + 0.117x_2 + 0.1764 \\
@@ -330,7 +411,8 @@ Fuzzy Constraints, one yields the following formulation
     30 \geq 3x_1 + x_2                           \\
     x \geq 0
 \end{array}
-\]
+\end{equation}
+#+end_latex
 
 Where the maximum "overval satisfaction" of \(\lambda = 0.74\) is
 achived with \(x = [5.03, 7.32]^T\).
@@ -346,13 +428,16 @@ berthing plan is not desirable from a planning of resources point of
 view. A FFLP for the BAP problem to minimize the total time can be
 expressed as
 
-\[
+#+begin_latex latex
+\begin{equation}
 min\; \sum_{i\in V} (\tilde{m}_i - \tilde{a}_i)
-\]
+\end{equation}
+#+end_latex
 
 Such that
 
-\[
+#+begin_latex latex
+\begin{equation}
 \begin{array}{l}
     \tilde{m}_i \geq \tilde{a}_i                               \\
     p_i + l_i \leq L                                           \\
@@ -362,7 +447,8 @@ Such that
     z_{ij}^x + z_{ji}^x + z_{ij}^y + z_{ij}^y + \geq 1         \\
     z_{ij}^x, z_{ij}^y \in \{0,1\}
 \end{array}
-\]
+\end{equation}
+#+end_latex
 
 where the parameters are
 
@@ -386,13 +472,16 @@ and the decision variables are
 Using Nasseri's Method in #1 the BAP can be
 described as
 
-\[
+#+begin_latex latex
+\begin{equation}
 min\; \sum_{i\in V} (m1_i - a3_i, m2_i - a2_i, m3_i - a1_i)
-\]
+\end{equation}
+#+end_latex
 
 Subject to
 
-\[
+#+begin_latex latex
+\begin{equation}
 \begin{array}{l}
     {m}1_i \geq {a}1_i                                 \\
     {m}2_i \geq {a}2_i                                 \\
@@ -408,7 +497,8 @@ Subject to
     z_{ij}^x + z_{ji}^x + z_{ij}^y + z_{ij}^y + \geq 1 \\
     z_{ij}^x, z_{ij}^y \in \{0,1\}
 \end{array}
-\]
+\end{equation}
+#+end_latex
 
 An example solution #1 can be shown in the
 following figure:

@@ -1,0 +1,8 @@
+* Class Notes
+:PROPERTIES:
+:CUSTOM_ID: class-notes
+:END:
+- [[file:./mathematical-methods-for-signals-and-systems/class-1-11-23.htm][class-1-11-23.htm]]
+
+* Homework Help
+- [[file:./mathematical-methods-for-signals-and-systems/help-1-11-23.htm][help-1-11-23.htm]]

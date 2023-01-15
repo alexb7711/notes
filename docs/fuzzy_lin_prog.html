@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-11-20 Sun 11:05 -->
+<!-- 2023-01-14 Sat 18:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>Introduction to Fuzzy Linear Programming Problems: Theory, Methods, and Applictions</title>
 <meta name="author" content="Alexander Brown" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href=" ./style.css" />
@@ -34,57 +34,181 @@
 </head>
 <body>
 <div id="content" class="content">
+<h1 class="title">Introduction to Fuzzy Linear Programming Problems: Theory, Methods, and Applictions</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#fuzzy-linear-programming">1. Fuzzy Linear Programming</a>
+<li><a href="#state-of-the-art">1. State of the Art</a></li>
+<li><a href="#org4abeec4">2. Non-negative Fuzzy Optimal Solution of Fully Fuzzy Linear Programming Problems with Equality Constraints</a>
 <ul>
-<li><a href="#fuzzy-objective">1.1. Fuzzy Objective</a></li>
-<li><a href="#fuzzy-constraints">1.2. Fuzzy Constraints</a></li>
-<li><a href="#fuzzy-coefficients">1.3. Fuzzy Coefficients</a></li>
+<li><a href="#org2fb9453">2.1. Preliminaries</a></li>
 </ul>
 </li>
-<li><a href="#formulating-fflp">2. Formulating FFLP</a>
+<li><a href="#org8fcfecc">3. Misc Papers</a>
 <ul>
-<li><a href="#a-general-flp-model">2.1. A General FLP Model</a>
-<ul>
-<li><a href="#nasseris-method">2.1.1. Nasseri's Method</a></li>
-<li><a href="#zimmermanss-methods">2.1.2. Zimmermans's Methods</a></li>
+<li><a href="#fuzzy-objective">3.1. Fuzzy Objective</a></li>
+<li><a href="#fuzzy-constraints">3.2. Fuzzy Constraints</a></li>
+<li><a href="#fuzzy-coefficients">3.3. Fuzzy Coefficients</a></li>
 </ul>
 </li>
-<li><a href="#zimmermans-product-example">2.2. Zimmerman's Product Example</a></li>
-<li><a href="#fuzzy-berth-allocation-problem-bap-example">2.3. Fuzzy Berth Allocation Problem (BAP) Example</a></li>
+<li><a href="#formulating-fflp">4. Formulating FFLP</a>
+<ul>
+<li><a href="#a-general-flp-model">4.1. A General FLP Model</a>
+<ul>
+<li><a href="#nasseris-method">4.1.1. Nasseri's Method</a></li>
+<li><a href="#zimmermanss-methods">4.1.2. Zimmermans's Methods</a></li>
+</ul>
+</li>
+<li><a href="#zimmermans-product-example">4.2. Zimmerman's Product Example</a></li>
+<li><a href="#fuzzy-berth-allocation-problem-bap-example">4.3. Fuzzy Berth Allocation Problem (BAP) Example</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-fuzzy-linear-programming" class="outline-2">
-<h2 id="fuzzy-linear-programming"><span class="section-number-2">1.</span> Fuzzy Linear Programming</h2>
-<div class="outline-text-2" id="text-fuzzy-linear-programming">
+
+<div id="outline-container-state-of-the-art" class="outline-2">
+<h2 id="state-of-the-art"><span class="section-number-2">1.</span> State of the Art</h2>
+<div class="outline-text-2" id="text-state-of-the-art">
 <p>
-Fuzzy linear programming introduces the idea of uncertainty into the
-model's parameters. This allows for adaptability of plans or "fuzziness"
-to the solution of the linear program. By doing so, this allows for a
-more robust model that is guaranteed to result in an efficient solution
-#1 #3 (TODO: fix ref). Fuzzy LP is based off
-<a href="fuzzy_theory.html">fuzzy theory</a> which is the basis that allows
-for the uncertainty.
+The main objective of fuzzy linear programming is to find the best solution possible with imprecise, vague, uncertain or
+incomplete information. In literature, most of the fuzzy linear programming models deal with the fuzziness related to
+the function(s)' coefficients, technological coefficients, and the right hand side values of the constraints.
 </p>
 
 <p>
-When a Linear Program's (LP) parameters and decision variables are to be
-modeled as fuzzy, then the LP is said to be a Fully Fuzzy Lineal
-Programming Problem (FFLP) #1 In other cases when
-only part of the LP is fuzzy, it is known as a Fuzzy Linear Program
-(FLP). There are many methods to solve FLP's and FLLP's. Most of them
-convert the FFLP into a LP #3.
+Because the decision making process in crisp solutions expect exact conditions, presenting a reasonable range of values
+for the decision variables can be comparitavely better than the currently available crisp solution. Fuzzy solutions may
+serve the regions containing potential satisfactory solutions around the optimal solution. Therefore, even with fuzzy
+linear programs, the final decisions can be the same as the crisp.
 </p>
 
 <p>
-In #3, Zimmerman describes 3 approaches to "single
-out" one specific solution from the set of efficient solutions which
+Fully fuzzy linear programs have been an attractive topic to reseachers for years. However, the literature on fully
+fuzzy linear programming is not rich as there are few studies available on this topic.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4abeec4" class="outline-2">
+<h2 id="org4abeec4"><span class="section-number-2">2.</span> Non-negative Fuzzy Optimal Solution of Fully Fuzzy Linear Programming Problems with Equality Constraints</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org2fb9453" class="outline-3">
+<h3 id="org2fb9453"><span class="section-number-3">2.1.</span> Preliminaries</h3>
+<div class="outline-text-3" id="text-2-1">
+<blockquote>
+<p>
+Let \(X\) be a classical set of objects. Then, the set of ordered pairs \(\tilde{A} = \{(x, \membership) : x \in X\}\), where
+\(\fuzzy_set : \rightarrow [0, 1]\), is called a fuzzy set in \(X\). the evaulation function \(\membership\) is called the membership
+function.
+</p>
+</blockquote>
+
+<blockquote>
+<p>
+Let \(\tilde{A}\) be a fuzzy set in \(X\) and \(\lambda \in [0,1]\) be a real number. Then, a classical set \(A^{\lambda} \{ x \in X :
+\membership \ge \lambda \}\) is called an $&lambda;$-cut or parametric form of \(\tilde{A}\).
+</p>
+</blockquote>
+
+<blockquote>
+<p>
+A fuzzy set \(\tilde{A} = \{ (x, \membership) : x \in X \}\) is called a normalized set iff \(\text{Supremum\{\membership\} = 1\) 
+</p>
+</blockquote>
+
+<blockquote>
+<p>
+A fuzzy set \(\tilde{A}\) is called a convex fuzzy set iff \(\mu_{\tilde{A}} (\alpha x_1 + (1 - \alpha) x_2) \ge \text{min} \{\mu_{\tilde{A}}(x_1), \mu_{\tilde{A}}(x_2)\}, \forall x_1 , x_2 \in X, \alpha \in [0,1]\).
+</p>
+</blockquote>
+
+<blockquote>
+<p>
+A convex normalized set \(\tilde{A} = \{ (x, \membership) : x \in X \}\) is called a fuzzy number iff \(\membership\) is piecewise continuous in \(X\).
+</p>
+</blockquote>
+
+<blockquote>
+<p>
+A fuzzy number \(\tilde{A}\) is said to be a non-negative fuzzy number iff \(\membership = 0, \forall x < 0\)
+</p>
+</blockquote>
+
+<blockquote>
+<p>
+A fuzzy number \(\tilde{A}\) defined on the universal set of real numbers \(\mathbb{R}\), denoted as \(\tilde{A} = (a,b,c,d)\), is said to be a trapezoidal fuzzy number if its membership function, \(\membership\), is given by
+</p>
+
+\begin{equation}
+\membership = 
+\begin{cases}
+\frac{(x-a)}{(b-a)} & a \le x < b \\
+1                   & b \le x > c \\
+\frac{(x-d)}{(c-d)} & c < x \le d  \\
+0                   & \text{otherwise}
+\end{cases}
+\end{equation}
+</blockquote>
+
+<blockquote>
+<p>
+Let \(\tilde{A} = (a,b,c,d)\) be a trapezoidal fuzzy number. Then, its $&lambda;$-cut \(A^{\lambda}\), is defined as follows: \(A^{\lambda} = [a + (b-a)\lambda, d - (d-c)\lambda], 0 \le \lambda \le 1\)
+</p>
+</blockquote>
+
+<blockquote>
+<p>
+A trapezoidal fuzzy number is said to be a symmetric trapezoidal fuzzy number iff \(b-a = d-c\), otherwise \(\tilde{A}\) is said to be an asymmetric trapezoidal fuzzy number.
+</p>
+
+<p>
+a symmetric trapezoidal can be denoted as \((b,c,\simga)\), where \([b,c]\) is the core and \(\simga = b-a = d-c\) is the spead of the symmetric trapezoidal fuzzy number \(\tilde{A}\).
+</p>
+</blockquote>
+
+<blockquote>
+<p>
+A trapezoidal fuzzy number \(\tilda{A} = (a,b,c,d)\) is said to be a non-negative trapezoidal fuzzy number iff \(a \ge 0\) and is said to be non-positive trapezoidal fuzzy numbef iff \(a \le 0\) 
+</p>
+</blockquote>
+
+<blockquote>
+<p>
+A trapezoidal fuzzy number is said to be unrestricted trapezoidal fuzzy number iff \(a\) is a real number
+</p>
+</blockquote>
+
+<blockquote>
+<p>
+Two trapezoidal fuzzy numbers \(\tilde{A}_1\) and \(\tilde{A}_2\) are said to be equal iff \(a_1 = a_2\), \(b_1 = b_2\), \(c_1 = c_2\), and \(d_1 = d_2\).
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8fcfecc" class="outline-2">
+<h2 id="org8fcfecc"><span class="section-number-2">3.</span> Misc Papers</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Fuzzy linear programming introduces the idea of uncertainty into the model's parameters. This allows for adaptability of
+plans or "fuzziness" to the solution of the linear program. By doing so, this allows for a more robust model that is
+guaranteed to result in an efficient solution #1 #3 (TODO: fix ref). Fuzzy LP is based off <a href="fuzzy_theory.html">fuzzy theory</a> which is the
+basis that allows for the uncertainty.
+</p>
+
+<p>
+When a Linear Program's (LP) parameters and decision variables are to be modeled as fuzzy, then the LP is said to be a
+Fully Fuzzy Lineal Programming Problem (FFLP) #1 In other cases when only part of the LP is fuzzy, it is known as a
+Fuzzy Linear Program (FLP). There are many methods to solve FLP's and FLLP's. Most of them convert the FFLP into a LP
+#3.
+</p>
+
+<p>
+In #3, Zimmerman describes 3 approaches to "single out" one specific solution from the set of efficient solutions which
 qualifies as "optimal"
 </p>
 
@@ -95,151 +219,134 @@ qualifies as "optimal"
 </ul>
 
 <p>
-The first two assumes that the decision maker can specify their
-"preference-function" with respect to the combination of teh individual
-objctive functions in advnace as either a sum of weights (utilites) or
-distance functions (distance from ideal solution). The third uses only
-local information in order to arrive at an acceptable compromise
-solution. We new introduce the fuzzy approach.
+The first two assumes that the decision maker can specify their "preference-function" with respect to the combination of
+the individual objective functions in advance as either a sum of weights (utilities) or distance functions (distance from
+ideal solution). The third uses only local information in order to arrive at an acceptable compromise solution. We new
+introduce the fuzzy approach.
 </p>
 </div>
 
 <div id="outline-container-fuzzy-objective" class="outline-3">
-<h3 id="fuzzy-objective"><span class="section-number-3">1.1.</span> Fuzzy Objective</h3>
+<h3 id="fuzzy-objective"><span class="section-number-3">3.1.</span> Fuzzy Objective</h3>
 <div class="outline-text-3" id="text-fuzzy-objective">
 <p>
-The fuzzy objective function is characterized by its
-<a href="fuzzy_theory.html">membership function</a>, same with its
-constraints. The "decision" in a fuzzy environment, much like its crips
-brother, can be viewed as the intersection of fuzzy constraints and
-fuzzy objective functions. This is implying that the relationship
-between constraints and the objective functions is fully symmetric
-(there is no longer a difference between the former and latter)
-#3.
+The fuzzy objective function is characterized by its <a href="fuzzy_theory.html">membership function</a>, same with its constraints. The "decision" in a
+fuzzy environment, much like its crips brother, can be viewed as the intersection of fuzzy constraints and fuzzy
+objective functions. This is implying that the relationship between constraints and the objective functions is fully
+symmetric (there is no longer a difference between the former and latter) #3.
 </p>
 </div>
 </div>
 
 <div id="outline-container-fuzzy-constraints" class="outline-3">
-<h3 id="fuzzy-constraints"><span class="section-number-3">1.2.</span> Fuzzy Constraints</h3>
+<h3 id="fuzzy-constraints"><span class="section-number-3">3.2.</span> Fuzzy Constraints</h3>
 <div class="outline-text-3" id="text-fuzzy-constraints">
 <p>
-As stated previously, fuzzy constraints tolerate violations in the
-accomplishment of the constraints. The constraint can be represented by
+As stated previously, fuzzy constraints tolerate violations in the accomplishment of the constraints. The constraint can
+be represented by
 </p>
 
-<p>
-\[
+<div class="latex" id="orgaa03caa">
+\begin{equation}
 a_i x \lesssim b_i
-\]
-</p>
+\end{equation}
+
+</div>
 
 <p>
 Where \(a\) and \(b\) modeled using a <a href="fuzzy_theory.html">membership function </a> as described in #2 and #3.
 </p>
 
-<p>
-\[
-&mu;<sub>i</sub> (x) =
-</p>
+<div class="latex" id="org21e6b7a">
+\begin{equation}
+\mu_i (x) =
 \begin{cases}
     1          & \text{if } a_i x \leq b                        \\
     f_i(a_i x) & \text{if } b_i \leq a_i x \leq b_i + \bar{b}_i \\
     0          & \text{if } a_i x \geq b_i + \bar{b}_i          \\
 \end{cases}
-<p>
-\]
-</p>
+\end{equation}
+
+</div>
 
 <p>
-A fuzzy solution is found from the solution of the
-[[<a href="parametric_lin_prog.html">parametric_lin_prog.html</a>][parametric linear #2.
+A fuzzy solution is found from the solution of the [[<a href="parametric_lin_prog.html">parametric_lin_prog.html</a>][parametric linear #2.
 </p>
 
-<p>
-\[
-</p>
+<div class="latex" id="orgcd1d288">
+\begin{equation}
 \begin{array}{l}
     \text{max } xc    \\
     Ax \leq g(\alpha) \\
     x \geq 0          \\
     \alpha \in (0,1]
 \end{array}
-<p>
-\]
-</p>
+\end{equation}
+
+</div>
 
 <p>
-where \(g(\alpha)\) is a column vector defined by the inverse functions
-of the \(f_i\).
+where \(g(\alpha)\) is a column vector defined by the inverse functions of the \(f_i\).
 </p>
 
 <p>
 Zimmerman proposes that given a LP:
 </p>
 
-<p>
-\[
-</p>
+<div class="latex" id="org4da50ed">
+\begin{equation}
 \begin{array}{l}
     cx \lesssim z_0 \\
     Ax \lesssim b   \\
     x \gtrsim 0
 \end{array}
-<p>
-\]
-</p>
+\end{equation}
+
+</div>
 
 <p>
-with a linear <a href="fuzzy_theory.html">membership function</a>, the
-solution can be of the form #3.
+with a linear <a href="fuzzy_theory.html">membership function</a>, the solution can be of the form #3.
 </p>
 
-<p>
-\[
-</p>
+<div class="latex" id="orgf05ec1a">
+\begin{equation}
 \begin{array}{l}
     f(x) = 1 - \frac{(Bx)_i - b_i'}{\bar{b}_i} \\
     \lambda \leq \frac{b_i'}{\bar{b}_i} - (\frac{B}{\bar{b}} x)_i
 \end{array}
-<p>
-\]
-</p>
+\end{equation}
+
+</div>
 
 <p>
-where \(f(\cdot)\) defines the linear membership function and
-\(\lambda\) is the developed linear constraint. \(B\) is the constraint
-matrix from \(Ax \leq b\) augmented with the objective equations.
-Similarly \(b'\) is \(b\) augmented with upper bounds for the objective
-equations, and \(\bar{b}\) are subjectively chosen constraints off
-addmissible violations #3.
+where \(f(\cdot)\) defines the linear membership function and \(\lambda\) is the developed linear constraint. \(B\) is the
+constraint matrix from \(Ax \leq b\) augmented with the objective equations. Similarly \(b'\) is \(b\) augmented with upper
+bounds for the objective equations, and \(\bar{b}\) are subjectively chosen constraints off addmissible violations #3.
 </p>
 </div>
 </div>
 
 <div id="outline-container-fuzzy-coefficients" class="outline-3">
-<h3 id="fuzzy-coefficients"><span class="section-number-3">1.3.</span> Fuzzy Coefficients</h3>
+<h3 id="fuzzy-coefficients"><span class="section-number-3">3.3.</span> Fuzzy Coefficients</h3>
 <div class="outline-text-3" id="text-fuzzy-coefficients">
 <p>
-If the decision maker does not know exactly the values of the
-coefficients taking part in the problem, fuzzy numbers can be used to
-represent this uncertainty #2.
+If the decision maker does not know exactly the values of the coefficients taking part in the problem, fuzzy numbers can
+be used to represent this uncertainty #2.
 </p>
 
-<p>
-\[
+<div class="latex" id="orgd5e426d">
+\begin{equation}
 \sum_{j=1}^n \tilde{a}_{ij} x_j \leq \tilde{b}_i
-\]
-</p>
+\end{equation}
+
+</div>
 
 <p>
-Given a similar model to solve as before the model for fuzzy
-coefficients can be defined as
+Given a similar model to solve as before the model for fuzzy coefficients can be defined as
 </p>
 
-<p>
-\[
-</p>
+<div class="latex" id="org3543b63">
+\begin{equation}
 \begin{array}{l}
     \text{max } cx                                                  \\
     [(1-1/2h)(a_i + \bar{a}_i) + 1/2h(a_i - \underline{a}_i)]x \leq \\
@@ -248,23 +355,21 @@ coefficients can be defined as
     1/2h(b_i + \bar{b}_i)+(1-1/2h)(b_i - \underline{b}_i),          \\
     x \geq 0
 \end{array}
-<p>
-\]
-</p>
+\end{equation}
+
+</div>
 
 <p>
-where \(h \in (0,1]\) is a level or degree of optimism being specified
-by the decision maker a priori. \((a + \bar{a})\) is the upper bound and
-\((a - \underline{a})\) is the lower bound. Furthermore it is assumed
-that the upper bound of \(a\) is greater than \(b\) and similarly lower
-bound of \(a\) is greater than \(b\).
+where \(h \in (0,1]\) is a level or degree of optimism being specified by the decision maker a priori. \((a + \bar{a})\)
+is the upper bound and \((a - \underline{a})\) is the lower bound. Furthermore it is assumed that the upper bound of
+\(a\) is greater than \(b\) and similarly lower bound of \(a\) is greater than \(b\).
 </p>
 </div>
 </div>
 </div>
 
 <div id="outline-container-formulating-fflp" class="outline-2">
-<h2 id="formulating-fflp"><span class="section-number-2">2.</span> Formulating FFLP</h2>
+<h2 id="formulating-fflp"><span class="section-number-2">4.</span> Formulating FFLP</h2>
 <div class="outline-text-2" id="text-formulating-fflp">
 <p>
 This section contains a list of different ways of formulating LP's.
@@ -272,23 +377,22 @@ This section contains a list of different ways of formulating LP's.
 </div>
 
 <div id="outline-container-a-general-flp-model" class="outline-3">
-<h3 id="a-general-flp-model"><span class="section-number-3">2.1.</span> A General FLP Model</h3>
+<h3 id="a-general-flp-model"><span class="section-number-3">4.1.</span> A General FLP Model</h3>
 <div class="outline-text-3" id="text-a-general-flp-model">
 <p>
 Consider
 </p>
 
-<p>
-\[
-</p>
+<div class="latex" id="orgaaf05d9">
+\begin{equation}
 \begin{array}{l}
     \text{max } cx \\
     Ax \lesssim b  \\
     x \geq 0
 \end{array}
-<p>
-\]
-</p>
+\end{equation}
+
+</div>
 
 <p>
 where \(a\) is a matrix of fuzzy numbers and \(b\) is a column vector of
@@ -297,11 +401,12 @@ fuzzy numbers. We can then create an ordering via
 with the following constraint:
 </p>
 
-<p>
-\[
+<div class="latex" id="org7521a10">
+\begin{equation}
 Ax < b + (1-\alpha)
-\]
-</p>
+\end{equation}
+
+</div>
 
 <p>
 Where if \(\alpha=1\) then the constraint is completely verified and if
@@ -310,19 +415,21 @@ Where if \(\alpha=1\) then the constraint is completely verified and if
 </div>
 
 <div id="outline-container-nasseris-method" class="outline-4">
-<h4 id="nasseris-method"><span class="section-number-4">2.1.1.</span> Nasseri's Method</h4>
+<h4 id="nasseris-method"><span class="section-number-4">4.1.1.</span> Nasseri's Method</h4>
 <div class="outline-text-4" id="text-nasseris-method">
 <p>
 Given an FFLP:
 </p>
 
-<p>
-\[
+<div class="latex" id="org977ed26">
+\begin{equation}
     max\; \sum_{j=1}^n \tilde{c}_j \tilde{x}_j \\
-\] subject to \[
+
+subject to
     \sum_{j=1}^n \tilde{a}_{ij} \tilde{x}_j \leq \tilde{b}_i\; \forall i = 1 - m \\
-\]
-</p>
+\end{equation}
+
+</div>
 
 <p>
 where \(\tilde{c_j}\), \(\tilde{a_{ij\)$, \(\tilde{b_j}\) are parameters
@@ -330,44 +437,43 @@ and \(\tilde{x_j}\) are non-negative fuzzy numbers #1. Because these are fuzzy n
 represent them as such:
 </p>
 
-<p>
-\[
-</p>
+<div class="latex" id="org5d707d8">
+\begin{equation}
 \begin{array}{l}
     \tilde{c}_j    = (c1_j, c2_j, c3_j)          \\
     \tilde{a}_{ij} = (a1_{ij}, a2_{ij}, a3_{ij}) \\
     \tilde{b}_j    = (b1_j, b2_j, b3_j)          \\
     \tilde{x}_j    = (x1_j, x2_j, x3_j)          \\
 \end{array}
-<p>
-\]
-</p>
+\end{equation}
+
+</div>
 
 <p>
 Nasseri then proposes that the FFLP can be rewritten as a LP in the
 following manner:
 </p>
 
-<p>
-\[
+<div class="latex" id="org17bd5e8">
+\begin{equation}
 max\; R\Big(\sum_{j=1}^n (c1_j, c2_j, c3_j)(x1_j, x2_j, x3_j)\Big)
-\] Subject to \[
-</p>
-\begin{array}{c}
+
+ Subject to
+
     \sum_{j=1}^n a1_{ij}x1_j \leq b1_j \\
     \sum_{j=2}^n a2_{ij}x2_j \leq b2_j \\
     \sum_{j=3}^n a3_{ij}x3_j \leq b3_j \\
     x2_j - x1_j \geq 0 \\
     x3_j - x2_j \geq 0 \\
 \end{array}
-<p>
-\]
-</p>
+\end{equation}
+
+</div>
 </div>
 </div>
 
 <div id="outline-container-zimmermanss-methods" class="outline-4">
-<h4 id="zimmermanss-methods"><span class="section-number-4">2.1.2.</span> Zimmermans's Methods</h4>
+<h4 id="zimmermanss-methods"><span class="section-number-4">4.1.2.</span> Zimmermans's Methods</h4>
 <div class="outline-text-4" id="text-zimmermanss-methods">
 <p>
 Zimmerman proposes two methods in his work:
@@ -388,28 +494,28 @@ constraints \(Ax \leq b\). A membership function can be written such
 that
 </p>
 
-<p>
-\[
-</p>
+<div class="latex" id="orgf1d18e9">
+\begin{equation}
 \begin{cases}
     0                        & \text{for } (A'x)_i \leq b'_i            \\
     \frac{(A'x)_i b'_i}{d_i} & \text{for b_i < (A'x)_i \leq b'_i + d_i} \\
     1                        & \text{for } (A'x)_i > b'_i + d_i
 \end{cases}
-<p>
-\]
-</p>
+\end{equation}
+
+</div>
 
 <p>
 Where this draws a line from \(z(-b'_i) = 0\) to \(z(d_i) = 1\).
 Constraints can then be made using the form
 </p>
 
-<p>
-\[
+<div class="latex" id="orge212527">
+\begin{equation}
 \lambda = \frac{b'_i}{d_i} - (\frac{A}{d_i}x)_i
-\]
-</p>
+\end{equation}
+
+</div>
 
 <p>
 which is appended to the set of constraints.
@@ -423,28 +529,28 @@ which is appended to the set of constraints.
 This method uses the same membership function
 </p>
 
-<p>
-\[
-</p>
+<div class="latex" id="org8b96424">
+\begin{equation}
 \begin{cases}
     0                        & \text{for } (A'x)_i \leq b'_i            \\
     \frac{(A'x)_i b'_i}{d_i} & \text{for b_i < (A'x)_i \leq b'_i + d_i} \\
     1                        & \text{for } (A'x)_i > b'_i + d_i
 \end{cases}
-<p>
-\]
-</p>
+\end{equation}
+
+</div>
 
 <p>
 Rather than append to the constraints and maximize or minimize
 \(\lambda\), the objective function is updated with
 </p>
 
-<p>
-\[
+<div class="latex" id="org24a6783">
+\begin{equation}
 \text{max } \prod_{i = 1}^K = \frac{(c^i)^T x - p_i}{d_i}
-\]
-</p>
+\end{equation}
+
+</div>
 
 <p>
 where \(c^i\) is the vector to be multiplied with \(x\). The constraints
@@ -457,7 +563,7 @@ are left the same.
 </div>
 
 <div id="outline-container-zimmermans-product-example" class="outline-3">
-<h3 id="zimmermans-product-example"><span class="section-number-3">2.2.</span> Zimmerman's Product Example</h3>
+<h3 id="zimmermans-product-example"><span class="section-number-3">4.2.</span> Zimmerman's Product Example</h3>
 <div class="outline-text-3" id="text-zimmermans-product-example">
 <p>
 A company manufactures two products, 1 and 2 on given capacities.
@@ -499,9 +605,8 @@ figure below
 and the problem is written as
 </p>
 
-<p>
-\[
-</p>
+<div class="latex" id="org4079af5">
+\begin{equation}
 \begin{array}{l}
     \text{max } Z(x) =
     \begin{bmatrix}
@@ -518,18 +623,17 @@ and the problem is written as
     3x_1 + x_2 \leq 30  \\
     x1,x2 \geq 0
 \end{array}
-<p>
-\]
-</p>
+\end{equation}
+
+</div>
 
 <p>
 Using the method proposed by Zimmerman (as described in
 Fuzzy Constraints, one yields the following formulation
 </p>
 
-<p>
-\[
-</p>
+<div class="latex" id="org7f1c33c">
+\begin{equation}
 \begin{array}{l}
     \text{max } \lambda \\
     \lambda \leq -0.05582x_1 + 0.117x_2 + 0.1764 \\
@@ -540,9 +644,9 @@ Fuzzy Constraints, one yields the following formulation
     30 \geq 3x_1 + x_2                           \\
     x \geq 0
 \end{array}
-<p>
-\]
-</p>
+\end{equation}
+
+</div>
 
 <p>
 Where the maximum "overval satisfaction" of \(\lambda = 0.74\) is
@@ -552,7 +656,7 @@ achived with \(x = [5.03, 7.32]^T\).
 </div>
 
 <div id="outline-container-fuzzy-berth-allocation-problem-bap-example" class="outline-3">
-<h3 id="fuzzy-berth-allocation-problem-bap-example"><span class="section-number-3">2.3.</span> Fuzzy Berth Allocation Problem (BAP) Example</h3>
+<h3 id="fuzzy-berth-allocation-problem-bap-example"><span class="section-number-3">4.3.</span> Fuzzy Berth Allocation Problem (BAP) Example</h3>
 <div class="outline-text-3" id="text-fuzzy-berth-allocation-problem-bap-example">
 <p>
 In the <a href="berth_allocation_problem.html">BAP</a>, arrivals of each
@@ -563,19 +667,19 @@ view. A FFLP for the BAP problem to minimize the total time can be
 expressed as
 </p>
 
-<p>
-\[
+<div class="latex" id="org5f92568">
+\begin{equation}
 min\; \sum_{i\in V} (\tilde{m}_i - \tilde{a}_i)
-\]
-</p>
+\end{equation}
+
+</div>
 
 <p>
 Such that
 </p>
 
-<p>
-\[
-</p>
+<div class="latex" id="org9068a0b">
+\begin{equation}
 \begin{array}{l}
     \tilde{m}_i \geq \tilde{a}_i                               \\
     p_i + l_i \leq L                                           \\
@@ -585,9 +689,9 @@ Such that
     z_{ij}^x + z_{ji}^x + z_{ij}^y + z_{ij}^y + \geq 1         \\
     z_{ij}^x, z_{ij}^y \in \{0,1\}
 \end{array}
-<p>
-\]
-</p>
+\end{equation}
+
+</div>
 
 <p>
 where the parameters are
@@ -623,19 +727,19 @@ Using Nasseri's Method in #1 the BAP can be
 described as
 </p>
 
-<p>
-\[
+<div class="latex" id="orga5f68a2">
+\begin{equation}
 min\; \sum_{i\in V} (m1_i - a3_i, m2_i - a2_i, m3_i - a1_i)
-\]
-</p>
+\end{equation}
+
+</div>
 
 <p>
 Subject to
 </p>
 
-<p>
-\[
-</p>
+<div class="latex" id="orgbec83a2">
+\begin{equation}
 \begin{array}{l}
     {m}1_i \geq {a}1_i                                 \\
     {m}2_i \geq {a}2_i                                 \\
@@ -651,9 +755,9 @@ Subject to
     z_{ij}^x + z_{ji}^x + z_{ij}^y + z_{ij}^y + \geq 1 \\
     z_{ij}^x, z_{ij}^y \in \{0,1\}
 \end{array}
-<p>
-\]
-</p>
+\end{equation}
+
+</div>
 
 <p>
 An example solution #1 can be shown in the
@@ -670,7 +774,7 @@ polygonal-shape}}
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alexander Brown</p>
-<p class="date">Created: 2022-11-20 Sun 11:05</p>
+<p class="date">Created: 2023-01-14 Sat 18:12</p>
 </div>
 </body>
 </html>

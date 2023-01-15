@@ -1,100 +1,141 @@
 #+title: Introduction to Fuzzy Linear Programming Problems: Theory, Methods, and Applictions
 
-#+latex_header:  \newcommand{\membership}{\mu_{\tilde{A}}(x)} 
-#+latex_header:  \newcommand{\fuzzy_set}{\mu_{\tilde{A}}} 
+#+latex_header:  \newcommand{\membership}{\mu_{\tilde{A}}(x)}
+#+latex_header:  \newcommand{\fuzzy_set}{\mu_{\tilde{A}}}
+#+latex_header: \usepackage{amsmath,amssymb}
 
 * State of the Art
 :PROPERTIES:
 :CUSTOM_ID: state-of-the-art
 :END:
-The main objective of fuzzy linear programming is to find the best solution possible with
-imprecise, vague, uncertain or incomplete information. In literature, most of the fuzzy
-linear programming models deal with the fuzziness related to the function(s)' coefficients,
-technological coefficients, and the right hand side values of the constraints.
+The main objective of fuzzy linear programming is to find the best solution possible with imprecise, vague, uncertain or
+incomplete information. In literature, most of the fuzzy linear programming models deal with the fuzziness related to
+the function(s)' coefficients, technological coefficients, and the right hand side values of the constraints.
 
-Because the decision making process in crisp solutions expect exact conditions, presenting
-a reasonable range of values for the decision variables can be comparitavely better than the
-currently available crisp solution. Fuzzy solutions may serve the regions containing potential
-satisfactory solutions around the optimal solution. Therefore, even with fuzzy linear
-programs, the final decisions can be the same as the crisp.
+Because the decision making process in crisp solutions expect exact conditions, presenting a reasonable range of values
+for the decision variables can be comparitavely better than the currently available crisp solution. Fuzzy solutions may
+serve the regions containing potential satisfactory solutions around the optimal solution. Therefore, even with fuzzy
+linear programs, the final decisions can be the same as the crisp.
 
-Fully fuzzy linear programs have been an attractive topic to reseachers for years. However,
-the literature on fully fuzzy linear programming is not rich as there are few studies
-available on this topic.
+Fully fuzzy linear programs have been an attractive topic to reseachers for years. However, the literature on fully
+fuzzy linear programming is not rich as there are few studies available on this topic.
 
 * Non-negative Fuzzy Optimal Solution of Fully Fuzzy Linear Programming Problems with Equality Constraints
-
 ** Preliminaries
 
 #+caption: Definition 2.1
 #+begin_quote
-Let $X$ be a classical set of objects. Then, the set of ordered pairs 
-$\tilde{A} = \{(x, \membership) : x \in X\}$, where $\fuzzy_set : \rightarrow [0, 1]$, is called a fuzzy
-set in $X$. the evaulation function $\membership$ is called the membership function.
+Let $X$ be a classical set of objects. Then, the set of ordered pairs $\tilde{A} = \{(x, \membership) : x \in X\}$, where
+$\fuzzy_set : \rightarrow [0, 1]$, is called a fuzzy set in $X$. the evaulation function $\membership$ is called the membership
+function.
 #+end_quote
 
 #+caption: Definition 2.2
 #+begin_quote
-Let $\tilde{A} be a fuzzy set in $X$ and $\lambda \in [0,1]$ be a real number. Then, a classical set
-$A^{\lambda} \{ x \in X : \memburship \ge \lambda \}$ is called an $\lambda$-cut or parametric form
-of $\tilde{A}$.
+Let $\tilde{A}$ be a fuzzy set in $X$ and $\lambda \in [0,1]$ be a real number. Then, a classical set $A^{\lambda} \{ x \in X :
+\membership \ge \lambda \}$ is called an $\lambda$-cut or parametric form of $\tilde{A}$.
 #+end_quote
 
-#+caption: Definition 2.2
+#+caption: Definition 2.3
 #+begin_quote
-A fuzzy set
+A fuzzy set $\tilde{A} = \{ (x, \membership) : x \in X \}$ is called a normalized set iff $\text{Supremum\{\membership\} = 1$ 
+#+end_quote
+
+#+caption: Definition 2.4
+#+begin_quote
+A fuzzy set $\tilde{A}$ is called a convex fuzzy set iff $\mu_{\tilde{A}} (\alpha x_1 + (1 - \alpha) x_2) \ge \text{min} \{\mu_{\tilde{A}}(x_1), \mu_{\tilde{A}}(x_2)\}, \forall x_1 , x_2 \in X, \alpha \in [0,1]$.
+#+end_quote
+
+#+caption: Definition 2.5
+#+begin_quote
+A convex normalized set $\tilde{A} = \{ (x, \membership) : x \in X \}$ is called a fuzzy number iff $\membership$ is piecewise continuous in $X$.
+#+end_quote
+
+#+caption: Definition 2.6
+#+begin_quote
+A fuzzy number $\tilde{A}$ is said to be a non-negative fuzzy number iff $\membership = 0, \forall x < 0$
+#+end_quote
+
+#+caption: Definition 2.7
+#+begin_quote
+A fuzzy number $\tilde{A}$ defined on the universal set of real numbers $\mathbb{R}$, denoted as $\tilde{A} = (a,b,c,d)$, is said to be a trapezoidal fuzzy number if its membership function, $\membership$, is given by
+
+\begin{equation}
+\membership = 
+\begin{cases}
+\frac{(x-a)}{(b-a)} & a \le x < b \\
+1                   & b \le x > c \\
+\frac{(x-d)}{(c-d)} & c < x \le d  \\
+0                   & \text{otherwise}
+\end{cases}
+\end{equation}
+#+end_quote
+
+#+caption: Definition 2.8
+#+begin_quote
+Let $\tilde{A} = (a,b,c,d)$ be a trapezoidal fuzzy number. Then, its $\lambda$-cut $A^{\lambda}$, is defined as follows: $A^{\lambda} = [a + (b-a)\lambda, d - (d-c)\lambda], 0 \le \lambda \le 1$
+#+end_quote
+
+#+caption: Definition 2.9
+#+begin_quote
+A trapezoidal fuzzy number is said to be a symmetric trapezoidal fuzzy number iff $b-a = d-c$, otherwise $\tilde{A}$ is said to be an asymmetric trapezoidal fuzzy number.
+
+a symmetric trapezoidal can be denoted as $(b,c,\simga)$, where $[b,c]$ is the core and $\simga = b-a = d-c$ is the spead of the symmetric trapezoidal fuzzy number $\tilde{A}$.
+#+end_quote
+
+#+caption: Definition 2.10
+#+begin_quote
+A trapezoidal fuzzy number $\tilda{A} = (a,b,c,d)$ is said to be a non-negative trapezoidal fuzzy number iff $a \ge 0$ and is said to be non-positive trapezoidal fuzzy numbef iff $a \le 0$ 
+#+end_quote
+
+#+caption: Definition 2.11
+#+begin_quote
+A trapezoidal fuzzy number is said to be unrestricted trapezoidal fuzzy number iff $a$ is a real number
+#+end_quote
+
+#+caption: Definition 2.11
+#+begin_quote
+Two trapezoidal fuzzy numbers $\tilde{A}_1$ and $\tilde{A}_2$ are said to be equal iff $a_1 = a_2$, $b_1 = b_2$, $c_1 = c_2$, and $d_1 = d_2$.
 #+end_quote
 
 * Misc Papers
-Fuzzy linear programming introduces the idea of uncertainty into the
-model's parameters. This allows for adaptability of plans or "fuzziness"
-to the solution of the linear program. By doing so, this allows for a
-more robust model that is guaranteed to result in an efficient solution
-#1 #3 (TODO: fix ref). Fuzzy LP is based off
-[[file:fuzzy_theory.org][fuzzy theory]] which is the basis that allows
-for the uncertainty.
+Fuzzy linear programming introduces the idea of uncertainty into the model's parameters. This allows for adaptability of
+plans or "fuzziness" to the solution of the linear program. By doing so, this allows for a more robust model that is
+guaranteed to result in an efficient solution #1 #3 (TODO: fix ref). Fuzzy LP is based off [[file:fuzzy_theory.org][fuzzy theory]] which is the
+basis that allows for the uncertainty.
 
-When a Linear Program's (LP) parameters and decision variables are to be
-modeled as fuzzy, then the LP is said to be a Fully Fuzzy Lineal
-Programming Problem (FFLP) #1 In other cases when
-only part of the LP is fuzzy, it is known as a Fuzzy Linear Program
-(FLP). There are many methods to solve FLP's and FLLP's. Most of them
-convert the FFLP into a LP #3.
+When a Linear Program's (LP) parameters and decision variables are to be modeled as fuzzy, then the LP is said to be a
+Fully Fuzzy Lineal Programming Problem (FFLP) #1 In other cases when only part of the LP is fuzzy, it is known as a
+Fuzzy Linear Program (FLP). There are many methods to solve FLP's and FLLP's. Most of them convert the FFLP into a LP
+#3.
 
-In #3, Zimmerman describes 3 approaches to "single
-out" one specific solution from the set of efficient solutions which
+In #3, Zimmerman describes 3 approaches to "single out" one specific solution from the set of efficient solutions which
 qualifies as "optimal"
 
 - The utility approach
 - Goal Programming
 - Interactive Approaches
 
-The first two assumes that the decision maker can specify their
-"preference-function" with respect to the combination of teh individual
-objctive functions in advnace as either a sum of weights (utilites) or
-distance functions (distance from ideal solution). The third uses only
-local information in order to arrive at an acceptable compromise
-solution. We new introduce the fuzzy approach.
+The first two assumes that the decision maker can specify their "preference-function" with respect to the combination of
+the individual objective functions in advance as either a sum of weights (utilities) or distance functions (distance from
+ideal solution). The third uses only local information in order to arrive at an acceptable compromise solution. We new
+introduce the fuzzy approach.
 
 ** Fuzzy Objective
 :PROPERTIES:
 :CUSTOM_ID: fuzzy-objective
 :END:
-The fuzzy objective function is characterized by its
-[[file:fuzzy_theory.org][membership function]], same with its
-constraints. The "decision" in a fuzzy environment, much like its crips
-brother, can be viewed as the intersection of fuzzy constraints and
-fuzzy objective functions. This is implying that the relationship
-between constraints and the objective functions is fully symmetric
-(there is no longer a difference between the former and latter)
-#3.
+The fuzzy objective function is characterized by its [[file:fuzzy_theory.org][membership function]], same with its constraints. The "decision" in a
+fuzzy environment, much like its crips brother, can be viewed as the intersection of fuzzy constraints and fuzzy
+objective functions. This is implying that the relationship between constraints and the objective functions is fully
+symmetric (there is no longer a difference between the former and latter) #3.
 
 ** Fuzzy Constraints
 :PROPERTIES:
 :CUSTOM_ID: fuzzy-constraints
 :END:
-As stated previously, fuzzy constraints tolerate violations in the
-accomplishment of the constraints. The constraint can be represented by
+As stated previously, fuzzy constraints tolerate violations in the accomplishment of the constraints. The constraint can
+be represented by
 
 #+begin_latex latex
 \begin{equation}
@@ -115,8 +156,7 @@ Where \(a\) and \(b\) modeled using a [[file:fuzzy_theory.org][membership functi
 \end{equation}
 #+end_latex
 
-A fuzzy solution is found from the solution of the
-[[file:parametric_lin_prog.org][parametric linear #2.
+A fuzzy solution is found from the solution of the [[file:parametric_lin_prog.org][parametric linear #2.
 
 #+begin_latex latex
 \begin{equation}
@@ -129,8 +169,7 @@ A fuzzy solution is found from the solution of the
 \end{equation}
 #+end_latex
 
-where \(g(\alpha)\) is a column vector defined by the inverse functions
-of the \(f_i\).
+where \(g(\alpha)\) is a column vector defined by the inverse functions of the \(f_i\).
 
 Zimmerman proposes that given a LP:
 
@@ -144,8 +183,7 @@ Zimmerman proposes that given a LP:
 \end{equation}
 #+end_latex
 
-with a linear [[file:fuzzy_theory.org][membership function]], the
-solution can be of the form #3.
+with a linear [[file:fuzzy_theory.org][membership function]], the solution can be of the form #3.
 
 #+begin_latex latex
 \begin{equation}
@@ -156,20 +194,16 @@ solution can be of the form #3.
 \end{equation}
 #+end_latex
 
-where \(f(\cdot)\) defines the linear membership function and
-\(\lambda\) is the developed linear constraint. \(B\) is the constraint
-matrix from \(Ax \leq b\) augmented with the objective equations.
-Similarly \(b'\) is \(b\) augmented with upper bounds for the objective
-equations, and \(\bar{b}\) are subjectively chosen constraints off
-addmissible violations #3.
+where \(f(\cdot)\) defines the linear membership function and \(\lambda\) is the developed linear constraint. \(B\) is the
+constraint matrix from \(Ax \leq b\) augmented with the objective equations. Similarly \(b'\) is \(b\) augmented with upper
+bounds for the objective equations, and \(\bar{b}\) are subjectively chosen constraints off addmissible violations #3.
 
 ** Fuzzy Coefficients
 :PROPERTIES:
 :CUSTOM_ID: fuzzy-coefficients
 :END:
-If the decision maker does not know exactly the values of the
-coefficients taking part in the problem, fuzzy numbers can be used to
-represent this uncertainty #2.
+If the decision maker does not know exactly the values of the coefficients taking part in the problem, fuzzy numbers can
+be used to represent this uncertainty #2.
 
 #+begin_latex latex
 \begin{equation}
@@ -177,8 +211,7 @@ represent this uncertainty #2.
 \end{equation}
 #+end_latex
 
-Given a similar model to solve as before the model for fuzzy
-coefficients can be defined as
+Given a similar model to solve as before the model for fuzzy coefficients can be defined as
 
 #+begin_latex latex
 \begin{equation}
@@ -193,11 +226,9 @@ coefficients can be defined as
 \end{equation}
 #+end_latex
 
-where \(h \in (0,1]\) is a level or degree of optimism being specified
-by the decision maker a priori. \((a + \bar{a})\) is the upper bound and
-\((a - \underline{a})\) is the lower bound. Furthermore it is assumed
-that the upper bound of \(a\) is greater than \(b\) and similarly lower
-bound of \(a\) is greater than \(b\).
+where \(h \in (0,1]\) is a level or degree of optimism being specified by the decision maker a priori. \((a + \bar{a})\)
+is the upper bound and \((a - \underline{a})\) is the lower bound. Furthermore it is assumed that the upper bound of
+\(a\) is greater than \(b\) and similarly lower bound of \(a\) is greater than \(b\).
 
 * Formulating FFLP
 :PROPERTIES:
@@ -245,7 +276,7 @@ Given an FFLP:
 \begin{equation}
     max\; \sum_{j=1}^n \tilde{c}_j \tilde{x}_j \\
 
-subject to 
+subject to
     \sum_{j=1}^n \tilde{a}_{ij} \tilde{x}_j \leq \tilde{b}_i\; \forall i = 1 - m \\
 \end{equation}
 #+end_latex
@@ -272,7 +303,7 @@ following manner:
 \begin{equation}
 max\; R\Big(\sum_{j=1}^n (c1_j, c2_j, c3_j)(x1_j, x2_j, x3_j)\Big)
 
- Subject to 
+ Subject to
 
     \sum_{j=1}^n a1_{ij}x1_j \leq b1_j \\
     \sum_{j=2}^n a2_{ij}x2_j \leq b2_j \\
@@ -521,4 +552,4 @@ polygonal-shape}}
   29(1):21--29, 1989.
 - /3/ [cite/t:@zimmermann_1978] | multiobjective lp fuzzy | H.-J.
   Zimmermann (1978). Fuzzy programming and linear programming with
-  several objective functions
+  several objective function 

@@ -2,9 +2,6 @@
 :PROPERTIES:
 :CUSTOM_ID: contents
 :END:
-#+begin_example
-    - [Classes](#Classes.md)
-#+end_example
 
 * Classes
 :PROPERTIES:

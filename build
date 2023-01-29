@@ -1,3 +1,4 @@
 #!/bin/sh
 
+cp ./html/template.html docs/
 emacs -Q --script build-site.el

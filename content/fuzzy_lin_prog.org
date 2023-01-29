@@ -38,7 +38,7 @@ Let $\tilde{A}$ be a fuzzy set in $X$ and $\lambda \in [0,1]$ be a real number. 
 
 #+caption: Definition 2.3
 #+begin_quote
-A fuzzy set $\tilde{A} = \{ (x, \membership) : x \in X \}$ is called a normalized set iff $\text{Supremum\{\membership\} = 1$ 
+A fuzzy set $\tilde{A} = \{ (x, \membership) : x \in X \}$ is called a normalized set iff $\text{Supremum\{\membership\} = 1$
 #+end_quote
 
 #+caption: Definition 2.4
@@ -61,7 +61,7 @@ A fuzzy number $\tilde{A}$ is said to be a non-negative fuzzy number iff $\membe
 A fuzzy number $\tilde{A}$ defined on the universal set of real numbers $\mathbb{R}$, denoted as $\tilde{A} = (a,b,c,d)$, is said to be a trapezoidal fuzzy number if its membership function, $\membership$, is given by
 
 \begin{equation}
-\membership = 
+\membership =
 \begin{cases}
 \frac{(x-a)}{(b-a)} & a \le x < b \\
 1                   & b \le x > c \\
@@ -85,7 +85,7 @@ a symmetric trapezoidal can be denoted as $(b,c,\simga)$, where $[b,c]$ is the c
 
 #+caption: Definition 2.10
 #+begin_quote
-A trapezoidal fuzzy number $\tilda{A} = (a,b,c,d)$ is said to be a non-negative trapezoidal fuzzy number iff $a \ge 0$ and is said to be non-positive trapezoidal fuzzy numbef iff $a \le 0$ 
+A trapezoidal fuzzy number $\tilda{A} = (a,b,c,d)$ is said to be a non-negative trapezoidal fuzzy number iff $a \ge 0$ and is said to be non-positive trapezoidal fuzzy numbef iff $a \le 0$
 #+end_quote
 
 #+caption: Definition 2.11
@@ -281,7 +281,7 @@ subject to
 \end{equation}
 #+end_latex
 
-where \(\tilde{c_j}\), \(\tilde{a_{ij\)$, \(\tilde{b_j}\) are parameters
+where \(\tilde{c_j}\), \(\tilde{a_{ij}}\), \(\tilde{b_j}\) are parameters
 and \(\tilde{x_j}\) are non-negative fuzzy numbers #1. Because these are fuzzy numbers, we can
 represent them as such:
 
@@ -301,10 +301,9 @@ following manner:
 
 #+begin_latex latex
 \begin{equation}
-max\; R\Big(\sum_{j=1}^n (c1_j, c2_j, c3_j)(x1_j, x2_j, x3_j)\Big)
-
- Subject to
-
+\begin{array}{l}
+    max\; R\Big(\sum_{j=1}^n (c1_j, c2_j, c3_j)(x1_j, x2_j, x3_j)\Big) \\
+    \text{Subject to}\\
     \sum_{j=1}^n a1_{ij}x1_j \leq b1_j \\
     \sum_{j=2}^n a2_{ij}x2_j \leq b2_j \\
     \sum_{j=3}^n a3_{ij}x3_j \leq b3_j \\
@@ -552,4 +551,4 @@ polygonal-shape}}
   29(1):21--29, 1989.
 - /3/ [cite/t:@zimmermann_1978] | multiobjective lp fuzzy | H.-J.
   Zimmermann (1978). Fuzzy programming and linear programming with
-  several objective function 
+  several objective function

@@ -27,18 +27,21 @@
  org-html-validation-link            nil
  org-html-head-include-scripts       nil
  org-html-head-include-default-style nil
+ org-html-preamble                   t
  org-html-head                       "<link rel=\"stylesheet\" type=\"text/css\" href=\" ./style.css\" />")
+ ;; org-html-head                       "<include src=\"./template.html\"></include>")
 
-;; Define the publishing project
+;; Define publishing project
 (setq org-publish-project-alist
       (list                             ; List for all projects
-       (list "wiki"                     ; List for `notes' project
+       (list "notes"                    ; List for `notes' project
              :author               "Alexander Brown"
              :publishing-directory "docs"
-             :base-directory       "./content"
+             :base-directory       "content"
              :recursive            nil
              :with-author          t
              :with-toc             t
+             :html-preamble        "<a href=\"index.html\">Home</a> | <a href=\"blog.html\">Blog</a> | <a href=\"notes.html\">Notes</a> | <a href=\"classes.html\">Classes</a> | <a href=\"projects.html\">Projects</a> | <a href=\"todo.html\">Todo</a> | <a href=\"error.html\">About</a>"
              :section-numbers      t
              :time-stamp-file      t
              :publishing-function  'org-html-publish-to-html)))

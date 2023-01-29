@@ -6,3 +6,6 @@
 
 * Homework Help
 - [[file:./mathematical-methods-for-signals-and-systems/help-1-11-23.htm][help-1-11-23.htm]]
+
+* Book Notes
+- [[file:mathematical-methods-for-signals-and-systems/appendix-b.pdf][Appendix B]]

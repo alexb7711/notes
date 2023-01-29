@@ -72,7 +72,8 @@ Theory of [[file:quaternion_theory.html][quaternions]] in a nutshell
 :PROPERTIES:
 :CUSTOM_ID: queue-theory
 :END:
-[[file:queueing_theory.html][Queueing Theory]]
+- [[file:queueing_theory.html][Queueing Theory]]
+- [[file:queueing_systems.html][Queueing Systems]]
 
 * Optimization
 :PROPERTIES:
@@ -97,7 +98,8 @@ Process of optimization by setting up the world's largest set of linear equation
 :PROPERTIES:
 :CUSTOM_ID: fuzzy-linear-programming
 :END:
-[[file:fuzzy_lin_prog.html][Fuzzy Linear Programming]]
+- [[file:fuzzy_lin_prog.html][Fuzzy Linear Programming]]
+- [[file:an-introduction-to-fuzzy-linear-programming-problems-theory-methods-and-applications.html][An Introduction to Fuzzy Linear Programming Problems]]
 
 *** Stochastic Programmming
 :PROPERTIES:

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-02-14 Tue 19:36 -->
+<!-- 2023-02-16 Thu 19:32 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Rust 4 Dummies</title>
@@ -21,74 +21,74 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orge09790c">1. Idioms</a>
+<li><a href="#orga04fd36">1. Idioms</a>
 <ul>
-<li><a href="#org20855d3">1.1. Use of borrowed types for arguments</a></li>
-<li><a href="#org4064d37">1.2. Concatenating strings with <code>format!</code></a>
+<li><a href="#org8ddaae0">1.1. Use of borrowed types for arguments</a></li>
+<li><a href="#org8c9927a">1.2. Concatenating strings with <code>format!</code></a>
 <ul>
-<li><a href="#org3fcda50">1.2.1. Disadvantages</a></li>
+<li><a href="#org21d30ef">1.2.1. Disadvantages</a></li>
 </ul>
 </li>
-<li><a href="#org9589adf">1.3. Constructors</a>
+<li><a href="#orgeca4008">1.3. Constructors</a>
 <ul>
-<li><a href="#org12e4b15">1.3.1. Default Constructors</a></li>
+<li><a href="#orga39e91a">1.3.1. Default Constructors</a></li>
 </ul>
 </li>
-<li><a href="#org20dc010">1.4. Collections are smart pointers</a></li>
-<li><a href="#orge5fe195">1.5. Finalisation in Destructors</a></li>
-<li><a href="#org2368a56">1.6. <code>mem::{take(_), replace(_)}</code> to keep owned values in changed enums</a></li>
-<li><a href="#orgb78246d">1.7. On-Stack Dynamic Dispatch</a></li>
-<li><a href="#orge7aeeb0">1.8. FFI (foreign function interface) Idioms</a>
+<li><a href="#org88a49b9">1.4. Collections are smart pointers</a></li>
+<li><a href="#org55a1e9d">1.5. Finalisation in Destructors</a></li>
+<li><a href="#org56e58f0">1.6. <code>mem::{take(_), replace(_)}</code> to keep owned values in changed enums</a></li>
+<li><a href="#org279e3fc">1.7. On-Stack Dynamic Dispatch</a></li>
+<li><a href="#org86d7eaa">1.8. FFI (foreign function interface) Idioms</a>
 <ul>
-<li><a href="#orga4e8f61">1.8.1. Error Handling in FFI</a></li>
-<li><a href="#org836b82e">1.8.2. Accepting Strings</a></li>
-<li><a href="#orgcaf84d9">1.8.3. Passing Strings</a></li>
+<li><a href="#org9c4d8b2">1.8.1. Error Handling in FFI</a></li>
+<li><a href="#orgac1dc1b">1.8.2. Accepting Strings</a></li>
+<li><a href="#orgca700f9">1.8.3. Passing Strings</a></li>
 </ul>
 </li>
-<li><a href="#orgcda93ec">1.9. Iterating over an <code>Option</code></a></li>
-<li><a href="#org9432f12">1.10. Pass variables to closure</a></li>
-<li><a href="#orgd3b2455">1.11. Easy doc initialization</a></li>
-<li><a href="#org5d9e1bc">1.12. Temporary mutability</a></li>
+<li><a href="#org0f486c4">1.9. Iterating over an <code>Option</code></a></li>
+<li><a href="#org84b3d2a">1.10. Pass variables to closure</a></li>
+<li><a href="#org310d242">1.11. Easy doc initialization</a></li>
+<li><a href="#org63ddb93">1.12. Temporary mutability</a></li>
 </ul>
 </li>
-<li><a href="#orgffd6291">2. Design Patterns</a>
+<li><a href="#orgb9ed06a">2. Design Patterns</a>
 <ul>
-<li><a href="#org85ea009">2.1. Behavioral Patterns</a>
+<li><a href="#org9aaaa55">2.1. Behavioral Patterns</a>
 <ul>
-<li><a href="#org0ee9e94">2.1.1. Command</a></li>
-<li><a href="#org1121d08">2.1.2. Newtype</a></li>
-<li><a href="#org442105a">2.1.3. Resource Acquisition is Initialization (RAII)</a></li>
-<li><a href="#org619fdd8">2.1.4. Strategy (aka Policy)</a></li>
-<li><a href="#orgb49837f">2.1.5. Visitor</a></li>
+<li><a href="#org49188fa">2.1.1. Command</a></li>
+<li><a href="#org7e0f99a">2.1.2. Newtype</a></li>
+<li><a href="#orgdc93084">2.1.3. Resource Acquisition is Initialization (RAII)</a></li>
+<li><a href="#org27950c4">2.1.4. Strategy (aka Policy)</a></li>
+<li><a href="#orge8efd75">2.1.5. Visitor</a></li>
 </ul>
 </li>
-<li><a href="#orgb2f9865">2.2. Creational Patterns</a>
+<li><a href="#orge0aa25c">2.2. Creational Patterns</a>
 <ul>
-<li><a href="#orga6bc352">2.2.1. Builder</a></li>
-<li><a href="#org81a5046">2.2.2. Fold</a></li>
+<li><a href="#org9574081">2.2.1. Builder</a></li>
+<li><a href="#org7312853">2.2.2. Fold</a></li>
 </ul>
 </li>
-<li><a href="#orgbc437b7">2.3. Structural Patterns</a>
+<li><a href="#org9b30ca6">2.3. Structural Patterns</a>
 <ul>
-<li><a href="#org79ef723">2.3.1. Compose structs together for better borrowing</a></li>
-<li><a href="#org63fcff6">2.3.2. Prefer small crates</a></li>
+<li><a href="#orgc0b71e2">2.3.1. Compose structs together for better borrowing</a></li>
+<li><a href="#org47959f3">2.3.2. Prefer small crates</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org91573e2">3. Functional Usage of Rust</a>
+<li><a href="#orgb6e4d51">3. Functional Usage of Rust</a>
 <ul>
-<li><a href="#org0c442b6">3.1. Programming paradigms</a></li>
-<li><a href="#org9e9b6e0">3.2. Generics as Type Classes</a></li>
+<li><a href="#org86a9d24">3.1. Programming paradigms</a></li>
+<li><a href="#org71dbcd5">3.2. Generics as Type Classes</a></li>
 </ul>
 </li>
-<li><a href="#org479e6c7">4. References</a></li>
+<li><a href="#orge3aa7ce">4. References</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orge09790c" class="outline-2">
-<h2 id="orge09790c"><span class="section-number-2">1.</span> Idioms</h2>
+<div id="outline-container-orga04fd36" class="outline-2">
+<h2 id="orga04fd36"><span class="section-number-2">1.</span> Idioms</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Idioms are commonly used styles, guidelines and patterns largely agreed upon by
@@ -97,8 +97,8 @@ is happening.
 </p>
 </div>
 
-<div id="outline-container-org20855d3" class="outline-3">
-<h3 id="org20855d3"><span class="section-number-3">1.1.</span> Use of borrowed types for arguments</h3>
+<div id="outline-container-org8ddaae0" class="outline-3">
+<h3 id="org8ddaae0"><span class="section-number-3">1.1.</span> Use of borrowed types for arguments</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Using a target of a deref coercion can increase the flexibility of your code
@@ -164,8 +164,8 @@ file run, simply change the function parameter to
 </div>
 </div>
 
-<div id="outline-container-org4064d37" class="outline-3">
-<h3 id="org4064d37"><span class="section-number-3">1.2.</span> Concatenating strings with <code>format!</code></h3>
+<div id="outline-container-org8c9927a" class="outline-3">
+<h3 id="org8c9927a"><span class="section-number-3">1.2.</span> Concatenating strings with <code>format!</code></h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 It is often more convenient to use <code>format!</code> to build up strings, especially
@@ -187,8 +187,8 @@ when there is a mix of literal and non-literal strings.
 </div>
 </div>
 
-<div id="outline-container-org3fcda50" class="outline-4">
-<h4 id="org3fcda50"><span class="section-number-4">1.2.1.</span> Disadvantages</h4>
+<div id="outline-container-org21d30ef" class="outline-4">
+<h4 id="org21d30ef"><span class="section-number-4">1.2.1.</span> Disadvantages</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 It is usually not the most efficient way to combine strings - a series of push
@@ -199,8 +199,8 @@ string has been pre-allocated to the expected size).
 </div>
 </div>
 
-<div id="outline-container-org9589adf" class="outline-3">
-<h3 id="org9589adf"><span class="section-number-3">1.3.</span> Constructors</h3>
+<div id="outline-container-orgeca4008" class="outline-3">
+<h3 id="orgeca4008"><span class="section-number-3">1.3.</span> Constructors</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 Rust does not have constructors, so the common keyword is to use <code>new</code>.
@@ -235,8 +235,8 @@ impl Second {
 </div>
 </div>
 
-<div id="outline-container-org12e4b15" class="outline-4">
-<h4 id="org12e4b15"><span class="section-number-4">1.3.1.</span> Default Constructors</h4>
+<div id="outline-container-orga39e91a" class="outline-4">
+<h4 id="orga39e91a"><span class="section-number-4">1.3.1.</span> Default Constructors</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <p>
 Rust supports default constructors
@@ -266,8 +266,8 @@ pub struct Second {
 </div>
 </div>
 
-<div id="outline-container-org20dc010" class="outline-3">
-<h3 id="org20dc010"><span class="section-number-3">1.4.</span> Collections are smart pointers</h3>
+<div id="outline-container-org88a49b9" class="outline-3">
+<h3 id="org88a49b9"><span class="section-number-3">1.4.</span> Collections are smart pointers</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 Use of the <code>Deref</code> trait to treat collections like smart pointers, offering
@@ -308,8 +308,8 @@ the relationship in auto-derefrencing searches.
 </div>
 </div>
 
-<div id="outline-container-orge5fe195" class="outline-3">
-<h3 id="orge5fe195"><span class="section-number-3">1.5.</span> Finalisation in Destructors</h3>
+<div id="outline-container-org55a1e9d" class="outline-3">
+<h3 id="org55a1e9d"><span class="section-number-3">1.5.</span> Finalisation in Destructors</h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
 An object's destructor can be used to run code that must be ran before exit.
@@ -339,8 +339,8 @@ An object's destructor can be used to run code that must be ran before exit.
 </div>
 </div>
 
-<div id="outline-container-org2368a56" class="outline-3">
-<h3 id="org2368a56"><span class="section-number-3">1.6.</span> <code>mem::{take(_), replace(_)}</code> to keep owned values in changed enums</h3>
+<div id="outline-container-org56e58f0" class="outline-3">
+<h3 id="org56e58f0"><span class="section-number-3">1.6.</span> <code>mem::{take(_), replace(_)}</code> to keep owned values in changed enums</h3>
 <div class="outline-text-3" id="text-1-6">
 <p>
 Say we have a <code>&amp;mut MyEnum</code> which has (at least) two variants, <code>A { name:
@@ -375,8 +375,8 @@ fn a_to_b(e: &amp;mut MyEnum) {
 </div>
 </div>
 
-<div id="outline-container-orgb78246d" class="outline-3">
-<h3 id="orgb78246d"><span class="section-number-3">1.7.</span> On-Stack Dynamic Dispatch</h3>
+<div id="outline-container-org279e3fc" class="outline-3">
+<h3 id="org279e3fc"><span class="section-number-3">1.7.</span> On-Stack Dynamic Dispatch</h3>
 <div class="outline-text-3" id="text-1-7">
 <p>
 We can dynamically dispatch over multiple values, however, to do so, we need to
@@ -424,16 +424,16 @@ follows to work with both <code>File</code> or <code>Stdin</code>.
 </div>
 </div>
 
-<div id="outline-container-orge7aeeb0" class="outline-3">
-<h3 id="orge7aeeb0"><span class="section-number-3">1.8.</span> FFI (foreign function interface) Idioms</h3>
+<div id="outline-container-org86d7eaa" class="outline-3">
+<h3 id="org86d7eaa"><span class="section-number-3">1.8.</span> FFI (foreign function interface) Idioms</h3>
 <div class="outline-text-3" id="text-1-8">
 <p>
 This section contains idioms that may be useful when doing FFI.
 </p>
 </div>
 
-<div id="outline-container-orga4e8f61" class="outline-4">
-<h4 id="orga4e8f61"><span class="section-number-4">1.8.1.</span> Error Handling in FFI</h4>
+<div id="outline-container-org9c4d8b2" class="outline-4">
+<h4 id="org9c4d8b2"><span class="section-number-4">1.8.1.</span> Error Handling in FFI</h4>
 <div class="outline-text-4" id="text-1-8-1">
 <p>
 This best practice shows different kinds of error codes, and how to expose them
@@ -452,7 +452,7 @@ message for detail.
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-rust" id="orgc1f12d1">enum DatabaseError {
+<pre class="src src-rust" id="org1c3b743">enum DatabaseError {
     IsReadOnly = 1, // user attempted a write operation
     IOError = 2, // user should read the C errno() for what it was
     FileCorrupted = 3, // user should run a repair tool to recover it
@@ -467,7 +467,7 @@ impl From&lt;DatabaseError&gt; for libc::c_int {
 </div>
 
 <div class="org-src-container">
-<pre class="src src-rust" id="org3633e04">pub mod errors {
+<pre class="src src-rust" id="org0d8c3c6">pub mod errors {
     enum DatabaseError {
 	IsReadOnly,
 	IOError(std::io::Error),
@@ -535,7 +535,7 @@ pub mod c_api {
 </div>
 
 <div class="org-src-container">
-<pre class="src src-rust" id="org31c02b5">struct ParseError {
+<pre class="src src-rust" id="orgdb78ef6">struct ParseError {
     expected: char,
     line: u32,
     ch: u16
@@ -562,8 +562,8 @@ impl From&lt;ParseError&gt; for parse_error {
 </div>
 </div>
 
-<div id="outline-container-org836b82e" class="outline-4">
-<h4 id="org836b82e"><span class="section-number-4">1.8.2.</span> Accepting Strings</h4>
+<div id="outline-container-orgac1dc1b" class="outline-4">
+<h4 id="orgac1dc1b"><span class="section-number-4">1.8.2.</span> Accepting Strings</h4>
 <div class="outline-text-4" id="text-1-8-2">
 <p>
 When accepting strings via FFI through pointers, there are two principles that
@@ -580,8 +580,8 @@ C-style string to native Rust strings.
 </div>
 </div>
 
-<div id="outline-container-orgcaf84d9" class="outline-4">
-<h4 id="orgcaf84d9"><span class="section-number-4">1.8.3.</span> Passing Strings</h4>
+<div id="outline-container-orgca700f9" class="outline-4">
+<h4 id="orgca700f9"><span class="section-number-4">1.8.3.</span> Passing Strings</h4>
 <div class="outline-text-4" id="text-1-8-3">
 <p>
 When passing strings to FFI functions, there are four principles that should be
@@ -601,8 +601,8 @@ not transfer to the callee.
 </div>
 </div>
 
-<div id="outline-container-orgcda93ec" class="outline-3">
-<h3 id="orgcda93ec"><span class="section-number-3">1.9.</span> Iterating over an <code>Option</code></h3>
+<div id="outline-container-org0f486c4" class="outline-3">
+<h3 id="org0f486c4"><span class="section-number-3">1.9.</span> Iterating over an <code>Option</code></h3>
 <div class="outline-text-3" id="text-1-9">
 <p>
 <code>Option</code> should be seen as a container that contains either zero or one
@@ -631,8 +631,8 @@ Therefore if we perform the <code>extend</code> action it will either work, or n
 </div>
 </div>
 
-<div id="outline-container-org9432f12" class="outline-3">
-<h3 id="org9432f12"><span class="section-number-3">1.10.</span> Pass variables to closure</h3>
+<div id="outline-container-org84b3d2a" class="outline-3">
+<h3 id="org84b3d2a"><span class="section-number-3">1.10.</span> Pass variables to closure</h3>
 <div class="outline-text-3" id="text-1-10">
 <p>
 First to describe what a closure is. It is a functional programming paradigm. In
@@ -675,8 +675,8 @@ where <a href="https://doc.rust-lang.org/std/rc/index.html"><code>Rc</code></a> 
 </div>
 </div>
 
-<div id="outline-container-orgd3b2455" class="outline-3">
-<h3 id="orgd3b2455"><span class="section-number-3">1.11.</span> Easy doc initialization</h3>
+<div id="outline-container-org310d242" class="outline-3">
+<h3 id="org310d242"><span class="section-number-3">1.11.</span> Easy doc initialization</h3>
 <div class="outline-text-3" id="text-1-11">
 <p>
 If a struct takes significant effort to initialize when writing docs, it can be
@@ -761,8 +761,8 @@ will be compiled.
 </div>
 </div>
 
-<div id="outline-container-org5d9e1bc" class="outline-3">
-<h3 id="org5d9e1bc"><span class="section-number-3">1.12.</span> Temporary mutability</h3>
+<div id="outline-container-org63ddb93" class="outline-3">
+<h3 id="org63ddb93"><span class="section-number-3">1.12.</span> Temporary mutability</h3>
 <div class="outline-text-3" id="text-1-12">
 <p>
 Often it is necessary to prepare and process some data, but after that data are
@@ -776,7 +776,7 @@ the variable.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-rust" id="org3bfcc5a">struct Connection {
+<pre class="src src-rust" id="org38a8b24">struct Connection {
     name: String,
     stream: TcpStream,
 }
@@ -799,7 +799,7 @@ impl Connection {
 </div>
 
 <div class="org-src-container">
-<pre class="src src-rust" id="org28d1443">let mut data = get_vec();
+<pre class="src src-rust" id="org5b65496">let mut data = get_vec();
 data.sort();
 let data = data;
 
@@ -810,8 +810,8 @@ let data = data;
 </div>
 </div>
 
-<div id="outline-container-orgffd6291" class="outline-2">
-<h2 id="orgffd6291"><span class="section-number-2">2.</span> Design Patterns</h2>
+<div id="outline-container-orgb9ed06a" class="outline-2">
+<h2 id="orgb9ed06a"><span class="section-number-2">2.</span> Design Patterns</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 <a href="https://rust-unofficial.github.io/patterns/patterns/index.html">This directly from the book</a>:
@@ -856,8 +856,8 @@ pattern in Rust because we can just use traits.
 </blockquote>
 </div>
 
-<div id="outline-container-org85ea009" class="outline-3">
-<h3 id="org85ea009"><span class="section-number-3">2.1.</span> Behavioral Patterns</h3>
+<div id="outline-container-org9aaaa55" class="outline-3">
+<h3 id="org9aaaa55"><span class="section-number-3">2.1.</span> Behavioral Patterns</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Design patterns that identify common communication patterns among objects. By
@@ -865,8 +865,8 @@ doing so, these patterns increase flexibility in carrying out communication.
 </p>
 </div>
 
-<div id="outline-container-org0ee9e94" class="outline-4">
-<h4 id="org0ee9e94"><span class="section-number-4">2.1.1.</span> Command</h4>
+<div id="outline-container-org49188fa" class="outline-4">
+<h4 id="org49188fa"><span class="section-number-4">2.1.1.</span> Command</h4>
 <div class="outline-text-4" id="text-2-1-1">
 <p>
 The basic idea of the Command pattern is to separate out actions into its own
@@ -875,7 +875,7 @@ objects and pass them as parameters.
 </div>
 
 <ol class="org-ol">
-<li><a id="org4159119"></a>Example<br />
+<li><a id="orge53b5dd"></a>Example<br />
 <div class="outline-text-5" id="text-2-1-1-1">
 <p>
 Define two database operations <code>create table</code> and <code>add field</code>. Each of these
@@ -886,7 +886,7 @@ operation then the whole set of commands is invoked in reverse order.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-rust" id="org06f4172">  pub trait Migration {
+<pre class="src src-rust" id="org4449287">  pub trait Migration {
     fn execute(&amp;self) -&gt; &amp;str;
     fn rollback(&amp;self) -&gt; &amp;str;
 }
@@ -951,7 +951,7 @@ fn main() {
 </div>
 
 <div class="org-src-container">
-<pre class="src src-rust" id="org45bd4c6">type FnPtr = fn() -&gt; String;
+<pre class="src src-rust" id="orgf24d0a1">type FnPtr = fn() -&gt; String;
 struct Command {
     execute: FnPtr,
     rollback: FnPtr,
@@ -999,7 +999,7 @@ fn main() {
 </div>
 
 <div class="org-src-container">
-<pre class="src src-rust" id="org18c3a7d">type Migration&lt;'a&gt; = Box&lt;dyn Fn() -&gt; &amp;'a str&gt;;
+<pre class="src src-rust" id="org8047f05">type Migration&lt;'a&gt; = Box&lt;dyn Fn() -&gt; &amp;'a str&gt;;
 
 struct Schema&lt;'a&gt; {
     executes: Vec&lt;Migration&lt;'a&gt;&gt;,
@@ -1051,8 +1051,8 @@ fn main() {
 </ol>
 </div>
 
-<div id="outline-container-org1121d08" class="outline-4">
-<h4 id="org1121d08"><span class="section-number-4">2.1.2.</span> Newtype</h4>
+<div id="outline-container-org7e0f99a" class="outline-4">
+<h4 id="org7e0f99a"><span class="section-number-4">2.1.2.</span> Newtype</h4>
 <div class="outline-text-4" id="text-2-1-2">
 <p>
 What if in some cases we want a type to behave similar to another type or
@@ -1113,8 +1113,8 @@ fn main() {
 </div>
 </div>
 
-<div id="outline-container-org442105a" class="outline-4">
-<h4 id="org442105a"><span class="section-number-4">2.1.3.</span> Resource Acquisition is Initialization (RAII)</h4>
+<div id="outline-container-orgdc93084" class="outline-4">
+<h4 id="orgdc93084"><span class="section-number-4">2.1.3.</span> Resource Acquisition is Initialization (RAII)</h4>
 <div class="outline-text-4" id="text-2-1-3">
 <p>
 RAII is a useful pattern for ensuring resources are properly deallocated or
@@ -1181,8 +1181,8 @@ fn baz(x: Mutex&lt;Foo&gt;) {
 </div>
 </div>
 
-<div id="outline-container-org619fdd8" class="outline-4">
-<h4 id="org619fdd8"><span class="section-number-4">2.1.4.</span> Strategy (aka Policy)</h4>
+<div id="outline-container-org27950c4" class="outline-4">
+<h4 id="org27950c4"><span class="section-number-4">2.1.4.</span> Strategy (aka Policy)</h4>
 <div class="outline-text-4" id="text-2-1-4">
 <p>
 The Strategy design pattern is a technique that enables separation of
@@ -1207,7 +1207,7 @@ the abstract specification. This is why we call it "Dependency Inversion".
 </div>
 
 <ol class="org-ol">
-<li><a id="orgddf4f9e"></a>Example<br />
+<li><a id="org708e5f7"></a>Example<br />
 <div class="outline-text-5" id="text-2-1-4-1">
 <p>
 Imagine we are working on a project that generates reports every month. We need
@@ -1283,8 +1283,8 @@ fn main() {
 </ol>
 </div>
 
-<div id="outline-container-orgb49837f" class="outline-4">
-<h4 id="orgb49837f"><span class="section-number-4">2.1.5.</span> Visitor</h4>
+<div id="outline-container-orge8efd75" class="outline-4">
+<h4 id="orge8efd75"><span class="section-number-4">2.1.5.</span> Visitor</h4>
 <div class="outline-text-4" id="text-2-1-5">
 <p>
 A visitor encapsulates an algorithm that operates over a heterogeneous
@@ -1371,8 +1371,8 @@ impl Visitor&lt;i64&gt; for Interpreter {
 </div>
 </div>
 
-<div id="outline-container-orgb2f9865" class="outline-3">
-<h3 id="orgb2f9865"><span class="section-number-3">2.2.</span> Creational Patterns</h3>
+<div id="outline-container-orge0aa25c" class="outline-3">
+<h3 id="orge0aa25c"><span class="section-number-3">2.2.</span> Creational Patterns</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 Design patterns that deal with object creation mechanisms, trying to create
@@ -1382,8 +1382,8 @@ design patterns solve this problem by somehow controlling this object creation.
 </p>
 </div>
 
-<div id="outline-container-orga6bc352" class="outline-4">
-<h4 id="orga6bc352"><span class="section-number-4">2.2.1.</span> Builder</h4>
+<div id="outline-container-org9574081" class="outline-4">
+<h4 id="org9574081"><span class="section-number-4">2.2.1.</span> Builder</h4>
 <div class="outline-text-4" id="text-2-2-1">
 <p>
 Construct an object with calls to a builder helper. This pattern is seen more
@@ -1453,8 +1453,8 @@ fn builder_test() {
 </div>
 </div>
 
-<div id="outline-container-org81a5046" class="outline-4">
-<h4 id="org81a5046"><span class="section-number-4">2.2.2.</span> Fold</h4>
+<div id="outline-container-org7312853" class="outline-4">
+<h4 id="org7312853"><span class="section-number-4">2.2.2.</span> Fold</h4>
 <div class="outline-text-4" id="text-2-2-2">
 <p>
 Run an algorithm over each item in a collection of data to create a new item,
@@ -1517,8 +1517,8 @@ impl Folder for Renamer {
 </div>
 </div>
 
-<div id="outline-container-orgbc437b7" class="outline-3">
-<h3 id="orgbc437b7"><span class="section-number-3">2.3.</span> Structural Patterns</h3>
+<div id="outline-container-org9b30ca6" class="outline-3">
+<h3 id="org9b30ca6"><span class="section-number-3">2.3.</span> Structural Patterns</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 Design patterns that ease the design by identifying a simple way to realize
@@ -1526,8 +1526,8 @@ relationships among entities.
 </p>
 </div>
 
-<div id="outline-container-org79ef723" class="outline-4">
-<h4 id="org79ef723"><span class="section-number-4">2.3.1.</span> Compose structs together for better borrowing</h4>
+<div id="outline-container-orgc0b71e2" class="outline-4">
+<h4 id="orgc0b71e2"><span class="section-number-4">2.3.1.</span> Compose structs together for better borrowing</h4>
 <div class="outline-text-4" id="text-2-3-1">
 <p>
 Sometimes a large struct will cause issues with the borrow checker - although
@@ -1540,7 +1540,7 @@ behavior.
 </div>
 
 <ol class="org-ol">
-<li><a id="orgca5c84b"></a>Example<br />
+<li><a id="org76dcc7a"></a>Example<br />
 <div class="outline-text-5" id="text-2-3-1-1">
 <div class="org-src-container">
 <pre class="src src-rust">#![allow(unused)]
@@ -1604,8 +1604,8 @@ fn baz(a: &amp;mut A) {
 </ol>
 </div>
 
-<div id="outline-container-org63fcff6" class="outline-4">
-<h4 id="org63fcff6"><span class="section-number-4">2.3.2.</span> Prefer small crates</h4>
+<div id="outline-container-org47959f3" class="outline-4">
+<h4 id="org47959f3"><span class="section-number-4">2.3.2.</span> Prefer small crates</h4>
 <div class="outline-text-4" id="text-2-3-2">
 <p>
 Prefer small crates that do one thing well.
@@ -1623,8 +1623,8 @@ fine-grained dependencies.
 </div>
 </div>
 
-<div id="outline-container-org91573e2" class="outline-2">
-<h2 id="org91573e2"><span class="section-number-2">3.</span> Functional Usage of Rust</h2>
+<div id="outline-container-orgb6e4d51" class="outline-2">
+<h2 id="orgb6e4d51"><span class="section-number-2">3.</span> Functional Usage of Rust</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 In computer science, functional programming is a programming paradigm where
@@ -1635,8 +1635,8 @@ statements which change the state of the program.
 </p>
 </div>
 
-<div id="outline-container-org0c442b6" class="outline-3">
-<h3 id="org0c442b6"><span class="section-number-3">3.1.</span> Programming paradigms</h3>
+<div id="outline-container-org86a9d24" class="outline-3">
+<h3 id="org86a9d24"><span class="section-number-3">3.1.</span> Programming paradigms</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 One of the biggest hurdles to understanding functional programs when coming from
@@ -1646,7 +1646,7 @@ sum the numbers from 1 to 10 to show this.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-rust" id="orgc7617a9">#![allow(unused)]
+<pre class="src src-rust" id="org7bb20df">#![allow(unused)]
 fn main() {
 let mut sum = 0;
 for i in 1..11 {
@@ -1658,7 +1658,7 @@ println!("{}", sum);
 </div>
 
 <div class="org-src-container">
-<pre class="src src-rust" id="org6a1544d">#![allow(unused)]
+<pre class="src src-rust" id="org77f89ae">#![allow(unused)]
 fn main() {
 println!("{}", (1..11).fold(0, |a, b| a + b));
 }
@@ -1667,8 +1667,8 @@ println!("{}", (1..11).fold(0, |a, b| a + b));
 </div>
 </div>
 
-<div id="outline-container-org9e9b6e0" class="outline-3">
-<h3 id="org9e9b6e0"><span class="section-number-3">3.2.</span> Generics as Type Classes</h3>
+<div id="outline-container-org71dbcd5" class="outline-3">
+<h3 id="org71dbcd5"><span class="section-number-3">3.2.</span> Generics as Type Classes</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Rust's type system is designed more like functional languages (like Haskell)
@@ -1699,8 +1699,8 @@ type system.
 </div>
 </div>
 
-<div id="outline-container-org479e6c7" class="outline-2">
-<h2 id="org479e6c7"><span class="section-number-2">4.</span> References</h2>
+<div id="outline-container-orge3aa7ce" class="outline-2">
+<h2 id="orge3aa7ce"><span class="section-number-2">4.</span> References</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 <a href="https://rust-unofficial.github.io/patterns/intro.html">- Rust Design Patterns</a>
@@ -1710,7 +1710,7 @@ type system.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alexander Brown</p>
-<p class="date">Created: 2023-02-14 Tue 19:36</p>
+<p class="date">Created: 2023-02-16 Thu 19:32</p>
 </div>
 </body>
 </html>

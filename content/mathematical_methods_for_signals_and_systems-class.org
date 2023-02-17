@@ -6,18 +6,19 @@
 ** In Class
 - [[file:./mathematical-methods-for-signals-and-systems/class-1-11-23.htm][class-1-11-23.htm]]
 - [[file:mathematical-methods-for-signals-and-systems/class-1-13-23.htm][class-1-13-23.htm]]
-- [[file:mathematical-methods-for-signals-and-systems/class 1-18-23.pdf][class 1-18-23.pdf]]
-- [[file:mathematical-methods-for-signals-and-systems/class 1-20-23.pdf][class 1-20-23.pdf]]
-- [[file:mathematical-methods-for-signals-and-systems/class 1-23-23.pdf][class 1-23-23.pdf]]
-- [[file:mathematical-methods-for-signals-and-systems/class 1-25-23.pdf][class 1-25-23.pdf]]
-- [[file:mathematical-methods-for-signals-and-systems/class 1-27-23.pdf][class 1-27-23.pdf]]
-- [[file:mathematical-methods-for-signals-and-systems/class 1-30-23.pdf][class 1-30-23.pdf]]
-- [[file:mathematical-methods-for-signals-and-systems/class 2-1-23.pdf][class 2-1-23.pdf]]
-- [[file:mathematical-methods-for-signals-and-systems/class 2-10-23.pdf][class 2-10-23.pdf]]
-- [[file:mathematical-methods-for-signals-and-systems/class 2-13-23.pdf][class 2-13-23.pdf]]
-- [[file:mathematical-methods-for-signals-and-systems/class 2-3-23.pdf][class 2-3-23.pdf]]
-- [[file:mathematical-methods-for-signals-and-systems/class 2-6-23.pdf][class 2-6-23.pdf]]
-- [[file:mathematical-methods-for-signals-and-systems/class 2-8-23.pdf][class 2-8-23.pdf]]
+- [[file:mathematical-methods-for-signals-and-systems/class-1-18-23.pdf][class-1-18-23.pdf]]
+- [[file:mathematical-methods-for-signals-and-systems/class-1-20-23.pdf][class-1-20-23.pdf]]
+- [[file:mathematical-methods-for-signals-and-systems/class-1-23-23.pdf][class-1-23-23.pdf]]
+- [[file:mathematical-methods-for-signals-and-systems/class-1-25-23.pdf][class-1-25-23.pdf]]
+- [[file:mathematical-methods-for-signals-and-systems/class-1-27-23.pdf][class-1-27-23.pdf]]
+- [[file:mathematical-methods-for-signals-and-systems/class-1-30-23.pdf][class-1-30-23.pdf]]
+- [[file:mathematical-methods-for-signals-and-systems/class-2-1-23.pdf][class-2-1-23.pdf]]
+- [[file:mathematical-methods-for-signals-and-systems/class-2-3-23.pdf][class-2-3-23.pdf]]
+- [[file:mathematical-methods-for-signals-and-systems/class-2-6-23.pdf][class-2-6-23.pdf]]
+- [[file:mathematical-methods-for-signals-and-systems/class-2-8-23.pdf][class-2-8-23.pdf]]
+- [[file:mathematical-methods-for-signals-and-systems/class-2-10-23.pdf][class-2-10-23.pdf]]
+- [[file:mathematical-methods-for-signals-and-systems/class-2-13-23.pdf][class-2-13-23.pdf]]
+- [[file:mathematical-methods-for-signals-and-systems/class-2-15-23.pdf][class-2-15-23.pdf]]
 
 ** My Notes (printer broke at work)
 - [[file:mathematical-methods-for-signals-and-systems/hand-01-27-23.pdf][hand-01-27-23.pdf]]
@@ -29,10 +30,12 @@
 
 * Homework Help
 - [[file:./mathematical-methods-for-signals-and-systems/help-1-11-23.htm][help-1-11-23.htm]]
+- [[file:mathematical-methods-for-signals-and-systems/help-1-18-23.pdf][help-1-18-23.pdf]]
 - [[file:mathematical-methods-for-signals-and-systems/help-1-25-23.pdf][help-1-25-23.pdf]]
 - [[file:mathematical-methods-for-signals-and-systems/help-2-1-23.pdf][help-2-1-23.pdf]]
 - [[file:mathematical-methods-for-signals-and-systems/help-2-8-23.pdf][help-2-8-23.pdf]]
-- [[file:mathematical-methods-for-signals-and-systems/help-1-18-23.pdf][help-1-18-23.pdf]]
+- [[file:mathematical-methods-for-signals-and-systems/help-2-15-23.pdf][help-2-15-23.pdf]]
+- [[file:mathematical-methods-for-signals-and-systems/help-2-15-23-2.pdf][help-2-15-23-2.pdf]]
 
 * Book Notes
 - [[file:mathematical-methods-for-signals-and-systems/appendix-b.pdf][Appendix B]]

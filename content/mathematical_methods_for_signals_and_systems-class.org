@@ -19,6 +19,7 @@
 - [[file:mathematical-methods-for-signals-and-systems/class-2-10-23.pdf][class-2-10-23.pdf]]
 - [[file:mathematical-methods-for-signals-and-systems/class-2-13-23.pdf][class-2-13-23.pdf]]
 - [[file:mathematical-methods-for-signals-and-systems/class-2-15-23.pdf][class-2-15-23.pdf]]
+- [[file:mathematical-methods-for-signals-and-systems/class-2-17-23.pdf][class-2-17-23.pdf]]
 
 ** My Notes (printer broke at work)
 - [[file:mathematical-methods-for-signals-and-systems/hand-01-27-23.pdf][hand-01-27-23.pdf]]

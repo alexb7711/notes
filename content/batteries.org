@@ -1,0 +1,5 @@
+* Batteries
+Why do you want to know about batteries?
+
+** Modeling
+- [[https://en.wikipedia.org/wiki/Open-circuit_voltage][Open-circuit voltage]] are a typical way of measuring the state of charge (SOC).

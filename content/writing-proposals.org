@@ -1,0 +1,152 @@
+#+title: Writing Proposals
+
+Both proposals and request for proposals can be used to initiate a project. An RFP is usually issued by an organization
+to solve a problem. The proposal itself initiates a particular solution for the project. A proposal is typically written
+against an RFP to acquire funding to solve the problem that particular project by the means written in your proposal. No
+RFP will be looking precisely for the idea you have formulated, so it is up to the writer to like the idea with the RFP
+[[cite:&Knisely_Charles_W_2014-01-01]]. Thesis and dissertations typically fall in the range of "short proposals", as they
+typically range from 2 to 10 pages.
+
+* Purpose of a Proposal
+Any proposal has three main components [[cite:&Knisely_Charles_W_2014-01-01]]:
+
+- The work is significant, consistent with the state-of-the-art, fills clear needs
+- The person working the project is the right person
+- The project is feasible
+
+#+begin_quote
+A winning proposal not only gives the reader the confidence that the writers have thoroughly understood both the need
+that the project is addressing and possible solutions other than their own; it also conveys a clear sense that the
+writers are capable of successfully completing the project—that they are able to budget time and resources
+appropriately [[cite:&Irish_Robert2013-04-01]].
+#+end_quote
+
+* Style of Proposal
+All proposals contain similar contents [[cite:&Knisely_Charles_W_2014-01-01]]:
+
+- Purpose is concisely stated at the beginning
+- Relevant background information is summarized
+- The language is understandable
+- The sentences are short to moderate to enhance readability
+- The proposed ideas are stated clearly
+- All the information provided convinces the reader that the project is worth funding (or accepting)
+
+* Preparing to Write
+Once you know what is desired to be proposed:
+
+- State the purpose clearly
+- State explicitly the need of the proposal
+- Ensure that the work is consistent with the philosophy of those who will fund/approve
+- Ensure that the proposed work meets the desired need
+
+Now that the problem has been identified, and a solution provided, *how will the project be done*? The outline should
+address [[cite:&Knisely_Charles_W_2014-01-01]]:
+
+- Method(s) and approach(es)
+- Timeline
+- Resources
+- Projected outcome
+- Assessment plan (how you will measure the project's success)
+
+This "how" section is helpful to be represented as a table or Gantt chart.
+
+* Proposals
+Many proposals will have a specified format which ought to be followed. In the absence of guidelines, the following
+structure may be suitable [[cite:&Knisely_Charles_W_2014-01-01;&Irish_Robert2013-04-01]]:
+
+- Cover Page
+- Executive Summary
+  - Hypothesis or Purpose
+  - Motivation and Scope
+  - Objectives
+- The Narrative
+  - State-Of-The-Art
+  - Methodology
+  - Procedure
+- The Budget (N/A for my case so I skip)
+- References or Bibliography
+- Supporting Documentation
+
+** Cover Page/Title Page
+- Title of project
+- Submitted to
+- Date
+- Name of principle investigators
+- Institutions to which the PI(s) belong
+
+** Project Overview/Executive Summary/Abstract:
+The project overview/executive summary/abstract should be written last. It should be able to answer the following
+[[cite:&Knisely_Charles_W_2014-01-01]]:
+
+- What do you want to do?
+- How will it be done?
+- Who is going to do it?
+- How will it fill the role of the RFP/problem statement
+- What are the anticipated outcomes?
+
+The reader will understand the originality, rationale, the expected outcomes of the proposed work, the scale of the
+project, the need for the work, and the significance of the outcome. If these are not portrayed clearly, then it must be
+revisited.
+
+** Narrative
+This is the body of the text. It is typically subdivided into a few sections.
+
+*** Introduction/Background/Need and Fit
+
+This section is where a strong case is made for what the work is, how it fits with the state-of-the-art, why it is
+significant, and how it aligns with the RFP/problem statement. The section should include
+
+- State-Of-The-Art: what is known and what is lacking
+- Background providing perspective for the reader
+- Statement of need in the context of existing information
+- Fits with the RFP/problem statement
+- Purpose, goals, and measurable objectives
+- Compelling and logical reasons for support
+
+*** Method
+How will the project be accomplished, and why was that method chosen?
+
+- Experimental
+- Analytical
+- Computational
+- Combined
+
+Describe the methods and processes. Why is the method appropriate? How will the work be validated? What are the
+outcomes?
+
+*** Project Timeline
+This includes mileposts for completing different stages of the project. The timeline will include
+
+- Shows project flow
+- Start and end dates
+- Lists a schedule of activities, including project reports
+- Describes projected outcomes
+
+** List of References/Bibliography
+Cite, cite, cite.
+
+* Short Proposal Format
+In academia, candidates for graduate degrees typically write formal proposals for their thesis or dissertation projects
+before officially beginning work on the projects. M.S. thesis proposals are typically 5 to 10 pages. For PhD
+dissertations proposals typically range from 10 to 15 pages; however, it is commonly seen that they range from 15 to 25
+pages. A typical outline of a thesis/dissertation is outlined as follows [[cite:&Knisely_Charles_W_2014-01-01]]:
+
+- Title Page: Proposed research topic, name, date, department, thesis advisor
+- Introduction - Problem to be addressed
+  - Purpose of proposed work
+  - Background and literature review, including theoretical analysis (if applicable)
+  - Significance and scope of work
+- Methods for solving the problem
+  - Plan for accomplishing objectives
+  - Justification for instrumentation, and data acquisition and processing
+  - Plan for evaluating results
+  - Timetable for project completion
+- Resources
+  - What is needed to solve the problem
+- References
+
+* Bibliography
+bibliography:../main.bib
+bibliographystyle:plain
+
+#  LocalWords:  mileposts

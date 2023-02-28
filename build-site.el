@@ -18,9 +18,11 @@
 
 ;; Install dependencies
 (package-install 'htmlize)
+(package-install 'org-ref)
 
 ;; Load the publishing project
 (require 'ox-publish)
+(require 'org-ref)
 
 ;; Customize HTML output
 (setq
@@ -47,7 +49,7 @@
              :publishing-function  'org-html-publish-to-html)))
 
 ;; Generate the site output
-(org-publish-all t)
+(org-publish-all)
 
 (message "Build complete!")
 

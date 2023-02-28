@@ -1,4 +1,5 @@
 #!/bin/sh
 
 cp ./html/template.html docs/
+cp main.bib docs/
 emacs -Q --script build-site.el

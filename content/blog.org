@@ -6,15 +6,19 @@
 :PROPERTIES:
 :CUSTOM_ID: engineering
 :END:
+- [[file:docs/projects.html][Writing Proposals]]
+
 ** Game Development
 :PROPERTIES:
 :CUSTOM_ID: game-development
 :END:
 ** Linux
+
 :PROPERTIES:
 :CUSTOM_ID: linux
 :END:
-** Vim
+
+** Emacs
 :PROPERTIES:
 :CUSTOM_ID: vim
 :END:

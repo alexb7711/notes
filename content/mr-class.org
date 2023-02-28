@@ -1,0 +1,41 @@
+#+title: Mobile Robotics
+* Section1
+- [[file:mr/Section1/DiscretePlanning.md][DiscretePlanning.md]]
+- [[file:mr/Section1/Lecture1.html][Lecture1.html]]
+- [[file:mr/Section1/Lecture1_Dikstra_AStar.PDF][Lecture1_Dikstra_AStar.PDF]]
+- [[file:mr/Section1/StanfordMotionPlanning.html][StanfordMotionPlanning.html]]
+
+* Section2
+- [[file:mr/Section2/CoordinateTransforms.pdf][CoordinateTransforms.pdf]]
+- [[file:mr/Section2/HomogenousCoordinates.pdf][HomogenousCoordinates.pdf]]
+- [[file:mr/Section2/Lecture2.html][Lecture2.html]]
+- [[file:mr/Section2/S02_L01LinearAlgebraReview.pdf][S02_L01LinearAlgebraReview.pdf]]
+- [[file:mr/Section2/S02_L02GeometricRepresentation.pdf][S02_L02GeometricRepresentation.pdf]]
+- [[file:mr/Section2/S02_L03CoordinateTransformations.pdf][S02_L03CoordinateTransformations.pdf]]
+- [[file:mr/Section2/S02_L05AlternativeRotationRepresentations.pdf][S02_L05AlternativeRotationRepresentations.pdf]]
+
+* Section3
+- [[file:mr/Section3/AlternativeRotations.pdf][AlternativeRotations.pdf]]
+- [[file:mr/Section3/BasicMotionModels.pdf][BasicMotionModels.pdf]]
+- [[file:mr/Section3/InputOutputControl.html][InputOutputControl.html]]
+- [[file:mr/Section3/SmoothModels.pdf][SmoothModels.pdf]]
+- [[file:mr/Section3/VelocityControl.pdf][VelocityControl.pdf]]
+
+* Section4
+- [[file:mr/Section4/S04_L01VectorFieldControl.PDF][S04_L01VectorFieldControl.PDF]]
+- [[file:mr/Section4/S04_L03DesiginingVectorFields.PDF][S04_L03DesiginingVectorFields.PDF]]
+- [[file:mr/Section4/S04_L03DesigningMoreComplicatedVectorFields.PDF][S04_L03DesigningMoreComplicatedVectorFields.PDF]]
+- [[file:mr/Section4/S04_L04CombineVectorFieldsWithSummation.PDF][S04_L04CombineVectorFieldsWithSummation.PDF]]
+- [[file:mr/Section4/S04_L05AutomationForSwitchingVectorFields.html][S04_L05AutomationForSwitchingVectorFields.html]]
+- [[file:mr/Section4/S04_L05AutomationForSwitchingVectorFields.pdf][S04_L05AutomationForSwitchingVectorFields.pdf]]
+- [[file:mr/Section4/S04_L06PotentialFunctions.html][S04_L06PotentialFunctions.html]]
+
+* Section5
+- [[file:mr/Section5/S05_L01C-SpaceAndPhaseSpaceGraphs.html][S05_L01C-SpaceAndPhaseSpaceGraphs.html]]
+- [[file:mr/Section5/S05_L02ExploreRapidlyDenseTrees.pdf][S05_L02ExploreRapidlyDenseTrees.pdf]]
+- [[file:mr/Section5/S05_L03RRTConsiderations.pdf][S05_L03RRTConsiderations.pdf]]
+- [[file:mr/Section5/S05_L04OptimalRRT.html][S05_L04OptimalRRT.html]]
+- [[file:mr/Section5/S05_L05OvercomingTheVoroniProperty.html][S05_L05OvercomingTheVoroniProperty.html]]
+- [[file:mr/Section5/S05_L06CommonPrimitiveBehaviors.html][S05_L06CommonPrimitiveBehaviors.html]]
+- [[file:mr/Section5/S05_L06NonHolonomicRRTConsideration.html][S05_L06NonHolonomicRRTConsideration.html]]
+- [[file:mr/Section5/Sample-BasedPlanning.PNG][Sample-BasedPlanning.PNG]]

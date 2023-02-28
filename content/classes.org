@@ -1,16 +1,9 @@
-* Contents
-:PROPERTIES:
-:CUSTOM_ID: contents
-:END:
+#+TITLE: Classes
 
-* Classes
-:PROPERTIES:
-:CUSTOM_ID: classes
-:END:
-- [[file:nonlinear_adaptive_control_class.html][Nonlinear Adaptive
-  Control]]
-- [[file:optimal_estimation_class.html][Optimal Estimation]]
-- [[file:optimization_for_engineers_class.html][Optimization for
-  engineers]]
-- [[file:small_unmanned_aircraft_class.html][Small Unmanned Aircraft]]
+- [[file:lmc-class.html][Linear Multivariable Control]]
 - [[file:mathematical_methods_for_signals_and_systems-class.html][Mathematical Methods for Signals and Systems]]
+- [[file:mr-class.html][Mobile Robotics]]
+- [[file:nonlinear_adaptive_control_class.html][Nonlinear Adaptive Control]]
+- [[file:optimal_estimation_class.html][Optimal Estimation]]
+- [[file:optimization_for_engineers_class.html][Optimization for engineers]]
+- [[file:small_unmanned_aircraft_class.html][Small Unmanned Aircraft]]

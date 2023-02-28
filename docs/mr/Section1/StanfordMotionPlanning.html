@@ -1,0 +1,232 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Weilyn Pa">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.06 (Macintosh; I; PPC) [Netscape]">
+   <TITLE>Robotics: Motion Planning</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#3333FF" VLINK="#800080" ALINK="#009900">
+
+<CENTER>
+<H1>
+<B><FONT FACE="Tahoma"><FONT COLOR="#18605A"><FONT SIZE=+3>Motion Planning
+in Robotics</FONT></FONT></FONT></B></H1></CENTER>
+<IMG SRC="anim1_3.gif" HEIGHT=70 WIDTH=560>
+<HR WIDTH="100%">
+<BR><A NAME="intro"></A><FONT FACE="Tahoma"><FONT SIZE=+2>Introduction</FONT></FONT>
+<P><FONT FACE="Tahoma"><FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+From the moment we wake up in the morning until our head hits the pillow
+at night, we must plan our actions.&nbsp; Planning includes choosing the
+day's outfit based on the weather forecast, figuring out what to eat for
+breakfast, deciding the best route to work after listening to the traffic
+reports, and making a schedule of activities for the day.&nbsp; Planning
+also occurs on another more instinctual level and includes decisions that
+we may take for granted, such as choosing to walk around a piece of furniture
+rather than climb over it in order to get to the door and deciding to take
+as straight and direct a path as possible rather than meander in circles
+when trying to reach a destination.&nbsp; A large problem in the development
+of autonomous robots is devising a way to give them the capabilities to
+make their own plans in a variety of situations.&nbsp; Motion planning
+refers to the computational process of moving from one place to another
+in the presence of obstacles.</FONT></FONT>
+<BR><FONT FACE="Tahoma"><FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+The degree of difficulty of motion planning in robots varies greatly depending
+on a couple of factors: whether all information regarding the obstacles
+(i.e. sizes, locations, motions, etc.) is known before the robot moves
+and whether these obstacles move around or stay in place as the robot moves.&nbsp;
+The different possible scenarios are shown in the following chart:</FONT></FONT>
+<BR>&nbsp;
+<CENTER><TABLE BORDER WIDTH="50%" >
+<TR>
+<TD WIDTH="25%" BGCOLOR="#999999"></TD>
+
+<TD><FONT FACE="Tahoma"><FONT SIZE=+1>Static Obstacles</FONT></FONT></TD>
+
+<TD><FONT FACE="Tahoma"><FONT SIZE=+1>Dynamic Obstacles</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD WIDTH="25%"><FONT FACE="Tahoma"><FONT SIZE=+1>Completely Known</FONT></FONT></TD>
+
+<TD ALIGN=CENTER><FONT SIZE=+1>Case I</FONT></TD>
+
+<TD ALIGN=CENTER><FONT SIZE=+1>Case II</FONT></TD>
+</TR>
+
+<TR>
+<TD WIDTH="25%"><FONT FACE="Tahoma"><FONT SIZE=+1>Partially</FONT></FONT>
+<BR><FONT FACE="Tahoma"><FONT SIZE=+1>Known</FONT></FONT></TD>
+
+<TD ALIGN=CENTER><FONT SIZE=+1>Case III</FONT></TD>
+
+<TD ALIGN=CENTER><FONT SIZE=+1>Case IV</FONT></TD>
+</TR>
+</TABLE></CENTER>
+
+<P><FONT FACE="Tahoma"><FONT SIZE=+1>&nbsp;&nbsp;&nbsp; The simplest scenario,
+and therefore the most researched and understood one, is Case I.&nbsp;
+In Case I, all obstacles are fixed in their positions, and all details
+about these obstacles are known before path planning takes place.&nbsp;
+The problem for the robot, which is known as the basic motion planning
+problem, can be informally stated as getting from a starting point to an
+ending point without colliding with any obstacles.&nbsp; This problem is
+usually solved in the following two steps:</FONT></FONT>
+<UL>
+<LI>
+<FONT FACE="Tahoma"><FONT SIZE=+1>Define a graph to represent a geometric
+structure of the environment.</FONT></FONT></LI>
+
+<LI>
+<FONT FACE="Tahoma"><FONT SIZE=+1>Perform a graph search to find a connected
+component between the node containing the start point and the node containing
+the destination point.</FONT></FONT></LI>
+</UL>
+<FONT FACE="Tahoma"><FONT SIZE=+1>&nbsp;&nbsp;&nbsp; The geometric structure
+of the graph differs depending on which approach is used to solve the problem.&nbsp;
+The three most common approaches are</FONT></FONT>
+<UL><FONT FACE="Tahoma"><FONT SIZE=+1>the roadmap approach,</FONT></FONT>
+<BR><FONT FACE="Tahoma"><FONT SIZE=+1>the cell decomposition approach,
+and</FONT></FONT>
+<BR><FONT FACE="Tahoma"><FONT SIZE=+1>the potential field approach.</FONT></FONT></UL>
+<FONT FACE="Tahoma"><FONT SIZE=+1>&nbsp;&nbsp;&nbsp; These three approaches
+to solving the basic motion planning problem will now be discussed, followed
+by an examination of the Case II, Case III, and Case IV scenarios, which
+involve extensions to the basic problem.&nbsp; (Note: Before continuing,
+it may be helpful to review <A HREF="definitions.html">these definitions</A>.)</FONT></FONT>
+<BR>
+<HR WIDTH="100%"><A NAME="roadmap"></A><FONT FACE="Tahoma"><FONT SIZE=+2>The
+Roadmap Approach</FONT></FONT>
+<P><FONT FACE="Tahoma"><FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+This approach is dependent upon the concepts of <A HREF="definitions.html#Configuration Space">configuration
+space</A> and a continuous path.&nbsp; A set of one-dimensional curves,
+each of which connect two nodes of different polygonal obstacles, lie in
+the <A HREF="definitions.html#Free Space">free space</A> and represent a
+roadmap <I>R</I>.&nbsp; That is, all line segments that connect a vertex
+of one obstacle to a vertex of another without entering the interior of
+any polygonal obstacles are drawn.&nbsp; This set of paths is called the
+roadmap.&nbsp; If a continuous path can be found in the free space of <I>R</I>,
+the initial and goal points are then connected to this path to arrive at
+the final solution, a <A HREF="definitions.html#Free Path">free path</A>.&nbsp;
+If more than one continuous path can be found and the number of nodes in
+the graph is relatively small, Dijkstra's shortest path algorithm is often
+used to find the best path.</FONT></FONT>
+<BR><FONT FACE="Tahoma"><FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+There are various types of roadmaps, including the visibility graph, the
+Voronoi diagram, the freeway net, and the silhouette.&nbsp; One of the
+earliest path planning methods was the visibility graph method, explored
+by NJ Nilsson as early as 1969.&nbsp; A visibility graph is shown below.&nbsp;&nbsp;
+The shaded areas represent obstacles.&nbsp; The solid lines are the edges
+of the graph and connect the vertices of the obstacles.&nbsp; The dotted
+lines connect the beginning and end configurations with the roadmap.</FONT></FONT>
+<BR>&nbsp;
+<P><BR>
+<CENTER>
+<P><IMG SRC="roadmap.jpg" ALT="Roadmap" BORDER=0 HEIGHT=40% WIDTH=50%></CENTER>
+
+<BR>&nbsp;
+<P><BR>
+<P><FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The figure
+below shows a Voronoi diagram in a configuration space with a polygonal
+C-obstacle region.&nbsp; This diagram is a planar network of line segments
+and parabolic curves, which are the set of points equidistant from at least
+two obstacles.&nbsp; The path generated by this method keeps the robot
+as far away from the obstacles as possible, unlike the visibility graph.</FONT>
+<BR>&nbsp;
+<P><BR>
+<CENTER>
+<P><IMG SRC="voronoi.jpg" ALT="Voronoi diagram" BORDER=0 HEIGHT=50% WIDTH=50%></CENTER>
+
+<BR>&nbsp;
+<P><BR>
+<P>
+<HR WIDTH="100%"><A NAME="decomp"></A><FONT SIZE=+2>The Cell Decomposition
+Approach</FONT>
+<P><FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The basic idea
+behind this method is that a path between the initial configuration and
+the goal configuration can be determined by subdividing the free space
+of the robot's configuration into smaller regions called cells.&nbsp; After
+this decomposition, a connectivity graph, as shown below, is constructed
+according to the adjacency relationships between the cells, where the nodes
+represent the cells in the free space, and the links between the nodes
+show that the corresponding cells are adjacent to each other.&nbsp; From
+this connectivity graph, a continuous path, or channel, can be determined
+by simply following adjacent free cells from the initial point to the goal
+point.&nbsp; These steps are illustrated below using both an exact cell
+decomposition method and an approximate cell decomposition method.</FONT>
+<BR><FONT SIZE=+1>Exact Cell Decomposition</FONT>
+<BR><FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The first
+step in this type of cell decomposition is to decompose the free space,
+which is bounded both externally and internally by polygons, into trapezoidal
+and triangular cells by simply drawing parallel line segments from each
+vertex of each interior polygon in the configuration space to the exterior
+boundary.&nbsp; Then each cell is numbered and represented as a node in
+the connectivity graph.&nbsp; Nodes that are adjacent in the configuration
+space are linked in the connectivity graph.&nbsp; A path in this graph
+corresponds to a channel in free space, which is illustrated by the sequence
+of striped cells.&nbsp; This channel is then translated into a free path
+by connecting the initial configuration to the goal configuration through
+the midpoints of the intersections of the adjacent cells in the channel.</FONT>
+<BR>&nbsp;
+<P><BR>
+<CENTER>
+<P><IMG SRC="cellDecomp1.jpg" ALT="Exact Cell Decomposition" BORDER=0 HEIGHT=70% WIDTH=80%></CENTER>
+
+<BR>&nbsp;
+<P><BR>
+<P><B><FONT SIZE=+1>Approximate Cell Decomposition</FONT></B>
+<P><FONT SIZE=+1>&nbsp;&nbsp;&nbsp; This approach to cell decomposition
+is different because it uses a recursive method to continue subdividing
+the cells until one of the following scenarios occurs:</FONT>
+<UL>
+<LI>
+<FONT SIZE=+1>Each cell lies either completely in free space or completely
+in the C-obstacle region</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>An arbitrary limit resolution is reached.</FONT></LI>
+</UL>
+<FONT SIZE=+1>Once a cell fulfills one of these criteria, it stops decomposing.&nbsp;
+This method is also called a "quadtree" decomposition because a cell is
+divided into four smaller cells of the same shape each time it gets decomposed.&nbsp;
+After the decomposition step, the free path can then easily be found by
+following the adjacent, decomposed cells through free space.&nbsp; An example
+of this method is illustrated below.</FONT>
+<CENTER>
+<P><IMG SRC="cellDecomp2.jpg" ALT="Approximate Cell Decomposition Method" BORDER=0 HEIGHT=40% WIDTH=50%></CENTER>
+
+<BR>&nbsp;
+<P><BR>
+<P><FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Both exact
+cell decomposition methods and approximate cell decomposition methods have
+advantages and disadvantages.&nbsp; The former are guaranteed to be complete,
+meaning that if a free path exists, exact cell decomposition will find
+it; however, the trade-off for this accuracy is a more difficult mathematical
+process.&nbsp; Approximate cell decomposition is less involved, but can
+yield similar, if not exactly the same, results as exact cell decomposition.</FONT>
+<P>
+<HR WIDTH="100%">
+<BR><A NAME="potentialfield"></A><FONT SIZE=+2>The Potential Field Approach</FONT>
+<P><FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The potential
+field method involves modeling the robot as a particle moving under the
+influence of a potential field that is determined by the set of obstacles
+and the target destination.&nbsp; This method is usually very efficient
+because at any moment the motion of the robot is determined by the potential
+field at its location.&nbsp; Thus, the only computed information has direct
+relevance to the robot's motion and no computational power is wasted.&nbsp;
+It is also a powerful method because it easily yields itself to extensions.&nbsp;
+For example, since potential fields are additive, adding a new obstacle
+is easy because the field for that obstacle can be simply added to the
+old one.</FONT>
+<BR><FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The method's
+only major drawback is the existence of local minima.&nbsp; Because the
+potential field approach is a local rather than a global method (it only
+considers the immediate best course of action), the robot can get "stuck"
+in a local minimum of the potential field function rather than heading
+towards the global minimum, which is the target destination.&nbsp; This
+is frequently resolved by coupling the method with techniques to escape
+local minima, or by constructing potential field functions that contain
+no local minima.</FONT>
+<BR>&nbsp;
+</BODY>
+</HTML>

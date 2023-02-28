@@ -1,0 +1,42 @@
+#+title: Linear Multivariable Controll
+* Section1
+- [[file:lmc/Section1/basicmathreview.html][basicmathreview.html]]
+- [[file:lmc/Section1/dynamicalsystemsl.html][dynamicalsystemsl.html]]
+- [[file:lmc/Section1/formulatingsimplelinearsystems.html][formulatingsimplelinearsystems.html]]
+- [[file:lmc/Section1/linearalgebrareview.html][linearalgebrareview.html]]
+- [[file:lmc/Section1/linearizingnonlinearsystems.html][linearizingnonlinearsystems.html]]
+- [[file:lmc/Section1/s01-l05realizationtheory.pdf][s01-l05realizationtheory.pdf]]
+- [[file:lmc/Section1/s01-l06solutiontolinearsystems.pdf][s01-l06solutiontolinearsystems.pdf]]
+- [[file:lmc/Section1/s01-l07discretizinglinearsystem.pdf][s01-l07discretizinglinearsystem.pdf]]
+- [[file:lmc/Section1/s01-l08eigenvalues.pdf][s01-l08eigenvalues.pdf]]
+
+* Section2
+- [[file:lmc/Section2/breifintrotofeedbackcontrolandcontrollabilitylive.pdf][breifintrotofeedbackcontrolandcontrollabilitylive.pdf]]
+- [[file:lmc/Section2/s02-03stabilityvialyapunov.pdf][s02-03stabilityvialyapunov.pdf]]
+- [[file:lmc/Section2/s02-l01stabilitypreliminariesltisystems.pdf][s02-l01stabilitypreliminariesltisystems.pdf]]
+- [[file:lmc/Section2/s02-l02alookatstabilityforltvandnonlinear.pdf][s02-l02alookatstabilityforltvandnonlinear.pdf]]
+- [[file:lmc/Section2/s02-l04briefintrotofeedbackcontrolandcontrollability.pdf][s02-l04briefintrotofeedbackcontrolandcontrollability.pdf]]
+
+* Section3
+- [[file:lmc/Section3/S03_03ControlExamples.pdf][S03_03ControlExamples.pdf]]
+- [[file:lmc/Section3/s03-01reachableandcontrollablesubspaces.pdf][s03-01reachableandcontrollablesubspaces.pdf]]
+- [[file:lmc/Section3/s03-02completecontrollability.pdf][s03-02completecontrollability.pdf]]
+- [[file:lmc/Section3/s03-03controllabledecomposition.html][s03-03controllabledecomposition.html]]
+- [[file:lmc/Section3/s03-03controllabledecomposition.pdf][s03-03controllabledecomposition.pdf]]
+- [[file:lmc/Section3/s03-04poleplacement.html][s03-04poleplacement.html]]
+- [[file:lmc/Section3/s03-05controlexamples.pdf][s03-05controlexamples.pdf]]
+
+* Section4
+- [[file:lmc/Section4/nov-12-7.37am.html][nov-12-7.37am.html]]
+- [[file:lmc/Section4/s04-l01observability.pdf][s04-l01observability.pdf]]
+- [[file:lmc/Section4/s04-l02minimality.pdf][s04-l02minimality.pdf]]
+- [[file:lmc/Section4/s04-l03outputfeedback.html][s04-l03outputfeedback.html]]
+- [[file:lmc/Section4/s04-l04lunenbuergerobservers.pdf][s04-l04lunenbuergerobservers.pdf]]
+
+* Section5
+- [[file:lmc/Section5/dec-01-1.35pm.html][dec-01-1.35pm.html]]
+- [[file:lmc/Section5/s05-l01introtolqrdesign.html][s05-l01introtolqrdesign.html]]
+- [[file:lmc/Section5/s05-l02numericalmethodstoricattiequation.pdf][s05-l02numericalmethodstoricattiequation.pdf]]
+- [[file:lmc/Section5/s05-l03infinitehorizoncontrol.pdf][s05-l03infinitehorizoncontrol.pdf]]
+- [[file:lmc/Section5/s05-l04statespaceintegraldesign.pdf][s05-l04statespaceintegraldesign.pdf]]
+- [[file:lmc/Section5/s05-l06infinitehorizonpointexamples.html][s05-l06infinitehorizonpointexamples.html]]

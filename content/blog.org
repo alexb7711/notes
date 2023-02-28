@@ -6,7 +6,7 @@
 :PROPERTIES:
 :CUSTOM_ID: engineering
 :END:
-- [[file:docs/projects.html][Writing Proposals]]
+- [[file:writing-proposals.html][Writing Proposals]]
 
 ** Game Development
 :PROPERTIES:

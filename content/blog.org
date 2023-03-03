@@ -7,6 +7,7 @@
 :CUSTOM_ID: engineering
 :END:
 - [[file:writing-proposals.html][Writing Proposals]]
+- [[file:research/discretizing-linear-systems.pdf][Discretizing Linear Systems]]
 
 ** Game Development
 :PROPERTIES:

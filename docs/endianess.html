@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-02-27 Mon 16:21 -->
+<!-- 2023-03-13 Mon 06:51 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -27,10 +27,10 @@
 <li><a href="#network-byte-order">1.3. Network byte order</a></li>
 </ul>
 </li>
-<li><a href="#orgacaa083">2. Method 1: Using bit shifting and ANDs</a></li>
-<li><a href="#org90f44c4">3. Method 2: Using pointer to an array of characters</a></li>
-<li><a href="#orge2cffae">4. Method 1: Using bit shifting and bit ANDs</a></li>
-<li><a href="#org16e052c">5. Method 2: Using pointer to an array of characters</a></li>
+<li><a href="#org9545f86">2. Method 1: Using bit shifting and ANDs</a></li>
+<li><a href="#org74db622">3. Method 2: Using pointer to an array of characters</a></li>
+<li><a href="#org31811ba">4. Method 1: Using bit shifting and bit ANDs</a></li>
+<li><a href="#org981b24b">5. Method 2: Using pointer to an array of characters</a></li>
 </ul>
 </div>
 </div>
@@ -56,14 +56,14 @@ not true with an <code>int</code> or <code>long</code>.</li>
 certain endian being in use. For example</li>
 </ul>
 
-<pre class="example" id="org8d1fef8">
+<pre class="example" id="orgd0ffbf0">
 unsigned char endian![pic](2) = {1, 0};
 short x;
   
 x = ∗(short ∗) endian;
 </pre>
 
-<pre class="example" id="org221df18">
+<pre class="example" id="orgfceb82b">
 depending on the enianess, `x` can be represent different values.
 </pre>
 </div>
@@ -78,7 +78,7 @@ determine if it is 0 or 1. If it is 1, the running platform is assumed
 to be little-endian. If it is 0, it is assumed to be big-endian.
 </p>
 
-<pre class="example" id="org15c93b7">
+<pre class="example" id="org67a1340">
 unsigned char endian![pic](2) = {1, 0};
 short x;
   
@@ -94,7 +94,7 @@ bytes of an int and then check its first byte to see if it is 0 or 1.
 The listing below shows an example.
 </p>
 
-<pre class="example" id="orgd7e6f9b">
+<pre class="example" id="orgb452d9e">
 #define LITTLE_ENDIAN 0
 #define BIG_ENDIAN    1
 
@@ -150,8 +150,8 @@ The goal is to write code that doesn't fail, regardless of the endianness of the
 </div>
 </div>
 
-<div id="outline-container-orgacaa083" class="outline-2">
-<h2 id="orgacaa083"><span class="section-number-2">2.</span> Method 1: Using bit shifting and ANDs</h2>
+<div id="outline-container-org9545f86" class="outline-2">
+<h2 id="org9545f86"><span class="section-number-2">2.</span> Method 1: Using bit shifting and ANDs</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 #+end<sub>example</sub>
@@ -161,7 +161,7 @@ The goal is to write code that doesn't fail, regardless of the endianness of the
 short reverseShort (short s) { unsigned char c1, c2;
 </p>
 
-<pre class="example" id="orgde49209">
+<pre class="example" id="org6cd3314">
 if (is_bigendian()) {
     return s;
 } else {
@@ -181,8 +181,8 @@ if (is_bigendian()) {
 </p>
 </div>
 </div>
-<div id="outline-container-org90f44c4" class="outline-2">
-<h2 id="org90f44c4"><span class="section-number-2">3.</span> Method 2: Using pointer to an array of characters</h2>
+<div id="outline-container-org74db622" class="outline-2">
+<h2 id="org74db622"><span class="section-number-2">3.</span> Method 2: Using pointer to an array of characters</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 #+end<sub>example</sub>
@@ -192,7 +192,7 @@ if (is_bigendian()) {
 short reverseShort (char ∗c) { short s; char ∗p = (char ∗)&amp;s;
 </p>
 
-<pre class="example" id="orga901152">
+<pre class="example" id="orge74098f">
 if (is_bigendian()) {
     p![pic](0) = c![pic](0);
     p![pic](1) = c![pic](1);
@@ -218,8 +218,8 @@ Now lets see how an int would be handled:
 </div>
 </div>
 
-<div id="outline-container-orge2cffae" class="outline-2">
-<h2 id="orge2cffae"><span class="section-number-2">4.</span> Method 1: Using bit shifting and bit ANDs</h2>
+<div id="outline-container-org31811ba" class="outline-2">
+<h2 id="org31811ba"><span class="section-number-2">4.</span> Method 1: Using bit shifting and bit ANDs</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 #+end<sub>example</sub>
@@ -229,7 +229,7 @@ Now lets see how an int would be handled:
 int reverseInt (int i) { unsigned char c1, c2, c3, c4;
 </p>
 
-<pre class="example" id="org8d921fd">
+<pre class="example" id="org9080142">
 if (is_bigendian()) {
     return i;
 } else {
@@ -250,8 +250,8 @@ if (is_bigendian()) {
 </p>
 </div>
 </div>
-<div id="outline-container-org16e052c" class="outline-2">
-<h2 id="org16e052c"><span class="section-number-2">5.</span> Method 2: Using pointer to an array of characters</h2>
+<div id="outline-container-org981b24b" class="outline-2">
+<h2 id="org981b24b"><span class="section-number-2">5.</span> Method 2: Using pointer to an array of characters</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 #+end<sub>example</sub>
@@ -261,7 +261,7 @@ if (is_bigendian()) {
 short reverseInt (char ∗c) { int i; char ∗p = (char ∗)&amp;i;
 </p>
 
-<pre class="example" id="orgcb7ffab">
+<pre class="example" id="orgc5db73f">
 if (is_bigendian()) {
     p![pic](0) = c![pic](0);
     p![pic](1) = c![pic](1);
@@ -285,7 +285,7 @@ endian-independent code in C</a>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alexander Brown</p>
-<p class="date">Created: 2023-02-27 Mon 16:21</p>
+<p class="date">Created: 2023-03-13 Mon 06:51</p>
 </div>
 </body>
 </html>

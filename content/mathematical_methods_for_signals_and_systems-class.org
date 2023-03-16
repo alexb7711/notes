@@ -42,4 +42,9 @@
 - [[file:mathematical-methods-for-signals-and-systems/help-2-15-23-2.pdf][help-2-15-23-2.pdf]]
 
 * Book Notes
+- Chapter 2
+   - [[file:mathematical-methods-for-signals-and-systems/ch2pt1.pdf][Chapter 2: Part 1]]
+   - [[file:mathematical-methods-for-signals-and-systems/ch2pt2.pdf][Chapter 2: Part 2]]
+- [[file:mathematical-methods-for-signals-and-systems/gaussian-random-variables-and-random-processes.pdf][Gaussian Random Variables and Processes]]
+- [[file:mathematical-methods-for-signals-and-systems/holder.pdf][The Holder and Minkowsk Inequalities]]
 - [[file:mathematical-methods-for-signals-and-systems/appendix-b.pdf][Appendix B]]

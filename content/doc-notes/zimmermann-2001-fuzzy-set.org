@@ -1,0 +1,6 @@
+* Fuzzy set theory-and its applications, Zimmermann, H., , (2001) :book:
+
+See [[cite:&zimmermann-2001-fuzzy-set]]
+
+* Notes
+5.3.2 Extended Operations for LR-Representation of Fuzzy Sets [84 (pg 64 in the pdf)]

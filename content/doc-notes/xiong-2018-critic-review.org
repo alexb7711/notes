@@ -1,0 +1,34 @@
+* Notes
+
+** INTRODUCTION
+
+- The SoC of a battery is denied as the percentage of the remaining capacity in its maximum available capacity
+- Early from the year of 1960s, the academics, researchers, scientists have per formed an extensive research to carry out the battery SoC estimation [14], [15].
+- Thus, this paper hopes to all up the gap by exploring different existing methodologies and addressing the key issues and challenges for the SoC estimation of battery pack
+
+** SoC ESTIMATION METHODS
+
+*** LOOKING-UP TABLE BASED METHODS
+- Given an open-circuit voltage, get a SOC from a table.
+
+*** AMPERE-HOUR INTEGRAL METHOD
+- When the maximum available capacity of a battery is known and its current can be measured precisely, the ampere-hour integral method can permit the accurate calculation of the variation of the SoC. If we know the initial SoC, we can obtain the accurate SoC.
+
+#+begin_src latex
+z_k = z_0 − \frac{\int_{t_0}^{t_k} \eta I_L t_0(t)dt}{Q}
+#+end_src
+
+where 
+
+- $z$: SOC
+- $z_0$: Initial SOC
+- $z_k$: SOC at step $k$
+- $t_k = t_0 + k\cdot \Delta t$
+- $\Delta t$: sample interval
+- $\eta$: coulomb efficiency
+- $I_L(t)$: load current of batter
+- $Q$: maximum capacity
+
+*** MODEL-BASED ESTIMATION METHODS
+- The most commonly used models can be roughly summarized as three types: electrochemical model (EM), equivalent circuit model (ECM) and electrochemical impedance model (EIM).
+- 

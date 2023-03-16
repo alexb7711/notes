@@ -1,0 +1,6 @@
+* Hoke, Anderson and Brissette, Alexander and Smith, Kandler and Pratt, Annabelle and Maksimovic, Dragan (2014): Accounting for Lithium-Ion Battery Degradation in Electric Vehicle Charging Optimization
+:PROPERTIES:
+:Custom_id: Hoke2014
+:END:
+- The battery lifetime model accounts for temperature related degradation, capacity fade SoC(t) (how quickly it discharges), depth of discharge degradation (max SoC minus min SoC)
+- optimal cost of charging variable electricity costs and battery degradation

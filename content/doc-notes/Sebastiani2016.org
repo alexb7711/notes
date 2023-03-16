@@ -1,0 +1,9 @@
+* Sebastiani, Mariana Teixeira and Lüders, Ricardo and Fonseca, Keiko Verônica Ono (2016): Evaluating Electric Bus Operation for a Real-World BRT Public Transportation Using Simulation Optimization
+:PROPERTIES:
+:Custom_id: Sebastiani2016
+:END:
+- Minimizes over number of changing stations and the average extra time stopped in the station to recharge
+- Referenches to a paper ([10]) that uses simulation to estimate energy demand based on distances traveled by vehicles that follow a prbabilistic mobility model between urban areas
+- Introduces a discrete event simulation computes variables of interest, including energy consumption for each bus in a round trip
+- Has an interesting model to more accurately calculate power loss
+- Has an easy way to make battery charge model more accurate

@@ -1,0 +1,10 @@
+* A design of a grey-predicted li-ion battery charge system, Chen, L., Hsu, R. C., & Liu, C., IEEE Transactions on Industrial Electronics, (2008) :article:
+
+See [[cite:&Chen2008]]
+
+* Introduction
+- The constant current, constant voltage method was implemented to overcome the problem of requiring a 100% precise full
+  charge detector
+-Under the CC–CV charge strategy, a CC is applied first until the battery voltage increases to a preset voltage (i.e.,
+ battery full charged voltage). This CV is held after reaching the preset voltage with the charge current automatically
+ reduced. When the charge current reduces to zero, the battery is 100% fully charged.

@@ -1,0 +1,18 @@
+* Fuzzy activation of rough cognitive ensembles using owa operators, Bello, M., Gonzalo N\'apoles, Fuentes, I., Grau, I., Falcon, R., Bello, R., & Vanhoof, K., , (2019) :inbook:
+
+See [[cite:&bello-2019-fuzzy-activ]]
+
+* Notes
+Section of interest: Fully Fuzzy Linear Programming Modelfor the Berth Allocation Problem with Two Quays
+
+** Abstract
+- Triangular fuzzy numbers represent the imprecision of the arrivals
+- There are many types of uncertainty such as the randomness, imprecision (ambiguity, vagueness), and confusion, that can be categorized either stochastic or fuzzy [24]. Since the fuzzy sets are specially designed to deal with imprecision, they were selected for the present work.
+- The administrators of MCT continuously review and change the plans, but a frequent review of the berthing plan is not a desirable thing from a planning of resources point of view. Therefore, the capacity of adaptation of the berthing plan is important for a good system performance that a MCT manages. As a result, a robust model providing a berthing plan that supports the possible imprecision (earliness or lateness) in the arrival time of vessels and easily adaptable is desirable.
+- In the static case, all the vessels are assumed to be at the port before performing the berthing plan while for the dynamical case, the vessels can arrive to the port at different times during the planning horizon. In [1], the authors make an exhaustive review of the current existing literature about BAP. To our knowledge, there are very few studies dealing with BAP and with imprecise (fuzzy) data.
+	- Does this mean that the PAP is based of the dynamic BAP?
+- In [23], the uncertainty is dealed with probabilities, that is, it is supposed that historical data are available to obtain the distribution of probability of arrival for each vessel. In many ports there is not enough data available to obtain these distributions.
+	- Fuzzy is helpful in the sense that distribution functions do not necessarily need to be known
+- Problem description in the BAP case may be helpful in describing the PAP case
+- Use the models as supporting evidence for the construction
+- Can build on the model using more "sophisticated" methods of constructing the model

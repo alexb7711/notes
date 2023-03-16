@@ -1,0 +1,32 @@
+* An introduction to fuzzy linear programming problems, Kaur, J., & Kumar, A., , (2016) :book:
+
+See [[cite:&kaur-2016-introd-fuzzy]]
+
+* Notes
+** Abstract
+- Optimization is a kind of decision making in which decisions have to be taken to optimize one or more objectives under some prescribed set of circumstances. The problems that often arise as a result of mathematical modeling of many real-life situations are called optimization problems.
+- Over the past several decades optimization models have been primarily developed in a deterministic, crisp environment. In such models the objectives and constraints are formulated in a ‘hard’ crisp manner leaving no scope for uncertainty and vagueness. However, in real-life situations there may exist uncertainty. In such situations it is practical to develop mathematical models of the realistic problem in a fuzzy environment and the optimization problem under consideration becomes a fuzzy programming problem.
+
+** State of the Art
+- Linear programming is a quantitative tool for an optimal allocation of limited resources amongst competing activities. It is perhaps the most popular operations research technique with applications in several functional areas of business such as production, finance, marketing, distribution, advertising and so forth [1–4].
+- The conventional linear programming deals with crisp parameters. However, in most of the real world applications, the nature of the parameters of the decision making problems is generally imprecise.
+- Uncertainties can lead to increased complexities in the related optimization efforts. Simply ignoring these uncertainties is considered undesired as it may result in inferior or wrong decisions [6–8]. Therefore, inexact linear programming methods are desired under uncertainty.
+- In the past decades, a large number of inexact linear programming methods have been developed to deal with various uncertainties namely stochastic, interval and fuzzy linear programming [5, 7, 9–36].
+	- Stochastic linear programming, derived from probability theory, could deal with various probabilistic uncertainties; however, the increased data requirements for specifying the parameters’ probability distributions might affect their practical applicability [37].
+	- Interval linear programming, based on interval analysis, was proved to be an effective approach in dealing with uncertainties. Interval linear programming did not require distributional information and would not lead to complicated intermediate models. However, it was to be noted that the outputs of Interval linear programming were with lower and upper bounds, and thus could not reflect the distribution of uncertainty within the lower and upper bounds [38].
+- The following are a few good reasons for FLP
+	- Fuzzy sets theory and the related possibility theory, which were designed to supplement the interpretation of linguistic or measured uncertainties for real-world random phenomena, provided powerful tools for dealing with imprecise information [39].
+	- Although fuzziness offered a weaker (less informative) indication of uncertainty than randomness, fuzzy sets theory and possibility theory did not require sufficient precise data to quantify imprecise information. Furthermore, fuzzy sets were more  accurate than interval numbers, and reflected more detailed information for system uncertainties.
+	- Fuzzy set theory has been extensively employed in linear programming. The main objective in fuzzy linear programming is to find the best solution possible with imprecise, vague, uncertain or incomplete information. There are many sources of imprecision in fuzzy linear programming. The sources of imprecision in fuzzy linear programming vary. For example, sometimes constraint satisfaction limits are vague and other times coefficient variables are not known precisely.
+- Zimmermann [41] introduced the first formulation of fuzzy linear programming to address the impreciseness and vagueness of the parameters in linear programming problems with fuzzy constraints and objective functions.
+- Good for literature review *A detailed review and classification of fuzzy linear programs and their solution
+approaches can be found in Baykasoglu and Gocken [47].
+- In fact, decision variables of a fuzzy linear programming problem where all of the parameters are stated as fuzzy should also be considered as fuzzy numbers. Because, the fuzzy characteristic of the decision may be partially lost and the decision making process is limited with the crisp solutions when the decision variables oh is problem are crisp [11]. For this reason, instead of crisp solutions, obtaining fuzzy efficient solutions which provide ranges of flexibility to decision maker(s) seems more impressive in fully uncertain environments [17]. In other words, presenting the reasonable range of values for the decision variables can be comparatively better
+than the currently available crisp solutions [34].
+- In addition, fuzzy solutions may serve the regions containing potential satisfactory solutions around the optimal solutions to the decision maker(s). Thus, the final decisions can be made by the decision maker(s) as crisp ones. By taking the decision variables as fuzzy, the choice of the crisp decisions among the fuzzy solutions will also be supported [49].
+- Fully fuzzy linear programming problems have been an attractive topic for the researchers in recent years. However, the literature on fully fuzzy linear programming is not rich as there are a few studies available on this research topic.
+- Buckley and Feuring [9] proposed a solution method for fully fuzzy linear programming problems. All of the parameters and decision variables are defined as triangular fuzzy numbers. The fuzzy linear programming problem is transformed into a multi-objective fuzzy linear programming problem
+- A fully fuzzy linear programming problem was transformed into the two crisp linear problems by Lotfi et al. [33] that are maximization problem for the core and minimization problem for the margin. The proposed method is not an exact one, just an approximation technique since it relies on the approximation of the fuzzy numbers to the nearest symmetric triangular fuzzy numbers
+
+** Chapter 5
+Good stuff there

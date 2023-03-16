@@ -1,0 +1,27 @@
+* Optimal battery charging, part i: minimizing time-to-charge, energy loss, and temperature rise for ocv-resistance battery model, Abdollahi, A., Han, X., Avvari, G., Raghunathan, N., Balasingam, B., Pattipati, K., & Bar-Shalom, Y., Journal of Power Sources, (2016) :article:
+
+See [[cite:&Abdollahi2016]]
+
+* Introduction
+- The most widely-used traditional strategy is the constant-current constant-voltage (CC-CV) [9] strategy, in which a
+  constant current is applied to the battery until the terminal voltage reaches a specified value, and afterward the
+  charging current decreases by applying a constant voltage to the terminals of the battery.
+-In this paper we look at the charging problem from a fresh perspective using optimal control theory, and our goal is to
+ find the optimal current profile that minimizes a specific cost function.
+
+* Analytic Solution for Optimal Charging Current Profile
+- The model consists of a voltage source corresponding to the open-circuit voltage (OCV), which is dependent on the
+  state of charge (SOC), and a resistance $R_0$.
+- The OCV is a nonlinear function of SOC and is denoted by $V_0(s[k])$.
+- The SOC battery dynamics is written as
+
+\begin{equation}
+    \begin{array}{c}
+      i[k] = \frac{1}{R_0}(v_c - V_0(s[k])) \\
+      s[k+1] = s[k] + c_hi[k] \\
+      c_h = \frac{\Delta}{3600C_{\text{batt}}}
+    \end{array}
+\end{equation}
+
+  where $C_{\text{batt}}$ is assumed the battery capacity in Ah, $v_c$ is the voltage of the battery at maximum SOC, and
+  $V_0$ is the initial voltage at an SOC of $s[k]$.

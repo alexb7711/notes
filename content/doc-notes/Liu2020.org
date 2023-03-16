@@ -1,0 +1,7 @@
+* Tao Liu and Avishai {(Avi) Ceder} (2020): Battery-electric transit vehicle scheduling with optimal number of stationary chargers
+:PROPERTIES:
+:Custom_id: Liu2020
+:END:
+- Extensive literature review
+- Great notation
+- Has a more continuous model based off deficient function theory

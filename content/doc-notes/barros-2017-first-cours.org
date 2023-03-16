@@ -1,0 +1,8 @@
+* A first course in fuzzy logic, fuzzy dynamical systems, and biomathematics, La\'ecio Carvalho de Barros, Bassanezi, R. C., & Lodwick, W. A., , (2017) :book:
+
+See [[cite:&barros-2017-first-cours]]
+
+* Notes
+- If this information is used, it probably would be used for the battery dynamics
+- This chapter briefly introduces fuzzy dynamical systems with the intention to illustrate the power of the fuzzy logic for studying evolutionary systems
+- get on this if you have time

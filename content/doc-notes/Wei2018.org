@@ -1,0 +1,7 @@
+* Wei, Ran and Liu, Xiaoyue and Ou, Yi and Fayyaz, S Kiavash (2018): Optimizing the spatio-temporal deployment of battery electric bus system
+:PROPERTIES:
+:Custom_id: Wei2018
+:END:
+- good literature review for MILP
+- network flow like
+- uses mileage that can be driven on a charge

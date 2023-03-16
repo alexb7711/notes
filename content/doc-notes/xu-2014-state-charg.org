@@ -1,0 +1,3 @@
+* The state of charge estimation of lithium-ion batteries based on a proportional-integral observer, Xu, J., Mi, C. C., Cao, B., Deng, J., Chen, Z., & Li, S., IEEE Transactions on Vehicular Technology, (2014) :article:
+
+See [[cite:&xu-2014-state-charg]]

@@ -1,0 +1,63 @@
+* State of charge estimation for lithium-ion batteries using model-based and data-driven methods: a review, How, D. N. T., Hannan, M. A., Lipu, M. S. H., & Ker, P. J., IEEE Access, (2019) :article:
+
+See [[cite:&how-2019-state-charg]]
+
+* Notes
+** INTRODUCTION
+- The information of this review will be valuable to the academic researcher and automotive engineers towards the
+  selection of appropriate SOC estimation method which is significant for the enhancement of BMS for future EV
+  applications.
+
+** OVERVIEW OF MODEL-BASED AND DATA-DRIVEN METHOD
+
+*** Model Approach (white box)
+- There exist two established decision-making paradigms to evaluate SOC; model-based and data-driven methods.
+- This approach often involves the practitioner to have a deep understanding of the system or process in order to
+  construct the robust rules that can model the behavior of the system accurately
+
+*** Data Approach (black box)
+- On the other hand, the data-driven based SOC estimation are relatively new approaches enabled by the advent of big
+  quantity of data and powerful computers.
+- The data-driven methods (also known as black-box models) are built upon empirical observations with minimal or no
+  knowledge of the background processes
+
+*** SOC ESTIMATION METHODS
+- Based on recent published articles on SOC estimation, this review divides the SOC estimation methods into five groups
+  namely; look-up table method, coulomb counting method, model-based estimation methods, data-driven estimation methods,
+  and hybrid method, as shown in Fig. 5.
+
+**** LOOK-UP TABLE
+- Not relevant
+- The look-up table method exploits the direct mapping relationship between SOC and the external characteristics
+  parameters such as the open-circuit voltage (OCV), impedance, etc.
+- The alternating current (AC) impedance methods is another technique under the look-up table category.
+
+**** COULOMB COUNTING METHOD
+Not relevant
+
+**** MODEL-BASED SOC ESTIMATION METHODS
+- EM Model
+        - The model-based SOC estimation methods involve modeling of the electrical, chemical or a combination of both
+          properties pertaining to a specific battery.
+        - The EM model relies on partial differential equations (PDE) to describe battery dynamics such as lithium diffusion and
+          potential gradients.
+        - EM method can be very accurate, nonetheless PDE computations can be expensive for real-time SOC estimation
+          [62].
+- ECM Model
+        - The ECM model based SOC evaluation requires the derivation of the circuit models consisting of various circuit
+          elements arranged in series or parallel combination such that it replicates the dynamics of the battery.
+        - The various ECM models have been proposed including the Rint model, the RC model, and the Thevenin model [24].
+        - ECM is computationally inexpensive and has been used by researchers to estimate SOC in conjunction with
+          adaptive filter algorithms such as the Kalman filter. [67].
+- Observer Model
+        - A work in [91] proposes a novel observer-based SOC estimation method for LIB, as depicted in Fig. 13.
+
+**** Data-Driven SOC Estimation Methods
+- Fuzzy Logic Method
+  - There exist a few studies involving FL to estimate SOC. In [142], the authors proposed the use of FL with SVM to
+    predict SOC of a LIB pack used in EV.
+
+- Hybrid Method
+  - Usually, two or three algorithms are combined to develop a hybrid method.
+  - In [149], the authors proposed a charging cell voltage curves (CCCV) hypothesis to estimate the capacity of a LIB
+    pack.

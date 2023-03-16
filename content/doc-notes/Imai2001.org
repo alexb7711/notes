@@ -1,0 +1,12 @@
+* Akio Imai and Etsuko Nishimura and Stratos Papadimitriou (2001): The dynamic berth allocation problem for a container port
+:PROPERTIES:
+:Custom_id: Imai2001
+:END:
+- Lagrangian simplification to the BAP problem
+- static BAP: given a collection of ships, finds a set of assignments to minimize the sum of the time they spend waiting for berths and handling cargo, has already been proposed
+- DBAP: similar to the SBAP but with the difference that ships arrive while work is in progress.
+- Make a good point to bring out all the assumptions they make
+- Little proof of optimality for consecutive vessels
+- static (at berth now), dynamic (at berth later)
+- makes an attempt to minimize idle time at each berth
+- Interesting idea to introduce at a high level what everything is in a section then derive it in another

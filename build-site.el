@@ -7,6 +7,7 @@
 ;; Set the package installation directory so that packages are not stored in the
 ;; default directory
 (require 'package)
+
 (setq package-user-dir (expand-file-name "./.packages")
       package-archive '(("melpa" . "https://melpa.org/packages/")
                         ("elpa"  . "https://elpa.gnu.org/packages/")))
@@ -40,7 +41,7 @@
              :author               "Alexander Brown"
              :publishing-directory "docs"
              :base-directory       "content"
-             :recursive            nil
+             :recursive            t
              :with-author          t
              :with-toc             t
              :html-preamble        "<a href=\"index.html\">Home</a> | <a href=\"blog.html\">Blog</a> | <a href=\"notes.html\">Notes</a> | <a href=\"classes.html\">Classes</a> | <a href=\"projects.html\">Projects</a> | <a href=\"todo.html\">Todo</a> | <a href=\"error.html\">About</a>"

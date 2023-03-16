@@ -1,0 +1,6 @@
+* Wang, Xiumin and Yuen, Chau and Hassan, Naveed Ul and An, Ning and Wu, Weiwei (2017): Electric Vehicle Charging Station Placement for Urban Public Bus Systems
+:PROPERTIES:
+:Custom_id: WangXiumin2017
+:END:
+- Brings up the fact that detours are not considered
+- Minimizes the charging stations (does not really apply to PAP)

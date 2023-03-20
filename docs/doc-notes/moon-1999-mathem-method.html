@@ -3,13 +3,34 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-03-13 Mon 11:04 -->
+<!-- 2023-03-20 Mon 13:00 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
 <meta name="author" content="Alexander Brown" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href=" ./style.css" />
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -21,9 +42,43 @@
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
 <li><a href="#org11f17ea">1. Mathematical methods and algorithms for signal processing, Moon, T., &amp; Stirling, W., , (1999)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="book">book</span></span></a></li>
+<li><a href="#org9893bcd">2. Chapter 3: Representation and approximation in vector spaces</a>
+<ul>
+<li><a href="#org239f916">2.1. The approximation problem in Hilbert space</a>
+<ul>
+<li><a href="#orgd3ebe94">2.1.1. The Grammian Matrix</a></li>
+</ul>
+</li>
+<li><a href="#org81aeced">2.2. The orthogonality principle</a>
+<ul>
+<li><a href="#orgc0ac7eb">2.2.1. Representations in infinite-dimensional space</a></li>
+</ul>
+</li>
+<li><a href="#org37b6127">2.3. Error minimization via gradients</a></li>
+<li><a href="#org897fe99">2.4. Matrix representation of least-squares problem</a>
+<ul>
+<li><a href="#orgcd5499c">2.4.1. Weighted least-squares</a></li>
+<li><a href="#org8ef95de">2.4.2. Statistical properties of the least-squares estimate</a></li>
+</ul>
+</li>
+<li><a href="#orgdb64660">2.5. Minimum error in vector-space approximations</a></li>
+<li><a href="#org3092066">2.6. Approximation by continuous polynomials</a></li>
+<li><a href="#org311dd7a">2.7. Approximation by discrete polynomials</a></li>
+<li><a href="#org7ca629c">2.8. Linear regression</a></li>
+<li><a href="#org5b7ce69">2.9. Least-squares filtering</a>
+<ul>
+<li><a href="#orgd770b41">2.9.1. Least-squares prediction and AR spectrum estimation</a></li>
+</ul>
+</li>
+<li><a href="#orgcc8301d">2.10. Minimum mean-squared estimation</a></li>
+<li><a href="#orgee15423">2.11. Minimum mean-squared error (MMSE) filtering</a></li>
+<li><a href="#org36dee58">2.12. Comparison of least-squared and minimum mean-squares</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
+
 <div id="outline-container-org11f17ea" class="outline-2">
 <h2 id="org11f17ea"><span class="section-number-2">1.</span> Mathematical methods and algorithms for signal processing, Moon, T., &amp; Stirling, W., , (1999)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="book">book</span></span></h2>
 <div class="outline-text-2" id="text-1">
@@ -32,10 +87,644 @@ See <a href="&amp;moon-1999-mathem-method">&amp;moon-1999-mathem-method</a>
 </p>
 </div>
 </div>
+
+<div id="outline-container-org9893bcd" class="outline-2">
+<h2 id="org9893bcd"><span class="section-number-2">2.</span> Chapter 3: Representation and approximation in vector spaces</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org239f916" class="outline-3">
+<h3 id="org239f916"><span class="section-number-3">2.1.</span> The approximation problem in Hilbert space</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+The analysis problem is this: given a vector \(x \in S\), find the coefficients \(c_1, c_2, ..., c_m\) that
+</p>
+
+\begin{equation*}
+\hat{x} = c_1 p_1 + c_2 p_2 + \cdots + c_m p_m
+\end{equation*}
+
+<p>
+Where the \(\hat{\cdot}\) is used in indicate an approximation \(x = \hat{x} + e\).
+</p>
+
+\begin{equation*}
+||x - \hat{x}|| = ||e||
+\end{equation*}
+
+<p>
+When using the \(l_2\) or \(L_2\) norm, this is called the least-squares problem. Because we know that the error is
+minimized when the error is perpendicular to the data, we can leverage the inner-product (also the \(l_2\) norm) to
+minimize the problem by writing
+</p>
+
+\begin{equation*}
+\Big< x - \sum_{i=1}^m c_i p_i, p_j \Big> \text{ for } 1,2,...,m
+\end{equation*}
+
+<p>
+In matrix form this equates to
+</p>
+
+\begin{equation*}
+\begin{bmatrix}
+<p_1, p_1> & <p_2, p_1> & \cdots & <p_m, p_1> \\
+<p_1, p_2> & <p_2, p_2> & \cdots & <p_m, p_2> \\
+\vdots          &            &    & \vdots          \\
+<p_1, p_m> & <p_2, p_m> & \cdots & <p_m, p_1> \\
+\end{bmatrix}
+\begin{bmatrix}
+c_1 \\ c_2 \\ \vdots \\ c_m
+\end{bmatrix}
+=
+\begin{bmatrix}
+<x,p1> \\ <x,p2> \\ \vdots \\ <x,pm> \\
+\end{bmatrix}
+\end{equation*}
+</div>
+
+<div id="outline-container-orgd3ebe94" class="outline-4">
+<h4 id="orgd3ebe94"><span class="section-number-4">2.1.1.</span> The Grammian Matrix</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<p>
+Let \(R\) be called the Grammian matrix.
+</p>
+
+\begin{equation*}
+R =
+\begin{bmatrix}
+<p_1, p_1> & <p_2, p_1> & \cdots & <p_m, p_1> \\
+<p_1, p_2> & <p_2, p_2> & \cdots & <p_m, p_2> \\
+\vdots          &            &    & \vdots          \\
+<p_1, p_m> & <p_2, p_m> & \cdots & <p_m, p_1> \\
+\end{bmatrix}
+\end{equation*}
+
+<p>
+The Grammian is a Hermitian symmetric matrix; that is \(R^H = R\) where \(\cdot^H\) is the conjugate transpose. This also
+implies that \(R\) is invertible. This brings us to the following theorem
+</p>
+
+<p>
+#+name theorem3.1
+</p>
+<blockquote>
+<p>
+A Grammian matrix \(R\) is always positive-semidefinite (\(x^HRx \ge 0 \forall x \in \mathbb{C}^m\)). It is positive definite \(\iff\) the
+vectors \(p_1, p_2, ..., p_n\) are linearly independent.
+</p>
+</blockquote>
+
+<p>
+<b>It is of note that if the set of vectors \(\{p\}\) are orthogonal, then the Grammian becomes a diagonal matrix.</b>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org81aeced" class="outline-3">
+<h3 id="org81aeced"><span class="section-number-3">2.2.</span> The orthogonality principle</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+#+name theorem3.2
+</p>
+<blockquote>
+<p>
+Let \(p_1, p_2, ..., p_n\) be data vectors in a vector space \(S\). Let \(x\) be any vector in \(S\). In this representation
+</p>
+
+\begin{equation*}
+x = \sum_{i=1}^m c_i p_i + e = \hat{x} + e
+\end{equation*}
+
+<p>
+the induced norm of the error vector \(||e||\) is minimized when the error \(e = x - \hat{x}\) is orthogonal to each of the
+data vectors
+</p>
+
+\begin{equation*}
+\Big< x - \sum_{i=1}^m c_i p_i, p_j \Big> \text{ for } 1,2,...,m
+\end{equation*}
+</blockquote>
+</div>
+
+<div id="outline-container-orgc0ac7eb" class="outline-4">
+<h4 id="orgc0ac7eb"><span class="section-number-4">2.2.1.</span> Representations in infinite-dimensional space</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+The convergence of this infinite sum must be examined carefully. However, \(T\) is an orthonormal set, then the
+representation can be shown to converge.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org37b6127" class="outline-3">
+<h3 id="org37b6127"><span class="section-number-3">2.3.</span> Error minimization via gradients</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+This section verifies the least squared solution using the gradient method used in optimization. Because we want to
+minimize the error \(e = x - \sum_{i=1}^m c_i p_i\), then we can write
+</p>
+
+\begin{equation*}
+J(c) = \big<e,e\big> = \Big< x - \sum_{i=1}^m c_i p_i, x - \sum_{i=1}^m c_i p_i \Big> = ||x||^2 - 2\text{Re}(c^Hp) + c^H Rc
+\end{equation*}
+
+<p>
+Note that <code>Re</code> in \(\text{Re}(c^Hp)\) indicates the real part of the value \(c^Hp\). Taking the gradient of the equation above
+reduces to \(Rc = p\), which is what we found before.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org897fe99" class="outline-3">
+<h3 id="org897fe99"><span class="section-number-3">2.4.</span> Matrix representation of least-squares problem</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+For finite-dimensional vectors (signals), matrix notation may be employed. The approximation problem can then be written
+as
+</p>
+
+<blockquote>
+<p>
+Determine \(c\) to minimize \(||e||^2_2\) in the problem \(x = Ac + e = \hat{x} + e\)
+</p>
+</blockquote>
+
+<p>
+After some mathematical manipulation we find the important solution that for the equation \(Rc = p\) the optimal
+(least-squares) solution is
+</p>
+
+\begin{equation*}
+c = (A^H A)^{-1} A^H x = R^{-1}p
+\end{equation*}
+
+<p>
+Although we could use \(R^{-1}\), the problem of numerical stability arises. The pseudo-inverse of \(A\) (\((A^H A)^{-1}
+A^H\)), is more numerically stable. Furthermore, \(P = (A^H A)^{-1} A^H\) is a projection matrix. Thus, we optimally
+project \(x\) orthogonally down into the range of \(A\) and find the best solution in that range space.
+</p>
+</div>
+
+<div id="outline-container-orgcd5499c" class="outline-4">
+<h4 id="orgcd5499c"><span class="section-number-4">2.4.1.</span> Weighted least-squares</h4>
+<div class="outline-text-4" id="text-2-4-1">
+<p>
+This is naturally incorporated into the inner product. As we have seen before \(\big< x,y \big>_W = y^H W x\), from this
+we can expand and solve similarly as before to achieve the following solution.
+</p>
+
+\begin{equation*}
+c = (A^H W A)^{-1} A^H W x
+\end{equation*}
+</div>
+</div>
+
+<div id="outline-container-org8ef95de" class="outline-4">
+<h4 id="org8ef95de"><span class="section-number-4">2.4.2.</span> Statistical properties of the least-squares estimate</h4>
+<div class="outline-text-4" id="text-2-4-2">
+<p>
+Suppose that we have a true model \(x = Ac_0 + e\) that we wish to estimate. Using our solution of \(c\) results in an
+expected value of \(c_0\). Such an estimate is said to be unbiased.
+</p>
+
+\begin{equation*}
+E[c] = E[c_0 + (A^H A)^{-1} A^H e] = c_0
+\end{equation*}
+
+<p>
+Furthermore, the estimator \(c\) is said to be the best linear unbiased estimator. See the book for the proof.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdb64660" class="outline-3">
+<h3 id="orgdb64660"><span class="section-number-3">2.5.</span> Minimum error in vector-space approximations</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+In this section we examine how much error is left when an optimal (minimal-norm) solution is obtained. Using the
+Pythagorean theorem, the squared norm of the minimum error is
+</p>
+
+\begin{equation*}
+||e_{min}||^2 = ||x||^2 - ||\hat{x}||^2
+\end{equation*}
+
+<p>
+Using the matrix representation we can write
+</p>
+
+\begin{equation*}
+||e_{min}||^2 = x^Hx - c^Hp
+\end{equation*}
+
+<p>
+And using \(\hat{x}  = Ac = A(A^H A)^{-1} A^H x\) we can write
+</p>
+
+\begin{equation*}
+||e_{min}||^2 = x^H (I - A(A^HA)^{-1} A^H)x
+\end{equation*}
+</div>
+</div>
+
+<div id="outline-container-org3092066" class="outline-3">
+<h3 id="org3092066"><span class="section-number-3">2.6.</span> Approximation by continuous polynomials</h3>
+<div class="outline-text-3" id="text-2-6">
+<p>
+Say we want to approximate a real continuous function \(f(t)\) over an interval \(t \in [a,b]\) to minimize the norm
+</p>
+
+\begin{equation*}
+\int_a^b (f(t) - p(t))^2 dt
+\end{equation*}
+
+<p>
+Where \(p(t)\) has a degree of \(m-1\). We take the basis vectors to be \(\{1,t,t^2,...,t^{m-1}\}\). Using the inner product,
+the principal of orthogonality, and appliying the inner product \(\int_a^b f(t)g(t) dt\) we get the resulting Grammian
+matrix
+</p>
+
+\begin{equation*}
+R =
+\begin{bmatrix}
+1 & 1/2 & \cdots & 1/m\\
+1/2 & 1/3 & \cdots & 1/(m+1)\\
+\vdots          &            &    & \vdots          \\
+1/m & 1/(m+1) & \cdots & 1/(2m)\\
+\end{bmatrix}
+\end{equation*}
+
+<p>
+A matrix of this form is known as a Hilbert matrix. It becomes ill conditioned very easily as \(m\) increases. Although the
+Hilbert matrix is ill conditioned, we can use a set of orthogonal polynomials that span the same set which will be well
+conditioned.
+</p>
+
+<p>
+If certain regions are of more interest, weighted norms can be taken
+</p>
+
+\begin{equation*}
+\int_a^b w(t)(f(t) - p(t))^2 dt
+\end{equation*}
+
+<p>
+which induces the inner product
+</p>
+
+\begin{equation*}
+\int_a^b f(t)g(t) dt
+\end{equation*}
+</div>
+</div>
+
+<div id="outline-container-org311dd7a" class="outline-3">
+<h3 id="org311dd7a"><span class="section-number-3">2.7.</span> Approximation by discrete polynomials</h3>
+<div class="outline-text-3" id="text-2-7">
+<p>
+This section is extremely analogous to the previos section but is of more practical value. We can approximate discrete
+(sampled) data similarly by using a set of discrete-time basis functions \(\{1,k,...,k^{m-1}\}\). *We desire to
+fit an $(m-1)$st order polynomial through the data points \(x_1, x_2, ..., x_n\) so that \(x_k \approx p(k) \text{ for }
+k=1,2,..., n\) where $p(k) = c<sub>0</sub> + c<sub>1k</sub> + c<sub>2</sub> k<sup>2</sup> + &#x2026; + c<sub>m-1</sub>k<sup>m-1</sup>$*
+</p>
+
+<p>
+If \(m=n\) then there exists a polynomial that will pass through all \(n\) points. If \(m < n\), which is what we have an
+interested in, then we want to reduce the squared error
+</p>
+
+\begin{equation*}
+\sum_{k=1}^n |x_n - p(k)|^2 = || x - p ||_2^2
+\end{equation*}
+
+<p>
+The first reprsentation is in summation form and the second is in vector form. This is induced from the inner product
+\(\big<x,y\big> = x^H y\). We are left with the equation \(x = Pc + e\) This is interpreted as the data we wish to
+approximate equals our approximation plus the error. This merely brings us back to our Grammian matrix, which we can use
+the least-squares solution to produce
+</p>
+
+\begin{equation*}
+c = (P^TP)^{-1}P^Tx
+\end{equation*}
+
+<p>
+Where the transpose \(\cdot^T\) can be replaced with the conjugate tranpose \(\cdot^H\) if necessary. This we have our solution
+</p>
+
+\begin{equation*}
+p = Pc = P(P^TP)^{-1}P^Tx
+\end{equation*}
+
+<p>
+Example 3.7.1 is insightful if one is desired.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7ca629c" class="outline-3">
+<h3 id="org7ca629c"><span class="section-number-3">2.8.</span> Linear regression</h3>
+<div class="outline-text-3" id="text-2-8">
+<p>
+Very similarly to before, but expanding on the concept a little. Suppose there is a set of points that we wish to fit a
+line over. That is, we want a function \(y_i \approx ax_i + b \text{ for } i = 1,2,...,n\). Letting \(y\) be the vector of y
+values, \(e\) voctor of errors, \(c = [a b]^T\), and
+</p>
+
+\begin{equation*}
+A =
+\begin{bmatrix}
+x_1 & 1 \\
+x_2 & 1 \\
+\vdots & \vdots \\
+x_n & 1
+\end{bmatrix}
+\end{equation*}
+
+<p>
+This gives rise to the equation
+</p>
+
+\begin{equation*}
+y = Ac + e
+\end{equation*}
+
+<p>
+Using the least-sqares solution, we get
+</p>
+
+\begin{equation*}
+c = (A^HA)^{-1}Ay
+\end{equation*}
+</div>
+</div>
+
+<div id="outline-container-org5b7ce69" class="outline-3">
+<h3 id="org5b7ce69"><span class="section-number-3">2.9.</span> Least-squares filtering</h3>
+<div class="outline-text-3" id="text-2-9">
+<p>
+The goal of least-squares filtering problem is to filter a sequence of input data \(\{f[t]\}\) suing a filter with impulse
+response \(h[t]\) of length \(m\) to produce an output that matches a desired sequence \(\{d[t]\}\) as closely as possible.
+</p>
+
+<p>
+Let the output of the filter be denoted as
+</p>
+
+\begin{equation*}
+y[t] = \sum_{i=0}^{m-1} h[i]f[t-i]
+\end{equation*}
+
+<p>
+And let \(d[t] = y[t] + e[t]\) as before. When doing least-squares filtering, the criterion of minimal error is that the
+sum of the squared errors is as small as possible
+</p>
+
+\begin{equation*}
+\text{min} \sum_{i_1}^i_2 |e[i]|^2
+\end{equation*}
+
+<p>
+Where \(i_1\) and \(i_2\) are the starting and end points of the data indices we desire to minimize. And just as Bob is you
+uncle, we get the expected solution
+</p>
+
+\begin{equation*}
+h = (A^HA)^{-1}A^hd
+\end{equation*}
+
+<p>
+The interesting bit here is that \(A\) can be structured in a couple different ways to get different filtering techniques.
+</p>
+
+<ul class="org-ul">
+<li><p>
+The "covariance" method
+</p>
+
+<p>
+In this method, only the data that is explicitly given is used. There are no assumptions made about unknown data
+outside the observed data. The Grammian \(A^HA\) produced by this is a Hermitian matrix.
+</p></li>
+</ul>
+
+
+\begin{equation*}
+A =
+\begin{bmatrix}
+f[m] &  f[m-1] & f[m-2] & \cdots & f[1] \\
+f[m+1] &  f[m] & f[m-1] & \cdots & f[2] \\
+\vdots     &      &       &    &     \\
+f[N] &  f[N-1] & f[N-2] & \cdots & f[N-m+1] \\
+\end{bmatrix}
+\end{equation*}
+
+<ul class="org-ul">
+<li><p>
+The "autocorrelation" method
+</p>
+
+<p>
+In this case, the data prior to \(f[1]\) and after \(f[N]\) are assumed to all be zero and are padded in the matrix as
+such. The Grammian matrix produced by this is an Toeplitz matrix.
+</p></li>
+</ul>
+
+\begin{equation*}
+A =
+\begin{bmatrix}
+f[1] &  0 & 0 & \cdots & 0 \\
+f[2] &  f[1]  & 0 & \cdots & 0 \\
+f[3] &  f[2] & f[1] & \cdots & 0 \\
+\vdots     &      &       &    &     \\
+f[m] &  f[m-1] & f[m-2] & \cdots & f[1] \\
+f[m+1] &  f[m] & f[m-1] & \cdots & f[2] \\
+\vdots     &      &       &    &     \\
+f[N] &  f[N-1] & f[N-2] & \cdots & f[N-m+1] \\
+0 &  f[N] & f[N-1] & \cdots & f[N-m+2] \\
+0 &  0 & 0 & \cdots & f[N] \\
+\end{bmatrix}
+\end{equation*}
+
+<ul class="org-ul">
+<li><p>
+Pre-windowing method
+</p>
+
+<p>
+This method assumes that \(f[t] = 0\) for \(t<1\), and use data up to $f[N], so that \(i_1 = 1\) and \(i_2 = N\).
+</p></li>
+</ul>
+
+\begin{equation*}
+A =
+\begin{bmatrix}
+f[1] &  0 & 0 & \cdots & 0 \\
+f[2] &  f[1]  & 0 & \cdots & 0 \\
+f[3] &  f[2] & f[1] & \cdots & 0 \\
+\vdots     &      &       &    &     \\
+f[m] &  f[m-1] & f[m-2] & \cdots & f[1] \\
+f[m+1] &  f[m] & f[m-1] & \cdots & f[2] \\
+\vdots     &      &       &    &     \\
+f[N] &  f[N-1] & f[N-2] & \cdots & f[N-m+1] \\
+\end{bmatrix}
+\end{equation*}
+
+<ul class="org-ul">
+<li><p>
+Post-windowing method
+</p>
+
+<p>
+This method begins with \(f[t] = m\) and assumes that data after \(N\) are equal to zero.
+</p></li>
+</ul>
+
+\begin{equation*}
+A =
+\begin{bmatrix}
+f[m] &  f[m-1] & f[m-2] & \cdots & f[1] \\
+f[m+1] &  f[m] & f[m-1] & \cdots & f[2] \\
+\vdots     &      &       &    &     \\
+f[N] &  f[N-1] & f[N-2] & \cdots & f[N-m+1] \\
+0    &  f[N] & f[N-1] & \cdots & f[N-m+2] \\
+\vdots     &      &       &    &     \\
+0    &  0   & 0     & \cdots & f[N] \\
+\end{bmatrix}
+\end{equation*}
+
+<p>
+Take a look at the examples 3.9.1 through 3.9.3.
+</p>
+</div>
+
+<div id="outline-container-orgd770b41" class="outline-4">
+<h4 id="orgd770b41"><span class="section-number-4">2.9.1.</span> Least-squares prediction and AR spectrum estimation</h4>
+<div class="outline-text-4" id="text-2-9-1">
+<p>
+Consider the estimation problem where we desire to predict \(x[t]\) using a linear predictor based on \(x[t-1], x[t-2],
+... x[t-m]\),
+As before we have a forward predictor
+</p>
+
+\begin{equation*}
+x[t] = -\sum_{i=1}^m a_i x[t-i] + f[t]
+\end{equation*}
+
+<p>
+Where \(a_i = -h_i\). We can obtain more data about the system by incorporating a backward predictor as well. Because both
+predictors use the same coefficients, we can use both predictors together to improve our estimate of the coefficients.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcc8301d" class="outline-3">
+<h3 id="orgcc8301d"><span class="section-number-3">2.10.</span> Minimum mean-squared estimation</h3>
+<div class="outline-text-3" id="text-2-10">
+<p>
+Up until now we have not assumed the existence of probabilistic models. In this section we change our viewpoint by
+introducing probability.
+</p>
+
+<p>
+Let \(P_1, P_2, ..., P_m\) be zero mean random variables. We desire to find the coefficients \(\{c_i\}\) to estimate the
+random variable \(X\) using
+</p>
+
+\begin{equation*}
+X  = c_1P_1 + c_2P_2 + \cdots + c_m P_m + e
+\end{equation*}
+
+<p>
+In such a way that the norm of the squared error is minimized. We now employ the inner product \(\big<X,Y\big> =
+E[X\bar{Y}]\) to which we find a similar looking matrix
+</p>
+
+\begin{equation*}
+\begin{bmatrix}
+<P_1, \bar{P_1}> & <P_2, \bar{P_1}> & \cdots & <P_M, \bar{P_1}> \\
+<P_1, \bar{P_2}> & <P_2, \bar{P_2}> & \cdots & <P_M, \bar{P_2}> \\
+\vdots          &            &    & \vdots          \\
+<P_1, \bar{P_M}> & <P_2, \bar{P_M}> & \cdots & <P_M}, \bar{P_1}> \\
+\end{bmatrix}
+\end{equation*}
+
+<p>
+We continue to hold the form of \(Rc = p\), but now just need to find a way to solve this with the expected values inside.
+The minimum mean-squared error is given by
+</p>
+
+\begin{equation*}
+||e||_{min}^2 = \sigma_x^2 p^Hc
+\end{equation*}
+</div>
+</div>
+
+<div id="outline-container-orgee15423" class="outline-3">
+<h3 id="orgee15423"><span class="section-number-3">2.11.</span> Minimum mean-squared error (MMSE) filtering</h3>
+<div class="outline-text-3" id="text-2-11">
+<p>
+A minimum mean-square (MMS) filter is called a Wiener filter. It is mathematically similar to a least-squares filter,
+except that the expectation operator is used as the inner product. Similarly, we have data \(\{f[t]\}\) and want to design
+a filter in such a way that we get as close as possible to some desired sequence \(d[t]\). Focusing on the FIR filter with
+\(m\) coefficients, the output filter can be written as
+</p>
+
+\begin{equation*}
+y[t] f[t]^H h
+\end{equation*}
+
+<p>
+Expressed in matrix form \(Rh = p\), so the solution is \(h = R^{-1}p\). Not much is said about how to actually get the \(R\)
+matrix because Moon is an ass. The matrix \(R\) is the Grammian and has a Toeplitz structure.
+</p>
+
+<p>
+See example 3.11.1 for some actually juicy stuff.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org36dee58" class="outline-3">
+<h3 id="org36dee58"><span class="section-number-3">2.12.</span> Comparison of least-squared and minimum mean-squares</h3>
+<div class="outline-text-3" id="text-2-12">
+<p>
+For the method of least-squares the following observations are made
+</p>
+
+<ol class="org-ol">
+<li>Only the sequence of data observed at the time of the estimate is used in forming the estimate.</li>
+<li>Depending upon assumptions made about the data before and after the observation interval, the Grammian matrix may not
+be Toeplitz.</li>
+<li>No statistical model is necessarily assumed.</li>
+</ol>
+
+<p>
+For minimum mean-squares the following observations are made
+</p>
+
+<ol class="org-ol">
+<li>A statistical model for the correlations and cross-correlations is necessary. This must be obtained either from
+explicit knowledge of the channel and signal (as was seen in example 3.11 .I), or on the basis of the multivariable
+distribution of the data (as was seen in example 3.10.1). In the absence of such knowledge, it is common to estimate
+the necessary autocorrelation and cross-correlation values.</li>
+<li>Commonly, the coefficients of the MMS technique are computed using a separate set of data whose statistics are
+assumed to be the same as those of the real data set of interest. This set of data is used as a training set to find
+the autocorrelation functions and the filter coefficients.</li>
+<li>We also note that the (true) Grammian matrix R used in prediction and optimal FIR filtering problems is always a
+Toeplitz matrix, and hence fast algorithms apply to finding the coefficients.</li>
+</ol>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alexander Brown</p>
-<p class="date">Created: 2023-03-13 Mon 11:04</p>
+<p class="date">Created: 2023-03-20 Mon 13:00</p>
 </div>
 </body>
 </html>

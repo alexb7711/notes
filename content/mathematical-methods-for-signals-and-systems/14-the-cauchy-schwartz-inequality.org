@@ -1,0 +1,36 @@
+#+title: The Cauchy Schwartz Inequality
+
+#+begin_theorem
+In an inner product space $S$ with the induced norm $||\cdot ||$ we have the following inequality
+
+$$
+\big< x, y \big> \le ||x||^2 ||y||^2
+$$
+#+end_theorem
+
+* Proof
+Let $x$ and $y$ be any two vectors in $S$ and let $\alpha \in \mathbb{R}$ where $\alpha = \frac{< x,y >}{||y||^2}$.
+
+\begin{equation*}
+\begin{array}{rll}
+0 & \le ||x - \alpha y||^2                 &\\
+  & = < x,x > - 2\alpha < x,y > + \alpha^2 < y,y > &\\
+  & = < x,x > - 2\frac{< x,y >}{||y||^2}< x,y > + \frac{< x,y >^2}{||y||^4} < y,y > & \text{Substitute $\alpha$ in} \\
+0 & \le ||x||^2 - 2\frac{< x,y >^2}{||y||^2} + \frac{< x,y >^2}{||y||^2} & \text{simplify with } < y,y > = ||y||^2 \\
+0 & \le ||x||^2 - \frac{< x,y >^2}{||y||^2} & \\
+||x||^2 & \ge \frac{< x,y >^2}{||y||^2} \\
+< x,y >^2 & \le ||x||^2 ||y||^2
+\end{array}
+\end{equation*}
+
+* Cauchy Schwartz for functions
+Similarly we can write
+
+$$
+\Big( \int_a^b f(t)g(t) dt\Big)^2 \le int_a^b f^2(t) dt \int_a^b g(t) dt
+$$
+
+* Cauchy Schwartz in equality
+With the Cauchy Schwartz inequality we can consider $< x,y >$ as a measure of some relation between $x$ and $y$. When do we have equality?
+
+For real values we have equality when $x$ is a scalar of $y$ ($x = \alpha y$)! This is true for complex numbers when $x = \alpha y$ for $\alpha \in \mathbb{C}$, in other words, $x$ and $y$ are linearly dependent.

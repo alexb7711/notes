@@ -1,0 +1,20 @@
+#+title: Inner Product and Inner Product Spaces
+
+* Definitions
+
+#+begin_definition
+Let $S$ be a vector space defined over a scalar field $\mathbb{R}$. An inner product function $f : S \times S \rightarrow \mathbb{R}$ with the following properties.
+
+- For real valued variables: $\big< x,y\big> = \big< y,x\big>$
+- $\big< \alpha x,y\big> = \alpha \big< x,y\big>$
+- $\big< x + y, z\big> = \big< x,z\big> + \big< y,z\big>$
+- $\big< x,x\big> > 0 \forall x \ne 0$ and $\big< x,z\big> = 0$ if $x = 0$
+#+end_definition
+
+* Induced Norm
+In $L_2$ for $x \in \mathbb{R}^n$ then $\big< x,x\big>^{1/2} = ||x|| = \sqrt{x_1^2 + x_2^2 + ... + x_n^2}$. For functions we write
+
+\begin{equation}
+||x(t)||_2 = \Big( \int_a^b |x(t)|^2 dt \Big)^{1/2}
+\end{equation}
+*All this gives us is a metric of the inner product of a vector/function with itself*.

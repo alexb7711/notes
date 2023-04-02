@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-03-13 Mon 06:51 -->
+<!-- 2023-04-01 Sat 11:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -28,9 +28,9 @@
 </ul>
 </li>
 <li><a href="#org9545f86">2. Method 1: Using bit shifting and ANDs</a></li>
-<li><a href="#org74db622">3. Method 2: Using pointer to an array of characters</a></li>
+<li><a href="#org981b24b">3. Method 2: Using pointer to an array of characters</a></li>
 <li><a href="#org31811ba">4. Method 1: Using bit shifting and bit ANDs</a></li>
-<li><a href="#org981b24b">5. Method 2: Using pointer to an array of characters</a></li>
+<li><a href="#orgcef87c3">5. Method 2: Using pointer to an array of characters</a></li>
 </ul>
 </div>
 </div>
@@ -56,14 +56,14 @@ not true with an <code>int</code> or <code>long</code>.</li>
 certain endian being in use. For example</li>
 </ul>
 
-<pre class="example" id="orgd0ffbf0">
+<pre class="example" id="orga90c9a3">
 unsigned char endian![pic](2) = {1, 0};
 short x;
   
 x = ∗(short ∗) endian;
 </pre>
 
-<pre class="example" id="orgfceb82b">
+<pre class="example" id="org333eb46">
 depending on the enianess, `x` can be represent different values.
 </pre>
 </div>
@@ -78,7 +78,7 @@ determine if it is 0 or 1. If it is 1, the running platform is assumed
 to be little-endian. If it is 0, it is assumed to be big-endian.
 </p>
 
-<pre class="example" id="org67a1340">
+<pre class="example" id="org9765bee">
 unsigned char endian![pic](2) = {1, 0};
 short x;
   
@@ -94,7 +94,7 @@ bytes of an int and then check its first byte to see if it is 0 or 1.
 The listing below shows an example.
 </p>
 
-<pre class="example" id="orgb452d9e">
+<pre class="example" id="orga2d04c4">
 #define LITTLE_ENDIAN 0
 #define BIG_ENDIAN    1
 
@@ -161,7 +161,7 @@ The goal is to write code that doesn't fail, regardless of the endianness of the
 short reverseShort (short s) { unsigned char c1, c2;
 </p>
 
-<pre class="example" id="org6cd3314">
+<pre class="example" id="org789cc10">
 if (is_bigendian()) {
     return s;
 } else {
@@ -181,8 +181,8 @@ if (is_bigendian()) {
 </p>
 </div>
 </div>
-<div id="outline-container-org74db622" class="outline-2">
-<h2 id="org74db622"><span class="section-number-2">3.</span> Method 2: Using pointer to an array of characters</h2>
+<div id="outline-container-org981b24b" class="outline-2">
+<h2 id="org981b24b"><span class="section-number-2">3.</span> Method 2: Using pointer to an array of characters</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 #+end<sub>example</sub>
@@ -192,7 +192,7 @@ if (is_bigendian()) {
 short reverseShort (char ∗c) { short s; char ∗p = (char ∗)&amp;s;
 </p>
 
-<pre class="example" id="orge74098f">
+<pre class="example" id="orgf0bd4ee">
 if (is_bigendian()) {
     p![pic](0) = c![pic](0);
     p![pic](1) = c![pic](1);
@@ -229,7 +229,7 @@ Now lets see how an int would be handled:
 int reverseInt (int i) { unsigned char c1, c2, c3, c4;
 </p>
 
-<pre class="example" id="org9080142">
+<pre class="example" id="orgffa3490">
 if (is_bigendian()) {
     return i;
 } else {
@@ -250,8 +250,8 @@ if (is_bigendian()) {
 </p>
 </div>
 </div>
-<div id="outline-container-org981b24b" class="outline-2">
-<h2 id="org981b24b"><span class="section-number-2">5.</span> Method 2: Using pointer to an array of characters</h2>
+<div id="outline-container-orgcef87c3" class="outline-2">
+<h2 id="orgcef87c3"><span class="section-number-2">5.</span> Method 2: Using pointer to an array of characters</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 #+end<sub>example</sub>
@@ -261,7 +261,7 @@ if (is_bigendian()) {
 short reverseInt (char ∗c) { int i; char ∗p = (char ∗)&amp;i;
 </p>
 
-<pre class="example" id="orgc5db73f">
+<pre class="example" id="org35798d5">
 if (is_bigendian()) {
     p![pic](0) = c![pic](0);
     p![pic](1) = c![pic](1);
@@ -285,7 +285,7 @@ endian-independent code in C</a>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alexander Brown</p>
-<p class="date">Created: 2023-03-13 Mon 06:51</p>
+<p class="date">Created: 2023-04-01 Sat 11:11</p>
 </div>
 </body>
 </html>

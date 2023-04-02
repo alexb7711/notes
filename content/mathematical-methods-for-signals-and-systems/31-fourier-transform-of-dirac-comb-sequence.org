@@ -1,0 +1,81 @@
+#+title: Fourier transform of dirac comb sequence
+* The idea of sampling
+Let $X(\omega)$ be the spectrum of $x(t)$, then the inverse Fourier transform is
+
+$$
+x(t) = \frac{1}{2\pi} \int_{-\infty}^{\infty} X(\omega) e^{j\omega t} d\omega
+$$
+
+If $X(\omega)$ is assumed to be zero outside some band $\omega < 2\pi B$ then
+
+$$
+x(t) = \frac{1}{2\pi} \int_{-2\pi B}^{2\pi B} X(\omega) e^{j\omega t} d\omega
+$$
+
+Let $t = \frac{n}{2B}$ then
+
+$$
+x(\frac{n}{2B}) = \frac{1}{2\pi} \int_{-2\pi B}^{2\pi B} X(\omega) e^{j\omega n/(2B)} d\omega
+$$
+
+*The left hand side has $x(t)$ at the sampling points. The right hand side is essentially the nth coefficent in the Fourier series expansion of $X(\omega)$ over the interval $[\B, B\]$ as a fundamental period*. 
+
+The sequence $\{x(\frac{n}{2B}\}$ determines the Fourier coefficients in the series expansion of $X(\omega)$. Since $X(\omega)$ zero outside of the $B$ and $X(\omega)$ is determined fully if the coefficents are known, then the samples $\{x(\frac{n}{2B}\}$ determine $x(t)$ completely.
+
+The problem now is how can we reconstruct $x(t)$ from the samples? This will now be described a little more formally.
+
+Lets start with the dirac comb sequence
+
+$$
+\sum_{n = -\infty}^{\infty} \delta(t-nT) \equiv \sum_{k = -\infty}^{\infty} c_k e^{j2\pi \frac{t}{T}t}
+$$
+
+Wher the left side is the dirac comb sequenc and the right side is the Fouier series reprsentation. In the right hand side let $c_n = 1/T$
+
+$$
+\sum_{n = -\infty}^{\infty} \frac{1}{T} \delta(\omega-nT) \iff \sum_{k = -\infty}^{\infty} \frac{1}{T} e^{j2\pi \frac{t}{T}t}
+$$
+
+Now consider
+
+\begin{equation*}
+\begin{array}{ll}
+\sum_{k = -\infty}^{\infty} F(k) & = \sum_{n = -\infty}^{\infty} \int_{\infty}^{\infty} f(t) e^{-j2\pi kt} dt \\
+& = \sum_{k = -\infty}^{\infty} f(t) \int_{\infty}^{\infty} e^{-j2\pi kt} dt
+\end{array}
+\end{equation*}
+
+Where now the summation can be replaced with $\int_{\infty}^{\infty} \delta(t-n)$. Thus we get
+
+\begin{equation*}
+\begin{array}{ll}
+\sum_{k = -\infty}^{\infty} F(k) & = \sum_{n = -\infty}^{\infty} \int_{\infty}^{\infty} f(t) e^{-j2\pi kt} dt \\
+& = \sum_{k = -\infty}^{\infty} f(t) \delta(t-n)$ = \sum_{k = -\infty}^{\infty} f(n) 
+\end{array}
+\end{equation*}
+
+Lets take another step forward. Consider
+
+\begin{equation*}
+\begin{array}{ll}
+\sum_{k = -\infty}^{\infty} S(w+k/T) = & \sum_{k = -\infty}^{\infty} F(s(t) e^{-j2\pi \frac{k}{T} t}) \\
+& = F(s(t) \sum_{k = -\infty}^{\infty} e^{-j2\pi \frac{k}{T} t})
+\end{array}
+\end{equation*}
+
+Where the sum now can be determined $T \int_{\infty}^{\infty} \delta(t-nT)$. Substituting back in we get
+
+\begin{equation*}
+\begin{array}{ll}
+& = F(s(t) T \sum_{k = -\infty}^{\infty} \delta(t-nT)) \\
+& = \sum_{k = -\infty}^{\infty} F(s(nT) T \delta(t-nT)) \\
+& = \sum_{k = -\infty}^{\infty} T s(nT) F(\delta(t-nT)) \\
+& = \sum_{k = -\infty}^{\infty} T s(nT)e^{-j2\pi nT \omega}  \\
+\end{array}
+\end{equation*}
+
+Letting $\omega = 2\pi f$ we are left with
+
+$$
+\sum_{k = -\infty}^{\infty} T s(nT)e^{-j2\pi nTf}
+$$

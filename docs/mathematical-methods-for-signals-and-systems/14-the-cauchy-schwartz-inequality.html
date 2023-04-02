@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-04-01 Sat 11:27 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Cauchy Schwartz Inequality</title>
+<meta name="author" content="Alexander Brown" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href=" ./style.css" />
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="preamble" class="status">
+<a href="index.html">Home</a> | <a href="blog.html">Blog</a> | <a href="notes.html">Notes</a> | <a href="classes.html">Classes</a> | <a href="projects.html">Projects</a> | <a href="todo.html">Todo</a> | <a href="error.html">About</a>
+</div>
+<div id="content" class="content">
+<h1 class="title">The Cauchy Schwartz Inequality</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org024a8a8">1. Proof</a></li>
+<li><a href="#org4c7c465">2. Cauchy Schwartz for functions</a></li>
+<li><a href="#orge37df6a">3. Cauchy Schwartz in equality</a></li>
+</ul>
+</div>
+</div>
+<div class="theorem" id="org2b49099">
+<p>
+In an inner product space \(S\) with the induced norm \(||\cdot ||\) we have the following inequality
+</p>
+
+<p>
+\[
+\big< x, y \big> \le ||x||^2 ||y||^2
+\]
+</p>
+
+</div>
+
+<div id="outline-container-org024a8a8" class="outline-2">
+<h2 id="org024a8a8"><span class="section-number-2">1.</span> Proof</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Let \(x\) and \(y\) be any two vectors in \(S\) and let \(\alpha \in \mathbb{R}\) where \(\alpha = \frac{< x,y >}{||y||^2}\).
+</p>
+
+\begin{equation*}
+\begin{array}{rll}
+0 & \le ||x - \alpha y||^2                 &\\
+  & = < x,x > - 2\alpha < x,y > + \alpha^2 < y,y > &\\
+  & = < x,x > - 2\frac{< x,y >}{||y||^2}< x,y > + \frac{< x,y >^2}{||y||^4} < y,y > & \text{Substitute $\alpha$ in} \\
+0 & \le ||x||^2 - 2\frac{< x,y >^2}{||y||^2} + \frac{< x,y >^2}{||y||^2} & \text{simplify with } < y,y > = ||y||^2 \\
+0 & \le ||x||^2 - \frac{< x,y >^2}{||y||^2} & \\
+||x||^2 & \ge \frac{< x,y >^2}{||y||^2} \\
+< x,y >^2 & \le ||x||^2 ||y||^2
+\end{array}
+\end{equation*}
+</div>
+</div>
+
+<div id="outline-container-org4c7c465" class="outline-2">
+<h2 id="org4c7c465"><span class="section-number-2">2.</span> Cauchy Schwartz for functions</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Similarly we can write
+</p>
+
+<p>
+\[
+\Big( \int_a^b f(t)g(t) dt\Big)^2 \le int_a^b f^2(t) dt \int_a^b g(t) dt
+\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge37df6a" class="outline-2">
+<h2 id="orge37df6a"><span class="section-number-2">3.</span> Cauchy Schwartz in equality</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+With the Cauchy Schwartz inequality we can consider \(< x,y >\) as a measure of some relation between \(x\) and \(y\). When do we have equality?
+</p>
+
+<p>
+For real values we have equality when \(x\) is a scalar of \(y\) (\(x = \alpha y\))! This is true for complex numbers when \(x = \alpha y\) for \(\alpha \in \mathbb{C}\), in other words, \(x\) and \(y\) are linearly dependent.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Alexander Brown</p>
+<p class="date">Created: 2023-04-01 Sat 11:27</p>
+</div>
+</body>
+</html>

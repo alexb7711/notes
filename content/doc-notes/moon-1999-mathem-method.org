@@ -1,5 +1,3 @@
-#+STARTUP: latexpreview
-
 * Mathematical methods and algorithms for signal processing, Moon, T., & Stirling, W., , (1999) :book:
 
 See [[cite:&moon-1999-mathem-method]]
@@ -428,5 +426,228 @@ For minimum mean-squares the following observations are made
    the autocorrelation functions and the filter coefficients.
 3. We also note that the (true) Grammian matrix R used in prediction and optimal FIR filtering problems is always a
    Toeplitz matrix, and hence fast algorithms apply to finding the coefficients.
+
+** Frequency-domain optimal filtering
+This section we develop optimal filtering techniques for scalar signals in the frequency domain.
+
+*** Brief review of stochastic processes and Laplace transforms
+The function $S_x(j\omega)$ is the usual power spectral density function. The autocovariance is real and even, that is
+
+$$
+S_x(s) = S_x(-s)
+$$
+
+Furthermore when $s=j\omega$
+
+$$
+S_x(-\omega) = S^*_x(\omega)
+$$
+
+*** Filtering of stochatsic processes
+If the input $x$ and output $y$ are wide sense stationary stochastic processes the correlation functions are given by
+
+\begin{equation*}
+\begin{array}{l}
+R_{xy}(\tau) = R_x(\tau) \ast h(-\tau) \\
+R_{yx}(\tau) = h(\tau) \ast R_x(\tau)  \\
+R_y(\tau)    = h(\tau) \ast R_x(\tau) \ast h(-\tau)
+\end{array}
+\end{equation*}
+
+equivalently for the spectral domain
+
+\begin{equation*}
+\begin{array}{l}
+S_{xy}(s) = S_x(s) H(s) \\
+S_{yx}(s) = H(s) R_x(s)  \\
+S_y(s)    = h(s) R_x(s) H(-s)
+\end{array}
+\end{equation*}
+
+*** Lumped systems and processes
+A linear system is said to be lumped if it has a rational transfer function; that is, its transfer function is a ratio of polynomials in $s$. Thus a rational transfer function is of the form below. Re also require that $n \ge m$
+
+$$
+G(s) = \frac{\Pi_{i=1}^m (s-z_i)}{\Pi_{i=1}^n (s-p_i)}
+$$
+
+A stochastic process is said to be lumped if its power spectral density is a rational function.
+
+TODO: FINISH
+
+** A dual approximation problem
+Up until now we have selected a finite-dimensional subspace of the Hilbert space which involved solving an $m\times m$ system of equations. In some problems the subspace in which the solution lies is not finite dimensional. There are some problems where a finite set of constraints provides sufficient information to solve the problem from a finite set of equations.
+
+#+begin_definition
+Let $M$ be a subspace of a linear space $S$, and let $x_0 \in S$. The set $V = x_0 +M$ is said to be a translation of $M$ by $x_0$. This translation is called a linear variety. In general, a linear variety is not a subspace!
+#+end_definition
+
+Let $V = x_0 + M$ be a closed linear variety in a hilbert space. There exists a unique vector $v_0 \in V$ of minimum norm. Thie minimizing vector $v_0$ is orthogonal to $M$. Typically when we have seen problems like this the inner product $\big<x,y_i\big> = 0\; \forall i = 1,2,...,n$. The subspace defined by the set of inner products is $M^{\perp}$. Now that we have space that is offset we get non-zero results.
+
+$$
+\big<x,y_i\big> = a_i\; \forall i = 1,2,...,n
+$$
+
+Hence the space of solutions from the inner products above is the linear variety. A linear variety satisfying the $n$ constraints is said to be a codimension n, since the orthogonal compliment of the subpspace $M^\perp$ producing it has dimension $n$.
+
+*See Example 3.14.2*
+
+#+begin_theorem
+Let ${y_i}$ be a linearly independent in a Hilbert space $S$, and let $M = \text{span}(y_1,...,y_m)$. The element $x \in S$ satisfying 
+
+$$
+\big<x,y_i\big> = a_i\; \forall i = 1,2,...,n
+$$
+
+with minimum norm lies in $M$; specifically
+
+$$
+x = \sum_{i=1}^m c_i y_i
+$$
+
+where the coefficients in this linear combination satisfy
+
+$$
+\begin{bmatrix}
+<y_1,y_1> & <y_2,y_1> & \cdots & <y_m,y_1> \\
+<y_1,y_2> & <y_2,y_2> & \cdots & <y_m,y_2> \\
+\vdots    &           &        &           \\
+<y_1,y_m> & <y_2,y_m> & \cdots & <y_m,y_m> \\
+\end{bmatrix}
+\begin{bmatrix}
+c_1 \\ c_2 \\ \vdots \\ c_m
+\end{bmatrix} = 
+\begin{bmatrix}
+a_1 \\ a_2 \\ \vdots \\ a_m
+\end{bmatrix}
+$$
+#+end_theorem
+
+** Minimum-norm solution of undetermined equations
+The solution to the dual problem provides a method of finding a least-squares solution to an underdetermined set of equations *See Example 3.15.1*. Generally speaking, given the following 
+
+\begin{equation*}
+\begin{array}{cc}
+\text{Minimize} & ||x|| \\
+\text{subject to} & Ax = b \\
+\end{array}
+\end{equation*}
+
+The solution to the problem is $x = A^H(AA^H)^{-1}b$.
+
+** Iterative reweighted LS (DRLS) for lp optimization
+TODO
+
+** Set of complete orthogonal functions
+Much of the transformaiton theory employed in signal processing is encompassed by representations in an appropriate linear vector space. The set of basis functions for the transformation is chosen so that the coefficients convey desired information about the signal. Different basis functions allow us to extract different information about the signal.
+
+If the basis functions are orthonormal, then the minimum squared error of the series representation is
+
+\begin{equation}
+\sum_{i=1}^m |c_i|^2 = \sum_{i=1}^m \big< x, p_i \big>^2 \le ||x||^2
+\end{equation}
+
+Which is known as /Bessel's inequality/.
+
+When $\{p_i\}$ is a complete basis set, then the sequence $\{c_1,c_2,...\}$ completely describes $x$.
+
+#+begin_definition
+An orthonormal set $\{p_i, i = 1,2,3,...\}$ in a Hilbert space $S$ is complete if
+
+\begin{equation*}
+x = \sum_{i=1}^{\infty} \big<x,p_i \big> p_i\; \forall x \in S
+\end{equation*}
+#+end_definition
+
+When $\{p_i\}$ is a complete basis set, then the sequence $\{c_i\}$ completely describes x; there is a one-to-one relationship between $x$ and $\{c_i\}$. Furthermore, completness can be further described via the following theorem
+
+*** Theorem 3.5
+A set of orthornormal functions $\{p_i, i=1,2,...\}$ is complete in an inner product space $S$ with induced norm if any of the following equivalent statements holds:
+
+1. $x = \sum_{i=1}^{\infty} \big<x,p_i \big> p_i\; \forall x \in S$
+2. For any $\epsilon > 0$ there is an $N < \infty$ such that for all $n \ge N$, $||x = \sum_{i=1}^{\infty} \big<x,p_i \big> p_i|| < \epsilon$. In other words, we can appoximate aprbitrarily close.
+3. Parseval's equality holds: $||x||^2 = \sum_{x=1}^{\infty} \big< x, p_i \big>^2 \forall x \in S$
+4. If $\big< x, p_i \big> \forall i$ then $x = 0$
+5. There is no nonzero function $f \in S$ for which the set $\{p_i, i=1,2,...\} \cup f$ forms an orthogonal set.
+
+*For a finite-dimensional space $S$ of dimension $m$, to have $m$ linearly independent functions $p_k, k=1,2,...,m$ is sufficient for completeness*.
+
+We can define different transformations depending upon the set of orthonormal basis functions we choose. Since each coefficient In the transform is a projection of $x$ onto the basis function, the transform coefficient $c_i$, determines how much of $p_i$, is in $x$. If we want to look for particular features of a signal. one way is to design a set of orthogonal basis functions that have those features and compute a transform using those signals. 
+
+If $p_i$ is a complete set then there is no error in the representation and Bessel's inequality becomes an equality known as Parseval's equality.
+
+\begin{equation}
+||x||^2 = \sum_{x=1}^{\infty} |c_i|^2
+\end{equation}
+
+Equivalently written as $||x|| = ||c||$ where the norm on the left is the $L2$ norm (if $x$ is a function) and the norm on the right is the $l2$ norm.
+
+#+begin_lemma
+If $x$ and $y$ have a generalized Fourier series representation using some orthornarmal basis set $\{p_i\}$ in a Hilbert space $S$, with $x \leftrightarrow c$ and $y \leftrightarrow b$ then
+
+\begin{equation*}
+\big< x,y \big> = \big< c,b \big>
+\end{equation*}
+#+end_lemma
+
+** Signals as points; digital communications
+There are several sets of complete orthogonal functions that are used in common applications. We will examine a few of the more commonly-used sets.
+
+*** Trigonometric functions
+The "familar" trigonometric functions employed in Fourier series are orthogonal. They form a complete set of functions.
+
+\begin{equation*}
+p_n(t) = \frac{e^{jnt}}{\sqrt{2\pi}}
+\end{equation*}
+
+*** Orthogonal polynomials
+Different sets of orthogonal polynomials are obtained by using different weighting functions, and the inner product is taken over some given interval. Some orthogonal polynomials have shown up enough that we have given them a name. Given two polynomials $f(t)$ and $g(t)$, then they are said to be orthogonal with respect to a weighting function $w(t)$ if
+
+\begin{equation*}
+\big< f,g \big>_w = 0
+\end{equation*}
+
+where 
+
+\begin{equation*}
+\big< f,g \big>_w = \int_a^b w(t)f(t)g(t) dt
+\end{equation*}
+
+Using the Gram-Schmidt procedure it is possible to orthogonalize any set of polynornials with respect to any inner product. In particular the set $1,t,t^2,...,t^n$ can be orthogonalized with respect to the weighted inner product. *It can be shown that the orthogonal polynomials (properly normalized) form a complete orthonormal basis for $L_ [a,b]$.
+
+*** Families of orthogonal polynomials 
+A variety of types of orthogonal polynomials have been explored over the years. One of the general motivations for this is that orthogonal polynomials can be used to provide solutions to particular differential equations. Since these orthogonal polynomials form a complete orthogonal basis, they can be used to form series solutions for any boundary conditions and input function.
+
+*** Legendre polynomials
+These are not used too often, but show up from time to time. Using a weighting function of $w(t) = 1$, the first three polynomials are
+
+\begin{equation*}
+\begin{array}{l}
+p_0(t) = 1 \\
+p_1(t) = t \\
+p_2(t) = t^2 - 1/3 \\
+p_3(t) = t^3 - 3/5t \\
+\end{array}
+\end{equation*}
+
+Using Lemma 3.2 (not written in these notes), the general polynomial is 
+
+\begin{equation*}
+tp_n(t) = \frac{n+1}{2n+1}p_{n+1} + \frac{n}{2n+1}p_{n-1}(t)
+\end{equation*}
+
+*** Chebyshev polynomials
+These polynomials are orthogonal with respect to the weighting function $w(t) = \frac{1}{\sqrt{1-t^2}}$ over the interval $[-1,1]$. In particular
+
+\begin{equation*}
+\int_a^b = \frac{1}{\sqrt{1-t^2}}T_r(t)T_s(t) dt = 
+\begin{cases}
+0 & r \ne s \\
+\pi & r = s = 0 \\
+\frac{\pi}{2} & r = s /ne 0
+\end{cases}
+\end{equation*}
+
+TODO
 
 #  LocalWords:  AR

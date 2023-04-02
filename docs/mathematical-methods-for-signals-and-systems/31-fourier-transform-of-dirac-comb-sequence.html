@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-04-01 Sat 11:11 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fourier transform of dirac comb sequence</title>
+<meta name="author" content="Alexander Brown" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href=" ./style.css" />
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="preamble" class="status">
+<a href="index.html">Home</a> | <a href="blog.html">Blog</a> | <a href="notes.html">Notes</a> | <a href="classes.html">Classes</a> | <a href="projects.html">Projects</a> | <a href="todo.html">Todo</a> | <a href="error.html">About</a>
+</div>
+<div id="content" class="content">
+<h1 class="title">Fourier transform of dirac comb sequence</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org67f84ed">1. The idea of sampling</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org67f84ed" class="outline-2">
+<h2 id="org67f84ed"><span class="section-number-2">1.</span> The idea of sampling</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Let \(X(\omega)\) be the spectrum of \(x(t)\), then the inverse Fourier transform is
+</p>
+
+<p>
+\[
+x(t) = \frac{1}{2\pi} \int_{-\infty}^{\infty} X(\omega) e^{j\omega t} d\omega
+\]
+</p>
+
+<p>
+If \(X(\omega)\) is assumed to be zero outside some band \(\omega < 2\pi B\) then
+</p>
+
+<p>
+\[
+x(t) = \frac{1}{2\pi} \int_{-2\pi B}^{2\pi B} X(\omega) e^{j\omega t} d\omega
+\]
+</p>
+
+<p>
+Let \(t = \frac{n}{2B}\) then
+</p>
+
+<p>
+\[
+x(\frac{n}{2B}) = \frac{1}{2\pi} \int_{-2\pi B}^{2\pi B} X(\omega) e^{j\omega n/(2B)} d\omega
+\]
+</p>
+
+<p>
+<b>The left hand side has \(x(t)\) at the sampling points. The right hand side is essentially the nth coefficent in the Fourier series expansion of \(X(\omega)\) over the interval \([\B, B\]\) as a fundamental period</b>. 
+</p>
+
+<p>
+The sequence \(\{x(\frac{n}{2B}\}\) determines the Fourier coefficients in the series expansion of \(X(\omega)\). Since \(X(\omega)\) zero outside of the \(B\) and \(X(\omega)\) is determined fully if the coefficents are known, then the samples \(\{x(\frac{n}{2B}\}\) determine \(x(t)\) completely.
+</p>
+
+<p>
+The problem now is how can we reconstruct \(x(t)\) from the samples? This will now be described a little more formally.
+</p>
+
+<p>
+Lets start with the dirac comb sequence
+</p>
+
+<p>
+\[
+\sum_{n = -\infty}^{\infty} \delta(t-nT) \equiv \sum_{k = -\infty}^{\infty} c_k e^{j2\pi \frac{t}{T}t}
+\]
+</p>
+
+<p>
+Wher the left side is the dirac comb sequenc and the right side is the Fouier series reprsentation. In the right hand side let \(c_n = 1/T\)
+</p>
+
+<p>
+\[
+\sum_{n = -\infty}^{\infty} \frac{1}{T} \delta(\omega-nT) \iff \sum_{k = -\infty}^{\infty} \frac{1}{T} e^{j2\pi \frac{t}{T}t}
+\]
+</p>
+
+<p>
+Now consider
+</p>
+
+\begin{equation*}
+\begin{array}{ll}
+\sum_{k = -\infty}^{\infty} F(k) & = \sum_{n = -\infty}^{\infty} \int_{\infty}^{\infty} f(t) e^{-j2\pi kt} dt \\
+& = \sum_{k = -\infty}^{\infty} f(t) \int_{\infty}^{\infty} e^{-j2\pi kt} dt
+\end{array}
+\end{equation*}
+
+<p>
+Where now the summation can be replaced with \(\int_{\infty}^{\infty} \delta(t-n)\). Thus we get
+</p>
+
+\begin{equation*}
+\begin{array}{ll}
+\sum_{k = -\infty}^{\infty} F(k) & = \sum_{n = -\infty}^{\infty} \int_{\infty}^{\infty} f(t) e^{-j2\pi kt} dt \\
+& = \sum_{k = -\infty}^{\infty} f(t) \delta(t-n)$ = \sum_{k = -\infty}^{\infty} f(n) 
+\end{array}
+\end{equation*}
+
+<p>
+Lets take another step forward. Consider
+</p>
+
+\begin{equation*}
+\begin{array}{ll}
+\sum_{k = -\infty}^{\infty} S(w+k/T) = & \sum_{k = -\infty}^{\infty} F(s(t) e^{-j2\pi \frac{k}{T} t}) \\
+& = F(s(t) \sum_{k = -\infty}^{\infty} e^{-j2\pi \frac{k}{T} t})
+\end{array}
+\end{equation*}
+
+<p>
+Where the sum now can be determined \(T \int_{\infty}^{\infty} \delta(t-nT)\). Substituting back in we get
+</p>
+
+\begin{equation*}
+\begin{array}{ll}
+& = F(s(t) T \sum_{k = -\infty}^{\infty} \delta(t-nT)) \\
+& = \sum_{k = -\infty}^{\infty} F(s(nT) T \delta(t-nT)) \\
+& = \sum_{k = -\infty}^{\infty} T s(nT) F(\delta(t-nT)) \\
+& = \sum_{k = -\infty}^{\infty} T s(nT)e^{-j2\pi nT \omega}  \\
+\end{array}
+\end{equation*}
+
+<p>
+Letting \(\omega = 2\pi f\) we are left with
+</p>
+
+<p>
+\[
+\sum_{k = -\infty}^{\infty} T s(nT)e^{-j2\pi nTf}
+\]
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Alexander Brown</p>
+<p class="date">Created: 2023-04-01 Sat 11:11</p>
+</div>
+</body>
+</html>

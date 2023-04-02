@@ -1,0 +1,21 @@
+#+title: Orthonormality
+If we write $$||x||^2 + ||y||^2 = ||x+y||^2$ ($<x,y> = 0$), that means we get a right triangle where the short ends are $x$ and $y$, in other words they are orthogonal ($x \perp y$). Thus, then norm has a sense of angle "baked in" as we have leared in earlier classes.
+
+* Angle between vectors
+
+\begin{equation*}
+\begin{array}{c}
+cos(\theta) \frac{<x,y>}{||x||_2 ||y||_2} \\
+-1 \le \frac{<x,y>}{||x||_2 ||y||_2} \le 1
+\end{array}
+\end{equation*}
+
+When this fraction is $0$, that means that the vectors are orthogonal.
+
+* Orthornormal
+Building directly off the orthogonality idea, the orthonormal set is the set of orthogonal vectors divided by the norm. After taking the norm, we can use this set of vectors to form a new basis.
+
+#+begin_definition
+A set of vectors $\{p_i\}$ for $i = 1,...,m$ are orthonormal if $<p_i,p_j> = \delta_{i,j}$ for pairs $i$ and $j$. Where $\delta_{i,j}$ is the [[https://en.wikipedia.org/wiki/Kronecker_delta][Kronecker delta]].
+#+end_definition
+

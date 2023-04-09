@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-04-01 Sat 11:11 -->
+<!-- 2023-04-09 Sun 13:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>Mathematical methods and algorithms for signal processing, Moon, T., &amp; Stirling, W., , (1999) :book:</title>
 <meta name="author" content="Alexander Brown" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href=" ./style.css" />
@@ -37,87 +37,141 @@
 <a href="index.html">Home</a> | <a href="blog.html">Blog</a> | <a href="notes.html">Notes</a> | <a href="classes.html">Classes</a> | <a href="projects.html">Projects</a> | <a href="todo.html">Todo</a> | <a href="error.html">About</a>
 </div>
 <div id="content" class="content">
+<h1 class="title">Mathematical methods and algorithms for signal processing, Moon, T., &amp; Stirling, W., , (1999) :book:</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org11f17ea">1. Mathematical methods and algorithms for signal processing, Moon, T., &amp; Stirling, W., , (1999)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="book">book</span></span></a></li>
-<li><a href="#org9893bcd">2. Chapter 3: Representation and approximation in vector spaces</a>
+<li><a href="#orgfa04707">1. <span class="todo TODO">TODO</span> Introduction and Foundations</a></li>
+<li><a href="#org93686f9">2. <span class="todo TODO">TODO</span> Signal Spaces</a></li>
+<li><a href="#orga5520e4">3. Representation and approximation in vector spaces</a>
 <ul>
-<li><a href="#org239f916">2.1. The approximation problem in Hilbert space</a>
+<li><a href="#org239f916">3.1. The approximation problem in Hilbert space</a>
 <ul>
-<li><a href="#orgd3ebe94">2.1.1. The Grammian Matrix</a></li>
+<li><a href="#orgd3ebe94">3.1.1. The Grammian Matrix</a></li>
 </ul>
 </li>
-<li><a href="#org81aeced">2.2. The orthogonality principle</a>
+<li><a href="#org81aeced">3.2. The orthogonality principle</a>
 <ul>
-<li><a href="#orgc0ac7eb">2.2.1. Representations in infinite-dimensional space</a></li>
+<li><a href="#orgc0ac7eb">3.2.1. Representations in infinite-dimensional space</a></li>
 </ul>
 </li>
-<li><a href="#org37b6127">2.3. Error minimization via gradients</a></li>
-<li><a href="#org897fe99">2.4. Matrix representation of least-squares problem</a>
+<li><a href="#org37b6127">3.3. Error minimization via gradients</a></li>
+<li><a href="#org897fe99">3.4. Matrix representation of least-squares problem</a>
 <ul>
-<li><a href="#orgcd5499c">2.4.1. Weighted least-squares</a></li>
-<li><a href="#org8ef95de">2.4.2. Statistical properties of the least-squares estimate</a></li>
+<li><a href="#orgcd5499c">3.4.1. Weighted least-squares</a></li>
+<li><a href="#org8ef95de">3.4.2. Statistical properties of the least-squares estimate</a></li>
 </ul>
 </li>
-<li><a href="#orgdb64660">2.5. Minimum error in vector-space approximations</a></li>
-<li><a href="#org3092066">2.6. Approximation by continuous polynomials</a></li>
-<li><a href="#org311dd7a">2.7. Approximation by discrete polynomials</a></li>
-<li><a href="#org7ca629c">2.8. Linear regression</a></li>
-<li><a href="#org5b7ce69">2.9. Least-squares filtering</a>
+<li><a href="#orgdb64660">3.5. Minimum error in vector-space approximations</a></li>
+<li><a href="#org3092066">3.6. Approximation by continuous polynomials</a></li>
+<li><a href="#org311dd7a">3.7. Approximation by discrete polynomials</a></li>
+<li><a href="#org7ca629c">3.8. Linear regression</a></li>
+<li><a href="#org5b7ce69">3.9. Least-squares filtering</a>
 <ul>
-<li><a href="#orgd770b41">2.9.1. Least-squares prediction and AR spectrum estimation</a></li>
+<li><a href="#orgd770b41">3.9.1. Least-squares prediction and AR spectrum estimation</a></li>
 </ul>
 </li>
-<li><a href="#orgcc8301d">2.10. Minimum mean-squared estimation</a></li>
-<li><a href="#orgee15423">2.11. Minimum mean-squared error (MMSE) filtering</a></li>
-<li><a href="#org36dee58">2.12. Comparison of least-squared and minimum mean-squares</a></li>
-<li><a href="#org8bf11ba">2.13. Frequency-domain optimal filtering</a>
+<li><a href="#orgcc8301d">3.10. Minimum mean-squared estimation</a></li>
+<li><a href="#orgee15423">3.11. Minimum mean-squared error (MMSE) filtering</a></li>
+<li><a href="#org36dee58">3.12. Comparison of least-squared and minimum mean-squares</a></li>
+<li><a href="#org8bf11ba">3.13. Frequency-domain optimal filtering</a>
 <ul>
-<li><a href="#org05c3d6b">2.13.1. Brief review of stochastic processes and Laplace transforms</a></li>
-<li><a href="#org3b107ca">2.13.2. Filtering of stochatsic processes</a></li>
-<li><a href="#org3a104a4">2.13.3. Lumped systems and processes</a></li>
+<li><a href="#org05c3d6b">3.13.1. Brief review of stochastic processes and Laplace transforms</a></li>
+<li><a href="#org3b107ca">3.13.2. Filtering of stochatsic processes</a></li>
+<li><a href="#org3a104a4">3.13.3. Lumped systems and processes</a></li>
 </ul>
 </li>
-<li><a href="#org822cdf5">2.14. A dual approximation problem</a></li>
-<li><a href="#orga878c83">2.15. Minimum-norm solution of undetermined equations</a></li>
-<li><a href="#orgd89c107">2.16. Iterative reweighted LS (DRLS) for lp optimization</a></li>
-<li><a href="#org3192871">2.17. Set of complete orthogonal functions</a>
+<li><a href="#org822cdf5">3.14. A dual approximation problem</a></li>
+<li><a href="#orga878c83">3.15. Minimum-norm solution of undetermined equations</a></li>
+<li><a href="#orgd89c107">3.16. Iterative reweighted LS (DRLS) for lp optimization</a></li>
+<li><a href="#org3192871">3.17. Set of complete orthogonal functions</a>
 <ul>
-<li><a href="#org05be1eb">2.17.1. Theorem 3.5</a></li>
+<li><a href="#org05be1eb">3.17.1. Theorem 3.5</a></li>
 </ul>
 </li>
-<li><a href="#orgdbcb6ea">2.18. Signals as points; digital communications</a>
+<li><a href="#orgdbcb6ea">3.18. Signals as points; digital communications</a>
 <ul>
-<li><a href="#org52aa58d">2.18.1. Trigonometric functions</a></li>
-<li><a href="#org05835a1">2.18.2. Orthogonal polynomials</a></li>
-<li><a href="#org9dd3258">2.18.3. Families of orthogonal polynomials</a></li>
-<li><a href="#orgb83d4f8">2.18.4. Legendre polynomials</a></li>
-<li><a href="#org9e1f6d8">2.18.5. Chebyshev polynomials</a></li>
+<li><a href="#org52aa58d">3.18.1. Trigonometric functions</a></li>
+<li><a href="#org05835a1">3.18.2. Orthogonal polynomials</a></li>
+<li><a href="#org9dd3258">3.18.3. Families of orthogonal polynomials</a></li>
+<li><a href="#orgb83d4f8">3.18.4. Legendre polynomials</a></li>
+<li><a href="#org9e1f6d8">3.18.5. Chebyshev polynomials</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#org729d68a">4. Linear Operations and Matrix Inverses</a>
+<ul>
+<li><a href="#orgc929e2f">4.1. Linear Operators</a>
+<ul>
+<li><a href="#orgc2f6b7f">4.1.1. Linear Functionals</a></li>
+</ul>
+</li>
+<li><a href="#org606b3ac">4.2. Operator Norms</a>
+<ul>
+<li><a href="#org8a23ea2">4.2.1. Bounded Operators</a></li>
+<li><a href="#org0acdfe0">4.2.2. The Neumann Expansion</a></li>
+<li><a href="#org4372a61">4.2.3. Matrix Norms</a></li>
+</ul>
+</li>
+<li><a href="#org7bbe66c">4.3. Adjoint Operators And Transposes</a>
+<ul>
+<li><a href="#orgd6a773c">4.3.1. A Dual Optimization Problem</a></li>
+</ul>
+</li>
+<li><a href="#org5f42af9">4.4. Geometry Of Linear Equations</a>
+<ul>
+<li><a href="#orgff25d0a">4.4.1. The "Intersecting Lines" POV</a></li>
+<li><a href="#org01f3433">4.4.2. The "vector space" point of view</a></li>
+</ul>
+</li>
+<li><a href="#org7e37f68">4.5. Four Fundamental Subspaces Of A Linear Operator</a>
+<ul>
+<li><a href="#orgcf8adc4">4.5.1. <span class="todo TODO">TODO</span> The Four Fundamental Subspaces with non-closed range</a></li>
+</ul>
+</li>
+<li><a href="#orga35467f">4.6. Some Properties Of Matrix Inverses</a>
+<ul>
+<li><a href="#orgae5985b">4.6.1. Tests For Invertibility Of Matrices</a></li>
+</ul>
+</li>
+<li><a href="#org0178c45">4.7. Some Results On Matrix Rank</a>
+<ul>
+<li><a href="#orgc0a0fd8">4.7.1. The Numeric Rank</a></li>
+</ul>
+</li>
+<li><a href="#org718ff94">4.8. Another Look At Least Squares</a></li>
+<li><a href="#org0290706">4.9. Pseudoinverses</a></li>
+<li><a href="#org9fc9243">4.10. Matrix Condition Number</a></li>
+<li><a href="#org2ffd3b6">4.11. Inverse Of A Small-Rank Adjustment</a>
+<ul>
+<li><a href="#orgc1f7f0c">4.11.1. An Application: The Recursive Least Squares (RLS) filter</a></li>
+</ul>
+</li>
+<li><a href="#org4c2bb96">4.12. Inverse Of A Block (Partitioned) Matrix</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org11f17ea" class="outline-2">
-<h2 id="org11f17ea"><span class="section-number-2">1.</span> Mathematical methods and algorithms for signal processing, Moon, T., &amp; Stirling, W., , (1999)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="book">book</span></span></h2>
-<div class="outline-text-2" id="text-1">
 <p>
 See <a href="&amp;moon-1999-mathem-method">&amp;moon-1999-mathem-method</a>
 </p>
-</div>
-</div>
 
-<div id="outline-container-org9893bcd" class="outline-2">
-<h2 id="org9893bcd"><span class="section-number-2">2.</span> Chapter 3: Representation and approximation in vector spaces</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orgfa04707" class="outline-2">
+<h2 id="orgfa04707"><span class="section-number-2">1.</span> <span class="todo TODO">TODO</span> Introduction and Foundations</h2>
+</div>
+<div id="outline-container-org93686f9" class="outline-2">
+<h2 id="org93686f9"><span class="section-number-2">2.</span> <span class="todo TODO">TODO</span> Signal Spaces</h2>
+</div>
+<div id="outline-container-orga5520e4" class="outline-2">
+<h2 id="orga5520e4"><span class="section-number-2">3.</span> Representation and approximation in vector spaces</h2>
+<div class="outline-text-2" id="text-3">
 </div>
 <div id="outline-container-org239f916" class="outline-3">
-<h3 id="org239f916"><span class="section-number-3">2.1.</span> The approximation problem in Hilbert space</h3>
-<div class="outline-text-3" id="text-2-1">
+<h3 id="org239f916"><span class="section-number-3">3.1.</span> The approximation problem in Hilbert space</h3>
+<div class="outline-text-3" id="text-3-1">
 <p>
 The analysis problem is this: given a vector \(x \in S\), find the coefficients \(c_1, c_2, ..., c_m\) that
 </p>
@@ -150,24 +204,24 @@ In matrix form this equates to
 
 \begin{equation*}
 \begin{bmatrix}
-<p_1, p_1> & <p_2, p_1> & \cdots & <p_m, p_1> \\
-<p_1, p_2> & <p_2, p_2> & \cdots & <p_m, p_2> \\
-\vdots          &            &    & \vdots          \\
-<p_1, p_m> & <p_2, p_m> & \cdots & <p_m, p_1> \\
+\langle p_1, p_1 \rangle & \langle p_2, p_1 \rangle & \cdots & \langle p_m, p_1 \rangle \\
+\langle p_1, p_2 \rangle & \langle p_2, p_2 \rangle & \cdots & \langle p_m, p_2 \rangle \\
+\vdots          &            &   & \vdots          \\
+\langle p_1, p_m \rangle & \langle p_2, p_m \rangle & \cdots & \langle p_m, p_1 \rangle \\
 \end{bmatrix}
 \begin{bmatrix}
 c_1 \\ c_2 \\ \vdots \\ c_m
 \end{bmatrix}
 =
 \begin{bmatrix}
-<x,p1> \\ <x,p2> \\ \vdots \\ <x,pm> \\
+\langle x,p1 \rangle \\ \langle x,p2 \rangle \\ \vdots \\ \langle x,pm \rangle \\
 \end{bmatrix}
 \end{equation*}
 </div>
 
 <div id="outline-container-orgd3ebe94" class="outline-4">
-<h4 id="orgd3ebe94"><span class="section-number-4">2.1.1.</span> The Grammian Matrix</h4>
-<div class="outline-text-4" id="text-2-1-1">
+<h4 id="orgd3ebe94"><span class="section-number-4">3.1.1.</span> The Grammian Matrix</h4>
+<div class="outline-text-4" id="text-3-1-1">
 <p>
 Let \(R\) be called the Grammian matrix.
 </p>
@@ -205,8 +259,8 @@ vectors \(p_1, p_2, ..., p_n\) are linearly independent.
 </div>
 
 <div id="outline-container-org81aeced" class="outline-3">
-<h3 id="org81aeced"><span class="section-number-3">2.2.</span> The orthogonality principle</h3>
-<div class="outline-text-3" id="text-2-2">
+<h3 id="org81aeced"><span class="section-number-3">3.2.</span> The orthogonality principle</h3>
+<div class="outline-text-3" id="text-3-2">
 <p>
 #+name theorem3.2
 </p>
@@ -231,8 +285,8 @@ data vectors
 </div>
 
 <div id="outline-container-orgc0ac7eb" class="outline-4">
-<h4 id="orgc0ac7eb"><span class="section-number-4">2.2.1.</span> Representations in infinite-dimensional space</h4>
-<div class="outline-text-4" id="text-2-2-1">
+<h4 id="orgc0ac7eb"><span class="section-number-4">3.2.1.</span> Representations in infinite-dimensional space</h4>
+<div class="outline-text-4" id="text-3-2-1">
 <p>
 The convergence of this infinite sum must be examined carefully. However, \(T\) is an orthonormal set, then the
 representation can be shown to converge.
@@ -242,8 +296,8 @@ representation can be shown to converge.
 </div>
 
 <div id="outline-container-org37b6127" class="outline-3">
-<h3 id="org37b6127"><span class="section-number-3">2.3.</span> Error minimization via gradients</h3>
-<div class="outline-text-3" id="text-2-3">
+<h3 id="org37b6127"><span class="section-number-3">3.3.</span> Error minimization via gradients</h3>
+<div class="outline-text-3" id="text-3-3">
 <p>
 This section verifies the least squared solution using the gradient method used in optimization. Because we want to
 minimize the error \(e = x - \sum_{i=1}^m c_i p_i\), then we can write
@@ -261,8 +315,8 @@ reduces to \(Rc = p\), which is what we found before.
 </div>
 
 <div id="outline-container-org897fe99" class="outline-3">
-<h3 id="org897fe99"><span class="section-number-3">2.4.</span> Matrix representation of least-squares problem</h3>
-<div class="outline-text-3" id="text-2-4">
+<h3 id="org897fe99"><span class="section-number-3">3.4.</span> Matrix representation of least-squares problem</h3>
+<div class="outline-text-3" id="text-3-4">
 <p>
 For finite-dimensional vectors (signals), matrix notation may be employed. The approximation problem can then be written
 as
@@ -291,8 +345,8 @@ project \(x\) orthogonally down into the range of \(A\) and find the best soluti
 </div>
 
 <div id="outline-container-orgcd5499c" class="outline-4">
-<h4 id="orgcd5499c"><span class="section-number-4">2.4.1.</span> Weighted least-squares</h4>
-<div class="outline-text-4" id="text-2-4-1">
+<h4 id="orgcd5499c"><span class="section-number-4">3.4.1.</span> Weighted least-squares</h4>
+<div class="outline-text-4" id="text-3-4-1">
 <p>
 This is naturally incorporated into the inner product. As we have seen before \(\big< x,y \big>_W = y^H W x\), from this
 we can expand and solve similarly as before to achieve the following solution.
@@ -305,8 +359,8 @@ c = (A^H W A)^{-1} A^H W x
 </div>
 
 <div id="outline-container-org8ef95de" class="outline-4">
-<h4 id="org8ef95de"><span class="section-number-4">2.4.2.</span> Statistical properties of the least-squares estimate</h4>
-<div class="outline-text-4" id="text-2-4-2">
+<h4 id="org8ef95de"><span class="section-number-4">3.4.2.</span> Statistical properties of the least-squares estimate</h4>
+<div class="outline-text-4" id="text-3-4-2">
 <p>
 Suppose that we have a true model \(x = Ac_0 + e\) that we wish to estimate. Using our solution of \(c\) results in an
 expected value of \(c_0\). Such an estimate is said to be unbiased.
@@ -324,8 +378,8 @@ Furthermore, the estimator \(c\) is said to be the best linear unbiased estimato
 </div>
 
 <div id="outline-container-orgdb64660" class="outline-3">
-<h3 id="orgdb64660"><span class="section-number-3">2.5.</span> Minimum error in vector-space approximations</h3>
-<div class="outline-text-3" id="text-2-5">
+<h3 id="orgdb64660"><span class="section-number-3">3.5.</span> Minimum error in vector-space approximations</h3>
+<div class="outline-text-3" id="text-3-5">
 <p>
 In this section we examine how much error is left when an optimal (minimal-norm) solution is obtained. Using the
 Pythagorean theorem, the squared norm of the minimum error is
@@ -354,8 +408,8 @@ And using \(\hat{x}  = Ac = A(A^H A)^{-1} A^H x\) we can write
 </div>
 
 <div id="outline-container-org3092066" class="outline-3">
-<h3 id="org3092066"><span class="section-number-3">2.6.</span> Approximation by continuous polynomials</h3>
-<div class="outline-text-3" id="text-2-6">
+<h3 id="org3092066"><span class="section-number-3">3.6.</span> Approximation by continuous polynomials</h3>
+<div class="outline-text-3" id="text-3-6">
 <p>
 Say we want to approximate a real continuous function \(f(t)\) over an interval \(t \in [a,b]\) to minimize the norm
 </p>
@@ -405,8 +459,8 @@ which induces the inner product
 </div>
 
 <div id="outline-container-org311dd7a" class="outline-3">
-<h3 id="org311dd7a"><span class="section-number-3">2.7.</span> Approximation by discrete polynomials</h3>
-<div class="outline-text-3" id="text-2-7">
+<h3 id="org311dd7a"><span class="section-number-3">3.7.</span> Approximation by discrete polynomials</h3>
+<div class="outline-text-3" id="text-3-7">
 <p>
 This section is extremely analogous to the previos section but is of more practical value. We can approximate discrete
 (sampled) data similarly by using a set of discrete-time basis functions \(\{1,k,...,k^{m-1}\}\). *We desire to
@@ -449,8 +503,8 @@ Example 3.7.1 is insightful if one is desired.
 </div>
 
 <div id="outline-container-org7ca629c" class="outline-3">
-<h3 id="org7ca629c"><span class="section-number-3">2.8.</span> Linear regression</h3>
-<div class="outline-text-3" id="text-2-8">
+<h3 id="org7ca629c"><span class="section-number-3">3.8.</span> Linear regression</h3>
+<div class="outline-text-3" id="text-3-8">
 <p>
 Very similarly to before, but expanding on the concept a little. Suppose there is a set of points that we wish to fit a
 line over. That is, we want a function \(y_i \approx ax_i + b \text{ for } i = 1,2,...,n\). Letting \(y\) be the vector of y
@@ -486,8 +540,8 @@ c = (A^HA)^{-1}Ay
 </div>
 
 <div id="outline-container-org5b7ce69" class="outline-3">
-<h3 id="org5b7ce69"><span class="section-number-3">2.9.</span> Least-squares filtering</h3>
-<div class="outline-text-3" id="text-2-9">
+<h3 id="org5b7ce69"><span class="section-number-3">3.9.</span> Least-squares filtering</h3>
+<div class="outline-text-3" id="text-3-9">
 <p>
 The goal of least-squares filtering problem is to filter a sequence of input data \(\{f[t]\}\) suing a filter with impulse
 response \(h[t]\) of length \(m\) to produce an output that matches a desired sequence \(\{d[t]\}\) as closely as possible.
@@ -625,8 +679,8 @@ Take a look at the examples 3.9.1 through 3.9.3.
 </div>
 
 <div id="outline-container-orgd770b41" class="outline-4">
-<h4 id="orgd770b41"><span class="section-number-4">2.9.1.</span> Least-squares prediction and AR spectrum estimation</h4>
-<div class="outline-text-4" id="text-2-9-1">
+<h4 id="orgd770b41"><span class="section-number-4">3.9.1.</span> Least-squares prediction and AR spectrum estimation</h4>
+<div class="outline-text-4" id="text-3-9-1">
 <p>
 Consider the estimation problem where we desire to predict \(x[t]\) using a linear predictor based on \(x[t-1], x[t-2],
 ... x[t-m]\),
@@ -646,8 +700,8 @@ predictors use the same coefficients, we can use both predictors together to imp
 </div>
 
 <div id="outline-container-orgcc8301d" class="outline-3">
-<h3 id="orgcc8301d"><span class="section-number-3">2.10.</span> Minimum mean-squared estimation</h3>
-<div class="outline-text-3" id="text-2-10">
+<h3 id="orgcc8301d"><span class="section-number-3">3.10.</span> Minimum mean-squared estimation</h3>
+<div class="outline-text-3" id="text-3-10">
 <p>
 Up until now we have not assumed the existence of probabilistic models. In this section we change our viewpoint by
 introducing probability.
@@ -688,8 +742,8 @@ The minimum mean-squared error is given by
 </div>
 
 <div id="outline-container-orgee15423" class="outline-3">
-<h3 id="orgee15423"><span class="section-number-3">2.11.</span> Minimum mean-squared error (MMSE) filtering</h3>
-<div class="outline-text-3" id="text-2-11">
+<h3 id="orgee15423"><span class="section-number-3">3.11.</span> Minimum mean-squared error (MMSE) filtering</h3>
+<div class="outline-text-3" id="text-3-11">
 <p>
 A minimum mean-square (MMS) filter is called a Wiener filter. It is mathematically similar to a least-squares filter,
 except that the expectation operator is used as the inner product. Similarly, we have data \(\{f[t]\}\) and want to design
@@ -713,8 +767,8 @@ See example 3.11.1 for some actually juicy stuff.
 </div>
 
 <div id="outline-container-org36dee58" class="outline-3">
-<h3 id="org36dee58"><span class="section-number-3">2.12.</span> Comparison of least-squared and minimum mean-squares</h3>
-<div class="outline-text-3" id="text-2-12">
+<h3 id="org36dee58"><span class="section-number-3">3.12.</span> Comparison of least-squared and minimum mean-squares</h3>
+<div class="outline-text-3" id="text-3-12">
 <p>
 For the method of least-squares the following observations are made
 </p>
@@ -745,16 +799,16 @@ Toeplitz matrix, and hence fast algorithms apply to finding the coefficients.</l
 </div>
 
 <div id="outline-container-org8bf11ba" class="outline-3">
-<h3 id="org8bf11ba"><span class="section-number-3">2.13.</span> Frequency-domain optimal filtering</h3>
-<div class="outline-text-3" id="text-2-13">
+<h3 id="org8bf11ba"><span class="section-number-3">3.13.</span> Frequency-domain optimal filtering</h3>
+<div class="outline-text-3" id="text-3-13">
 <p>
 This section we develop optimal filtering techniques for scalar signals in the frequency domain.
 </p>
 </div>
 
 <div id="outline-container-org05c3d6b" class="outline-4">
-<h4 id="org05c3d6b"><span class="section-number-4">2.13.1.</span> Brief review of stochastic processes and Laplace transforms</h4>
-<div class="outline-text-4" id="text-2-13-1">
+<h4 id="org05c3d6b"><span class="section-number-4">3.13.1.</span> Brief review of stochastic processes and Laplace transforms</h4>
+<div class="outline-text-4" id="text-3-13-1">
 <p>
 The function \(S_x(j\omega)\) is the usual power spectral density function. The autocovariance is real and even, that is
 </p>
@@ -778,8 +832,8 @@ S_x(-\omega) = S^*_x(\omega)
 </div>
 
 <div id="outline-container-org3b107ca" class="outline-4">
-<h4 id="org3b107ca"><span class="section-number-4">2.13.2.</span> Filtering of stochatsic processes</h4>
-<div class="outline-text-4" id="text-2-13-2">
+<h4 id="org3b107ca"><span class="section-number-4">3.13.2.</span> Filtering of stochatsic processes</h4>
+<div class="outline-text-4" id="text-3-13-2">
 <p>
 If the input \(x\) and output \(y\) are wide sense stationary stochastic processes the correlation functions are given by
 </p>
@@ -807,8 +861,8 @@ S_y(s)    = h(s) R_x(s) H(-s)
 </div>
 
 <div id="outline-container-org3a104a4" class="outline-4">
-<h4 id="org3a104a4"><span class="section-number-4">2.13.3.</span> Lumped systems and processes</h4>
-<div class="outline-text-4" id="text-2-13-3">
+<h4 id="org3a104a4"><span class="section-number-4">3.13.3.</span> Lumped systems and processes</h4>
+<div class="outline-text-4" id="text-3-13-3">
 <p>
 A linear system is said to be lumped if it has a rational transfer function; that is, its transfer function is a ratio of polynomials in \(s\). Thus a rational transfer function is of the form below. Re also require that \(n \ge m\)
 </p>
@@ -831,13 +885,13 @@ TODO: FINISH
 </div>
 
 <div id="outline-container-org822cdf5" class="outline-3">
-<h3 id="org822cdf5"><span class="section-number-3">2.14.</span> A dual approximation problem</h3>
-<div class="outline-text-3" id="text-2-14">
+<h3 id="org822cdf5"><span class="section-number-3">3.14.</span> A dual approximation problem</h3>
+<div class="outline-text-3" id="text-3-14">
 <p>
 Up until now we have selected a finite-dimensional subspace of the Hilbert space which involved solving an \(m\times m\) system of equations. In some problems the subspace in which the solution lies is not finite dimensional. There are some problems where a finite set of constraints provides sufficient information to solve the problem from a finite set of equations.
 </p>
 
-<div class="definition" id="orgcab5519">
+<div class="definition" id="org7816d39">
 <p>
 Let \(M\) be a subspace of a linear space \(S\), and let \(x_0 \in S\). The set \(V = x_0 +M\) is said to be a translation of \(M\) by \(x_0\). This translation is called a linear variety. In general, a linear variety is not a subspace!
 </p>
@@ -862,9 +916,9 @@ Hence the space of solutions from the inner products above is the linear variety
 <b>See Example 3.14.2</b>
 </p>
 
-<div class="theorem" id="org460c070">
+<div class="theorem" id="orgdbf01f5">
 <p>
-Let \({y_i}\) be a linearly independent in a Hilbert space \(S\), and let \(M = \text{span}(y_1,...,y_m)\). The element \(x \in S\) satisfying 
+Let \({y_i}\) be a linearly independent in a Hilbert space \(S\), and let \(M = \text{span}(y_1,...,y_m)\). The element \(x \in S\) satisfying
 </p>
 
 <p>
@@ -898,7 +952,7 @@ $$
 \end{bmatrix}
 \begin{bmatrix}
 c_1 \\ c_2 \\ \vdots \\ c_m
-\end{bmatrix} = 
+\end{bmatrix} =
 \begin{bmatrix}
 a_1 \\ a_2 \\ \vdots \\ a_m
 \end{bmatrix}
@@ -911,10 +965,10 @@ $$
 </div>
 
 <div id="outline-container-orga878c83" class="outline-3">
-<h3 id="orga878c83"><span class="section-number-3">2.15.</span> Minimum-norm solution of undetermined equations</h3>
-<div class="outline-text-3" id="text-2-15">
+<h3 id="orga878c83"><span class="section-number-3">3.15.</span> Minimum-norm solution of undetermined equations</h3>
+<div class="outline-text-3" id="text-3-15">
 <p>
-The solution to the dual problem provides a method of finding a least-squares solution to an underdetermined set of equations <b>See Example 3.15.1</b>. Generally speaking, given the following 
+The solution to the dual problem provides a method of finding a least-squares solution to an underdetermined set of equations <b>See Example 3.15.1</b>. Generally speaking, given the following
 </p>
 
 \begin{equation*}
@@ -931,8 +985,8 @@ The solution to the problem is \(x = A^H(AA^H)^{-1}b\).
 </div>
 
 <div id="outline-container-orgd89c107" class="outline-3">
-<h3 id="orgd89c107"><span class="section-number-3">2.16.</span> Iterative reweighted LS (DRLS) for lp optimization</h3>
-<div class="outline-text-3" id="text-2-16">
+<h3 id="orgd89c107"><span class="section-number-3">3.16.</span> Iterative reweighted LS (DRLS) for lp optimization</h3>
+<div class="outline-text-3" id="text-3-16">
 <p>
 TODO
 </p>
@@ -940,8 +994,8 @@ TODO
 </div>
 
 <div id="outline-container-org3192871" class="outline-3">
-<h3 id="org3192871"><span class="section-number-3">2.17.</span> Set of complete orthogonal functions</h3>
-<div class="outline-text-3" id="text-2-17">
+<h3 id="org3192871"><span class="section-number-3">3.17.</span> Set of complete orthogonal functions</h3>
+<div class="outline-text-3" id="text-3-17">
 <p>
 Much of the transformaiton theory employed in signal processing is encompassed by representations in an appropriate linear vector space. The set of basis functions for the transformation is chosen so that the coefficients convey desired information about the signal. Different basis functions allow us to extract different information about the signal.
 </p>
@@ -962,7 +1016,7 @@ Which is known as <i>Bessel's inequality</i>.
 When \(\{p_i\}\) is a complete basis set, then the sequence \(\{c_1,c_2,...\}\) completely describes \(x\).
 </p>
 
-<div class="definition" id="org5c30bba">
+<div class="definition" id="org34f1355">
 <p>
 An orthonormal set \(\{p_i, i = 1,2,3,...\}\) in a Hilbert space \(S\) is complete if
 </p>
@@ -979,8 +1033,8 @@ When \(\{p_i\}\) is a complete basis set, then the sequence \(\{c_i\}\) complete
 </div>
 
 <div id="outline-container-org05be1eb" class="outline-4">
-<h4 id="org05be1eb"><span class="section-number-4">2.17.1.</span> Theorem 3.5</h4>
-<div class="outline-text-4" id="text-2-17-1">
+<h4 id="org05be1eb"><span class="section-number-4">3.17.1.</span> Theorem 3.5</h4>
+<div class="outline-text-4" id="text-3-17-1">
 <p>
 A set of orthornormal functions \(\{p_i, i=1,2,...\}\) is complete in an inner product space \(S\) with induced norm if any of the following equivalent statements holds:
 </p>
@@ -998,7 +1052,7 @@ A set of orthornormal functions \(\{p_i, i=1,2,...\}\) is complete in an inner p
 </p>
 
 <p>
-We can define different transformations depending upon the set of orthonormal basis functions we choose. Since each coefficient In the transform is a projection of \(x\) onto the basis function, the transform coefficient \(c_i\), determines how much of \(p_i\), is in \(x\). If we want to look for particular features of a signal. one way is to design a set of orthogonal basis functions that have those features and compute a transform using those signals. 
+We can define different transformations depending upon the set of orthonormal basis functions we choose. Since each coefficient In the transform is a projection of \(x\) onto the basis function, the transform coefficient \(c_i\), determines how much of \(p_i\), is in \(x\). If we want to look for particular features of a signal. one way is to design a set of orthogonal basis functions that have those features and compute a transform using those signals.
 </p>
 
 <p>
@@ -1013,7 +1067,7 @@ If \(p_i\) is a complete set then there is no error in the representation and Be
 Equivalently written as \(||x|| = ||c||\) where the norm on the left is the \(L2\) norm (if \(x\) is a function) and the norm on the right is the \(l2\) norm.
 </p>
 
-<div class="lemma" id="org5bef9a3">
+<div class="lemma" id="orgd93a015">
 <p>
 If \(x\) and \(y\) have a generalized Fourier series representation using some orthornarmal basis set \(\{p_i\}\) in a Hilbert space \(S\), with \(x \leftrightarrow c\) and \(y \leftrightarrow b\) then
 </p>
@@ -1028,16 +1082,16 @@ If \(x\) and \(y\) have a generalized Fourier series representation using some o
 </div>
 
 <div id="outline-container-orgdbcb6ea" class="outline-3">
-<h3 id="orgdbcb6ea"><span class="section-number-3">2.18.</span> Signals as points; digital communications</h3>
-<div class="outline-text-3" id="text-2-18">
+<h3 id="orgdbcb6ea"><span class="section-number-3">3.18.</span> Signals as points; digital communications</h3>
+<div class="outline-text-3" id="text-3-18">
 <p>
 There are several sets of complete orthogonal functions that are used in common applications. We will examine a few of the more commonly-used sets.
 </p>
 </div>
 
 <div id="outline-container-org52aa58d" class="outline-4">
-<h4 id="org52aa58d"><span class="section-number-4">2.18.1.</span> Trigonometric functions</h4>
-<div class="outline-text-4" id="text-2-18-1">
+<h4 id="org52aa58d"><span class="section-number-4">3.18.1.</span> Trigonometric functions</h4>
+<div class="outline-text-4" id="text-3-18-1">
 <p>
 The "familar" trigonometric functions employed in Fourier series are orthogonal. They form a complete set of functions.
 </p>
@@ -1049,8 +1103,8 @@ p_n(t) = \frac{e^{jnt}}{\sqrt{2\pi}}
 </div>
 
 <div id="outline-container-org05835a1" class="outline-4">
-<h4 id="org05835a1"><span class="section-number-4">2.18.2.</span> Orthogonal polynomials</h4>
-<div class="outline-text-4" id="text-2-18-2">
+<h4 id="org05835a1"><span class="section-number-4">3.18.2.</span> Orthogonal polynomials</h4>
+<div class="outline-text-4" id="text-3-18-2">
 <p>
 Different sets of orthogonal polynomials are obtained by using different weighting functions, and the inner product is taken over some given interval. Some orthogonal polynomials have shown up enough that we have given them a name. Given two polynomials \(f(t)\) and \(g(t)\), then they are said to be orthogonal with respect to a weighting function \(w(t)\) if
 </p>
@@ -1060,7 +1114,7 @@ Different sets of orthogonal polynomials are obtained by using different weighti
 \end{equation*}
 
 <p>
-where 
+where
 </p>
 
 \begin{equation*}
@@ -1074,8 +1128,8 @@ Using the Gram-Schmidt procedure it is possible to orthogonalize any set of poly
 </div>
 
 <div id="outline-container-org9dd3258" class="outline-4">
-<h4 id="org9dd3258"><span class="section-number-4">2.18.3.</span> Families of orthogonal polynomials</h4>
-<div class="outline-text-4" id="text-2-18-3">
+<h4 id="org9dd3258"><span class="section-number-4">3.18.3.</span> Families of orthogonal polynomials</h4>
+<div class="outline-text-4" id="text-3-18-3">
 <p>
 A variety of types of orthogonal polynomials have been explored over the years. One of the general motivations for this is that orthogonal polynomials can be used to provide solutions to particular differential equations. Since these orthogonal polynomials form a complete orthogonal basis, they can be used to form series solutions for any boundary conditions and input function.
 </p>
@@ -1083,8 +1137,8 @@ A variety of types of orthogonal polynomials have been explored over the years. 
 </div>
 
 <div id="outline-container-orgb83d4f8" class="outline-4">
-<h4 id="orgb83d4f8"><span class="section-number-4">2.18.4.</span> Legendre polynomials</h4>
-<div class="outline-text-4" id="text-2-18-4">
+<h4 id="orgb83d4f8"><span class="section-number-4">3.18.4.</span> Legendre polynomials</h4>
+<div class="outline-text-4" id="text-3-18-4">
 <p>
 These are not used too often, but show up from time to time. Using a weighting function of \(w(t) = 1\), the first three polynomials are
 </p>
@@ -1099,7 +1153,7 @@ p_3(t) = t^3 - 3/5t \\
 \end{equation*}
 
 <p>
-Using Lemma 3.2 (not written in these notes), the general polynomial is 
+Using Lemma 3.2 (not written in these notes), the general polynomial is
 </p>
 
 \begin{equation*}
@@ -1109,14 +1163,14 @@ tp_n(t) = \frac{n+1}{2n+1}p_{n+1} + \frac{n}{2n+1}p_{n-1}(t)
 </div>
 
 <div id="outline-container-org9e1f6d8" class="outline-4">
-<h4 id="org9e1f6d8"><span class="section-number-4">2.18.5.</span> Chebyshev polynomials</h4>
-<div class="outline-text-4" id="text-2-18-5">
+<h4 id="org9e1f6d8"><span class="section-number-4">3.18.5.</span> Chebyshev polynomials</h4>
+<div class="outline-text-4" id="text-3-18-5">
 <p>
 These polynomials are orthogonal with respect to the weighting function \(w(t) = \frac{1}{\sqrt{1-t^2}}\) over the interval \([-1,1]\). In particular
 </p>
 
 \begin{equation*}
-\int_a^b = \frac{1}{\sqrt{1-t^2}}T_r(t)T_s(t) dt = 
+\int_a^b = \frac{1}{\sqrt{1-t^2}}T_r(t)T_s(t) dt =
 \begin{cases}
 0 & r \ne s \\
 \pi & r = s = 0 \\
@@ -1131,10 +1185,737 @@ TODO
 </div>
 </div>
 </div>
+
+<div id="outline-container-org729d68a" class="outline-2">
+<h2 id="org729d68a"><span class="section-number-2">4.</span> Linear Operations and Matrix Inverses</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+The basic goals of this chapter are as follows: to understand when solutions of linear equations exist and are unique,
+and to develop insight into factors that can affect the quality of the solution.
+</p>
+
+<p>
+The most familiar linear operator is a matrix, appearing in a linear equation of the form
+</p>
+
+\begin{equation}
+\label{orga99a0cb}
+Ax = b
+\end{equation}
+
+<p>
+However, in the interest of getting the most "bang for the buck," we introduce more general linear operators than
+matrices.
+</p>
+
+<p>
+If the matrix A is "nearly not invertible," then the answers obtained by a numerical algorithm are likely to be
+unreliable. Some qualitative results regarding how close a matrix is to being noninvertible are obtained by introducing
+the <i>condition number</i> of a matrix.
+</p>
+</div>
+
+<div id="outline-container-orgc929e2f" class="outline-3">
+<h3 id="orgc929e2f"><span class="section-number-3">4.1.</span> Linear Operators</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+In <a href="eq:transformationmatrix">eq:transformationmatrix</a>, we can regard \(A\) as a linear transformation (or operator), which maps a vector \(x\)
+into the column space (range) of \(A\).
+</p>
+
+<div class="definition" id="org3c11812">
+<p>
+A transformation \(A: X \rightarrow Y\), where \(X\) and \(Y\) are vector spaces over a ring \(R\), is said to be a linear if for every
+\(x_1, x_2 \in X\) and all scalars \(\alpha_1, \alpha_2 \in R\),
+</p>
+
+\begin{equation*}
+A(\alpha_1 x_1 + \alpha_2 x_2) = \alpha_1 A(x_1) + \alpha_2 A(x_2)
+\end{equation*}
+
+</div>
+
+<p>
+The most important example of a linear transformation, in fact the algorithmic focus of this part of the book is the
+transformation \(A: \mathbb{R}^n \rightarrow \mathbb{R}^m\). In this case, \(A\) is the \(m \times n\) matrix with the elements from \(\mathbb{R}\).
+</p>
+</div>
+
+<div id="outline-container-orgc2f6b7f" class="outline-4">
+<h4 id="orgc2f6b7f"><span class="section-number-4">4.1.1.</span> Linear Functionals</h4>
+<div class="outline-text-4" id="text-4-1-1">
+<div class="definition" id="orgcd7ee92">
+<p>
+A funcitonal \(f: X \rightarrow \mathbb{R}\) is a mapping from a vector space \(X\) to a real scalar value. (More generally, the range of the
+mapping could be any set of scalars.)
+</p>
+
+<p>
+If \(f\) has the property \(f(\alpha x + \beta y) = \alpha f(x) + \beta f(y)\) for all real \(\alpha\) and \(\beta\) and all \(x,y \in X\), then \(f\) is said to
+be a linear functional.
+</p>
+
+</div>
+
+<p>
+<b>Inner products are functionals</b>. Conversely, if \(X\) is a Hilbert space (complete), then <i>any</i> continuous linear
+functional can be expressed as an inner product. This in known as the Riesz representation theorem.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org606b3ac" class="outline-3">
+<h3 id="org606b3ac"><span class="section-number-3">4.2.</span> Operator Norms</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+Let \(A\) be a linear operator \(A: X \rightarrow Y\). The operator norm of \(A\) is then defined as
+</p>
+
+\begin{equation*}
+||A||_p = \text{sup}_{x\in X \ne 0} \frac{||Ax||_p}{||x||_p} =
+\text{sup}_{x\in X, ||x||_p = 1} ||Ax||_p
+\end{equation*}
+
+<p>
+Where \(||\cdot||_p\) is the \(p\) norm defined earlier. The norm on \(A\) is said to be subordinate to the norm on \(X\).
+Geometrically speaking, the \(||A||\) subordinate norm measures the maximum extent that \(A\) transforms the unit circle.
+This is demonstrated in <a href="fig:opnorm">fig:opnorm</a>.
+</p>
+
+
+<div id="orgba66bdc" class="figure">
+<p><a href="http://jde27.uk/lgla/img/operator_norm_pic.jpg"><img src="http://jde27.uk/lgla/img/operator_norm_pic.jpg" alt="operator_norm_pic.jpg" /></a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8a23ea2" class="outline-4">
+<h4 id="org8a23ea2"><span class="section-number-4">4.2.1.</span> Bounded Operators</h4>
+<div class="outline-text-4" id="text-4-2-1">
+<div class="definition" id="org1aa67ad">
+<p>
+If the norm of a transformation is finite, the transformation is said to be bounded.
+</p>
+
+</div>
+
+<p>
+The following theorem presents a rather remarkable fact about bounded linear operators
+</p>
+
+<div class="theorem" id="orgcbe2cb8">
+<p>
+A linear operator \(A: X \rightarrow Y\) is bounded if and only if it is continuous
+</p>
+
+</div>
+
+<p>
+The following theorem is of great utility: by showing that linear operators from finite-dimensional spaces are
+continuous, we can conclude from the previous theorem that they are also bounded. Since many of the results of this
+chapter rely on bounded linear operators, this theorem reassures us that matrices - operators on finite-dimensional
+spaces - will work.
+</p>
+
+<div class="theorem" id="orgf730e98">
+<p>
+Let \(A: X \rightarrow Y\) be a linear operator, where \(X\) and \(Y\) are normed linear spaces. If \(X\) is finite-dimensional, then \(A\)
+is continuous.
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0acdfe0" class="outline-4">
+<h4 id="org0acdfe0"><span class="section-number-4">4.2.2.</span> The Neumann Expansion</h4>
+<div class="outline-text-4" id="text-4-2-2">
+<p>
+The Neumann expansion provides a useful expansion for the inverse of the linear operator \((I-A)^{-1}\).
+</p>
+
+<div class="theorem" id="org34c533e">
+<p>
+Suppose \(||\cdot||\) is a norm satisfying the submultiplicative  property \(A:x \rightarrow x\) is an operator with \(||A|| < 1\). Then
+\((I-A)^{-1}\) exists and
+</p>
+
+\begin{equation*}
+(I-A)^{-1} = \sum_{i=0}^{\infty} A^i
+\end{equation*}
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4372a61" class="outline-4">
+<h4 id="org4372a61"><span class="section-number-4">4.2.3.</span> Matrix Norms</h4>
+<div class="outline-text-4" id="text-4-2-3">
+<p>
+The norm \(||A||_{\infty}\) is the largest row sum.
+</p>
+
+\begin{equation}
+||A||_{\infty} = \text{max }_{||x||_{\infty} = 1} ||Ax||_{\infty} = \text{max }_i \sum_{j} |a_{ij}|
+\end{equation}
+
+<p>
+The norm \(||A||_{1}\) is the largest column sum.
+</p>
+
+\begin{equation}
+||A||_{1} = \text{max }_{||x||_{1} = 1} ||Ax||_{1} = \text{max }_j \sum_{j} |a_{ij}|
+\end{equation}
+
+<p>
+The norm \(||A||_{2}\) is more involved than the previous two. Let \(\rho(A) = \text{max }_i |\lambda_i|\) where \(\lambda_i\) is the
+\(i^{\text{th}}\) eigenvalue of matrix \(A\). The \(||A||_2\) ( spectral) norm is defined as
+</p>
+
+\begin{equation}
+||A||_{1} = \sqrt{\rho(A^HA)}
+\end{equation}
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7bbe66c" class="outline-3">
+<h3 id="org7bbe66c"><span class="section-number-3">4.3.</span> Adjoint Operators And Transposes</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+Let \(A:X \rightarrow Y\) be a linear operator and let \(\langle \cdot , \cdot \rangle: Y \times Y \rightarrow \mathbb{C}\) be an inner product. Since \(Ax \in Y\), the
+inner product \(\langle Ax, y \rangle\) is defined and may be viewed as a scalar linear operation on \(x \in X\) The elements in \(Y\) are
+an example of a <i>dual space</i>.
+</p>
+
+<div class="definition" id="org2b1deef">
+<p>
+Let \(A:X \rightarrow Y\) be a linear operator from the Hilbert space \(X\) to the Hilbert space \(Y\). The adjoint of the operator \(A\),
+denoted \(A^*\), is the operator \(A^* : Y \rightarrow X\) such that
+</p>
+
+\begin{equation*}
+ \langle Ax,y \rangle = \langle x,A^* y \rangle
+\end{equation*}
+
+<p>
+for all \(x \in X\) and \(y \in Y\). An operator \(A\) is self-adjoint if \(A^* = A\).
+</p>
+
+</div>
+
+<p>
+It can be shown that the adjoint of a matrix is simply the conjugate transpose
+</p>
+
+\begin{equation*}
+A^* = \bar{A^T} = A^H
+\end{equation*}
+
+<p>
+For real matrices it simplifies to \(A^* = A^T\). Furthermore, a real matrix which is self-adjoint is symmetric
+(self-adjoint matrices are necessarily square). A matrix operator \(A\) that satisfies \(A^* A = AA^*\) is said to be
+normal.
+</p>
+
+<p>
+Some properties for the adjoint is
+</p>
+
+<ul class="org-ul">
+<li>\((A_1 + A_2)^* = A_1^* + A_2^*\)</li>
+<li>\((\alpha A)^* = \bar{\alpha}A^*\)</li>
+<li>\((A_2 A_1)^* = A_1^* A_2^*\)</li>
+<li>\((A^{-1})^* = (A^*)^{-1}\)</li>
+<li>\((A^H)^* = (A^*)^H\) (and simply just the transpose for real matrices)</li>
+</ul>
+</div>
+
+<div id="outline-container-orgd6a773c" class="outline-4">
+<h4 id="orgd6a773c"><span class="section-number-4">4.3.1.</span> A Dual Optimization Problem</h4>
+<div class="outline-text-4" id="text-4-3-1">
+<p>
+The adjoint allows us to express the solution to the problem of finding the minimum-norm solution to the linear operator
+\(Ax = y\) when there is more than one solution.
+</p>
+
+<div class="theorem" id="org36bf8c8">
+<p>
+Let \(A:X \rightarrow Y\) be a bounded linear operator form the Hilbert space \(X\) to the Hilbert space \(Y\). The vector \(x\) of
+minimum norm satisfying \(Ax = y\) is given by
+</p>
+
+\begin{equation*}
+x = A^* z
+\end{equation*}
+
+<p>
+where \(z\) is any solution of \((AA^*)z = y\).
+</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5f42af9" class="outline-3">
+<h3 id="org5f42af9"><span class="section-number-3">4.4.</span> Geometry Of Linear Equations</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+The solution of the matrix equation \(Ax = b\) can be considered from two different perspectives to gain insight into the
+solution of linear equaitons
+</p>
+</div>
+
+<div id="outline-container-orgff25d0a" class="outline-4">
+<h4 id="orgff25d0a"><span class="section-number-4">4.4.1.</span> The "Intersecting Lines" POV</h4>
+<div class="outline-text-4" id="text-4-4-1">
+<p>
+In general, an equation in \(n\) unknowns describes a hyperplane in $n$-dimensional space, and \(n\) such planes must
+intersect at the point of simultaneous solution. From this interpretation of intersecting lines or planes, three
+different cases can be considered
+</p>
+
+<ul class="org-ul">
+<li>A single solution</li>
+<li>No solution</li>
+<li>Infinite solutions</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org01f3433" class="outline-4">
+<h4 id="org01f3433"><span class="section-number-4">4.4.2.</span> The "vector space" point of view</h4>
+<div class="outline-text-4" id="text-4-4-2">
+<p>
+In general, the product of a matrix times a vector is a linear combination of the columns of the matrix. Which leads
+into the following definition
+</p>
+
+<div class="definition" id="org6ba227c">
+<p>
+The space spanned by the columns of a matrix is called the column space of the matrix. It is also called the range of
+the matrix, and is denoted by \(\mathcal{R}(A)\). If \(A\) is written in terms of its columns, \(A=\{a_1, a_2,...,a_n\}\), then
+</p>
+
+\begin{equation*}
+\mathcal{R}(A) = span(a_1, a_2,...,a_n)
+\end{equation*}
+
+<p>
+If \(b \in \mathcal{R}(A)\) for a matrix \(A\), then there must be some linear combination of the columns of \(A\) that is equal to \(b\).
+<b>That is, the equation \(Ax = b\) has a solution only if \(b\) lies in the column space of \(A\)</b>.
+</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7e37f68" class="outline-3">
+<h3 id="org7e37f68"><span class="section-number-3">4.5.</span> Four Fundamental Subspaces Of A Linear Operator</h3>
+<div class="outline-text-3" id="text-4-5">
+<p>
+The first two subspaces are familiar: range (column space as we have just introduced) and nullspace.
+</p>
+
+<div class="definition" id="orgb0be4d1">
+<p>
+The <b>nullspace</b> of a linear operator \(A:X \rightarrow Y\) consists of all the vectors \(x \in X\) such that \(Ax = 0\). It is denoted as
+\(\mathcal{N}(A)\), and is a subspace of \(A\). The dimension of \(\mathcal{N}(A)\) is called the nullity of \(A\).
+</p>
+
+</div>
+
+<p>
+The next fundamental subspace of \(A\) is the <b>range of the adjoint ($\mathcal{R}(A^</b>)$)*. If \(A\) is a matrix, then the adjoint is
+simply the transpose. That means \(\mathcal{R}(A^*)\) is simply the linear combinations of the conjugates of the rows of \(A\). For
+this reason, \(\mathcal{R}(A^*)\) is referred to as the row space of \(A^*\).
+</p>
+
+<p>
+The fourth fundamental subspace is the nullspace of the adjoint (\(\mathcal{N}(A^*)\)). The following properties arise and are
+written in the following theorem
+</p>
+
+<div class="theorem" id="orgb724417">
+<p>
+Let \(A:X \rightarrow Y\) be a bounded linear operator between two Hilbert spaces \(X\)
+ and \(Y\), and let \(\mathcal{R}(A)\) and \(\mathcal{R}(A^*)\) be closed. Then
+</p>
+
+<ul class="org-ul">
+<li>the range is orthogonal compliment of the left nullspace: \([\mathcal{R}(A)]^{\perp} = \mathcal{N}(A^*)\)</li>
+<li>the orthogonal compliment of the row space is the nullspace: \([\mathcal{R}(A)]^{\perp} = \mathcal{N}(A)\)</li>
+</ul>
+
+<p>
+Complementing these we get
+</p>
+
+<ul class="org-ul">
+<li>\(\mathcal{R}(A)= [\mathcal{N}(A^*)]^{\perp}\)</li>
+<li>\(\mathcal{R}(A)= [\mathcal{N}(A^*)]^{\perp}\)</li>
+</ul>
+
+</div>
+
+<p>
+This theorem gives us a means of determining whether an equation of the form \(Ax = b\) has a solution, and whether that
+solution is unique. As stated before, we know when \(b\) is in the range of \(A\), then there is a solution, but we can now
+further state that if \(b\) is in the column space of \(A\), then it must also be orthogonal to the left nullspace of \(A\).
+</p>
+
+<div class="theorem" id="orgbb86b8a">
+<p>
+Let \(A\) be a bounded linear operator. The equation \(Ax = b\) has a solution if and only if \(\langle b,v \rangle = 0 \forall v \in
+\mathcal{N}(A^*)\). More succinctly,
+</p>
+
+\begin{equation*}
+b \in \mathcal{R}(A) \iff b \perp \mathcal{N}(A^*)
+\end{equation*}
+
+<p>
+In matrix notation, \(Ax = b\) has a solution if and only if \(v^H b = 0 \forall v : A^h v = 0\)
+</p>
+
+</div>
+
+<p>
+The uniqueness of the solutions is determined by the following theorem
+</p>
+
+<div class="theorem" id="org16f3784">
+<p>
+The solution to the equation \(Ax = b\) (if it exists) is unique if and only if the solution of \(Ax = 0\) is \(x=0\). That
+is, if the nullspace of \(A\) is the empty set (only the zero vector).
+</p>
+
+</div>
+
+<p>
+A weird little fact is that in all matrices, the dimension of the column space is the dimension of the row space (see
+Example 4.5.1).
+</p>
+
+<div class="definition" id="org5653cff">
+<p>
+The dimension of the column space (or the row space) of the matrix \(A\) is the rank of the matrix.
+</p>
+
+</div>
+
+<p>
+That is we get the following relationship for a \(m \times n\) matrix of rank \(r\):
+</p>
+
+<ul class="org-ul">
+<li>Column space: \(\text{dim}(\mathcal{R}(A)) = r\)</li>
+<li>Row space: \(\text{dim}(\mathcal{R}(A^H)) = r\)</li>
+<li>Nullspace: \(\text{dim}(\mathcal{N}(A)) = n-r\)</li>
+<li>Left nullspace: \(\text{dim}(\mathcal{N}(A^H)) = m-r\)</li>
+</ul>
+
+<p>
+<a href="fig:fourfundamentalsubspaces">fig:fourfundamentalsubspaces</a> summarizes the four fundamental subspaces. In light of the figure we observe that a
+matrix \(A\) maps its row space to its column space. The mapping from the row space to the column space is invertible
+(although some information is never recovered due to some of the nullspace information being left behind).
+</p>
+
+<div class="theorem" id="org1b5ad29">
+<p>
+Every vector \(b \in \mathcal{R}(A)\) comes form one and only one vector \(x_r\) in the row space of \(A\).
+</p>
+
+</div>
+
+
+<div id="orgcb99383" class="figure">
+<p><img src="https://i.stack.imgur.com/PH6JS.png" alt="PH6JS.png" />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcf8adc4" class="outline-4">
+<h4 id="orgcf8adc4"><span class="section-number-4">4.5.1.</span> <span class="todo TODO">TODO</span> The Four Fundamental Subspaces with non-closed range</h4>
+</div>
+</div>
+
+<div id="outline-container-orga35467f" class="outline-3">
+<h3 id="orga35467f"><span class="section-number-3">4.6.</span> Some Properties Of Matrix Inverses</h3>
+<div class="outline-text-3" id="text-4-6">
+<div class="definition" id="org087e99e">
+<p>
+A matrix \(A\) is said to have a left inverse if there is a matrix \(B\) such that \(BA = I\), and a right inverse if there
+exists a matrix \(C\) such that \(AC = I\).
+</p>
+
+</div>
+
+<p>
+This implies that if \(A\) has a right inverse, then the solution to \(Ax = b\) is \(x = Bb\). Similarly, for a right inverse
+we get the solution \(x = Cb\)
+</p>
+</div>
+
+<div id="outline-container-orgae5985b" class="outline-4">
+<h4 id="orgae5985b"><span class="section-number-4">4.6.1.</span> Tests For Invertibility Of Matrices</h4>
+<div class="outline-text-4" id="text-4-6-1">
+<div class="definition" id="org5876414">
+<p>
+A matrix \(A \in M_{m,n}(F)\) (where \(F\) is a field) is said to be nonsingular if the only \(x \in F^n\) such that \(Ax = 0\) is
+the zero vector \(x = 0\).
+</p>
+
+</div>
+
+<p>
+Some other signs of Invertibility for a \(n \times n\) matrix are
+</p>
+
+<ul class="org-ul">
+<li>\(Ax = 0\) implies \(x = 0\)</li>
+<li>\(\text{rank}(A) = n\)</li>
+<li>The rows of \(A\) are linearly independent; the column of \(A\) are linearly independent</li>
+<li>The determinant of \(A\) is nonzero</li>
+<li>There are no zero eigenvalues of \(A\)</li>
+<li>\(A^H A\) is positive definite; that is \(x^H A^H A x > 0\) for any nonzero \(x \in R^n\)</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0178c45" class="outline-3">
+<h3 id="org0178c45"><span class="section-number-3">4.7.</span> Some Results On Matrix Rank</h3>
+<div class="outline-text-3" id="text-4-7">
+<div class="definition" id="org512d667">
+<p>
+An \(m \times n\) matrix is said to be full rank if the rank is as large as possible: \(\text{rank}(A) = \text{min}(m,n)\). An \(m
+\times n\) matrix is said to be matrix deficient if it is not full rank.
+</p>
+
+</div>
+
+<div class="theorem" id="orgb81707b">
+<p>
+For matrices \(A\) and \(B\) such that \(AB\) exists:
+</p>
+
+<ul class="org-ul">
+<li>\(\mathcal{N}(B) \subset \mathcal{N}(AB)\)</li>
+<li>\(\mathcal{R}(AB) \subset \mathcal{R}(A)\)</li>
+<li>\(\mathcal{N}(A^*) \subset \mathcal{N}(AB)^*\)</li>
+<li>\(\mathcal{R}(AB)^* \subset \mathcal{R}(B)\)</li>
+</ul>
+
+</div>
+
+<p>
+Combining the outcome of the previous theorem we find
+</p>
+
+\begin{equation*}
+\begin{array}{cc}
+\text{rank}(AB) \le \text{rank}(A) & \text{rank}(AB) \le \text{rank}(B)
+\end{array}
+\end{equation*}
+
+<div class="theorem" id="orgb089027">
+<p>
+Suppose \(A\) is \(m \times n\) and \(B\) and \(C\) are \(n \times p\). Then \(A^HAB = A^HAC\) if and only if \(AB = AC\)
+</p>
+
+</div>
+
+<div class="definition" id="org377ed8d">
+<p>
+A submatrix of a matrix \(A\) is obtained by removing zero or more columns of \(A\) and zero or more rows of \(A\).
+</p>
+
+</div>
+</div>
+
+<div id="outline-container-orgc0a0fd8" class="outline-4">
+<h4 id="orgc0a0fd8"><span class="section-number-4">4.7.1.</span> The Numeric Rank</h4>
+<div class="outline-text-4" id="text-4-7-1">
+<p>
+Even though the rank of a matrix is well-defined mathematically, numerical difficulties may arise when actually trying
+to compute the rank of a matrix with real-valued elements, due to roundoff.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org718ff94" class="outline-3">
+<h3 id="org718ff94"><span class="section-number-3">4.8.</span> Another Look At Least Squares</h3>
+<div class="outline-text-3" id="text-4-8">
+<p>
+Since we have now generalized the idea of the transpose, lets write the more general form of the least squares solution.
+This follows in the given theorem
+</p>
+
+<div class="theorem" id="org1a55531">
+<p>
+The vector \(\hat{x} \in X\) minimizes \(||b - A \hat{x}||^2_2\) if and only if
+</p>
+
+\begin{equation*}
+A^*A\hat{x} = A^*b
+\end{equation*}
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0290706" class="outline-3">
+<h3 id="org0290706"><span class="section-number-3">4.9.</span> Pseudoinverses</h3>
+<div class="outline-text-3" id="text-4-9">
+<p>
+The solution to the theorem above \((A^HA)^{-1}A^H\) is what is called a pseudoinverse. We formally define the
+pseudoinverse in a manner that captures the smallest error and the smallest norm of the solution as follows
+</p>
+
+<div class="definition" id="org1194ce5">
+<p>
+Let \(A:X \rightarrow Y\) be a bounded linear operator, where \(X\) and \(Y\) are Hilbert spaces, and let \(\mathcal{R}(A)\) be closed. For some \(b
+\in Y\), let \(\hat{x}\) be the vector of minimum norm \(||\hat{x}||_2\) that minimizes \(||b - A \hat{x}||\). The pseudoinverse
+\(A'\) is the operator mapping \(b\) to \(\ hat{x}\) for each \(b \in Y\).
+</p>
+
+</div>
+
+<p>
+The pseudoinverse operator takes a point in \(Y\) back to a point in \(\hat{x} \in \mathcal{R}(A^*)\), in such a way that \(\hat{x}\) has
+minimum norm. Recall that before we discussed that the inverse of the projection is possible, but some of the data is
+lost due to the nullspace component. That is why we decide to go with the inverse of minimum norm.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9fc9243" class="outline-3">
+<h3 id="org9fc9243"><span class="section-number-3">4.10.</span> Matrix Condition Number</h3>
+<div class="outline-text-3" id="text-4-10">
+<p>
+When matrices are "nearly" linearly dependent (i.e. then lines are almost parallel or are rank deficient), that may
+introduce an ill-conditioned matrix. That is, a matrix that produces numerical shenanigans that we do not like or trust
+the results of. Because of this, we have the concept of a matrix conditioning number that gives us an indication of how
+much we can actually trust the results of using said matrix. Given \((A + \epsilon E)x = b\), we define the condition number as
+</p>
+
+\begin{equation}
+\kappa(A) = \lvert A \rvert \lvert A^{-1} \rvert
+\end{equation}
+
+<p>
+When \(A\) is singular we take \(\kappa(A) = \infty\). Now let the relative error of the perturbation \(A\) be written as
+</p>
+
+\begin{equation}
+\rho = \epsilon \frac{\lvert E \rvert}{\lvert A \rvert}
+\end{equation}
+
+<p>
+The relative error in the solution can be bounded as follows
+</p>
+
+\begin{equation}
+\frac{\lvert x_E x_0 \rvert}{\lvert x_0 \rvert} \le \kappa(A)\rho + O(\lvert \epsilon E\rvert^2)
+\end{equation}
+
+<p>
+<b>A matrix with a large condition number is said to be ill conditioned</b>. Another interpretation of the condition number
+can be taken by viewing the ration of the largest and smallest eigenvalues.
+</p>
+
+\begin{equation}
+\kappa(A) = \frac{\lambda_{\text{max}}}{\lambda_{\text{min}}}
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-org2ffd3b6" class="outline-3">
+<h3 id="org2ffd3b6"><span class="section-number-3">4.11.</span> Inverse Of A Small-Rank Adjustment</h3>
+<div class="outline-text-3" id="text-4-11">
+<p>
+If we know the inverse of a matrix \(A^{-1}\) is known and then \(A\) is changed by the addition of some rank 1 matrix to
+produce \(B = A + xy^H\). We can calculate the inverse of the incremented matrix with less computation by using the matrix
+inversion lemma (Sherman-Morrison formula)
+</p>
+
+\begin{equation}
+B^{-1} = (A + xy^H)^{-1} = A^{-1} - \frac{A^{-1} xy^H A^{-1}}{1 + y^HA^{-1}x}
+\end{equation}
+</div>
+
+<div id="outline-container-orgc1f7f0c" class="outline-4">
+<h4 id="orgc1f7f0c"><span class="section-number-4">4.11.1.</span> An Application: The Recursive Least Squares (RLS) filter</h4>
+<div class="outline-text-4" id="text-4-11-1">
+<p>
+Given a signal \(f[t]\) and having it pass through a filter \(h[t]\) to produce an output \(y[t]\) such that
+</p>
+
+\begin{equation}
+y[t] = \sum_{i=0}^{m-1} h[i] f[t-i]
+\end{equation}
+
+<p>
+The solution for \(h\) is \(h = R^{-1}A^Hd = R^{-1}p\). \(R\) can be written as \(R[t] = \sum_{i=1}^t q[i]q^H[i]\). That is we can
+write \(R[t] = \sum_{i=1}^{t-1} q[i]q^H[i] + q[t]q^H[t]\). Then by the Sherman-Morrison formula we can recalculate the
+inverse.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4c2bb96" class="outline-3">
+<h3 id="org4c2bb96"><span class="section-number-3">4.12.</span> Inverse Of A Block (Partitioned) Matrix</h3>
+<div class="outline-text-3" id="text-4-12">
+<div class="lemma" id="orge039629">
+<p>
+For a matrix \(A\) partitioned as
+</p>
+
+\begin{equation}
+A =
+\begin{bmatrix}
+A_{11} & A_{12} \\
+A_{21} & A_{22} \\
+\end{bmatrix}
+\end{equation}
+
+<p>
+the inverse is
+</p>
+
+\begin{equation}
+A =
+\begin{bmatrix}
+A_{11} & A_{12} \\
+A_{21} & A_{22} \\
+\end{bmatrix}^{-1} =
+\begin{bmatrix}
+A_{11}^{-1} & 0     \\
+0     & 0     \\
+\end{bmatrix} +
+\begin{bmatrix}
+-A_{11}^{-1} A_{12} \\
+I \\
+\end{bmatrix}^{-1} S^{-1}
+\begin{bmatrix}
+-A_{21}A_{11}^{-1} & I
+\end{bmatrix}
+\end{equation}
+
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alexander Brown</p>
-<p class="date">Created: 2023-04-01 Sat 11:11</p>
+<p class="date">Created: 2023-04-09 Sun 13:22</p>
 </div>
 </body>
 </html>

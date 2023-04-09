@@ -1,8 +1,13 @@
-* Mathematical methods and algorithms for signal processing, Moon, T., & Stirling, W., , (1999) :book:
+#+STARTUP: inlineimages
+
+#+LATEX_HEADER: \newtheorem{definition}{Definition}[section]
+#+title: Mathematical methods and algorithms for signal processing, Moon, T., & Stirling, W., , (1999) :book:
 
 See [[cite:&moon-1999-mathem-method]]
 
-* Chapter 3: Representation and approximation in vector spaces
+* TODO Introduction and Foundations
+* TODO Signal Spaces
+* Representation and approximation in vector spaces
 ** The approximation problem in Hilbert space
 The analysis problem is this: given a vector $x \in S$, find the coefficients $c_1, c_2, ..., c_m$ that
 
@@ -28,17 +33,17 @@ In matrix form this equates to
 
 \begin{equation*}
 \begin{bmatrix}
-<p_1, p_1> & <p_2, p_1> & \cdots & <p_m, p_1> \\
-<p_1, p_2> & <p_2, p_2> & \cdots & <p_m, p_2> \\
-\vdots          &            &    & \vdots          \\
-<p_1, p_m> & <p_2, p_m> & \cdots & <p_m, p_1> \\
+\langle p_1, p_1 \rangle & \langle p_2, p_1 \rangle & \cdots & \langle p_m, p_1 \rangle \\
+\langle p_1, p_2 \rangle & \langle p_2, p_2 \rangle & \cdots & \langle p_m, p_2 \rangle \\
+\vdots          &            &   & \vdots          \\
+\langle p_1, p_m \rangle & \langle p_2, p_m \rangle & \cdots & \langle p_m, p_1 \rangle \\
 \end{bmatrix}
 \begin{bmatrix}
 c_1 \\ c_2 \\ \vdots \\ c_m
 \end{bmatrix}
 =
 \begin{bmatrix}
-<x,p1> \\ <x,p2> \\ \vdots \\ <x,pm> \\
+\langle x,p1 \rangle \\ \langle x,p2 \rangle \\ \vdots \\ \langle x,pm \rangle \\
 \end{bmatrix}
 \end{equation*}
 
@@ -493,7 +498,7 @@ Hence the space of solutions from the inner products above is the linear variety
 *See Example 3.14.2*
 
 #+begin_theorem
-Let ${y_i}$ be a linearly independent in a Hilbert space $S$, and let $M = \text{span}(y_1,...,y_m)$. The element $x \in S$ satisfying 
+Let ${y_i}$ be a linearly independent in a Hilbert space $S$, and let $M = \text{span}(y_1,...,y_m)$. The element $x \in S$ satisfying
 
 $$
 \big<x,y_i\big> = a_i\; \forall i = 1,2,...,n
@@ -516,7 +521,7 @@ $$
 \end{bmatrix}
 \begin{bmatrix}
 c_1 \\ c_2 \\ \vdots \\ c_m
-\end{bmatrix} = 
+\end{bmatrix} =
 \begin{bmatrix}
 a_1 \\ a_2 \\ \vdots \\ a_m
 \end{bmatrix}
@@ -524,7 +529,7 @@ $$
 #+end_theorem
 
 ** Minimum-norm solution of undetermined equations
-The solution to the dual problem provides a method of finding a least-squares solution to an underdetermined set of equations *See Example 3.15.1*. Generally speaking, given the following 
+The solution to the dual problem provides a method of finding a least-squares solution to an underdetermined set of equations *See Example 3.15.1*. Generally speaking, given the following
 
 \begin{equation*}
 \begin{array}{cc}
@@ -572,7 +577,7 @@ A set of orthornormal functions $\{p_i, i=1,2,...\}$ is complete in an inner pro
 
 *For a finite-dimensional space $S$ of dimension $m$, to have $m$ linearly independent functions $p_k, k=1,2,...,m$ is sufficient for completeness*.
 
-We can define different transformations depending upon the set of orthonormal basis functions we choose. Since each coefficient In the transform is a projection of $x$ onto the basis function, the transform coefficient $c_i$, determines how much of $p_i$, is in $x$. If we want to look for particular features of a signal. one way is to design a set of orthogonal basis functions that have those features and compute a transform using those signals. 
+We can define different transformations depending upon the set of orthonormal basis functions we choose. Since each coefficient In the transform is a projection of $x$ onto the basis function, the transform coefficient $c_i$, determines how much of $p_i$, is in $x$. If we want to look for particular features of a signal. one way is to design a set of orthogonal basis functions that have those features and compute a transform using those signals.
 
 If $p_i$ is a complete set then there is no error in the representation and Bessel's inequality becomes an equality known as Parseval's equality.
 
@@ -607,7 +612,7 @@ Different sets of orthogonal polynomials are obtained by using different weighti
 \big< f,g \big>_w = 0
 \end{equation*}
 
-where 
+where
 
 \begin{equation*}
 \big< f,g \big>_w = \int_a^b w(t)f(t)g(t) dt
@@ -615,7 +620,7 @@ where
 
 Using the Gram-Schmidt procedure it is possible to orthogonalize any set of polynornials with respect to any inner product. In particular the set $1,t,t^2,...,t^n$ can be orthogonalized with respect to the weighted inner product. *It can be shown that the orthogonal polynomials (properly normalized) form a complete orthonormal basis for $L_ [a,b]$.
 
-*** Families of orthogonal polynomials 
+*** Families of orthogonal polynomials
 A variety of types of orthogonal polynomials have been explored over the years. One of the general motivations for this is that orthogonal polynomials can be used to provide solutions to particular differential equations. Since these orthogonal polynomials form a complete orthogonal basis, they can be used to form series solutions for any boundary conditions and input function.
 
 *** Legendre polynomials
@@ -630,7 +635,7 @@ p_3(t) = t^3 - 3/5t \\
 \end{array}
 \end{equation*}
 
-Using Lemma 3.2 (not written in these notes), the general polynomial is 
+Using Lemma 3.2 (not written in these notes), the general polynomial is
 
 \begin{equation*}
 tp_n(t) = \frac{n+1}{2n+1}p_{n+1} + \frac{n}{2n+1}p_{n-1}(t)
@@ -640,7 +645,7 @@ tp_n(t) = \frac{n+1}{2n+1}p_{n+1} + \frac{n}{2n+1}p_{n-1}(t)
 These polynomials are orthogonal with respect to the weighting function $w(t) = \frac{1}{\sqrt{1-t^2}}$ over the interval $[-1,1]$. In particular
 
 \begin{equation*}
-\int_a^b = \frac{1}{\sqrt{1-t^2}}T_r(t)T_s(t) dt = 
+\int_a^b = \frac{1}{\sqrt{1-t^2}}T_r(t)T_s(t) dt =
 \begin{cases}
 0 & r \ne s \\
 \pi & r = s = 0 \\
@@ -650,4 +655,443 @@ These polynomials are orthogonal with respect to the weighting function $w(t) = 
 
 TODO
 
-#  LocalWords:  AR
+* Linear Operations and Matrix Inverses
+The basic goals of this chapter are as follows: to understand when solutions of linear equations exist and are unique,
+and to develop insight into factors that can affect the quality of the solution.
+
+The most familiar linear operator is a matrix, appearing in a linear equation of the form
+
+#+name: eq:transformationmatrix
+\begin{equation}
+Ax = b
+\end{equation}
+
+However, in the interest of getting the most "bang for the buck," we introduce more general linear operators than
+matrices.
+
+If the matrix A is "nearly not invertible," then the answers obtained by a numerical algorithm are likely to be
+unreliable. Some qualitative results regarding how close a matrix is to being noninvertible are obtained by introducing
+the /condition number/ of a matrix.
+
+** Linear Operators
+In autoref:eq:transformationmatrix, we can regard $A$ as a linear transformation (or operator), which maps a vector $x$
+into the column space (range) of $A$.
+
+#+begin_definition
+A transformation $A: X \rightarrow Y$, where $X$ and $Y$ are vector spaces over a ring $R$, is said to be a linear if for every
+$x_1, x_2 \in X$ and all scalars $\alpha_1, \alpha_2 \in R$,
+
+\begin{equation*}
+A(\alpha_1 x_1 + \alpha_2 x_2) = \alpha_1 A(x_1) + \alpha_2 A(x_2)
+\end{equation*}
+#+end_definition
+
+The most important example of a linear transformation, in fact the algorithmic focus of this part of the book is the
+transformation $A: \mathbb{R}^n \rightarrow \mathbb{R}^m$. In this case, $A$ is the $m \times n$ matrix with the elements from $\mathbb{R}$.
+
+*** Linear Functionals
+#+begin_definition
+A funcitonal $f: X \rightarrow \mathbb{R}$ is a mapping from a vector space $X$ to a real scalar value. (More generally, the range of the
+mapping could be any set of scalars.)
+
+If $f$ has the property $f(\alpha x + \beta y) = \alpha f(x) + \beta f(y)$ for all real $\alpha$ and $\beta$ and all $x,y \in X$, then $f$ is said to
+be a linear functional.
+#+end_definition
+
+*Inner products are functionals*. Conversely, if $X$ is a Hilbert space (complete), then /any/ continuous linear
+functional can be expressed as an inner product. This in known as the Riesz representation theorem.
+
+** Operator Norms
+Let $A$ be a linear operator $A: X \rightarrow Y$. The operator norm of $A$ is then defined as
+
+\begin{equation*}
+||A||_p = \text{sup}_{x\in X \ne 0} \frac{||Ax||_p}{||x||_p} =
+\text{sup}_{x\in X, ||x||_p = 1} ||Ax||_p
+\end{equation*}
+
+Where $||\cdot||_p$ is the $p$ norm defined earlier. The norm on $A$ is said to be subordinate to the norm on $X$.
+Geometrically speaking, the $||A||$ subordinate norm measures the maximum extent that $A$ transforms the unit circle.
+This is demonstrated in autoref:fig:opnorm.
+
+#+name: fig:opnorm
+[[http://jde27.uk/lgla/img/operator_norm_pic.jpg][http://jde27.uk/lgla/img/operator_norm_pic.jpg]]
+
+*** Bounded Operators
+#+begin_definition
+If the norm of a transformation is finite, the transformation is said to be bounded.
+#+end_definition
+
+The following theorem presents a rather remarkable fact about bounded linear operators
+
+#+begin_theorem
+A linear operator $A: X \rightarrow Y$ is bounded if and only if it is continuous
+#+end_theorem
+
+The following theorem is of great utility: by showing that linear operators from finite-dimensional spaces are
+continuous, we can conclude from the previous theorem that they are also bounded. Since many of the results of this
+chapter rely on bounded linear operators, this theorem reassures us that matrices - operators on finite-dimensional
+spaces - will work.
+
+#+begin_theorem
+Let $A: X \rightarrow Y$ be a linear operator, where $X$ and $Y$ are normed linear spaces. If $X$ is finite-dimensional, then $A$
+is continuous.
+#+end_theorem
+
+*** The Neumann Expansion
+The Neumann expansion provides a useful expansion for the inverse of the linear operator $(I-A)^{-1}$.
+
+#+begin_theorem
+Suppose $||\cdot||$ is a norm satisfying the submultiplicative  property $A:x \rightarrow x$ is an operator with $||A|| < 1$. Then
+$(I-A)^{-1}$ exists and
+
+\begin{equation*}
+(I-A)^{-1} = \sum_{i=0}^{\infty} A^i
+\end{equation*}
+#+end_theorem
+
+*** Matrix Norms
+The norm $||A||_{\infty}$ is the largest row sum.
+
+\begin{equation}
+||A||_{\infty} = \text{max }_{||x||_{\infty} = 1} ||Ax||_{\infty} = \text{max }_i \sum_{j} |a_{ij}|
+\end{equation}
+
+The norm $||A||_{1}$ is the largest column sum.
+
+\begin{equation}
+||A||_{1} = \text{max }_{||x||_{1} = 1} ||Ax||_{1} = \text{max }_j \sum_{j} |a_{ij}|
+\end{equation}
+
+The norm $||A||_{2}$ is more involved than the previous two. Let $\rho(A) = \text{max }_i |\lambda_i|$ where $\lambda_i$ is the
+$i^{\text{th}}$ eigenvalue of matrix $A$. The $||A||_2$ ( spectral) norm is defined as
+
+\begin{equation}
+||A||_{1} = \sqrt{\rho(A^HA)}
+\end{equation}
+
+** Adjoint Operators And Transposes
+Let $A:X \rightarrow Y$ be a linear operator and let $\langle \cdot , \cdot \rangle: Y \times Y \rightarrow \mathbb{C}$ be an inner product. Since $Ax \in Y$, the
+inner product $\langle Ax, y \rangle$ is defined and may be viewed as a scalar linear operation on $x \in X$ The elements in $Y$ are
+an example of a /dual space/.
+
+#+begin_definition
+Let $A:X \rightarrow Y$ be a linear operator from the Hilbert space $X$ to the Hilbert space $Y$. The adjoint of the operator $A$,
+denoted $A^*$, is the operator $A^* : Y \rightarrow X$ such that
+
+\begin{equation*}
+ \langle Ax,y \rangle = \langle x,A^* y \rangle
+\end{equation*}
+
+for all $x \in X$ and $y \in Y$. An operator $A$ is self-adjoint if $A^* = A$.
+#+end_definition
+
+It can be shown that the adjoint of a matrix is simply the conjugate transpose
+
+\begin{equation*}
+A^* = \bar{A^T} = A^H
+\end{equation*}
+
+For real matrices it simplifies to $A^* = A^T$. Furthermore, a real matrix which is self-adjoint is symmetric
+(self-adjoint matrices are necessarily square). A matrix operator $A$ that satisfies $A^* A = AA^*$ is said to be
+normal.
+
+Some properties for the adjoint is
+
++ $(A_1 + A_2)^* = A_1^* + A_2^*$
++ $(\alpha A)^* = \bar{\alpha}A^*$
++ $(A_2 A_1)^* = A_1^* A_2^*$
++ $(A^{-1})^* = (A^*)^{-1}$
++ $(A^H)^* = (A^*)^H$ (and simply just the transpose for real matrices)
+
+*** A Dual Optimization Problem
+The adjoint allows us to express the solution to the problem of finding the minimum-norm solution to the linear operator
+$Ax = y$ when there is more than one solution.
+
+#+begin_theorem
+Let $A:X \rightarrow Y$ be a bounded linear operator form the Hilbert space $X$ to the Hilbert space $Y$. The vector $x$ of
+minimum norm satisfying $Ax = y$ is given by
+
+\begin{equation*}
+x = A^* z
+\end{equation*}
+
+where $z$ is any solution of $(AA^*)z = y$.
+#+end_theorem
+
+** Geometry Of Linear Equations
+The solution of the matrix equation $Ax = b$ can be considered from two different perspectives to gain insight into the
+solution of linear equaitons
+
+*** The "Intersecting Lines" POV
+In general, an equation in $n$ unknowns describes a hyperplane in $n$-dimensional space, and $n$ such planes must
+intersect at the point of simultaneous solution. From this interpretation of intersecting lines or planes, three
+different cases can be considered
+
++ A single solution
++ No solution
++ Infinite solutions
+
+*** The "vector space" point of view
+In general, the product of a matrix times a vector is a linear combination of the columns of the matrix. Which leads
+into the following definition
+
+#+begin_definition
+The space spanned by the columns of a matrix is called the column space of the matrix. It is also called the range of
+the matrix, and is denoted by $\mathcal{R}(A)$. If $A$ is written in terms of its columns, $A=\{a_1, a_2,...,a_n\}$, then
+
+\begin{equation*}
+\mathcal{R}(A) = span(a_1, a_2,...,a_n)
+\end{equation*}
+
+If $b \in \mathcal{R}(A)$ for a matrix $A$, then there must be some linear combination of the columns of $A$ that is equal to $b$.
+*That is, the equation $Ax = b$ has a solution only if $b$ lies in the column space of $A$*.
+#+end_definition
+
+** Four Fundamental Subspaces Of A Linear Operator
+The first two subspaces are familiar: range (column space as we have just introduced) and nullspace.
+
+#+begin_definition
+The *nullspace* of a linear operator $A:X \rightarrow Y$ consists of all the vectors $x \in X$ such that $Ax = 0$. It is denoted as
+$\mathcal{N}(A)$, and is a subspace of $A$. The dimension of $\mathcal{N}(A)$ is called the nullity of $A$.
+#+end_definition
+
+The next fundamental subspace of $A$ is the *range of the adjoint ($\mathcal{R}(A^*)$)*. If $A$ is a matrix, then the adjoint is
+simply the transpose. That means $\mathcal{R}(A^*)$ is simply the linear combinations of the conjugates of the rows of $A$. For
+this reason, $\mathcal{R}(A^*)$ is referred to as the row space of $A^*$.
+
+The fourth fundamental subspace is the nullspace of the adjoint ($\mathcal{N}(A^*)$). The following properties arise and are
+written in the following theorem
+
+#+begin_theorem
+Let $A:X \rightarrow Y$ be a bounded linear operator between two Hilbert spaces $X$
+ and $Y$, and let $\mathcal{R}(A)$ and $\mathcal{R}(A^*)$ be closed. Then
+
++ the range is orthogonal compliment of the left nullspace: $[\mathcal{R}(A)]^{\perp} = \mathcal{N}(A^*)$
++ the orthogonal compliment of the row space is the nullspace: $[\mathcal{R}(A)]^{\perp} = \mathcal{N}(A)$
+
+Complementing these we get
+
++ $\mathcal{R}(A)= [\mathcal{N}(A^*)]^{\perp}$
++ $\mathcal{R}(A)= [\mathcal{N}(A^*)]^{\perp}$
+#+end_theorem
+
+This theorem gives us a means of determining whether an equation of the form $Ax = b$ has a solution, and whether that
+solution is unique. As stated before, we know when $b$ is in the range of $A$, then there is a solution, but we can now
+further state that if $b$ is in the column space of $A$, then it must also be orthogonal to the left nullspace of $A$.
+
+#+begin_theorem
+Let $A$ be a bounded linear operator. The equation $Ax = b$ has a solution if and only if $\langle b,v \rangle = 0 \forall v \in
+\mathcal{N}(A^*)$. More succinctly,
+
+\begin{equation*}
+b \in \mathcal{R}(A) \iff b \perp \mathcal{N}(A^*)
+\end{equation*}
+
+In matrix notation, $Ax = b$ has a solution if and only if $v^H b = 0 \forall v : A^h v = 0$
+#+end_theorem
+
+The uniqueness of the solutions is determined by the following theorem
+
+#+begin_theorem
+The solution to the equation $Ax = b$ (if it exists) is unique if and only if the solution of $Ax = 0$ is $x=0$. That
+is, if the nullspace of $A$ is the empty set (only the zero vector).
+#+end_theorem
+
+A weird little fact is that in all matrices, the dimension of the column space is the dimension of the row space (see
+Example 4.5.1).
+
+#+begin_definition
+The dimension of the column space (or the row space) of the matrix $A$ is the rank of the matrix.
+#+end_definition
+
+That is we get the following relationship for a $m \times n$ matrix of rank $r$:
+
++ Column space: $\text{dim}(\mathcal{R}(A)) = r$
++ Row space: $\text{dim}(\mathcal{R}(A^H)) = r$
++ Nullspace: $\text{dim}(\mathcal{N}(A)) = n-r$
++ Left nullspace: $\text{dim}(\mathcal{N}(A^H)) = m-r$
+
+autoref:fig:fourfundamentalsubspaces summarizes the four fundamental subspaces. In light of the figure we observe that a
+matrix $A$ maps its row space to its column space. The mapping from the row space to the column space is invertible
+(although some information is never recovered due to some of the nullspace information being left behind).
+
+#+begin_theorem
+Every vector $b \in \mathcal{R}(A)$ comes form one and only one vector $x_r$ in the row space of $A$.
+#+end_theorem
+
+#+name: fig:fourfundamentalsubspaces
+[[https://i.stack.imgur.com/PH6JS.png]]
+
+*** TODO The Four Fundamental Subspaces with non-closed range
+
+** Some Properties Of Matrix Inverses
+#+begin_definition
+A matrix $A$ is said to have a left inverse if there is a matrix $B$ such that $BA = I$, and a right inverse if there
+exists a matrix $C$ such that $AC = I$.
+#+end_definition
+
+This implies that if $A$ has a right inverse, then the solution to $Ax = b$ is $x = Bb$. Similarly, for a right inverse
+we get the solution $x = Cb$
+
+*** Tests For Invertibility Of Matrices
+#+begin_definition
+A matrix $A \in M_{m,n}(F)$ (where $F$ is a field) is said to be nonsingular if the only $x \in F^n$ such that $Ax = 0$ is
+the zero vector $x = 0$.
+#+end_definition
+
+Some other signs of Invertibility for a $n \times n$ matrix are
+
++ $Ax = 0$ implies $x = 0$
++ $\text{rank}(A) = n$
++ The rows of $A$ are linearly independent; the column of $A$ are linearly independent
++ The determinant of $A$ is nonzero
++ There are no zero eigenvalues of $A$
++ $A^H A$ is positive definite; that is $x^H A^H A x > 0$ for any nonzero $x \in R^n$
+
+** Some Results On Matrix Rank
+#+begin_definition
+An $m \times n$ matrix is said to be full rank if the rank is as large as possible: $\text{rank}(A) = \text{min}(m,n)$. An $m
+\times n$ matrix is said to be matrix deficient if it is not full rank.
+#+end_definition
+
+#+begin_theorem
+For matrices $A$ and $B$ such that $AB$ exists:
+
++ $\mathcal{N}(B) \subset \mathcal{N}(AB)$
++ $\mathcal{R}(AB) \subset \mathcal{R}(A)$
++ $\mathcal{N}(A^*) \subset \mathcal{N}(AB)^*$
++ $\mathcal{R}(AB)^* \subset \mathcal{R}(B)$
+#+end_theorem
+
+Combining the outcome of the previous theorem we find
+
+\begin{equation*}
+\begin{array}{cc}
+\text{rank}(AB) \le \text{rank}(A) & \text{rank}(AB) \le \text{rank}(B)
+\end{array}
+\end{equation*}
+
+#+begin_theorem
+Suppose $A$ is $m \times n$ and $B$ and $C$ are $n \times p$. Then $A^HAB = A^HAC$ if and only if $AB = AC$
+#+end_theorem
+
+#+begin_definition
+A submatrix of a matrix $A$ is obtained by removing zero or more columns of $A$ and zero or more rows of $A$.
+#+end_definition
+
+*** The Numeric Rank
+Even though the rank of a matrix is well-defined mathematically, numerical difficulties may arise when actually trying
+to compute the rank of a matrix with real-valued elements, due to roundoff.
+
+** Another Look At Least Squares
+Since we have now generalized the idea of the transpose, lets write the more general form of the least squares solution.
+This follows in the given theorem
+
+#+begin_theorem
+The vector $\hat{x} \in X$ minimizes $||b - A \hat{x}||^2_2$ if and only if
+
+\begin{equation*}
+A^*A\hat{x} = A^*b
+\end{equation*}
+#+end_theorem
+
+** Pseudoinverses
+The solution to the theorem above $(A^HA)^{-1}A^H$ is what is called a pseudoinverse. We formally define the
+pseudoinverse in a manner that captures the smallest error and the smallest norm of the solution as follows
+
+#+begin_definition
+Let $A:X \rightarrow Y$ be a bounded linear operator, where $X$ and $Y$ are Hilbert spaces, and let $\mathcal{R}(A)$ be closed. For some $b
+\in Y$, let $\hat{x}$ be the vector of minimum norm $||\hat{x}||_2$ that minimizes $||b - A \hat{x}||$. The pseudoinverse
+$A'$ is the operator mapping $b$ to $\ hat{x}$ for each $b \in Y$.
+#+end_definition
+
+The pseudoinverse operator takes a point in $Y$ back to a point in $\hat{x} \in \mathcal{R}(A^*)$, in such a way that $\hat{x}$ has
+minimum norm. Recall that before we discussed that the inverse of the projection is possible, but some of the data is
+lost due to the nullspace component. That is why we decide to go with the inverse of minimum norm.
+
+** Matrix Condition Number
+When matrices are "nearly" linearly dependent (i.e. then lines are almost parallel or are rank deficient), that may
+introduce an ill-conditioned matrix. That is, a matrix that produces numerical shenanigans that we do not like or trust
+the results of. Because of this, we have the concept of a matrix conditioning number that gives us an indication of how
+much we can actually trust the results of using said matrix. Given $(A + \epsilon E)x = b$, we define the condition number as
+
+\begin{equation}
+\kappa(A) = \lvert A \rvert \lvert A^{-1} \rvert
+\end{equation}
+
+When $A$ is singular we take $\kappa(A) = \infty$. Now let the relative error of the perturbation $A$ be written as
+
+\begin{equation}
+\rho = \epsilon \frac{\lvert E \rvert}{\lvert A \rvert}
+\end{equation}
+
+The relative error in the solution can be bounded as follows
+
+\begin{equation}
+\frac{\lvert x_E x_0 \rvert}{\lvert x_0 \rvert} \le \kappa(A)\rho + O(\lvert \epsilon E\rvert^2)
+\end{equation}
+
+*A matrix with a large condition number is said to be ill conditioned*. Another interpretation of the condition number
+can be taken by viewing the ration of the largest and smallest eigenvalues.
+
+\begin{equation}
+\kappa(A) = \frac{\lambda_{\text{max}}}{\lambda_{\text{min}}}
+\end{equation}
+
+** Inverse Of A Small-Rank Adjustment
+If we know the inverse of a matrix $A^{-1}$ is known and then $A$ is changed by the addition of some rank 1 matrix to
+produce $B = A + xy^H$. We can calculate the inverse of the incremented matrix with less computation by using the matrix
+inversion lemma (Sherman-Morrison formula)
+
+\begin{equation}
+B^{-1} = (A + xy^H)^{-1} = A^{-1} - \frac{A^{-1} xy^H A^{-1}}{1 + y^HA^{-1}x}
+\end{equation}
+
+*** An Application: The Recursive Least Squares (RLS) filter
+Given a signal $f[t]$ and having it pass through a filter $h[t]$ to produce an output $y[t]$ such that
+
+\begin{equation}
+y[t] = \sum_{i=0}^{m-1} h[i] f[t-i]
+\end{equation}
+
+The solution for $h$ is $h = R^{-1}A^Hd = R^{-1}p$. $R$ can be written as $R[t] = \sum_{i=1}^t q[i]q^H[i]$. That is we can
+write $R[t] = \sum_{i=1}^{t-1} q[i]q^H[i] + q[t]q^H[t]$. Then by the Sherman-Morrison formula we can recalculate the
+inverse.
+
+** Inverse Of A Block (Partitioned) Matrix
+#+begin_lemma
+For a matrix $A$ partitioned as
+
+\begin{equation}
+A =
+\begin{bmatrix}
+A_{11} & A_{12} \\
+A_{21} & A_{22} \\
+\end{bmatrix}
+\end{equation}
+
+the inverse is
+
+\begin{equation}
+A =
+\begin{bmatrix}
+A_{11} & A_{12} \\
+A_{21} & A_{22} \\
+\end{bmatrix}^{-1} =
+\begin{bmatrix}
+A_{11}^{-1} & 0     \\
+0     & 0     \\
+\end{bmatrix} +
+\begin{bmatrix}
+-A_{11}^{-1} A_{12} \\
+I \\
+\end{bmatrix}^{-1} S^{-1}
+\begin{bmatrix}
+-A_{21}A_{11}^{-1} & I
+\end{bmatrix}
+\end{equation}
+#+end_lemma
+
+Where $S = A_{22} - A_{21}A_{11}^{-1}A_{12}$.
+
+#  LocalWords:  AR Riesz

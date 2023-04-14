@@ -38,6 +38,13 @@
 - [[file:mathematical-methods-for-signals-and-systems/class-3-20-23.pdf][class-3-20-23.pdf]]
 - [[file:mathematical-methods-for-signals-and-systems/class-3-22-23.pdf][class-3-22-23.pdf]]
 - [[file:mathematical-methods-for-signals-and-systems/class-3-24-23.pdf][class-3-24-23.pdf]]
+- [[file:mathematical-methods-for-signals-and-systems/class-3-27-23.pdf][class-3-27-23.pdf]]
+- [[file:mathematical-methods-for-signals-and-systems/class-3-29-23.pdf][class-3-29-23.pdf]]
+- [[file:mathematical-methods-for-signals-and-systems/class-3-31-23-4-3-23.pdf][class-3-31-23-4-3-23.pdf]]
+- [[file:mathematical-methods-for-signals-and-systems/class-4-5-23.pdf][class-4-5-23.pdf]]
+- [[file:mathematical-methods-for-signals-and-systems/class-4-10-23.pdf][class-4-10-23.pdf]]
+- [[file:mathematical-methods-for-signals-and-systems/class-4-12-23.pdf][class-4-12-23.pdf]]
+- [[file:mathematical-methods-for-signals-and-systems/class-4-14-23.pdf][class-4-14-23.pdf]]
 
 * Homework Help
 - [[file:./mathematical-methods-for-signals-and-systems/help-1-11-23.htm][help-1-11-23.htm]]

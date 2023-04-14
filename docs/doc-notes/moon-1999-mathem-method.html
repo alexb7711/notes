@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-04-09 Sun 13:22 -->
+<!-- 2023-04-14 Fri 11:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mathematical methods and algorithms for signal processing, Moon, T., &amp; Stirling, W., , (1999) :book:</title>
@@ -891,7 +891,7 @@ TODO: FINISH
 Up until now we have selected a finite-dimensional subspace of the Hilbert space which involved solving an \(m\times m\) system of equations. In some problems the subspace in which the solution lies is not finite dimensional. There are some problems where a finite set of constraints provides sufficient information to solve the problem from a finite set of equations.
 </p>
 
-<div class="definition" id="org7816d39">
+<div class="definition" id="orgd2c77a1">
 <p>
 Let \(M\) be a subspace of a linear space \(S\), and let \(x_0 \in S\). The set \(V = x_0 +M\) is said to be a translation of \(M\) by \(x_0\). This translation is called a linear variety. In general, a linear variety is not a subspace!
 </p>
@@ -916,7 +916,7 @@ Hence the space of solutions from the inner products above is the linear variety
 <b>See Example 3.14.2</b>
 </p>
 
-<div class="theorem" id="orgdbf01f5">
+<div class="theorem" id="org660eb7d">
 <p>
 Let \({y_i}\) be a linearly independent in a Hilbert space \(S\), and let \(M = \text{span}(y_1,...,y_m)\). The element \(x \in S\) satisfying
 </p>
@@ -1016,7 +1016,7 @@ Which is known as <i>Bessel's inequality</i>.
 When \(\{p_i\}\) is a complete basis set, then the sequence \(\{c_1,c_2,...\}\) completely describes \(x\).
 </p>
 
-<div class="definition" id="org34f1355">
+<div class="definition" id="org4717686">
 <p>
 An orthonormal set \(\{p_i, i = 1,2,3,...\}\) in a Hilbert space \(S\) is complete if
 </p>
@@ -1067,7 +1067,7 @@ If \(p_i\) is a complete set then there is no error in the representation and Be
 Equivalently written as \(||x|| = ||c||\) where the norm on the left is the \(L2\) norm (if \(x\) is a function) and the norm on the right is the \(l2\) norm.
 </p>
 
-<div class="lemma" id="orgd93a015">
+<div class="lemma" id="org735d390">
 <p>
 If \(x\) and \(y\) have a generalized Fourier series representation using some orthornarmal basis set \(\{p_i\}\) in a Hilbert space \(S\), with \(x \leftrightarrow c\) and \(y \leftrightarrow b\) then
 </p>
@@ -1223,7 +1223,7 @@ In <a href="eq:transformationmatrix">eq:transformationmatrix</a>, we can regard 
 into the column space (range) of \(A\).
 </p>
 
-<div class="definition" id="org3c11812">
+<div class="definition" id="org3965c67">
 <p>
 A transformation \(A: X \rightarrow Y\), where \(X\) and \(Y\) are vector spaces over a ring \(R\), is said to be a linear if for every
 \(x_1, x_2 \in X\) and all scalars \(\alpha_1, \alpha_2 \in R\),
@@ -1244,7 +1244,7 @@ transformation \(A: \mathbb{R}^n \rightarrow \mathbb{R}^m\). In this case, \(A\)
 <div id="outline-container-orgc2f6b7f" class="outline-4">
 <h4 id="orgc2f6b7f"><span class="section-number-4">4.1.1.</span> Linear Functionals</h4>
 <div class="outline-text-4" id="text-4-1-1">
-<div class="definition" id="orgcd7ee92">
+<div class="definition" id="orgc3884a0">
 <p>
 A funcitonal \(f: X \rightarrow \mathbb{R}\) is a mapping from a vector space \(X\) to a real scalar value. (More generally, the range of the
 mapping could be any set of scalars.)
@@ -1293,7 +1293,7 @@ This is demonstrated in <a href="fig:opnorm">fig:opnorm</a>.
 <div id="outline-container-org8a23ea2" class="outline-4">
 <h4 id="org8a23ea2"><span class="section-number-4">4.2.1.</span> Bounded Operators</h4>
 <div class="outline-text-4" id="text-4-2-1">
-<div class="definition" id="org1aa67ad">
+<div class="definition" id="org11312f4">
 <p>
 If the norm of a transformation is finite, the transformation is said to be bounded.
 </p>
@@ -1304,7 +1304,7 @@ If the norm of a transformation is finite, the transformation is said to be boun
 The following theorem presents a rather remarkable fact about bounded linear operators
 </p>
 
-<div class="theorem" id="orgcbe2cb8">
+<div class="theorem" id="org2613e66">
 <p>
 A linear operator \(A: X \rightarrow Y\) is bounded if and only if it is continuous
 </p>
@@ -1318,7 +1318,7 @@ chapter rely on bounded linear operators, this theorem reassures us that matrice
 spaces - will work.
 </p>
 
-<div class="theorem" id="orgf730e98">
+<div class="theorem" id="org52fcbf5">
 <p>
 Let \(A: X \rightarrow Y\) be a linear operator, where \(X\) and \(Y\) are normed linear spaces. If \(X\) is finite-dimensional, then \(A\)
 is continuous.
@@ -1335,7 +1335,7 @@ is continuous.
 The Neumann expansion provides a useful expansion for the inverse of the linear operator \((I-A)^{-1}\).
 </p>
 
-<div class="theorem" id="org34c533e">
+<div class="theorem" id="orgc992feb">
 <p>
 Suppose \(||\cdot||\) is a norm satisfying the submultiplicative  property \(A:x \rightarrow x\) is an operator with \(||A|| < 1\). Then
 \((I-A)^{-1}\) exists and
@@ -1389,7 +1389,7 @@ inner product \(\langle Ax, y \rangle\) is defined and may be viewed as a scalar
 an example of a <i>dual space</i>.
 </p>
 
-<div class="definition" id="org2b1deef">
+<div class="definition" id="orgececea7">
 <p>
 Let \(A:X \rightarrow Y\) be a linear operator from the Hilbert space \(X\) to the Hilbert space \(Y\). The adjoint of the operator \(A\),
 denoted \(A^*\), is the operator \(A^* : Y \rightarrow X\) such that
@@ -1440,7 +1440,7 @@ The adjoint allows us to express the solution to the problem of finding the mini
 \(Ax = y\) when there is more than one solution.
 </p>
 
-<div class="theorem" id="org36bf8c8">
+<div class="theorem" id="org1d7cddf">
 <p>
 Let \(A:X \rightarrow Y\) be a bounded linear operator form the Hilbert space \(X\) to the Hilbert space \(Y\). The vector \(x\) of
 minimum norm satisfying \(Ax = y\) is given by
@@ -1493,7 +1493,7 @@ In general, the product of a matrix times a vector is a linear combination of th
 into the following definition
 </p>
 
-<div class="definition" id="org6ba227c">
+<div class="definition" id="org3ca8396">
 <p>
 The space spanned by the columns of a matrix is called the column space of the matrix. It is also called the range of
 the matrix, and is denoted by \(\mathcal{R}(A)\). If \(A\) is written in terms of its columns, \(A=\{a_1, a_2,...,a_n\}\), then
@@ -1520,7 +1520,7 @@ If \(b \in \mathcal{R}(A)\) for a matrix \(A\), then there must be some linear c
 The first two subspaces are familiar: range (column space as we have just introduced) and nullspace.
 </p>
 
-<div class="definition" id="orgb0be4d1">
+<div class="definition" id="org1e68845">
 <p>
 The <b>nullspace</b> of a linear operator \(A:X \rightarrow Y\) consists of all the vectors \(x \in X\) such that \(Ax = 0\). It is denoted as
 \(\mathcal{N}(A)\), and is a subspace of \(A\). The dimension of \(\mathcal{N}(A)\) is called the nullity of \(A\).
@@ -1539,7 +1539,7 @@ The fourth fundamental subspace is the nullspace of the adjoint (\(\mathcal{N}(A
 written in the following theorem
 </p>
 
-<div class="theorem" id="orgb724417">
+<div class="theorem" id="org90791af">
 <p>
 Let \(A:X \rightarrow Y\) be a bounded linear operator between two Hilbert spaces \(X\)
  and \(Y\), and let \(\mathcal{R}(A)\) and \(\mathcal{R}(A^*)\) be closed. Then
@@ -1567,7 +1567,7 @@ solution is unique. As stated before, we know when \(b\) is in the range of \(A\
 further state that if \(b\) is in the column space of \(A\), then it must also be orthogonal to the left nullspace of \(A\).
 </p>
 
-<div class="theorem" id="orgbb86b8a">
+<div class="theorem" id="orgb6eb3bf">
 <p>
 Let \(A\) be a bounded linear operator. The equation \(Ax = b\) has a solution if and only if \(\langle b,v \rangle = 0 \forall v \in
 \mathcal{N}(A^*)\). More succinctly,
@@ -1587,7 +1587,7 @@ In matrix notation, \(Ax = b\) has a solution if and only if \(v^H b = 0 \forall
 The uniqueness of the solutions is determined by the following theorem
 </p>
 
-<div class="theorem" id="org16f3784">
+<div class="theorem" id="org830d3f5">
 <p>
 The solution to the equation \(Ax = b\) (if it exists) is unique if and only if the solution of \(Ax = 0\) is \(x=0\). That
 is, if the nullspace of \(A\) is the empty set (only the zero vector).
@@ -1600,7 +1600,7 @@ A weird little fact is that in all matrices, the dimension of the column space i
 Example 4.5.1).
 </p>
 
-<div class="definition" id="org5653cff">
+<div class="definition" id="org2cacdf7">
 <p>
 The dimension of the column space (or the row space) of the matrix \(A\) is the rank of the matrix.
 </p>
@@ -1624,7 +1624,7 @@ matrix \(A\) maps its row space to its column space. The mapping from the row sp
 (although some information is never recovered due to some of the nullspace information being left behind).
 </p>
 
-<div class="theorem" id="org1b5ad29">
+<div class="theorem" id="org5433731">
 <p>
 Every vector \(b \in \mathcal{R}(A)\) comes form one and only one vector \(x_r\) in the row space of \(A\).
 </p>
@@ -1646,7 +1646,7 @@ Every vector \(b \in \mathcal{R}(A)\) comes form one and only one vector \(x_r\)
 <div id="outline-container-orga35467f" class="outline-3">
 <h3 id="orga35467f"><span class="section-number-3">4.6.</span> Some Properties Of Matrix Inverses</h3>
 <div class="outline-text-3" id="text-4-6">
-<div class="definition" id="org087e99e">
+<div class="definition" id="orgca5f4b5">
 <p>
 A matrix \(A\) is said to have a left inverse if there is a matrix \(B\) such that \(BA = I\), and a right inverse if there
 exists a matrix \(C\) such that \(AC = I\).
@@ -1663,7 +1663,7 @@ we get the solution \(x = Cb\)
 <div id="outline-container-orgae5985b" class="outline-4">
 <h4 id="orgae5985b"><span class="section-number-4">4.6.1.</span> Tests For Invertibility Of Matrices</h4>
 <div class="outline-text-4" id="text-4-6-1">
-<div class="definition" id="org5876414">
+<div class="definition" id="org1199988">
 <p>
 A matrix \(A \in M_{m,n}(F)\) (where \(F\) is a field) is said to be nonsingular if the only \(x \in F^n\) such that \(Ax = 0\) is
 the zero vector \(x = 0\).
@@ -1690,7 +1690,7 @@ Some other signs of Invertibility for a \(n \times n\) matrix are
 <div id="outline-container-org0178c45" class="outline-3">
 <h3 id="org0178c45"><span class="section-number-3">4.7.</span> Some Results On Matrix Rank</h3>
 <div class="outline-text-3" id="text-4-7">
-<div class="definition" id="org512d667">
+<div class="definition" id="org3b7db26">
 <p>
 An \(m \times n\) matrix is said to be full rank if the rank is as large as possible: \(\text{rank}(A) = \text{min}(m,n)\). An \(m
 \times n\) matrix is said to be matrix deficient if it is not full rank.
@@ -1698,7 +1698,7 @@ An \(m \times n\) matrix is said to be full rank if the rank is as large as poss
 
 </div>
 
-<div class="theorem" id="orgb81707b">
+<div class="theorem" id="org46908e6">
 <p>
 For matrices \(A\) and \(B\) such that \(AB\) exists:
 </p>
@@ -1722,14 +1722,14 @@ Combining the outcome of the previous theorem we find
 \end{array}
 \end{equation*}
 
-<div class="theorem" id="orgb089027">
+<div class="theorem" id="orgb198379">
 <p>
 Suppose \(A\) is \(m \times n\) and \(B\) and \(C\) are \(n \times p\). Then \(A^HAB = A^HAC\) if and only if \(AB = AC\)
 </p>
 
 </div>
 
-<div class="definition" id="org377ed8d">
+<div class="definition" id="orgc86dcfe">
 <p>
 A submatrix of a matrix \(A\) is obtained by removing zero or more columns of \(A\) and zero or more rows of \(A\).
 </p>
@@ -1756,7 +1756,7 @@ Since we have now generalized the idea of the transpose, lets write the more gen
 This follows in the given theorem
 </p>
 
-<div class="theorem" id="org1a55531">
+<div class="theorem" id="org196d9f0">
 <p>
 The vector \(\hat{x} \in X\) minimizes \(||b - A \hat{x}||^2_2\) if and only if
 </p>
@@ -1777,7 +1777,7 @@ The solution to the theorem above \((A^HA)^{-1}A^H\) is what is called a pseudoi
 pseudoinverse in a manner that captures the smallest error and the smallest norm of the solution as follows
 </p>
 
-<div class="definition" id="org1194ce5">
+<div class="definition" id="org4c38e6c">
 <p>
 Let \(A:X \rightarrow Y\) be a bounded linear operator, where \(X\) and \(Y\) are Hilbert spaces, and let \(\mathcal{R}(A)\) be closed. For some \(b
 \in Y\), let \(\hat{x}\) be the vector of minimum norm \(||\hat{x}||_2\) that minimizes \(||b - A \hat{x}||\). The pseudoinverse
@@ -1872,7 +1872,7 @@ inverse.
 <div id="outline-container-org4c2bb96" class="outline-3">
 <h3 id="org4c2bb96"><span class="section-number-3">4.12.</span> Inverse Of A Block (Partitioned) Matrix</h3>
 <div class="outline-text-3" id="text-4-12">
-<div class="lemma" id="orge039629">
+<div class="lemma" id="orgbce493e">
 <p>
 For a matrix \(A\) partitioned as
 </p>
@@ -1909,13 +1909,17 @@ I \\
 \end{equation}
 
 </div>
+
+<p>
+Where \(S = A_{22} - A_{21}A_{11}^{-1}A_{12}\).
+</p>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alexander Brown</p>
-<p class="date">Created: 2023-04-09 Sun 13:22</p>
+<p class="date">Created: 2023-04-14 Fri 11:29</p>
 </div>
 </body>
 </html>

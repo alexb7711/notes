@@ -1094,4 +1094,315 @@ I \\
 
 Where $S = A_{22} - A_{21}A_{11}^{-1}A_{12}$.
 
-#  LocalWords:  AR Riesz
+* Some Important Matrix Factorizations
++ $LU$: $A= LU$ where $L$ is a lower-triangular matrix and $U$ is upper-diagonal. Its main application is in $Ax = b$.
++ Cholesky: $A = LL^H$ where $A$ is a Hermitian (symmetric) positive definite matrix.
++ $QR$: $A = QR$ where $A$ is a general matrix, $Q$ is a unitary matrix and $R$ is upper-triangular.
+
+** The $LU$ Factorization
+In many we are faced with the equation
+
+#+name: eq:lubase
+\begin{equation}
+Ax = b
+\end{equation}
+
+where $A$ has a special structure such as Toeplitz, Vandermonde, or Hankel matrix. In these instances it is
+advantageous to  utilize $LR$ factorization. In the special case where $A$ is Hermitian and positive definite, the
+Cholesky factorization is preferred.
+
+The $LU$ factorization for a $m \times m$ matrix is
+
+\begin{equation}
+PA = LU
+\end{equation}
+
+where $P$ is a permutation matrix, $L$ is a lower-diagonal and $U$ is an upper-diagonal matrix. Using $LU$
+decomposition, autoref:eq:lubase can be decomposed into the following set of equations
+
+\begin{equation}
+\begin{array}{l}
+LUx = Pb \\
+Ux  = y
+\end{array}
+\end{equation}
+
+That is, we can solve for the $y$ variables via forward substitution using autoref:eq:luforward
+
+#+name: eq:luforward
+\begin{equation}
+y_j = c_j - \sum_{i=1}^{j-1} l_{ji}y_i
+\end{equation}
+
+If this is confusing, look at the structure of a diagonal matrix and make the realization that $y_1 = l_{11}$ which can
+then be propagated downward. Once the $y$ value have been found, we can then use them to find $x$ in
+
+\begin{equation}
+Ux = y
+\end{equation}
+
+where the equation can be written out as autoref:eq:lubackward
+
+#+name: eq:lubackward
+\begin{equation}
+x_j = \frac{1}{u{jj}} \Big( y_j - \sum_{j=j+1}^{m} u_{jk}x_k \Big)
+\end{equation}
+
+The best thing about the solution is that it has better numerical properties than explicitly taking the inverse of a
+matrix and multiplying. For this reason it is a good rule of thumb to *never explicitly invert a matrix numerically*.
+
+*** Computing the determinant using $LU$ factorization
+\begin{equation}
+\text{det}(A) = \text{det}(P^TLU) = \text{det}(P)\text{det}(L)\text{det}(U) = \pm \Pi_ {i=1}^m u_{ii}
+\end{equation}
+
+*** Computing the $LU$ factorization
+The $LU$ decomposition can be found be taking the Gaussian elimination of the matrix $A$. We find the observation that
+
+\begin{equation}
+A = LU = E_1^{-1}E_2^{-1}E_3^{-1}U
+\end{equation}
+
+where $E_i$ is a matrix of linear combinations of the Gaussian elimination to produce $U$. That is to say, the sequence
+of inverse Gaussian manipulations to produce $U$ is $L$.
+
+****  Pivoting
+It is possible, even a well conditioned matrix, for the procedure just described to be numerically poor. *The solution
+to the problem (as well as the division be zero problem that could occur) is found by changing the order of the rows so
+that the pivot of the unreduced part of the kth column is the largest in magnitude*. That is to say, the $a_{11}$
+element will be the largest magnitude, then the Gaussian elimination will occur to remove the elements below it. Then
+$a_{22}$ will be made the largest in magnitude before Gaussian elimination. This occurs for the whole matrix.
+
+** The Cholesky factorization
+The Cholesky factorization is used to compute the "square root" of a positive definite $m \times m$ Hermitian matrix as
+
+\begin{equation}
+B = LL^H
+\end{equation}
+
+where $L$ is lower triangular. Sometimes the matrix $L$ is normalized with a diagonal scalar matrix to "bring back" the
+original values. This is represented as
+
+\begin{equation}
+B = U^H D U
+\end{equation}
+
+Where $U$ is the diagonal-normalized version of $L$ and $D$ is the diagonal matrix with the magnitudes of $L$.
+
+#+begin_center
+Cholesky is good for generating Gaussian random vectors with covariance $R$. Systems typically have methods of producing
+$N(0,1)$ random variables. We can leverage those to generate $N(0,R)$ by writing
+
+\begin{equation*}
+R = LL^T
+\end{equation*}
+
+For each random vector create a vector $x$ of $N(0,!)$ independent random variables using the Gaussian random number
+generator and let
+
+\begin{equation*}
+z = Lx
+\end{equation*}
+
+$z$ will have the desired covariance.
+#+end_center
+
+#+begin_center
+For the equation
+
+\begin{equation*}
+Ax = b
+\end{equation*}
+
+Similar to before we can write
+
+\begin{equation*}
+\begin{array}{l}
+A = LL^H \\
+Ly = b \\
+L^Hx = y \\
+\end{array}
+\end{equation*}
+
+Particularly in the least squares scenario where we have
+
+\begin{equation*}
+(A^HA)x = A^H b
+\end{equation*}
+
+we can let $A^HA = LL^H$ and $A^Hb=p$ we can solve for $x$ via
+
+\begin{equation*}
+\begin{array}{l}
+Ly = p \\
+L^Hx = y \\
+\end{array}
+\end{equation*}
+#+end_center
+
+*** TODO Algorithms for computing the Cholesky factorization
+
+** Unitary matrices and the $QR$ factorization
+
+*** Unitary matrices
+#+begin_definiton
+An $m \times m$ matrix $Q$ with complex elements is said to be unitary if
+
+\begin{equation*}
+Q^H Q = I
+\end{equation*}
+if $Q$ has real elements and $Q^T Q=I$, then $Q$ is said to be an orthogonal matrix.
+#+end_definiton
+
+#+begin_lemma
+if $y= Qx$ for an $m \times m$ matrix $Q$, then: $||y|| = ||x|| \forall x \in \mathbb{R}$ if and only if $Q$ is unitary, where the norm is the
+usual Euclidean norm.
+#+end_lemma
+
+That is to say a unitary matrix is said to be isometric transformation, or "length preserving".
+
+#+begin_lemma
+if $Y = QX$ for an $m \times m$ unitary matrix $Q$, then
+
+\begin{equation*}
+||Y||_F = ||X||_F
+\end{equation*}
+
+where $||\cdot||_F$ is the Frobenius norm.
+#+end_lemma
+
+*** The $QR$ factorization
+An $m \times n$ matrix $A$ can be written as autoref:eq:qrfact, with $Q$ being a unitary $m \times m$ matrix and $R$ being an $m \times
+n$ upper triangular matrix.
+
+#+name: eq:qrfact
+\begin{equation*}
+A = QR
+\end{equation*}
+
+The most important application of the $QR$ factorization is to full-rank least-squares problems. Solving the way we have
+before we get $\hat{x} = (A^HA)^{-1}A^Hb$. Noting that $A^HA$ essentially squares the condition number (not good) we can
+mitigate that with $QR$ factorization. That is, write
+
+\begin{equation*}
+A = QR = Q
+\begin{bmatrix}
+R_1 \\ 0
+\end{bmatrix}
+\end{equation*}
+
+where the solution is
+
+\begin{equation*}
+R_1 \hat{x} = c
+\end{equation*}
+
+Because we stipulated that $R_1$ be upper-triangular, we can use back substitution as we have before.
+
+*** $QR$ factorization and least-squares filters
+Elaborating on before we can say (in a more least-square way), given $d[k] = A[k]h[k] + e[k]$ we can get a solution via
+
+\begin{equation*}
+R_1[k]h = (Q[k]d[k])
+\end{equation*}
+
+*** Computing the $QR$ factorization
+There are at least four major ways of computing the $QR$ factorization:
+
++ The Gram-Schmidt process
++ The modified Gram-Schmidt process
++ The Householder transformations
++ Givens rotations
+
+ The Gram-Schmidt process is the easiest but produces the least numerically conditioned results.
+
+*** Householder transformations
+The idea behind Householder transformations is given a vector $x$, find a reflection of a projection of $x$ across a
+space perpendicular in such a way that $m-i$ elements in the vector are zeroed out. This method preserves the energy of
+the vector into an element while zeroing out the others.
+
+To do such a task, we need to find an appropriate vector $v$ (Householder vector) that will help up find a
+transformation matrix $H_v$ such that the following equation holds
+
+\begin{equation}
+H_v = I - 2 \frac{vv^H}{v^Hv}
+\end{equation}
+
+But how should $v$ be determined? That is given by
+
+\begin{equation}
+v = x \pm ||x||_2 e_1
+\end{equation}
+
+where the sign of is taken to be opposite of the direction that will take $x$ "closer" to a multiple of $e_1$.
+See the image below for a visualization.
+
+[[https://pi.math.cornell.edu/~web6140/TopTenAlgorithms/HouseholderReflections.png][https://pi.math.cornell.edu/~web6140/TopTenAlgorithms/HouseholderReflections.png]]
+
+To expand this to reduce subsequent vectors in a matrix we see that
+
+\begin{equation}
+H_1A =
+\begin{bmatrix}
+a_1 & x & x \\
+0   & x & x \\
+0   & x & x \\
+0   & x & x \\
+\end{bmatrix}
+\end{equation}
+
+Then to reduce the second column write
+
+\begin{equation}
+\begin{bmatrix}
+1 & 0 \\
+0 & H_1
+\end{bmatrix}
+\begin{bmatrix}
+a_1 & x & x \\
+0   & x & x \\
+0   & x & x \\
+0   & x & x \\
+\end{bmatrix}
+ =
+\begin{bmatrix}
+a_1 & x & x \\
+0   & a_2 & x \\
+0   & 0 & x \\
+0   & 0 & x \\
+\end{bmatrix}
+= Q_2 Q_1   A
+\end{equation}
+
+*** TODO Algorithms for Housholder Transformations
+
+*** $QR$ factorization using Givens rotations
+Unlike the Householder transformations which zeros out the entire column in one stroke, Givens rotations more
+selectively zeros out elements one at a time using rotations. We all knew ye' old rotation matrix
+
+\begin{equation}
+\begin{bmatrix}
+cos(\theta) & sin(\theta) \\
+-sin(\theta) & cos(\theta)
+\end{bmatrix}
+\end{equation}
+
+For a vector $x = [x y]^T$, its second coordinate can be zeroed by multiplication by the orthogonal matrix $G_{\theta}$,
+where
+
+\begin{equation}
+\theta(x,y) = -tan^_{-1}\frac{y}{x}
+\end{equation}
+
+*** TODO Algorithms for $QR$ factorization using Givens rotations
+
+*** TODO Solving least-squares problems using Givens rotations
+
+*** TODO Givens rotations via CORDIC rotations
+
+*** TODO Recursive updates to the $QR$ factorization
+
+* TODO Eigenvalues and Eigenvectors
+* TODO The Singular Value Decomposition
+
+#  LocalWords:  AR Riesz Cholesky unreduced kth

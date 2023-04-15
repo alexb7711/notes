@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-04-14 Fri 11:29 -->
+<!-- 2023-04-15 Sat 13:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mathematical methods and algorithms for signal processing, Moon, T., &amp; Stirling, W., , (1999) :book:</title>
@@ -152,6 +152,38 @@
 <li><a href="#org4c2bb96">4.12. Inverse Of A Block (Partitioned) Matrix</a></li>
 </ul>
 </li>
+<li><a href="#org7e14d91">5. Some Important Matrix Factorizations</a>
+<ul>
+<li><a href="#org3bb6124">5.1. The \(LU\) Factorization</a>
+<ul>
+<li><a href="#org7c68fa9">5.1.1. Computing the determinant using \(LU\) factorization</a></li>
+<li><a href="#orgf4ad6dc">5.1.2. Computing the \(LU\) factorization</a></li>
+</ul>
+</li>
+<li><a href="#org6cc9fbe">5.2. The Cholesky factorization</a>
+<ul>
+<li><a href="#org6136b49">5.2.1. <span class="todo TODO">TODO</span> Algorithms for computing the Cholesky factorization</a></li>
+</ul>
+</li>
+<li><a href="#org00ca44c">5.3. Unitary matrices and the \(QR\) factorization</a>
+<ul>
+<li><a href="#org7aefc50">5.3.1. Unitary matrices</a></li>
+<li><a href="#org4dd9086">5.3.2. The \(QR\) factorization</a></li>
+<li><a href="#org88b03cd">5.3.3. \(QR\) factorization and least-squares filters</a></li>
+<li><a href="#org2989f66">5.3.4. Computing the \(QR\) factorization</a></li>
+<li><a href="#orgd6ae6e7">5.3.5. Householder transformations</a></li>
+<li><a href="#org02accc4">5.3.6. <span class="todo TODO">TODO</span> Algorithms for Housholder Transformations</a></li>
+<li><a href="#org052b027">5.3.7. \(QR\) factorization using Givens rotations</a></li>
+<li><a href="#org14f8ce9">5.3.8. <span class="todo TODO">TODO</span> Algorithms for \(QR\) factorization using Givens rotations</a></li>
+<li><a href="#org8e365e5">5.3.9. <span class="todo TODO">TODO</span> Solving least-squares problems using Givens rotations</a></li>
+<li><a href="#org6370067">5.3.10. <span class="todo TODO">TODO</span> Givens rotations via CORDIC rotations</a></li>
+<li><a href="#orgeddae13">5.3.11. <span class="todo TODO">TODO</span> Recursive updates to the \(QR\) factorization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org57b9e33">6. <span class="todo TODO">TODO</span> Eigenvalues and Eigenvectors</a></li>
+<li><a href="#org50a2b22">7. <span class="todo TODO">TODO</span> The Singular Value Decomposition</a></li>
 </ul>
 </div>
 </div>
@@ -891,7 +923,7 @@ TODO: FINISH
 Up until now we have selected a finite-dimensional subspace of the Hilbert space which involved solving an \(m\times m\) system of equations. In some problems the subspace in which the solution lies is not finite dimensional. There are some problems where a finite set of constraints provides sufficient information to solve the problem from a finite set of equations.
 </p>
 
-<div class="definition" id="orgd2c77a1">
+<div class="definition" id="org0abda88">
 <p>
 Let \(M\) be a subspace of a linear space \(S\), and let \(x_0 \in S\). The set \(V = x_0 +M\) is said to be a translation of \(M\) by \(x_0\). This translation is called a linear variety. In general, a linear variety is not a subspace!
 </p>
@@ -916,7 +948,7 @@ Hence the space of solutions from the inner products above is the linear variety
 <b>See Example 3.14.2</b>
 </p>
 
-<div class="theorem" id="org660eb7d">
+<div class="theorem" id="org36beacd">
 <p>
 Let \({y_i}\) be a linearly independent in a Hilbert space \(S\), and let \(M = \text{span}(y_1,...,y_m)\). The element \(x \in S\) satisfying
 </p>
@@ -1016,7 +1048,7 @@ Which is known as <i>Bessel's inequality</i>.
 When \(\{p_i\}\) is a complete basis set, then the sequence \(\{c_1,c_2,...\}\) completely describes \(x\).
 </p>
 
-<div class="definition" id="org4717686">
+<div class="definition" id="org8a840d8">
 <p>
 An orthonormal set \(\{p_i, i = 1,2,3,...\}\) in a Hilbert space \(S\) is complete if
 </p>
@@ -1067,7 +1099,7 @@ If \(p_i\) is a complete set then there is no error in the representation and Be
 Equivalently written as \(||x|| = ||c||\) where the norm on the left is the \(L2\) norm (if \(x\) is a function) and the norm on the right is the \(l2\) norm.
 </p>
 
-<div class="lemma" id="org735d390">
+<div class="lemma" id="orge2ffa6a">
 <p>
 If \(x\) and \(y\) have a generalized Fourier series representation using some orthornarmal basis set \(\{p_i\}\) in a Hilbert space \(S\), with \(x \leftrightarrow c\) and \(y \leftrightarrow b\) then
 </p>
@@ -1223,7 +1255,7 @@ In <a href="eq:transformationmatrix">eq:transformationmatrix</a>, we can regard 
 into the column space (range) of \(A\).
 </p>
 
-<div class="definition" id="org3965c67">
+<div class="definition" id="org83c16fe">
 <p>
 A transformation \(A: X \rightarrow Y\), where \(X\) and \(Y\) are vector spaces over a ring \(R\), is said to be a linear if for every
 \(x_1, x_2 \in X\) and all scalars \(\alpha_1, \alpha_2 \in R\),
@@ -1244,7 +1276,7 @@ transformation \(A: \mathbb{R}^n \rightarrow \mathbb{R}^m\). In this case, \(A\)
 <div id="outline-container-orgc2f6b7f" class="outline-4">
 <h4 id="orgc2f6b7f"><span class="section-number-4">4.1.1.</span> Linear Functionals</h4>
 <div class="outline-text-4" id="text-4-1-1">
-<div class="definition" id="orgc3884a0">
+<div class="definition" id="orgea36dbc">
 <p>
 A funcitonal \(f: X \rightarrow \mathbb{R}\) is a mapping from a vector space \(X\) to a real scalar value. (More generally, the range of the
 mapping could be any set of scalars.)
@@ -1293,7 +1325,7 @@ This is demonstrated in <a href="fig:opnorm">fig:opnorm</a>.
 <div id="outline-container-org8a23ea2" class="outline-4">
 <h4 id="org8a23ea2"><span class="section-number-4">4.2.1.</span> Bounded Operators</h4>
 <div class="outline-text-4" id="text-4-2-1">
-<div class="definition" id="org11312f4">
+<div class="definition" id="orgff83da2">
 <p>
 If the norm of a transformation is finite, the transformation is said to be bounded.
 </p>
@@ -1304,7 +1336,7 @@ If the norm of a transformation is finite, the transformation is said to be boun
 The following theorem presents a rather remarkable fact about bounded linear operators
 </p>
 
-<div class="theorem" id="org2613e66">
+<div class="theorem" id="orge406cd5">
 <p>
 A linear operator \(A: X \rightarrow Y\) is bounded if and only if it is continuous
 </p>
@@ -1318,7 +1350,7 @@ chapter rely on bounded linear operators, this theorem reassures us that matrice
 spaces - will work.
 </p>
 
-<div class="theorem" id="org52fcbf5">
+<div class="theorem" id="orgf2123c6">
 <p>
 Let \(A: X \rightarrow Y\) be a linear operator, where \(X\) and \(Y\) are normed linear spaces. If \(X\) is finite-dimensional, then \(A\)
 is continuous.
@@ -1335,7 +1367,7 @@ is continuous.
 The Neumann expansion provides a useful expansion for the inverse of the linear operator \((I-A)^{-1}\).
 </p>
 
-<div class="theorem" id="orgc992feb">
+<div class="theorem" id="org60c9941">
 <p>
 Suppose \(||\cdot||\) is a norm satisfying the submultiplicative  property \(A:x \rightarrow x\) is an operator with \(||A|| < 1\). Then
 \((I-A)^{-1}\) exists and
@@ -1389,7 +1421,7 @@ inner product \(\langle Ax, y \rangle\) is defined and may be viewed as a scalar
 an example of a <i>dual space</i>.
 </p>
 
-<div class="definition" id="orgececea7">
+<div class="definition" id="org4f5e928">
 <p>
 Let \(A:X \rightarrow Y\) be a linear operator from the Hilbert space \(X\) to the Hilbert space \(Y\). The adjoint of the operator \(A\),
 denoted \(A^*\), is the operator \(A^* : Y \rightarrow X\) such that
@@ -1440,7 +1472,7 @@ The adjoint allows us to express the solution to the problem of finding the mini
 \(Ax = y\) when there is more than one solution.
 </p>
 
-<div class="theorem" id="org1d7cddf">
+<div class="theorem" id="orgb2296fc">
 <p>
 Let \(A:X \rightarrow Y\) be a bounded linear operator form the Hilbert space \(X\) to the Hilbert space \(Y\). The vector \(x\) of
 minimum norm satisfying \(Ax = y\) is given by
@@ -1493,7 +1525,7 @@ In general, the product of a matrix times a vector is a linear combination of th
 into the following definition
 </p>
 
-<div class="definition" id="org3ca8396">
+<div class="definition" id="org2f5b705">
 <p>
 The space spanned by the columns of a matrix is called the column space of the matrix. It is also called the range of
 the matrix, and is denoted by \(\mathcal{R}(A)\). If \(A\) is written in terms of its columns, \(A=\{a_1, a_2,...,a_n\}\), then
@@ -1520,7 +1552,7 @@ If \(b \in \mathcal{R}(A)\) for a matrix \(A\), then there must be some linear c
 The first two subspaces are familiar: range (column space as we have just introduced) and nullspace.
 </p>
 
-<div class="definition" id="org1e68845">
+<div class="definition" id="orgb50b39e">
 <p>
 The <b>nullspace</b> of a linear operator \(A:X \rightarrow Y\) consists of all the vectors \(x \in X\) such that \(Ax = 0\). It is denoted as
 \(\mathcal{N}(A)\), and is a subspace of \(A\). The dimension of \(\mathcal{N}(A)\) is called the nullity of \(A\).
@@ -1539,7 +1571,7 @@ The fourth fundamental subspace is the nullspace of the adjoint (\(\mathcal{N}(A
 written in the following theorem
 </p>
 
-<div class="theorem" id="org90791af">
+<div class="theorem" id="orgfba31d6">
 <p>
 Let \(A:X \rightarrow Y\) be a bounded linear operator between two Hilbert spaces \(X\)
  and \(Y\), and let \(\mathcal{R}(A)\) and \(\mathcal{R}(A^*)\) be closed. Then
@@ -1567,7 +1599,7 @@ solution is unique. As stated before, we know when \(b\) is in the range of \(A\
 further state that if \(b\) is in the column space of \(A\), then it must also be orthogonal to the left nullspace of \(A\).
 </p>
 
-<div class="theorem" id="orgb6eb3bf">
+<div class="theorem" id="org7945d61">
 <p>
 Let \(A\) be a bounded linear operator. The equation \(Ax = b\) has a solution if and only if \(\langle b,v \rangle = 0 \forall v \in
 \mathcal{N}(A^*)\). More succinctly,
@@ -1587,7 +1619,7 @@ In matrix notation, \(Ax = b\) has a solution if and only if \(v^H b = 0 \forall
 The uniqueness of the solutions is determined by the following theorem
 </p>
 
-<div class="theorem" id="org830d3f5">
+<div class="theorem" id="org3677549">
 <p>
 The solution to the equation \(Ax = b\) (if it exists) is unique if and only if the solution of \(Ax = 0\) is \(x=0\). That
 is, if the nullspace of \(A\) is the empty set (only the zero vector).
@@ -1600,7 +1632,7 @@ A weird little fact is that in all matrices, the dimension of the column space i
 Example 4.5.1).
 </p>
 
-<div class="definition" id="org2cacdf7">
+<div class="definition" id="orgd94cb2d">
 <p>
 The dimension of the column space (or the row space) of the matrix \(A\) is the rank of the matrix.
 </p>
@@ -1624,7 +1656,7 @@ matrix \(A\) maps its row space to its column space. The mapping from the row sp
 (although some information is never recovered due to some of the nullspace information being left behind).
 </p>
 
-<div class="theorem" id="org5433731">
+<div class="theorem" id="org02b4683">
 <p>
 Every vector \(b \in \mathcal{R}(A)\) comes form one and only one vector \(x_r\) in the row space of \(A\).
 </p>
@@ -1646,7 +1678,7 @@ Every vector \(b \in \mathcal{R}(A)\) comes form one and only one vector \(x_r\)
 <div id="outline-container-orga35467f" class="outline-3">
 <h3 id="orga35467f"><span class="section-number-3">4.6.</span> Some Properties Of Matrix Inverses</h3>
 <div class="outline-text-3" id="text-4-6">
-<div class="definition" id="orgca5f4b5">
+<div class="definition" id="org3710330">
 <p>
 A matrix \(A\) is said to have a left inverse if there is a matrix \(B\) such that \(BA = I\), and a right inverse if there
 exists a matrix \(C\) such that \(AC = I\).
@@ -1663,7 +1695,7 @@ we get the solution \(x = Cb\)
 <div id="outline-container-orgae5985b" class="outline-4">
 <h4 id="orgae5985b"><span class="section-number-4">4.6.1.</span> Tests For Invertibility Of Matrices</h4>
 <div class="outline-text-4" id="text-4-6-1">
-<div class="definition" id="org1199988">
+<div class="definition" id="orgb4c5e5c">
 <p>
 A matrix \(A \in M_{m,n}(F)\) (where \(F\) is a field) is said to be nonsingular if the only \(x \in F^n\) such that \(Ax = 0\) is
 the zero vector \(x = 0\).
@@ -1690,7 +1722,7 @@ Some other signs of Invertibility for a \(n \times n\) matrix are
 <div id="outline-container-org0178c45" class="outline-3">
 <h3 id="org0178c45"><span class="section-number-3">4.7.</span> Some Results On Matrix Rank</h3>
 <div class="outline-text-3" id="text-4-7">
-<div class="definition" id="org3b7db26">
+<div class="definition" id="org93ab169">
 <p>
 An \(m \times n\) matrix is said to be full rank if the rank is as large as possible: \(\text{rank}(A) = \text{min}(m,n)\). An \(m
 \times n\) matrix is said to be matrix deficient if it is not full rank.
@@ -1698,7 +1730,7 @@ An \(m \times n\) matrix is said to be full rank if the rank is as large as poss
 
 </div>
 
-<div class="theorem" id="org46908e6">
+<div class="theorem" id="org4759216">
 <p>
 For matrices \(A\) and \(B\) such that \(AB\) exists:
 </p>
@@ -1722,14 +1754,14 @@ Combining the outcome of the previous theorem we find
 \end{array}
 \end{equation*}
 
-<div class="theorem" id="orgb198379">
+<div class="theorem" id="org442009c">
 <p>
 Suppose \(A\) is \(m \times n\) and \(B\) and \(C\) are \(n \times p\). Then \(A^HAB = A^HAC\) if and only if \(AB = AC\)
 </p>
 
 </div>
 
-<div class="definition" id="orgc86dcfe">
+<div class="definition" id="org2a4764b">
 <p>
 A submatrix of a matrix \(A\) is obtained by removing zero or more columns of \(A\) and zero or more rows of \(A\).
 </p>
@@ -1756,7 +1788,7 @@ Since we have now generalized the idea of the transpose, lets write the more gen
 This follows in the given theorem
 </p>
 
-<div class="theorem" id="org196d9f0">
+<div class="theorem" id="orgc8e77b6">
 <p>
 The vector \(\hat{x} \in X\) minimizes \(||b - A \hat{x}||^2_2\) if and only if
 </p>
@@ -1777,7 +1809,7 @@ The solution to the theorem above \((A^HA)^{-1}A^H\) is what is called a pseudoi
 pseudoinverse in a manner that captures the smallest error and the smallest norm of the solution as follows
 </p>
 
-<div class="definition" id="org4c38e6c">
+<div class="definition" id="org3e22458">
 <p>
 Let \(A:X \rightarrow Y\) be a bounded linear operator, where \(X\) and \(Y\) are Hilbert spaces, and let \(\mathcal{R}(A)\) be closed. For some \(b
 \in Y\), let \(\hat{x}\) be the vector of minimum norm \(||\hat{x}||_2\) that minimizes \(||b - A \hat{x}||\). The pseudoinverse
@@ -1872,7 +1904,7 @@ inverse.
 <div id="outline-container-org4c2bb96" class="outline-3">
 <h3 id="org4c2bb96"><span class="section-number-3">4.12.</span> Inverse Of A Block (Partitioned) Matrix</h3>
 <div class="outline-text-3" id="text-4-12">
-<div class="lemma" id="orgbce493e">
+<div class="lemma" id="org70aac13">
 <p>
 For a matrix \(A\) partitioned as
 </p>
@@ -1916,10 +1948,488 @@ Where \(S = A_{22} - A_{21}A_{11}^{-1}A_{12}\).
 </div>
 </div>
 </div>
+
+<div id="outline-container-org7e14d91" class="outline-2">
+<h2 id="org7e14d91"><span class="section-number-2">5.</span> Some Important Matrix Factorizations</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li>\(LU\): \(A= LU\) where \(L\) is a lower-triangular matrix and \(U\) is upper-diagonal. Its main application is in \(Ax = b\).</li>
+<li>Cholesky: \(A = LL^H\) where \(A\) is a Hermitian (symmetric) positive definite matrix.</li>
+<li>\(QR\): \(A = QR\) where \(A\) is a general matrix, \(Q\) is a unitary matrix and \(R\) is upper-triangular.</li>
+</ul>
+</div>
+
+<div id="outline-container-org3bb6124" class="outline-3">
+<h3 id="org3bb6124"><span class="section-number-3">5.1.</span> The \(LU\) Factorization</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+In many we are faced with the equation
+</p>
+
+\begin{equation}
+\label{orgc94497a}
+Ax = b
+\end{equation}
+
+<p>
+where \(A\) has a special structure such as Toeplitz, Vandermonde, or Hankel matrix. In these instances it is
+advantageous to  utilize \(LR\) factorization. In the special case where \(A\) is Hermitian and positive definite, the
+Cholesky factorization is preferred.
+</p>
+
+<p>
+The \(LU\) factorization for a \(m \times m\) matrix is
+</p>
+
+\begin{equation}
+PA = LU
+\end{equation}
+
+<p>
+where \(P\) is a permutation matrix, \(L\) is a lower-diagonal and \(U\) is an upper-diagonal matrix. Using \(LU\)
+decomposition, <a href="eq:lubase">eq:lubase</a> can be decomposed into the following set of equations
+</p>
+
+\begin{equation}
+\begin{array}{l}
+LUx = Pb \\
+Ux  = y
+\end{array}
+\end{equation}
+
+<p>
+That is, we can solve for the \(y\) variables via forward substitution using <a href="eq:luforward">eq:luforward</a>
+</p>
+
+\begin{equation}
+\label{org0a57520}
+y_j = c_j - \sum_{i=1}^{j-1} l_{ji}y_i
+\end{equation}
+
+<p>
+If this is confusing, look at the structure of a diagonal matrix and make the realization that \(y_1 = l_{11}\) which can
+then be propagated downward. Once the \(y\) value have been found, we can then use them to find \(x\) in
+</p>
+
+\begin{equation}
+Ux = y
+\end{equation}
+
+<p>
+where the equation can be written out as <a href="eq:lubackward">eq:lubackward</a>
+</p>
+
+\begin{equation}
+\label{orge27fd15}
+x_j = \frac{1}{u{jj}} \Big( y_j - \sum_{j=j+1}^{m} u_{jk}x_k \Big)
+\end{equation}
+
+<p>
+The best thing about the solution is that it has better numerical properties than explicitly taking the inverse of a
+matrix and multiplying. For this reason it is a good rule of thumb to <b>never explicitly invert a matrix numerically</b>.
+</p>
+</div>
+
+<div id="outline-container-org7c68fa9" class="outline-4">
+<h4 id="org7c68fa9"><span class="section-number-4">5.1.1.</span> Computing the determinant using \(LU\) factorization</h4>
+<div class="outline-text-4" id="text-5-1-1">
+\begin{equation}
+\text{det}(A) = \text{det}(P^TLU) = \text{det}(P)\text{det}(L)\text{det}(U) = \pm \Pi_ {i=1}^m u_{ii}
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-orgf4ad6dc" class="outline-4">
+<h4 id="orgf4ad6dc"><span class="section-number-4">5.1.2.</span> Computing the \(LU\) factorization</h4>
+<div class="outline-text-4" id="text-5-1-2">
+<p>
+The \(LU\) decomposition can be found be taking the Gaussian elimination of the matrix \(A\). We find the observation that
+</p>
+
+\begin{equation}
+A = LU = E_1^{-1}E_2^{-1}E_3^{-1}U
+\end{equation}
+
+<p>
+where \(E_i\) is a matrix of linear combinations of the Gaussian elimination to produce \(U\). That is to say, the sequence
+of inverse Gaussian manipulations to produce \(U\) is \(L\).
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="orge6730a6"></a>Pivoting<br />
+<div class="outline-text-5" id="text-5-1-2-1">
+<p>
+It is possible, even a well conditioned matrix, for the procedure just described to be numerically poor. *The solution
+to the problem (as well as the division be zero problem that could occur) is found by changing the order of the rows so
+that the pivot of the unreduced part of the kth column is the largest in magnitude*. That is to say, the \(a_{11}\)
+element will be the largest magnitude, then the Gaussian elimination will occur to remove the elements below it. Then
+\(a_{22}\) will be made the largest in magnitude before Gaussian elimination. This occurs for the whole matrix.
+</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org6cc9fbe" class="outline-3">
+<h3 id="org6cc9fbe"><span class="section-number-3">5.2.</span> The Cholesky factorization</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+The Cholesky factorization is used to compute the "square root" of a positive definite \(m \times m\) Hermitian matrix as
+</p>
+
+\begin{equation}
+B = LL^H
+\end{equation}
+
+<p>
+where \(L\) is lower triangular. Sometimes the matrix \(L\) is normalized with a diagonal scalar matrix to "bring back" the
+original values. This is represented as
+</p>
+
+\begin{equation}
+B = U^H D U
+\end{equation}
+
+<p>
+Where \(U\) is the diagonal-normalized version of \(L\) and \(D\) is the diagonal matrix with the magnitudes of \(L\).
+</p>
+
+<div class="org-center">
+<p>
+Cholesky is good for generating Gaussian random vectors with covariance \(R\). Systems typically have methods of producing
+\(N(0,1)\) random variables. We can leverage those to generate \(N(0,R)\) by writing
+</p>
+
+\begin{equation*}
+R = LL^T
+\end{equation*}
+
+<p>
+For each random vector create a vector \(x\) of \(N(0,!)\) independent random variables using the Gaussian random number
+generator and let
+</p>
+
+\begin{equation*}
+z = Lx
+\end{equation*}
+
+<p>
+\(z\) will have the desired covariance.
+</p>
+</div>
+
+<div class="org-center">
+<p>
+For the equation
+</p>
+
+\begin{equation*}
+Ax = b
+\end{equation*}
+
+<p>
+Similar to before we can write
+</p>
+
+\begin{equation*}
+\begin{array}{l}
+A = LL^H \\
+Ly = b \\
+L^Hx = y \\
+\end{array}
+\end{equation*}
+
+<p>
+Particularly in the least squares scenario where we have
+</p>
+
+\begin{equation*}
+(A^HA)x = A^H b
+\end{equation*}
+
+<p>
+we can let \(A^HA = LL^H\) and \(A^Hb=p\) we can solve for \(x\) via
+</p>
+
+\begin{equation*}
+\begin{array}{l}
+Ly = p \\
+L^Hx = y \\
+\end{array}
+\end{equation*}
+</div>
+</div>
+
+<div id="outline-container-org6136b49" class="outline-4">
+<h4 id="org6136b49"><span class="section-number-4">5.2.1.</span> <span class="todo TODO">TODO</span> Algorithms for computing the Cholesky factorization</h4>
+</div>
+</div>
+
+<div id="outline-container-org00ca44c" class="outline-3">
+<h3 id="org00ca44c"><span class="section-number-3">5.3.</span> Unitary matrices and the \(QR\) factorization</h3>
+<div class="outline-text-3" id="text-5-3">
+</div>
+<div id="outline-container-org7aefc50" class="outline-4">
+<h4 id="org7aefc50"><span class="section-number-4">5.3.1.</span> Unitary matrices</h4>
+<div class="outline-text-4" id="text-5-3-1">
+<div class="definiton" id="orgae7e21e">
+<p>
+An \(m \times m\) matrix \(Q\) with complex elements is said to be unitary if
+</p>
+
+\begin{equation*}
+Q^H Q = I
+\end{equation*}
+<p>
+if \(Q\) has real elements and \(Q^T Q=I\), then \(Q\) is said to be an orthogonal matrix.
+</p>
+
+</div>
+
+<div class="lemma" id="orga1e6555">
+<p>
+if \(y= Qx\) for an \(m \times m\) matrix \(Q\), then: \(||y|| = ||x|| \forall x \in \mathbb{R}\) if and only if \(Q\) is unitary, where the norm is the
+usual Euclidean norm.
+</p>
+
+</div>
+
+<p>
+That is to say a unitary matrix is said to be isometric transformation, or "length preserving".
+</p>
+
+<div class="lemma" id="orgfda3709">
+<p>
+if \(Y = QX\) for an \(m \times m\) unitary matrix \(Q\), then
+</p>
+
+\begin{equation*}
+||Y||_F = ||X||_F
+\end{equation*}
+
+<p>
+where \(||\cdot||_F\) is the Frobenius norm.
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4dd9086" class="outline-4">
+<h4 id="org4dd9086"><span class="section-number-4">5.3.2.</span> The \(QR\) factorization</h4>
+<div class="outline-text-4" id="text-5-3-2">
+<p>
+An \(m \times n\) matrix \(A\) can be written as <a href="eq:qrfact">eq:qrfact</a>, with \(Q\) being a unitary \(m \times m\) matrix and \(R\) being an \(m \times
+n\) upper triangular matrix.
+</p>
+
+\begin{equation*}
+\label{orga467b90}
+A = QR
+\end{equation*}
+
+<p>
+The most important application of the \(QR\) factorization is to full-rank least-squares problems. Solving the way we have
+before we get \(\hat{x} = (A^HA)^{-1}A^Hb\). Noting that \(A^HA\) essentially squares the condition number (not good) we can
+mitigate that with \(QR\) factorization. That is, write
+</p>
+
+\begin{equation*}
+A = QR = Q
+\begin{bmatrix}
+R_1 \\ 0
+\end{bmatrix}
+\end{equation*}
+
+<p>
+where the solution is
+</p>
+
+\begin{equation*}
+R_1 \hat{x} = c
+\end{equation*}
+
+<p>
+Because we stipulated that \(R_1\) be upper-triangular, we can use back substitution as we have before.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org88b03cd" class="outline-4">
+<h4 id="org88b03cd"><span class="section-number-4">5.3.3.</span> \(QR\) factorization and least-squares filters</h4>
+<div class="outline-text-4" id="text-5-3-3">
+<p>
+Elaborating on before we can say (in a more least-square way), given \(d[k] = A[k]h[k] + e[k]\) we can get a solution via
+</p>
+
+\begin{equation*}
+R_1[k]h = (Q[k]d[k])
+\end{equation*}
+</div>
+</div>
+
+<div id="outline-container-org2989f66" class="outline-4">
+<h4 id="org2989f66"><span class="section-number-4">5.3.4.</span> Computing the \(QR\) factorization</h4>
+<div class="outline-text-4" id="text-5-3-4">
+<p>
+There are at least four major ways of computing the \(QR\) factorization:
+</p>
+
+<ul class="org-ul">
+<li>The Gram-Schmidt process</li>
+<li>The modified Gram-Schmidt process</li>
+<li>The Householder transformations</li>
+<li><p>
+Givens rotations
+</p>
+
+<p>
+The Gram-Schmidt process is the easiest but produces the least numerically conditioned results.
+</p></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd6ae6e7" class="outline-4">
+<h4 id="orgd6ae6e7"><span class="section-number-4">5.3.5.</span> Householder transformations</h4>
+<div class="outline-text-4" id="text-5-3-5">
+<p>
+The idea behind Householder transformations is given a vector \(x\), find a reflection of a projection of \(x\) across a
+space perpendicular in such a way that \(m-i\) elements in the vector are zeroed out. This method preserves the energy of
+the vector into an element while zeroing out the others.
+</p>
+
+<p>
+To do such a task, we need to find an appropriate vector \(v\) (Householder vector) that will help up find a
+transformation matrix \(H_v\) such that the following equation holds
+</p>
+
+\begin{equation}
+H_v = I - 2 \frac{vv^H}{v^Hv}
+\end{equation}
+
+<p>
+But how should \(v\) be determined? That is given by
+</p>
+
+\begin{equation}
+v = x \pm ||x||_2 e_1
+\end{equation}
+
+<p>
+where the sign of is taken to be opposite of the direction that will take \(x\) "closer" to a multiple of \(e_1\).
+See the image below for a visualization.
+</p>
+
+
+<div id="orgb7ad1e7" class="figure">
+<p><a href="https://pi.math.cornell.edu/~web6140/TopTenAlgorithms/HouseholderReflections.png"><img src="https://pi.math.cornell.edu/~web6140/TopTenAlgorithms/HouseholderReflections.png" alt="HouseholderReflections.png" /></a>
+</p>
+</div>
+
+<p>
+To expand this to reduce subsequent vectors in a matrix we see that
+</p>
+
+\begin{equation}
+H_1A =
+\begin{bmatrix}
+a_1 & x & x \\
+0   & x & x \\
+0   & x & x \\
+0   & x & x \\
+\end{bmatrix}
+\end{equation}
+
+<p>
+Then to reduce the second column write
+</p>
+
+\begin{equation}
+\begin{bmatrix}
+1 & 0 \\
+0 & H_1
+\end{bmatrix}
+\begin{bmatrix}
+a_1 & x & x \\
+0   & x & x \\
+0   & x & x \\
+0   & x & x \\
+\end{bmatrix}
+ =
+\begin{bmatrix}
+a_1 & x & x \\
+0   & a_2 & x \\
+0   & 0 & x \\
+0   & 0 & x \\
+\end{bmatrix}
+= Q_2 Q_1   A
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-org02accc4" class="outline-4">
+<h4 id="org02accc4"><span class="section-number-4">5.3.6.</span> <span class="todo TODO">TODO</span> Algorithms for Housholder Transformations</h4>
+</div>
+
+<div id="outline-container-org052b027" class="outline-4">
+<h4 id="org052b027"><span class="section-number-4">5.3.7.</span> \(QR\) factorization using Givens rotations</h4>
+<div class="outline-text-4" id="text-5-3-7">
+<p>
+Unlike the Householder transformations which zeros out the entire column in one stroke, Givens rotations more
+selectively zeros out elements one at a time using rotations. We all knew ye' old rotation matrix
+</p>
+
+\begin{equation}
+\begin{bmatrix}
+cos(\theta) & sin(\theta) \\
+-sin(\theta) & cos(\theta)
+\end{bmatrix}
+\end{equation}
+
+<p>
+For a vector \(x = [x y]^T\), its second coordinate can be zeroed by multiplication by the orthogonal matrix \(G_{\theta}\),
+where
+</p>
+
+\begin{equation}
+\theta(x,y) = -tan^_{-1}\frac{y}{x}
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-org14f8ce9" class="outline-4">
+<h4 id="org14f8ce9"><span class="section-number-4">5.3.8.</span> <span class="todo TODO">TODO</span> Algorithms for \(QR\) factorization using Givens rotations</h4>
+</div>
+
+<div id="outline-container-org8e365e5" class="outline-4">
+<h4 id="org8e365e5"><span class="section-number-4">5.3.9.</span> <span class="todo TODO">TODO</span> Solving least-squares problems using Givens rotations</h4>
+</div>
+
+<div id="outline-container-org6370067" class="outline-4">
+<h4 id="org6370067"><span class="section-number-4">5.3.10.</span> <span class="todo TODO">TODO</span> Givens rotations via CORDIC rotations</h4>
+</div>
+
+<div id="outline-container-orgeddae13" class="outline-4">
+<h4 id="orgeddae13"><span class="section-number-4">5.3.11.</span> <span class="todo TODO">TODO</span> Recursive updates to the \(QR\) factorization</h4>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org57b9e33" class="outline-2">
+<h2 id="org57b9e33"><span class="section-number-2">6.</span> <span class="todo TODO">TODO</span> Eigenvalues and Eigenvectors</h2>
+</div>
+<div id="outline-container-org50a2b22" class="outline-2">
+<h2 id="org50a2b22"><span class="section-number-2">7.</span> <span class="todo TODO">TODO</span> The Singular Value Decomposition</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alexander Brown</p>
-<p class="date">Created: 2023-04-14 Fri 11:29</p>
+<p class="date">Created: 2023-04-15 Sat 13:13</p>
 </div>
 </body>
 </html>

@@ -45,6 +45,7 @@
 - [[file:mathematical-methods-for-signals-and-systems/class-4-10-23.pdf][class-4-10-23.pdf]]
 - [[file:mathematical-methods-for-signals-and-systems/class-4-12-23.pdf][class-4-12-23.pdf]]
 - [[file:mathematical-methods-for-signals-and-systems/class-4-14-23.pdf][class-4-14-23.pdf]]
+- [[file:mathematical-methods-for-signals-and-systems/class-4-19-23.pdf][class-4-19-23.pdf]]
 
 * Homework Help
 - [[file:./mathematical-methods-for-signals-and-systems/help-1-11-23.htm][help-1-11-23.htm]]

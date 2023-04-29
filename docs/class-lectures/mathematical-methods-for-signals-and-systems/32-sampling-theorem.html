@@ -1,13 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-04-29 Sat 14:21 -->
-<meta charset="utf-8" />
+<!-- 2023-04-29 Sat 13:17 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Sampling theorem</title>
 <meta name="author" content="Alexander Brown" />
 <meta name="generator" content="Org Mode" />
-<link rel="stylesheet" type="text/css" href="style.css" />
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         displayAlign: "center",
@@ -32,24 +33,23 @@
 </head>
 <body>
 <div id="preamble" class="status">
-<nav><a href="index.html">Home</a> | <a href="blog.html">Blog</a> | <a href="notes.html">Notes</a> | <a href="classes.html">Classes</a> | <a href="projects.html">Projects</a> | <a href="todo.html">Todo</a> | <a href="error.html">About</a></nav>
+<div id="preamble" alignment="center"><a href="index.html">Home</a> | <a href="blog.html">Blog</a> | <a href="notes.html">Notes</a> | <a href="classes.html">Classes</a> | <a href="projects.html">Projects</a> | <a href="todo.html">Todo</a> | <a href="error.html">About</a></div>
 </div>
 <div id="content" class="content">
-<header>
 <h1 class="title">Sampling theorem</h1>
-</header><nav id="table-of-contents" role="doc-toc">
+<div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orge8ecb98">1. Interpolation formula</a></li>
+<li><a href="#orgb5b54c2">1. Interpolation formula</a></li>
 </ul>
 </div>
-</nav>
+</div>
 <p>
 <b>The sampling process converts a continuous time signal into a signal of discrete time</b>. What this means is that we basically end up with a sequence of numbers.
 </p>
 
-<div class="theorem" id="org565ed0b">
+<div class="theorem" id="org69e5309">
 <p>
 If a signal \(s(t)\) containns no frequencies outside \(B\) Hz, it is completely determined by its values at a sequence of points spaced \(< \frac{1}{2B}\) seconds apart.
 </p>
@@ -79,8 +79,8 @@ What does this mean? Copies of \(S(f)\) in multiples of \(f_s\), are transated a
 If the Nyquist criterion is not satisfied, adjacent copies overlap which implies that the <a href="https://en.wikipedia.org/wiki/Aliasing">aliasing affect</a> will occur (overlapping frequencies). This is why bands are applied to frequencies (low pass or anti-aliasing filter) before sampling occurs so that we can guarantee that this does not occur.
 </p>
 
-<div id="outline-container-orge8ecb98" class="outline-2">
-<h2 id="orge8ecb98"><span class="section-number-2">1.</span> Interpolation formula</h2>
+<div id="outline-container-orgb5b54c2" class="outline-2">
+<h2 id="orgb5b54c2"><span class="section-number-2">1.</span> Interpolation formula</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 \(S_{\text{periodic sum}}(f)\) can be used to recover \(S(f)\) (\(k = 0\)). That is we can say for a \(H(f) = \begin{cases} 1 & |f| < B \\ 0 & |f| > f_s-B \end{cases}\) (the critical point being \(B = \frac{f_s}{2}\).
@@ -137,7 +137,7 @@ where the \(sinc(\cdot)\) part of the summation is called the sinc interpolator.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alexander Brown</p>
-<p class="date">Created: 2023-04-29 Sat 14:21</p>
+<p class="date">Created: 2023-04-29 Sat 13:17</p>
 </div>
 </body>
 </html>

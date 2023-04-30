@@ -1,8 +1,5 @@
-* Writing a X Window Manager
-:PROPERTIES:
-:CUSTOM_ID: writing-a-x-window-manager
-:END:
-** Window Hierarchy
+#+title: Writing A X Window Manager
+* Window Hierarchy
 :PROPERTIES:
 :CUSTOM_ID: window-hierarchy
 :END:
@@ -13,7 +10,7 @@ of the root window. UI elements within a top level window are
 descendants of that window. This hierarchy also enforces that the child
 is clipped to the boundaries of its parent.
 
-** Substructure Redirection
+* Substructure Redirection
 :PROPERTIES:
 :CUSTOM_ID: substructure-redirection
 :END:
@@ -22,7 +19,7 @@ to intercept requests to draw window decorations, resize, etc. A window
 manager must subscribe to /substructure redirection/ on the root window
 so that all requests are passed through the window manager.
 
-** Reparenting
+* Reparenting
 :PROPERTIES:
 :CUSTOM_ID: reparenting
 :END:

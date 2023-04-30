@@ -1,3 +1,5 @@
+#+title: Markov Chains
+
 * Discrete-Time Markov Chains
 :PROPERTIES:
 :CUSTOM_ID: discrete-time-markov-chains

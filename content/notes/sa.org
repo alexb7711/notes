@@ -1,3 +1,5 @@
+#+title: Simulated Annealing
+
 * Overview of Metaheuristic Optimization
 :PROPERTIES:
 :CUSTOM_ID: overview-of-metaheuristic-optimization

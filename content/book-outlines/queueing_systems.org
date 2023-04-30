@@ -1,4 +1,4 @@
-* Queueing Systems
-** Volume 1: Theory
+#+title: Queueing Systems
+* Volume 1: Theory
 
 - [[file:~/Documents/notes/docs/queueing_systems/ch1.pdf][Chapter 1]]

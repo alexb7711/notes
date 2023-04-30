@@ -1,3 +1,5 @@
+#+title: Fuzzy Theory
+
 * Contents
 :PROPERTIES:
 :CUSTOM_ID: contents

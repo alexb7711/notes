@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2023-04-30 Sun 15:03 -->
+<!-- 2023-04-30 Sun 15:41 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>Writing A X Window Manager</title>
 <meta name="author" content="Alexander Brown" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="style.css" />
@@ -14,28 +14,22 @@
 <nav><a href="index.html">Home</a> | <a href="blog.html">Blog</a> | <a href="notes.html">Notes</a> | <a href="class.html">Classes</a> | <a href="projects.html">Projects</a> | <a href="todo.html">Todo</a> | <a href="error.html">About</a></nav>
 </div>
 <div id="content" class="content">
-<nav id="table-of-contents" role="doc-toc">
+<header>
+<h1 class="title">Writing A X Window Manager</h1>
+</header><nav id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#writing-a-x-window-manager">1. Writing a X Window Manager</a>
-<ul>
-<li><a href="#window-hierarchy">1.1. Window Hierarchy</a></li>
-<li><a href="#substructure-redirection">1.2. Substructure Redirection</a></li>
-<li><a href="#reparenting">1.3. Reparenting</a></li>
-</ul>
-</li>
-<li><a href="#sources">2. Sources</a></li>
+<li><a href="#window-hierarchy">1. Window Hierarchy</a></li>
+<li><a href="#substructure-redirection">2. Substructure Redirection</a></li>
+<li><a href="#reparenting">3. Reparenting</a></li>
+<li><a href="#sources">4. Sources</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-writing-a-x-window-manager" class="outline-2">
-<h2 id="writing-a-x-window-manager"><span class="section-number-2">1.</span> Writing a X Window Manager</h2>
-<div class="outline-text-2" id="text-writing-a-x-window-manager">
-</div>
-<div id="outline-container-window-hierarchy" class="outline-3">
-<h3 id="window-hierarchy"><span class="section-number-3">1.1.</span> Window Hierarchy</h3>
-<div class="outline-text-3" id="text-window-hierarchy">
+<div id="outline-container-window-hierarchy" class="outline-2">
+<h2 id="window-hierarchy"><span class="section-number-2">1.</span> Window Hierarchy</h2>
+<div class="outline-text-2" id="text-window-hierarchy">
 <p>
 Windows are organized into a tree hierarchy. The root of the hierarchy
 is the root window, a virtual, invisible window that ha the same size as
@@ -47,9 +41,9 @@ is clipped to the boundaries of its parent.
 </div>
 </div>
 
-<div id="outline-container-substructure-redirection" class="outline-3">
-<h3 id="substructure-redirection"><span class="section-number-3">1.2.</span> Substructure Redirection</h3>
-<div class="outline-text-3" id="text-substructure-redirection">
+<div id="outline-container-substructure-redirection" class="outline-2">
+<h2 id="substructure-redirection"><span class="section-number-2">2.</span> Substructure Redirection</h2>
+<div class="outline-text-2" id="text-substructure-redirection">
 <p>
 Substructure redirection is the mechanism that allows a window manager
 to intercept requests to draw window decorations, resize, etc. A window
@@ -59,9 +53,9 @@ so that all requests are passed through the window manager.
 </div>
 </div>
 
-<div id="outline-container-reparenting" class="outline-3">
-<h3 id="reparenting"><span class="section-number-3">1.3.</span> Reparenting</h3>
-<div class="outline-text-3" id="text-reparenting">
+<div id="outline-container-reparenting" class="outline-2">
+<h2 id="reparenting"><span class="section-number-2">3.</span> Reparenting</h2>
+<div class="outline-text-2" id="text-reparenting">
 <p>
 The process of reparenting is what allows windows frames to be drawn
 (max, min, hide buttons). When a window is created, the window manager
@@ -72,10 +66,9 @@ registed for substructure redirection on each frame window it creates.
 </p>
 </div>
 </div>
-</div>
 
 <div id="outline-container-sources" class="outline-2">
-<h2 id="sources"><span class="section-number-2">2.</span> Sources</h2>
+<h2 id="sources"><span class="section-number-2">4.</span> Sources</h2>
 <div class="outline-text-2" id="text-sources">
 <p>
 <a href="https://jichu4n.com/posts/how-x-window-managers-work-and-how-to-write-one-part-i/.md">How
@@ -86,7 +79,7 @@ X Window Managers Work, And How To Write One</a>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alexander Brown</p>
-<p class="date">Created: 2023-04-30 Sun 15:03</p>
+<p class="date">Created: 2023-04-30 Sun 15:41</p>
 </div>
 </body>
 </html>

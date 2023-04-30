@@ -1,3 +1,5 @@
+#+title: Endianess
+
 * How to write endian-independent code in C
 :PROPERTIES:
 :CUSTOM_ID: how-to-write-endian-independent-code-in-c
@@ -18,7 +20,7 @@
 #+begin_example
 unsigned char endian![pic](2) = {1, 0};
 short x;
-  
+
 x = ∗(short ∗) endian;
 #+end_example
 
@@ -37,10 +39,10 @@ to be little-endian. If it is 0, it is assumed to be big-endian.
 #+begin_example
 unsigned char endian![pic](2) = {1, 0};
 short x;
-  
+
 x = ∗(short ∗) endian;unsigned char endian![pic](2) = {1, 0};
 short x;
-  
+
 x = ∗(short ∗) endian;
 #+end_example
 

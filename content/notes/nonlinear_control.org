@@ -1,12 +1,4 @@
-* Contents
-:PROPERTIES:
-:CUSTOM_ID: contents
-:END:
-#+begin_example
-    - [Backstepping](#Backstepping.md)
-    - [Lyapunov Redesign](#Lyapunov Redesign.md)
-            - [Online Lectures](#Lyapunov Redesign#Online Lectures.md)
-#+end_example
+#+title: Nonlinear and Adaptive Control
 
 * Backstepping
 :PROPERTIES:

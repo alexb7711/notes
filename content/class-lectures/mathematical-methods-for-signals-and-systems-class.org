@@ -1,3 +1,4 @@
+#+title: Mathematical Methods and Algorithms for Signals and Systems
 * Class Notes
 :PROPERTIES:
 :CUSTOM_ID: class-notes

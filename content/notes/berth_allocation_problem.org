@@ -1,4 +1,3 @@
+#+TITLE: Berth Allocation Problem
+
 * Berth Allocation Problem
-:PROPERTIES:
-:CUSTOM_ID: berth-allocation-problem
-:END:

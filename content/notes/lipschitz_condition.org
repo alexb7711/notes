@@ -1,3 +1,5 @@
+#+title: Lipschitz Condition
+
 * What is a Lipschitz Condition?
 :PROPERTIES:
 :CUSTOM_ID: what-is-a-lipschitz-condition

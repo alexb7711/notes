@@ -1,8 +1,6 @@
-* MATLAB Tips
-:PROPERTIES:
-:CUSTOM_ID: matlab-tips
-:END:
-** Pivoting Function
+#+title: MATLAB Tips
+
+* Pivoting Function
 :PROPERTIES:
 :CUSTOM_ID: pivoting-function
 :END:
@@ -32,7 +30,7 @@ function R = pivot(M, r, c)
 end                 % function
 #+end_example
 
-** Footnotes
+* Footnotes
 :PROPERTIES:
 :CUSTOM_ID: footnotes
 :END:

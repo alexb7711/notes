@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2023-04-30 Sun 15:03 -->
+<!-- 2023-04-30 Sun 15:41 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>Introduction to Stochastic Programming</title>
 <meta name="author" content="Alexander Brown" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="style.css" />
@@ -35,202 +35,201 @@
 <nav><a href="index.html">Home</a> | <a href="blog.html">Blog</a> | <a href="notes.html">Notes</a> | <a href="class.html">Classes</a> | <a href="projects.html">Projects</a> | <a href="todo.html">Todo</a> | <a href="error.html">About</a></nav>
 </div>
 <div id="content" class="content">
-<nav id="table-of-contents" role="doc-toc">
+<header>
+<h1 class="title">Introduction to Stochastic Programming</h1>
+</header><nav id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org4cb69d6">1. Models</a>
+<li><a href="#orga4a74fd">1. Models</a>
 <ul>
-<li><a href="#orgfedef73">1.1. Introduction and Examples</a>
+<li><a href="#org7283476">1.1. Introduction and Examples</a>
 <ul>
-<li><a href="#orgf575768">1.1.1. A Farming Example and the News Vendor Problem</a></li>
-<li><a href="#orgc4f5911">1.1.2. Financial Planning and Control</a></li>
-<li><a href="#orgab7ac65">1.1.3. Capacity Expansion</a></li>
-<li><a href="#org6ff4b53">1.1.4. Design for Manufacturing Quality</a></li>
-<li><a href="#orge368c36">1.1.5. A Routing Example</a></li>
-<li><a href="#org1ab0268">1.1.6. Other Applications</a></li>
+<li><a href="#orgb53e015">1.1.1. A Farming Example and the News Vendor Problem</a></li>
+<li><a href="#org23bc31e">1.1.2. Financial Planning and Control</a></li>
+<li><a href="#org04135e5">1.1.3. Capacity Expansion</a></li>
+<li><a href="#org27f61b5">1.1.4. Design for Manufacturing Quality</a></li>
+<li><a href="#org8ed0e7f">1.1.5. A Routing Example</a></li>
+<li><a href="#orga841d4a">1.1.6. Other Applications</a></li>
 </ul>
 </li>
-<li><a href="#orgb5f4d72">1.2. Uncertainty and Modeling Issues</a>
+<li><a href="#org4f8c9ba">1.2. Uncertainty and Modeling Issues</a>
 <ul>
-<li><a href="#org719cc1b">1.2.1. Probability Spaces and Random Variables</a></li>
-<li><a href="#orgde0cbc3">1.2.2. Deterministic Linear Programs</a></li>
-<li><a href="#org85f9cb3">1.2.3. Decisions and Stages</a></li>
-<li><a href="#org8efa388">1.2.4. Two-Stage Program with Fixed Recourse</a></li>
-<li><a href="#org8783984">1.2.5. Random Variables and Risk Aversion</a></li>
-<li><a href="#org45e6c34">1.2.6. Probabilistic Programming</a></li>
-<li><a href="#orge6f09a9">1.2.7. Modeling Exercise</a></li>
-<li><a href="#org74f1851">1.2.8. Alternative Characterizations and Robust Formulations</a></li>
-<li><a href="#org1e76d52">1.2.9. Short Reviews</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org06ebb59">2. Part II: Basic Properties</a>
-<ul>
-<li><a href="#org59abf09">2.1. Basic Properties and Theory</a>
-<ul>
-<li><a href="#orgc6e7502">2.1.1. Two-Stage Stochastic Linear Programs with Fixed Recourse</a></li>
-<li><a href="#orgc118db9">2.1.2. Probabilistic or Chance Constraints</a></li>
-<li><a href="#orgfc27ce1">2.1.3. Stochastic Integer Programs</a></li>
-<li><a href="#org6759ead">2.1.4. Multistage Stochastic Programs with Recourse</a></li>
-<li><a href="#orgcef7837">2.1.5. Stochastic Nonlinear Programs with Recourse</a></li>
-</ul>
-</li>
-<li><a href="#orga643e08">2.2. The Value of Information and the Stochastic Solut</a>
-<ul>
-<li><a href="#orge769572">2.2.1. The Expected Value of Perfect Information</a></li>
-<li><a href="#org4cc73b8">2.2.2. The Value of the Stochastic Solution</a></li>
-<li><a href="#org1f9259f">2.2.3. Basic Inequalities</a></li>
-<li><a href="#org1ca13ee">2.2.4. The Relationship between EVPI and VSS</a></li>
-<li><a href="#org67b81a9">2.2.5. Examples</a></li>
-<li><a href="#org5ac5029">2.2.6. Bounds on EVPI and VSS</a></li>
+<li><a href="#orgda50948">1.2.1. Probability Spaces and Random Variables</a></li>
+<li><a href="#org2576400">1.2.2. Deterministic Linear Programs</a></li>
+<li><a href="#org7b6b3f0">1.2.3. Decisions and Stages</a></li>
+<li><a href="#org6856b14">1.2.4. Two-Stage Program with Fixed Recourse</a></li>
+<li><a href="#org66054ff">1.2.5. Random Variables and Risk Aversion</a></li>
+<li><a href="#orgdd6a23f">1.2.6. Probabilistic Programming</a></li>
+<li><a href="#orgd1f73bc">1.2.7. Modeling Exercise</a></li>
+<li><a href="#org203df83">1.2.8. Alternative Characterizations and Robust Formulations</a></li>
+<li><a href="#orgf5e688d">1.2.9. Short Reviews</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org5d51ef6">3. Part III: Solution Methods</a>
+<li><a href="#org4dadaab">2. Part II: Basic Properties</a>
 <ul>
-<li><a href="#orge4ee4bf">3.1. Two-Stage Recourse Problems</a>
+<li><a href="#orgd70260a">2.1. Basic Properties and Theory</a>
 <ul>
-<li><a href="#orgdb726e7">3.1.1. The L-Shaped Method</a></li>
-<li><a href="#org6d48c5c">3.1.2. Regularized Decomposition</a></li>
-<li><a href="#org080e171">3.1.3. The Piecewise Quadratic Form of the L-shaped Methods</a></li>
-<li><a href="#org019002a">3.1.4. Basis Factorization and Interior Point Methods</a></li>
-<li><a href="#orgaddb8c1">3.1.5. Inner Linearization Methods and Special Structures</a></li>
-<li><a href="#org74128a3">3.1.6. Simple and Network Recourse Problems</a></li>
-<li><a href="#orgb8c637c">3.1.7. Methods Based on the Stochastic Program Lagrangian</a></li>
-<li><a href="#org18d1ccf">3.1.8. Additional Methods and Complexity Results</a></li>
+<li><a href="#org6cdb1ef">2.1.1. Two-Stage Stochastic Linear Programs with Fixed Recourse</a></li>
+<li><a href="#org057cb9c">2.1.2. Probabilistic or Chance Constraints</a></li>
+<li><a href="#org24cc149">2.1.3. Stochastic Integer Programs</a></li>
+<li><a href="#org4704bf4">2.1.4. Multistage Stochastic Programs with Recourse</a></li>
+<li><a href="#org5facd24">2.1.5. Stochastic Nonlinear Programs with Recourse</a></li>
 </ul>
 </li>
-<li><a href="#orgc6d7eb3">3.2. Multistage Stochastic Programs</a>
+<li><a href="#org857dab7">2.2. The Value of Information and the Stochastic Solut</a>
 <ul>
-<li><a href="#org92cad6a">3.2.1. Nested Decomposition Procedures</a></li>
-<li><a href="#org37e4764">3.2.2. Quadratic Nested Decomposition</a></li>
-<li><a href="#orgb3c55b9">3.2.3. Block Separability and Special Structure</a></li>
-<li><a href="#orga47e4a8">3.2.4. Lagrangian-Based Methods for Multiple Stages</a></li>
-</ul>
-</li>
-<li><a href="#org63c4796">3.3. Stochastic Integer Programs</a>
-<ul>
-<li><a href="#org4a9606d">3.3.1. Stochastic Integer Programs and LP-Relaxation</a></li>
-<li><a href="#orgb737ab1">3.3.2. First-stage Binary Variables</a></li>
-<li><a href="#org00d8103">3.3.3. Second-stage Integer Variables</a></li>
-<li><a href="#org95eb525">3.3.4. Reformulation</a></li>
-<li><a href="#org6552850">3.3.5. Simple Integer Recourse</a></li>
-<li><a href="#org4c3a2d2">3.3.6. Cuts Based on Branching in the Second Stage</a></li>
-<li><a href="#org3de166e">3.3.7. Extensive Forms and Decomposition</a></li>
-<li><a href="#org446788a">3.3.8. Short Reviews</a></li>
+<li><a href="#org7ac17c7">2.2.1. The Expected Value of Perfect Information</a></li>
+<li><a href="#org923116b">2.2.2. The Value of the Stochastic Solution</a></li>
+<li><a href="#org11326c0">2.2.3. Basic Inequalities</a></li>
+<li><a href="#org700fcfc">2.2.4. The Relationship between EVPI and VSS</a></li>
+<li><a href="#org7226e96">2.2.5. Examples</a></li>
+<li><a href="#orge6a247f">2.2.6. Bounds on EVPI and VSS</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org0120e1e">4. Part IV: Approximation and Sampling Methods</a>
+<li><a href="#org8a1afaa">3. Part III: Solution Methods</a>
 <ul>
-<li><a href="#orgbc8fe57">4.1. Evaluating and Approximating Expectations</a>
+<li><a href="#org7ff3a50">3.1. Two-Stage Recourse Problems</a>
 <ul>
-<li><a href="#org5406909">4.1.1. Direct Solutions with Multiple Integration</a></li>
-<li><a href="#orga440f6f">4.1.2. Discrete Bounding Approximations</a></li>
-<li><a href="#org53fdb87">4.1.3. Using Bounds in Algorithms</a></li>
-<li><a href="#org30aeb28">4.1.4. Bounds in Chance-Constrained Problems</a></li>
-<li><a href="#orge669c3b">4.1.5. Generalized Bounds</a></li>
-<li><a href="#org3e0251b">4.1.6. General Convergence Properties</a></li>
+<li><a href="#org1d36423">3.1.1. The L-Shaped Method</a></li>
+<li><a href="#org3ca1d53">3.1.2. Regularized Decomposition</a></li>
+<li><a href="#org93dc981">3.1.3. The Piecewise Quadratic Form of the L-shaped Methods</a></li>
+<li><a href="#orgddaa06d">3.1.4. Basis Factorization and Interior Point Methods</a></li>
+<li><a href="#org8121a4d">3.1.5. Inner Linearization Methods and Special Structures</a></li>
+<li><a href="#org391ac34">3.1.6. Simple and Network Recourse Problems</a></li>
+<li><a href="#org9f267d7">3.1.7. Methods Based on the Stochastic Program Lagrangian</a></li>
+<li><a href="#orge0828e2">3.1.8. Additional Methods and Complexity Results</a></li>
 </ul>
 </li>
-<li><a href="#org0591f3d">4.2. Monte Carlo Methods</a>
+<li><a href="#org41e4512">3.2. Multistage Stochastic Programs</a>
 <ul>
-<li><a href="#org8304b16">4.2.1. Sample Average Approximation and Importance Samplingin t</a></li>
-<li><a href="#org8137225">4.2.2. Stochastic Decomposition</a></li>
-<li><a href="#org2d48ed7">4.2.3. Stochastic Quasi-Gradient Methods</a></li>
-<li><a href="#orgfbce6e0">4.2.4. Sampling Methods for Probabilistic Constraints and Quant</a></li>
-<li><a href="#orgdb321d6">4.2.5. General Results for Sample Average Approximation and Seq</a></li>
+<li><a href="#org3fc64e7">3.2.1. Nested Decomposition Procedures</a></li>
+<li><a href="#org9138ff3">3.2.2. Quadratic Nested Decomposition</a></li>
+<li><a href="#org181f43a">3.2.3. Block Separability and Special Structure</a></li>
+<li><a href="#org2b35d23">3.2.4. Lagrangian-Based Methods for Multiple Stages</a></li>
 </ul>
 </li>
-<li><a href="#orgb5c693a">4.3. Multistage Approximations</a>
+<li><a href="#org028126c">3.3. Stochastic Integer Programs</a>
 <ul>
-<li><a href="#orgd7fc163">4.3.1. Extensions of the Jensen and Edmundson-Madansky Inequal</a></li>
-<li><a href="#orga162179">4.3.2. Bounds Based on Aggregation</a></li>
-<li><a href="#orgaa78eed">4.3.3. Scenario Generation and Distribution Fitting</a></li>
-<li><a href="#orgd33af2a">4.3.4. Multistage Sampling and Decomposition Methods</a></li>
-<li><a href="#orgcac0e2f">4.3.5. Approximate Dynamic Programming and Special Cases</a></li>
+<li><a href="#orgf549c80">3.3.1. Stochastic Integer Programs and LP-Relaxation</a></li>
+<li><a href="#org221216d">3.3.2. First-stage Binary Variables</a></li>
+<li><a href="#orgf49d44d">3.3.3. Second-stage Integer Variables</a></li>
+<li><a href="#orge3365e9">3.3.4. Reformulation</a></li>
+<li><a href="#org6391247">3.3.5. Simple Integer Recourse</a></li>
+<li><a href="#orgb43cb03">3.3.6. Cuts Based on Branching in the Second Stage</a></li>
+<li><a href="#org5035dd7">3.3.7. Extensive Forms and Decomposition</a></li>
+<li><a href="#orgf9f6ec7">3.3.8. Short Reviews</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org0c37281">5. Appendix A Sample Distribution Functions</a>
+<li><a href="#orge595feb">4. Part IV: Approximation and Sampling Methods</a>
 <ul>
-<li><a href="#org8308fd8">5.1. 1 Discrete Random Variables</a></li>
-<li><a href="#org3909e03">5.2. 2 Continuous Random Variables</a></li>
+<li><a href="#org6d7e057">4.1. Evaluating and Approximating Expectations</a>
+<ul>
+<li><a href="#org2e86782">4.1.1. Direct Solutions with Multiple Integration</a></li>
+<li><a href="#orgd3d54fc">4.1.2. Discrete Bounding Approximations</a></li>
+<li><a href="#org4287c0b">4.1.3. Using Bounds in Algorithms</a></li>
+<li><a href="#orgba0d174">4.1.4. Bounds in Chance-Constrained Problems</a></li>
+<li><a href="#org4971fa6">4.1.5. Generalized Bounds</a></li>
+<li><a href="#org96eb463">4.1.6. General Convergence Properties</a></li>
 </ul>
 </li>
-<li><a href="#org0d99547">6. References</a></li>
-<li><a href="#org5028d9f">7. Author Index</a></li>
-<li><a href="#orga7be3c7">8. Subject Index</a></li>
+<li><a href="#orgf86e7e1">4.2. Monte Carlo Methods</a>
+<ul>
+<li><a href="#orgea4e401">4.2.1. Sample Average Approximation and Importance Samplingin t</a></li>
+<li><a href="#orga8a5234">4.2.2. Stochastic Decomposition</a></li>
+<li><a href="#org3e3f76d">4.2.3. Stochastic Quasi-Gradient Methods</a></li>
+<li><a href="#org46d200f">4.2.4. Sampling Methods for Probabilistic Constraints and Quant</a></li>
+<li><a href="#org2afda26">4.2.5. General Results for Sample Average Approximation and Seq</a></li>
+</ul>
+</li>
+<li><a href="#org487dacb">4.3. Multistage Approximations</a>
+<ul>
+<li><a href="#org3cf0633">4.3.1. Extensions of the Jensen and Edmundson-Madansky Inequal</a></li>
+<li><a href="#orga8b5a99">4.3.2. Bounds Based on Aggregation</a></li>
+<li><a href="#orgfc258e5">4.3.3. Scenario Generation and Distribution Fitting</a></li>
+<li><a href="#org5e138ff">4.3.4. Multistage Sampling and Decomposition Methods</a></li>
+<li><a href="#org3a642a6">4.3.5. Approximate Dynamic Programming and Special Cases</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orge25651c">5. Appendix A Sample Distribution Functions</a>
+<ul>
+<li><a href="#orgf1f0805">5.1. 1 Discrete Random Variables</a></li>
+<li><a href="#org067e64b">5.2. 2 Continuous Random Variables</a></li>
+</ul>
+</li>
+<li><a href="#orgc8740c9">6. References</a></li>
+<li><a href="#org9f6ecb4">7. Author Index</a></li>
+<li><a href="#orgdafe5a5">8. Subject Index</a></li>
 </ul>
 </div>
 </nav>
-<p>
-#+title Introduction to Stochastic Programming
-</p>
 
-<div id="outline-container-org4cb69d6" class="outline-2">
-<h2 id="org4cb69d6"><span class="section-number-2">1.</span> Models</h2>
+<div id="outline-container-orga4a74fd" class="outline-2">
+<h2 id="orga4a74fd"><span class="section-number-2">1.</span> Models</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgfedef73" class="outline-3">
-<h3 id="orgfedef73"><span class="section-number-3">1.1.</span> Introduction and Examples</h3>
+<div id="outline-container-org7283476" class="outline-3">
+<h3 id="org7283476"><span class="section-number-3">1.1.</span> Introduction and Examples</h3>
 <div class="outline-text-3" id="text-1-1">
 </div>
-<div id="outline-container-orgf575768" class="outline-4">
-<h4 id="orgf575768"><span class="section-number-4">1.1.1.</span> A Farming Example and the News Vendor Problem</h4>
+<div id="outline-container-orgb53e015" class="outline-4">
+<h4 id="orgb53e015"><span class="section-number-4">1.1.1.</span> A Farming Example and the News Vendor Problem</h4>
 <div class="outline-text-4" id="text-1-1-1">
 </div>
 <ol class="org-ol">
-<li><a id="org906e659"></a>The farmer's problem<br></li>
-<li><a id="orgf7efde1"></a>A scenario representation<br></li>
-<li><a id="org802aaf8"></a>General model formulation<br></li>
-<li><a id="org7b06675"></a>Continuous random variables<br></li>
-<li><a id="org4962044"></a>The news vendor problem<br></li>
+<li><a id="orgfb57d82"></a>The farmer's problem<br></li>
+<li><a id="orgd93e682"></a>A scenario representation<br></li>
+<li><a id="org8dda68e"></a>General model formulation<br></li>
+<li><a id="org3cc3505"></a>Continuous random variables<br></li>
+<li><a id="orgdb02c83"></a>The news vendor problem<br></li>
 </ol>
 </div>
-<div id="outline-container-orgc4f5911" class="outline-4">
-<h4 id="orgc4f5911"><span class="section-number-4">1.1.2.</span> Financial Planning and Control</h4>
+<div id="outline-container-org23bc31e" class="outline-4">
+<h4 id="org23bc31e"><span class="section-number-4">1.1.2.</span> Financial Planning and Control</h4>
 </div>
-<div id="outline-container-orgab7ac65" class="outline-4">
-<h4 id="orgab7ac65"><span class="section-number-4">1.1.3.</span> Capacity Expansion</h4>
+<div id="outline-container-org04135e5" class="outline-4">
+<h4 id="org04135e5"><span class="section-number-4">1.1.3.</span> Capacity Expansion</h4>
 </div>
-<div id="outline-container-org6ff4b53" class="outline-4">
-<h4 id="org6ff4b53"><span class="section-number-4">1.1.4.</span> Design for Manufacturing Quality</h4>
+<div id="outline-container-org27f61b5" class="outline-4">
+<h4 id="org27f61b5"><span class="section-number-4">1.1.4.</span> Design for Manufacturing Quality</h4>
 </div>
-<div id="outline-container-orge368c36" class="outline-4">
-<h4 id="orge368c36"><span class="section-number-4">1.1.5.</span> A Routing Example</h4>
+<div id="outline-container-org8ed0e7f" class="outline-4">
+<h4 id="org8ed0e7f"><span class="section-number-4">1.1.5.</span> A Routing Example</h4>
 <div class="outline-text-4" id="text-1-1-5">
 </div>
 <ol class="org-ol">
-<li><a id="org1c9b798"></a>Presentation<br></li>
-<li><a id="orgb5400dd"></a>Wait-and-see solutions<br></li>
-<li><a id="org3c1491e"></a>Expected value solution<br></li>
-<li><a id="org4d5f001"></a>Recourse solution<br></li>
-<li><a id="org17fb3dc"></a>Other random variables<br></li>
-<li><a id="org4731c66"></a>Chance-constraints<br></li>
+<li><a id="org38f5375"></a>Presentation<br></li>
+<li><a id="org3ec8da7"></a>Wait-and-see solutions<br></li>
+<li><a id="org0daeecc"></a>Expected value solution<br></li>
+<li><a id="org914f7f2"></a>Recourse solution<br></li>
+<li><a id="orgafe1b18"></a>Other random variables<br></li>
+<li><a id="org9751d7c"></a>Chance-constraints<br></li>
 </ol>
 </div>
-<div id="outline-container-org1ab0268" class="outline-4">
-<h4 id="org1ab0268"><span class="section-number-4">1.1.6.</span> Other Applications</h4>
+<div id="outline-container-orga841d4a" class="outline-4">
+<h4 id="orga841d4a"><span class="section-number-4">1.1.6.</span> Other Applications</h4>
 </div>
 </div>
-<div id="outline-container-orgb5f4d72" class="outline-3">
-<h3 id="orgb5f4d72"><span class="section-number-3">1.2.</span> Uncertainty and Modeling Issues</h3>
+<div id="outline-container-org4f8c9ba" class="outline-3">
+<h3 id="org4f8c9ba"><span class="section-number-3">1.2.</span> Uncertainty and Modeling Issues</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-org719cc1b" class="outline-4">
-<h4 id="org719cc1b"><span class="section-number-4">1.2.1.</span> Probability Spaces and Random Variables</h4>
+<div id="outline-container-orgda50948" class="outline-4">
+<h4 id="orgda50948"><span class="section-number-4">1.2.1.</span> Probability Spaces and Random Variables</h4>
 </div>
-<div id="outline-container-orgde0cbc3" class="outline-4">
-<h4 id="orgde0cbc3"><span class="section-number-4">1.2.2.</span> Deterministic Linear Programs</h4>
+<div id="outline-container-org2576400" class="outline-4">
+<h4 id="org2576400"><span class="section-number-4">1.2.2.</span> Deterministic Linear Programs</h4>
 </div>
-<div id="outline-container-org85f9cb3" class="outline-4">
-<h4 id="org85f9cb3"><span class="section-number-4">1.2.3.</span> Decisions and Stages</h4>
+<div id="outline-container-org7b6b3f0" class="outline-4">
+<h4 id="org7b6b3f0"><span class="section-number-4">1.2.3.</span> Decisions and Stages</h4>
 <div class="outline-text-4" id="text-1-2-3">
 <ul class="org-ul">
 <li>Definitions
@@ -259,10 +258,10 @@ as a function of the outcome of the random experiment of the first-stage. \(\ome
 </div>
 </div>
 
-<div id="outline-container-org8efa388" class="outline-4">
-<h4 id="org8efa388"><span class="section-number-4">1.2.4.</span> Two-Stage Program with Fixed Recourse</h4>
+<div id="outline-container-org6856b14" class="outline-4">
+<h4 id="org6856b14"><span class="section-number-4">1.2.4.</span> Two-Stage Program with Fixed Recourse</h4>
 <div class="outline-text-4" id="text-1-2-4">
-<div class="latex" id="orge7982c8">
+<div class="latex" id="org47389ed">
 \begin{equation}
 \begin{array}{c}
   \text{min } z = c^Tx + E_{\xi} [\text{min } q(\omega) y(\omega)] \\
@@ -275,19 +274,19 @@ as a function of the outcome of the random experiment of the first-stage. \(\ome
 </div>
 
 <p>
-Consider <a href="#org910f0e6">1</a>. Refer to the location problem on page 61 in \cite{Birge-2011} for the <i>location problem</i>.
+Consider <a href="#org62622cb">1</a>. Refer to the location problem on page 61 in \cite{Birge-2011} for the <i>location problem</i>.
 This example is used is subsequent sections to demonstrate different examples of recourse formulations.
 </p>
 
 
-<figure id="org910f0e6">
+<figure id="org62622cb">
 <a href="img/the-location-problem.png"><img src="img/the-location-problem.png" alt="the-location-problem.png"></a>
 
 </figure>
 </div>
 
 <ol class="org-ol">
-<li><a id="orgbb0b9aa"></a>Fixed distribution pattern, fixed demand, \(r_i\), \(v_j\), \(t_{ij}\) stochastic<br>
+<li><a id="org156ce77"></a>Fixed distribution pattern, fixed demand, \(r_i\), \(v_j\), \(t_{ij}\) stochastic<br>
 <div class="outline-text-5" id="text-1-2-4-1">
 <ul class="org-ul">
 <li>Uncertainties: production and distribution costs and prices charged to the clients</li>
@@ -298,7 +297,7 @@ This example is used is subsequent sections to demonstrate different examples of
 </div>
 </li>
 
-<li><a id="org05e0c7c"></a>Fixed distribution pattern, uncertain demand<br>
+<li><a id="org1d7f2c5"></a>Fixed distribution pattern, uncertain demand<br>
 <div class="outline-text-5" id="text-1-2-4-2">
 <ul class="org-ul">
 <li>Demand is uncertain but the distribution plan is fixed on the first stage</li>
@@ -307,7 +306,7 @@ This example is used is subsequent sections to demonstrate different examples of
 </div>
 </li>
 
-<li><a id="org881dec9"></a>Uncertain demand, variable distribution pattern<br>
+<li><a id="orgf0489ae"></a>Uncertain demand, variable distribution pattern<br>
 <div class="outline-text-5" id="text-1-2-4-3">
 <ul class="org-ul">
 <li>This scenairo now allows the distribution pattern to be adjusted to the realization of the random event</li>
@@ -327,7 +326,7 @@ This example is used is subsequent sections to demonstrate different examples of
 </div>
 </li>
 
-<li><a id="orge0297cb"></a>Stages versus periods; Two-stage versus multistage<br>
+<li><a id="org699acd8"></a>Stages versus periods; Two-stage versus multistage<br>
 <div class="outline-text-5" id="text-1-2-4-4">
 <p>
 Mulistage models become necessary if the original decision is expected to be re-evaluated. In the case of the previous example, a three-stage model
@@ -339,8 +338,8 @@ a new warehouse, and the third stage would be to get the final distribution patt
 </ol>
 </div>
 
-<div id="outline-container-org8783984" class="outline-4">
-<h4 id="org8783984"><span class="section-number-4">1.2.5.</span> Random Variables and Risk Aversion</h4>
+<div id="outline-container-org66054ff" class="outline-4">
+<h4 id="org66054ff"><span class="section-number-4">1.2.5.</span> Random Variables and Risk Aversion</h4>
 <div class="outline-text-4" id="text-1-2-5">
 <p>
 Random events can often be placed in two categories
@@ -353,8 +352,8 @@ Random events can often be placed in two categories
 </div>
 </div>
 
-<div id="outline-container-org45e6c34" class="outline-4">
-<h4 id="org45e6c34"><span class="section-number-4">1.2.6.</span> Probabilistic Programming</h4>
+<div id="outline-container-orgdd6a23f" class="outline-4">
+<h4 id="orgdd6a23f"><span class="section-number-4">1.2.6.</span> Probabilistic Programming</h4>
 <div class="outline-text-4" id="text-1-2-6">
 <p>
 Some of the constraints or the objective are expressed in terms of probablistic statements about the first stage. The description of the second-stage,
@@ -363,353 +362,353 @@ or recourse actions, is avoided. <b>This is particuarly useful when the cost and
 </div>
 </div>
 
-<div id="outline-container-orge6f09a9" class="outline-4">
-<h4 id="orge6f09a9"><span class="section-number-4">1.2.7.</span> Modeling Exercise</h4>
+<div id="outline-container-orgd1f73bc" class="outline-4">
+<h4 id="orgd1f73bc"><span class="section-number-4">1.2.7.</span> Modeling Exercise</h4>
 <div class="outline-text-4" id="text-1-2-7">
 </div>
 <ol class="org-ol">
-<li><a id="orga4a9736"></a>Presentation<br></li>
-<li><a id="orgaf4ea83"></a>Discussion of solutions<br></li>
+<li><a id="org741c43a"></a>Presentation<br></li>
+<li><a id="orga534c61"></a>Discussion of solutions<br></li>
 </ol>
 </div>
-<div id="outline-container-org74f1851" class="outline-4">
-<h4 id="org74f1851"><span class="section-number-4">1.2.8.</span> Alternative Characterizations and Robust Formulations</h4>
+<div id="outline-container-org203df83" class="outline-4">
+<h4 id="org203df83"><span class="section-number-4">1.2.8.</span> Alternative Characterizations and Robust Formulations</h4>
 <div class="outline-text-4" id="text-1-2-8">
 </div>
 <ol class="org-ol">
-<li><a id="org70f1e06"></a>Statistical decision theory and decision analysis<br></li>
-<li><a id="org357a950"></a>Dynamic programming and Markov decision processes<br></li>
-<li><a id="org45bb18b"></a>Machine learning and online optimization<br></li>
-<li><a id="org276de31"></a>Optimal stochastic control<br></li>
-<li><a id="orgc848920"></a>Summary<br></li>
+<li><a id="orga832515"></a>Statistical decision theory and decision analysis<br></li>
+<li><a id="orgfc2b9d9"></a>Dynamic programming and Markov decision processes<br></li>
+<li><a id="orgbe4c1d2"></a>Machine learning and online optimization<br></li>
+<li><a id="orgd61bb02"></a>Optimal stochastic control<br></li>
+<li><a id="org3e968db"></a>Summary<br></li>
 </ol>
 </div>
-<div id="outline-container-org1e76d52" class="outline-4">
-<h4 id="org1e76d52"><span class="section-number-4">1.2.9.</span> Short Reviews</h4>
+<div id="outline-container-orgf5e688d" class="outline-4">
+<h4 id="orgf5e688d"><span class="section-number-4">1.2.9.</span> Short Reviews</h4>
 <div class="outline-text-4" id="text-1-2-9">
 </div>
 <ol class="org-ol">
-<li><a id="orgea99f7a"></a>Linear programming<br></li>
-<li><a id="orga2fe185"></a>Duality for linear programs<br></li>
-<li><a id="org4d51176"></a>Nonlinear programming and convex analysis<br></li>
+<li><a id="org37af217"></a>Linear programming<br></li>
+<li><a id="orga971a78"></a>Duality for linear programs<br></li>
+<li><a id="orgb1267fd"></a>Nonlinear programming and convex analysis<br></li>
 </ol>
 </div>
 </div>
 </div>
-<div id="outline-container-org06ebb59" class="outline-2">
-<h2 id="org06ebb59"><span class="section-number-2">2.</span> Part II: Basic Properties</h2>
+<div id="outline-container-org4dadaab" class="outline-2">
+<h2 id="org4dadaab"><span class="section-number-2">2.</span> Part II: Basic Properties</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org59abf09" class="outline-3">
-<h3 id="org59abf09"><span class="section-number-3">2.1.</span> Basic Properties and Theory</h3>
+<div id="outline-container-orgd70260a" class="outline-3">
+<h3 id="orgd70260a"><span class="section-number-3">2.1.</span> Basic Properties and Theory</h3>
 <div class="outline-text-3" id="text-2-1">
 </div>
-<div id="outline-container-orgc6e7502" class="outline-4">
-<h4 id="orgc6e7502"><span class="section-number-4">2.1.1.</span> Two-Stage Stochastic Linear Programs with Fixed Recourse</h4>
+<div id="outline-container-org6cdb1ef" class="outline-4">
+<h4 id="org6cdb1ef"><span class="section-number-4">2.1.1.</span> Two-Stage Stochastic Linear Programs with Fixed Recourse</h4>
 <div class="outline-text-4" id="text-2-1-1">
 </div>
 <ol class="org-ol">
-<li><a id="org7822e7c"></a>Formulation<br></li>
-<li><a id="org19100cd"></a>Discrete random variables<br></li>
-<li><a id="org1b57248"></a>General cases<br></li>
-<li><a id="org280e051"></a>Special cases: relatively complete, complete,and simple r<br></li>
-<li><a id="org2574797"></a>Optimality conditions and duality<br></li>
-<li><a id="org846130c"></a>Stability and nonanticipativity<br></li>
+<li><a id="orgeb95ead"></a>Formulation<br></li>
+<li><a id="orgb9703b9"></a>Discrete random variables<br></li>
+<li><a id="org7465029"></a>General cases<br></li>
+<li><a id="orgebe71d9"></a>Special cases: relatively complete, complete,and simple r<br></li>
+<li><a id="org8e1a4fe"></a>Optimality conditions and duality<br></li>
+<li><a id="orge890a53"></a>Stability and nonanticipativity<br></li>
 </ol>
 </div>
-<div id="outline-container-orgc118db9" class="outline-4">
-<h4 id="orgc118db9"><span class="section-number-4">2.1.2.</span> Probabilistic or Chance Constraints</h4>
+<div id="outline-container-org057cb9c" class="outline-4">
+<h4 id="org057cb9c"><span class="section-number-4">2.1.2.</span> Probabilistic or Chance Constraints</h4>
 <div class="outline-text-4" id="text-2-1-2">
 </div>
 <ol class="org-ol">
-<li><a id="org85aa8e0"></a>General case<br></li>
-<li><a id="org501448a"></a>Probabilistic constraints with discrete random variables<br></li>
+<li><a id="org39ee133"></a>General case<br></li>
+<li><a id="org5e61670"></a>Probabilistic constraints with discrete random variables<br></li>
 </ol>
 </div>
-<div id="outline-container-orgfc27ce1" class="outline-4">
-<h4 id="orgfc27ce1"><span class="section-number-4">2.1.3.</span> Stochastic Integer Programs</h4>
+<div id="outline-container-org24cc149" class="outline-4">
+<h4 id="org24cc149"><span class="section-number-4">2.1.3.</span> Stochastic Integer Programs</h4>
 <div class="outline-text-4" id="text-2-1-3">
 </div>
 <ol class="org-ol">
-<li><a id="orga52a5bc"></a>Recourse problems<br></li>
-<li><a id="org0b0b0b3"></a>Simple integer recourse<br></li>
-<li><a id="org3ce5a17"></a>Probabilistic constraints<br></li>
+<li><a id="orga6ca597"></a>Recourse problems<br></li>
+<li><a id="org80cb48e"></a>Simple integer recourse<br></li>
+<li><a id="org18ec864"></a>Probabilistic constraints<br></li>
 </ol>
 </div>
-<div id="outline-container-org6759ead" class="outline-4">
-<h4 id="org6759ead"><span class="section-number-4">2.1.4.</span> Multistage Stochastic Programs with Recourse</h4>
+<div id="outline-container-org4704bf4" class="outline-4">
+<h4 id="org4704bf4"><span class="section-number-4">2.1.4.</span> Multistage Stochastic Programs with Recourse</h4>
 </div>
-<div id="outline-container-orgcef7837" class="outline-4">
-<h4 id="orgcef7837"><span class="section-number-4">2.1.5.</span> Stochastic Nonlinear Programs with Recourse</h4>
+<div id="outline-container-org5facd24" class="outline-4">
+<h4 id="org5facd24"><span class="section-number-4">2.1.5.</span> Stochastic Nonlinear Programs with Recourse</h4>
 </div>
 </div>
-<div id="outline-container-orga643e08" class="outline-3">
-<h3 id="orga643e08"><span class="section-number-3">2.2.</span> The Value of Information and the Stochastic Solut</h3>
+<div id="outline-container-org857dab7" class="outline-3">
+<h3 id="org857dab7"><span class="section-number-3">2.2.</span> The Value of Information and the Stochastic Solut</h3>
 <div class="outline-text-3" id="text-2-2">
 </div>
-<div id="outline-container-orge769572" class="outline-4">
-<h4 id="orge769572"><span class="section-number-4">2.2.1.</span> The Expected Value of Perfect Information</h4>
+<div id="outline-container-org7ac17c7" class="outline-4">
+<h4 id="org7ac17c7"><span class="section-number-4">2.2.1.</span> The Expected Value of Perfect Information</h4>
 </div>
-<div id="outline-container-org4cc73b8" class="outline-4">
-<h4 id="org4cc73b8"><span class="section-number-4">2.2.2.</span> The Value of the Stochastic Solution</h4>
+<div id="outline-container-org923116b" class="outline-4">
+<h4 id="org923116b"><span class="section-number-4">2.2.2.</span> The Value of the Stochastic Solution</h4>
 </div>
-<div id="outline-container-org1f9259f" class="outline-4">
-<h4 id="org1f9259f"><span class="section-number-4">2.2.3.</span> Basic Inequalities</h4>
+<div id="outline-container-org11326c0" class="outline-4">
+<h4 id="org11326c0"><span class="section-number-4">2.2.3.</span> Basic Inequalities</h4>
 </div>
-<div id="outline-container-org1ca13ee" class="outline-4">
-<h4 id="org1ca13ee"><span class="section-number-4">2.2.4.</span> The Relationship between EVPI and VSS</h4>
+<div id="outline-container-org700fcfc" class="outline-4">
+<h4 id="org700fcfc"><span class="section-number-4">2.2.4.</span> The Relationship between EVPI and VSS</h4>
 <div class="outline-text-4" id="text-2-2-4">
 </div>
 <ol class="org-ol">
-<li><a id="orged824c4"></a>EVPI = 0 and VSS =0<br></li>
-<li><a id="org594991f"></a>VSS = 0 and EVPI=0<br></li>
+<li><a id="org521b993"></a>EVPI = 0 and VSS =0<br></li>
+<li><a id="org5029941"></a>VSS = 0 and EVPI=0<br></li>
 </ol>
 </div>
-<div id="outline-container-org67b81a9" class="outline-4">
-<h4 id="org67b81a9"><span class="section-number-4">2.2.5.</span> Examples</h4>
+<div id="outline-container-org7226e96" class="outline-4">
+<h4 id="org7226e96"><span class="section-number-4">2.2.5.</span> Examples</h4>
 </div>
-<div id="outline-container-org5ac5029" class="outline-4">
-<h4 id="org5ac5029"><span class="section-number-4">2.2.6.</span> Bounds on EVPI and VSS</h4>
+<div id="outline-container-orge6a247f" class="outline-4">
+<h4 id="orge6a247f"><span class="section-number-4">2.2.6.</span> Bounds on EVPI and VSS</h4>
 </div>
 </div>
 </div>
-<div id="outline-container-org5d51ef6" class="outline-2">
-<h2 id="org5d51ef6"><span class="section-number-2">3.</span> Part III: Solution Methods</h2>
+<div id="outline-container-org8a1afaa" class="outline-2">
+<h2 id="org8a1afaa"><span class="section-number-2">3.</span> Part III: Solution Methods</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orge4ee4bf" class="outline-3">
-<h3 id="orge4ee4bf"><span class="section-number-3">3.1.</span> Two-Stage Recourse Problems</h3>
+<div id="outline-container-org7ff3a50" class="outline-3">
+<h3 id="org7ff3a50"><span class="section-number-3">3.1.</span> Two-Stage Recourse Problems</h3>
 <div class="outline-text-3" id="text-3-1">
 </div>
-<div id="outline-container-orgdb726e7" class="outline-4">
-<h4 id="orgdb726e7"><span class="section-number-4">3.1.1.</span> The L-Shaped Method</h4>
+<div id="outline-container-org1d36423" class="outline-4">
+<h4 id="org1d36423"><span class="section-number-4">3.1.1.</span> The L-Shaped Method</h4>
 <div class="outline-text-4" id="text-3-1-1">
 </div>
 <ol class="org-ol">
-<li><a id="org58c0a27"></a>Optimality cuts<br></li>
-<li><a id="orgdae34f7"></a>Feasibility cuts<br></li>
-<li><a id="org4891cff"></a>Proof of convergence<br></li>
-<li><a id="org3d91a1b"></a>The multicut version<br></li>
+<li><a id="orgbf10da0"></a>Optimality cuts<br></li>
+<li><a id="org1a9485a"></a>Feasibility cuts<br></li>
+<li><a id="org37b83e2"></a>Proof of convergence<br></li>
+<li><a id="orgd234bb2"></a>The multicut version<br></li>
 </ol>
 </div>
-<div id="outline-container-org6d48c5c" class="outline-4">
-<h4 id="org6d48c5c"><span class="section-number-4">3.1.2.</span> Regularized Decomposition</h4>
+<div id="outline-container-org3ca1d53" class="outline-4">
+<h4 id="org3ca1d53"><span class="section-number-4">3.1.2.</span> Regularized Decomposition</h4>
 </div>
-<div id="outline-container-org080e171" class="outline-4">
-<h4 id="org080e171"><span class="section-number-4">3.1.3.</span> The Piecewise Quadratic Form of the L-shaped Methods</h4>
+<div id="outline-container-org93dc981" class="outline-4">
+<h4 id="org93dc981"><span class="section-number-4">3.1.3.</span> The Piecewise Quadratic Form of the L-shaped Methods</h4>
 <div class="outline-text-4" id="text-3-1-3">
 </div>
 <ol class="org-ol">
-<li><a id="orgf116e45"></a>Full decomposability<br></li>
-<li><a id="orgf2bfc49"></a>Bunching<br></li>
+<li><a id="org003e78d"></a>Full decomposability<br></li>
+<li><a id="org523da11"></a>Bunching<br></li>
 </ol>
 </div>
-<div id="outline-container-org019002a" class="outline-4">
-<h4 id="org019002a"><span class="section-number-4">3.1.4.</span> Basis Factorization and Interior Point Methods</h4>
+<div id="outline-container-orgddaa06d" class="outline-4">
+<h4 id="orgddaa06d"><span class="section-number-4">3.1.4.</span> Basis Factorization and Interior Point Methods</h4>
 </div>
-<div id="outline-container-orgaddb8c1" class="outline-4">
-<h4 id="orgaddb8c1"><span class="section-number-4">3.1.5.</span> Inner Linearization Methods and Special Structures</h4>
+<div id="outline-container-org8121a4d" class="outline-4">
+<h4 id="org8121a4d"><span class="section-number-4">3.1.5.</span> Inner Linearization Methods and Special Structures</h4>
 </div>
-<div id="outline-container-org74128a3" class="outline-4">
-<h4 id="org74128a3"><span class="section-number-4">3.1.6.</span> Simple and Network Recourse Problems</h4>
+<div id="outline-container-org391ac34" class="outline-4">
+<h4 id="org391ac34"><span class="section-number-4">3.1.6.</span> Simple and Network Recourse Problems</h4>
 </div>
-<div id="outline-container-orgb8c637c" class="outline-4">
-<h4 id="orgb8c637c"><span class="section-number-4">3.1.7.</span> Methods Based on the Stochastic Program Lagrangian</h4>
+<div id="outline-container-org9f267d7" class="outline-4">
+<h4 id="org9f267d7"><span class="section-number-4">3.1.7.</span> Methods Based on the Stochastic Program Lagrangian</h4>
 </div>
-<div id="outline-container-org18d1ccf" class="outline-4">
-<h4 id="org18d1ccf"><span class="section-number-4">3.1.8.</span> Additional Methods and Complexity Results</h4>
+<div id="outline-container-orge0828e2" class="outline-4">
+<h4 id="orge0828e2"><span class="section-number-4">3.1.8.</span> Additional Methods and Complexity Results</h4>
 </div>
 </div>
-<div id="outline-container-orgc6d7eb3" class="outline-3">
-<h3 id="orgc6d7eb3"><span class="section-number-3">3.2.</span> Multistage Stochastic Programs</h3>
+<div id="outline-container-org41e4512" class="outline-3">
+<h3 id="org41e4512"><span class="section-number-3">3.2.</span> Multistage Stochastic Programs</h3>
 <div class="outline-text-3" id="text-3-2">
 </div>
-<div id="outline-container-org92cad6a" class="outline-4">
-<h4 id="org92cad6a"><span class="section-number-4">3.2.1.</span> Nested Decomposition Procedures</h4>
+<div id="outline-container-org3fc64e7" class="outline-4">
+<h4 id="org3fc64e7"><span class="section-number-4">3.2.1.</span> Nested Decomposition Procedures</h4>
 </div>
-<div id="outline-container-org37e4764" class="outline-4">
-<h4 id="org37e4764"><span class="section-number-4">3.2.2.</span> Quadratic Nested Decomposition</h4>
+<div id="outline-container-org9138ff3" class="outline-4">
+<h4 id="org9138ff3"><span class="section-number-4">3.2.2.</span> Quadratic Nested Decomposition</h4>
 </div>
-<div id="outline-container-orgb3c55b9" class="outline-4">
-<h4 id="orgb3c55b9"><span class="section-number-4">3.2.3.</span> Block Separability and Special Structure</h4>
+<div id="outline-container-org181f43a" class="outline-4">
+<h4 id="org181f43a"><span class="section-number-4">3.2.3.</span> Block Separability and Special Structure</h4>
 </div>
-<div id="outline-container-orga47e4a8" class="outline-4">
-<h4 id="orga47e4a8"><span class="section-number-4">3.2.4.</span> Lagrangian-Based Methods for Multiple Stages</h4>
+<div id="outline-container-org2b35d23" class="outline-4">
+<h4 id="org2b35d23"><span class="section-number-4">3.2.4.</span> Lagrangian-Based Methods for Multiple Stages</h4>
 </div>
 </div>
-<div id="outline-container-org63c4796" class="outline-3">
-<h3 id="org63c4796"><span class="section-number-3">3.3.</span> Stochastic Integer Programs</h3>
+<div id="outline-container-org028126c" class="outline-3">
+<h3 id="org028126c"><span class="section-number-3">3.3.</span> Stochastic Integer Programs</h3>
 <div class="outline-text-3" id="text-3-3">
 </div>
-<div id="outline-container-org4a9606d" class="outline-4">
-<h4 id="org4a9606d"><span class="section-number-4">3.3.1.</span> Stochastic Integer Programs and LP-Relaxation</h4>
+<div id="outline-container-orgf549c80" class="outline-4">
+<h4 id="orgf549c80"><span class="section-number-4">3.3.1.</span> Stochastic Integer Programs and LP-Relaxation</h4>
 </div>
-<div id="outline-container-orgb737ab1" class="outline-4">
-<h4 id="orgb737ab1"><span class="section-number-4">3.3.2.</span> First-stage Binary Variables</h4>
+<div id="outline-container-org221216d" class="outline-4">
+<h4 id="org221216d"><span class="section-number-4">3.3.2.</span> First-stage Binary Variables</h4>
 <div class="outline-text-4" id="text-3-3-2">
 </div>
 <ol class="org-ol">
-<li><a id="orgec83ba3"></a>Improved optimality cuts<br></li>
-<li><a id="orgc625fb5"></a>Example with continuous random variables<br></li>
+<li><a id="org12c81a9"></a>Improved optimality cuts<br></li>
+<li><a id="orgfbcdbcd"></a>Example with continuous random variables<br></li>
 </ol>
 </div>
-<div id="outline-container-org00d8103" class="outline-4">
-<h4 id="org00d8103"><span class="section-number-4">3.3.3.</span> Second-stage Integer Variables</h4>
+<div id="outline-container-orgf49d44d" class="outline-4">
+<h4 id="orgf49d44d"><span class="section-number-4">3.3.3.</span> Second-stage Integer Variables</h4>
 <div class="outline-text-4" id="text-3-3-3">
 </div>
 <ol class="org-ol">
-<li><a id="org14d7129"></a>Looking in the space of tenders<br></li>
-<li><a id="orgf1ab448"></a>Discontinuity points<br></li>
-<li><a id="orgfaf09a6"></a>Algorithm<br></li>
+<li><a id="org4c14fee"></a>Looking in the space of tenders<br></li>
+<li><a id="org8368a0e"></a>Discontinuity points<br></li>
+<li><a id="org8f25e91"></a>Algorithm<br></li>
 </ol>
 </div>
-<div id="outline-container-org95eb525" class="outline-4">
-<h4 id="org95eb525"><span class="section-number-4">3.3.4.</span> Reformulation</h4>
+<div id="outline-container-orge3365e9" class="outline-4">
+<h4 id="orge3365e9"><span class="section-number-4">3.3.4.</span> Reformulation</h4>
 <div class="outline-text-4" id="text-3-3-4">
 </div>
 <ol class="org-ol">
-<li><a id="orgb08ccbb"></a>Difficulties of reformulation in stochastic integer progr<br></li>
-<li><a id="orgd53456b"></a>Disjunctive cuts<br></li>
-<li><a id="orgec30066"></a>First-stage dependence<br></li>
-<li><a id="org5e8967c"></a>An algorithm<br></li>
+<li><a id="org32ac7fe"></a>Difficulties of reformulation in stochastic integer progr<br></li>
+<li><a id="org605559d"></a>Disjunctive cuts<br></li>
+<li><a id="orgb133325"></a>First-stage dependence<br></li>
+<li><a id="orgf2f19a7"></a>An algorithm<br></li>
 </ol>
 </div>
-<div id="outline-container-org6552850" class="outline-4">
-<h4 id="org6552850"><span class="section-number-4">3.3.5.</span> Simple Integer Recourse</h4>
+<div id="outline-container-org6391247" class="outline-4">
+<h4 id="org6391247"><span class="section-number-4">3.3.5.</span> Simple Integer Recourse</h4>
 <div class="outline-text-4" id="text-3-3-5">
 </div>
 <ol class="org-ol">
-<li><a id="orgd038e71"></a>restricted to be integer<br></li>
-<li><a id="orge4b070d"></a>The case where S=1,  not integral<br></li>
+<li><a id="orgae6ce24"></a>restricted to be integer<br></li>
+<li><a id="org95fbaae"></a>The case where S=1,  not integral<br></li>
 </ol>
 </div>
-<div id="outline-container-org4c3a2d2" class="outline-4">
-<h4 id="org4c3a2d2"><span class="section-number-4">3.3.6.</span> Cuts Based on Branching in the Second Stage</h4>
+<div id="outline-container-orgb43cb03" class="outline-4">
+<h4 id="orgb43cb03"><span class="section-number-4">3.3.6.</span> Cuts Based on Branching in the Second Stage</h4>
 <div class="outline-text-4" id="text-3-3-6">
 </div>
 <ol class="org-ol">
-<li><a id="orgb3bc341"></a>Feasibility cuts<br></li>
-<li><a id="orga8919af"></a>Optimality cuts<br></li>
+<li><a id="org3ac5bfa"></a>Feasibility cuts<br></li>
+<li><a id="org5356758"></a>Optimality cuts<br></li>
 </ol>
 </div>
-<div id="outline-container-org3de166e" class="outline-4">
-<h4 id="org3de166e"><span class="section-number-4">3.3.7.</span> Extensive Forms and Decomposition</h4>
+<div id="outline-container-org5035dd7" class="outline-4">
+<h4 id="org5035dd7"><span class="section-number-4">3.3.7.</span> Extensive Forms and Decomposition</h4>
 </div>
-<div id="outline-container-org446788a" class="outline-4">
-<h4 id="org446788a"><span class="section-number-4">3.3.8.</span> Short Reviews</h4>
+<div id="outline-container-orgf9f6ec7" class="outline-4">
+<h4 id="orgf9f6ec7"><span class="section-number-4">3.3.8.</span> Short Reviews</h4>
 <div class="outline-text-4" id="text-3-3-8">
 </div>
 <ol class="org-ol">
-<li><a id="org1242e59"></a>Branch-and-bound<br></li>
-<li><a id="org484f842"></a>A simple example of valid inequalities<br></li>
-<li><a id="orgc6bceac"></a>Disjunctive cuts<br></li>
+<li><a id="org45d45d3"></a>Branch-and-bound<br></li>
+<li><a id="orgcdee721"></a>A simple example of valid inequalities<br></li>
+<li><a id="org4f345fd"></a>Disjunctive cuts<br></li>
 </ol>
 </div>
 </div>
 </div>
-<div id="outline-container-org0120e1e" class="outline-2">
-<h2 id="org0120e1e"><span class="section-number-2">4.</span> Part IV: Approximation and Sampling Methods</h2>
+<div id="outline-container-orge595feb" class="outline-2">
+<h2 id="orge595feb"><span class="section-number-2">4.</span> Part IV: Approximation and Sampling Methods</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-orgbc8fe57" class="outline-3">
-<h3 id="orgbc8fe57"><span class="section-number-3">4.1.</span> Evaluating and Approximating Expectations</h3>
+<div id="outline-container-org6d7e057" class="outline-3">
+<h3 id="org6d7e057"><span class="section-number-3">4.1.</span> Evaluating and Approximating Expectations</h3>
 <div class="outline-text-3" id="text-4-1">
 </div>
-<div id="outline-container-org5406909" class="outline-4">
-<h4 id="org5406909"><span class="section-number-4">4.1.1.</span> Direct Solutions with Multiple Integration</h4>
+<div id="outline-container-org2e86782" class="outline-4">
+<h4 id="org2e86782"><span class="section-number-4">4.1.1.</span> Direct Solutions with Multiple Integration</h4>
 </div>
-<div id="outline-container-orga440f6f" class="outline-4">
-<h4 id="orga440f6f"><span class="section-number-4">4.1.2.</span> Discrete Bounding Approximations</h4>
+<div id="outline-container-orgd3d54fc" class="outline-4">
+<h4 id="orgd3d54fc"><span class="section-number-4">4.1.2.</span> Discrete Bounding Approximations</h4>
 </div>
-<div id="outline-container-org53fdb87" class="outline-4">
-<h4 id="org53fdb87"><span class="section-number-4">4.1.3.</span> Using Bounds in Algorithms</h4>
+<div id="outline-container-org4287c0b" class="outline-4">
+<h4 id="org4287c0b"><span class="section-number-4">4.1.3.</span> Using Bounds in Algorithms</h4>
 </div>
-<div id="outline-container-org30aeb28" class="outline-4">
-<h4 id="org30aeb28"><span class="section-number-4">4.1.4.</span> Bounds in Chance-Constrained Problems</h4>
+<div id="outline-container-orgba0d174" class="outline-4">
+<h4 id="orgba0d174"><span class="section-number-4">4.1.4.</span> Bounds in Chance-Constrained Problems</h4>
 </div>
-<div id="outline-container-orge669c3b" class="outline-4">
-<h4 id="orge669c3b"><span class="section-number-4">4.1.5.</span> Generalized Bounds</h4>
+<div id="outline-container-org4971fa6" class="outline-4">
+<h4 id="org4971fa6"><span class="section-number-4">4.1.5.</span> Generalized Bounds</h4>
 <div class="outline-text-4" id="text-4-1-5">
 </div>
 <ol class="org-ol">
-<li><a id="org078ecdd"></a>Extensions of basic bounds<br></li>
-<li><a id="org5651441"></a>Bounds based on separable functions<br></li>
-<li><a id="org029d42b"></a>General-moment bounds<br></li>
+<li><a id="orgeec0b66"></a>Extensions of basic bounds<br></li>
+<li><a id="org5b8c5da"></a>Bounds based on separable functions<br></li>
+<li><a id="org416751f"></a>General-moment bounds<br></li>
 </ol>
 </div>
-<div id="outline-container-org3e0251b" class="outline-4">
-<h4 id="org3e0251b"><span class="section-number-4">4.1.6.</span> General Convergence Properties</h4>
+<div id="outline-container-org96eb463" class="outline-4">
+<h4 id="org96eb463"><span class="section-number-4">4.1.6.</span> General Convergence Properties</h4>
 </div>
 </div>
-<div id="outline-container-org0591f3d" class="outline-3">
-<h3 id="org0591f3d"><span class="section-number-3">4.2.</span> Monte Carlo Methods</h3>
+<div id="outline-container-orgf86e7e1" class="outline-3">
+<h3 id="orgf86e7e1"><span class="section-number-3">4.2.</span> Monte Carlo Methods</h3>
 <div class="outline-text-3" id="text-4-2">
 </div>
-<div id="outline-container-org8304b16" class="outline-4">
-<h4 id="org8304b16"><span class="section-number-4">4.2.1.</span> Sample Average Approximation and Importance Samplingin t</h4>
+<div id="outline-container-orgea4e401" class="outline-4">
+<h4 id="orgea4e401"><span class="section-number-4">4.2.1.</span> Sample Average Approximation and Importance Samplingin t</h4>
 </div>
-<div id="outline-container-org8137225" class="outline-4">
-<h4 id="org8137225"><span class="section-number-4">4.2.2.</span> Stochastic Decomposition</h4>
+<div id="outline-container-orga8a5234" class="outline-4">
+<h4 id="orga8a5234"><span class="section-number-4">4.2.2.</span> Stochastic Decomposition</h4>
 </div>
-<div id="outline-container-org2d48ed7" class="outline-4">
-<h4 id="org2d48ed7"><span class="section-number-4">4.2.3.</span> Stochastic Quasi-Gradient Methods</h4>
+<div id="outline-container-org3e3f76d" class="outline-4">
+<h4 id="org3e3f76d"><span class="section-number-4">4.2.3.</span> Stochastic Quasi-Gradient Methods</h4>
 </div>
-<div id="outline-container-orgfbce6e0" class="outline-4">
-<h4 id="orgfbce6e0"><span class="section-number-4">4.2.4.</span> Sampling Methods for Probabilistic Constraints and Quant</h4>
+<div id="outline-container-org46d200f" class="outline-4">
+<h4 id="org46d200f"><span class="section-number-4">4.2.4.</span> Sampling Methods for Probabilistic Constraints and Quant</h4>
 </div>
-<div id="outline-container-orgdb321d6" class="outline-4">
-<h4 id="orgdb321d6"><span class="section-number-4">4.2.5.</span> General Results for Sample Average Approximation and Seq</h4>
+<div id="outline-container-org2afda26" class="outline-4">
+<h4 id="org2afda26"><span class="section-number-4">4.2.5.</span> General Results for Sample Average Approximation and Seq</h4>
 </div>
 </div>
-<div id="outline-container-orgb5c693a" class="outline-3">
-<h3 id="orgb5c693a"><span class="section-number-3">4.3.</span> Multistage Approximations</h3>
+<div id="outline-container-org487dacb" class="outline-3">
+<h3 id="org487dacb"><span class="section-number-3">4.3.</span> Multistage Approximations</h3>
 <div class="outline-text-3" id="text-4-3">
 </div>
-<div id="outline-container-orgd7fc163" class="outline-4">
-<h4 id="orgd7fc163"><span class="section-number-4">4.3.1.</span> Extensions of the Jensen and Edmundson-Madansky Inequal</h4>
+<div id="outline-container-org3cf0633" class="outline-4">
+<h4 id="org3cf0633"><span class="section-number-4">4.3.1.</span> Extensions of the Jensen and Edmundson-Madansky Inequal</h4>
 </div>
-<div id="outline-container-orga162179" class="outline-4">
-<h4 id="orga162179"><span class="section-number-4">4.3.2.</span> Bounds Based on Aggregation</h4>
+<div id="outline-container-orga8b5a99" class="outline-4">
+<h4 id="orga8b5a99"><span class="section-number-4">4.3.2.</span> Bounds Based on Aggregation</h4>
 </div>
-<div id="outline-container-orgaa78eed" class="outline-4">
-<h4 id="orgaa78eed"><span class="section-number-4">4.3.3.</span> Scenario Generation and Distribution Fitting</h4>
+<div id="outline-container-orgfc258e5" class="outline-4">
+<h4 id="orgfc258e5"><span class="section-number-4">4.3.3.</span> Scenario Generation and Distribution Fitting</h4>
 </div>
-<div id="outline-container-orgd33af2a" class="outline-4">
-<h4 id="orgd33af2a"><span class="section-number-4">4.3.4.</span> Multistage Sampling and Decomposition Methods</h4>
+<div id="outline-container-org5e138ff" class="outline-4">
+<h4 id="org5e138ff"><span class="section-number-4">4.3.4.</span> Multistage Sampling and Decomposition Methods</h4>
 </div>
-<div id="outline-container-orgcac0e2f" class="outline-4">
-<h4 id="orgcac0e2f"><span class="section-number-4">4.3.5.</span> Approximate Dynamic Programming and Special Cases</h4>
+<div id="outline-container-org3a642a6" class="outline-4">
+<h4 id="org3a642a6"><span class="section-number-4">4.3.5.</span> Approximate Dynamic Programming and Special Cases</h4>
 <div class="outline-text-4" id="text-4-3-5">
 </div>
 <ol class="org-ol">
-<li><a id="orga548779"></a>Network revenue management<br></li>
-<li><a id="org0847b47"></a>Vehicle allocation problems<br></li>
-<li><a id="orgb104a01"></a>Piecewise-linear separable bounds<br></li>
-<li><a id="org5274dfc"></a>Nonlinear bounds and a production planning example<br></li>
-<li><a id="orgcb9599e"></a>Extensions<br></li>
+<li><a id="orgd1dda61"></a>Network revenue management<br></li>
+<li><a id="org2226d20"></a>Vehicle allocation problems<br></li>
+<li><a id="orgcece20c"></a>Piecewise-linear separable bounds<br></li>
+<li><a id="org6c71b31"></a>Nonlinear bounds and a production planning example<br></li>
+<li><a id="org6054369"></a>Extensions<br></li>
 </ol>
 </div>
 </div>
 </div>
-<div id="outline-container-org0c37281" class="outline-2">
-<h2 id="org0c37281"><span class="section-number-2">5.</span> Appendix A Sample Distribution Functions</h2>
+<div id="outline-container-orge25651c" class="outline-2">
+<h2 id="orge25651c"><span class="section-number-2">5.</span> Appendix A Sample Distribution Functions</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-org8308fd8" class="outline-3">
-<h3 id="org8308fd8"><span class="section-number-3">5.1.</span> 1 Discrete Random Variables</h3>
+<div id="outline-container-orgf1f0805" class="outline-3">
+<h3 id="orgf1f0805"><span class="section-number-3">5.1.</span> 1 Discrete Random Variables</h3>
 </div>
-<div id="outline-container-org3909e03" class="outline-3">
-<h3 id="org3909e03"><span class="section-number-3">5.2.</span> 2 Continuous Random Variables</h3>
+<div id="outline-container-org067e64b" class="outline-3">
+<h3 id="org067e64b"><span class="section-number-3">5.2.</span> 2 Continuous Random Variables</h3>
 </div>
 </div>
-<div id="outline-container-org0d99547" class="outline-2">
-<h2 id="org0d99547"><span class="section-number-2">6.</span> References</h2>
+<div id="outline-container-orgc8740c9" class="outline-2">
+<h2 id="orgc8740c9"><span class="section-number-2">6.</span> References</h2>
 </div>
-<div id="outline-container-org5028d9f" class="outline-2">
-<h2 id="org5028d9f"><span class="section-number-2">7.</span> Author Index</h2>
+<div id="outline-container-org9f6ecb4" class="outline-2">
+<h2 id="org9f6ecb4"><span class="section-number-2">7.</span> Author Index</h2>
 </div>
-<div id="outline-container-orga7be3c7" class="outline-2">
-<h2 id="orga7be3c7"><span class="section-number-2">8.</span> Subject Index</h2>
+<div id="outline-container-orgdafe5a5" class="outline-2">
+<h2 id="orgdafe5a5"><span class="section-number-2">8.</span> Subject Index</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 \bibliographystyle{plain}
@@ -720,7 +719,7 @@ or recourse actions, is avoided. <b>This is particuarly useful when the cost and
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alexander Brown</p>
-<p class="date">Created: 2023-04-30 Sun 15:03</p>
+<p class="date">Created: 2023-04-30 Sun 15:41</p>
 </div>
 </body>
 </html>

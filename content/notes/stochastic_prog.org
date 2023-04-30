@@ -1,4 +1,4 @@
-#+title Introduction to Stochastic Programming
+#+title: Introduction to Stochastic Programming
 
 #+options: tex:t
 #+option: bibtext2html

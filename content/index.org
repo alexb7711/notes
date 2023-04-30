@@ -28,7 +28,7 @@ My hobbies revolve pretty heavily around tinkering and self learning. I'm intere
 * Blog
 #+INCLUDE: blog/blog.org :lines "3-8"
 
-[[file:blog/index.org][See more...]]
+[[file:blog.org][See more...]]
 
 * Social
 - [[https://www.youtube.com/channel/UC9Y2Lk1mgsMb-NVZCrkplxQ.html][Youtube]]

@@ -1,15 +1,12 @@
-* Optimization for Engineers
-:PROPERTIES:
-:CUSTOM_ID: optimization-for-engineers
-:END:
-** Mathematical Review
+#+title: Optimization for Engineers
+* Mathematical Review
 :PROPERTIES:
 :CUSTOM_ID: mathematical-review
 :END:
 - [[file:./optimization_for_engineers/Lecture1-1.htm][Lecture 1]]
 - [[file:./optimization_for_engineers/Lecture1-2.htm][Lecture 2]]
 
-** Unconstrained Optimization
+* Unconstrained Optimization
 :PROPERTIES:
 :CUSTOM_ID: unconstrained-optimization
 :END:
@@ -18,7 +15,7 @@
 - [[file:./optimization_for_engineers/Lecture3-1.htm][Lecture 3]]
 - [[file:./optimization_for_engineers/Lecture3-2.htm][Lecture 4]]
 
-** Linear Programming
+* Linear Programming
 :PROPERTIES:
 :CUSTOM_ID: linear-programming
 :END:
@@ -28,21 +25,21 @@
 - [[file:./optimization_for_engineers/Lecture5-1.htm][Lecture 4]]
 - [[file:./optimization_for_engineers/Lecture5-1.htm][Lecture 5]]
 
-** MILP
+* MILP
 :PROPERTIES:
 :CUSTOM_ID: milp
 :END:
 - [[file:./optimization_for_engineers/Lecture6-1.htm][Lecture 1]]
 - [[file:./optimization_for_engineers/Lecture6-2.htm][Lecture 2]]
 
-** Convex Optimization
+* Convex Optimization
 :PROPERTIES:
 :CUSTOM_ID: convex-optimization
 :END:
 - [[file:./optimization_for_engineers/Lecture8-1.htm][Lecture 1]]
 - [[file:./optimization_for_engineers/Lecture8-2.htm][Lecture 2]]
 
-** Nonlinear Programming
+* Nonlinear Programming
 :PROPERTIES:
 :CUSTOM_ID: nonlinear-programming
 :END:
@@ -50,21 +47,21 @@
 - [[file:./optimization_for_engineers/Lecture10-1.htm][Lecture 2]]
 - [[file:./optimization_for_engineers/Lecture10-1.htm][Lecture 3]]
 
-** Multi-Objective Optimization
+* Multi-Objective Optimization
 :PROPERTIES:
 :CUSTOM_ID: multi-objective-optimization
 :END:
 - [[file:./optimization_for_engineers/Lecture11-01.htm][Lecture 1]]
 - [[file:./optimization_for_engineers/Lecture11-02.htm][Lecture 2]]
 
-** Global Search
+* Global Search
 :PROPERTIES:
 :CUSTOM_ID: global-search
 :END:
 - [[file:./optimization_for_engineers/Lecture12-01.htm][Lecture 1]]
 - [[file:./optimization_for_engineers/Lecture12-02.htm][Lecture 2]]
 
-** Interesting Optimization Applications
+* Interesting Optimization Applications
 :PROPERTIES:
 :CUSTOM_ID: interesting-optimization-applications
 :END:

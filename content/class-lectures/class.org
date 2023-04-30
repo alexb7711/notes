@@ -1,0 +1,8 @@
+#+TITLE: Sitemap for project classes
+
+- {{{timestamp(2023-02-28)}}} [[file:lmc-class.org][Linear Multivariable Controll]]
+- {{{timestamp(2023-02-28)}}} [[file:mr-class.org][Mobile Robotics]]
+- {{{timestamp(2023-04-23)}}} [[file:mathematical-methods-for-signals-and-systems-class.org][mathematical-methods-for-signals-and-systems-class]]
+- {{{timestamp(2023-04-29)}}} [[file:mathematical_methods_for_signals_and_systems-class.org][mathematical_methods_for_signals_and_systems-class]]
+- {{{timestamp(2023-02-27)}}} [[file:nonlinear_adaptive_control_class.org][nonlinear_adaptive_control_class]]
+- {{{timestamp(2023-02-27)}}} [[file:small_unmanned_aircraft_class.org][small_unmanned_aircraft_class]]

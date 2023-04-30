@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2023-04-30 Sun 15:03 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Alexander Brown" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="preamble" class="status">
+<nav><a href="index.html">Home</a> | <a href="blog.html">Blog</a> | <a href="notes.html">Notes</a> | <a href="class.html">Classes</a> | <a href="projects.html">Projects</a> | <a href="todo.html">Todo</a> | <a href="error.html">About</a></nav>
+</div>
+<div id="content" class="content">
+<nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org7c4fea3">1. Signals and systems, Oppenheim, A. V., &amp; Willsky, A. S., , (1996)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="book">book</span></span></a></li>
+<li><a href="#orgc0757fc">2. Signals and Systems</a>
+<ul>
+<li><a href="#org9697687">2.1. Introduction</a></li>
+<li><a href="#org7e73656">2.2. Continuous-Time And Discrete-Time Signals</a>
+<ul>
+<li><a href="#org9e5480d">2.2.1. Signal Energy And Power</a></li>
+</ul>
+</li>
+<li><a href="#org83aadee">2.3. Transformations Of The Independent Variable</a>
+<ul>
+<li><a href="#orgf5685be">2.3.1. Examples Of Transformations Of The Independent Variable</a></li>
+<li><a href="#org1ff6577">2.3.2. Periodic Signals</a></li>
+<li><a href="#org2136e25">2.3.3. Even And Odd Signals</a></li>
+</ul>
+</li>
+<li><a href="#org361121e">2.4. Exponential And Sinusoidal Signals</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+
+<div id="outline-container-org7c4fea3" class="outline-2">
+<h2 id="org7c4fea3"><span class="section-number-2">1.</span> Signals and systems, Oppenheim, A. V., &amp; Willsky, A. S., , (1996)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="book">book</span></span></h2>
+<div class="outline-text-2" id="text-1">
+<p>
+See <a href="&amp;oppenheim-1996-signal-system">&amp;oppenheim-1996-signal-system</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc0757fc" class="outline-2">
+<h2 id="orgc0757fc"><span class="section-number-2">2.</span> Signals and Systems</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org9697687" class="outline-3">
+<h3 id="org9697687"><span class="section-number-3">2.1.</span> Introduction</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+There is an analytical framework - that is, a language for describing signals and systems and an extremely powerful set
+of tools for analyzing them-that applies equally well to problems in many fields. In this chapter, we begin our
+development of the analytical framework for signals and systems by introducing their mathematical description and
+representations.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7e73656" class="outline-3">
+<h3 id="org7e73656"><span class="section-number-3">2.2.</span> Continuous-Time And Discrete-Time Signals</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Signals can be represented in many ways, but in all cases the information is contained in a pattern of variations of
+some form. Signals are represented mathematically as a function of one or more independent variable. This book, however,
+will focus on solving signals of a single independent variable.
+</p>
+</div>
+
+<div id="outline-container-org9e5480d" class="outline-4">
+<h4 id="org9e5480d"><span class="section-number-4">2.2.1.</span> Signal Energy And Power</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+In many, but not all, applications, the signals we consider are directly related to physical quantities capturing power
+and energy in a physical system. As an example, for a voltage passing through a resister the power at any instant is
+calculated as \(p(t) = \frac{v^2(t)}{R}\) from which we can write the total energy expended over an interval as
+</p>
+
+\begin{equation}
+\int_{t_1}^{t_2} \frac{v^2(t)}{R} dt
+\end{equation}
+
+<p>
+and the average power over the interval being
+</p>
+
+\begin{equation}
+\frac{1}{t_2 - t_1} \int_{t_1}^{t_2} \frac{v^2(t)}{R} dt
+\end{equation}
+
+<p>
+Although a direct equation like this may not be found for all applications, it is a common and worthwhile convention to
+use similar terminology for power and energy for <i>any</i> continuous-time or discrete-time signal. It is moreover
+convenient to consider signals that take on complex values. In this case, the total energy over the time interval \(t_1 \le
+t \le t_2\) in a continuous-time signal x(t) is defined as
+</p>
+
+\begin{equation}
+\label{org0519edb}
+\int_{t_1}^{t_2} |x(t)|^2 dt
+\end{equation}
+
+<p>
+and similarly for discrete signals
+</p>
+
+\begin{equation}
+\label{org0f14ebc}
+\sum_{n_1}^{n_2} |x[t]|^2
+\end{equation}
+
+<p>
+and their respective averages found by dividing by their respective time intervals. Furthermore, in many systems it is
+of interest to examine the power and energy of signals over an infinite interval. That is <a href="eq:power-continuous">eq:power-continuous</a>
+and <a href="eq:power-discrete">eq:power-discrete</a> with lower limit of \(-\infty\) and upper limit of \(\infty\). With this definition, three important
+classes of signals arise:
+</p>
+
+<ul class="org-ul">
+<li>Finite total energy \(E_{\infty} < \infty\). Such signals have an average of zero power \(\begin{cases} 1 & 0 \le t \le 1\\ 0 &
+  \text{otherwise} \end{cases}\).</li>
+<li>Finite average power \(P_{\infty} < \infty\). Such signals have an infinite total energy (\(x[n] = 4\))</li>
+<li>Neither average power nor total energy are finite (\(x(t) = t\)).</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org83aadee" class="outline-3">
+<h3 id="org83aadee"><span class="section-number-3">2.3.</span> Transformations Of The Independent Variable</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+A central concept in signal and system analysis is that of the transformation of a signal. For example, in an aircraft
+control system, signals corresponding to the actions of the pilot are transformed by electrical and mechanical systems
+into changes in aircraft thrust or the positions of aircraft control surfaces such as the rudder or ailerons, which in
+tum are transformed through the dynamics and kinematics of the vehicle into changes in aircraft velocity and heading.
+</p>
+</div>
+
+<div id="outline-container-orgf5685be" class="outline-4">
+<h4 id="orgf5685be"><span class="section-number-4">2.3.1.</span> Examples Of Transformations Of The Independent Variable</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<p>
+There are three basic transformations for a signal:
+</p>
+
+<ul class="org-ul">
+<li>Time shift: \(x[n] \rightarrow x[n-n_0]\)</li>
+<li>Time reversal: \(x[n] \rightarrow x[-n]\)</li>
+<li>Time scaling: \(x[n] \rightarrow x[\alpha n]\; \alpha \in \mathbb{R}\)</li>
+</ul>
+
+<p>
+Putting these together can get a total transformation of \(x(\alpha t + \beta)\).
+</p>
+
+<p>
+Transformations of the independent variable are extremely useful in signal and system analysis. These transformations
+are also important in defining and examining some important properties of signals.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1ff6577" class="outline-4">
+<h4 id="org1ff6577"><span class="section-number-4">2.3.2.</span> Periodic Signals</h4>
+<div class="outline-text-4" id="text-2-3-2">
+<p>
+A periodic signal is that of one that repeats on some interval. Mathematically it is represented as
+</p>
+
+\begin{equation}
+\label{org6c2dcac}
+x(t) = x(t + T)
+\end{equation}
+
+<p>
+We say that \(x(t)\) is periodic with period \(T\). The fundamental period \(T_0\) of \(x(t)\) is the smallest positive value of \(T\)
+for which <a href="eq:periodicsignalcontinuous">eq:periodicsignalcontinuous</a> holds. Similarly, for discrete signals we find
+</p>
+
+\begin{equation}
+\label{orge5fa568}
+x[n] = x[n + N]
+\end{equation}
+
+<p>
+We say that \(x[n]\) is periodic with period \(N\). The fundamental period \(N_0\) of \(x[n]\) is the smallest positive value of
+\(N\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2136e25" class="outline-4">
+<h4 id="org2136e25"><span class="section-number-4">2.3.3.</span> Even And Odd Signals</h4>
+<div class="outline-text-4" id="text-2-3-3">
+<p>
+A signal \(x(t)\) or \(x[n]\) is referred to as an even signal if it is identical to its time-reversed counterpart, i.e., with
+its reflection about the origin.
+</p>
+
+\begin{equation}
+x(t) = x(-t)
+\end{equation}
+
+<p>
+A signal is odd if
+</p>
+
+\begin{equation}
+x(-t) = -x(t)
+\end{equation}
+
+<p>
+Furthermore, odd signals must necessarily be \(0\) at \(t=0\). This is true for discrete signals, just substitute \(x(t)\) for
+\(x[n]\).
+</p>
+
+<p>
+An important fact is that any signal can be broken into a sum of two signals, one of which is even and one of which is
+odd. That is
+</p>
+
+\begin{equation}
+x(t) = \mathcal{E}\{x(t)\} + \mathcal{O}\{x(t)\}
+\end{equation}
+
+<p>
+Where the even and odd operators are defined as
+</p>
+
+\begin{equation}
+\begin{array}{c}
+\mathcal{E}\{x(t)\} = \frac{1}{2}[x(t) + x(-t)] \\
+\mathcal{O}\{x(t)\} = \frac{1}{2}[x(t) - x(-t)] \\
+\end{array}
+\end{equation}
+</div>
+</div>
+</div>
+
+<div id="outline-container-org361121e" class="outline-3">
+<h3 id="org361121e"><span class="section-number-3">2.4.</span> Exponential And Sinusoidal Signals</h3>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Alexander Brown</p>
+<p class="date">Created: 2023-04-30 Sun 15:03</p>
+</div>
+</body>
+</html>

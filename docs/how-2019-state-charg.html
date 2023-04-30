@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2023-04-30 Sun 15:03 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Alexander Brown" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<div id="preamble" class="status">
+<nav><a href="index.html">Home</a> | <a href="blog.html">Blog</a> | <a href="notes.html">Notes</a> | <a href="class.html">Classes</a> | <a href="projects.html">Projects</a> | <a href="todo.html">Todo</a> | <a href="error.html">About</a></nav>
+</div>
+<div id="content" class="content">
+<nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org53cc4dd">1. State of charge estimation for lithium-ion batteries using model-based and data-driven methods: a review, How, D. N. T., Hannan, M. A., Lipu, M. S. H., &amp; Ker, P. J., IEEE Access, (2019)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="article">article</span></span></a></li>
+<li><a href="#orgc3553ff">2. Notes</a>
+<ul>
+<li><a href="#orge52b6e7">2.1. INTRODUCTION</a></li>
+<li><a href="#org529bc77">2.2. OVERVIEW OF MODEL-BASED AND DATA-DRIVEN METHOD</a>
+<ul>
+<li><a href="#org55306f9">2.2.1. Model Approach (white box)</a></li>
+<li><a href="#org382f142">2.2.2. Data Approach (black box)</a></li>
+<li><a href="#org1c731dd">2.2.3. SOC ESTIMATION METHODS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+<div id="outline-container-org53cc4dd" class="outline-2">
+<h2 id="org53cc4dd"><span class="section-number-2">1.</span> State of charge estimation for lithium-ion batteries using model-based and data-driven methods: a review, How, D. N. T., Hannan, M. A., Lipu, M. S. H., &amp; Ker, P. J., IEEE Access, (2019)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="article">article</span></span></h2>
+<div class="outline-text-2" id="text-1">
+<p>
+See <a href="&amp;how-2019-state-charg">&amp;how-2019-state-charg</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc3553ff" class="outline-2">
+<h2 id="orgc3553ff"><span class="section-number-2">2.</span> Notes</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orge52b6e7" class="outline-3">
+<h3 id="orge52b6e7"><span class="section-number-3">2.1.</span> INTRODUCTION</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>The information of this review will be valuable to the academic researcher and automotive engineers towards the
+selection of appropriate SOC estimation method which is significant for the enhancement of BMS for future EV
+applications.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org529bc77" class="outline-3">
+<h3 id="org529bc77"><span class="section-number-3">2.2.</span> OVERVIEW OF MODEL-BASED AND DATA-DRIVEN METHOD</h3>
+<div class="outline-text-3" id="text-2-2">
+</div>
+<div id="outline-container-org55306f9" class="outline-4">
+<h4 id="org55306f9"><span class="section-number-4">2.2.1.</span> Model Approach (white box)</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<ul class="org-ul">
+<li>There exist two established decision-making paradigms to evaluate SOC; model-based and data-driven methods.</li>
+<li>This approach often involves the practitioner to have a deep understanding of the system or process in order to
+construct the robust rules that can model the behavior of the system accurately</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org382f142" class="outline-4">
+<h4 id="org382f142"><span class="section-number-4">2.2.2.</span> Data Approach (black box)</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<ul class="org-ul">
+<li>On the other hand, the data-driven based SOC estimation are relatively new approaches enabled by the advent of big
+quantity of data and powerful computers.</li>
+<li>The data-driven methods (also known as black-box models) are built upon empirical observations with minimal or no
+knowledge of the background processes</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1c731dd" class="outline-4">
+<h4 id="org1c731dd"><span class="section-number-4">2.2.3.</span> SOC ESTIMATION METHODS</h4>
+<div class="outline-text-4" id="text-2-2-3">
+<ul class="org-ul">
+<li>Based on recent published articles on SOC estimation, this review divides the SOC estimation methods into five groups
+namely; look-up table method, coulomb counting method, model-based estimation methods, data-driven estimation methods,
+and hybrid method, as shown in Fig. 5.</li>
+</ul>
+</div>
+
+<ol class="org-ol">
+<li><a id="org1a6537c"></a>LOOK-UP TABLE<br>
+<div class="outline-text-5" id="text-2-2-3-1">
+<ul class="org-ul">
+<li>Not relevant</li>
+<li>The look-up table method exploits the direct mapping relationship between SOC and the external characteristics
+parameters such as the open-circuit voltage (OCV), impedance, etc.</li>
+<li>The alternating current (AC) impedance methods is another technique under the look-up table category.</li>
+</ul>
+</div>
+</li>
+
+<li><a id="orga07fa61"></a>COULOMB COUNTING METHOD<br>
+<div class="outline-text-5" id="text-2-2-3-2">
+<p>
+Not relevant
+</p>
+</div>
+</li>
+
+<li><a id="orgb69f123"></a>MODEL-BASED SOC ESTIMATION METHODS<br>
+<div class="outline-text-5" id="text-2-2-3-3">
+<ul class="org-ul">
+<li>EM Model
+<ul class="org-ul">
+<li>The model-based SOC estimation methods involve modeling of the electrical, chemical or a combination of both
+properties pertaining to a specific battery.</li>
+<li>The EM model relies on partial differential equations (PDE) to describe battery dynamics such as lithium diffusion and
+potential gradients.</li>
+<li>EM method can be very accurate, nonetheless PDE computations can be expensive for real-time SOC estimation
+[62].</li>
+</ul></li>
+<li>ECM Model
+<ul class="org-ul">
+<li>The ECM model based SOC evaluation requires the derivation of the circuit models consisting of various circuit
+elements arranged in series or parallel combination such that it replicates the dynamics of the battery.</li>
+<li>The various ECM models have been proposed including the Rint model, the RC model, and the Thevenin model [24].</li>
+<li>ECM is computationally inexpensive and has been used by researchers to estimate SOC in conjunction with
+adaptive filter algorithms such as the Kalman filter. [67].</li>
+</ul></li>
+<li>Observer Model
+<ul class="org-ul">
+<li>A work in [91] proposes a novel observer-based SOC estimation method for LIB, as depicted in Fig. 13.</li>
+</ul></li>
+</ul>
+</div>
+</li>
+
+<li><a id="orgf034ded"></a>Data-Driven SOC Estimation Methods<br>
+<div class="outline-text-5" id="text-2-2-3-4">
+<ul class="org-ul">
+<li>Fuzzy Logic Method
+<ul class="org-ul">
+<li>There exist a few studies involving FL to estimate SOC. In [142], the authors proposed the use of FL with SVM to
+predict SOC of a LIB pack used in EV.</li>
+</ul></li>
+
+<li>Hybrid Method
+<ul class="org-ul">
+<li>Usually, two or three algorithms are combined to develop a hybrid method.</li>
+<li>In [149], the authors proposed a charging cell voltage curves (CCCV) hypothesis to estimate the capacity of a LIB
+pack.</li>
+</ul></li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Alexander Brown</p>
+<p class="date">Created: 2023-04-30 Sun 15:03</p>
+</div>
+</body>
+</html>

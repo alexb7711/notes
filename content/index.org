@@ -2,39 +2,33 @@
 :PROPERTIES:
 :CUSTOM_ID: home
 :END:
-Hello!
+Hello! My name is Alex and welcome to my personal website. To get credentials out of the way, I have a bachelor's degree
+in mechanical engineering (with a minor in computer science, but who really counts minors). I also have a master's
+degree in electrical engineering (emphasis being on optimization and control). I'm currently working as a software
+engineering lead.
 
-Welcome to my blog, wiki, second-brain thing! This site will mainly consist of my personal notes taken while trying to
-learn new things. This will include things such as:
+My hobbies revolve pretty heavily around tinkering and self learning. I'm interested in:
 
 - Minimal desktop Linux setups and tools
-- Emacs
+  - [[https://suckless.org/][Suckless tools]]: I primarily use ~dwm~, ~st~, ~dmenu~, ~tabbed~, and ~slock~
+  - [[https://www.gnu.org/software/emacs/][GNU Emacs]]
 - 3D printing
+  - [[https://www.prusa3d.com/category/original-prusa-i3-mk3s/][Prusa i3 MK3S+ (my printer)]]
 - Programming, embedded programming
+  - C/C++, Rust (actively learning)
+   - LISP (because of Emacs)
+   - Python, shell scripting
+   - I also have an interest in learning about functional languages (i.e. Haskell)
 - Linux server setup and tools
-- And any other things that peak my interest
+  - [[https://www.docker.com/][Docker]]
+  - [[https://nextcloud.com/][Nextcloud]]
+  - [[https://jellyfin.org/][Jellyfin]]
+- Designing and creating [[file:todo.org][personal projects]]
 
-I keep a (not so updated) list [[file:todo.html][here]] on things that I want to learn and explore.
+* Blog
+#+INCLUDE: blog/blog.org :lines "3-8"
 
-* Notes and Posts
-:PROPERTIES:
-:CUSTOM_ID: notes-and-posts
-:END:
-This website has two purposes:
-
-- Data dump of notes in the format of a connected knowledge base
-- Blog posts
-
-** Notes
-:PROPERTIES:
-:CUSTOM_ID: notes
-:END:
-This is my knowledge base of [[file:notes.html][notes]]. Its messy, doesn't make much sense, but its mine.
-
-** TODO Blog
-:PROPERTIES:
-:CUSTOM_ID: blog
-:END:
+[[file:blog/index.org][See more...]]
 
 * Social
 - [[https://www.youtube.com/channel/UC9Y2Lk1mgsMb-NVZCrkplxQ.html][Youtube]]

@@ -49,9 +49,8 @@ fundamental quantities: The average rage \(\lambda\) that customers arrive to th
 that a customer spends in the system, and the average number \(L\) of customers in the system. This relationship is
 given by \(L=\lambda W\).
 
+#+name: eq:little-limits
 \begin{equation}
-\label{eq:little\limits}
-
 \begin{array}{lll}
 
     \lambda \equiv \lim_{t \rightarrow \infty} \frac{A(t)}{t} & W \equiv \lim_{k \rightarrow \infty} \frac{1}{k}

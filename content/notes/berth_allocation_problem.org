@@ -1,3 +1,0 @@
-#+TITLE: Berth Allocation Problem
-
-* Berth Allocation Problem

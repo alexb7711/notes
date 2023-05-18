@@ -8,13 +8,13 @@ Variables: * Process: evolves over time * Random: Not perfectly
 predictable * Discrete-time: Possible changes at periods * State: A
 possible value for \(X_n\)
 
-#+begin_example
+#+begin_quote
 Definition: Markov Chain: The future is independent of the past, given the present. In other words,
 
 $$
     P(X_{n+1} = j | X_n = i)\; \text{depends only on } i \text{ and } j
 $$
-#+end_example
+#+end_quote
 
 * Representing A Discrete-Time Markov Chain
 :PROPERTIES:

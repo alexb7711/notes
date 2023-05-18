@@ -1,4 +1,4 @@
-#+title: MATLAB Tips
+#+title: Octave/MATLAB Tips
 
 * Pivoting Function
 :PROPERTIES:
@@ -6,7 +6,7 @@
 :END:
 The original code can be found here #1:
 
-#+begin_example
+#+begin_src octave
 function R = pivot(M, r, c)
     % Get matrix dimensions
     [d, w]  = size(M);
@@ -27,8 +27,8 @@ function R = pivot(M, r, c)
             R(k,:) = M(k,:) - M(k,c) * R(r,:)
         end % if
     end         % for
-end                 % function
-#+end_example
+end             % function
+#+end_src
 
 * Footnotes
 :PROPERTIES:

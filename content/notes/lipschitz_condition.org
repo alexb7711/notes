@@ -16,9 +16,9 @@ including ordinary differential equations.
 :END:
 General first order initial value problem
 
-\[
+\begin{equation}
     x' = f(t,x),\; x(\tau) = A
-\]
+\end{equation}
 
 where \(x' = \frac{dx}{dt}\)
 
@@ -27,13 +27,13 @@ condition. This condition is the cornerstone for gaining information
 about solutions to the IVP, such as existence, uniqueness and
 approximation.
 
-#+begin_example
+#+begin_quote
 We say $f$ satisfies a Lipschitz condition on a set $D$ if there is a constant $L \geq 0$ such that
-#+end_example
+#+end_quote
 
-\[
-    |f(t,u) - f(t,v)| \leq L |u-v|,\; \text{for all } (t,v),(t,v)\in D
-\]
+\begin{equation}
+    |f(t,u) - f(t,v)| \leq L |u-v|,\; \texttt{for all } (t,v),(t,v)\in D
+\end{equation}
 
 ** When does a Lipschitz condition hold?
 :PROPERTIES:
@@ -44,38 +44,32 @@ Given some \(f\) and \(D\), when does the Lipschitz Condition hold?
 *Example* Let \(D = \mathbb{R}^2\) and lat \(f(t,u) := t^2 + 2u\). For
 each \((t,u), (t,v) \in D\) consider
 
-\[
+\begin{equation}
 \begin{array}{ll}
     | f(t,u) - f(t,v) | & = | (t^2 + 2u) - (t^2 - 2v) | \\
                             & = 2|u-v|
 \end{array}
-\]
+\end{equation}
 
-#+begin_example
+#+begin_quote
 *Lemma*: Let $D$ be a rectangle
-#+end_example
 
 \[
     R:= \{(t,p) : t \in ![pic](a,b), |p-A| \leq B\}
 \]
 
-#+begin_example
 or the infinite strip
-#+end_example
 
 \[
     S:= \{(t,p) : t \in ![pic](a,b), |p-A| \leq \infty \}
 \]
 
-#+begin_example
 If $f : D \rightarrow \mathbb{R}$ and $\frac{\partial f}{\partial y}$ exists, is continuous and there is some constant $K \geq 0$ such that
-#+end_example
 
 \[
     \left| \frac{\partial f}{\partial y}(t,y) \right| \leq K,\; \text{for all } (t,y) \in D
 \]
 
-#+begin_example
 then the Lipschitz Condition holds with $L=K$
 #+end_example
 

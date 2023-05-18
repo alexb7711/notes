@@ -1,14 +1,5 @@
 #+title: Fuzzy Theory
 
-* Contents
-:PROPERTIES:
-:CUSTOM_ID: contents
-:END:
-
-* Fuzzy Theory
-:PROPERTIES:
-:CUSTOM_ID: fuzzy-theory
-:END:
 * Introduction
 :PROPERTIES:
 :CUSTOM_ID: introduction
@@ -20,10 +11,9 @@ decision to be modeled #3. Contradictory to one's
 idea of fuzzy logic, fuzzy logic is not logic that is fuzzy, but logic
 that is is used to describe fuzziness #1.
 
-{{https://www.tutorialspoint.com/fuzzy_logic/images/fuzzy_logic_introduction.jpg|Example
-of fuzzy logic}}
+[[https://www.tutorialspoint.com/fuzzy_logic/images/fuzzy_logic_introduction.jpg]]
 
-An important fact about fuzzy logic is that /it does not require a
+An important fact about fuzzy logic is that it does not require a
 model/. It works well with complex system where the mechanism are not
 fully known. As long as you have some intuition about the system, then
 the rules can be developed in implemented #3.
@@ -46,7 +36,7 @@ for predictions #3.
 Fuzzy [[file:set_theory.org][sets]] allows elements to have varying
 degrees of memberships in sets. For example consider the image below
 
-{{https://www.tutorialspoint.com/fuzzy_logic/images/fuzzy_classical_set.jpg}}
+[[https://www.tutorialspoint.com/fuzzy_logic/images/fuzzy_classical_set.jpg]]
 
 The membership function of classical sets \(A\) is binary in the sense
 that the element \(a_i\) is either in the set or not. On the other hand,
@@ -62,20 +52,20 @@ fuzzy logic.
 - Union/Fuzzy 'OR'
   - \(\mu _{{\widetilde{A}\cup \widetilde{B} }}\left ( y \right ) = \mu _{\widetilde{A}}\vee \mu _\widetilde{B} \quad \forall y \in U\)
     where \(\vee\) is the \(max\) operation.
-  - {{https://www.tutorialspoint.com/fuzzy_logic/images/union.jpg}}
+  - [[https://www.tutorialspoint.com/fuzzy_logic/images/union.jpg]]
 - Intersection/Fuzzy 'AND'
   - \(\mu _{{\widetilde{A}\cap \widetilde{B} }}\left ( y \right ) = \mu _{\widetilde{A}}\wedge \mu _\widetilde{B} \quad \forall y \in U\)
     where \(\wedge\) represents the \(min\) oepration
-  - {{https://www.tutorialspoint.com/fuzzy_logic/images/intersection.jpg}}
+  - [[https://www.tutorialspoint.com/fuzzy_logic/images/intersection.jpg]]
 - Complement/Fuzzy 'NOT”
   - \(\mu _{\widetilde{A}} = 1-\mu _{\widetilde{A}}\left ( y \right )\quad y \in U\)
-  - {{https://www.tutorialspoint.com/fuzzy_logic/images/complement.jpg}}
+  - [[https://www.tutorialspoint.com/fuzzy_logic/images/complement.jpg]]
 
 *** Operations of Trapozoidal/Triangular Fuzzy Sets
 :PROPERTIES:
 :CUSTOM_ID: operations-of-trapozoidaltriangular-fuzzy-sets
 :END:
-\[
+\begin{equation}
 \begin{array}{l}
     \text{let } \tilde{A}_1 = (a_1, b_1, c_1, d_1) \\
     \text{let } \tilde{A}_2 = (a_2, b_2, c_2, d_2) \\
@@ -83,7 +73,7 @@ fuzzy logic.
     \tilde{A}_1-\tilde{A}_2 = (a_1-d_2, b_1-c_2, c_1-b_2, d_1-a_2) \\
     \tilde{A}_1*\tilde{A}_2 = (a_1 a_2, b_1 b_2, c_1 c_2, d_1 d_2) \\
 \end{array}
-\]
+\end{equation}
 
 *** Fuzzy Set Properties
 :PROPERTIES:
@@ -119,7 +109,7 @@ Mathematically, membership functions are denoted as
 - Support: The set of values \(y\) such that \(\mu_{\tilde{A}}(y) > 0\)
 - Boundary: \(1 > \mu_{\tilde{A}}(y) > 0\)
 
-{{https://www.tutorialspoint.com/fuzzy_logic/images/membership_functions_features.jpg}}
+[[https://www.tutorialspoint.com/fuzzy_logic/images/membership_functions_features.jpg]]
 
 *** Fuzzification
 :PROPERTIES:
@@ -133,8 +123,7 @@ was \(660 = ![pic](0,0.9,0.1)\) where the fuzzy value is bad, neutral,
 and good credit, respectively. There are multiple methods of doing this,
 two of methods are shown below #1
 
-{{https://www.researchgate.net/profile/Abderrahim_Bennassar/publication/286013789/figure/fig2/AS:307781908353025@1450392333054/Block-diagram-of-a-fuzzy-logic-controller.png|Fuzzy
-logic block diagram}}
+[[https://www.researchgate.net/profile/Abderrahim_Bennassar/publication/286013789/figure/fig2/AS:307781908353025@1450392333054/Block-diagram-of-a-fuzzy-logic-controller.png]]
 
 **** Support Fuzzification (s-fuzzification) Method
 :PROPERTIES:
@@ -255,6 +244,7 @@ R(\tilde{a}) = \frac{a + m + b}{3}
 :PROPERTIES:
 :CUSTOM_ID: footnotes
 :END:
+
 - /1/ [cite/t:@tutorials_fuzzy] | Fuzzy logic, 2021. [Online; accessed
   21-October-2021].
 - /2/ [cite/t:@matlab_fuzzy_logic] | MATLAB. What is fuzzy logic,

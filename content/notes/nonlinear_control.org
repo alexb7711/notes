@@ -6,12 +6,12 @@
 :END:
 Consider the system
 
-\[
+\begin{equation}
 \begin{array}{l}
   \dot{\eta} = f_a(\eta) + g_a(\eta) \zeta \\
   \dot{\zeta} = f_b(\eta,\zeta) + g_b(\eta,\zeta)u
 \end{array}
-\]
+\end{equation}
 
 where the state is \(x=\begin{bmatrix} \eta & \zeta \end{bmatrix}^T\).
 The objective is to find a \(u\) such that \(x=0\).
@@ -24,12 +24,12 @@ Therefore we will assume that the "input" term from the second system
 (\(\zeta\)) is the "control" of the first system. We want to choose the
 form of \(\zeta\) such that \(\dot{\eta} \rightarrow 0\). Let
 
-\[
+\begin{equation}
 \begin{array}{l}
   \zeta = \phi(\eta) \\
   \phi(0) = 0
 \end{array}
-\]
+\end{equation}
 
 such that \(\eta \rightarrow 0\).
 
@@ -56,25 +56,25 @@ we have chosen a controller that stabilizes the system.
 
 Begin by defining our original system with our new \(z\) term
 
-\[
+\begin{equation}
 \begin{array}{l}
 \dot{\eta} = f(\eta) + g(\eta)\phi(\eta) + g(\eta)z \\
 \dot{z} = u - \dot{\phi}
 \end{array}
-\]
+\end{equation}
 
 Now that we have our new system defined our new system, we want to prove
 that the original system added on to the new system is still stable
 
-\[
+\begin{equation}
 \begin{array}{l}
 V = V1 + V2 \
 V = V1 + 1/2z^2
-\dot{V} = \eta f(\eta) + \eat g(\eta)z + \eta g(\eta)\phi(\eta) + z\dot{z} \\
+\dot{V} = \eta f(\eta) + \eta g(\eta)z + \eta g(\eta)\phi(\eta) + z\dot{z} \\
 \dot{V} = f(\eta) + g(\eta)z + g(\eta)\phi(\eta) + z(u - \dot{\phi}) \\
 \dot{V} = f(\eta) + g(\eta)\phi(\eta) + z(\eta g(\eta) + u - \dot{\phi})
 \end{array}
-\]
+\end{equation}
 
 We want to cancel out all the terms in the parenthesis with \(u\) as
 well as create the controller that will stabilize the system. Choose

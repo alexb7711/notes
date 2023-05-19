@@ -40,9 +40,9 @@ This page has notes taken from the book (below) and
     \Gamma \equiv E![pic](xx^T)
 \]
 
-#+begin_example
+#+begin_quote
 which allows us to view the correlation of $x_i$ and $x_j$.
-#+end_example
+#+end_quote
 
 - The second (central) moment is the /covariance/ matrix and is
   expressed as
@@ -51,9 +51,9 @@ which allows us to view the correlation of $x_i$ and $x_j$.
     P \equiv E[(x_i - m_i)(x_j - m_j)^T]
 \]
 
-#+begin_example
+#+begin_quote
 where the square root of variance $P_{ii} = E[(x_i - [i](m_.md))^T] = \sigma^2$ is the _standard deviation_ ($\sigma$) of $x_i$.
-#+end_example
+#+end_quote
 
 * (4) Stochastic Process and Linear Dynamic System Models
 :PROPERTIES:
@@ -77,18 +77,18 @@ of analyzing the performance capabilities of such devices as well
 
 Consider the following differential equation
 
-\[
+\begin{equation}
 \begin{array}{c}
     \dot{x} = F(t)x(t) + B(t)u(t) + G(t)w(t) \\
     z(t_i) = H(t_i)x(t_i) + v(t_i)           \\
 \end{array}
-\]
+\end{equation}
 
 A /Markov Process/ states that given a sequence of probability
 distributions
 (\(F_{x_{t_i | x_{t_i - 1},x_{t_i - 2}, ...}}(\zeta_i | x_{i-1}, x_{i-2}, ...)\)),
 the entire sequence can simply be represented by the previous data set
-\(F_{x_{t_i | x_{t_i - 1```(\zeta_i | x_{i-1})\). Assuming this sequence
+\(F_{x_{t_i | x_{t_i - 1}}(\zeta_i | x_{i-1})\). Assuming this sequence
 is greated by Gaussian white noise, the process is known as a
 /Gauss-Markov/ process #1.
 
@@ -117,37 +117,37 @@ constant-diffusion Brownian motion process/ if
 - The increments are Gaussian random variables such that for \(t_1\) and
   \(t_2\) any time instant in \(T\),
 
-\[
+\begin{equation}
 \begin{array}{c}
     E\{ [\beta(t_2) - \beta(t_1)]\} = 0 \\
     E\{ [\beta(t_2) - \beta(t_1)]^2 = q|t_2 - t_1|
 \end{array}
-\]
+\end{equation}
 
-#+begin_example
+#+begin_quote
 where $q$ is known as the _diffusion_ of the process.
-#+end_example
+#+end_quote
 
 The statistics at any time instant \(i\) is denoted
 
-\[
+\begin{equation}
 \begin{array}{c}
     m_{\beta}(t_i )      = E\{ ![pic](\beta(t_i))\} = 0 \\
     P_{\beta \beta}(t_i) = E\{ ![pic](\beta(t_i)^2) = q|t_i - t_0|
 \end{array}
-\]
+\end{equation}
 
 where \(q\) indicates how fast the mean square value of
 \(\beta(\cdot,\cdot)\) diverges from its initial value of zero at time
 \(t_0\). To generalize this the vector Brownian motion with white
 process can be described as #1
 
-\[
+\begin{equation}
 \begin{array}{c}
     E\{w(t\}         = 0                 \\
     E\}{w(t)w(t)^T\} = Q(t) \delta(t-t') \\
 \end{array}
-\]
+\end{equation}
 
 Notes that Brownian motion is continuous but not differentiable
 #1.
@@ -197,12 +197,12 @@ interval \(t_0\) to \(t\), it yields the random variable
 Suppose we have a matrix \(D(\cdot)\) of differentiable functions as
 well as a stocastic integral of the form
 
-\[
+\begin{equation}
 \begin{array}{c}
-    s(t) = s(t_0) + \int_{t_0)^t A(\tau) d\beta (\tau) \\
+    s(t) = s(t_0) + \int_{t_0}^t A(\tau) d\beta (\tau) \\
     y(t) = D(t) s(t)                                   \\
 \end{array}
-\]
+\end{equation}
 
 It can be shown that the differential equation of y is
 
@@ -254,12 +254,12 @@ previous state. Because of this, it is useful to characterize the
 differential equations for \(m_x(t)\) and \(P_{xx}(t)\) to describe
 their evolution in time #1
 
-\[
+\begin{equation}
 \begin{array}{c}
     \dot{m}_x(t)    = F(t)m_x(t)  + B(t)u(t) \\
     \dot{P}_{xx}(t) = F(t)P_{xx}(t) + P_{xx}(t)F^T(t) + G(t)Q(t)G^T(t)
 \end{array}
-\]
+\end{equation}
 
 ** Linear Stochastic Difference Equations
 :PROPERTIES:
@@ -270,22 +270,22 @@ For a time-invariant or slowly varying \(F(\cdot)\), \(B(\cdot)\), and
 compared to the system's natural transients, a first order approxomation
 to the solution can be used #1
 
-\[
+\begin{equation}
 \begin{array}{c}
     \Psi(t_{i+1}, t_i) \approx I + F(t_i)[t_{i+1}, t_i] \\
     B_d \approx B(t_i)[t_{i+1}, t_i] \\
     Q_d(t_i) \approx G(t_i)Q(t_i)G^T(t_i)[t_{i+1}, t_i]
 \end{array}
-\]
+\end{equation}
 
 and the mean and covariance are propogated by #1
 
-\[
+\begin{equation}
 \begin{array}{c}
     m_x(t_{i+1}) = \Psi(t_{i+1}, t_i) m_x(t_i) + B_d(t_i)u(t_i) \\
     P_{xx}(t_{t+1}) = \Psi(t_{i+1}, t_i) P_xx(t_i) \Psi^T (t_{i+1}, t_i) + G(t_i)Q(t_i)G^T(t_i)
 \end{array}
-\]
+\end{equation}
 
 *** Lear's Method
 :PROPERTIES:
@@ -315,12 +315,12 @@ dx(t) = F(t)x(t)dt + B(t) u(t) dt + G(t)d\beta (t)
 
 The solution can be approximated as
 
-\[
+\begin{equation}
 \begin{array}{l}
     \Delta \Psi = \int_{t_i}^{t_{i+1}} F(\tau) d\tau \\
     \Psi(t_{i+1},t_i) = I + \Delta \Psi + \frac{\Delta \Psi^2}{2!} + \frac{\Delta \Psi^3}{3!} + \cdots
 \end{array}
-\]
+\end{equation}
 
 ** The Overall System Model
 :PROPERTIES:
@@ -328,12 +328,12 @@ The solution can be approximated as
 :END:
 The measurements can be written as
 
-\[
+\begin{equation}
 \begin{array}{l}
 dx(t) = F(t)x(t)dt + B(t) u(t) dt + G(t)d\beta (t)
 z(t_i) = H(t_i)x(t_i) + v(t_i)
 \end{array}
-\]
+\end{equation}
 
 Where \(dx(t)\) is the continuous model with measurements available at
 intervals \(z(t_i)\). The noise will be modeled as a white Gaussian

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2023-04-30 Sun 15:41 -->
+<!-- 2023-05-19 Fri 17:17 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Nonlinear and Adaptive Control</title>
@@ -58,16 +58,12 @@
 Consider the system
 </p>
 
-<p>
-\[
-</p>
+\begin{equation}
 \begin{array}{l}
   \dot{\eta} = f_a(\eta) + g_a(\eta) \zeta \\
   \dot{\zeta} = f_b(\eta,\zeta) + g_b(\eta,\zeta)u
 \end{array}
-<p>
-\]
-</p>
+\end{equation}
 
 <p>
 where the state is \(x=\begin{bmatrix} \eta & \zeta \end{bmatrix}^T\).
@@ -84,16 +80,12 @@ Therefore we will assume that the "input" term from the second system
 form of \(\zeta\) such that \(\dot{\eta} \rightarrow 0\). Let
 </p>
 
-<p>
-\[
-</p>
+\begin{equation}
 \begin{array}{l}
   \zeta = \phi(\eta) \\
   \phi(0) = 0
 \end{array}
-<p>
-\]
-</p>
+\end{equation}
 
 <p>
 such that \(\eta \rightarrow 0\).
@@ -134,35 +126,27 @@ we have chosen a controller that stabilizes the system.
 Begin by defining our original system with our new \(z\) term
 </p>
 
-<p>
-\[
-</p>
+\begin{equation}
 \begin{array}{l}
 \dot{\eta} = f(\eta) + g(\eta)\phi(\eta) + g(\eta)z \\
 \dot{z} = u - \dot{\phi}
 \end{array}
-<p>
-\]
-</p>
+\end{equation}
 
 <p>
 Now that we have our new system defined our new system, we want to prove
 that the original system added on to the new system is still stable
 </p>
 
-<p>
-\[
-</p>
+\begin{equation}
 \begin{array}{l}
 V = V1 + V2 \
 V = V1 + 1/2z^2
-\dot{V} = \eta f(\eta) + \eat g(\eta)z + \eta g(\eta)\phi(\eta) + z\dot{z} \\
+\dot{V} = \eta f(\eta) + \eta g(\eta)z + \eta g(\eta)\phi(\eta) + z\dot{z} \\
 \dot{V} = f(\eta) + g(\eta)z + g(\eta)\phi(\eta) + z(u - \dot{\phi}) \\
 \dot{V} = f(\eta) + g(\eta)\phi(\eta) + z(\eta g(\eta) + u - \dot{\phi})
 \end{array}
-<p>
-\]
-</p>
+\end{equation}
 
 <p>
 We want to cancel out all the terms in the parenthesis with \(u\) as
@@ -199,7 +183,7 @@ Backstepping</a></li>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alexander Brown</p>
-<p class="date">Created: 2023-04-30 Sun 15:41</p>
+<p class="date">Created: 2023-05-19 Fri 17:17</p>
 </div>
 </body>
 </html>

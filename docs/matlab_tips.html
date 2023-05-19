@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2023-04-30 Sun 15:41 -->
+<!-- 2023-05-19 Fri 17:17 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>MATLAB Tips</title>
+<title>Octave/MATLAB Tips</title>
 <meta name="author" content="Alexander Brown" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="style.css" />
@@ -15,7 +15,7 @@
 </div>
 <div id="content" class="content">
 <header>
-<h1 class="title">MATLAB Tips</h1>
+<h1 class="title">Octave/MATLAB Tips</h1>
 </header><nav id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
@@ -32,35 +32,36 @@
 The original code can be found here #1:
 </p>
 
-<pre class="example" id="org72ecc06">
-function R = pivot(M, r, c)
-    % Get matrix dimensions
-    [d, w]  = size(M);
+<div class="org-src-container">
+<pre class="src src-octave"><span style="font-weight: bold;">function</span> R <span style="font-weight: bold;">=</span> <span style="font-weight: bold;">pivot</span>(M<span style="font-weight: bold;">,</span> r<span style="font-weight: bold;">,</span> c)
+    <span style="font-weight: bold; font-style: italic;">% Get matrix dimensions</span>
+    [d<span style="font-weight: bold;">,</span> w]  <span style="font-weight: bold;">=</span> size(M)<span style="font-weight: bold;">;</span>
 
-    % Initialize to appropriate size
-    R       = zeros(d, w);
+    <span style="font-weight: bold; font-style: italic;">% Initialize to appropriate size</span>
+    R       <span style="font-weight: bold;">=</span> zeros(d<span style="font-weight: bold;">,</span> w)<span style="font-weight: bold;">;</span>
 
-    % Copy row r, normalizing M(r,c) to 1
-    R(r, :) = M(r, :) / M(r, c);
+    <span style="font-weight: bold; font-style: italic;">% Copy row r, normalizing M(r,c) to 1</span>
+    R(r<span style="font-weight: bold;">,</span> <span style="font-weight: bold;">:</span>) <span style="font-weight: bold;">=</span> M(r<span style="font-weight: bold;">,</span> <span style="font-weight: bold;">:</span>) <span style="font-weight: bold;">/</span> M(r<span style="font-weight: bold;">,</span> c)<span style="font-weight: bold;">;</span>
 
-    % For all matrix rows
-    for k = 1:d
-        &lt;!-- Other than the row of interest r --&gt;
-        if (k ~=r)
-            %&lt;!-- Set it equal to the original matrix --&gt;
-            %&lt;!-- minux a multiple of normalized row r, making --&gt;
-            %&lt;!-- R(k,c) = 0 --&gt;
-            R(k,:) = M(k,:) - M(k,c) * R(r,:)
-        end % if
-    end         % for
-end                 % function
+    <span style="font-weight: bold; font-style: italic;">% For all matrix rows</span>
+    <span style="font-weight: bold;">for</span> k <span style="font-weight: bold;">=</span> 1<span style="font-weight: bold;">:</span>d
+        <span style="font-weight: bold;">&lt;!--</span> Other than the row of interest r <span style="font-weight: bold;">--&gt;</span>
+        <span style="font-weight: bold;">if</span> (k <span style="font-weight: bold;">~=</span>r)
+            <span style="font-weight: bold; font-style: italic;">%&lt;!-- Set it equal to the original matrix --&gt;</span>
+            <span style="font-weight: bold; font-style: italic;">%&lt;!-- minux a multiple of normalized row r, making --&gt;</span>
+            <span style="font-weight: bold; font-style: italic;">%&lt;!-- R(k,c) = 0 --&gt;</span>
+            R(k<span style="font-weight: bold;">,:</span>) <span style="font-weight: bold;">=</span> M(k<span style="font-weight: bold;">,:</span>) <span style="font-weight: bold;">-</span> M(k<span style="font-weight: bold;">,</span>c) <span style="font-weight: bold;">*</span> R(r<span style="font-weight: bold;">,:</span>)
+        <span style="font-weight: bold;">end</span> <span style="font-weight: bold; font-style: italic;">% if</span>
+    <span style="font-weight: bold;">end</span>         <span style="font-weight: bold; font-style: italic;">% for</span>
+<span style="font-weight: bold;">end</span>             <span style="font-weight: bold; font-style: italic;">% function</span>
 </pre>
+</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alexander Brown</p>
-<p class="date">Created: 2023-04-30 Sun 15:41</p>
+<p class="date">Created: 2023-05-19 Fri 17:17</p>
 </div>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2023-04-30 Sun 15:41 -->
+<!-- 2023-05-19 Fri 17:17 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Fuzzy Theory</title>
@@ -41,46 +41,33 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#contents">1. Contents</a></li>
-<li><a href="#fuzzy-theory">2. Fuzzy Theory</a></li>
-<li><a href="#introduction">3. Introduction</a>
+<li><a href="#introduction">1. Introduction</a>
 <ul>
-<li><a href="#fuzzy-set">3.1. Fuzzy Set</a>
+<li><a href="#fuzzy-set">1.1. Fuzzy Set</a>
 <ul>
-<li><a href="#operations-of-fuzzy-sets">3.1.1. Operations of Fuzzy Sets</a></li>
-<li><a href="#operations-of-trapozoidaltriangular-fuzzy-sets">3.1.2. Operations of Trapozoidal/Triangular Fuzzy Sets</a></li>
-<li><a href="#fuzzy-set-properties">3.1.3. Fuzzy Set Properties</a></li>
+<li><a href="#operations-of-fuzzy-sets">1.1.1. Operations of Fuzzy Sets</a></li>
+<li><a href="#operations-of-trapozoidaltriangular-fuzzy-sets">1.1.2. Operations of Trapozoidal/Triangular Fuzzy Sets</a></li>
+<li><a href="#fuzzy-set-properties">1.1.3. Fuzzy Set Properties</a></li>
 </ul>
 </li>
-<li><a href="#triangular-fuzzy-number">3.2. Triangular Fuzzy Number</a></li>
-<li><a href="#membership-functions">3.3. Membership Functions</a>
+<li><a href="#triangular-fuzzy-number">1.2. Triangular Fuzzy Number</a></li>
+<li><a href="#membership-functions">1.3. Membership Functions</a>
 <ul>
-<li><a href="#membership-function-properties">3.3.1. Membership Function Properties</a></li>
-<li><a href="#fuzzification">3.3.2. Fuzzification</a></li>
-<li><a href="#defuzzification">3.3.3. Defuzzification</a></li>
-<li><a href="#fuzzy-arithmetic">3.3.4. Fuzzy Arithmetic</a></li>
+<li><a href="#membership-function-properties">1.3.1. Membership Function Properties</a></li>
+<li><a href="#fuzzification">1.3.2. Fuzzification</a></li>
+<li><a href="#defuzzification">1.3.3. Defuzzification</a></li>
+<li><a href="#fuzzy-arithmetic">1.3.4. Fuzzy Arithmetic</a></li>
 </ul>
 </li>
-<li><a href="#comparing-fuzzy-numbers">3.4. Comparing Fuzzy Numbers</a></li>
+<li><a href="#comparing-fuzzy-numbers">1.4. Comparing Fuzzy Numbers</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-contents" class="outline-2">
-<h2 id="contents"><span class="section-number-2">1.</span> Contents</h2>
-<div class="outline-text-2" id="text-contents">
-</div>
-</div>
-
-<div id="outline-container-fuzzy-theory" class="outline-2">
-<h2 id="fuzzy-theory"><span class="section-number-2">2.</span> Fuzzy Theory</h2>
-<div class="outline-text-2" id="text-fuzzy-theory">
-</div>
-</div>
 <div id="outline-container-introduction" class="outline-2">
-<h2 id="introduction"><span class="section-number-2">3.</span> Introduction</h2>
+<h2 id="introduction"><span class="section-number-2">1.</span> Introduction</h2>
 <div class="outline-text-2" id="text-introduction">
 <p>
 Fuzzy logic is a form of artificial intelligence that resembles the
@@ -91,14 +78,15 @@ idea of fuzzy logic, fuzzy logic is not logic that is fuzzy, but logic
 that is is used to describe fuzziness #1.
 </p>
 
-<p>
-{{<img src="https://www.tutorialspoint.com/fuzzy_logic/images/fuzzy_logic_introduction.jpg%7CExample" alt="fuzzy_logic_introduction.jpg%7CExample">
-of fuzzy logic}}
-</p>
+
+<figure id="org0619cee">
+<img src="https://www.tutorialspoint.com/fuzzy_logic/images/fuzzy_logic_introduction.jpg" alt="fuzzy_logic_introduction.jpg">
+
+</figure>
 
 <p>
-An important fact about fuzzy logic is that <i>it does not require a
-model</i>. It works well with complex system where the mechanism are not
+An important fact about fuzzy logic is that it does not require a
+model/. It works well with complex system where the mechanism are not
 fully known. As long as you have some intuition about the system, then
 the rules can be developed in implemented #3.
 </p>
@@ -122,16 +110,18 @@ for predictions #3.
 </div>
 
 <div id="outline-container-fuzzy-set" class="outline-3">
-<h3 id="fuzzy-set"><span class="section-number-3">3.1.</span> Fuzzy Set</h3>
+<h3 id="fuzzy-set"><span class="section-number-3">1.1.</span> Fuzzy Set</h3>
 <div class="outline-text-3" id="text-fuzzy-set">
 <p>
 Fuzzy <a href="set_theory.html">sets</a> allows elements to have varying
 degrees of memberships in sets. For example consider the image below
 </p>
 
-<p>
-{{<img src="https://www.tutorialspoint.com/fuzzy_logic/images/fuzzy_classical_set.jpg" alt="fuzzy_classical_set.jpg">}}
-</p>
+
+<figure id="org1e25d4e">
+<img src="https://www.tutorialspoint.com/fuzzy_logic/images/fuzzy_classical_set.jpg" alt="fuzzy_classical_set.jpg">
+
+</figure>
 
 <p>
 The membership function of classical sets \(A\) is binary in the sense
@@ -144,36 +134,34 @@ fuzzy logic.
 </div>
 
 <div id="outline-container-operations-of-fuzzy-sets" class="outline-4">
-<h4 id="operations-of-fuzzy-sets"><span class="section-number-4">3.1.1.</span> Operations of Fuzzy Sets</h4>
+<h4 id="operations-of-fuzzy-sets"><span class="section-number-4">1.1.1.</span> Operations of Fuzzy Sets</h4>
 <div class="outline-text-4" id="text-operations-of-fuzzy-sets">
 <ul class="org-ul">
 <li>Union/Fuzzy 'OR'
 <ul class="org-ul">
 <li>\(\mu _{{\widetilde{A}\cup \widetilde{B} }}\left ( y \right ) = \mu _{\widetilde{A}}\vee \mu _\widetilde{B} \quad \forall y \in U\)
 where \(\vee\) is the \(max\) operation.</li>
-<li>{{<img src="https://www.tutorialspoint.com/fuzzy_logic/images/union.jpg" alt="union.jpg">}}</li>
+<li><img src="https://www.tutorialspoint.com/fuzzy_logic/images/union.jpg" alt="union.jpg"></li>
 </ul></li>
 <li>Intersection/Fuzzy 'AND'
 <ul class="org-ul">
 <li>\(\mu _{{\widetilde{A}\cap \widetilde{B} }}\left ( y \right ) = \mu _{\widetilde{A}}\wedge \mu _\widetilde{B} \quad \forall y \in U\)
 where \(\wedge\) represents the \(min\) oepration</li>
-<li>{{<img src="https://www.tutorialspoint.com/fuzzy_logic/images/intersection.jpg" alt="intersection.jpg">}}</li>
+<li><img src="https://www.tutorialspoint.com/fuzzy_logic/images/intersection.jpg" alt="intersection.jpg"></li>
 </ul></li>
 <li>Complement/Fuzzy 'NOT”
 <ul class="org-ul">
 <li>\(\mu _{\widetilde{A}} = 1-\mu _{\widetilde{A}}\left ( y \right )\quad y \in U\)</li>
-<li>{{<img src="https://www.tutorialspoint.com/fuzzy_logic/images/complement.jpg" alt="complement.jpg">}}</li>
+<li><img src="https://www.tutorialspoint.com/fuzzy_logic/images/complement.jpg" alt="complement.jpg"></li>
 </ul></li>
 </ul>
 </div>
 </div>
 
 <div id="outline-container-operations-of-trapozoidaltriangular-fuzzy-sets" class="outline-4">
-<h4 id="operations-of-trapozoidaltriangular-fuzzy-sets"><span class="section-number-4">3.1.2.</span> Operations of Trapozoidal/Triangular Fuzzy Sets</h4>
+<h4 id="operations-of-trapozoidaltriangular-fuzzy-sets"><span class="section-number-4">1.1.2.</span> Operations of Trapozoidal/Triangular Fuzzy Sets</h4>
 <div class="outline-text-4" id="text-operations-of-trapozoidaltriangular-fuzzy-sets">
-<p>
-\[
-</p>
+\begin{equation}
 \begin{array}{l}
     \text{let } \tilde{A}_1 = (a_1, b_1, c_1, d_1) \\
     \text{let } \tilde{A}_2 = (a_2, b_2, c_2, d_2) \\
@@ -181,14 +169,12 @@ where \(\wedge\) represents the \(min\) oepration</li>
     \tilde{A}_1-\tilde{A}_2 = (a_1-d_2, b_1-c_2, c_1-b_2, d_1-a_2) \\
     \tilde{A}_1*\tilde{A}_2 = (a_1 a_2, b_1 b_2, c_1 c_2, d_1 d_2) \\
 \end{array}
-<p>
-\]
-</p>
+\end{equation}
 </div>
 </div>
 
 <div id="outline-container-fuzzy-set-properties" class="outline-4">
-<h4 id="fuzzy-set-properties"><span class="section-number-4">3.1.3.</span> Fuzzy Set Properties</h4>
+<h4 id="fuzzy-set-properties"><span class="section-number-4">1.1.3.</span> Fuzzy Set Properties</h4>
 <div class="outline-text-4" id="text-fuzzy-set-properties">
 <p>
 Fuzzy sets have the same properties as <a href="set_theory.html">classical sets</a>
@@ -198,7 +184,7 @@ Fuzzy sets have the same properties as <a href="set_theory.html">classical sets<
 </div>
 
 <div id="outline-container-triangular-fuzzy-number" class="outline-3">
-<h3 id="triangular-fuzzy-number"><span class="section-number-3">3.2.</span> Triangular Fuzzy Number</h3>
+<h3 id="triangular-fuzzy-number"><span class="section-number-3">1.2.</span> Triangular Fuzzy Number</h3>
 <div class="outline-text-3" id="text-triangular-fuzzy-number">
 <p>
 A triangular fuzzy number is represented by \(\tilde{a} = (a, m, b)\).
@@ -212,7 +198,7 @@ Fuzzy Number}}
 </div>
 
 <div id="outline-container-membership-functions" class="outline-3">
-<h3 id="membership-functions"><span class="section-number-3">3.3.</span> Membership Functions</h3>
+<h3 id="membership-functions"><span class="section-number-3">1.3.</span> Membership Functions</h3>
 <div class="outline-text-3" id="text-membership-functions">
 <p>
 Mathematically, membership functions are denoted as
@@ -227,7 +213,7 @@ Mathematically, membership functions are denoted as
 </div>
 
 <div id="outline-container-membership-function-properties" class="outline-4">
-<h4 id="membership-function-properties"><span class="section-number-4">3.3.1.</span> Membership Function Properties</h4>
+<h4 id="membership-function-properties"><span class="section-number-4">1.3.1.</span> Membership Function Properties</h4>
 <div class="outline-text-4" id="text-membership-function-properties">
 <ul class="org-ul">
 <li>Core: The set of values \(y\) such that \(\mu_{\tilde{A}}(y) = 1\)</li>
@@ -235,14 +221,16 @@ Mathematically, membership functions are denoted as
 <li>Boundary: \(1 > \mu_{\tilde{A}}(y) > 0\)</li>
 </ul>
 
-<p>
-{{<img src="https://www.tutorialspoint.com/fuzzy_logic/images/membership_functions_features.jpg" alt="membership_functions_features.jpg">}}
-</p>
+
+<figure id="org025d852">
+<img src="https://www.tutorialspoint.com/fuzzy_logic/images/membership_functions_features.jpg" alt="membership_functions_features.jpg">
+
+</figure>
 </div>
 </div>
 
 <div id="outline-container-fuzzification" class="outline-4">
-<h4 id="fuzzification"><span class="section-number-4">3.3.2.</span> Fuzzification</h4>
+<h4 id="fuzzification"><span class="section-number-4">1.3.2.</span> Fuzzification</h4>
 <div class="outline-text-4" id="text-fuzzification">
 <p>
 This is the process of transforming crisp sets into fuzzy sets. This
@@ -254,10 +242,11 @@ and good credit, respectively. There are multiple methods of doing this,
 two of methods are shown below #1
 </p>
 
-<p>
-{{<img src="https://www.researchgate.net/profile/Abderrahim_Bennassar/publication/286013789/figure/fig2/AS:307781908353025@1450392333054/Block-diagram-of-a-fuzzy-logic-controller.png%7CFuzzy" alt="Block-diagram-of-a-fuzzy-logic-controller.png%7CFuzzy">
-logic block diagram}}
-</p>
+
+<figure id="org88fbbc1">
+<img src="https://www.researchgate.net/profile/Abderrahim_Bennassar/publication/286013789/figure/fig2/AS:307781908353025@1450392333054/Block-diagram-of-a-fuzzy-logic-controller.png" alt="Block-diagram-of-a-fuzzy-logic-controller.png">
+
+</figure>
 </div>
 
 <ol class="org-ol">
@@ -289,7 +278,7 @@ constant and \(\mu_i\) is expressed as a fuzzy set.
 </div>
 
 <div id="outline-container-defuzzification" class="outline-4">
-<h4 id="defuzzification"><span class="section-number-4">3.3.3.</span> Defuzzification</h4>
+<h4 id="defuzzification"><span class="section-number-4">1.3.3.</span> Defuzzification</h4>
 <div class="outline-text-4" id="text-defuzzification">
 <p>
 This is the process of transforming fuzzy sets into crisp sets
@@ -378,7 +367,7 @@ x^* = \frac{\displaystyle \sum_{i=1}^{n}\overline{x_i}}{n}
 </div>
 
 <div id="outline-container-fuzzy-arithmetic" class="outline-4">
-<h4 id="fuzzy-arithmetic"><span class="section-number-4">3.3.4.</span> Fuzzy Arithmetic</h4>
+<h4 id="fuzzy-arithmetic"><span class="section-number-4">1.3.4.</span> Fuzzy Arithmetic</h4>
 <div class="outline-text-4" id="text-fuzzy-arithmetic">
 <p>
 If we have a nonnegative, triangular fuzzy number
@@ -406,7 +395,7 @@ and the difference is
 </div>
 
 <div id="outline-container-comparing-fuzzy-numbers" class="outline-3">
-<h3 id="comparing-fuzzy-numbers"><span class="section-number-3">3.4.</span> Comparing Fuzzy Numbers</h3>
+<h3 id="comparing-fuzzy-numbers"><span class="section-number-3">1.4.</span> Comparing Fuzzy Numbers</h3>
 <div class="outline-text-3" id="text-comparing-fuzzy-numbers">
 <p>
 This is the same concept as defuzzification,
@@ -429,7 +418,7 @@ R(\tilde{a}) = \frac{a + m + b}{3}
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alexander Brown</p>
-<p class="date">Created: 2023-04-30 Sun 15:41</p>
+<p class="date">Created: 2023-05-19 Fri 17:17</p>
 </div>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2023-05-19 Fri 17:17 -->
+<!-- 2023-06-05 Mon 19:13 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Introduction to Fuzzy Linear Programming Problems: Theory, Methods, and Applictions</title>
@@ -42,12 +42,12 @@
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
 <li><a href="#state-of-the-art">1. State of the Art</a></li>
-<li><a href="#org8755733">2. Non-negative Fuzzy Optimal Solution of Fully Fuzzy Linear Programming Problems with Equality Constraints</a>
+<li><a href="#org762ba2a">2. Non-negative Fuzzy Optimal Solution of Fully Fuzzy Linear Programming Problems with Equality Constraints</a>
 <ul>
-<li><a href="#orga49b74c">2.1. Preliminaries</a></li>
+<li><a href="#orgc83caa4">2.1. Preliminaries</a></li>
 </ul>
 </li>
-<li><a href="#org62d3085">3. Misc Papers</a>
+<li><a href="#orgab91d90">3. Misc Papers</a>
 <ul>
 <li><a href="#fuzzy-objective">3.1. Fuzzy Objective</a></li>
 <li><a href="#fuzzy-constraints">3.2. Fuzzy Constraints</a></li>
@@ -93,12 +93,12 @@ fuzzy linear programming is not rich as there are few studies available on this 
 </div>
 </div>
 
-<div id="outline-container-org8755733" class="outline-2">
-<h2 id="org8755733"><span class="section-number-2">2.</span> Non-negative Fuzzy Optimal Solution of Fully Fuzzy Linear Programming Problems with Equality Constraints</h2>
+<div id="outline-container-org762ba2a" class="outline-2">
+<h2 id="org762ba2a"><span class="section-number-2">2.</span> Non-negative Fuzzy Optimal Solution of Fully Fuzzy Linear Programming Problems with Equality Constraints</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orga49b74c" class="outline-3">
-<h3 id="orga49b74c"><span class="section-number-3">2.1.</span> Preliminaries</h3>
+<div id="outline-container-orgc83caa4" class="outline-3">
+<h3 id="orgc83caa4"><span class="section-number-3">2.1.</span> Preliminaries</h3>
 <div class="outline-text-3" id="text-2-1">
 <blockquote>
 <p>
@@ -192,8 +192,8 @@ Two trapezoidal fuzzy numbers \(\tilde{A}_1\) and \(\tilde{A}_2\) are said to be
 </div>
 </div>
 
-<div id="outline-container-org62d3085" class="outline-2">
-<h2 id="org62d3085"><span class="section-number-2">3.</span> Misc Papers</h2>
+<div id="outline-container-orgab91d90" class="outline-2">
+<h2 id="orgab91d90"><span class="section-number-2">3.</span> Misc Papers</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Fuzzy linear programming introduces the idea of uncertainty into the model's parameters. This allows for adaptability of
@@ -248,7 +248,7 @@ As stated previously, fuzzy constraints tolerate violations in the accomplishmen
 be represented by
 </p>
 
-<div class="latex" id="org7f0ae97">
+<div class="latex" id="org5313b1f">
 \begin{equation}
 a_i x \lesssim b_i
 \end{equation}
@@ -259,7 +259,7 @@ a_i x \lesssim b_i
 Where \(a\) and \(b\) modeled using a <a href="fuzzy_theory.html">membership function </a> as described in #2 and #3.
 </p>
 
-<div class="latex" id="org1c3c932">
+<div class="latex" id="orgc935ff3">
 \begin{equation}
 \mu_i (x) =
 \begin{cases}
@@ -275,7 +275,7 @@ Where \(a\) and \(b\) modeled using a <a href="fuzzy_theory.html">membership fun
 A fuzzy solution is found from the solution of the [[<a href="parametric_lin_prog.html">parametric_lin_prog.html</a>][parametric linear #2.
 </p>
 
-<div class="latex" id="org8332084">
+<div class="latex" id="org0c549f8">
 \begin{equation}
 \begin{array}{l}
     \text{max } xc    \\
@@ -295,7 +295,7 @@ where \(g(\alpha)\) is a column vector defined by the inverse functions of the \
 Zimmerman proposes that given a LP:
 </p>
 
-<div class="latex" id="org3bc8b93">
+<div class="latex" id="org47ab3c4">
 \begin{equation}
 \begin{array}{l}
     cx \lesssim z_0 \\
@@ -310,7 +310,7 @@ Zimmerman proposes that given a LP:
 with a linear <a href="fuzzy_theory.html">membership function</a>, the solution can be of the form #3.
 </p>
 
-<div class="latex" id="org97a3d79">
+<div class="latex" id="orgf494f4f">
 \begin{equation}
 \begin{array}{l}
     f(x) = 1 - \frac{(Bx)_i - b_i'}{\bar{b}_i} \\
@@ -336,7 +336,7 @@ If the decision maker does not know exactly the values of the coefficients takin
 be used to represent this uncertainty #2.
 </p>
 
-<div class="latex" id="orgb7a7b2b">
+<div class="latex" id="orgf10204f">
 \begin{equation}
 \sum_{j=1}^n \tilde{a}_{ij} x_j \leq \tilde{b}_i
 \end{equation}
@@ -347,7 +347,7 @@ be used to represent this uncertainty #2.
 Given a similar model to solve as before the model for fuzzy coefficients can be defined as
 </p>
 
-<div class="latex" id="orgc76c10a">
+<div class="latex" id="orgcbbf078">
 \begin{equation}
 \begin{array}{l}
     \text{max } cx                                                  \\
@@ -385,7 +385,7 @@ This section contains a list of different ways of formulating LP's.
 Consider
 </p>
 
-<div class="latex" id="orgbe2db7b">
+<div class="latex" id="org0bbe635">
 \begin{equation}
 \begin{array}{l}
     \text{max } cx \\
@@ -403,7 +403,7 @@ fuzzy numbers. We can then create an ordering via
 with the following constraint:
 </p>
 
-<div class="latex" id="org2a3de55">
+<div class="latex" id="org33234ce">
 \begin{equation}
 Ax < b + (1-\alpha)
 \end{equation}
@@ -423,7 +423,7 @@ Where if \(\alpha=1\) then the constraint is completely verified and if
 Given an FFLP:
 </p>
 
-<div class="latex" id="orgdfec422">
+<div class="latex" id="org568576f">
 \begin{equation}
     max\; \sum_{j=1}^n \tilde{c}_j \tilde{x}_j \\
 
@@ -439,7 +439,7 @@ and \(\tilde{x_j}\) are non-negative fuzzy numbers #1. Because these are fuzzy n
 represent them as such:
 </p>
 
-<div class="latex" id="org0c29f5e">
+<div class="latex" id="orgf905f13">
 \begin{equation}
 \begin{array}{l}
     \tilde{c}_j    = (c1_j, c2_j, c3_j)          \\
@@ -456,7 +456,7 @@ Nasseri then proposes that the FFLP can be rewritten as a LP in the
 following manner:
 </p>
 
-<div class="latex" id="org2c5989d">
+<div class="latex" id="org3064e06">
 \begin{equation}
 \begin{array}{l}
     max\; R\Big(\sum_{j=1}^n (c1_j, c2_j, c3_j)(x1_j, x2_j, x3_j)\Big) \\
@@ -495,7 +495,7 @@ constraints \(Ax \leq b\). A membership function can be written such
 that
 </p>
 
-<div class="latex" id="org19a9ebb">
+<div class="latex" id="orgaa7bdf1">
 \begin{equation}
 \begin{cases}
     0                        & \text{for } (A'x)_i \leq b'_i            \\
@@ -511,7 +511,7 @@ Where this draws a line from \(z(-b'_i) = 0\) to \(z(d_i) = 1\).
 Constraints can then be made using the form
 </p>
 
-<div class="latex" id="org060beb5">
+<div class="latex" id="org5943043">
 \begin{equation}
 \lambda = \frac{b'_i}{d_i} - (\frac{A}{d_i}x)_i
 \end{equation}
@@ -530,7 +530,7 @@ which is appended to the set of constraints.
 This method uses the same membership function
 </p>
 
-<div class="latex" id="org1c7c294">
+<div class="latex" id="orgc7d91f2">
 \begin{equation}
 \begin{cases}
     0                        & \text{for } (A'x)_i \leq b'_i            \\
@@ -546,7 +546,7 @@ Rather than append to the constraints and maximize or minimize
 \(\lambda\), the objective function is updated with
 </p>
 
-<div class="latex" id="org90f0456">
+<div class="latex" id="orgdac762b">
 \begin{equation}
 \text{max } \prod_{i = 1}^K = \frac{(c^i)^T x - p_i}{d_i}
 \end{equation}
@@ -606,7 +606,7 @@ figure below
 and the problem is written as
 </p>
 
-<div class="latex" id="org4e68bfa">
+<div class="latex" id="orgbb3e511">
 \begin{equation}
 \begin{array}{l}
     \text{max } Z(x) =
@@ -633,7 +633,7 @@ Using the method proposed by Zimmerman (as described in
 Fuzzy Constraints, one yields the following formulation
 </p>
 
-<div class="latex" id="org7aa3e77">
+<div class="latex" id="org05086f9">
 \begin{equation}
 \begin{array}{l}
     \text{max } \lambda \\
@@ -668,7 +668,7 @@ view. A FFLP for the BAP problem to minimize the total time can be
 expressed as
 </p>
 
-<div class="latex" id="orgb2a3b86">
+<div class="latex" id="org7fe27fa">
 \begin{equation}
 min\; \sum_{i\in V} (\tilde{m}_i - \tilde{a}_i)
 \end{equation}
@@ -679,7 +679,7 @@ min\; \sum_{i\in V} (\tilde{m}_i - \tilde{a}_i)
 Such that
 </p>
 
-<div class="latex" id="orgc7b68c7">
+<div class="latex" id="org0db9495">
 \begin{equation}
 \begin{array}{l}
     \tilde{m}_i \geq \tilde{a}_i                               \\
@@ -728,7 +728,7 @@ Using Nasseri's Method in #1 the BAP can be
 described as
 </p>
 
-<div class="latex" id="org2a654dd">
+<div class="latex" id="orgfafb983">
 \begin{equation}
 min\; \sum_{i\in V} (m1_i - a3_i, m2_i - a2_i, m3_i - a1_i)
 \end{equation}
@@ -739,7 +739,7 @@ min\; \sum_{i\in V} (m1_i - a3_i, m2_i - a2_i, m3_i - a1_i)
 Subject to
 </p>
 
-<div class="latex" id="orga31d89c">
+<div class="latex" id="org57d8ee2">
 \begin{equation}
 \begin{array}{l}
     {m}1_i \geq {a}1_i                                 \\
@@ -775,7 +775,7 @@ polygonal-shape}}
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Alexander Brown</p>
-<p class="date">Created: 2023-05-19 Fri 17:17</p>
+<p class="date">Created: 2023-06-05 Mon 19:13</p>
 </div>
 </body>
 </html>

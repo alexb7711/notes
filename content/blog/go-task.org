@@ -15,4 +15,4 @@ What alternatives are there? There are actually a fair amount, just to name a fe
 - [[https://redo.readthedocs.io/en/latest/][redo]] (not available)
 - [[https://ant.apache.org/][Ant]] (not available)
 
-The one I stumbled upon that I could actually install is [[https://taskfile.dev/][Task]].
+To be fair, I don't know how a lot of these work because I have not had the chance to use them, with the exception of CMake that I have used a fair amount of, but never took the time to actually understand. Therefore, I hate CMake. I digress, The build tool I stumbled upon that I could actually install was [[https://taskfile.dev/][Task]].

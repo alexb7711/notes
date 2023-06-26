@@ -1,0 +1,18 @@
+#+title: =go-task=, for all your repetitive needs!
+
+* Introduction
+[[https://www.gnu.org/software/make/][GNU Make]] has been a tried and true source of configuring and automating my projects. This varied from code projects in C/C++ and Python to documents in LaTeX, Markdown, and Org. Its use has been for ease of project building at my local workstation (as I would assume it has for all of you), as well as its heavy use in many of the pipelines I have created in Gitlab, Jenkins, and Github. I've been using for the better part of six years, so its quirky syntax has grown on to me because once you get its flow, makefiles become a ubiquitous tool.
+
+That is until the constraints of work are thrust upon you.
+
+* The thrusting of constraints
+The computer I use at work is quite heavily locked down. I can get my grubby little hands on a handful of useful applications that let me keep my own projects moving when I have downtime. There are, as you may have put together, comprimises that have to be made. Just to name a few, I had to trade out Emacs for VSCode (oh god), Python is just a flat no-go, and my boy Make has been stripped from me.
+
+What alternatives are there? There are actually a fair amount, just to name a few:
+
+- [[https://cmake.org/][CMake]] (not gonna touch this)
+- [[https://scons.org/][SCons]] (not available)
+- [[https://redo.readthedocs.io/en/latest/][redo]] (not available)
+- [[https://ant.apache.org/][Ant]] (not available)
+
+The one I stumbled upon that I could actually install is [[https://taskfile.dev/][Task]].

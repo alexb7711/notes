@@ -1,12 +1,19 @@
 #+title: =go-task=, for all your repetitive needs!
 
 * Introduction
-[[https://www.gnu.org/software/make/][GNU Make]] has been a tried and true source of configuring and automating my projects. This varied from code projects in C/C++ and Python to documents in LaTeX, Markdown, and Org. Its use has been for ease of project building at my local workstation (as I would assume it has for all of you), as well as its heavy use in many of the pipelines I have created in Gitlab, Jenkins, and Github. I've been using for the better part of six years, so its quirky syntax has grown on to me because once you get its flow, makefiles become a ubiquitous tool.
+[[https://www.gnu.org/software/make/][GNU Make]] has been a tried and true source of configuring and automating my projects. This varied from code projects in
+C/C++ and Python to documents in LaTeX, Markdown, and Org. Its use has been for ease of project building at my local
+workstation (as I would assume it has for all of you), as well as its heavy use in many of the pipelines I have created
+in Gitlab, Jenkins, and Github. I've been using for the better part of six years, so its quirky syntax has grown on to
+me because once you get its flow, makefiles become a ubiquitous tool.
 
 That is until the constraints of work are thrust upon you.
 
-* The thrusting of constraints
-The computer I use at work is quite heavily locked down. I can get my grubby little hands on a handful of useful applications that let me keep my own projects moving when I have downtime. There are, as you may have put together, comprimises that have to be made. Just to name a few, I had to trade out Emacs for VSCode (oh god), Python is just a flat no-go, and my boy Make has been stripped from me.
+* The Thrusting Of Constraints
+The computer I use at work is quite heavily locked down. I can get my grubby little hands on a handful of useful
+applications that let me keep my own projects moving when I have downtime. There are, as you may have put together,
+comprimises that have to be made. Just to name a few, I had to trade out Emacs for VSCode (oh god), Python is just a
+flat no-go, and my boy Make has been stripped from me.
 
 What alternatives are there? There are actually a fair amount, just to name a few:
 
@@ -15,4 +22,262 @@ What alternatives are there? There are actually a fair amount, just to name a fe
 - [[https://redo.readthedocs.io/en/latest/][redo]] (not available)
 - [[https://ant.apache.org/][Ant]] (not available)
 
-To be fair, I don't know how a lot of these work because I have not had the chance to use them, with the exception of CMake that I have used a fair amount of, but never took the time to actually understand. Therefore, I hate CMake. I digress, The build tool I stumbled upon that I could actually install was [[https://taskfile.dev/][Task]].
+To be fair, I don't know how a lot of these work because I have not had the chance to use them, except for
+CMake that I have used a fair amount of, but never took the time to actually understand. Therefore, I hate CMake. I
+digress, The build tool I stumbled upon that I could actually install was [[https://taskfile.dev/][Task]].
+
+* Task
+Now that we narrowed down the "why Task?" question, lets tackle some of the specifics about what Task is all about.
+
+** What's a Taskfile?
+Pulling directly from the website it defines itself as
+
+#+begin_quote
+Task is a task runner / build tool that aims to be simpler and easier to use than, for example, GNU Make.
+
+Since it's written in Go, Task is just a single binary and has no other dependencies, which means you don't need to mess
+with any complicated install setups just to use a build tool.
+#+end_quote
+
+Now while not entirely wrong, I don't think its exactly right either. Yes, it's a task runner, but it's not simpler for
+/all/ sorts of tasks. I would argue it is better for projects that repeat commands that are a few lines at most, such as
+=latexmk= and Rust's =cargo=; however, when globing is required, Make is still my go to. But I'm getting ahead of
+myself.
+
+Much like Make, Task (the executable on Arch Linux being =go-taks=) is an executable that interprets a file of a given
+format/syntax that contains instructions for your project. Neato. There are multiple file names that are supported, I've
+been using =Taskfile.yml= because I hate myself and really change it to =taskfile.yml=. If you have a keen eye, you
+noticed that the Taskfile is a YAML file. If you know anything about YAML, then you'll know that it's great, until it's
+not because you're one space out of alignment on line 50. But YAML is brain-dead easy.
+
+As a simple starter, let's use the example from the [[https://taskfile.dev/usage/][Task website]]. =version= is required in the file because it specifies
+the syntax type expected in the Taskfile making it backward compatible with previous versions. The =default= task is
+like Make's =all= recipe. Because its YAML, the fields need to be labeled, so =cmds= are the commands associated with
+this particular. There are other types of data that can be included like variables, task description, sources,
+destinations, etc. This task simply runs a =go bulid= command. I'm not familiar with Go, but this is straight forward
+enough.
+
+#+begin_src yaml
+version: '3'
+
+tasks:
+  default:
+    cmds:
+      - go build -v -i main.go
+#+end_src
+
+That is the general concept of Taskfiles, let's get into some of the pros and cons of Task.-
+
+** Pros
+Task is configured in YAML which makes configuration consistent and thus more readable than Make can be a lot of the
+times. You find all configuration at the top of the file and once you find =tasks:=, you know you are getting into the
+executable tasks. Much like Make's =all=, Task has =default= which is executed if you type =go-task=. Other tasks can be
+created with unique names much like Make. As an example, let's begin by looking at an [[https://github.com/go-task/examples/blob/main/go-web-app/Taskfile.yml][taskfile provided by =go-task=.]]
+
+As we just talked about, everything after =tasks:= are the executable tasks. Specifically, the =cmds:= level specifies
+the commands being run (shocker). If you don't know the syntax for the Taskfile, [[https://taskfile.dev/usage/][here is a link.]] The main thing to note,
+for now, is that ={{.###}}= is a variable. With all that out of the way, skim through the commands for each task. The
+most commands being run in one task is three, and even that could be brought down to a one-liner.
+
+Now with that being said, if these tasks are being repeated consistently, then this is a quick and easy way to document
+and execute the commands.
+
+#+begin_src yaml
+  # https://taskfile.dev/
+
+  version: '3'
+
+  interval: 1s
+
+  vars:
+    JS_BUNDLE: public/bundle.js
+    CSS_BUNDLE: public/bundle.css
+
+    EXE: app{{exeExt}}
+
+  tasks:
+    default:
+      desc: Build and run the web app
+      aliases: [run]
+      cmds:
+        - task: build
+        - ./{{.EXE}}
+
+    build:
+      desc: Build the web app
+      deps: [js, css]
+      cmds:
+        - go build -v -o {{.EXE}} ./app.go
+      sources:
+        - '**/*.go'
+        - '{{.JS_BUNDLE}}'
+        - '{{.CSS_BUNDLE}}'
+        - templates/**/*
+      generates:
+        - '{{.EXE}}'
+
+    js:
+      desc: Bundle JS using esbuild
+      cmds:
+        - esbuild --bundle --minify assets/js/index.js > {{.JS_BUNDLE}}
+      sources:
+        - assets/js/**/*.js
+      generates:
+        - '{{.JS_BUNDLE}}'
+
+    css:
+      desc: Bundle CSS using esbuild
+      cmds:
+        - esbuild --bundle --minify assets/css/index.css > {{.CSS_BUNDLE}}
+      sources:
+        - assets/css/**/*.css
+      generates:
+        - '{{.CSS_BUNDLE}}'
+
+    clean:
+      desc: Clean every generated file
+      cmds:
+        - rm -f {{.CSS_BUNDLE}}
+        - rm -f {{.JS_BUNDLE}}
+        - rm -f {{.EXE}}
+#+end_src
+
+Now the problems I have found.
+
+** Cons
+As I stated before, not everything is sunshine and rainbows in Task-land. That is not a jab at Task, it was just
+designed with other intentions in mind. Another tool to the tool set, and even better that it is easy to learn as well.
+
+With that being said, let's use another example of a Taskfile that I wrote recently. Another sidebar on syntax: =- |=
+means a multi-line script is incoming. The big blemish of this Taskfile is the =images:= task. The available sources and
+what is generated are listed nice and concisely. The variable for creating a list for all the source files is easy
+enough to write. The problem comes in the =cmds:= part.
+
+#+begin_src yaml
+################################################################################
+# ENVIRONTMENT
+################################################################################
+version: '3'
+
+env:
+  TARGET : sa-pap.pdf
+  IMG_DIR: ./sections/img/
+  DOC    : main    																															# Name of main source file
+
+################################################################################
+# RECIPES
+################################################################################
+
+tasks:
+
+##==============================================================================
+#
+  default:
+    cmds:
+      - task: precheck
+      - task: pdf
+
+##==============================================================================
+#
+  pipeline:
+    cmds:
+      - task: precheck
+      - task: set-version
+      - task: pdf
+
+##==============================================================================
+#
+  precheck:
+    desc: "Make sure that all the dependencies are installed."
+    cmds:
+      - |
+        echo "Checking the programs required for the build are installed..."
+        latexmk --version >/dev/null 2>&1 && (echo "latexmk installed!") || (echo "ERROR: latexmk is required."; exit 1)
+        pdflatex --version >/dev/null 2>&1 && (echo "pdflatex installed!") || (echo "ERROR: pdflatex is required."; exit 1)
+    silent: true
+
+##==============================================================================
+#
+  images:
+    desc: "Creates a PDF of all the files in {{.IMG_DIR}}."
+    sources:
+      - ./img/*.pml
+    generates:
+      - ./img/*.png
+    vars:
+      IMG_SRC:
+        sh: ls {{.IMG_DIR}} | grep ".pml"
+    cmds:
+      - |
+        for f in {{.IMG_SRC | catLines}}
+        do
+            echo "Compiling ${f}"
+            plantuml -tpng {{.IMG_DIR}}/${f}
+        done
+    silent: true
+
+##==============================================================================
+#
+  set-version:
+    desc: "Dynamically sets the version of the document."
+    vars:
+      MAIN: main.tex
+      VERSION:
+        sh: git describe --tags
+    cmds:
+      - |
+        sed -i 's/\\date{\\today/\\date{\\today:{{.VERSION}}/' {{.MAIN}}
+    silent: true
+
+##==============================================================================
+#
+  pdf:
+    desc: "Output {{.TARGET}} PDF."
+    sources:
+      - ./*.tex
+    generates:
+      - ./sa-pap.pdf
+    cmds:
+      - |
+        latexmk -f -interaction=nonstopmode \
+                   -pdf -pdflatex="pdflatex --shell-escape %O %S" \
+                   -bibtex {{.DOC}}.tex
+        [ -f {{.DOC}}.pdf ] && mv {{.DOC}}.pdf {{.TARGET}}
+    silent: false
+
+##==============================================================================
+#
+  clean:
+    desc: "Clean up the project."
+    vars:
+      DOC_SRC: main.tex
+    cmds:
+      - |
+        # Clean up {{.IMG_DIR}}
+        for f in $(find {{.IMG_DIR}} -maxdepth 1 -type f)
+        do
+          [ ${f##*.} != "pml" ] && [ ${f##*.} != "jpg" ] && [ ${f##*.} != "org" ]  && rm ${f}
+        done
+        # Clean up the document files
+        rm -f {{.TARGET}}
+        latexmk -silent -c {{.DOC_SRC}}
+    silent: true
+#+end_src
+
+Where Make has implicit globing recipes such as =%.pdf: %.pml= which takes a =pml= file and outputs a =pdf= file of the
+same would be written something like:
+
+#+begin_src makefile
+%.pdf: %.puml:
+  plantuml -tpng ${IMG_DIR}/$<
+#+end_src
+
+Now it's not all bad for Task because with the added convenience of the loop being implies also comes with the extra
+lack of flexibility that writing it yourself has (even if it is annoying).
+
+There is more to the story, this is just one major aspect of choosing which automation tool to use. The weird thing is
+that while 90% of the Make concepts are simplified with Task, because of the trade-offs from the design philosophy, the
+last 10% is more cumbersome. Engineering struggles at its absolute finest.
+
+* When To Use Task
+This one is subjective, and I'm no expert either.

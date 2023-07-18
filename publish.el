@@ -152,7 +152,7 @@
 
 ;; Generate the site output
 ;; (org-publish "index.org" t)
-(org-publish-all t)
+(org-publish-all)
 
 (message "Build complete!")
 

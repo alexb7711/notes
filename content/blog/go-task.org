@@ -27,7 +27,7 @@ CMake that I have used a fair amount of, but never took the time to actually und
 digress, The build tool I stumbled upon that I could actually install was [[https://taskfile.dev/][Task]].
 
 * Task
-Now that we narrowed down the "why Task?" question, lets tackle some of the specifics about what Task is all about.
+Now that we narrowed down the "why Task?" question, let's tackle some of the specifics about what Task is all about.
 
 ** What's a Taskfile?
 Pulling directly from the website it defines itself as
@@ -41,22 +41,24 @@ with any complicated install setups just to use a build tool.
 
 Now while not entirely wrong, I don't think its exactly right either. Yes, it's a task runner, but it's not simpler for
 /all/ sorts of tasks. I would argue it is better for projects that repeat commands that are a few lines at most, such as
-=latexmk= and Rust's =cargo=; however, when globing is required, Make is still my go to. But I'm getting ahead of
-myself.
+=latexmk= and Rust's =cargo=. A lot of examples I've seen people using it for online was to deploy Docker containers;
+however, when globing is required, Make is still my go to. But I'm getting ahead of myself.
 
 Much like Make, Task (the executable on Arch Linux being =go-taks=) is an executable that interprets a file of a given
 format/syntax that contains instructions for your project. Neato. There are multiple file names that are supported, I've
-been using =Taskfile.yml= because I hate myself and really change it to =taskfile.yml=. If you have a keen eye, you
-noticed that the Taskfile is a YAML file. If you know anything about YAML, then you'll know that it's great, until it's
-not because you're one space out of alignment on line 50. But YAML is brain-dead easy.
+been using =Taskfile.yml= because I hate myself because I should really change it to =taskfile.yml= because why press
+the shift key if you don't have to? If you have a keen eye, you noticed that the configuration file is written in YAML.
+If you know anything about YAML, then you'll know that it's great, until it's not because you're one space out of
+alignment on line 50. But for the most part YAML is brain-dead easy.
 
-As a simple starter, let's use the example from the [[https://taskfile.dev/usage/][Task website]]. =version= is required in the file because it specifies
-the syntax type expected in the Taskfile making it backward compatible with previous versions. The =default= task is
-like Make's =all= recipe. Because its YAML, the fields need to be labeled, so =cmds= are the commands associated with
-this particular. There are other types of data that can be included like variables, task description, sources,
-destinations, etc. This task simply runs a =go bulid= command. I'm not familiar with Go, but this is straight forward
-enough.
+As a simple starter, let's use the example from the [[https://taskfile.dev/usage/][Task website]] ([[alg:simp-ex]]). =version= is required in the file
+because it specifies the syntax type expected in the Taskfile making it backward compatible with previous versions. The
+=default= task is like Make's =all= recipe. Because its YAML, the fields need to be labeled, so =cmds= are the commands
+associated with this particular task. There are other types of data that can be included such as variables, task
+description, sources, destinations, etc. This task simply runs a =go bulid= command. I'm not familiar with Go, but it's
+straight forward enough.
 
+#+name:alg:simp-ex
 #+begin_src yaml
 version: '3'
 
@@ -66,22 +68,24 @@ tasks:
       - go build -v -i main.go
 #+end_src
 
-That is the general concept of Taskfiles, let's get into some of the pros and cons of Task.-
+That is the general concept of Taskfiles, let's get into some of the pros and cons of Task.
 
 ** Pros
 Task is configured in YAML which makes configuration consistent and thus more readable than Make can be a lot of the
 times. You find all configuration at the top of the file and once you find =tasks:=, you know you are getting into the
-executable tasks. Much like Make's =all=, Task has =default= which is executed if you type =go-task=. Other tasks can be
-created with unique names much like Make. As an example, let's begin by looking at an [[https://github.com/go-task/examples/blob/main/go-web-app/Taskfile.yml][taskfile provided by =go-task=.]]
+meat. Much like Make's =all=, Task has =default= which is executed if you type =go-task=. Other tasks can be created
+with unique names much like Make. As an example, let's begin by looking at an [[https://github.com/go-task/examples/blob/main/go-web-app/Taskfile.yml][taskfile provided by =go-task=]]
+([[alg:bet-exp]]).
 
-As we just talked about, everything after =tasks:= are the executable tasks. Specifically, the =cmds:= level specifies
-the commands being run (shocker). If you don't know the syntax for the Taskfile, [[https://taskfile.dev/usage/][here is a link.]] The main thing to note,
-for now, is that ={{.###}}= is a variable. With all that out of the way, skim through the commands for each task. The
-most commands being run in one task is three, and even that could be brought down to a one-liner.
+As we just talked about, everything after =tasks:= are the executable tasks. If you don't know the syntax for Taskfiles,
+ [[https://taskfile.dev/usage/][here is a link.]] The main thing to note, for now, is that ={{.###}}= is a variable. With all that out of the way, skim
+ through the commands for each task. The most commands being run any of the tasks is three, and even that could be brought
+ down to a one-liner.
 
 Now with that being said, if these tasks are being repeated consistently, then this is a quick and easy way to document
 and execute the commands.
 
+#+name: alg:bet-exp
 #+begin_src yaml
   # https://taskfile.dev/
 
@@ -148,11 +152,12 @@ Now the problems I have found.
 As I stated before, not everything is sunshine and rainbows in Task-land. That is not a jab at Task, it was just
 designed with other intentions in mind. Another tool to the tool set, and even better that it is easy to learn as well.
 
-With that being said, let's use another example of a Taskfile that I wrote recently. Another sidebar on syntax: =- |=
-means a multi-line script is incoming. The big blemish of this Taskfile is the =images:= task. The available sources and
-what is generated are listed nice and concisely. The variable for creating a list for all the source files is easy
-enough to write. The problem comes in the =cmds:= part.
+With that being said, let's use another example of a Taskfile that I wrote recently ([[alg:my-exp]]). Another sidebar on
+syntax: =- |= means a multi-line script is incoming. The big blemish of this Taskfile is the =images:= task. The
+available sources and what is generated are listed nice and concisely. The variable for creating a list for all the
+source files is easy enough to write. The problem comes in the =cmds:= part.
 
+#+name: alg:my-exp
 #+begin_src yaml
 ################################################################################
 # ENVIRONTMENT
@@ -265,8 +270,9 @@ tasks:
 #+end_src
 
 Where Make has implicit globing recipes such as =%.pdf: %.pml= which takes a =pml= file and outputs a =pdf= file of the
-same would be written something like:
+same would be written something like in [[alg:make-exp]]
 
+#+name: alg:make-exp
 #+begin_src makefile
 %.pdf: %.puml:
   plantuml -tpng ${IMG_DIR}/$<
@@ -279,5 +285,16 @@ There is more to the story, this is just one major aspect of choosing which auto
 that while 90% of the Make concepts are simplified with Task, because of the trade-offs from the design philosophy, the
 last 10% is more cumbersome. Engineering struggles at its absolute finest.
 
-* When To Use Task
-This one is subjective, and I'm no expert either.
+* Conclusion
+I stumbled across Task out of necessity because I could not install Make at work. While being annoyed and working around
+the quirks that it has (and it has a fair amount, a lot that I neglected to mention here because I'm not knowledgeable to
+talk about them yet), I've had a decent time working with it.
+
+The things I like about it are the simplicity in writing out the Taskfile because there is a quick recipe to most
+things. The fact that you can write multi-line scripts make it easy to embed slightly more complicated tasks. If you are
+looking to do anything of more substance though, I would suggest having a script directory that the Taskfile utilizes.
+If you are compiling things on a file-by-file basis like C/C++, then just stick with Make or CMake.
+
+One thing that I would like to look into is the speed comparison between Task and Make. Not that it really matters for
+me at home since my PC is fast enough to make most things feel the same speed (instantaneous), but mainly for my PC at
+work. Just a curiosity about how much time I'm saving/losing.

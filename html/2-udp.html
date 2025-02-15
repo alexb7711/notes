@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>2-udp</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+<div id="navigation">
+<ul>
+<li><a class="%index.md%" href="index.html">index</a></li>
+</ul>
+</div>
+
+<div class="content">
+<p>If you think UDP is a great fit for your application, you might want to look into message queues (see Chapter 8).</p>
+<h1 id="port-numbers">Port Numbers</h1>
+<p>The problem of distinguishing among many signals that are sharing the same channel is a general one, in both computer
+networking and electromagnetic signal theory. A solution that allows several conversations to share a medium or
+mechanism is known as a multiplexing scheme. For UDP, these conversations are distinguished by ports. The source port
+identifies the particular process or program that sent the packet from the source machine, while the destination port
+specifies the application that the destination IP addresses to which the communication should be delivered.</p>
+<p>When making decisions about defining port numbers, such as 53 for DNS, IANA thinks of them as falling into three
+ranges—and this applies to both UDP and TCP port numbers.</p>
+<ul>
+<li>Well-known ports (0–1023) are for the most important and widely used services. On many Unix-like operating systems,
+normal user programs cannot listen on these ports. In the old days, this prevented troublesome undergraduates on
+multiuser university machines from running programs that masqueraded as important system services. Today the same
+caution applies when hosting companies hand out command-line Linux accounts.</li>
+<li>Registered ports (1024–49151) are not usually treated as special by operating systems—any user can write a program
+that grabs port 5432 and pretends to be a PostgreSQL database, for example—but they can be registered by IANA for
+specific services, and IANA recommends you avoid using them for anything but their assigned service.</li>
+<li>The remaining port numbers (49152–65535) are free for any use. They, as you will see, are the• pool on which modern
+operating systems draw in order to generate arbitrary port numbers when a client does not care what port it is assigned
+for its outgoing connection.</li>
+</ul>
+<p>The database of well-known service names and port numbers is usually kept in the file <code>/etc/services</code> on Linux and Mac
+OS X machines, which you can peruse at your leisure. The first few pages of the file, in particular, are littered with
+ancient protocols that still have reserved numbers despite not having had an actual packet addressed to them anywhere in
+the world for many years. An up-to-date (and typically much more extensive) copy is also maintained online by IANA at
+[[www.iana.org/assignments/port-numbers]].</p>
+<h1 id="sockets">Sockets</h1>
+<p>The underlying system calls for networking, on both Windows and POSIX systems (like Linux and Mac OS X), center around
+the idea of a communications endpoint called a socket.</p>
+<blockquote>
+<p><strong>NOTE</strong>: On pOSIX systems, the fileno() integer that identifies a socket is also a file descriptor drawn from the pool of
+integers representing open files. You might run across code that, assuming a pOSIX environment, fetches this integer and
+then uses it to perform non-networking calls like os.read() and os.write() on the file descriptor to do filelike things
+with what is actually a network communications endpoint. however, because the code in this book is designed to work on
+Windows as well, you will perform only true socket operations on your sockets.</p>
+</blockquote>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># Foundations of Python Network Programming, Third Edition</span>
+<span class="c1"># https://github.com/brandon-rhodes/fopnp/blob/m/py3/chapter02/udp_local.py</span>
+<span class="c1"># UDP client and server on localhost</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span><span class="o">,</span><span class="w"> </span><span class="nn">socket</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="n">MAX_BYTES</span> <span class="o">=</span> <span class="mi">65535</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">server</span><span class="p">(</span><span class="n">port</span><span class="p">):</span>
+  <span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span>
+  <span class="n">sock</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Listening at </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sock</span><span class="o">.</span><span class="n">getsockname</span><span class="p">()))</span>
+  <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+     <span class="n">data</span><span class="p">,</span> <span class="n">address</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">recvfrom</span><span class="p">(</span><span class="n">MAX_BYTES</span><span class="p">)</span>
+     <span class="n">text</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The client at </span><span class="si">{}</span><span class="s1"> says </span><span class="si">{!r}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>
+     <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Your data was </span><span class="si">{}</span><span class="s1"> bytes long&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+     <span class="n">data</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+     <span class="n">sock</span><span class="o">.</span><span class="n">sendto</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">address</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">client</span><span class="p">(</span><span class="n">port</span><span class="p">):</span>
+  <span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span>
+  <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;The time is </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
+  <span class="n">data</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+  <span class="n">sock</span><span class="o">.</span><span class="n">sendto</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The OS assigned me the address </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sock</span><span class="o">.</span><span class="n">getsockname</span><span class="p">()))</span>
+  <span class="n">data</span><span class="p">,</span> <span class="n">address</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">recvfrom</span><span class="p">(</span><span class="n">MAX_BYTES</span><span class="p">)</span> <span class="c1"># Danger!</span>
+  <span class="n">text</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The server </span><span class="si">{}</span><span class="s1"> replied </span><span class="si">{!r}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+  <span class="n">choices</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;client&#39;</span><span class="p">:</span> <span class="n">client</span><span class="p">,</span> <span class="s1">&#39;server&#39;</span><span class="p">:</span> <span class="n">server</span><span class="p">}</span>
+  <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Send and receive UDP locally&#39;</span><span class="p">)</span>
+  <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;role&#39;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">choices</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;which role to play&#39;</span><span class="p">)</span>
+  <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;PORT&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1060</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;UDP port (default 1060)&#39;</span><span class="p">)</span>
+  <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+  <span class="n">function</span> <span class="o">=</span> <span class="n">choices</span><span class="p">[</span><span class="n">args</span><span class="o">.</span><span class="n">role</span><span class="p">]</span>
+  <span class="n">function</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">p</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="promiscuous-clients-and-unwelcome-replies">Promiscuous Clients and Unwelcome Replies</h2>
+<p>A listening network client that will accept or record every single packet that it sees, without regard for whether the
+packet is correctly addressed, is known technically as a promiscuous client. Sometimes we write these deliberately, as
+when we are doing network monitoring and want to see all of the packets arriving at an interface. In this case, however,
+promiscuity is a problem.</p>
+<p>Only good, well-written encryption should really convince your code that it has talked to the right server. Short of
+that, there are two quick checks you can do. First, design or use protocols that include a unique identifier or request
+ID in the request that gets repeated in the reply. If the reply contains the ID you are looking for, then—so long as the
+range of IDs is large enough that someone could not simply be quickly flooding you with thousands or millions of packets
+containing every possible ID—someone who saw your request must at least have composed it. Second, either check the
+address of the reply packet against the address that you sent it to (remember that tuples in Python can simply be <code>==</code>
+compared) or use connect() to forbid other addresses from sending you packets. See the following sections “Connecting
+UDP Sockets” and “Request IDs” for more detail</p>
+<h2 id="unreliability-backoff-blocking-and-timeouts">Unreliability, Backoff, Blocking, and Timeouts</h2>
+<p>Because of UDPs unreliability, the client has to perform its request in a loop. The client has to either prepared to
+wait forever for a reply or have some way of method of determining that it has waited too long. This is difficult in the
+UDP world because all the following scenarios are hard to distinguish:</p>
+<ul>
+<li>The reply is taking a long time to come back, but will soon arrive</li>
+<li>The reply will never arrive because it, or the request, was lost</li>
+<li>The server is down, and is not replying anymore</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># Foundations of Python Network Programming, Third Edition</span>
+<span class="c1"># https://github.com/brandon-rhodes/fopnp/blob/m/py3/chapter02/udp_remote.py</span>
+<span class="c1"># UDP client and server for talking over the network</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span><span class="o">,</span><span class="w"> </span><span class="nn">random</span><span class="o">,</span><span class="w"> </span><span class="nn">socket</span><span class="o">,</span><span class="w"> </span><span class="nn">sys</span>
+<span class="n">MAX_BYTES</span> <span class="o">=</span> <span class="mi">65535</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">server</span><span class="p">(</span><span class="n">interface</span><span class="p">,</span> <span class="n">port</span><span class="p">):</span>
+    <span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span>
+    <span class="n">sock</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="n">interface</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Listening at&#39;</span><span class="p">,</span> <span class="n">sock</span><span class="o">.</span><span class="n">getsockname</span><span class="p">())</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">data</span><span class="p">,</span> <span class="n">address</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">recvfrom</span><span class="p">(</span><span class="n">MAX_BYTES</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Pretending to drop packet from </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">address</span><span class="p">))</span>
+            <span class="k">continue</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The client at </span><span class="si">{}</span><span class="s1"> says </span><span class="si">{!r}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;Your data was </span><span class="si">{}</span><span class="s1"> bytes long&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+        <span class="n">sock</span><span class="o">.</span><span class="n">sendto</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">),</span> <span class="n">address</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">client</span><span class="p">(</span><span class="n">hostname</span><span class="p">,</span> <span class="n">port</span><span class="p">):</span>
+    <span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span>
+    <span class="n">hostname</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">sock</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">hostname</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Client socket name is </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sock</span><span class="o">.</span><span class="n">getsockname</span><span class="p">()))</span>
+    <span class="n">delay</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="c1"># seconds</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;This is another message&#39;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">sock</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Waiting up to </span><span class="si">{}</span><span class="s1"> seconds for a reply&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">delay</span><span class="p">))</span>
+        <span class="n">sock</span><span class="o">.</span><span class="n">settimeout</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="n">MAX_BYTES</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">socket</span><span class="o">.</span><span class="n">timeout</span><span class="p">:</span>
+            <span class="n">delay</span> <span class="o">*=</span> <span class="mi">2</span> <span class="c1"># wait even longer for the next request</span>
+            <span class="k">if</span> <span class="n">delay</span> <span class="o">&gt;</span> <span class="mf">2.0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;I think the server is down&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">break</span> <span class="c1"># we are done, and can stop looping</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The server says </span><span class="si">{!r}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)))</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">choices</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;client&#39;</span><span class="p">:</span> <span class="n">client</span><span class="p">,</span> <span class="s1">&#39;server&#39;</span><span class="p">:</span> <span class="n">server</span><span class="p">}</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Send and receive UDP,&#39;</span> <span class="s1">&#39; pretending packets are often dropped&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;role&#39;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">choices</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;which role to take&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;host&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;interface the server listens at;&#39;</span> <span class="s1">&#39;host the client sends to&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;PORT&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1060</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;UDP port (default 1060)&#39;</span><span class="p">)</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+    <span class="n">function</span> <span class="o">=</span> <span class="n">choices</span><span class="p">[</span><span class="n">args</span><span class="o">.</span><span class="n">role</span><span class="p">]</span>
+    <span class="n">function</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">p</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="connecting-udp-sockets">Connecting UDP Sockets</h2>
+<p>The listing from the previous section uses the <code>connect</code> command. This call does two things: it lets the operating
+system know ahead of time the remote address which you want to send packets so that you can simply supply the data to
+<code>send()</code> and not have to repeat the server address. The other thing that <code>connect()</code> does is ensures that the client is
+not susceptible to receiving packets from other servers. The client listing will be included below for convenience.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">client</span><span class="p">(</span><span class="n">hostname</span><span class="p">,</span> <span class="n">port</span><span class="p">):</span>
+    <span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span>
+    <span class="n">hostname</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">sock</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">hostname</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Client socket name is </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sock</span><span class="o">.</span><span class="n">getsockname</span><span class="p">()))</span>
+    <span class="n">delay</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="c1"># seconds</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;This is another message&#39;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">sock</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Waiting up to </span><span class="si">{}</span><span class="s1"> seconds for a reply&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">delay</span><span class="p">))</span>
+        <span class="n">sock</span><span class="o">.</span><span class="n">settimeout</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="n">MAX_BYTES</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">socket</span><span class="o">.</span><span class="n">timeout</span><span class="p">:</span>
+            <span class="n">delay</span> <span class="o">*=</span> <span class="mi">2</span> <span class="c1"># wait even longer for the next request</span>
+            <span class="k">if</span> <span class="n">delay</span> <span class="o">&gt;</span> <span class="mf">2.0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;I think the server is down&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">break</span> <span class="c1"># we are done, and can stop looping</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The server says </span><span class="si">{!r}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)))</span>
+</code></pre></div>
+
+<p>While this is convenient, it does come with a caveat. See the comparison below:</p>
+<ul>
+<li>You can use <code>sendto()</code> and direct each outgoing packet to a specific destination, then use <code>recvfrom()</code> to receive the
+replies and carefully check each return address against the list of servers to which you have made outstanding requests.</li>
+<li>You can instead <code>connect()</code> your socket right after creating it and communicate with <code>send()</code> and <code>recv()</code>. The
+operating system will filter out unwanted packets for you. This works only for speaking to one server at a time because
+running <code>connect()</code> again on the same socket does not add a second destination address. Instead, it wipes out the first
+address entirely so that no further replies from the earlier address will be delivered to your program.</li>
+</ul>
+<p>Note that using <code>connect()</code> is not a form of security! If there is someone on the network who is malicious, it is
+usually easy enough to forge packets with the server's return address. This is called spoofing.</p>
+<h2 id="request-ids-a-good-idea">Request IDs: A Good Idea</h2>
+<p>If you ever design a scheme of your own for doing UDP requests and responses, you should strongly consider adding a
+sequence number to each request and making sure that the reply you accept uses the same number.</p>
+<p>Doing this two things. First, it protects you from being confused by duplicate answers to requests that were repeated
+several times by a client performing exponential backoff. The second reason is to provide a deterrent against spoofing,
+at leas in the case where the attackers cannot see your packets.</p>
+<p>Again, these measures are not real security. Real security protects you even if attackers can both observe your traffic
+and insert their own messages whenever they like.</p>
+<h1 id="binding-to-interfaces">Binding To Interfaces</h1>
+<p>When creating a port binding for a server you have three options:</p>
+<ul>
+<li>'127.0.0.1' indicates that you want packets from other programs running only on the same machine,</li>
+<li>'' (empty string) is a wild card to indicate that you are willing to receive packets arriving to the server via any
+  network interface, or</li>
+<li>you can provide an IP address of one the machine's external IP interfaces.</li>
+</ul>
+<h1 id="udp-fragmentation">UDP Fragmentation</h1>
+<p>While UDP does send small datagrams as single IP packets, it has to split larger UDP datagrams into several small IP
+packets so that they can traverse the network (as was briefly discussed in Chapter 1). This means that large packets are
+more likely to be dropped, since if any one of their pieces fails to make its way to the destination, then the whole
+packet can never be reassembled and delivered to the listening operating system. Some operating systems gives you the
+option to force UDP packets to not be fragmented and receive an error. You can use this error to set the maximum
+transfer unit dynamically. This book seems to suggest that you can only do this in Linux.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">send_big_datagram</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">):</span>
+    <span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span>
+    <span class="n">sock</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">IPPROTO_IP</span><span class="p">,</span> <span class="n">IN</span><span class="o">.</span><span class="n">IP_MTU_DISCOVER</span><span class="p">,</span> <span class="n">IN</span><span class="o">.</span><span class="n">IP_PMTUDISC_DO</span><span class="p">)</span>
+    <span class="n">sock</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">sock</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;#&#39;</span> <span class="o">*</span> <span class="mi">65000</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">socket</span><span class="o">.</span><span class="n">error</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Alas, the datagram did not make it&#39;</span><span class="p">)</span>
+        <span class="n">max_mtu</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">getsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">IPPROTO_IP</span><span class="p">,</span> <span class="n">IN</span><span class="o">.</span><span class="n">IP_MTU</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Actual MTU: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">max_mtu</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The big datagram was sent!&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h1 id="socket-options">Socket Options</h1>
+<p>Many options are specific to particular operating systems, and they may be finicky about how their options are
+presented. Here are some of the more common options:
+- <code>SO_BROADCAST</code>: This allows broadcast UDP packets to be sent and received.
+- <code>SO_DONTROUTE</code>: Only be willing to send packets that are addressed to hosts on subnets to which
+this computer is connected directly.
+- <code>SO_TYPE</code>: When passed to <code>getsockopt()</code>, this returns to you whether a socket is of type <code>SOCK_DGRAM</code> and can be used
+for UDP or whether it is of type SOCK_STREAM and instead supports the semantics of TCP (see Chapter 3).</p>
+<h1 id="broadcast">Broadcast</h1>
+<p>If UDP has a superpower, it is its ability to support broadcast. Instead of sending a datagram to some other specific
+host, you can address it to an entire subnet to which your machine is attached and have the physical network card
+broadcast the datagram so that all attached hosts see it without its having to be copied separately to each one of them.</p>
+<p>With that being said, a more sophisticated technique called multicast has been developed that allows modern operating
+systems to take better advantage of the intelligence built into many networks and network interface devices. Also,
+multicast can work with hosts that are not on the local subnet.</p>
+<p>When broadcasting, if you set up the server socking <code>bind()</code> to an empty string, then broadcasts from any client,
+assuming the correct port is assigned, will be transmitted to the server! Another interesting thing to note is that you
+can create multiple servers using an empty string. In other words, the server that accepts broadcasted messages do not
+conflict on the network.</p>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># Foundations of Python Network Programming, Third Edition</span>
+<span class="c1"># https://github.com/brandon-rhodes/fopnp/blob/m/py3/chapter02/udp_broadcast.py</span>
+<span class="c1"># UDP client and server for broadcast messages on a local LAN</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span><span class="o">,</span><span class="w"> </span><span class="nn">socket</span>
+
+<span class="n">BUFSIZE</span> <span class="o">=</span> <span class="mi">65535</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">server</span><span class="p">(</span><span class="n">interface</span><span class="p">,</span> <span class="n">port</span><span class="p">):</span>
+    <span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span>
+    <span class="n">sock</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="n">interface</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Listening for datagrams at </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sock</span><span class="o">.</span><span class="n">getsockname</span><span class="p">()))</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">data</span><span class="p">,</span> <span class="n">address</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">recvfrom</span><span class="p">(</span><span class="n">BUFSIZE</span><span class="p">)</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The client at </span><span class="si">{}</span><span class="s1"> says: </span><span class="si">{!r}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">client</span><span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">port</span><span class="p">):</span>
+    <span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span>
+    <span class="n">sock</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_BROADCAST</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Broadcast datagram!&#39;</span>
+    <span class="n">sock</span><span class="o">.</span><span class="n">sendto</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">),</span> <span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">choices</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;client&#39;</span><span class="p">:</span> <span class="n">client</span><span class="p">,</span> <span class="s1">&#39;server&#39;</span><span class="p">:</span> <span class="n">server</span><span class="p">}</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Send, receive UDP broadcast&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;role&#39;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">choices</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;which role to take&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;host&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;interface the server listens at;&#39;</span> <span class="s1">&#39; network the client sends to&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;port&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1060</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;UDP port (default 1060)&#39;</span><span class="p">)</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+    <span class="n">function</span> <span class="o">=</span> <span class="n">choices</span><span class="p">[</span><span class="n">args</span><span class="o">.</span><span class="n">role</span><span class="p">]</span>
+    <span class="n">function</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">p</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="when-to-use-udp">When To Use UDP</h2>
+<p>UDP is efficient only if your host sends only one message at a time and then waits for a response.</p>
+<p>There are, however, a few good reasons to use UDP.</p>
+<ul>
+<li>Because you are implementing a protocol that already exists and it uses UDP.</li>
+<li>Because you are designing a time-critical media stream whose redundancy allows for• occasional packet loss and you
+never want this second’s data getting hung up waiting for old data from several seconds ago that has not yet been
+delivered (as happens with TCP).</li>
+<li>Because unreliable LAN subnet multicast is a great pattern for your application and UDP•
+supports it perfectly.</li>
+</ul>
+</div>
+<footer>
+<p>Generated by Pymind: 2025-02-15</p>
+</footer>
+
+</body>
+</html>

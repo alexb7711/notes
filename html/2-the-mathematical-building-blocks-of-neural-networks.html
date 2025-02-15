@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>2-the-mathematical-building-blocks-of-neural-networks</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+<div id="navigation">
+<ul>
+<li><a class="%index.md%" href="index.html">index</a></li>
+</ul>
+</div>
+
+<div class="content">
+<p>Understanding deep learning requires familiarity with many simple mathematical concepts: tensors, tensor operations, differentiation, and gradient descent, etc.</p>
+<h1 id="a-first-look-at-a-neural-network">A First Look At A Neural Network</h1>
+<p>You can think of “solving” MNIST as the “Hello World” of deep learning—it’s what you do to verify that your algorithms are working as expected. </p>
+<p>Besides having the training/test data and labels and having created the structure of our neural net, to make the model ready for training, we need to pick three things as part of the compilation step:</p>
+<ul>
+<li><em>An optimizer (gradient descent method)</em> —The mechanism through which the model will update itself based on the training data it sees, so as to improve its performance.</li>
+<li><em>A loss function (objective function)</em> — How the model will be able to measure its performance on the training data, and thus how it will be able to steer itself in the right direction.</li>
+<li><em>Metrics to monitor during training and testing (track how the overall system is doing)</em> — Here, we’ll only care about accuracy (the fraction of the images that were correctly classified).</li>
+</ul>
+<h1 id="data-representations-for-neural-networks">Data Representations For Neural Networks</h1>
+<p>In general, all current machine learning systems use tensors as their basic structure. Tensors are a generalization of matrices to an arbitrary number of dimensions (a matrix is a tensor of rank 2).</p>
+<h2 id="the-gears-of-neural-networks-tensor-operations">The Gears Of Neural Networks: Tensor Operations</h2>
+<p>Recall the dense layer created previously</p>
+<div class="codehilite"><pre><span></span><code><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>This layer can be interpreted as a function which takes in a matrix and outputs a matrix. Let <code>W</code> be a matrix <code>b</code> be a vector. The output of the dense layer created above is of the form $\text{relu}(\text{input} \cdot W + b)$. In Python that translates to</p>
+<div class="codehilite"><pre><span></span><code><span class="n">output</span> <span class="o">=</span> <span class="n">relu</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span><span class="n">W</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span>
+</code></pre></div>
+
+<p>Note <code>relu</code> stands for "rectified linear unit" and is defined as $\text{max}(x,0)$.</p>
+<h3 id="geometric-interpretation-of-tensor-operations">Geometric Interpretation of Tensor Operations</h3>
+<p>This section actually has a really good set of visuals for understanding different types of transforms.</p>
+<h3 id="a-geometric-interpretation-of-deep-learning">A Geometric Interpretation of Deep Learning</h3>
+<p>You can interpret a neural network as a very complex geometric transformation in a high-dimensional space, implemented via a series of simple steps. Deep learning finds neat representations for complex , highly folded data manifolds in high-dimensional spaces (a manifold is a continuous surface).</p>
+<h2 id="the-engine-of-neural-networks-gradient-based-optimization">The Engine Of Neural Networks: Gradient-Based Optimization</h2>
+<p>In the example</p>
+<div class="codehilite"><pre><span></span><code> <span class="n">output</span> <span class="o">=</span> <span class="n">relu</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span><span class="n">W</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span>
+</code></pre></div>
+
+<p><code>W</code> and <code>b</code> are trainable parameters know as the kernel and bias attributes, respectively. Lets say that the current value of W is W0. To begin minimizing <code>W</code> by taking a "step" , you would follow <code>W1 = W0 - step * grad(f(W0), W0)</code>[^1].  Where <code>f(W0) = loss_value</code>.</p>
+<h3 id="stochastic-gradient-descent">Stochastic Gradient Descent</h3>
+<p>While the above operation is possible to complete, when you increase the number of parameters are never less than a few thousand, things begin to slow down. Rather than including the entire data set, you can speed things up by batching. That is, you can follow the steps above using a random sample of data. Because you are dealing with a differentiable function, you can compute the gradient. The algorithm, called a mini-batch stochastic gradient, is defined as follows:</p>
+<ol>
+<li>Draw a  batch of training samples, <code>x</code> , and corresponding targets <code>y_true</code>,</li>
+<li>Run the model on <code>x</code> to obtain predictions <code>y_pred</code> (forward pass),</li>
+<li>Compute the loss on the batch,</li>
+<li>Compute the gradient of the loss with regard to the model's parameters (backward pass), and</li>
+<li>Move the parameters a little in the opposite direction of the gradient <code>W -= learning_rate * gradient</code></li>
+</ol>
+<p>What was described is a single method of optimization, there are many others such as: SGD with momentum, Adagram, RMSprop, etc.</p>
+<h3 id="chaining-derivatives-the-backpropagation-algorithm">Chaining Derivatives: The Backpropagation Algorithm</h3>
+<p>Up to now we casually assumed that because a function is differentiable, we can compute its gradient. But is that true? How wan we compute the gradient of complex expressions in practice? This is where the Backpropagation algorithm comes in.</p>
+<h4 id="the-chain-rule">The Chain Rule</h4>
+<p>Recalling the neural net created earlier that had two layers, the model can be expressed as W1, b1, W2, and b2 which has operations acting on each layer. The loss value can be expressed as:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">loss_value</span> <span class="o">=</span> <span class="n">loss</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">softmax</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="n">relu</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span><span class="n">W1</span><span class="p">)</span> <span class="o">+</span> <span class="n">b1</span><span class="p">),</span> <span class="n">W2</span><span class="p">)</span> <span class="o">+</span> <span class="n">b2</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Which we can see is a composition of function calls such as $f(g(x))$. We can explicitly write this composition as a python function</p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fg</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">y</span>
+</code></pre></div>
+
+<p>If we want to take the gradient of $f(g(x))$, using the notation from the code above we can write <code>grad(y,x) == grad(y,x1) * grad(x1,x)</code>. This pattern continues as you further encase functions in other functions. Applying the chain rule to the computation of the gradient  values of neural network gives rise to the algorithm called backpropagation.</p>
+<h4 id="automatic-differentiation-with-computational-graphs">Automatic Differentiation With Computational Graphs</h4>
+<p>The figures in this section are invaluable. I'm just going to reference this section of the chapter and tell you to go look at it until I can recreate the images or something.</p>
+<h3 id="the-gradient-tape-in-tenserflow">The Gradient Tape In Tenserflow</h3>
+<p>The API which you can leverage <code>TenserFlow</code>'s automatic differentiation is by using <code>GradientTape</code>. <code>GradientTape</code> effectively records the tensor operations occurring inside of its scope.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="mf">0.</span><span class="p">)</span>                      
+<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>          
+    <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">3</span>                        
+<span class="n">grad_of_y_wrt_x</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="summary">Summary</h2>
+<ul>
+<li>Deep learning models consist of chains of simple tensor operations, parameterized by <em>weights</em>, which are themselves tensors. The weights of a model are where its “knowledge” is stored.</li>
+<li><em>Learning</em> means finding a set of values for the model’s weights that minimizes a <em>loss function</em> for a given set of training data samples and their corresponding targets.</li>
+<li>Learning happens by drawing random batches of data samples and their targets, and computing the gradient of the model parameters with respect to the loss on the batch. The model parameters are then moved a bit (the magnitude of the move is defined by the learning rate) in the opposite direction from the gradient. This is called <em>mini-batch stochastic gradient descent</em>.</li>
+<li>The entire learning process is made possible by the fact that all tensor operations in neural networks are differentiable, and thus it’s possible to apply the chain rule of derivation to find the gradient function mapping the current parameters and current batch of data to a gradient value. This is called <em>backpropagation</em>.</li>
+<li>Two key concepts you’ll see frequently in future chapters are <em>loss</em> and <em>optimizers</em>. These are the two things you need to define before you begin feeding data into a model.</li>
+<li>The <em>loss</em> is the quantity you’ll attempt to minimize during training, so it should represent a measure of success for the task you’re trying to solve.</li>
+<li>The <em>optimizer</em> specifies the exact way in which the gradient of the loss will be used to update parameters: for instance, it could be the RMSProp optimizer, SGD with momentum, and so on.</li>
+</ul>
+<p>[^1]: <a href="https://www.khanacademy.org/math/multivariable-calculus/multivariable-derivatives/gradient-and-directional-derivatives/v/why-the-gradient-is-the-direction-of-steepest-ascent">https://www.khanacademy.org/math/multivariable-calculus/multivariable-derivatives/gradient-and-directional-derivatives/v/why-the-gradient-is-the-direction-of-steepest-ascent</a></p>
+</div>
+<footer>
+<p>Generated by Pymind: 2025-02-15</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+[IO]
+input = "./markdown"
+output = "./html"
+
+[HTML]
+css = "style.css"
+
+[Markdown]
+extensions = ["toc", "codehilite", "fenced_code", "tables"]

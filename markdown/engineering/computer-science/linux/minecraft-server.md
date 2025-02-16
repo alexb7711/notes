@@ -1,3 +1,4 @@
+<!-- :linux:minecraft: -->
 # Create The Server
 Follow the instructions [here](https://minecraftservercontrol.github.io/docs/mscs/getting-started).
 

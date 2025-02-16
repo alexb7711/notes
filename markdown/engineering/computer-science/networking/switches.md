@@ -1,3 +1,5 @@
+<!-- :networking: -->
+
 A managed network switch and an unmanaged network switch are two types of network switches that differ in their level of control, management, and functionality.
 
 **Unmanaged Network Switch:**

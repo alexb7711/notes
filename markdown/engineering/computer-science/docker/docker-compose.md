@@ -1,3 +1,4 @@
+<!-- :docker: -->
 # Docker Compose Overview
 
 Docker compose is a tool for defining and running multi-container applications. It simplifies the control of the entire application stack, making it easy to manage services, networks, and volumes in a single YAML configuration file. After the file is defined, a single command will start all the services specified in the configuration file. The compose file has the ability to
@@ -73,7 +74,7 @@ x-env: &env
   environment:
     - CONFIG_KEY
     - EXAMPLE_KEY
- 
+
 services:
   first:
     <<: *env
@@ -149,9 +150,9 @@ networks:
 
 # References
 
-\- <https://docs.docker.com/compose/intro/compose-application-model/>  
-- <https://docs.docker.com/reference/compose-file/services/>  
-- <https://docs.docker.com/reference/compose-file/networks/>  
-- <https://docs.docker.com/reference/compose-file/configs/>  
-- <https://docs.docker.com/reference/compose-file/fragments/>  
+\- <https://docs.docker.com/compose/intro/compose-application-model/>
+- <https://docs.docker.com/reference/compose-file/services/>
+- <https://docs.docker.com/reference/compose-file/networks/>
+- <https://docs.docker.com/reference/compose-file/configs/>
+- <https://docs.docker.com/reference/compose-file/fragments/>
 - <https://docs.docker.com/reference/compose-file/extension/>

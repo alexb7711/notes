@@ -1,3 +1,5 @@
+<!-- :ee:control: -->
+
 # Control Systems Engineering
 - [Introduction](1-introduction)
 - [Modeling In The Frequency Domain](2-modeling-in-the-frequency-domain)

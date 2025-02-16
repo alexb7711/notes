@@ -5,4 +5,4 @@ endif
 
 # Execute PyMind
 all:
-	pymind -c "./config/pymind.toml"
+	pymind -f -c "./config/pymind.toml"

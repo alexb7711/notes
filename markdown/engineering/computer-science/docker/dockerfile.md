@@ -1,10 +1,11 @@
+<!-- :docker: -->
 # Dockerfile Overview
 
 Docker builds images by reading the instructions from a Dockerfile. A Dockerfile is a text file containing instructions for building your source code.
 
 ## Filename
 
-The default filename is `Dockerfile`. When the default filename is used, when you run `docker build`, the `Dockerfile` is utilized. 
+The default filename is `Dockerfile`. When the default filename is used, when you run `docker build`, the `Dockerfile` is utilized.
 
 # Docker Images
 
@@ -13,7 +14,7 @@ Docker images consist of layers. Each layer is the result of a build instruction
 ## Example
 
 ```Docker
-# Instructs the docer builder what version 
+# Instructs the docer builder what version
 # syntax to use.
 # `docker/dockerfile:1` points to the
 # latest release of the version 1 syntax.
@@ -58,7 +59,7 @@ docker build -t test:latest .
 
 The `-t test:latest`  option specifies the name and tag of the image.
 
-  
+
 The single dot at the end of the command sets the build context to the current directory. This means that the `hello.py` file needs to be in the same directory as to where tho command is being invoked.
 
 After the image has been built, the application can be run as a container with

@@ -50,7 +50,7 @@ mscs-server-url=
 ```
 
 # DDNS
-- Create a DDNS account at [Dynu](dynu.com).
+- Create a DDNS account at [Dynu](dynu.html).
 - Use [IP Chicken](https://ipchicken.com/) to ensure the DNS service points to the correct IP address.
 
 # Port Forwarding

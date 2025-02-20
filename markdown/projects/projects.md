@@ -31,7 +31,7 @@ at best.
 Contemplating on renaming the project to RuneMacs. The name stems from the Windows port executable `runemacs`, when I
 first read it I read "Rune Macs".
 
-## [Prusa Box](prusa-box.md)
+## [Prusa Box](prusa-box.html)
 This project is an attempt to make an encasement for my Prusa 3D printer. The high-level objectives are to make this a
 cheaply as possible, but not have it be fragile as a house of cards. As well as to include other bells an whistles such
 as:

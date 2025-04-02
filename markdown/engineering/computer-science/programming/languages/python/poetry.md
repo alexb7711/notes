@@ -47,4 +47,3 @@ optional = true
 
 To install the optional dependencies one can use `poetry install --with docs` to install the `docs` optional dependencies. If its easier, you can do the reverse and exclude groups via `poetry install --witout test,docs`. In the case you only want to install a single dependency type, you can use the `--only` flag.
 
-## plugins

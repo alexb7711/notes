@@ -22,14 +22,12 @@ objective is to be able to write one "skeleton" for the set of messages you wish
 generate all the source code required to communicate those messages to other applications generated with SIG (using the
 same messages of course).
 
-## [Emacs](https://github.com/alexb7711/emacs)
-This is the ever-changing configuration for Emacs. I edit a whole lot of text on a daily basis, and obviously have
-crestfallen into the blessing/nightmare that is Emacs. This Emacs configuration is supposed to be dependent on as few
-packages as possible while being usable. I suck at writing Elisp (and Lisp in general), so this project is a mixed bag
-at best.
+## [VIM]()
+No, its not NeoVim unfortunately. Due to work restrictions I have to use Vim8, so this configuration is bulit around that
+with absolutely 0 plugins. Everything is written by hand and organized as neatly as possible.
 
-Contemplating on renaming the project to RuneMacs. The name stems from the Windows port executable `runemacs`, when I
-first read it I read "Rune Macs".
+## [DARBS]()
+My personal port of [LARBS]() for my own [dootfiles]().
 
 ## [Prusa Box](prusa-box.html)
 This project is an attempt to make an encasement for my Prusa 3D printer. The high-level objectives are to make this a
@@ -57,3 +55,16 @@ that, given a static schedule of bus routes, outputs an optimal schedule for cha
 This is also part of my Master degree thesis. This is the original implementation for optimizing the scheduling of
 electric busses. This uses the Gurobi mixed integer optimizer, so unless you have a student license you won't be able to
 run this.
+
+## [Emacs](https://github.com/alexb7711/emacs)
+This is my Emacs configuration. I _really_ tried to make this work, but Emacs is just not for me. There are a lot of good things
+I learned from Emacs that I'm porting back into Vim. If you want the old comment that I made on the project its below. For all 
+intents and purposes, this project is dead. 
+
+> This is the ever-changing configuration for Emacs. I edit a whole lot of text on a daily basis, and obviously have
+>crestfallen into the blessing/nightmare that is Emacs. This Emacs configuration is supposed to be dependent on as few
+> packages as possible while being usable. I suck at writing Elisp (and Lisp in general), so this project is a mixed bag
+>at best.
+
+> Contemplating on renaming the project to RuneMacs. The name stems from the Windows port executable `runemacs`, when I
+> first read it I read "Rune Macs".

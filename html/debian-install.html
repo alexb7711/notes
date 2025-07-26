@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>debian-install</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+<div id="navigation">
+<ul>
+<li><a class="%blog.html%" href="blog.html">blog</a></li>
+<li><a class="%notes.html%" href="notes.html">notes</a></li>
+<li><a class="%projects.html%" href="projects.html">projects</a></li>
+<li><a class="%index.md%" href="index.html">index</a></li>
+</ul>
+</div>
+
+<div class="content">
+<h1 id="installing-debian">Installing Debian</h1>
+<h2 id="flash-the-usb">Flash the USB</h2>
+<p>This part is straight forward, just <a href="https://www.debian.org/">download the iso</a>. Depending of if you are on a Linux/BSD machine, you can run <a href="https://wiki.archlinux.org/title/USB_flash_installation_medium">one of these commands</a> and if you are on Windows use Rufus.</p>
+<h2 id="running-the-installer">Running the Installer</h2>
+<p>When selecting whether to use the <code>Graphical Installer</code> or the <code>Installer</code>, I reccomend just using the <code>Installer</code> on the off chance you want to drop into a terminal and manually configure things. It makes it easier to jump back and forth between the installer and the terminal.</p>
+<p>The only part you have to pay attention to here is setting up the LVM if you have multiple hard drives. There are two ways you can go about doing this: manually or semi-manually.</p>
+<p>Before talking about how to set up the LVM, I'm going to display an <code>lsblk</code> output to use as a reference. I chose to put the <code>/home</code> directory in its own mount. By default, the Debian installer was providing me 30GB of space in the root directory. This is where all of the packages are installed via <code>apt</code>, <code>flatpak</code>, etc. Doing some quick searching, 30GB should be fine for most people, but since we have a bunch of real estate, I bumped it up to 50GB especially since everything in the root directory (besides <code>/home</code>) is mounted onto the root logical volume.</p>
+<p>Note that the <code>nvme0n1</code> partition is the "primary" partition as it has the boot partitions.</p>
+<pre class="codehilite"><code>ME                  MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+sda                     8:0    0 931.5G  0 disk
+├─stanky--vg-root     254:0    0  47.9G  0 lvm  /
+└─stanky--vg-home     254:2    0   2.7T  0 lvm  /home
+nvme0n1               259:0    0   1.8T  0 disk
+├─nvme0n1p1           259:1    0 513.1M  0 part /boot/efi
+├─nvme0n1p2           259:2    0 488.3M  0 part /boot
+└─nvme0n1p3           259:3    0   1.8T  0 part
+  ├─stanky--vg-root   254:0    0  47.9G  0 lvm  /
+  ├─stanky--vg-swap_1 254:1    0   976M  0 lvm  [SWAP]
+  └─stanky--vg-home   254:2    0   2.7T  0 lvm  /home
+</code></pre>
+
+<h3 id="semi-manual">Semi-Manual</h3>
+<p>This method leverages the Debian's installer to create an LVM partition on a hard disk, then you manually add the other physical volumes that you create to the logical volumes to expand them how you want.</p>
+<p>When I selected Debian to separated the <code>/home</code> directory into its own mount, it gave a default space of 30GB to the root partition, as discussed above. The second SSD (<code>/dev/sda</code>) was formatted to some DOS format, presumably because its expecting to be dual boot with Windows? Either way, the problem was that the disk had a partition <code>/dev/sda/sda1</code> that I did not want. A quick and simple way to get rid of this is just formatting the disk, so you can run something like</p>
+<pre class="codehilite"><code class="language-sh">mkfs.ext4 /dev/sdx
+</code></pre>
+
+<p>Where <code>x</code> in this case is would be <code>a</code>[^1]. If you are not sure what disk to use, a simple <code>lsblk</code> should be sufficient most of the time. After the disk is formatted, the disk needs to be added as a physical volume that can be used by the volume group. To create add the disk as a physical volume, simply run</p>
+<pre class="codehilite"><code class="language-sh">pvcreate /dev/sdx
+</code></pre>
+
+<p>Where <code>x</code> in this case is the disk that we partitioned earlier[^2]. To see that the physical volume was added you can run[^2]</p>
+<pre class="codehilite"><code class="language-sh">pvs # List all of the phisycal volumes
+pvdisplay # List the physical volumes with volume information
+</code></pre>
+
+<p>After verifying that the volume has been created, the physical volume needs to be added to the volume group. This is done by running[^2]</p>
+<pre class="codehilite"><code class="language-sh">vgextend [VOLUME GROUP] /deb/sdx
+</code></pre>
+
+<p>If you don't know what the volume group name is, you can run <code>vgs</code> to display a list of the logical volumes[^2]. Analogous to <code>pvs</code>, there is also a <code>vgdisplay</code> command to display more information about the volume group. </p>
+<p>Lets take a quick pit stop to recap what we have done up to this point. We added a disk as a physical volume that can be added to a logical group via the <code>pvcreate</code> command. After creating the physical volume, we added it to a logical volume via the <code>vgextend</code> command. At a high level, this means we have effectively added the space of <code>/dev/sdx</code> to a volume group. Now we need to allocate the disk space to the different logical volumes so they can be used.</p>
+<p>If you want to add an entire disk to a specific logical volume, you run the commend</p>
+<pre class="codehilite"><code class="language-sh">lvm lvextend -l +100%FREE /dev/[VOLUME GROUP]/[LOGICAL VOLUME]
+</code></pre>
+
+<p>or if you only want to allocate a certain amount of disk space to the volume</p>
+<pre class="codehilite"><code class="language-sh">lvm lvextend -l +10G /dev/[VOLUME GROUP]/[LOGICAL VOLUME]
+</code></pre>
+
+<p>which in the case of the example above adds 10GB of space to the logical volume[^2].  We have now successfully extended the logical volume(s). However, we now need to tell the file system about the changes we made. Luckily this is very easy to do. Simply run the following command for every logical volume that was updated[^2]:</p>
+<pre class="codehilite"><code class="language-sh">resize2fs -p /dev/mapper/[VOLUME GROUP]-[LOGICAL VOLUME]
+</code></pre>
+
+<h3 id="todo-manual">TODO: Manual</h3>
+<h3 id="so-you-messed-up-the-lvm">So You Messed Up the LVM</h3>
+<p>Best way I have found to deal with this is just to restart the entire process. List the volume groups by typing <code>lvs</code>. Find the volume group you want to delete and then execute <code>vgremove [VOLUME GROUP]</code>[^3]. If you wish to get rid of the physical olume you can also run <code>pvremove /dev/sdx</code>[^3]. I also typically format the disk to get a clean start with a <code>mkfs.ext4 /dev/sdx</code>. If that does not work, you can then wipe the disk by writing zeros to the entire thing via <code>cat /dev/zero &gt; /dev/sdx</code>[^4].</p>
+<h2 id="post-installation">Post Installation</h2>
+<p>The following are some base packages that you will alway install. If you are going to be creating a desktop from the install, a separate sub-section is included for some extra things you may want to do.</p>
+<p>Some packages to install before beginning:</p>
+<ul>
+<li><a href="https://wiki.debian.org/GraphicsCard">graphics card drivers</a></li>
+<li>build-essential</li>
+<li>git</li>
+<li>python[MAJOR].[MINOR]</li>
+<li>sudo</li>
+<li>vim</li>
+</ul>
+<h3 id="add-user-to-sudo5">Add user to <code>sudo</code>[^5]</h3>
+<p>You can either run the command <code>usermod -a -G sudo user</code>, the log out and log in again or as root, edit <code>/etc/sudoers</code> and add the line</p>
+<pre class="codehilite"><code>[USER] ALL=(ALL) NOPASSWD:ALL
+</code></pre>
+
+<p>after</p>
+<pre class="codehilite"><code># Allow members of group sudo to execute any command
+%sudo   ALL=(ALL:ALL) ALL
+</code></pre>
+
+<h3 id="update-the-package-list">Update the package list</h3>
+<p>For every line in <code>/etc/apt/sources.list</code> with a <code>deb</code> or <code>deb-src</code> append <code>contrib</code> and <code>non-free</code>. The coontrib is going to add everythig that is not Debian essetial, but adds a bunch of stuff useful to the user (like <code>wine</code> which we want for <code>Steam</code> for a desktop install<code>. The</code>non-free<code>is primary for</code>Steam`.</p>
+<p>If you don't see <code>non-free-firmware</code> add that as well and check if you have the <a href="https://wiki.debian.org/Microcode">processor microcodes</a> installed.</p>
+<h3 id="desktop">Desktop</h3>
+<p>Some packages that you are going to want to install are:</p>
+<ul>
+<li>dunst</li>
+<li>nextcloud-desktop</li>
+<li>picom</li>
+<li>pipewire-pulse</li>
+<li>ranger</li>
+<li>steam</li>
+<li>stow</li>
+<li>unclutter</li>
+<li>xinit</li>
+<li><a href="https://wiki.debian.org/Xorg">xorg</a></li>
+<li>zsh</li>
+</ul>
+<h4 id="nerd-fonts">Nerd Fonts</h4>
+<p>To install nerd fonts from Debian easily, run the following:</p>
+<pre class="codehilite"><code class="language-sh">git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git
+</code></pre>
+
+<p>Some of the fonts that I like are</p>
+<ul>
+<li>SpaceMono (Actively used)</li>
+<li>Mononoki</li>
+<li>Incosolata</li>
+</ul>
+</div>
+<footer>
+<p>Generated by Pymind: 2025-07-26</p>
+</footer>
+
+</body>
+</html>

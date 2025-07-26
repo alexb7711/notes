@@ -1,4 +1,4 @@
-<!-- :nav:projects: -->
+<!-- :draft:nav:projects: -->
 
 [TOC]
 
@@ -6,6 +6,23 @@
 This is effectively a list of all the projects that I am either actively working on, completed, or just maintaining.
 Active projects are those that are _actively_ being developed, completed are projects that are basically going to stay
 in the state that they are, and maintenance are projects that are completed, but may receive updates from time-to-time.
+
+Starting to include tasks I want to do in a backlog, probably going to need to update Pymind to make it a bit more clean...
+
+# Backlog
+
+- Start YT back up to share dumb projects and the like
+    - Update channel name
+    - Update the image
+- Learn how to develop on Windows better: sucks, but gotta do it for work
+    - Stow alternative
+    - Dotfiles, script organization update
+- Organize projects and tasking better (Gotta do some more pymind development)
+- Autonomous RC plane/drone. This is going to be done in increments, starting small
+- Migrate stanky (old gaming rig) to Linux and make into a "power" server
+- Migrate chuggy's (slim HP pc) shit to stanky
+- Migrate poot's (NAS) shit to chuggy
+- Migrate current rig back to Arch (OpenSuse is not really my cup of tea...)
 
 # Active
 

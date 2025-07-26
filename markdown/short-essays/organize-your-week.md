@@ -1,0 +1,34 @@
+
+<!-- :essay:draft: -->
+
+# Organize You Week
+
+## Background (skippable)
+Today is 2025-06-08 (a Sunday). I woke up late (again) today. The goal has been to be up at no latter than 06:00, but in reality I've been getting up at around 08:00. Typically after getting up, the first task of the day is taking Odie and Maisie on their walk, but Odie can barely walk (due to a catastrophic hike we attempted yesterday) so we just meandered around the front yard. The dew in the grass seemed to help Odie's feet, so he wallowed around in that for some 10 minutes. After that, its breakfast and then some light lifting to keep me moving.
+
+While lifting, I circled back on the thought that I have been having the last few days; all these plans that I had for the weekend... I got absolutely none of them done. In fact, I was wanting to clean the bathrooms, I have cleaned one. Come to think of this, writing this in a ways is a sort of procrastination of that. But that is needless to say that I have come to the conclusion that without structure, I am naturally lazy. I don't think that is something that strays too far from everyone else's experience.
+
+During the week when I have to get up for work, I'm up at 04:00 and at the gym by 05:30. I am super motivated during the day because I get to spend the day reading, practicing, and learning about things that I think are very interesting. The least favorite part of my days is when I am derailed by meetings or other workspace white noise. Even after the days is done, I'm filled with motivation but quickly lose it after getting home. 
+
+I spend time with my wife, walk Odie and Maisie, and *poof*: I'm tired, frustrated, and just generally irritable. I become overwhelmed with everything that I _want_ to do, and effectively get stuck in choice overload. There are so many things I want to read (books, RSS feeds, research journals, etc.), projects to work on (program, CAD, YouTube, blogging, etc.), and stuff around the house that I want to do (namely fixing the dents in my damn car that are starting to rust) that I end up doing _nothing_ and its so demoralizing. It always spirals to me justifying that I'll do it over the weekend. Well, the weekend came and went and nothing was accomplished which is even more demoralizing. 
+
+These feelings never touch me at work, but I'm just as busy (if not more so). Granted that the tasks that I have are more focused, but still they all need to be done in a timely manner. What is the difference? While its a simple observation, I'm not very observant so this took me a while to grasp. I spend about 5-10 minutes every day planning out my day/week.
+
+## Macro/Micro Scheduling
+The method I use is pretty simple: at the start of the week, I macro-schedule my week (i.e. block out what days I want to do what). This effectively defines what I want to complete during the week. Placing the tasks on specific days is at best a guess. It's more helpful as a visualization of how much time (you think) you have scheduled for yourself. After this is done, each day I micro-schedule my day (i.e. time block my day with those things that I want to get done that day). This is the time to take into considerations how the days looks, what has happened the day before, and to make your best educated guess on the day. Granted, if you double up your first day macro and micro scheduling you are kind of shit out of luck (R.I.P. Mondays). With that being said, fully expect to move blocks around and to readjust every day. If you don't, kudos. 
+
+A few things to keep in mind while doing this.
+
+### You Won't Finish Everything
+More often than not, you won't get all your self-assigned tasks finished up. Shit happens, and things come up. There is a chaotic world around you that is going to throw something your way. My thinking is just hope for the best, but expect the worst. As we speak, I'm rushing to get this paragraph finished because I'm going to have to pause this mini-essay to go shower so I can visit my parents. All that is simply to say: **be okay with running out of time**. Be proud of the work that has been done, because it was bound to happen anyway. It is still time spent toward something that is of value *to you*. That is what is important.
+
+### Using Time to Gain Time
+One of things that I feel during times of crunch is starting sooner to finish sooner, when in reality five or ten minutes will never make or break whether you make your deadline. Speaking out of experience, more often than I just set myself up for failure because my week went from a quick mental check list of to do, to a mesh of things that I forgot to do because other things came up and well... I forgot.
+
+By having a systematic method of documenting of what you want to do and what you have done, you can jot down the things that pop up and either fit them in now, or toss them in a back log for later. Either way, your headspace is focused on the task at hand and not on trying to immediately reorganize your day. My experience when I don't write things down is that my immediate reaction is to get it out of the way as fast as possible, even if it can wait.
+
+### Tracking
+One thing that you don't really ever get to see is how much effort you have put into something. It's more of a happy side effect of tracking blocking your time in a calendar or a bullet journal is that you get visual feedback about how much time you have spent doing tasks that you value. That to me, is a force multiplier in having satisfaction in my day-to-day. 
+
+## Conclusion
+The method described above is pretty loose in the way that there is no explicit guidelines, purposefully so because figuring this out is not a one size fits all. You need to find a cadence that fits your lifestyle and goals. For me, calendar blocking is probably the best solution because it is easily accessible on all my devices and is simple to modify. The bottom line is that taking some time to make your short-term effort achieve your long term goals is worth its weight in gold. As I mentioned before, this is not something now that I have devised for myself, but I have been lacking discipline to do it outside of work. So with that being said, it is about 20:00 (took me about the entire day to write this damn note to myself). I'm going to go figure out my week really quick.`

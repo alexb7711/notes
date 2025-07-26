@@ -23,12 +23,12 @@
 <p>On the other hand, if you have a pre-existing project that you want to turn into a poetry project, simply type <code>poetry init</code>.</p>
 <h2 id="specifying-dependencies">Specifying Dependencies</h2>
 <p>In the <code>project.toml</code> file, one can specific the dependencies via the following syntax</p>
-<pre class="codehilite"><code class="language-toml">[project]
-#...
-dependecies = [
-    &quot;pendulum (&gt;=2.1,&lt;3.0)&quot;
-]
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="k">[project]</span>
+<span class="c1">#...</span>
+<span class="n">dependecies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;pendulum (&gt;=2.1,&lt;3.0)&quot;</span>
+<span class="p">]</span>
+</code></pre></div>
 
 <p>If you want to add a new dependency, one can either modify the file directory or type <code>poetry add [dependecy]</code>.</p>
 <h2 id="using-the-virtual-environment">Using The Virtual Environment</h2>
@@ -38,14 +38,14 @@ dependecies = [
 <h1 id="the-pyprojecttoml-file">The <code>pyproject.toml</code> file</h1>
 <h2 id="dependencies-and-dependency-groups">Dependencies and Dependency Groups</h2>
 <p>Dependencies can be organized by groups to have more granular control over what is installed. For example, if you have dependencies only for testing:</p>
-<pre class="codehilite"><code class="language-toml">[tool.poetry.group.test.dependecies]
-pytest = &quot;*&quot;
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="k">[tool.poetry.group.test.dependecies]</span>
+<span class="n">pytest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*&quot;</span>
+</code></pre></div>
 
 <p>Groups can be made optional via</p>
-<pre class="codehilite"><code class="language-toml">[tool.poetry.groups.docs]
-optional = true
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="k">[tool.poetry.groups.docs]</span>
+<span class="n">optional</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</code></pre></div>
 
 <p>To install the optional dependencies one can use <code>poetry install --with docs</code> to install the <code>docs</code> optional dependencies. If its easier, you can do the reverse and exclude groups via <code>poetry install --witout test,docs</code>. In the case you only want to install a single dependency type, you can use the <code>--only</code> flag.</p>
 </div>

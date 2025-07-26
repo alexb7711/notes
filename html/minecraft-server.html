@@ -30,35 +30,35 @@
 </ul>
 <p>The run script in the <code>server</code> directory needs to look like the listing below. Also make sure the script has execute
 permissions: <code>sudo chmod +x run.sh</code>.</p>
-<pre class="codehilite"><code class="language-shell">#!/usr/bin/env sh
-# Forge requires a configured set of both JVM and program arguments.
-# Add custom JVM arguments to the user_jvm_args.txt
-# Add custom program arguments {such as nogui} to this file in the next line before the &quot;$@&quot; or
-#  pass them to this script directly
-java @user_jvm_args.txt @libraries/net/neoforged/neoforge/21.1.77/unix_args.txt &quot;$@&quot;
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/usr/bin/env sh</span>
+<span class="c1"># Forge requires a configured set of both JVM and program arguments.</span>
+<span class="c1"># Add custom JVM arguments to the user_jvm_args.txt</span>
+<span class="c1"># Add custom program arguments {such as nogui} to this file in the next line before the &quot;$@&quot; or</span>
+<span class="c1">#  pass them to this script directly</span>
+java<span class="w"> </span>@user_jvm_args.txt<span class="w"> </span>@libraries/net/neoforged/neoforge/21.1.77/unix_args.txt<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
+</code></pre></div>
 
 <p>To get the paths setup correctly, run the following script:</p>
 <p>Forge</p>
-<pre class="codehilite"><code class="language-shell">sudo sed -i &quot;\|@[^\&quot;]|s|@|@$(pwd)/|&quot; run.sh;
-sudo sed -i &quot;s|\&quot;\$@|--nogui &amp;|g&quot; run.sh;
-sudo sed -i &quot;s|libraries|$(pwd)/libraries|g&quot; run.sh;
-sudo sed -i &quot;s|libraries|$(pwd)/libraries|g&quot; libraries/net/minecraftforge/forge/*/unix_args.txt
-</code></pre>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;\|@[^\&quot;]|s|@|@</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/|&quot;</span><span class="w"> </span>run.sh<span class="p">;</span>
+sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s|\&quot;\$@|--nogui &amp;|g&quot;</span><span class="w"> </span>run.sh<span class="p">;</span>
+sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s|libraries|</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/libraries|g&quot;</span><span class="w"> </span>run.sh<span class="p">;</span>
+sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s|libraries|</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/libraries|g&quot;</span><span class="w"> </span>libraries/net/minecraftforge/forge/*/unix_args.txt
+</code></pre></div>
 
 <p>Neoforge</p>
-<pre class="codehilite"><code>sudo sed -i &quot;\|@[^\&quot;]|s|@|@$(pwd)/|&quot; run.sh;
+<div class="codehilite"><pre><span></span><code>sudo sed -i &quot;\|@[^\&quot;]|s|@|@$(pwd)/|&quot; run.sh;
 sudo sed -i &quot;s|\&quot;\$@|--nogui &amp;|g&quot; run.sh;
 sudo sed -i &quot;s|libraries|$(pwd)/libraries|g&quot; run.sh;
 sudo sed -i &quot;s|libraries|$(pwd)/libraries|g&quot; libraries/net/neoforged/neoforge/*/unix_args.txt
-</code></pre>
+</code></pre></div>
 
 <p>You'll then need to modify the <code>mscs</code> server properties file and include the following lines:</p>
-<pre class="codehilite"><code>mscs-client-version=#.##.#
+<div class="codehilite"><pre><span></span><code>mscs-client-version=#.##.#
 mscs-server-version=#.##.#
 mscs-server-command=/opt/mscs/server/[server-directory]/run.sh
 mscs-server-url=
-</code></pre>
+</code></pre></div>
 
 <h1 id="ddns">DDNS</h1>
 <ul>

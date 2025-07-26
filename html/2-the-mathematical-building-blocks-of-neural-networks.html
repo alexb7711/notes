@@ -28,12 +28,12 @@
 <p>In general, all current machine learning systems use tensors as their basic structure. Tensors are a generalization of matrices to an arbitrary number of dimensions (a matrix is a tensor of rank 2).</p>
 <h2 id="the-gears-of-neural-networks-tensor-operations">The Gears Of Neural Networks: Tensor Operations</h2>
 <p>Recall the dense layer created previously</p>
-<pre class="codehilite"><code class="language-Python">keras.layers.Dense(512, activation=&quot;relu&quot;)
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)</span>
+</code></pre></div>
 
 <p>This layer can be interpreted as a function which takes in a matrix and outputs a matrix. Let <code>W</code> be a matrix <code>b</code> be a vector. The output of the dense layer created above is of the form $\text{relu}(\text{input} \cdot W + b)$. In Python that translates to</p>
-<pre class="codehilite"><code class="language-Python">output = relu(dot(input,W) + b
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="n">output</span> <span class="o">=</span> <span class="n">relu</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span><span class="n">W</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span>
+</code></pre></div>
 
 <p>Note <code>relu</code> stands for "rectified linear unit" and is defined as $\text{max}(x,0)$.</p>
 <h3 id="geometric-interpretation-of-tensor-operations">Geometric Interpretation of Tensor Operations</h3>
@@ -42,8 +42,8 @@
 <p>You can interpret a neural network as a very complex geometric transformation in a high-dimensional space, implemented via a series of simple steps. Deep learning finds neat representations for complex , highly folded data manifolds in high-dimensional spaces (a manifold is a continuous surface).</p>
 <h2 id="the-engine-of-neural-networks-gradient-based-optimization">The Engine Of Neural Networks: Gradient-Based Optimization</h2>
 <p>In the example</p>
-<pre class="codehilite"><code class="language-Python"> output = relu(dot(input,W) + b
-</code></pre>
+<div class="codehilite"><pre><span></span><code> <span class="n">output</span> <span class="o">=</span> <span class="n">relu</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span><span class="n">W</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span>
+</code></pre></div>
 
 <p><code>W</code> and <code>b</code> are trainable parameters know as the kernel and bias attributes, respectively. Lets say that the current value of W is W0. To begin minimizing <code>W</code> by taking a "step" , you would follow <code>W1 = W0 - step * grad(f(W0), W0)</code>[^1].  Where <code>f(W0) = loss_value</code>.</p>
 <h3 id="stochastic-gradient-descent">Stochastic Gradient Descent</h3>
@@ -60,27 +60,27 @@
 <p>Up to now we casually assumed that because a function is differentiable, we can compute its gradient. But is that true? How wan we compute the gradient of complex expressions in practice? This is where the Backpropagation algorithm comes in.</p>
 <h4 id="the-chain-rule">The Chain Rule</h4>
 <p>Recalling the neural net created earlier that had two layers, the model can be expressed as W1, b1, W2, and b2 which has operations acting on each layer. The loss value can be expressed as:</p>
-<pre class="codehilite"><code class="language-Python">loss_value = loss(y_true, softmax(dot(relu(dot(inputs,W1) + b1), W2) + b2))
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="n">loss_value</span> <span class="o">=</span> <span class="n">loss</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">softmax</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="n">relu</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span><span class="n">W1</span><span class="p">)</span> <span class="o">+</span> <span class="n">b1</span><span class="p">),</span> <span class="n">W2</span><span class="p">)</span> <span class="o">+</span> <span class="n">b2</span><span class="p">))</span>
+</code></pre></div>
 
 <p>Which we can see is a composition of function calls such as $f(g(x))$. We can explicitly write this composition as a python function</p>
-<pre class="codehilite"><code class="language-Python">def fg(x):
-    x1 = g(x)
-    y = f(x1)
-    return y
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fg</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">y</span>
+</code></pre></div>
 
 <p>If we want to take the gradient of $f(g(x))$, using the notation from the code above we can write <code>grad(y,x) == grad(y,x1) * grad(x1,x)</code>. This pattern continues as you further encase functions in other functions. Applying the chain rule to the computation of the gradient  values of neural network gives rise to the algorithm called backpropagation.</p>
 <h4 id="automatic-differentiation-with-computational-graphs">Automatic Differentiation With Computational Graphs</h4>
 <p>The figures in this section are invaluable. I'm just going to reference this section of the chapter and tell you to go look at it until I can recreate the images or something.</p>
 <h3 id="the-gradient-tape-in-tenserflow">The Gradient Tape In Tenserflow</h3>
 <p>The API which you can leverage <code>TenserFlow</code>'s automatic differentiation is by using <code>GradientTape</code>. <code>GradientTape</code> effectively records the tensor operations occurring inside of its scope.</p>
-<pre class="codehilite"><code class="language-python">import tensorflow as tf
-x = tf.Variable(0.)                      
-with tf.GradientTape() as tape:          
-    y = 2 * x + 3                        
-grad_of_y_wrt_x = tape.gradient(y, x)
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="mf">0.</span><span class="p">)</span>                      
+<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>          
+    <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">3</span>                        
+<span class="n">grad_of_y_wrt_x</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</code></pre></div>
 
 <h2 id="summary">Summary</h2>
 <ul>

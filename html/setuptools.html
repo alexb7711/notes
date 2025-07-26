@@ -17,35 +17,35 @@
 <div class="content">
 <h1 id="package-discovery-and-namespace-packages">Package Discovery and Namespace Packages</h1>
 <p>In a typical <code>project.toml</code> file one would manualy specxfy the packages to be included:</p>
-<pre class="codehilite"><code class="language-toml"># ...
-[tool.setuptools]
-packages = [&quot;mypkg&quot;, &quot;mypkg.subpkg1&quot;, &quot;mypkg.subpkg2&quot;]
-# ...
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="c1"># ...</span>
+<span class="k">[tool.setuptools]</span>
+<span class="n">packages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;mypkg&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mypkg.subpkg1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mypkg.subpkg2&quot;</span><span class="p">]</span>
+<span class="c1"># ...</span>
+</code></pre></div>
 
 <p>If you have an unconventional package structure, you may also have to configure <code>package_dir</code>:</p>
-<pre class="codehilite"><code class="language-toml">[tool.setuptools]
-# ...
-package-dir = {&quot;&quot; = &quot;src&quot;}
-    # directory containing all the packages (e.g.  src/mypkg1, src/mypkg2)
+<div class="codehilite"><pre><span></span><code><span class="k">[tool.setuptools]</span>
+<span class="c1"># ...</span>
+<span class="n">package-dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;src&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="c1"># directory containing all the packages (e.g.  src/mypkg1, src/mypkg2)</span>
 
-# OR
+<span class="c1"># OR</span>
 
-[tool.setuptools.package-dir]
-mypkg = &quot;lib&quot;
-# mypkg.module corresponds to lib/module.py
-&quot;mypkg.subpkg1&quot; = &quot;lib1&quot;
-# mypkg.subpkg1.module1 corresponds to lib1/module1.py
-&quot;mypkg.subpkg2&quot; = &quot;lib2&quot;
-# mypkg.subpkg2.module2 corresponds to lib2/module2.py
-# ...
-</code></pre>
+<span class="k">[tool.setuptools.package-dir]</span>
+<span class="n">mypkg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;lib&quot;</span>
+<span class="c1"># mypkg.module corresponds to lib/module.py</span>
+<span class="s2">&quot;mypkg.subpkg1&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;lib1&quot;</span>
+<span class="c1"># mypkg.subpkg1.module1 corresponds to lib1/module1.py</span>
+<span class="s2">&quot;mypkg.subpkg2&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;lib2&quot;</span>
+<span class="c1"># mypkg.subpkg2.module2 corresponds to lib2/module2.py</span>
+<span class="c1"># ...</span>
+</code></pre></div>
 
 <h2 id="automatic-discovery">Automatic Discovery</h2>
 <p>Seutptools considers two popular project layouts (src-layout and flat-layout). Setuptools by default will scan your project and look for these directory layouts and try to guess the values for the <code>packages</code> and <code>py_modules</code>. Note that automatic discovery will only occur if <code>packages</code> and <code>py_modules</code> are not provided in the configuration.</p>
 <h3 id="src-layout">src-layout</h3>
 <p>The src-layout is useful for automatic discovery since you don't have to worry about other python files or folders in your project root being distributed by mistake.</p>
-<pre class="codehilite"><code>project_root_directory
+<div class="codehilite"><pre><span></span><code>project_root_directory
 ├── pyproject.toml  # AND/OR setup.cfg, setup.py
 ├── ...
 └── src/
@@ -61,11 +61,11 @@ mypkg = &quot;lib&quot;
             ├── __init__.py
             ├── ...
             └── module2.py
-</code></pre>
+</code></pre></div>
 
 <h3 id="flat-layout">flat-layout</h3>
 <p>This method is practical for using the REPL, but can be more error prone. To avoid confusion, file and folder names that are used by popular tools (or well-known conventions) are automatically filtered out.</p>
-<pre class="codehilite"><code>project_root_directory
+<div class="codehilite"><pre><span></span><code>project_root_directory
 ├── pyproject.toml  # AND/OR setup.cfg, setup.py
 ├── ...
 └── mypkg/
@@ -80,36 +80,36 @@ mypkg = &quot;lib&quot;
         ├── __init__.py
         ├── ...
         └── module2.py
-</code></pre>
+</code></pre></div>
 
 <p>Default excluded names:</p>
-<pre class="codehilite"><code class="language-python">FlatLayoutPackageFinder.DEFAULT_EXCLUDE: ClassVar[tuple[str, ...]] = ('ci', 'ci.*', 'bin', 'bin.*', 'debian', 'debian.*', 'doc', 'doc.*', 'docs', 'docs.*', 'documentation', 'documentation.*', 'manpages', 'manpages.*', 'news', 'news.*', 'newsfragments', 'newsfragments.*', 'changelog', 'changelog.*', 'test', 'test.*', 'tests', 'tests.*', 'unit_test', 'unit_test.*', 'unit_tests', 'unit_tests.*', 'example', 'example.*', 'examples', 'examples.*', 'scripts', 'scripts.*', 'tools', 'tools.*', 'util', 'util.*', 'utils', 'utils.*', 'python', 'python.*', 'build', 'build.*', 'dist', 'dist.*', 'venv', 'venv.*', 'env', 'env.*', 'requirements', 'requirements.*', 'tasks', 'tasks.*', 'fabfile', 'fabfile.*', 'site_scons', 'site_scons.*', 'benchmark', 'benchmark.*', 'benchmarks', 'benchmarks.*', 'exercise', 'exercise.*', 'exercises', 'exercises.*', 'htmlcov', 'htmlcov.*', '[._]*', '[._]*.*')
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="n">FlatLayoutPackageFinder</span><span class="o">.</span><span class="n">DEFAULT_EXCLUDE</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]]</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;ci&#39;</span><span class="p">,</span> <span class="s1">&#39;ci.*&#39;</span><span class="p">,</span> <span class="s1">&#39;bin&#39;</span><span class="p">,</span> <span class="s1">&#39;bin.*&#39;</span><span class="p">,</span> <span class="s1">&#39;debian&#39;</span><span class="p">,</span> <span class="s1">&#39;debian.*&#39;</span><span class="p">,</span> <span class="s1">&#39;doc&#39;</span><span class="p">,</span> <span class="s1">&#39;doc.*&#39;</span><span class="p">,</span> <span class="s1">&#39;docs&#39;</span><span class="p">,</span> <span class="s1">&#39;docs.*&#39;</span><span class="p">,</span> <span class="s1">&#39;documentation&#39;</span><span class="p">,</span> <span class="s1">&#39;documentation.*&#39;</span><span class="p">,</span> <span class="s1">&#39;manpages&#39;</span><span class="p">,</span> <span class="s1">&#39;manpages.*&#39;</span><span class="p">,</span> <span class="s1">&#39;news&#39;</span><span class="p">,</span> <span class="s1">&#39;news.*&#39;</span><span class="p">,</span> <span class="s1">&#39;newsfragments&#39;</span><span class="p">,</span> <span class="s1">&#39;newsfragments.*&#39;</span><span class="p">,</span> <span class="s1">&#39;changelog&#39;</span><span class="p">,</span> <span class="s1">&#39;changelog.*&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="s1">&#39;test.*&#39;</span><span class="p">,</span> <span class="s1">&#39;tests&#39;</span><span class="p">,</span> <span class="s1">&#39;tests.*&#39;</span><span class="p">,</span> <span class="s1">&#39;unit_test&#39;</span><span class="p">,</span> <span class="s1">&#39;unit_test.*&#39;</span><span class="p">,</span> <span class="s1">&#39;unit_tests&#39;</span><span class="p">,</span> <span class="s1">&#39;unit_tests.*&#39;</span><span class="p">,</span> <span class="s1">&#39;example&#39;</span><span class="p">,</span> <span class="s1">&#39;example.*&#39;</span><span class="p">,</span> <span class="s1">&#39;examples&#39;</span><span class="p">,</span> <span class="s1">&#39;examples.*&#39;</span><span class="p">,</span> <span class="s1">&#39;scripts&#39;</span><span class="p">,</span> <span class="s1">&#39;scripts.*&#39;</span><span class="p">,</span> <span class="s1">&#39;tools&#39;</span><span class="p">,</span> <span class="s1">&#39;tools.*&#39;</span><span class="p">,</span> <span class="s1">&#39;util&#39;</span><span class="p">,</span> <span class="s1">&#39;util.*&#39;</span><span class="p">,</span> <span class="s1">&#39;utils&#39;</span><span class="p">,</span> <span class="s1">&#39;utils.*&#39;</span><span class="p">,</span> <span class="s1">&#39;python&#39;</span><span class="p">,</span> <span class="s1">&#39;python.*&#39;</span><span class="p">,</span> <span class="s1">&#39;build&#39;</span><span class="p">,</span> <span class="s1">&#39;build.*&#39;</span><span class="p">,</span> <span class="s1">&#39;dist&#39;</span><span class="p">,</span> <span class="s1">&#39;dist.*&#39;</span><span class="p">,</span> <span class="s1">&#39;venv&#39;</span><span class="p">,</span> <span class="s1">&#39;venv.*&#39;</span><span class="p">,</span> <span class="s1">&#39;env&#39;</span><span class="p">,</span> <span class="s1">&#39;env.*&#39;</span><span class="p">,</span> <span class="s1">&#39;requirements&#39;</span><span class="p">,</span> <span class="s1">&#39;requirements.*&#39;</span><span class="p">,</span> <span class="s1">&#39;tasks&#39;</span><span class="p">,</span> <span class="s1">&#39;tasks.*&#39;</span><span class="p">,</span> <span class="s1">&#39;fabfile&#39;</span><span class="p">,</span> <span class="s1">&#39;fabfile.*&#39;</span><span class="p">,</span> <span class="s1">&#39;site_scons&#39;</span><span class="p">,</span> <span class="s1">&#39;site_scons.*&#39;</span><span class="p">,</span> <span class="s1">&#39;benchmark&#39;</span><span class="p">,</span> <span class="s1">&#39;benchmark.*&#39;</span><span class="p">,</span> <span class="s1">&#39;benchmarks&#39;</span><span class="p">,</span> <span class="s1">&#39;benchmarks.*&#39;</span><span class="p">,</span> <span class="s1">&#39;exercise&#39;</span><span class="p">,</span> <span class="s1">&#39;exercise.*&#39;</span><span class="p">,</span> <span class="s1">&#39;exercises&#39;</span><span class="p">,</span> <span class="s1">&#39;exercises.*&#39;</span><span class="p">,</span> <span class="s1">&#39;htmlcov&#39;</span><span class="p">,</span> <span class="s1">&#39;htmlcov.*&#39;</span><span class="p">,</span> <span class="s1">&#39;[._]*&#39;</span><span class="p">,</span> <span class="s1">&#39;[._]*.*&#39;</span><span class="p">)</span>
+</code></pre></div>
 
 <p>Reserved package names:</p>
-<pre class="codehilite"><code class="language-python">FlatLayoutModuleFinder.DEFAULT_EXCLUDE: ClassVar[tuple[str, ...]] = ('setup', 'conftest', 'test', 'tests', 'example', 'examples', 'build', 'toxfile', 'noxfile', 'pavement', 'dodo', 'tasks', 'fabfile', '[Ss][Cc]onstruct', 'conanfile', 'manage', 'benchmark', 'benchmarks', 'exercise', 'exercises', '[._]*')
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="n">FlatLayoutModuleFinder</span><span class="o">.</span><span class="n">DEFAULT_EXCLUDE</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]]</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;setup&#39;</span><span class="p">,</span> <span class="s1">&#39;conftest&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="s1">&#39;tests&#39;</span><span class="p">,</span> <span class="s1">&#39;example&#39;</span><span class="p">,</span> <span class="s1">&#39;examples&#39;</span><span class="p">,</span> <span class="s1">&#39;build&#39;</span><span class="p">,</span> <span class="s1">&#39;toxfile&#39;</span><span class="p">,</span> <span class="s1">&#39;noxfile&#39;</span><span class="p">,</span> <span class="s1">&#39;pavement&#39;</span><span class="p">,</span> <span class="s1">&#39;dodo&#39;</span><span class="p">,</span> <span class="s1">&#39;tasks&#39;</span><span class="p">,</span> <span class="s1">&#39;fabfile&#39;</span><span class="p">,</span> <span class="s1">&#39;[Ss][Cc]onstruct&#39;</span><span class="p">,</span> <span class="s1">&#39;conanfile&#39;</span><span class="p">,</span> <span class="s1">&#39;manage&#39;</span><span class="p">,</span> <span class="s1">&#39;benchmark&#39;</span><span class="p">,</span> <span class="s1">&#39;benchmarks&#39;</span><span class="p">,</span> <span class="s1">&#39;exercise&#39;</span><span class="p">,</span> <span class="s1">&#39;exercises&#39;</span><span class="p">,</span> <span class="s1">&#39;[._]*&#39;</span><span class="p">)</span>
+</code></pre></div>
 
 <h3 id="single-module-distribution">single-module distribution</h3>
 <p>There is a unique configuration of the flat-layout called the single-module distribution method. This method is useful when you have a stand alone module that consists of just one file:</p>
-<pre class="codehilite"><code>project_root_directory
+<div class="codehilite"><pre><span></span><code>project_root_directory
 ├── pyproject.toml  # AND/OR setup.cfg, setup.py
 ├── ...
 └── single_file_lib.py
-</code></pre>
+</code></pre></div>
 
 <h2 id="custom-discovery">Custom Discovery</h2>
 <p>If  automatic the search is not working or you wish to use packages that use reserved names such as <code>task</code>, <code>example</code>, or <code>docs</code>, or you want to exclude nested packages, you can use the following tools for package discovery:</p>
-<pre class="codehilite"><code class="language-toml"># ...
-[tool.setuptools.packages]
-find = {}  # Scanning implicit namespaces is active by default
-# OR
-find = {namespaces = false}  # Disable implicit namespaces
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="c1"># ...</span>
+<span class="k">[tool.setuptools.packages]</span>
+<span class="n">find</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span><span class="w">  </span><span class="c1"># Scanning implicit namespaces is active by default</span>
+<span class="c1"># OR</span>
+<span class="n">find</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">namespaces</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">false</span><span class="p">}</span><span class="w">  </span><span class="c1"># Disable implicit namespaces</span>
+</code></pre></div>
 
 <h3 id="finding-simple-packages">Finding Simple Packages</h3>
 <p>Consider the following project tree</p>
-<pre class="codehilite"><code>mypkg
+<div class="codehilite"><pre><span></span><code>mypkg
 ├── pyproject.toml  # AND/OR setup.cfg, setup.py
 └── src
     ├── pkg1
@@ -121,14 +121,14 @@ find = {namespaces = false}  # Disable implicit namespaces
     └── pkg
         └── namespace
             └── __init__.py
-</code></pre>
+</code></pre></div>
 
 <p>To have setuptools automatically include packages found in the <code>src</code> directory that start with the name <code>pkg</code> and not <code>additional</code>:</p>
-<pre class="codehilite"><code class="language-toml">[tool.setuptools.packages.find]
-where = [&quot;src&quot;]
-include = [&quot;pkg*&quot;]  # alternatively: `exclude = [&quot;additional*&quot;]`
-namespaces = false
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="k">[tool.setuptools.packages.find]</span>
+<span class="n">where</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;src&quot;</span><span class="p">]</span>
+<span class="n">include</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;pkg*&quot;</span><span class="p">]</span><span class="w">  </span><span class="c1"># alternatively: `exclude = [&quot;additional*&quot;]`</span>
+<span class="n">namespaces</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+</code></pre></div>
 
 <h1 id="resources">Resources</h1>
 <p>- <a href="https://setuptools.pypa.io/en/latest/userguide/package_discovery.html#finding-simple-packages">https://setuptools.pypa.io/en/latest/userguide/package_discovery.html#finding-simple-packages</a></p>

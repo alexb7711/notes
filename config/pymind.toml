@@ -6,4 +6,5 @@ output = "./html"
 css = "style.css"
 
 [Markdown]
-extensions = ["toc", "codehilite", "fenced_code", "tables"]
+extensions = ["toc", "codehilite", "fenced_code", "tables", "mdx_math"]
+

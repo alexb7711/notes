@@ -29,3 +29,38 @@ A linear system posses two properties:
 This section shows how to obtain linear approximations to nonlinear systems to obtain transfer functions.
 
 When we linearize a non-linear differential equation, we first need to identify the non-linearities. We then linearize the equation for small-signal inputs about a steady-state solution when the small-signal input is equal to zero. This steady-state solution is called equilibrium. At this point, we linearize the differential equation about the equilibrium point and take the Laplace transform of it assuming zero initial conditions.
+
+## Example Linearizing a Differential Equation
+Linearize \(\dot{x}^2 + 2\dot{x} + cos(x) = 0\) about \(x = \pi/4\).
+
+Let \(x = \delta x + \pi/4\) and substitute \(x\) into the differential equation resulting in
+
+$$
+\frac{d^2 (\delta x + \pi/4)}{dt^2} + 2\frac{d(\delta x + \pi/4)}{dt} + cos(\delta x + \pi/4)
+$$
+
+Looking at the first two elements of the equation above shows \(d^n \pi/4 = 0\), so we can rewrite the equation as
+
+$$
+\frac{d^2 (\delta x)}{dt^2} + 2\frac{d(\delta x)}{dt} + cos(\delta x + \pi/4)
+$$
+
+Now we have to deal with the nonlinear cosine term. Using a first-order Taylor series one gets
+
+$$
+cos(\delta x + \pi/4) - cos(\pi/4) = \left.\frac{dcos(x)}{dx}\right|_{x=\pi_4} \delta x = -sin(\pi/4) \delta x
+$$
+
+Solving for \(cos(\delta x + \pi /4)\) we get
+
+$$
+cos(\delta x + \pi /4) = cos(\pi/4) - sin(\pi/4)\delta x = \sqrt{2}/2 - \sqrt{2}/2 \delta x
+$$
+
+Putting it all together, we get
+
+$$
+\frac{d^2 \delta x}{dt^2} + 2\frac{d \delta x}{dt} - \sqrt{2}/2 \delta x = -\sqrt{2}/2
+$$
+
+---

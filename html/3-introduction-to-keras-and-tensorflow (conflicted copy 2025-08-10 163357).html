@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<!-- MARKER -->
+<html>
+<head>
+    <title>3-introduction-to-keras-and-tensorflow</title>
+    <link href="style.css" rel="stylesheet">
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            config: ["MMLorHTML.js"],
+            jax: ["input/TeX", "output/HTML-CSS", "output/NativeMML"],
+            extensions: ["MathMenu.js", "MathZoom.js"]
+    });
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+</head>
+<body>
+<div id="navigation">
+<ul>
+<li><a class="%blog.html%" href="blog.html">blog</a></li>
+<li><a class="%notes.html%" href="notes.html">notes</a></li>
+<li><a class="%projects.html%" href="projects.html">projects</a></li>
+<li><a class="%index.md%" href="index.html">index</a></li>
+</ul>
+</div>
+
+<div class="content">
+<p>This chapter is meant to give you everything you need to start doing deep learning in practice.</p>
+<h1 id="whats-tensorflow">Whats TensorFlow?</h1>
+<p>TensorFlow is a Python-based, free, open source machine learning platform, developed primarily by Google. Much like
+NumPy, the primary purpose of TensorFlow is to enable engineers and researchers to manipulate mathematical expressions
+over numerical tensors. But TensorFlow goes far beyond the scope of NumPy in the following ways:</p>
+<ul>
+<li>It can automatically compute the gradient of any differentiable expression (as you saw in chapter 2), making it highly
+  suitable for machine learning.</li>
+<li>It can run not only on CPUs, but also on GPUs and TPUs, highly parallel hardware accelerators.</li>
+<li>Computation defined in TensorFlow can be easily distributed across many machines.</li>
+</ul>
+<p>TensorFlow programs can be exported to other runtimes, such as C++, JavaScript (for browser-based applications), or
+TensorFlow Lite (for applications running on mobile devices or embedded devices), etc. This makes TensorFlow
+applications easy to deploy in practical settings.</p>
+<h1 id="whats-keras">What's Keras?</h1>
+<p>Keras is a deep learning AIP for Python, built on top of TenserFlow, that provides a convenient way to define and train
+any kind of deep learning model.</p>
+<p>Keras is known for prioritizing the developer experience. It’s an API for human beings, not machines. It follows best
+practices for reducing cognitive load: it offers consistent and simple workflows, it minimizes the number of actions
+required for common use cases, and it provides clear and actionable feedback upon user error. This makes Keras easy to
+learn for a beginner, and highly productive to use for an expert.</p>
+<h1 id="first-steps-with-tensorflow">First Steps With TensorFlow</h1>
+<p>A significant difference between NumPy and TensorFlow is that TensorFlow tensors are not assignable, they are constant.
+To update the value of a tensor, you have to use the assign method:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">v</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+<span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="mf">3.</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="a-second-look-at-the-gradienttape-api">A Second Look At The GradientTape API</h2>
+<p>We established earlier that although NumPy and TensorFlow have a lot of similar operations, one thing that NumPy can't
+do is take the gradient of the result with respect to the inputs:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">input_var</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">initial_value</span><span class="o">=</span><span class="mf">3.</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
+   <span class="n">result</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">input_var</span><span class="p">)</span>
+<span class="n">gradient</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">input_var</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Gradient tape is also able to compute second-order gradients:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">time</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="mf">0.</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">outer_tape</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">inner_tape</span><span class="p">:</span>
+        <span class="n">position</span> <span class="o">=</span>  <span class="mf">4.9</span> <span class="o">*</span> <span class="n">time</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="n">speed</span> <span class="o">=</span> <span class="n">inner_tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
+<span class="n">acceleration</span> <span class="o">=</span> <span class="n">outer_tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">speed</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="an-end-to-end-example-a-linear-classifier-in-pure-tenserflow">An End-To-End Example: A Linear Classifier In Pure TenserFlow</h2>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Forward pass function&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">square_loss</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">predictions</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Mean squared error loss function&quot;&quot;&quot;</span>
+    <span class="n">per_sample_losses</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">targets</span> <span class="o">-</span> <span class="n">predictions</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">per_sample_losses</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">training_step</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;One step when training the linear classifier variables&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
+        <span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">square_loss</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">targets</span><span class="p">)</span>
+    <span class="n">grad_loss_wrt_W</span><span class="p">,</span> <span class="n">grad_loss_wrt_b</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="p">[</span><span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">])</span>
+    <span class="n">W</span><span class="o">.</span><span class="n">assign_sub</span><span class="p">(</span><span class="n">grad_loss_wrt_W</span> <span class="o">*</span> <span class="n">learning_rate</span><span class="p">)</span>
+    <span class="n">b</span><span class="o">.</span><span class="n">assign_sub</span><span class="p">(</span><span class="n">grad_loss_wrt_b</span> <span class="o">*</span> <span class="n">learning_rate</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">loss</span>
+
+<span class="n">num_samples_per_class</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">negative_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span>
+    <span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="n">cov</span><span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span>
+    <span class="n">size</span><span class="o">=</span><span class="n">num_samples_per_class</span><span class="p">)</span>
+<span class="n">positive_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span>
+    <span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="n">cov</span><span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span>
+    <span class="n">size</span><span class="o">=</span><span class="n">num_samples_per_class</span><span class="p">)</span>
+
+<span class="c1"># Serialize the data</span>
+<span class="n">inputs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">negative_samples</span><span class="p">,</span> <span class="n">positive_samples</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="c1"># Used to apply labels in a data set to distingnuish data types</span>
+<span class="n">targets</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_samples_per_class</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">),</span>
+                     <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">num_samples_per_class</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">)))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">inputs</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">inputs</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">targets</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Begin creating the linear classifier variables</span>
+<span class="n">input_dim</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">output_dim</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">W</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">initial_value</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)))</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">initial_value</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">output_dim</span><span class="p">,)))</span>
+
+<span class="c1"># Batch training loop</span>
+<span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">40</span><span class="p">):</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">training_step</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loss at step </span><span class="si">{</span><span class="n">step</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">loss</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Plot the results</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">inputs</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">inputs</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">predictions</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span>
+</code></pre></div>
+
+<h1 id="anatomy-of-a-neural-network-understanding-core-keras-apis">Anatomy Of A Neural Network: Understanding Core Keras APIs</h1>
+</div>
+<footer>
+<p>Generated by Pymind: 2025-08-10</p>
+</footer>
+
+</body>
+</html>

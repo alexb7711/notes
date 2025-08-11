@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!-- MARKER -->
+<html>
+<head>
+    <title>docker-compose</title>
+    <link href="style.css" rel="stylesheet">
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            config: ["MMLorHTML.js"],
+            jax: ["input/TeX", "output/HTML-CSS", "output/NativeMML"],
+            extensions: ["MathMenu.js", "MathZoom.js"]
+    });
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+</head>
+<body>
+<div id="navigation">
+<ul>
+<li><a class="%blog.html%" href="blog.html">blog</a></li>
+<li><a class="%notes.html%" href="notes.html">notes</a></li>
+<li><a class="%projects.html%" href="projects.html">projects</a></li>
+<li><a class="%index.md%" href="index.html">index</a></li>
+</ul>
+</div>
+
+<div class="content">
+<!-- :docker: -->
+<h1 id="docker-compose-overview">Docker Compose Overview</h1>
+<p>Docker compose is a tool for defining and running multi-container applications. It simplifies the control of the entire application stack, making it easy to manage services, networks, and volumes in a single YAML configuration file. After the file is defined, a single command will start all the services specified in the configuration file. The compose file has the ability to</p>
+<ul>
+<li>Start, stop, and rebuild services</li>
+<li>View the status of running services</li>
+<li>Steam the log output of running services</li>
+<li>Run a one-off command on a service</li>
+</ul>
+<h1 id="why-use-compose">Why use Compose?</h1>
+<h2 id="key-benefits-of-docker-compose">Key Benefits of Docker Compose</h2>
+<ul>
+<li>Simplified control: Docker Compose allows you to define and manage multi-container applications in a single YAML file. This simplifies the complex task of orchestrating and coordinating various services, making it easier to manage and replicate your application environment.</li>
+<li>Efficient collaboration: Docker Compose configuration files are easy to share, facilitating collaboration among developers, operations teams, and other stakeholders. This collaborative approach leads to smoother workflows, faster issue resolution, and increased overall efficiency.</li>
+<li>Rapid application development: Compose caches the configuration used to create a container. When you restart a service that has not changed, Compose re-uses the existing containers. Re-using containers means that you can make changes to your environment very quickly.</li>
+<li>Portability across environments: Compose supports variables in the Compose file. You can use these variables to customize your composition for different environments, or different users.</li>
+<li>Extensive community and support: Docker Compose benefits from a vibrant and active community, which means abundant resources, tutorials, and support. This community-driven ecosystem contributes to the continuous improvement of Docker Compose and helps users troubleshoot issues effectively.</li>
+</ul>
+<h2 id="common-use-cases-of-docker-compose">Common use cases of Docker Compose</h2>
+<h3 id="development-environments">Development Environments</h3>
+<ul>
+<li>Run application in an isolated environment</li>
+<li>The compose file can be used to document and configure all of the applications service dependencies</li>
+<li>This can be used to simplify a complex development environment into a single compose file that configures the environment (and I think they are making the argument that the file is self documenting)</li>
+</ul>
+<h3 id="automated-testing-environments">Automated Testing Environments</h3>
+<ul>
+<li>Compose provides a convenient way to create and destroy isolated testing environments</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+$<span class="w"> </span>./run_tests
+$<span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span>down
+</code></pre></div>
+
+<h1 id="how-compose-works">How Compose Works</h1>
+<h2 id="the-compose-application-model">The Compose Application Model</h2>
+<p>Components of a compose are defined as services. A service is an abstract concept that is "instantiated" by creating running a docker image with a specified configuration.</p>
+<p>These services communicate with each other through networks. A network is a platform capability abstraction to establish an IP route between containers within services. By default Compose sets up a single network for your app. Each container for a service joins the default network and is both reachable by other containers on that network, and discoverable by the service's name.</p>
+<p>Services store and share persistent data in volumes. The Specification describes such data as high-level filesystem mounts with global options. Similar to volumes are configs. Configs are mounted as files into a container's filesystem. These options allow the application's behavior to adapt without having to recreate the docker image.</p>
+<p>Secrets are a type of configuration data, but specifically for sensitive data that should not be exposed without security considerations.</p>
+<h1 id="the-compose-file">The Compose File</h1>
+<p>The default path for a compose file is <code>compose.yaml</code> and by default is assumed to be in the working directory.</p>
+<p>Compose files support fragments and extensions. Fragments basically crate references to previous blocks in the YAML file. These blocks can then be reused.</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">first</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-image:latest</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;env</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CONFIG_KEY</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EXAMPLE_KEY</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEMO_VAR</span>
+<span class="w">  </span><span class="nt">second</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">another-image:latest</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="nv">*env</span>
+</code></pre></div>
+
+<p>Extensions are basically user defined fields. Anything that starts with an <code>x-</code> is interpreted by Compose, but is silently ignores these fields if they are not recognized. Extensions in conjunction with fragments allows for modular compose files:</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">x-env</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;env</span>
+<span class="w">  </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CONFIG_KEY</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EXAMPLE_KEY</span>
+
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">first</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">&lt;&lt;</span><span class="p">:</span><span class="w"> </span><span class="nv">*env</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-image:latest</span>
+<span class="w">  </span><span class="nt">second</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">&lt;&lt;</span><span class="p">:</span><span class="w"> </span><span class="nv">*env</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">another-image:latest</span>
+</code></pre></div>
+
+<p>Even more interestingly, multiple compose files can be merged  together or one can simply include another compose file to be reused. That is to say, compose files are modular.</p>
+<h2 id="cli">CLI</h2>
+<p>Some of the key compose commands are:</p>
+<ul>
+<li>Start all services: <code>docker compose up</code></li>
+<li>Stop and remove running services: <code>docker compose down</code></li>
+<li>Monitor output of running containers: <code>docker compose logs</code></li>
+<li>List all services along with current status: <code>docker compose ps</code></li>
+</ul>
+<h1 id="example">Example</h1>
+<p>An application is split into a frontend web application and a backend service.</p>
+<p>The frontend is configured at runtime with an HTTP configuration file managed by infrastructure, providing an external domain name, and an HTTPS server certificate injected by the platform's secured secret store.</p>
+<p>The backend stores data in a persistent volume.</p>
+<p>Both services communicate with each other on an isolated back-tier network, while the frontend is also connected to a front-tier network and exposes port 443 for external usage.</p>
+<p><img alt="Example Image" src="2Q==.html" /></p>
+<div class="codehilite"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">frontend</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example/webapp</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;443:8043&quot;</span>
+<span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">front-tier</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">back-tier</span>
+<span class="w">    </span><span class="nt">configs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">httpd-config</span>
+<span class="w">    </span><span class="nt">secrets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">server-certificate</span>
+
+<span class="w">  </span><span class="nt">backend</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example/database</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db-data:/etc/data</span>
+<span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">back-tier</span>
+
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">db-data</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">flocker</span>
+<span class="w">    </span><span class="nt">driver_opts</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10GiB&quot;</span>
+
+<span class="nt">configs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">httpd-config</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">external</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="nt">secrets</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">server-certificate</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">external</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="nt">networks</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># The presence of these objects is sufficient to define them</span>
+<span class="w">  </span><span class="nt">front-tier</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">  </span><span class="nt">back-tier</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+</code></pre></div>
+
+<h1 id="references">References</h1>
+<p>- <a href="https://docs.docker.com/compose/intro/compose-application-model/">https://docs.docker.com/compose/intro/compose-application-model/</a>
+- <a href="https://docs.docker.com/reference/compose-file/services/">https://docs.docker.com/reference/compose-file/services/</a>
+- <a href="https://docs.docker.com/reference/compose-file/networks/">https://docs.docker.com/reference/compose-file/networks/</a>
+- <a href="https://docs.docker.com/reference/compose-file/configs/">https://docs.docker.com/reference/compose-file/configs/</a>
+- <a href="https://docs.docker.com/reference/compose-file/fragments/">https://docs.docker.com/reference/compose-file/fragments/</a>
+- <a href="https://docs.docker.com/reference/compose-file/extension/">https://docs.docker.com/reference/compose-file/extension/</a></p>
+</div>
+<footer>
+<p>Generated by Pymind: 2025-08-10</p>
+</footer>
+
+</body>
+</html>

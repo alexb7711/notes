@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<!-- MARKER -->
+<html>
+<head>
+    <title>3-differential-equations-difference-equations-and-linear-systems</title>
+    <link href="style.css" rel="stylesheet">
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            config: ["MMLorHTML.js"],
+            jax: ["input/TeX", "output/HTML-CSS", "output/NativeMML"],
+            extensions: ["MathMenu.js", "MathZoom.js"]
+    });
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+</head>
+<body>
+<div id="navigation">
+<ul>
+<li><a class="%blog.html%" href="blog.html">blog</a></li>
+<li><a class="%notes.html%" href="notes.html">notes</a></li>
+<li><a class="%projects.html%" href="projects.html">projects</a></li>
+<li><a class="%index.md%" href="index.html">index</a></li>
+</ul>
+</div>
+
+<div class="content">
+<div class="toc">
+<ul>
+<li><a href="#5-time-variability-and-time-invariance">5: Time Variability and Time Invariance</a></li>
+<li><a href="#6-the-differential-operator-d-and-the-characteristic-equation">6: The Differential Operator D and the Characteristic Equation</a></li>
+<li><a href="#7-linear-independence-and-fundamental-sets">7: Linear Independence and Fundamental Sets</a><ul>
+<li><a href="#distinct-roots">Distinct Roots</a></li>
+<li><a href="#repeated-roots">Repeated Roots</a></li>
+</ul>
+</li>
+<li><a href="#8-solution-of-linear-constant-coefficient-ordinary-differential-equations">8: Solution of Linear Constant-Coefficient Ordinary Differential Equations</a></li>
+<li><a href="#9-the-free-response">9: The Free Response</a><ul>
+<li><a href="#example">Example</a></li>
+</ul>
+</li>
+<li><a href="#10-the-forced-response">10: The Forced Response</a><ul>
+<li><a href="#example_1">Example</a></li>
+</ul>
+</li>
+<li><a href="#11-the-total-response">11: The Total Response</a></li>
+<li><a href="#12-the-steady-state-and-transient-response">12: The Steady State and Transient Response</a></li>
+<li><a href="#13-singularly-functions-steps-ramps-and-impulses">13: Singularly Functions: Steps, Ramps, and Impulses</a></li>
+<li><a href="#14-second-order-systems">14: Second Order Systems</a></li>
+<li><a href="#15-state-variable-representation-of-systems-described-by-linear-differential-equtaions">15: State Variable Representation of Systems Described By Linear Differential Equtaions</a></li>
+<li><a href="#16-solution-of-linear-constant-coefficient-difference-equations">16: Solution of Linear Constant-Coefficient Difference Equations</a></li>
+<li><a href="#17-state-variable-representation-of-systems-described-by-linear-difference-equations">17: State Variable Representation of Systems Described By Linear Difference Equations</a><ul>
+<li><a href="#discretization-of-difference-equations">Discretization of Difference Equations</a></li>
+</ul>
+</li>
+<li><a href="#18-linearity-and-superposition">18: Linearity and Superposition</a></li>
+<li><a href="#19-causality-and-physically-realizable-systems">19: Causality and Physically Realizable Systems</a></li>
+</ul>
+</div>
+<h1 id="5-time-variability-and-time-invariance">5: Time Variability and Time Invariance</h1>
+<blockquote>
+<p>A time-variable equation is an equation with one or more terms depending <em>explicitly</em> on time.</p>
+<p>A time-invariant equation is an equation where none of the terms depend <em>explicitly</em> on time.</p>
+</blockquote>
+<p>Any differential equation of the form</p>
+<p>
+<script type="math/tex; mode=display">
+\sum_{i=0}^{n} a_i \frac{d^iy}{dt^i} = \sum_{i=0}^{n} b_i \frac{d^iu}{dt^i}
+</script>
+</p>
+<p>is <em>time-invariant</em>. But, for example, say we have</p>
+<p>
+<script type="math/tex; mode=display">
+t \dot{y}(t) + y(t) = u(t)
+</script>
+</p>
+<p>then the equation is <em>time-variant</em>.</p>
+<h1 id="6-the-differential-operator-d-and-the-characteristic-equation">6: The Differential Operator <script type="math/tex">D</script> and the Characteristic Equation</h1>
+<p>Suppose we have</p>
+<p>
+<script type="math/tex; mode=display">
+\sum_{i=0}^{n} a_i \frac{d^iy}{dt^i} = u
+</script>
+</p>
+<p>where <script type="math/tex">a_n = 1</script>. Let <script type="math/tex">D \equiv \dot{d}</script> and <script type="math/tex">D^n \equiv \dot{d}^n</script>. Then we get</p>
+<p>
+<script type="math/tex; mode=display">
+\sum_{i=0}^{n} a_i D^i y = u
+</script>
+</p>
+<p>The following polynomial is defined as the <em>characteristic polynomial</em></p>
+<p>
+<script type="math/tex; mode=display">
+\sum_{i=0}^{n} a_i D^i
+</script>
+</p>
+<p>and the following equation is the <em>characteristic equation</em></p>
+<p>
+<script type="math/tex; mode=display">
+\sum_{i=0}^{n} a_i D^i = 0
+</script>
+</p>
+<p>Again, note that <script type="math/tex">a_i = 1</script>. By the fundamental theorem of algebra, the characteristic equation has <script type="math/tex">n</script> solutions (roots) that are not necessarily distinct.</p>
+<h1 id="7-linear-independence-and-fundamental-sets">7: Linear Independence and Fundamental Sets</h1>
+<p>A set of functions are <em>linearly independent</em> if</p>
+<p>
+<script type="math/tex; mode=display">
+c_1 f_1 + c_2 f_2 + \cdots + c_n f_n = 0 \;\forall c_i = 0; i = 1-n
+</script>
+</p>
+<p>A <em>homogeneous</em> <script type="math/tex">n^{th}</script> order linear differential equation is of the form</p>
+<p>
+<script type="math/tex; mode=display">
+\sum_{i=0}^{n} a_i \frac{d^iy}{dt^i} = 0
+</script>
+</p>
+<p>Any homogeneous <script type="math/tex">n^{th}</script> linear differential equation has at least one set of linearly independent solutions. Any set of linearly independent solutions for a homogeneous <script type="math/tex">n^{th}</script> order differential equation is a <em>fundamental set</em>. All fundamental sets have a non-zero determinant because, as per the definition, they are linearly independent.</p>
+<h2 id="distinct-roots">Distinct Roots</h2>
+<p>If the characteristic equation <script type="math/tex">\sum_{i=0}^{n} a_i D^i</script> has distinct roots, then a fundamental set of the homogeneous equation is the set of functions: <script type="math/tex">y_1 = e^{D_1t}</script>, <script type="math/tex">y_2 = e^{D_2t}</script>, <script type="math/tex">\cdots</script>, <script type="math/tex">y_n = e^{D_nt}</script>.</p>
+<h2 id="repeated-roots">Repeated Roots</h2>
+<p>If the characteristic equation <script type="math/tex">\sum_{i=0}^{n} a_i D^i</script> has repeated roots, then a fundamental set of the homogeneous equation is the set of functions: <script type="math/tex">y_1 = e^{D_1t}</script>, <script type="math/tex">y_2 = te^{D_2t}</script>, <script type="math/tex">\cdots</script>, <script type="math/tex">y_n = t^{n_{i-1}}e^{D_nt}</script>.</p>
+<h1 id="8-solution-of-linear-constant-coefficient-ordinary-differential-equations">8: Solution of Linear Constant-Coefficient Ordinary Differential Equations</h1>
+<p>Consider the differential equation:</p>
+<p>
+<script type="math/tex; mode=display">
+\sum_{i=0}^{n} a_i \frac{d^iy}{dt^i} = b_i \frac{d^iu}{dt^i}
+</script>
+</p>
+<p>If the equation describes a physical system, then generally <script type="math/tex">m \le n</script> and <script type="math/tex">n</script> is called the <em>order</em> of the system.</p>
+<p>To completely specify the problem such that a <em>unique solution</em> <script type="math/tex">y(t)</script> can be obtained, two pieces of information are required:</p>
+<ol>
+<li>The interval of time over which a solution is desired and</li>
+<li>a set of initial conditions for <script type="math/tex">y(t)</script> and its first <script type="math/tex">n-1</script> derivatives.</li>
+</ol>
+<p>The solution of a differential equation of this class can be divided into two parts:</p>
+<ol>
+<li>free response and</li>
+<li>forced response</li>
+</ol>
+<p>The sum of the free and forced responses make the <em>total response</em>.</p>
+<h1 id="9-the-free-response">9: The Free Response</h1>
+<p>The <em>free response</em> of a differential equation is the solution to the following equation:</p>
+<p>
+<script type="math/tex; mode=display">
+\sum_{i=0}^{n} a_i \frac{d^iy}{dt^i} = 0
+</script>
+</p>
+<h2 id="example">Example</h2>
+<p>Find the free response of the differential equation <script type="math/tex">\dot{y}^2 + 3\dot{y} + 2y = u</script>:</p>
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">roots</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">2.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">])</span>
+</code></pre></div>
+
+<p>Therefore: <script type="math/tex">y_a(t) = c_1e^{-t} + c_2e^{-2t}</script>.</p>
+<p>Assuming the initial conditions are zero. If we take the first derivative of <script type="math/tex">y_a(t)</script> and solve for <script type="math/tex">c_1</script> and <script type="math/tex">c_2</script> you find <script type="math/tex">c_1 = 1</script> and <script type="math/tex">c_2 = -1</script>.</p>
+<hr />
+<h1 id="10-the-forced-response">10: The Forced Response</h1>
+<p>The <em>forced response</em> $y_b(t)$ of a differential equation is the solution of the differential equations when all the initial responses are zero. <strong>The implication of this definition is that the force response depends only on the input <script type="math/tex">u(t)</script></strong>.</p>
+<p>The forced response for a linear constant-coefficient ordinary differential equation can be written in terms of a <em>convolution integral</em></p>
+<p>
+<script type="math/tex; mode=display">
+y_b(t) = \int_0^t w(t-\tau) \Big[ \sum_{i=0}^{n} b_i \frac{d^iu(\tau)}{d\tau^i} \Big] d \tau
+</script>
+</p>
+<p>The term <script type="math/tex">w(t-\tau)</script> is the weighting function (or kernel) of the differential equation. The weighting function must be described by a causal system. Setting <script type="math/tex">w(t) = \sum_{i=1}^n c_i y_i(t)\; t \ge 0</script> (i.e. setting the weighting function equal to the free response of the system) allows one to determine the forced response of the system.</p>
+<h2 id="example_1">Example</h2>
+<p>Find the step response of the differential equation <script type="math/tex">\dot{y}^2 + 3\dot{y} + 2y = u</script>:</p>
+<p>From the previous example finding the free response, we know that the weighting function is</p>
+<p>
+<script type="math/tex; mode=display">
+w(t) = e^{-t} - e^{-2t}
+</script>
+</p>
+<p>The step response implies that $u(t) = 1$. Then the forced response is</p>
+<p>
+<script type="math/tex; mode=display">
+\begin{split}
+y_b(t) &= \int_0^t \big[ e^{-(t - \tau)} - e^{-2(t - \tau)} \big] d\tau \\
+       &= \frac{1}{2} (1 - 2e^{-t} + e^{-2t})
+\end{split}
+</script>
+</p>
+<hr />
+<h1 id="11-the-total-response">11: The Total Response</h1>
+<p>The total response is simply the free response added to the forced response: <script type="math/tex">y_t(t) = y_a(t) + y_b(t)</script>.</p>
+<h1 id="12-the-steady-state-and-transient-response">12: The Steady State and Transient Response</h1>
+<blockquote>
+<p>The <em>steady state</em> response is the part of the total response which does not approach zero as time goes to infinity</p>
+<p>The <em>transient state</em> response is the part of the total response which approaches zero as time goes to infinity</p>
+</blockquote>
+<h1 id="13-singularly-functions-steps-ramps-and-impulses">13: Singularly Functions: Steps, Ramps, and Impulses</h1>
+<p>The unit step function is defined as</p>
+<p>
+<script type="math/tex; mode=display">
+1(t - t_0) =
+\begin{cases}
+1 & t > t_0 \\
+0 & t \le t_0 \\
+\end{cases}
+</script>
+</p>
+<p>A unit ramp function is defined as</p>
+<p>
+<script type="math/tex; mode=display">
+\int_{-\infty}^t 1(\tau - t_0) d\tau =
+\begin{cases}
+t-t_0 & t > t_0 \\
+0 & t \le t_0 \\
+\end{cases}
+</script>
+</p>
+<p>Unit impulse function <script type="math/tex">\delta(t)</script> is defined as</p>
+<p>
+<script type="math/tex; mode=display">
+\delta(t) = \lim_{\Delta t \rightarrow 0^+} \frac{1(t) - 1(t - \Delta t)}{\Delta t}
+</script>
+</p>
+<p>where <script type="math/tex">1(t)</script> is the unit step function. An important property of the <script type="math/tex">\delta(t)</script> is <script type="math/tex">\int_{-\infty}^{\infty} \delta (t) dt = 1</script>. Another important function of the unit impulse is that the convolution of <script type="math/tex">\delta(t)</script> and any function <script type="math/tex">y(t)</script> is <script type="math/tex">y(t_0)</script>.</p>
+<blockquote>
+<p>The unit step response of the output <script type="math/tex">y(t)</script> when the input is <script type="math/tex">u(t) = 1(t)</script>
+</p>
+<p>The unit ramp response of the output <script type="math/tex">y(t)</script> when the input is <script type="math/tex">u(t) = t</script>
+</p>
+</blockquote>
+<h1 id="14-second-order-systems">14: Second Order Systems</h1>
+<p>Linear constant-coefficient second-order differential equations of the form</p>
+<p>
+<script type="math/tex; mode=display">
+\dot{y}^2 + 2 \zeta w_n \dot{y} + w_n^2 y = w_n^2u
+</script>
+</p>
+<p>are important because higher-order systems can often be approximated by second-order systems.</p>
+<ul>
+<li>
+<script type="math/tex">\zeta</script>: dampening ratio</li>
+<li>
+<script type="math/tex">w</script>: undamped natural frequency</li>
+</ul>
+<h1 id="15-state-variable-representation-of-systems-described-by-linear-differential-equtaions">15: State Variable Representation of Systems Described By Linear Differential Equtaions</h1>
+<p>This is basically an introduction to linear systems theory:</p>
+<p>
+<script type="math/tex; mode=display">
+\dot{x} = Ax + Bu
+</script>
+</p>
+<h1 id="16-solution-of-linear-constant-coefficient-difference-equations">16: Solution of Linear Constant-Coefficient Difference Equations</h1>
+<p>
+<script type="math/tex; mode=display">
+\sum_{i=0}^{n} a_i y(k + i) = \sum_{i=0}^{n} b_i u(k+i)
+</script>
+</p>
+<p>Similar naming applies for difference equations as differential equations, such as the <em>characteristic polynomial</em>, <em>characteristic equation</em>, and <em>fundamental set</em>.
+The only part that is different is how one defines the free response equations for unique and repeated roots:</p>
+<p>
+<script type="math/tex; mode=display">
+y_a(k) = c_1(a)^k + c_2(b)^k + \cdots
+</script>
+</p>
+<p>For the forced response, the convolution of difference equations is defined as:</p>
+<p>
+<script type="math/tex; mode=display">
+y_b(k) = \sum_{j=0}^{k-1} w(k-j) \Big[ \sum_{i=0}^m b_i u(j+1) \Big]\; k = 0,1,\cdots , n
+</script>
+</p>
+<p>Where the weighting function is defined as</p>
+<p>
+<script type="math/tex; mode=display">
+w(k-l) = \sum_{j=1}^n \frac{M_j(l)}{a_n M(l)} y_j (k)
+</script>
+</p>
+<p>Where <script type="math/tex">M(l)</script> is the determinant:</p>
+<p>
+<script type="math/tex; mode=display">
+M(l) =
+\begin{vmatrix}
+y_1(l+1) & y_2(l+1) & \cdots & y_n(l+1) \\
+y_1(l+2) & y_2(l+2) & \cdots & y_n(l+2) \\
+\vdots   & \vdots   & \ddots & \vdots   \\
+y_1(l+n) & y_2(l+n) & \cdots & y_n(l+n) \\
+\end{vmatrix}
+</script>
+</p>
+<p>and <script type="math/tex">M_j(l)</script> is the <a href="https://www.geeksforgeeks.org/maths/cofactor-matrix/">cofactor</a> of the last element of the <script type="math/tex">j</script>th column of <script type="math/tex">M(l)</script>.</p>
+<h1 id="17-state-variable-representation-of-systems-described-by-linear-difference-equations">17: State Variable Representation of Systems Described By Linear Difference Equations</h1>
+<p>Similar to constant equations, we can decompose the difference equation into (x(k) = A^k x(0) + \sum_{j=0}^{k-1} A^{k-1-j} Bu(j)</p>
+<h2 id="discretization-of-difference-equations">Discretization of Difference Equations</h2>
+<p>Consider a differential equation system described as</p>
+<p>
+<script type="math/tex; mode=display">
+x(t) = e^{At} x(0) + \int_0^t e^{A (t-\tau)} B u(\tau) d\tau
+</script>
+</p>
+<p>If we want to discretize the equation, then one can write an <em>exact discretization</em> as follows:</p>
+<p>
+<script type="math/tex; mode=display">
+u'(k) = e^{AkT} \int_{kT}^{(k+1)T} e^{A(T-\tau)} B u(\tau) d\tau
+</script>
+</p>
+<p>Then the solution can be expressed as the vector-matrix difference equation:</p>
+<p>
+<script type="math/tex; mode=display">
+x(k+1) = e^{AT}x(k) + u'(k)
+</script>
+</p>
+<p>Note that <script type="math/tex">A' \equiv e^{AT}</script> is a transition matrix.</p>
+<h1 id="18-linearity-and-superposition">18: Linearity and Superposition</h1>
+<p>If all initial conditions are zero, then the system is a linear system if</p>
+<ol>
+<li>An input <script type="math/tex">u_1(t)</script> produces an output <script type="math/tex">y_1(t)</script>
+</li>
+<li>An input <script type="math/tex">u_2(t)</script> produces an output <script type="math/tex">y_2(t)</script>
+</li>
+<li>An input <script type="math/tex">c_1u_1(t) + c_2u_2(t)</script> produces an output <script type="math/tex">c_1y_1(t) + c_2y_2(t)</script> for all combinations of <script type="math/tex">c</script> and <script type="math/tex">u</script>.</li>
+</ol>
+<p>If a system is linear, then its input-output relationship is described by the <em>convolution integral</em>.</p>
+<p><strong>Principle of Superposition</strong></p>
+<blockquote>
+<p>The response <script type="math/tex">y(t)</script> of a linear system due to several inputs acting simultaneously us equal to the sum of the responses of each input acting alone, when all initial conditions are zero in the system.</p>
+</blockquote>
+<h1 id="19-causality-and-physically-realizable-systems">19: Causality and Physically Realizable Systems</h1>
+<blockquote>
+<p>A system in which time is the independent is called <em>causal</em> if the output depends only on the present and past values of the input.</p>
+</blockquote>
+<p>The implication of the previous definition is that a causal system is one which cannot anticipate what its future input will be.</p>
+</div>
+<footer>
+<p>Generated by Pymind: 2025-08-10</p>
+</footer>
+
+</body>
+</html>

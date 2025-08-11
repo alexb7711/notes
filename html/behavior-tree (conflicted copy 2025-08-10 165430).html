@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<!-- MARKER -->
+<html>
+<head>
+    <title>behavior-tree</title>
+    <link href="style.css" rel="stylesheet">
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            config: ["MMLorHTML.js"],
+            jax: ["input/TeX", "output/HTML-CSS", "output/NativeMML"],
+            extensions: ["MathMenu.js", "MathZoom.js"]
+    });
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+</head>
+<body>
+<div id="navigation">
+<ul>
+<li><a class="%blog.html%" href="blog.html">blog</a></li>
+<li><a class="%notes.html%" href="notes.html">notes</a></li>
+<li><a class="%projects.html%" href="projects.html">projects</a></li>
+<li><a class="%index.md%" href="index.html">index</a></li>
+</ul>
+</div>
+
+<div class="content">
+<h1 id="what-are-behavior-trees">What Are Behavior Trees?</h1>
+<p>A Behavior Tree (BT) is a way to structure the switching between different tasks.</p>
+<h2 id="a-short-history-and-motivation-of-bts">A Short History and Motivation of BTs</h2>
+<p>A good quote to describe the difference between BTs and Finite State Machines:</p>
+<blockquote>
+<p>BTs provide an alternative view of Finite State Machines (FSMs) that support design of modular systems.</p>
+</blockquote>
+<p>An other good quote about BT utility</p>
+<blockquote>
+<p>The main advantage is that individual behaviors can easily be reused in the context of another high-level behavior, without needing to specify how they relate to subsequent behaviors.</p>
+</blockquote>
+<h2 id="what-is-wrong-with-fsms-the-need-for-reactiveness-and-modularity">What Is Wrong With FSMs? The Need For Reactiveness And Modularity</h2>
+<p>FSMs fundamentally require one-way control transfers. Think of a <code>goto</code> statement in code. The code jumps to another part of the execution, and continues from there. Modern development utilizes two-way control transfers, such as functions, where the execution jumps to the method, executes the routine, and returns to the where the execution was called. BTs in this regard utilize two-way control transfers.</p>
+<h2 id="classical-formulation-of-bts">Classical Formulation of BTs</h2>
+<p>A BT is a directed rooted tree where the internal nodes are called control flow nodes and leaf nodes are called execution nodes. Note that control flow nodes can never return the status of <code>Running</code>.</p>
+<p>A BT starts its execution from the root node that generates signals that allow the execution of a node called ticks with a given frequency, which are sent to its children. A node is executed if and only if it receives ticks. The child immediately returns <code>Running</code> to the parent, if its execution is underway, <code>Success</code> if it has achieved its goal, or <code>Failure</code> otherwise.</p>
+<p>In classical formulation there are four types of control nodes:</p>
+<ul>
+<li>Sequence: Execute child nodes from left to right until <code>Failure</code> or <code>Running</code> is returned, <code>Success</code> is returned only if all the child nodes return <code>Success</code>.</li>
+<li>Fallback: Execute child nodes from left to right until <code>Success</code> or <code>Running</code> is returned from a child node. It returns <code>Failure</code> only if all the child nodes return <code>Failure</code>.</li>
+<li>Parallel: Execute each child node from left to right such that they begin executing simultaneously. Return <code>Success</code> if $M$ children return <code>Success</code>, return <code>Failure</code> otherwise.</li>
+<li>Decorator: This node can only ever have one childe node. The decorator specifically manipulates the return state of the child node according to a user-defined rule and also selectively ticks the child according to some predefined rule. Some examples of decorators are:</li>
+<li>invert: Return opposite of <code>Success</code>/  <code>Failure</code></li>
+<li>max-N-tries: Retry the node <code>N</code> times before returning <code>Failure</code></li>
+<li>max-T-sec: Allow the child to run for <code>T</code> seconds before returning <code>Failure</code></li>
+</ul>
+<h3 id="control-flow-with-memory">Control Flow With Memory</h3>
+<p>Control flow nodes with memory always remember whether a child has returned <code>Success</code> or <code>Failure</code> to avoid re-execution of the node. The memory is cleared when the parent node returns <code>Success</code> or <code>Failure</code>.</p>
+<p>BTs are non-reactive since they do not allow actions other than the currently active one to react to changes. BTs with only memory nodes are denoted as non-reactive since the original return state is maintained until the behavior is complete. Because reactivity is one of the key strengths of BTs, the non-reactive ones are of limited use.</p>
+<h1 id="how-behavior-trees-generalize-and-relate-to-earlier-ideas">How Behavior Trees Generalize And Relate To Earlier Ideas</h1>
+<h2 id="finite-state-machines">Finite State Machines</h2>
+<p>FSMs consists of a set of states, transitions, and events.</p>
+<h3 id="advantages-and-disadvantages">Advantages And Disadvantages</h3>
+<p>Advantages:</p>
+<ul>
+<li>Very common structure</li>
+<li>Intuitive and easy to understand</li>
+<li>Easy to implement</li>
+</ul>
+<p>Disadvantages</p>
+<ul>
+<li>Reactivity/Modularity. Since every transition is a <code>goto</code> which introduces</li>
+<li>Maintainability issues in adding or removing states. This could introduce issues in a state not having a <code>goto</code> for example.</li>
+<li>Scalability. The more states, the more transitions, the more difficult the system becomes to understand and modify</li>
+<li>Reusability. The transition between states may depend on internal variables, making it unpractical reuse the same sub-FSM in multiple projects.</li>
+</ul>
+<h2 id="heirachical-finite-state-machines">Heirachical Finite State Machines</h2>
+<p>In a HFSM, a superstate can contain one or more substates. A generalized transition in HFSM is a transition between superstates. Each superstate has one substate identified as the starting state.</p>
+<h3 id="advantages-and-disadvantages_1">Advantages And Disadvantages</h3>
+<p>Advantages:</p>
+<ul>
+<li>Increased modularity. It is possible to separate tasks into subtasks</li>
+<li>Behavior inheritance: These superstates can be nested in other superstates</li>
+</ul>
+<p>Disadvantages</p>
+<ul>
+<li>Maintainability: Adding or removing states is still hard.</li>
+<li>Manually created hierarchy. </li>
+</ul>
+<h2 id="subsumption-architecture">Subsumption Architecture</h2>
+<p>Several controllers are ran in parallel. Each one is allowed to output both its actuation command and a binary value that signifies if it wants to control the robot or not. The highest priority controller that wants to control the robot subsumes the other controllers and take it action.</p>
+<h3 id="advantages-and-disadvantages_2">Advantages And Disadvantages</h3>
+<p>Advantages</p>
+<ul>
+<li>Easy to implement</li>
+<li>Modular</li>
+<li>Hierarchy </li>
+</ul>
+<p>Disadvantages</p>
+<ul>
+<li>Scalability: complex actions through a distributed system of inhibition and suppression can be hard</li>
+<li>Maintainability. Due to the lack of structure, the consequences of adding or removing controllers can be hard to estimate.</li>
+</ul>
+<h3 id="how-bts-generalize-the-subsumption-architecture">How BTs Generalize The Subsumption Architecture</h3>
+<p>This boils down to a sequence of behaviors under a <code>Fallback</code> composition with the highest priority behavior on the left and the least on the right.</p>
+<h2 id="teleo-reactive-programs">Teleo-Reactive Programs</h2>
+<p>In its simplest form, a TR program is described by a list of condition-action rules.</p>
+<p>$$$</p>
+<p>\begin{align*}</p>
+<p>c_1 \rightarrow a_1 \\</p>
+<p>c_2 \rightarrow a_3 \\</p>
+<p>\vdot \\</p>
+<p>c_3 \rightarrow a_3 \\</p>
+<p>\end{align*}</p>
+<p>The condition-action rule list is scanned from the top until it finds a condition that holds. This action will continue to be performed as long as it is the highest priority condition that is being met.</p>
+<h3 id="advantages-and-disadvantages_3">Advantages And Disadvantages</h3>
+<p>Advantages</p>
+<ul>
+<li>Reactive execution. By nature, this method is reactive because of the continuous monitoring of the conditions</li>
+<li>Intuitive structure, especially for small problems</li>
+</ul>
+<p>Disadvantages</p>
+<ul>
+<li>Maintainability. Adding or removing items is prone to cause errors (??)</li>
+<li>Failure Handling. a TR program needs to have a condition that checks if an action fails</li>
+</ul>
+<h2 id="decision-trees">Decision Trees</h2>
+<p>Decision trees are a directed graph that represents a list of nested if-then clauses which is used to derive decisions. Leaf nodes describe decisions, conclusions, or actions. The non-leaf nodes describe predicates to be evaluated.</p>
+<h3 id="advantages-and-disadvantages_4">Advantages And Disadvantages</h3>
+<p>Advantages</p>
+<ul>
+<li>Modular</li>
+<li>Hierarchy</li>
+<li>Intuitive Structure</li>
+</ul>
+<p>Disadvantages</p>
+<ul>
+<li>No information flow out from the nodes, making failure handling very difficult</li>
+</ul>
+<h2 id="advantages-and-disadvantages-of-behavior-trees">Advantages And Disadvantages Of Behavior Trees</h2>
+<h3 id="advantages">Advantages</h3>
+<ul>
+<li>Modular. It is simple to separate and recombine conditions/actions.</li>
+<li>Hierarchical organization</li>
+<li>Reusable code</li>
+<li>Reactivity</li>
+<li>Human readable</li>
+<li>Expressive (can encode a wide variety of behaviors)</li>
+<li>Suitable for analysis: Safety critical robots often require an analysis of the qualitative and quantitative system properties</li>
+<li>Suitable for automatic synthesis: Action ordering of a task or policy can be automatically synthesized </li>
+</ul>
+<h3 id="disadvantages">Disadvantages</h3>
+<ul>
+<li>The BT engine can be complex to implement</li>
+<li>Checking all the conditions can be expensive</li>
+<li>Sometimes a simpler architecture is sufficient</li>
+<li>BTs require a different mindset wend designing</li>
+<li>BT tools are less mature</li>
+</ul>
+<h1 id="design-principles">Design Principles</h1>
+<h2 id="improving-readability-using-explicit-success-conditions">Improving Readability Using Explicit Success Conditions</h2>
+<p>One thing that is not shown with BTs is the details regarding when the individual actions returns <code>Success</code> and <code>Failure</code>. To remove the ambiguity of the return conditions, explicit <code>Success</code> conditions can be included in the BT.</p>
+<h2 id="improving-reactivity-using-implicit-sequences">Improving Reactivity Using Implicit Sequences</h2>
+<p>By reversing the order and specifying preconditions one can improve the reactivity and reduce processing. For example, if we wanted a robot to go through the door, the first pre-condition is to check if the robot has passed. If it didn't, then we can check if the door is already open, if it is not, then we can check if the door is unlocked, etc.</p>
+<h2 id="handling-different-cases-using-a-decision-tree-structure">Handling Different Cases Using A Decision Tree Structure</h2>
+<p>BTs can behave like Decision Trees. By this it is meant that depending on the current state that is being observed, different BTs can be executed. An example of this is PacMan either being chased or chasing the ghosts.</p>
+<h2 id="improving-safety-using-sequences">Improving Safety Using Sequences</h2>
+<p>A Sequence node can be used to guarantee unwanted scenarios and unsafe conditions.</p>
+<h2 id="creating-deliberative-bts-using-backchaining">Creating Deliberative BTs Using Backchaining</h2>
+<p>This is meant to say that BTs can be structured in away that allows the agent to behave in a predictable way to achieve a specified goal.</p>
+<h2 id="creating-un-reactive-bts-using-memory-nodes">Creating Un-Reactive BTs Using Memory Nodes</h2>
+<p>Nodes with memory can be used to avoid unwanted re-execution of some nodes. As discussed before, this can cause the BT to become less reactive. For this reason, it is advised to use memory nodes exclusively for cases where there is no unexpected event that will undo the execution of the subtree in a composition with memory.</p>
+<h2 id="choosing-the-proper-granularity-of-a-bt">Choosing The Proper Granularity Of A BT</h2>
+<p>As common sense would dictate, here are some good rules of thumb:</p>
+<ul>
+<li>It makes sense to encode the behavior in a single leaf when the potential subparts of the behavior are always used and executed in this particular combination. </li>
+<li>It makes sense to encode a behavior as a sub-BT, braking it up into conditions, actions and flow control nodes, when the subparts are likely to be usable in other combinations in other parts of the BT, and when the reactivity of BTs can be used to re-execute parts of the behavior when needed.</li>
+</ul>
+<h2 id="references">References</h2>
+<p>- <script type="math/tex; mode=display">Introduction To Behavior Trees</script>(<a href="https://roboticseabass.com/2021/05/08/introduction-to-behavior-trees/">https://roboticseabass.com/2021/05/08/introduction-to-behavior-trees/</a>)</p>
+<p>- Behavior Trees in Robotics and AI: An Introduction by Michele Colledanchise and Petter Ogren</p>
+</div>
+<footer>
+<p>Generated by Pymind: 2025-08-10</p>
+</footer>
+
+</body>
+</html>

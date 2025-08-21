@@ -27,9 +27,59 @@ $$
 If the system is assumed to be at rest then
 
 $$
-(u_0^k \textt{ and } y_0^k \text{terms} = 0
+(u_0^k \text{ and } y_0^k \text{terms} = 0
 $$
 
 # Propertios of Continuous System Transfer Functions
 
 * The trasnfer function is the Laplace Transform of the implse response \(y_f(t),\; t \ge 0\)
+* The transfer function can be found from a system of differential equations by taking the Laplace Transform and ignoring all initialization terms
+* The differential equation can be found given a transfer function by replacing \(D\) with \(s\)
+* The stability of LTI systems can be determined by taking the roots of the demonitator (characteristic equation)
+* The system transfer function can be specified to within a constant by specifying the system poles and zeros.
+* If the system has no poles or zeros, then the system is a minimum phase system
+
+# Transfer Functions of Continuous Control System Compensators and Controllers
+
+## Continuous System Lead Compensator
+$$
+P_{lead}(s) = \frac{s+a}{s+b}\; b > a
+$$
+
+## Continuous System Lag Compensator
+$$
+P_{lead}(s) = \frac{a(s+b)}{b(s+a)}\; b > a
+$$
+
+## Continuous System Lead-Lag Compensator
+$$
+P_{lead}(s) = \frac{(s+a_1)(s+b_2)}{(s + b_1)(s+a_2)}\; b > a
+$$
+
+## PID Controller
+$$
+P_{lead}(s) = \frac{U_{PID}(s)}{E(s)} = K_p + K_D s + \frac{K_I}{s} = \frac{K_D s^2 + K_p s + K_I}{s}
+$$
+
+# Continuous Sysetm Frequency Response
+If a system is stable, a step function of amplitude \(A\) 
+
+$$
+U(s) = \frac{A}{s}
+$$
+
+then
+
+$$
+Y(s) = P(s) \frac{A}{s}
+$$
+
+then the response of the step function is \(AP(0)\).
+
+The steady state rseponse of a stable system from \(U = Asin(\omega t)\) is
+
+$$
+y_s (s) = A |P(j\omega)| sin (\omega t + \phi)
+$$
+
+where \(\phi = arg(j\omega)\).

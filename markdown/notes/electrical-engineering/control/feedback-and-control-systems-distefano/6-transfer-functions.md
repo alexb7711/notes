@@ -9,13 +9,13 @@ Time invariant linear sysetms can be separated into two parts
 If we lump all of the initialization terms together, then we could write
 
 $$
-y(t) = \mathcal{L}^{-1} \Big[ \Big( \frac{\sum_{i=0}^m b_i s^i}{\sum_{i=0}{n}a_i s^i} \Big) U(s) + (u_0^k \textt{ and } y_0^k \text{terms} \Big] 
+y(t) = \mathcal{L}^{-1} \Big[ \Big( \frac{\sum_{i=0}^m b_i s^i}{\sum_{i=0}{n}a_i s^i} \Big) U(s) + (u_0^k \text{ and } y_0^k \text{terms} \Big] 
 $$
 
 or
 
 $$
-Y(s) = \Big( \frac{\sum_{i=0}^m b_i s^i}{\sum_{i=0}{n}a_i s^i} \Big) U(s) + (u_0^k \textt{ and } y_0^k \text{terms}
+Y(s) = \Big( \frac{\sum_{i=0}^m b_i s^i}{\sum_{i=0}{n}a_i s^i} \Big) U(s) + (u_0^k \text{ and } y_0^k \text{terms}
 $$
 
 The trasnfer function \(P(s)\) of a continuous system is defined as the factor in the equation above that multiplies \(U(s)\). That is

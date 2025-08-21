@@ -164,5 +164,6 @@ The Hurwitz determinants are:
 Since all Hurwitz determinants are positive (\(\Delta_1 = 2 > 0\), \(\Delta_2 = 2 > 0\), \(\Delta_3 = 8 > 0\)), the system is stable.
 
 # Stability Criteria For Discrete-Time Systems
-The stability for discrete systems is defined by the unit circle \(|z| = 1\). 
+The stability for discrete systems is defined by the unit circle \(|z| = 1\).  A necessary and sufficient condition for system stability is for all the roots of the characteristic equation to have a magnitude less than one.
+
 

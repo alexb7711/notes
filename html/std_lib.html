@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!-- MARKER -->
+<html>
+<head>
+    <title>std_lib</title>
+    <link href="style.css" rel="stylesheet">
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            config: ["MMLorHTML.js"],
+            jax: ["input/TeX", "output/HTML-CSS", "output/NativeMML"],
+            extensions: ["MathMenu.js", "MathZoom.js"]
+    });
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+</head>
+<body>
+<div id="navigation">
+<ul>
+<li><a class="%notes.html%" href="notes.html">notes</a></li>
+<li><a class="%blog.html%" href="blog.html">blog</a></li>
+<li><a class="%projects.html%" href="projects.html">projects</a></li>
+<li><a class="%index.md%" href="index.html">index</a></li>
+</ul>
+</div>
+
+<div class="content">
+<h1 id="standard-library">Standard Library</h1>
+<h1 id="stdoptional"><code>std::optional</code></h1>
+<p>The class template std::optional manages an optional contained value, i.e. a value that may or may not be present. A common use case for optional is the return value of a function that may fail. A good example of this is when extracting data from a <code>toml::table</code> in the <code>toml++</code> library.</p>
+<div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;toml++/toml.hpp&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">string_view_literals</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sa">R</span><span class="s">&quot;</span><span class="dl">(</span>
+<span class="s">        str = &quot;hello world&quot;</span>
+
+<span class="s">        numbers = [ 1, 2, 3, &quot;four&quot;, 5.0 ]</span>
+<span class="s">        vegetables = [ &quot;tomato&quot;, &quot;onion&quot;, &quot;mushroom&quot;, &quot;lettuce&quot; ]</span>
+<span class="s">        minerals = [ &quot;quartz&quot;, &quot;iron&quot;, &quot;copper&quot;, &quot;diamond&quot; ]</span>
+
+<span class="s">        [animals]</span>
+<span class="s">        cats = [ &quot;tiger&quot;, &quot;lion&quot;, &quot;puma&quot; ]</span>
+<span class="s">        birds = [ &quot;macaw&quot;, &quot;pigeon&quot;, &quot;canary&quot; ]</span>
+<span class="s">        fish = [ &quot;salmon&quot;, &quot;trout&quot;, &quot;carp&quot; ]</span>
+<span class="s">    </span><span class="dl">)</span><span class="s">&quot;</span><span class="n">sv</span><span class="p">;</span>
+<span class="w">    </span><span class="n">toml</span><span class="o">::</span><span class="n">table</span><span class="w"> </span><span class="n">tbl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">toml</span><span class="o">::</span><span class="n">parse</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// different ways of directly querying data</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="o">&gt;</span><span class="w"> </span><span class="n">str1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tbl</span><span class="p">[</span><span class="s">&quot;str&quot;</span><span class="p">].</span><span class="n">value</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w">      </span><span class="n">str2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tbl</span><span class="p">[</span><span class="s">&quot;str&quot;</span><span class="p">].</span><span class="n">value</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w">                </span><span class="n">str3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tbl</span><span class="p">[</span><span class="s">&quot;str&quot;</span><span class="p">].</span><span class="n">value_or</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="n">sv</span><span class="p">);</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w">                    </span><span class="n">str4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tbl</span><span class="p">[</span><span class="s">&quot;str&quot;</span><span class="p">].</span><span class="n">ref</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">();</span><span class="w"> </span><span class="c1">// ~~dangerous~~</span>
+
+<span class="w">    </span><span class="c1">// .....</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h1 id="stdstring_view"><code>std::string_view</code></h1>
+<p><code>std::string_view</code> is a C++ feature introduced in C++17 that provides a non-owning, lightweight view into an existing sequence of characters. It is designed to offer efficient handling of string-like data without incurring the overhead of memory allocation or copying that std::string can involve.</p>
+</div>
+<footer>
+<p>Generated by Pymind: 2025-10-31</p>
+</footer>
+
+</body>
+</html>

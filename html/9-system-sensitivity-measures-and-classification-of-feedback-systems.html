@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!-- MARKER -->
+<html>
+<head>
+    <title>9-system-sensitivity-measures-and-classification-of-feedback-systems</title>
+    <link href="style.css" rel="stylesheet">
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            config: ["MMLorHTML.js"],
+            jax: ["input/TeX", "output/HTML-CSS", "output/NativeMML"],
+            extensions: ["MathMenu.js", "MathZoom.js"]
+    });
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+</head>
+<body>
+<div id="navigation">
+<ul>
+<li><a class="%notes.html%" href="notes.html">notes</a></li>
+<li><a class="%blog.html%" href="blog.html">blog</a></li>
+<li><a class="%projects.html%" href="projects.html">projects</a></li>
+<li><a class="%index.md%" href="index.html">index</a></li>
+</ul>
+</div>
+
+<div class="content">
+<div class="toc">
+<ul>
+<li><a href="#introduction">Introduction</a><ul>
+<li><a href="#sensitivity-of-transfer-functions-and-frequency-response-functions-to-system-parameters">Sensitivity of Transfer Functions and Frequency Response Functions to System Parameters</a></li>
+</ul>
+</li>
+<li><a href="#output-sensitivity-to-paraemeters-for-differential-and-difference-equation-methods">Output Sensitivity to Paraemeters for Differential and Difference Equation Methods</a></li>
+<li><a href="#classification-of-continuous-feedback-system-by-type">Classification of Continuous Feedback System By Type</a></li>
+<li><a href="#position-error-constants-for-continuous-feedback-systems">Position Error Constants for Continuous Feedback Systems</a></li>
+</ul>
+</div>
+<h1 id="introduction">Introduction</h1>
+<p>Quatitative measures of the effectiveness of foodback are developed in terms of sensitivity and error constants.</p>
+<h2 id="sensitivity-of-transfer-functions-and-frequency-response-functions-to-system-parameters">Sensitivity of Transfer Functions and Frequency Response Functions to System Parameters</h2>
+<p>If a system is LTI, we have two useful models</p>
+<ul>
+<li>Transfer Functions</li>
+<li>Frequency Response Function</li>
+</ul>
+<p>The <em>sensitivity</em> of a system parameter is a measure of how much the system transfer function differs from its nominal when each of its parameters deffers from its nominal value (i.e. perturb the parameters and seed how it affects the transfer function). A similar statement about sensitivity can be made in regard to frequency. How does the frequency response change when the parameters are modified?</p>
+<p>Consider a model <script type="math/tex">T(k)</script> of an LTI system in polar coordinates</p>
+<p>
+<script type="math/tex; mode=display">
+T(k) = |T(k)|e^{j\phi T}
+</script>
+</p>
+<p>The sesitivity of <script type="math/tex">T(k)</script> with respect to <script type="math/tex">k</script> can be written as</p>
+<p>
+<script type="math/tex; mode=display">
+S_k^T = \frac{d\\; ln\\; T(k)}{d\\; ln\\; k} ] = \frac{dT(k)}{dk} \frac{k}{T(k)}
+</script>
+</p>
+<p>If we want to look at the sensitivity of the magnitude: <script type="math/tex">S_k^{|T(k)|} \equiv \frac{d|T(k)|}{dk} \frac{k}{T(k)}</script>, and for phase angle <script type="math/tex">S_k^{|\phi_T|} \equiv \frac{d\phi_T}{dk} \frac{k}{\phi_T}</script>. Putting it together yields:</p>
+<p>
+<script type="math/tex; mode=display">
+S_k^{T(k)} = S_k^{|T(k)|} + j\phi_T S_k^{\phi_T}
+</script>
+</p>
+<p>If <script type="math/tex">S_k^{T(k)} = 0</script>, then we say <script type="math/tex">T(k)</script> is insensitive to <script type="math/tex">k</script>.</p>
+<h1 id="output-sensitivity-to-paraemeters-for-differential-and-difference-equation-methods">Output Sensitivity to Paraemeters for Differential and Difference Equation Methods</h1>
+<p>The sensitivity of the model output <script type="math/tex">y</script> to any paramater <script type="math/tex">p</script> is given by</p>
+<p>
+<script type="math/tex; mode=display">
+S_p^{y(t)} \equiv S_p^y = \frac{d(ln\\; y)}{d(ln\\;p)} = \frac{dy}{dp} \frac{p}{y}
+</script>
+</p>
+<p>Where <script type="math/tex">\frac{dy}{dp}</script> is called the <em>output sensitivity coefficient</em>.</p>
+<h1 id="classification-of-continuous-feedback-system-by-type">Classification of Continuous Feedback System By Type</h1>
+<p>A cannonical feedback system is defined as</p>
+<p>
+<script type="math/tex; mode=display">
+GH = \frac{k \prod_{i=1}^{m} (s + z_i)}{\prod_{i=1}^n (s+p_i)}
+</script>
+</p>
+<p>If there are <script type="math/tex">a</script> zeros and <script type="math/tex">b</script> poles, then</p>
+<p>
+<script type="math/tex; mode=display">
+GH = \frac{k \prod_{i=1}^{m} (s + z_i)}{s^l \prod_{i=1}^n (s+p_i)} \equiv \frac{KB_1(s)}{s^l B_2(s)}
+</script>
+</p>
+<h1 id="position-error-constants-for-continuous-feedback-systems">Position Error Constants for Continuous Feedback Systems</h1>
+<p>The position eror constant <script type="math/tex">K_p</script> is a measure of error between the input and output if the inpyut is a unit step function. </p>
+</div>
+<footer>
+<p>Generated by Pymind: 2025-10-31</p>
+</footer>
+
+</body>
+</html>

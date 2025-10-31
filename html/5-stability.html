@@ -17,18 +17,200 @@
 <body>
 <div id="navigation">
 <ul>
-<li><a class="%blog.html%" href="blog.html">blog</a></li>
 <li><a class="%notes.html%" href="notes.html">notes</a></li>
+<li><a class="%blog.html%" href="blog.html">blog</a></li>
 <li><a class="%projects.html%" href="projects.html">projects</a></li>
 <li><a class="%index.md%" href="index.html">index</a></li>
 </ul>
 </div>
 
 <div class="content">
-
+<div class="toc">
+<ul>
+<li><a href="#stability-definitions">Stability Definitions</a></li>
+<li><a href="#characteristic-root-locations-for-continuous-systems">Characteristic Root Locations for Continuous Systems</a></li>
+<li><a href="#routh-stability-criterion">Routh Stability Criterion</a><ul>
+<li><a href="#procedure">Procedure</a></li>
+<li><a href="#special-cases">Special Cases</a></li>
+</ul>
+</li>
+<li><a href="#hurwitz-stability-criterion">Hurwitz Stability Criterion</a><ul>
+<li><a href="#procedure_1">Procedure</a></li>
+<li><a href="#example">Example</a></li>
+</ul>
+</li>
+<li><a href="#stability-criteria-for-discrete-time-systems">Stability Criteria For Discrete-Time Systems</a></li>
+</ul>
+</div>
+<h1 id="stability-definitions">Stability Definitions</h1>
+<blockquote>
+<p>A continuous system is stable if its impulse response <script type="math/tex">y_f(t)</script> approaches zero as time goes to infinity</p>
+</blockquote>
+<p>Alternatively, one can say</p>
+<blockquote>
+<p>A continuous or discrete-time system is stable if every bounded input produces a bounded output</p>
+</blockquote>
+<p>This brings up the concept of relative stability. What bounds of inputs keep a system stable?</p>
+<h1 id="characteristic-root-locations-for-continuous-systems">Characteristic Root Locations for Continuous Systems</h1>
+<p><strong>A necessary and sufficient condition for a system to be stable is that the real parts of the roots of the characteristic equation has to have negative real parts</strong></p>
+<p>If the system has negative and zero real parts of the roots, then the system is said to be marginally stable. <strong>Certain inputs will still produce unbounded outputs in this case, so marginally unstable is still unstable</strong>.</p>
+<h1 id="routh-stability-criterion">Routh Stability Criterion</h1>
+<p>The Routh-Hurwitz criterion is a method for determining the stability of a linear time-invariant (LTI) system by examining the coefficients of its characteristic polynomial.  A system is stable if and only if all the roots of its characteristic polynomial have negative real parts.  The Routh-Hurwitz criterion avoids explicitly calculating the roots.</p>
+<h2 id="procedure">Procedure</h2>
+<p>Consider a characteristic polynomial given by:</p>
+<p>
+<script type="math/tex; mode=display">
+Q(s) = a_n s^n + a_{n-1} s^{n-1} + a_{n-2} s^{n-2} + \cdots + a_1 s + a_0
+</script>
+</p>
+<p>where <script type="math/tex">a_n, a_{n-1}, \dots, a_0</script> are real coefficients and <script type="math/tex">a_n > 0</script>.</p>
+<p><strong>1. Construct the Routh Array:</strong></p>
+<p>The Routh array is constructed as follows:</p>
+<p>
+<script type="math/tex; mode=display">\begin{center}
+\begin{tabular}{c|ccccc}
+$s^n$     & $a_n$     & $a_{n-2}$ & $a_{n-4}$ & $a_{n-6}$ & $\cdots$ \\
+$s^{n-1}$ & $a_{n-1}$ & $a_{n-3}$ & $a_{n-5}$ & $a_{n-7}$ & $\cdots$ \\
+$s^{n-2}$ & $b_1$     & $b_2$     & $b_3$     & $b_4$     & $\cdots$ \\
+$s^{n-3}$ & $c_1$     & $c_2$     & $c_3$     & $c_4$     & $\cdots$ \\
+$\vdots$  & $\vdots$  & $\vdots$  & $\vdots$  & $\vdots$  &         \\
+$s^1$     & $k_1$     &           &           &           &         \\
+$s^0$     & $l_1$     &           &           &           &
+\end{tabular}
+\end{center}</script>
+</p>
+<p><strong>2. Calculate the Elements of the Routh Array:</strong></p>
+<p>The elements of the array are calculated using the following formulas:</p>
+<p>
+<script type="math/tex; mode=display">\begin{align*}
+b_1 &= -\frac{1}{a_{n-1}} \begin{vmatrix} a_n     & a_{n-2} \\ a_{n-1} & a_{n-3} \end{vmatrix} = \frac{a_{n-1} a_{n-2} - a_n a_{n-3}}{a_{n-1}} \\
+b_2 &= -\frac{1}{a_{n-1}} \begin{vmatrix} a_n     & a_{n-4} \\ a_{n-1} & a_{n-5} \end{vmatrix} = \frac{a_{n-1} a_{n-4} - a_n a_{n-5}}{a_{n-1}} \\
+b_3 &= -\frac{1}{a_{n-1}} \begin{vmatrix} a_n     & a_{n-6} \\ a_{n-1} & a_{n-7} \end{vmatrix} = \frac{a_{n-1} a_{n-6} - a_n a_{n-7}}{a_{n-1}} \\
+&\vdots \\
+c_1 &= -\frac{1}{b_1} \begin{vmatrix} a_{n-1} & a_{n-3} \\ b_1     & b_2     \end{vmatrix} = \frac{b_1 a_{n-3} - a_{n-1} b_2}{b_1} \\
+c_2 &= -\frac{1}{b_1} \begin{vmatrix} a_{n-1} & a_{n-5} \\ b_1     & b_3     \end{vmatrix} = \frac{b_1 a_{n-5} - a_{n-1} b_3}{b_1} \\
+&\vdots
+\end{align*}</script>
+</p>
+<p>And in general:</p>
+<p>
+<script type="math/tex; mode=display">
+(\text{element in row } i \text{, column } j) = -\frac{1}{(\text{element above left})} \begin{vmatrix} (\text{element above left}) & (\text{element two positions to the right in the row above}) \\ (\text{element immediately above}) & (\text{element diagonally above and to the right}) \end{vmatrix}
+</script>
+</p>
+<p><strong>3. Stability Criterion:</strong></p>
+<p>The system is stable if and only if all the elements in the first column of the Routh array have the same sign (usually positive, since we assumed $a_n &gt; 0$).</p>
+<p>The number of sign changes in the first column is equal to the number of roots of the characteristic polynomial with positive real parts.  Therefore, a system is unstable if there is at least one sign change in the first column.</p>
+<h2 id="special-cases">Special Cases</h2>
+<ul>
+<li><strong>Zero in the first column:</strong> If a zero appears in the first column, but not an entire row of zeros, replace the zero with a small positive number <script type="math/tex">\epsilon</script> and proceed. Then, analyze the array as <script type="math/tex">\epsilon \rightarrow 0</script>.</li>
+<li><strong>Entire row of zeros:</strong> If an entire row of zeros occurs, it indicates that there are roots that are equal in magnitude but opposite in sign (i.e., on the $j\omega$-axis, or symmetrically located about the origin in the complex plane).  This means the polynomial has factors that are either even or odd.</li>
+</ul>
+<p>To continue, form an auxiliary polynomial using the coefficients of the row immediately \emph{above} the row of zeros. The roots of this auxiliary polynomial are also roots of the original polynomial.  Then, take the derivative of the auxiliary polynomial and use its coefficients to replace the row of zeros and continue the Routh array.</p>
+<h1 id="hurwitz-stability-criterion">Hurwitz Stability Criterion</h1>
+<p>The Hurwitz criterion is a method for determining the stability of a linear time-invariant (LTI) system by examining the coefficients of its characteristic polynomial. Similar to the Routh-Hurwitz criterion, it assesses whether all roots of the characteristic polynomial have negative real parts, which is a necessary and sufficient condition for stability. The Hurwitz criterion relies on constructing Hurwitz determinants.</p>
+<h2 id="procedure_1">Procedure</h2>
+<p>Consider a characteristic polynomial given by:</p>
+<p>
+<script type="math/tex; mode=display">
+Q(s) = a_n s^n + a_{n-1} s^{n-1} + a_{n-2} s^{n-2} + \cdots + a_1 s + a_0
+</script>
+</p>
+<p>where <script type="math/tex">a_n, a_{n-1}, \dots, a_0</script> are real coefficients and <script type="math/tex">a_n > 0</script>.</p>
+<p><strong>1. Construct the Hurwitz Matrix:</strong></p>
+<p>The Hurwitz matrix is an $n \times n$ matrix constructed from the coefficients of the polynomial as follows:</p>
+<p>
+<script type="math/tex; mode=display">
+H = \begin{bmatrix}
+a_{n-1} & a_{n-3} & a_{n-5} & \cdots & 0 \\
+a_n     & a_{n-2} & a_{n-4} & \cdots & 0 \\
+0       & a_{n-1} & a_{n-3} & \cdots & 0 \\
+0       & a_n     & a_{n-2} & \cdots & 0 \\
+\vdots  & \vdots  & \vdots  & \ddots & \vdots \\
+0       & 0       & 0       & \cdots & a_0
+\end{bmatrix}
+</script>
+</p>
+<p>Note that:</p>
+<ul>
+<li>The elements are the coefficients of the characteristic polynomial.</li>
+<li>The first row contains coefficients with alternating indices, starting from <script type="math/tex">a_{n-1}</script>.</li>
+<li>The second row contains coefficients with alternating indices, starting from <script type="math/tex">a_n</script>.</li>
+<li>The rows shift down by one position, filling in with zeros where necessary.</li>
+<li>If an index is negative or greater than <script type="math/tex">n</script>, the corresponding coefficient is considered zero.</li>
+</ul>
+<p><strong>2. Calculate the Hurwitz Determinants (Principal Minors):</strong></p>
+<p>The Hurwitz determinants, denoted as <script type="math/tex">\Delta_i</script>, are the determinants of the principal minors of the Hurwitz matrix <script type="math/tex">H</script>.  That is:</p>
+<ul>
+<li>
+<script type="math/tex">\Delta_1 = a_{n-1}</script>
+</li>
+<li>
+<script type="math/tex">\Delta_2 = \begin{vmatrix} a_{n-1} & a_{n-3} \\ a_n & a_{n-2} \end{vmatrix} = a_{n-1}a_{n-2} - a_n a_{n-3}</script>
+</li>
+<li>
+<script type="math/tex">\Delta_3 = \begin{vmatrix} a_{n-1} & a_{n-3} & a_{n-5} \\ a_n & a_{n-2} & a_{n-4} \\ 0 & a_{n-1} & a_{n-3} \end{vmatrix}</script>
+</li>
+<li>
+<script type="math/tex">\vdots</script>
+</li>
+<li>
+<script type="math/tex">\Delta_n = \det(H)</script>
+</li>
+</ul>
+<p>In general, <script type="math/tex">\Delta_i</script> is the determinant of the <script type="math/tex">i \times i</script> submatrix formed by taking the first <script type="math/tex">i</script> rows and the first <script type="math/tex">i</script> columns of the Hurwitz matrix <script type="math/tex">H</script>.</p>
+<p><strong>3. Stability Criterion:</strong></p>
+<p>The system is stable if and only if all the Hurwitz determinants are positive:</p>
+<p>
+<script type="math/tex; mode=display">
+\Delta_i > 0 \quad \text{for } i = 1, 2, \dots, n
+</script>
+</p>
+<p>If any of the Hurwitz determinants are negative or zero, the system is unstable.</p>
+<h2 id="example">Example</h2>
+<p>Consider the characteristic polynomial:</p>
+<p>
+<script type="math/tex; mode=display">
+Q(s) = s^3 + 2s^2 + 3s + 4
+</script>
+</p>
+<p>Here, <script type="math/tex">a_3 = 1$, $a_2 = 2$, $a_1 = 3$, $a_0 = 4</script>.</p>
+<p>The Hurwitz matrix is:</p>
+<p>
+<script type="math/tex; mode=display">
+H = \begin{bmatrix}
+2 & 4 & 0 \\
+1 & 3 & 0 \\
+0 & 2 & 4
+\end{bmatrix}
+</script>
+</p>
+<p>The Hurwitz determinants are:</p>
+<ul>
+<li>
+<script type="math/tex">\Delta_1 = 2</script>
+</li>
+<li>
+<script type="math/tex">\Delta_2 = \begin{vmatrix} 2 & 4 \\ 1 & 3 \end{vmatrix} = 2(3) - 4(1) = 6 - 4 = 2</script>
+</li>
+<li>
+<script type="math/tex">\Delta_3 = \begin{vmatrix} 2 & 4 & 0 \\ 1 & 3 & 0 \\ 0 & 2 & 4 \end{vmatrix} = 4 \begin{vmatrix} 2 & 4 \\ 1 & 3 \end{vmatrix} = 4(2) = 8</script>
+</li>
+</ul>
+<p>Since all Hurwitz determinants are positive (<script type="math/tex">\Delta_1 = 2 > 0</script>, <script type="math/tex">\Delta_2 = 2 > 0</script>, <script type="math/tex">\Delta_3 = 8 > 0</script>), the system is stable.</p>
+<h1 id="stability-criteria-for-discrete-time-systems">Stability Criteria For Discrete-Time Systems</h1>
+<p>The stability for discrete systems is defined by the unit circle <script type="math/tex">|z| = 1</script>.  A necessary and sufficient condition for system stability is for all the roots of the characteristic equation to have a magnitude l ess than one. Similar to the Routh Criterion, there is the jury test. However, a bilinear transformation</p>
+<p>
+<script type="math/tex; mode=display">
+\begin{array}{ll}
+z = \frac{1+w}{1-w} & w = \frac{z-1}{z+1}
+\end{array}
+</script>
+</p>
+<p>This transforms the interior unit circle in the z-plane to the left half of the w-plane. THus, the s-plane methods shown before can be used for discrete systems.</p>
 </div>
 <footer>
-<p>Generated by Pymind: 2025-08-10</p>
+<p>Generated by Pymind: 2025-10-31</p>
 </footer>
 
 </body>
